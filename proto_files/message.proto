@@ -1,0 +1,15 @@
+package messages;
+
+message GemMessage{
+    required string type = 1;
+    required bytes data = 2;
+}
+
+message Login{
+    required string id = 1;
+}
+
+message MoveTo{
+    required float x = 1;
+    required float y = 2;
+}
