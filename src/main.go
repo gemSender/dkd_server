@@ -58,6 +58,9 @@ func handleConnection(conn net.Conn, gameChan chan ClientMsg){
 	for {
 		select {
 		case sendMsg := <-channel:
+			byteLen := int32(len(sendMsg))
+			lenBytes := [4]byte{byte(byteLen >> 24), byte(byteLen >> 16), byte(byteLen >> 8), byte(byteLen)}
+			conn.Write(lenBytes[0:4])
 			conn.Write(sendMsg)
 		default:
 			_, err1 := conn.Read(countBuf)

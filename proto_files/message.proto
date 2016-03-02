@@ -13,3 +13,15 @@ message MoveTo{
     required float x = 1;
     required float y = 2;
 }
+
+message PlayerMoveTo{
+    required string id = 1;
+    required float x = 2;
+    required float y = 3;
+}
+
+message PlayerLogin{
+    required string id = 1;
+    required float x = 2;
+    required float y = 3;
+}

@@ -12,6 +12,8 @@ It has these top-level messages:
 	GemMessage
 	Login
 	MoveTo
+	PlayerMoveTo
+	PlayerLogin
 */
 package messages
 
@@ -95,14 +97,82 @@ func (m *MoveTo) GetY() float32 {
 	return 0
 }
 
+type PlayerMoveTo struct {
+	Id               *string  `protobuf:"bytes,1,req,name=id" json:"id,omitempty"`
+	X                *float32 `protobuf:"fixed32,2,req,name=x" json:"x,omitempty"`
+	Y                *float32 `protobuf:"fixed32,3,req,name=y" json:"y,omitempty"`
+	XXX_unrecognized []byte   `json:"-"`
+}
+
+func (m *PlayerMoveTo) Reset()                    { *m = PlayerMoveTo{} }
+func (m *PlayerMoveTo) String() string            { return proto.CompactTextString(m) }
+func (*PlayerMoveTo) ProtoMessage()               {}
+func (*PlayerMoveTo) Descriptor() ([]byte, []int) { return fileDescriptor0, []int{3} }
+
+func (m *PlayerMoveTo) GetId() string {
+	if m != nil && m.Id != nil {
+		return *m.Id
+	}
+	return ""
+}
+
+func (m *PlayerMoveTo) GetX() float32 {
+	if m != nil && m.X != nil {
+		return *m.X
+	}
+	return 0
+}
+
+func (m *PlayerMoveTo) GetY() float32 {
+	if m != nil && m.Y != nil {
+		return *m.Y
+	}
+	return 0
+}
+
+type PlayerLogin struct {
+	Id               *string  `protobuf:"bytes,1,req,name=id" json:"id,omitempty"`
+	X                *float32 `protobuf:"fixed32,2,req,name=x" json:"x,omitempty"`
+	Y                *float32 `protobuf:"fixed32,3,req,name=y" json:"y,omitempty"`
+	XXX_unrecognized []byte   `json:"-"`
+}
+
+func (m *PlayerLogin) Reset()                    { *m = PlayerLogin{} }
+func (m *PlayerLogin) String() string            { return proto.CompactTextString(m) }
+func (*PlayerLogin) ProtoMessage()               {}
+func (*PlayerLogin) Descriptor() ([]byte, []int) { return fileDescriptor0, []int{4} }
+
+func (m *PlayerLogin) GetId() string {
+	if m != nil && m.Id != nil {
+		return *m.Id
+	}
+	return ""
+}
+
+func (m *PlayerLogin) GetX() float32 {
+	if m != nil && m.X != nil {
+		return *m.X
+	}
+	return 0
+}
+
+func (m *PlayerLogin) GetY() float32 {
+	if m != nil && m.Y != nil {
+		return *m.Y
+	}
+	return 0
+}
+
 func init() {
 	proto.RegisterType((*GemMessage)(nil), "messages.GemMessage")
 	proto.RegisterType((*Login)(nil), "messages.Login")
 	proto.RegisterType((*MoveTo)(nil), "messages.MoveTo")
+	proto.RegisterType((*PlayerMoveTo)(nil), "messages.PlayerMoveTo")
+	proto.RegisterType((*PlayerLogin)(nil), "messages.PlayerLogin")
 }
 
 var fileDescriptor0 = []byte{
-	// 128 bytes of a gzipped FileDescriptorProto
+	// 159 bytes of a gzipped FileDescriptorProto
 	0x1f, 0x8b, 0x08, 0x00, 0x00, 0x09, 0x6e, 0x88, 0x02, 0xff, 0xe2, 0x92, 0x2c, 0x28, 0xca, 0x2f,
 	0xc9, 0x8f, 0x4f, 0xcb, 0xcc, 0x49, 0x2d, 0xd6, 0xcf, 0x4d, 0x2d, 0x2e, 0x4e, 0x4c, 0x4f, 0xd5,
 	0x03, 0x8b, 0x09, 0x71, 0x40, 0xb9, 0xc5, 0x4a, 0x1a, 0x5c, 0x5c, 0xee, 0xa9, 0xb9, 0xbe, 0x10,
@@ -110,5 +180,7 @@ var fileDescriptor0 = []byte{
 	0x97, 0x92, 0x58, 0x92, 0x28, 0xc1, 0x04, 0xe4, 0xf1, 0x28, 0x09, 0x73, 0xb1, 0xfa, 0xe4, 0xa7,
 	0x67, 0xe6, 0x09, 0x71, 0x71, 0x31, 0x65, 0xa6, 0x40, 0x94, 0x28, 0xc9, 0x71, 0xb1, 0xf9, 0xe6,
 	0x97, 0xa5, 0x86, 0xe4, 0x0b, 0x71, 0x72, 0x31, 0x56, 0x80, 0x05, 0x99, 0x40, 0xcc, 0x4a, 0xb0,
-	0x26, 0x26, 0x40, 0x00, 0x00, 0x00, 0xff, 0xff, 0xa4, 0x60, 0x66, 0x89, 0x84, 0x00, 0x00, 0x00,
+	0x26, 0x26, 0x25, 0x03, 0x2e, 0x9e, 0x80, 0x9c, 0xc4, 0xca, 0xd4, 0x22, 0xa8, 0x2a, 0x24, 0xbd,
+	0x10, 0x1d, 0x4c, 0x08, 0x1d, 0xcc, 0x60, 0x1d, 0xfa, 0x5c, 0xdc, 0x10, 0x1d, 0x18, 0x96, 0x61,
+	0xd7, 0x00, 0x08, 0x00, 0x00, 0xff, 0xff, 0xa5, 0xe6, 0x5d, 0xeb, 0xe7, 0x00, 0x00, 0x00,
 }

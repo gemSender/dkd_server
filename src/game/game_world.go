@@ -20,17 +20,26 @@ type GameWorld struct{
 
 func CreateWorld() *GameWorld{
 	world := &GameWorld{playerDict:make(map[string]*PlayerState), actionDict:make(map[string]func(string, []byte))}
-	world.RegisterCallback("MoveTo",
-		func(id string, binData []byte) {
-			msg := messages.MoveTo{}
-			err := proto.Unmarshal(binData, &msg)
-			if(err != nil){
-				log.Println(err)
-			}
-			player := world.playerDict[id]
-			player.X, player.Y = *msg.X, *msg.Y
-		})
+	world.RegisterCallback("MoveTo", world.OnPlayerMoveTo)
 	return world
+}
+
+func (world *GameWorld) OnPlayerMoveTo(id string, binData[] byte){
+	msg := messages.MoveTo{}
+	err := proto.Unmarshal(binData, &msg)
+	if(err != nil){
+		log.Println(err)
+	}
+	player := world.playerDict[id]
+	player.X, player.Y = *msg.X, *msg.Y
+	pushMsg := messages.PlayerMoveTo{Id:&id, X:msg.X, Y:msg.Y}
+	pushMsgBytes, err := proto.Marshal(&pushMsg)
+	if err != nil{
+		log.Panic(err)
+	}
+	for _, p := range world.playerDict{
+		p.MsgChan <- pushMsgBytes
+	}
 }
 
 func (world *GameWorld) RegisterCallback(msgType string, callBack func (string, []byte)){
@@ -38,7 +47,6 @@ func (world *GameWorld) RegisterCallback(msgType string, callBack func (string, 
 }
 
 func (world *GameWorld) Update()  {
-
 }
 
 func (world *GameWorld) OnPlayerExit(id string)  {
@@ -55,6 +63,16 @@ func (world *GameWorld) OnLogin(binData []byte, msgChannel chan []byte){
 	newPlayer := new(PlayerState)
 	*newPlayer = PlayerState{Id: *loginMsg.Id, X:0, Y:0, MsgChan:msgChannel}
 	world.playerDict[*loginMsg.Id] = newPlayer
+	x := float32(0)
+	y := float32(0)
+	pushMsg := messages.PlayerLogin{Id:loginMsg.Id, X:&x, Y:&y}
+	pushMsgBytes, err := proto.Marshal(&pushMsg)
+	if err != nil{
+		log.Panic(err)
+	}
+	for _, v := range world.playerDict{
+		v.MsgChan <- pushMsgBytes
+	}
 }
 
 func (world *GameWorld)  OnBinaryMessage(msgBody []byte, msgChannel chan []byte, id string){
