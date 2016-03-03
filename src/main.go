@@ -6,20 +6,25 @@ import (
 	"log"
 	"os"
 	"./game"
+	"bufio"
+	"./messages/proto_files"
+	"github.com/golang/protobuf/proto"
 )
 
 type ClientMsg struct {
 	body []byte
-	channel chan []byte
+	channel chan messages.GenReplyMsg
 	id string
+	idChannel chan string
 }
+
 
 func GameMainLoop(msgRecvChan chan ClientMsg){
 	world := game.CreateWorld()
 	for {
 		select {
 		case msg := <- msgRecvChan:
-			world.OnBinaryMessage(msg.body, msg.channel, msg.id)
+			world.OnBinaryMessage(msg.body, msg.channel, msg.idChannel, msg.id)
 			log.Println("recv msg, length is ", len(msg.body))
 		default :
 			world.Update()
@@ -27,54 +32,78 @@ func GameMainLoop(msgRecvChan chan ClientMsg){
 	}
 }
 
-func handleConnection(conn net.Conn, gameChan chan ClientMsg){
-	defer conn.Close()
-	channel := make(chan []byte)
-	countBuf := make([]byte, 4)
+func sender(conn net.Conn, channel chan messages.GenReplyMsg){
+	writer := bufio.NewWriter(conn)
+	for{
+		sendMsg := <-channel
+		body, encodeErr := proto.Marshal(&sendMsg)
+		if encodeErr != nil{
+			log.Panic(encodeErr)
+		}
+		byteLen := int32(len(body))
+		lenBytes := [4]byte{byte(byteLen >> 24), byte(byteLen >> 16), byte(byteLen >> 8), byte(byteLen)}
+		writer.Write(lenBytes[0:4])
+		writer.Write(body)
+		writer.Flush()
+	}
+}
+
+func receiver(conn net.Conn, sendChannel chan messages.GenReplyMsg, gameChan chan ClientMsg){
+	defer  conn.Close()
+	idChannel := make(chan string)
 	id := ""
-	onExit := func() {gameChan <- ClientMsg{body:nil, id:id, channel:channel}}
-	defer onExit()
-	doRecvMsg := func() {
-		n := int(countBuf[0]) << 24 + int(countBuf[1]) << 16 + int(countBuf[2]) << 8 + int(countBuf[3])
-		data := make([]byte, n)
+	receiveNbytes := func(n int, buf []byte) error{
 		sum := 0
-		for sum < n{
-			addLen, err2 := conn.Read(data[sum:])
-			switch  {
-			case err2 == io.EOF:
+		for sum < n {
+			readLen, err := conn.Read(buf[sum:n])
+			if err != nil{
+				return err
+			}
+			sum += readLen
+		}
+		return nil
+	}
+	doRecvMsg := func() error{
+		countArr := [4]byte{}
+		countBuf := countArr[:4]
+		err1 := receiveNbytes(4, countBuf)
+		switch err1 {
+		case nil:
+			n := int(countBuf[0]) << 24 + int(countBuf[1]) << 16 + int(countBuf[2]) << 8 + int(countBuf[3])
+			dataBuf := make([]byte, n)
+			err2 := receiveNbytes(n, dataBuf)
+			switch  err2{
+			case nil:
+				gameChan <- ClientMsg{body:dataBuf, channel:sendChannel, id:id, idChannel:idChannel}
+			default:
+				return err2
+			}
+		default:
+			return err1
+		}
+		return nil
+	}
+	switch err1 := doRecvMsg(); err1 {
+	case nil:
+		id = <- idChannel
+		close(idChannel)
+		for{
+			switch err2:= doRecvMsg(); err2{
+			case nil:
+			case io.EOF:
 				log.Println(conn.RemoteAddr(), " disconnectd")
 				return
-			case err2 != nil:
+			default:
 				log.Println(err2)
 				return
-			default:
-				sum += addLen
 			}
 		}
-		gameChan <- ClientMsg{body:data, channel:channel, id:id}
-	}
-	doRecvMsg()
-	id = string(<-channel)
-	for {
-		select {
-		case sendMsg := <-channel:
-			byteLen := int32(len(sendMsg))
-			lenBytes := [4]byte{byte(byteLen >> 24), byte(byteLen >> 16), byte(byteLen >> 8), byte(byteLen)}
-			conn.Write(lenBytes[0:4])
-			conn.Write(sendMsg)
-		default:
-			_, err1 := conn.Read(countBuf)
-			switch {
-			case err1 == io.EOF:
-				log.Println(conn.RemoteAddr(), " disconnectd")
-				return
-			case err1 != nil:
-				log.Println(err1)
-				return
-			default:
-				doRecvMsg()
-			}
-		}
+	case io.EOF:
+		log.Println(conn.RemoteAddr(), " disconnectd")
+		return
+	default:
+		log.Println(err1)
+		return
 	}
 }
 
@@ -94,7 +123,9 @@ func main(){
 		if(accErr != nil){
 			log.Panic(accErr)
 		}
+		sendChannel := make(chan messages.GenReplyMsg)
 		log.Println(conn.RemoteAddr(), " connected")
-		go handleConnection(conn, gameChan)
+		go receiver(conn, sendChannel, gameChan)
+		go sender(conn, sendChannel)
 	}
 }

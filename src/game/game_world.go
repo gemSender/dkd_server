@@ -10,7 +10,7 @@ type PlayerState struct {
 	Id string
 	X float32
 	Y float32
-	MsgChan chan []byte
+	MsgChan chan messages.GenReplyMsg
 }
 
 type GameWorld struct{
@@ -37,8 +37,10 @@ func (world *GameWorld) OnPlayerMoveTo(id string, binData[] byte){
 	if err != nil{
 		log.Panic(err)
 	}
+	isReply := false
+	msgType := "PlayerMoveTo"
 	for _, p := range world.playerDict{
-		p.MsgChan <- pushMsgBytes
+		p.MsgChan <- messages.GenReplyMsg{Type:&msgType, Data:pushMsgBytes, IsReply:&isReply}
 	}
 }
 
@@ -56,10 +58,10 @@ func (world *GameWorld) OnPlayerExit(id string)  {
 	}
 }
 
-func (world *GameWorld) OnLogin(binData []byte, msgChannel chan []byte){
+func (world *GameWorld) OnLogin(binData []byte, msgChannel chan messages.GenReplyMsg, idChannel chan string){
 	loginMsg := messages.Login{}
 	proto.Unmarshal(binData, &loginMsg)
-	msgChannel <- []byte(*loginMsg.Id)
+	msgChannel <- messages.GenReplyMsg{Data:[]byte(*loginMsg.Id)}
 	newPlayer := new(PlayerState)
 	*newPlayer = PlayerState{Id: *loginMsg.Id, X:0, Y:0, MsgChan:msgChannel}
 	world.playerDict[*loginMsg.Id] = newPlayer
@@ -70,12 +72,14 @@ func (world *GameWorld) OnLogin(binData []byte, msgChannel chan []byte){
 	if err != nil{
 		log.Panic(err)
 	}
+	isReply := false
+	replyType := "PlayerLogin"
 	for _, v := range world.playerDict{
-		v.MsgChan <- pushMsgBytes
+		v.MsgChan <- messages.GenReplyMsg{Type:&replyType, Data:pushMsgBytes, IsReply:&isReply}
 	}
 }
 
-func (world *GameWorld)  OnBinaryMessage(msgBody []byte, msgChannel chan []byte, id string){
+func (world *GameWorld)  OnBinaryMessage(msgBody []byte, msgChannel chan messages.GenReplyMsg, idChannel chan string, id string){
 	genMsg := messages.GemMessage{}
 	parseErr := proto.Unmarshal(msgBody, &genMsg)
 	if parseErr != nil{
@@ -85,7 +89,7 @@ func (world *GameWorld)  OnBinaryMessage(msgBody []byte, msgChannel chan []byte,
 		world.OnPlayerExit(id)
 	}else if id == ""{
 		if *genMsg.Type == "Login"{
-			world.OnLogin(msgBody, msgChannel)
+			world.OnLogin(msgBody, msgChannel, idChannel)
 		}
 	}else{
 		world.actionDict[*genMsg.Type](id, genMsg.Data)
