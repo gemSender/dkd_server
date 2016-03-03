@@ -61,7 +61,7 @@ func (world *GameWorld) OnPlayerExit(id string)  {
 func (world *GameWorld) OnLogin(binData []byte, msgChannel chan messages.GenReplyMsg, idChannel chan string){
 	loginMsg := messages.Login{}
 	proto.Unmarshal(binData, &loginMsg)
-	msgChannel <- messages.GenReplyMsg{Data:[]byte(*loginMsg.Id)}
+	idChannel <- *loginMsg.Id
 	newPlayer := new(PlayerState)
 	*newPlayer = PlayerState{Id: *loginMsg.Id, X:0, Y:0, MsgChan:msgChannel}
 	world.playerDict[*loginMsg.Id] = newPlayer

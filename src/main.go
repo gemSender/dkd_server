@@ -42,7 +42,8 @@ func sender(conn net.Conn, channel chan messages.GenReplyMsg, quitChan chan int)
 				log.Panic(encodeErr)
 			}
 			byteLen := int32(len(body))
-			lenBytes := [4]byte{byte(byteLen >> 24), byte(byteLen >> 16), byte(byteLen >> 8), byte(byteLen)}
+			log.Println("to send ", byteLen, " bytes")
+			lenBytes := [4]byte{byte(byteLen & 0x000000ff), byte(byteLen >> 8 & 0x000000ff), byte(byteLen >> 16 & 0x000000ff), byte(byteLen >> 24 & 0x000000ff)}
 			writer.Write(lenBytes[0:4])
 			writer.Write(body)
 			writer.Flush()
