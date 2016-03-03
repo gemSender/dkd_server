@@ -27,29 +27,36 @@ func GameMainLoop(msgRecvChan chan ClientMsg){
 			world.OnBinaryMessage(msg.body, msg.channel, msg.idChannel, msg.id)
 			log.Println("recv msg, length is ", len(msg.body))
 		default :
-			world.Update()
 		}
+		world.Update()
 	}
 }
 
-func sender(conn net.Conn, channel chan messages.GenReplyMsg){
+func sender(conn net.Conn, channel chan messages.GenReplyMsg, quitChan chan int){
 	writer := bufio.NewWriter(conn)
 	for{
-		sendMsg := <-channel
-		body, encodeErr := proto.Marshal(&sendMsg)
-		if encodeErr != nil{
-			log.Panic(encodeErr)
+		select {
+		case sendMsg := <-channel:
+			body, encodeErr := proto.Marshal(&sendMsg)
+			if encodeErr != nil{
+				log.Panic(encodeErr)
+			}
+			byteLen := int32(len(body))
+			lenBytes := [4]byte{byte(byteLen >> 24), byte(byteLen >> 16), byte(byteLen >> 8), byte(byteLen)}
+			writer.Write(lenBytes[0:4])
+			writer.Write(body)
+			writer.Flush()
+		case <-quitChan:
+			log.Println("writer process of ", conn.RemoteAddr(), " quit")
+			return
 		}
-		byteLen := int32(len(body))
-		lenBytes := [4]byte{byte(byteLen >> 24), byte(byteLen >> 16), byte(byteLen >> 8), byte(byteLen)}
-		writer.Write(lenBytes[0:4])
-		writer.Write(body)
-		writer.Flush()
 	}
 }
 
-func receiver(conn net.Conn, sendChannel chan messages.GenReplyMsg, gameChan chan ClientMsg){
-	defer  conn.Close()
+func receiver(conn net.Conn, sendChannel chan messages.GenReplyMsg, gameChan chan ClientMsg, quitChannel chan int){
+	onQuit := func(){quitChannel <- 1}
+	defer conn.Close()
+	defer onQuit()
 	idChannel := make(chan string)
 	id := ""
 	receiveNbytes := func(n int, buf []byte) error{
@@ -70,6 +77,7 @@ func receiver(conn net.Conn, sendChannel chan messages.GenReplyMsg, gameChan cha
 		switch err1 {
 		case nil:
 			n := int(countBuf[0]) << 24 + int(countBuf[1]) << 16 + int(countBuf[2]) << 8 + int(countBuf[3])
+			log.Println("receive ", n, " bytes from client ", conn.RemoteAddr())
 			dataBuf := make([]byte, n)
 			err2 := receiveNbytes(n, dataBuf)
 			switch  err2{
@@ -124,8 +132,9 @@ func main(){
 			log.Panic(accErr)
 		}
 		sendChannel := make(chan messages.GenReplyMsg)
+		quitChannel := make(chan int)
 		log.Println(conn.RemoteAddr(), " connected")
-		go receiver(conn, sendChannel, gameChan)
-		go sender(conn, sendChannel)
+		go receiver(conn, sendChannel, gameChan, quitChannel)
+		go sender(conn, sendChannel, quitChannel)
 	}
 }
