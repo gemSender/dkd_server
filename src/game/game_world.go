@@ -61,7 +61,8 @@ func (world *GameWorld) OnPlayerExit(id string)  {
 func (world *GameWorld) OnLogin(binData []byte, msgChannel chan messages.GenReplyMsg, idChannel chan string){
 	loginMsg := messages.Login{}
 	proto.Unmarshal(binData, &loginMsg)
-	idChannel <- *loginMsg.Id
+	log.Println("player ", loginMsg.GetId(), " login");
+	idChannel <- loginMsg.GetId()
 	newPlayer := new(PlayerState)
 	*newPlayer = PlayerState{Id: *loginMsg.Id, X:0, Y:0, MsgChan:msgChannel}
 	world.playerDict[*loginMsg.Id] = newPlayer
@@ -80,16 +81,19 @@ func (world *GameWorld) OnLogin(binData []byte, msgChannel chan messages.GenRepl
 }
 
 func (world *GameWorld)  OnBinaryMessage(msgBody []byte, msgChannel chan messages.GenReplyMsg, idChannel chan string, id string){
+	if  msgBody == nil {
+		world.OnPlayerExit(id)
+		return;
+	}
 	genMsg := messages.GemMessage{}
 	parseErr := proto.Unmarshal(msgBody, &genMsg)
 	if parseErr != nil{
 		log.Println(parseErr)
+		return;
 	}
-	if  msgBody == nil{
-		world.OnPlayerExit(id)
-	}else if id == ""{
+	if id == ""{
 		if *genMsg.Type == "Login"{
-			world.OnLogin(msgBody, msgChannel, idChannel)
+			world.OnLogin(genMsg.Data, msgChannel, idChannel)
 		}
 	}else{
 		world.actionDict[*genMsg.Type](id, genMsg.Data)

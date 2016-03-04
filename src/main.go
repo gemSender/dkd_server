@@ -43,7 +43,7 @@ func sender(conn net.Conn, channel chan messages.GenReplyMsg, quitChan chan int)
 			}
 			byteLen := int32(len(body))
 			log.Println("to send ", byteLen, " bytes")
-			lenBytes := [4]byte{byte(byteLen & 0x000000ff), byte(byteLen >> 8 & 0x000000ff), byte(byteLen >> 16 & 0x000000ff), byte(byteLen >> 24 & 0x000000ff)}
+			lenBytes := [4]byte{byte(byteLen & 0xff), byte(byteLen >> 8 & 0xff), byte(byteLen >> 16 & 0xff), byte(byteLen >> 24 & 0xff)}
 			writer.Write(lenBytes[0:4])
 			writer.Write(body)
 			writer.Flush()
@@ -55,11 +55,15 @@ func sender(conn net.Conn, channel chan messages.GenReplyMsg, quitChan chan int)
 }
 
 func receiver(conn net.Conn, sendChannel chan messages.GenReplyMsg, gameChan chan ClientMsg, quitChannel chan int){
-	onQuit := func(){quitChannel <- 1}
+
 	defer conn.Close()
-	defer onQuit()
 	idChannel := make(chan string)
 	id := ""
+	onQuit := func(){
+		quitChannel <- 1
+		gameChan <- ClientMsg{id:id, body:nil}
+	}
+	defer onQuit()
 	receiveNbytes := func(n int, buf []byte) error{
 		sum := 0
 		for sum < n {
@@ -77,7 +81,7 @@ func receiver(conn net.Conn, sendChannel chan messages.GenReplyMsg, gameChan cha
 		err1 := receiveNbytes(4, countBuf)
 		switch err1 {
 		case nil:
-			n := int(countBuf[0]) << 24 + int(countBuf[1]) << 16 + int(countBuf[2]) << 8 + int(countBuf[3])
+			n := int(countBuf[0]) + int(countBuf[1]) << 8 + int(countBuf[2]) << 16 + int(countBuf[3]) << 24
 			log.Println("receive ", n, " bytes from client ", conn.RemoteAddr())
 			dataBuf := make([]byte, n)
 			err2 := receiveNbytes(n, dataBuf)
