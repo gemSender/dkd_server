@@ -85,7 +85,7 @@ func (world *GameWorld)  OnBinaryMessage(msgBody []byte, msgChannel chan message
 		world.OnPlayerExit(id)
 		return;
 	}
-	genMsg := messages.GemMessage{}
+	genMsg := messages.GenMessage{}
 	parseErr := proto.Unmarshal(msgBody, &genMsg)
 	if parseErr != nil{
 		log.Println(parseErr)
