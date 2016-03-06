@@ -11,9 +11,12 @@ It is generated from these files:
 It has these top-level messages:
 	GenMessage
 	Login
+	PlayerState
+	LoginReply
 	MoveTo
 	PlayerMoveTo
 	PlayerLogin
+	PlayerQuit
 	GenReplyMsg
 */
 package messages
@@ -73,18 +76,109 @@ func (m *Login) GetId() string {
 	return ""
 }
 
+type PlayerState struct {
+	Id               *string  `protobuf:"bytes,1,req,name=id" json:"id,omitempty"`
+	X                *float32 `protobuf:"fixed32,2,req,name=x" json:"x,omitempty"`
+	Y                *float32 `protobuf:"fixed32,3,req,name=y" json:"y,omitempty"`
+	ColorIndex       *int32   `protobuf:"varint,4,req,name=colorIndex" json:"colorIndex,omitempty"`
+	XXX_unrecognized []byte   `json:"-"`
+}
+
+func (m *PlayerState) Reset()                    { *m = PlayerState{} }
+func (m *PlayerState) String() string            { return proto.CompactTextString(m) }
+func (*PlayerState) ProtoMessage()               {}
+func (*PlayerState) Descriptor() ([]byte, []int) { return fileDescriptor0, []int{2} }
+
+func (m *PlayerState) GetId() string {
+	if m != nil && m.Id != nil {
+		return *m.Id
+	}
+	return ""
+}
+
+func (m *PlayerState) GetX() float32 {
+	if m != nil && m.X != nil {
+		return *m.X
+	}
+	return 0
+}
+
+func (m *PlayerState) GetY() float32 {
+	if m != nil && m.Y != nil {
+		return *m.Y
+	}
+	return 0
+}
+
+func (m *PlayerState) GetColorIndex() int32 {
+	if m != nil && m.ColorIndex != nil {
+		return *m.ColorIndex
+	}
+	return 0
+}
+
+type LoginReply struct {
+	X                *float32       `protobuf:"fixed32,1,req,name=x" json:"x,omitempty"`
+	Y                *float32       `protobuf:"fixed32,2,req,name=y" json:"y,omitempty"`
+	ColorIndex       *int32         `protobuf:"varint,3,req,name=colorIndex" json:"colorIndex,omitempty"`
+	Timestamp        *int64         `protobuf:"varint,4,req,name=timestamp" json:"timestamp,omitempty"`
+	Players          []*PlayerState `protobuf:"bytes,5,rep,name=players" json:"players,omitempty"`
+	XXX_unrecognized []byte         `json:"-"`
+}
+
+func (m *LoginReply) Reset()                    { *m = LoginReply{} }
+func (m *LoginReply) String() string            { return proto.CompactTextString(m) }
+func (*LoginReply) ProtoMessage()               {}
+func (*LoginReply) Descriptor() ([]byte, []int) { return fileDescriptor0, []int{3} }
+
+func (m *LoginReply) GetX() float32 {
+	if m != nil && m.X != nil {
+		return *m.X
+	}
+	return 0
+}
+
+func (m *LoginReply) GetY() float32 {
+	if m != nil && m.Y != nil {
+		return *m.Y
+	}
+	return 0
+}
+
+func (m *LoginReply) GetColorIndex() int32 {
+	if m != nil && m.ColorIndex != nil {
+		return *m.ColorIndex
+	}
+	return 0
+}
+
+func (m *LoginReply) GetTimestamp() int64 {
+	if m != nil && m.Timestamp != nil {
+		return *m.Timestamp
+	}
+	return 0
+}
+
+func (m *LoginReply) GetPlayers() []*PlayerState {
+	if m != nil {
+		return m.Players
+	}
+	return nil
+}
+
 type MoveTo struct {
 	X                *float32 `protobuf:"fixed32,1,req,name=x" json:"x,omitempty"`
 	Y                *float32 `protobuf:"fixed32,2,req,name=y" json:"y,omitempty"`
 	DirX             *float32 `protobuf:"fixed32,3,req,name=dirX" json:"dirX,omitempty"`
 	DirY             *float32 `protobuf:"fixed32,4,req,name=dirY" json:"dirY,omitempty"`
+	Timestamp        *int64   `protobuf:"varint,5,req,name=timestamp" json:"timestamp,omitempty"`
 	XXX_unrecognized []byte   `json:"-"`
 }
 
 func (m *MoveTo) Reset()                    { *m = MoveTo{} }
 func (m *MoveTo) String() string            { return proto.CompactTextString(m) }
 func (*MoveTo) ProtoMessage()               {}
-func (*MoveTo) Descriptor() ([]byte, []int) { return fileDescriptor0, []int{2} }
+func (*MoveTo) Descriptor() ([]byte, []int) { return fileDescriptor0, []int{4} }
 
 func (m *MoveTo) GetX() float32 {
 	if m != nil && m.X != nil {
@@ -114,19 +208,27 @@ func (m *MoveTo) GetDirY() float32 {
 	return 0
 }
 
+func (m *MoveTo) GetTimestamp() int64 {
+	if m != nil && m.Timestamp != nil {
+		return *m.Timestamp
+	}
+	return 0
+}
+
 type PlayerMoveTo struct {
 	Id               *string  `protobuf:"bytes,1,req,name=id" json:"id,omitempty"`
 	X                *float32 `protobuf:"fixed32,2,req,name=x" json:"x,omitempty"`
 	Y                *float32 `protobuf:"fixed32,3,req,name=y" json:"y,omitempty"`
 	DirX             *float32 `protobuf:"fixed32,4,req,name=dirX" json:"dirX,omitempty"`
 	DirY             *float32 `protobuf:"fixed32,5,req,name=dirY" json:"dirY,omitempty"`
+	Timestamp        *int64   `protobuf:"varint,6,req,name=timestamp" json:"timestamp,omitempty"`
 	XXX_unrecognized []byte   `json:"-"`
 }
 
 func (m *PlayerMoveTo) Reset()                    { *m = PlayerMoveTo{} }
 func (m *PlayerMoveTo) String() string            { return proto.CompactTextString(m) }
 func (*PlayerMoveTo) ProtoMessage()               {}
-func (*PlayerMoveTo) Descriptor() ([]byte, []int) { return fileDescriptor0, []int{3} }
+func (*PlayerMoveTo) Descriptor() ([]byte, []int) { return fileDescriptor0, []int{5} }
 
 func (m *PlayerMoveTo) GetId() string {
 	if m != nil && m.Id != nil {
@@ -163,17 +265,26 @@ func (m *PlayerMoveTo) GetDirY() float32 {
 	return 0
 }
 
+func (m *PlayerMoveTo) GetTimestamp() int64 {
+	if m != nil && m.Timestamp != nil {
+		return *m.Timestamp
+	}
+	return 0
+}
+
 type PlayerLogin struct {
 	Id               *string  `protobuf:"bytes,1,req,name=id" json:"id,omitempty"`
 	X                *float32 `protobuf:"fixed32,2,req,name=x" json:"x,omitempty"`
 	Y                *float32 `protobuf:"fixed32,3,req,name=y" json:"y,omitempty"`
+	ColorIndex       *int32   `protobuf:"varint,4,req,name=colorIndex" json:"colorIndex,omitempty"`
+	Timestamp        *int64   `protobuf:"varint,5,req,name=timestamp" json:"timestamp,omitempty"`
 	XXX_unrecognized []byte   `json:"-"`
 }
 
 func (m *PlayerLogin) Reset()                    { *m = PlayerLogin{} }
 func (m *PlayerLogin) String() string            { return proto.CompactTextString(m) }
 func (*PlayerLogin) ProtoMessage()               {}
-func (*PlayerLogin) Descriptor() ([]byte, []int) { return fileDescriptor0, []int{4} }
+func (*PlayerLogin) Descriptor() ([]byte, []int) { return fileDescriptor0, []int{6} }
 
 func (m *PlayerLogin) GetId() string {
 	if m != nil && m.Id != nil {
@@ -196,9 +307,40 @@ func (m *PlayerLogin) GetY() float32 {
 	return 0
 }
 
+func (m *PlayerLogin) GetColorIndex() int32 {
+	if m != nil && m.ColorIndex != nil {
+		return *m.ColorIndex
+	}
+	return 0
+}
+
+func (m *PlayerLogin) GetTimestamp() int64 {
+	if m != nil && m.Timestamp != nil {
+		return *m.Timestamp
+	}
+	return 0
+}
+
+type PlayerQuit struct {
+	Id               *string `protobuf:"bytes,1,req,name=id" json:"id,omitempty"`
+	XXX_unrecognized []byte  `json:"-"`
+}
+
+func (m *PlayerQuit) Reset()                    { *m = PlayerQuit{} }
+func (m *PlayerQuit) String() string            { return proto.CompactTextString(m) }
+func (*PlayerQuit) ProtoMessage()               {}
+func (*PlayerQuit) Descriptor() ([]byte, []int) { return fileDescriptor0, []int{7} }
+
+func (m *PlayerQuit) GetId() string {
+	if m != nil && m.Id != nil {
+		return *m.Id
+	}
+	return ""
+}
+
 type GenReplyMsg struct {
 	Type             *string `protobuf:"bytes,1,req,name=type" json:"type,omitempty"`
-	IsReply          *bool   `protobuf:"varint,2,req,name=isReply" json:"isReply,omitempty"`
+	IsReply          *bool   `protobuf:"varint,2,opt,name=isReply,def=0" json:"isReply,omitempty"`
 	Data             []byte  `protobuf:"bytes,3,req,name=data" json:"data,omitempty"`
 	XXX_unrecognized []byte  `json:"-"`
 }
@@ -206,7 +348,9 @@ type GenReplyMsg struct {
 func (m *GenReplyMsg) Reset()                    { *m = GenReplyMsg{} }
 func (m *GenReplyMsg) String() string            { return proto.CompactTextString(m) }
 func (*GenReplyMsg) ProtoMessage()               {}
-func (*GenReplyMsg) Descriptor() ([]byte, []int) { return fileDescriptor0, []int{5} }
+func (*GenReplyMsg) Descriptor() ([]byte, []int) { return fileDescriptor0, []int{8} }
+
+const Default_GenReplyMsg_IsReply bool = false
 
 func (m *GenReplyMsg) GetType() string {
 	if m != nil && m.Type != nil {
@@ -219,7 +363,7 @@ func (m *GenReplyMsg) GetIsReply() bool {
 	if m != nil && m.IsReply != nil {
 		return *m.IsReply
 	}
-	return false
+	return Default_GenReplyMsg_IsReply
 }
 
 func (m *GenReplyMsg) GetData() []byte {
@@ -232,26 +376,37 @@ func (m *GenReplyMsg) GetData() []byte {
 func init() {
 	proto.RegisterType((*GenMessage)(nil), "messages.GenMessage")
 	proto.RegisterType((*Login)(nil), "messages.Login")
+	proto.RegisterType((*PlayerState)(nil), "messages.PlayerState")
+	proto.RegisterType((*LoginReply)(nil), "messages.LoginReply")
 	proto.RegisterType((*MoveTo)(nil), "messages.MoveTo")
 	proto.RegisterType((*PlayerMoveTo)(nil), "messages.PlayerMoveTo")
 	proto.RegisterType((*PlayerLogin)(nil), "messages.PlayerLogin")
+	proto.RegisterType((*PlayerQuit)(nil), "messages.PlayerQuit")
 	proto.RegisterType((*GenReplyMsg)(nil), "messages.GenReplyMsg")
 }
 
 var fileDescriptor0 = []byte{
-	// 212 bytes of a gzipped FileDescriptorProto
-	0x1f, 0x8b, 0x08, 0x00, 0x00, 0x09, 0x6e, 0x88, 0x02, 0xff, 0xe2, 0x92, 0x2c, 0x28, 0xca, 0x2f,
-	0xc9, 0x8f, 0x4f, 0xcb, 0xcc, 0x49, 0x2d, 0xd6, 0xcf, 0x4d, 0x2d, 0x2e, 0x4e, 0x4c, 0x4f, 0xd5,
-	0x03, 0x8b, 0x09, 0x71, 0x40, 0xb9, 0xc5, 0x4a, 0x1a, 0x5c, 0x5c, 0xee, 0xa9, 0x79, 0xbe, 0x10,
-	0xae, 0x10, 0x0f, 0x17, 0x4b, 0x49, 0x65, 0x41, 0xaa, 0x04, 0xa3, 0x02, 0x93, 0x06, 0x27, 0x88,
-	0x97, 0x92, 0x58, 0x92, 0x28, 0xc1, 0x04, 0xe4, 0xf1, 0x28, 0x09, 0x73, 0xb1, 0xfa, 0xe4, 0xa7,
-	0x67, 0xe6, 0x09, 0x71, 0x71, 0x31, 0x65, 0xa6, 0x40, 0x94, 0x28, 0x59, 0x71, 0xb1, 0xf9, 0xe6,
-	0x97, 0xa5, 0x86, 0xe4, 0x0b, 0x71, 0x72, 0x31, 0x56, 0x80, 0x05, 0x99, 0x40, 0xcc, 0x4a, 0xb0,
-	0x26, 0x26, 0xb0, 0x11, 0x99, 0x45, 0x11, 0x12, 0xcc, 0x48, 0xbc, 0x48, 0x09, 0x16, 0x10, 0x4f,
-	0xc9, 0x87, 0x8b, 0x27, 0x20, 0x27, 0xb1, 0x32, 0xb5, 0x08, 0x6a, 0x02, 0x92, 0xb9, 0x10, 0xd3,
-	0x98, 0x10, 0xa6, 0x31, 0xa3, 0x98, 0xc6, 0x82, 0x62, 0x1a, 0x2b, 0xd8, 0x34, 0x7d, 0x2e, 0x6e,
-	0x88, 0x69, 0x18, 0x8e, 0xc4, 0x6e, 0x18, 0xd0, 0xe9, 0xdc, 0x40, 0x9f, 0x07, 0xa5, 0x16, 0xe4,
-	0x54, 0xfa, 0x16, 0xa7, 0xa3, 0x79, 0x9d, 0x9f, 0x8b, 0x3d, 0xb3, 0x18, 0x2c, 0x07, 0xd6, 0xc8,
-	0x01, 0x0f, 0x0b, 0x90, 0x5e, 0x1e, 0x40, 0x00, 0x00, 0x00, 0xff, 0xff, 0xde, 0xb7, 0x7a, 0x80,
-	0x5b, 0x01, 0x00, 0x00,
+	// 350 bytes of a gzipped FileDescriptorProto
+	0x1f, 0x8b, 0x08, 0x00, 0x00, 0x09, 0x6e, 0x88, 0x02, 0xff, 0xa4, 0x92, 0xcf, 0x4a, 0x03, 0x31,
+	0x10, 0xc6, 0xc9, 0x6e, 0xb7, 0x7f, 0xa6, 0xc5, 0x43, 0x40, 0x5c, 0xa1, 0x68, 0xc9, 0xa9, 0xa7,
+	0x16, 0xc4, 0x93, 0x2f, 0x20, 0x82, 0x05, 0x8d, 0x22, 0xf6, 0x24, 0xc1, 0xa6, 0x25, 0xb2, 0x6d,
+	0x96, 0x4d, 0xd4, 0xee, 0xcd, 0xb7, 0xf0, 0x75, 0xcd, 0x26, 0x59, 0xdb, 0xae, 0xab, 0x22, 0xde,
+	0x66, 0xbe, 0x84, 0x99, 0xdf, 0xcc, 0x7c, 0x70, 0x98, 0x66, 0x52, 0xcb, 0x87, 0xb9, 0x48, 0xb8,
+	0x1a, 0x2f, 0xb9, 0x52, 0x6c, 0xc1, 0x47, 0x56, 0xc3, 0x6d, 0x9f, 0x2a, 0x72, 0x0a, 0x70, 0xce,
+	0x57, 0x13, 0x97, 0x62, 0x0c, 0x0d, 0x9d, 0xa7, 0x3c, 0x46, 0x83, 0x60, 0xd8, 0xa1, 0x36, 0x2e,
+	0xb4, 0x19, 0xd3, 0x2c, 0x0e, 0x8c, 0xd6, 0xa3, 0x36, 0x26, 0x07, 0x10, 0x5d, 0xca, 0x85, 0x58,
+	0xe1, 0x3d, 0x08, 0xc4, 0xcc, 0x7f, 0x37, 0x11, 0x99, 0x42, 0xf7, 0x2a, 0x61, 0x39, 0xcf, 0x6e,
+	0x34, 0xd3, 0xbc, 0xfa, 0x8c, 0x7b, 0x80, 0xd6, 0xb6, 0x50, 0x40, 0xd1, 0xba, 0xc8, 0xf2, 0x38,
+	0x74, 0x59, 0x8e, 0x8f, 0x00, 0x1e, 0x65, 0x22, 0xb3, 0x8b, 0xd5, 0x8c, 0xaf, 0xe3, 0x86, 0x91,
+	0x23, 0xba, 0xa5, 0x90, 0x77, 0x04, 0x60, 0x9b, 0x52, 0x9e, 0x26, 0xb9, 0x2b, 0x85, 0x76, 0x4a,
+	0x05, 0xf5, 0xa5, 0xc2, 0x6a, 0x29, 0xdc, 0x87, 0x8e, 0x16, 0x66, 0x05, 0x9a, 0x2d, 0x53, 0xdb,
+	0x29, 0xa4, 0x1b, 0x01, 0x8f, 0xa1, 0x95, 0xda, 0x19, 0x54, 0x1c, 0x0d, 0xc2, 0x61, 0xf7, 0x64,
+	0x7f, 0x54, 0xae, 0x6b, 0xb4, 0x35, 0x1c, 0x2d, 0x7f, 0x91, 0x27, 0x68, 0x4e, 0xe4, 0x0b, 0xbf,
+	0x95, 0x3f, 0x42, 0x15, 0x7b, 0x14, 0xd9, 0xbd, 0x1f, 0xd8, 0xc6, 0x5e, 0x9b, 0x5a, 0x06, 0xa7,
+	0x4d, 0x77, 0xe1, 0xa2, 0x0a, 0x1c, 0x79, 0x43, 0xd0, 0x73, 0x10, 0xbe, 0xe5, 0x5f, 0x56, 0x5c,
+	0x22, 0x34, 0x6a, 0x10, 0xa2, 0xef, 0x10, 0x9a, 0x55, 0x84, 0xd7, 0xf2, 0xc6, 0xb5, 0x16, 0xf8,
+	0xcf, 0x8d, 0x7f, 0x99, 0xbd, 0x0f, 0xe0, 0x1a, 0x5f, 0x3f, 0x0b, 0xfd, 0xc5, 0x7a, 0x77, 0xd0,
+	0x35, 0x4e, 0xb6, 0xe6, 0x98, 0xa8, 0x45, 0xad, 0x95, 0x8f, 0xa1, 0x25, 0x94, 0xfd, 0x61, 0x00,
+	0xd1, 0xb0, 0x7d, 0x16, 0xcd, 0x59, 0xa2, 0xcc, 0x25, 0xbd, 0xfa, 0xe9, 0xf5, 0x70, 0xe3, 0xf5,
+	0x8f, 0x00, 0x00, 0x00, 0xff, 0xff, 0x98, 0x0c, 0xfe, 0x09, 0x47, 0x03, 0x00, 0x00,
 }

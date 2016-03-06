@@ -28,7 +28,10 @@ func GameMainLoop(msgRecvChan chan ClientMsg){
 			log.Println("recv msg, length is ", len(msg.body))
 		default :
 		}
-		world.Update()
+	}
+	now := game.GetTimeStampMs()
+	if world.NeedUpdate(now, 30) {
+		world.Update(now)
 	}
 }
 
