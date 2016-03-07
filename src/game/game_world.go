@@ -32,9 +32,32 @@ func (world *GameWorld) NeedUpdate(now int64, framePerSec int32)  bool {
 func CreateWorld() *GameWorld{
 	world := &GameWorld{playerDict:make(map[string]*PlayerState), actionDict:make(map[string]func(string, []byte))}
 	world.RegisterCallback("MoveTo", world.OnPlayerMoveTo)
+	world.RegisterCallback("StartPath", world.OnPlayerStartPath)
 	world.rand = rand.New(rand.NewSource(time.Now().UnixNano()))
 	world.lastUpdateTime = GetTimeStampMs()
 	return world
+}
+
+func (world *GameWorld)  OnPlayerStartPath(id string, binData[] byte){
+	msg := messages.StartPath{}
+	err := proto.Unmarshal(binData, &msg)
+	if err != nil{
+		log.Panic(err)
+	}
+	player := world.playerDict[id]
+	player.StartPath(*msg.Sx, *msg.Sy)
+	pushMsg := messages.PlayerStartPath{Sx:msg.Sx, Sy:msg.Sy, Dx:msg.Dx, Dy:msg.Dy, Id:&id, Timestamp:msg.Timestamp}
+	pushMsgBytes, err1 := proto.Marshal(&pushMsg)
+	if err1 != nil{
+		log.Panic(err1)
+	}
+	msgType := "PlayerStartPath"
+	packedMsg := messages.GenReplyMsg{Type:&msgType, Data:pushMsgBytes}
+	for key, val := range world.playerDict{
+		if key != id {
+			val.MsgChan <- packedMsg
+		}
+	}
 }
 
 func (world *GameWorld) OnPlayerMoveTo(id string, binData[] byte){
