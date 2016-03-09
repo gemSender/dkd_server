@@ -15,3 +15,8 @@ func (player *PlayerState) MoveTo (x float32, y float32){
 	player.X = x;
 	player.Y = y;
 }
+
+func (player *PlayerState) StartPath (sx float32, sy float32) {
+	player.X = sx;
+	player.Y = sy;
+}

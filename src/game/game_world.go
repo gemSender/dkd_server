@@ -6,11 +6,14 @@ import (
 	"log"
 	"math/rand"
 	"time"
+	"../data_access"
+	"gopkg.in/mgo.v2/bson"
 )
 
 
 
 type GameWorld struct{
+	DBO *data_access.DBOperatorObj
 	rand *rand.Rand
 	playerDict map[string]*PlayerState
 	actionDict map[string]func (string, []byte)
@@ -29,12 +32,36 @@ func (world *GameWorld) NeedUpdate(now int64, framePerSec int32)  bool {
 	return  false
 }
 
-func CreateWorld() *GameWorld{
+func CreateWorld(dbCmdChan chan data_access.DBCommand) *GameWorld{
 	world := &GameWorld{playerDict:make(map[string]*PlayerState), actionDict:make(map[string]func(string, []byte))}
 	world.RegisterCallback("MoveTo", world.OnPlayerMoveTo)
+	world.RegisterCallback("StartPath", world.OnPlayerStartPath)
 	world.rand = rand.New(rand.NewSource(time.Now().UnixNano()))
 	world.lastUpdateTime = GetTimeStampMs()
+	world.DBO = data_access.CreateOperatorObj(dbCmdChan)
 	return world
+}
+
+func (world *GameWorld)  OnPlayerStartPath(id string, binData[] byte){
+	msg := messages.StartPath{}
+	err := proto.Unmarshal(binData, &msg)
+	if err != nil{
+		log.Panic(err)
+	}
+	player := world.playerDict[id]
+	player.StartPath(*msg.Sx, *msg.Sy)
+	pushMsg := messages.PlayerStartPath{Sx:msg.Sx, Sy:msg.Sy, Dx:msg.Dx, Dy:msg.Dy, Id:&id, Timestamp:msg.Timestamp}
+	pushMsgBytes, err1 := proto.Marshal(&pushMsg)
+	if err1 != nil{
+		log.Panic(err1)
+	}
+	msgType := "PlayerStartPath"
+	packedMsg := messages.GenReplyMsg{Type:&msgType, Data:pushMsgBytes}
+	for key, val := range world.playerDict{
+		if key != id {
+			val.MsgChan <- packedMsg
+		}
+	}
 }
 
 func (world *GameWorld) OnPlayerMoveTo(id string, binData[] byte){
@@ -93,6 +120,13 @@ func (world *GameWorld) OnLogin(binData []byte, msgChannel chan messages.GenRepl
 	y := float32(0)
 	colorIndex := world.rand.Int31n(8)
 	timestamp := time.Now().UnixNano() / 1e6
+	world.DBO.Insert("dkd_login", bson.M{"_id" : *loginMsg.Id, "time" : timestamp}).AddCallback(func(result interface{}, dberr error){
+		if dberr != nil{
+			log.Panic(dberr)
+		}else{
+			log.Println(result)
+		}
+	})
 	replyMsg := messages.LoginReply{X:&x, Y:&y, ColorIndex:&colorIndex, Timestamp:&timestamp, Players:make([]*messages.PlayerState, 0, len(world.playerDict))}
 	for _, val := range world.playerDict {
 		replyMsg.Players = append(replyMsg.Players, &messages.PlayerState{Id:&val.Id, X:&val.X, Y:&val.Y, ColorIndex:&val.ColorIndex})
