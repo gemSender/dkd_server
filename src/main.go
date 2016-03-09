@@ -9,6 +9,8 @@ import (
 	"bufio"
 	"./messages/proto_files"
 	"github.com/golang/protobuf/proto"
+	"gopkg.in/mgo.v2"
+	"./data_access"
 )
 
 type ClientMsg struct {
@@ -19,13 +21,15 @@ type ClientMsg struct {
 }
 
 
-func GameMainLoop(msgRecvChan chan ClientMsg){
-	world := game.CreateWorld()
+func GameMainLoop(msgRecvChan chan ClientMsg, dbCmdChan chan data_access.DBCommand, dbReplyChan chan data_access.DBOperationReply){
+	world := game.CreateWorld(dbCmdChan)
 	for {
 		select {
 		case msg := <- msgRecvChan:
 			world.OnBinaryMessage(msg.body, msg.channel, msg.idChannel, msg.id)
-			log.Println("recv msg, length is ", len(msg.body))
+			//log.Println("recv msg, length is ", len(msg.body))
+		case dbReply := <- dbReplyChan:
+			world.DBO.DealReply(dbReply)
 		default :
 		}
 	}
@@ -45,20 +49,18 @@ func sender(conn net.Conn, channel chan messages.GenReplyMsg, quitChan chan int)
 				log.Panic(encodeErr)
 			}
 			byteLen := int32(len(body))
-			log.Println("to send ", byteLen, " bytes")
 			lenBytes := [4]byte{byte(byteLen & 0xff), byte(byteLen >> 8 & 0xff), byte(byteLen >> 16 & 0xff), byte(byteLen >> 24 & 0xff)}
 			writer.Write(lenBytes[0:4])
 			writer.Write(body)
 			writer.Flush()
 		case <-quitChan:
-			log.Println("writer process of ", conn.RemoteAddr(), " quit")
+			//log.Println("writer process of ", conn.RemoteAddr(), " quit")
 			return
 		}
 	}
 }
 
 func receiver(conn net.Conn, sendChannel chan messages.GenReplyMsg, gameChan chan ClientMsg, quitChannel chan int){
-
 	defer conn.Close()
 	idChannel := make(chan string)
 	id := ""
@@ -85,7 +87,7 @@ func receiver(conn net.Conn, sendChannel chan messages.GenReplyMsg, gameChan cha
 		switch err1 {
 		case nil:
 			n := int(countBuf[0]) + int(countBuf[1]) << 8 + int(countBuf[2]) << 16 + int(countBuf[3]) << 24
-			log.Println("receive ", n, " bytes from client ", conn.RemoteAddr())
+			//log.Println("receive ", n, " bytes from client ", conn.RemoteAddr())
 			dataBuf := make([]byte, n)
 			err2 := receiveNbytes(n, dataBuf)
 			switch  err2{
@@ -123,13 +125,16 @@ func receiver(conn net.Conn, sendChannel chan messages.GenReplyMsg, gameChan cha
 	}
 }
 
-func main(){
+func start_database(cmdChan chan data_access.DBCommand, replyChan chan data_access.DBOperationReply)  {
+	dialInfo := mgo.DialInfo{Database:"test", Addrs:[]string{"192.168.0.245"}, Username:"test", Password:"test"}
+	go data_access.StartService(&dialInfo, cmdChan, replyChan)
+}
+
+func start_listener(gameChan chan ClientMsg)  {
 	port := "1234"
 	if len(os.Args) > 1 {
 		port = os.Args[1]
 	}
-	gameChan := make(chan ClientMsg)
-	go GameMainLoop(gameChan)
 	listenSock, listenErr := net.Listen("tcp", ":" + port)
 	if(listenErr != nil){
 		log.Panic(listenErr)
@@ -145,4 +150,17 @@ func main(){
 		go receiver(conn, sendChannel, gameChan, quitChannel)
 		go sender(conn, sendChannel, quitChannel)
 	}
+}
+
+func start_game_looop(gameChan chan ClientMsg, dbCmdChan chan data_access.DBCommand, dbReplyChan chan data_access.DBOperationReply){
+	go GameMainLoop(gameChan, dbCmdChan, dbReplyChan)
+}
+
+func main(){
+	gameChan := make(chan ClientMsg)
+	dbCmdChan := make(chan data_access.DBCommand)
+	dbReplyChan := make(chan data_access.DBOperationReply)
+	start_database(dbCmdChan, dbReplyChan)
+	start_game_looop(gameChan, dbCmdChan, dbReplyChan)
+	start_listener(gameChan)
 }

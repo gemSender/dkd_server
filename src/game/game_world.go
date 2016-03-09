@@ -6,11 +6,14 @@ import (
 	"log"
 	"math/rand"
 	"time"
+	"../data_access"
+	"gopkg.in/mgo.v2/bson"
 )
 
 
 
 type GameWorld struct{
+	DBO *data_access.DBOperatorObj
 	rand *rand.Rand
 	playerDict map[string]*PlayerState
 	actionDict map[string]func (string, []byte)
@@ -29,12 +32,13 @@ func (world *GameWorld) NeedUpdate(now int64, framePerSec int32)  bool {
 	return  false
 }
 
-func CreateWorld() *GameWorld{
+func CreateWorld(dbCmdChan chan data_access.DBCommand) *GameWorld{
 	world := &GameWorld{playerDict:make(map[string]*PlayerState), actionDict:make(map[string]func(string, []byte))}
 	world.RegisterCallback("MoveTo", world.OnPlayerMoveTo)
 	world.RegisterCallback("StartPath", world.OnPlayerStartPath)
 	world.rand = rand.New(rand.NewSource(time.Now().UnixNano()))
 	world.lastUpdateTime = GetTimeStampMs()
+	world.DBO = data_access.CreateOperatorObj(dbCmdChan)
 	return world
 }
 
@@ -116,6 +120,13 @@ func (world *GameWorld) OnLogin(binData []byte, msgChannel chan messages.GenRepl
 	y := float32(0)
 	colorIndex := world.rand.Int31n(8)
 	timestamp := time.Now().UnixNano() / 1e6
+	world.DBO.Insert("dkd_login", bson.M{"_id" : *loginMsg.Id, "time" : timestamp}, func(result interface{}, dberr error){
+		if dberr != nil{
+			log.Panic(dberr)
+		}else{
+			log.Println(result)
+		}
+	})
 	replyMsg := messages.LoginReply{X:&x, Y:&y, ColorIndex:&colorIndex, Timestamp:&timestamp, Players:make([]*messages.PlayerState, 0, len(world.playerDict))}
 	for _, val := range world.playerDict {
 		replyMsg.Players = append(replyMsg.Players, &messages.PlayerState{Id:&val.Id, X:&val.X, Y:&val.Y, ColorIndex:&val.ColorIndex})
