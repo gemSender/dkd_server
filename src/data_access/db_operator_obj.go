@@ -5,8 +5,12 @@ import (
 	"log"
 )
 type DBWaitMsg struct{
-	CmdId int
-	Callback func(interface{}, error)
+	CmdId    int
+	callback func(interface{}, error)
+}
+
+func (this *DBWaitMsg) AddCallback(callback func(interface{}, error)){
+	this.callback = callback
 }
 
 type DBOperatorObj struct {
@@ -19,20 +23,21 @@ func CreateOperatorObj(cmdChan chan DBCommand) *DBOperatorObj {
 	return &DBOperatorObj{CmdChan:cmdChan, waitList:list.New(), nextCmdId:1}
 }
 
-func (this *DBOperatorObj) DBOp(command DBCommand, callback func(interface{}, error))  *DBOperatorObj{
+func (this *DBOperatorObj) DBOp(command DBCommand)  *DBWaitMsg{
 	command.CmdId = this.nextCmdId
-	this.waitList.PushBack(DBWaitMsg{CmdId:command.CmdId, Callback:callback})
+	ret := &DBWaitMsg{CmdId:command.CmdId}
+	this.waitList.PushBack(ret)
 	this.CmdChan <- command
 	this.nextCmdId ++
-	return this
+	return ret
 }
 
 func (this *DBOperatorObj) DealReply(reply DBOperationReply){
 	headElem := this.waitList.Front()
-	waitElem := headElem.Value.(DBWaitMsg)
+	waitElem := headElem.Value.(*DBWaitMsg)
 	if waitElem.CmdId == reply.CmdId {
-		if waitElem.Callback != nil{
-			waitElem.Callback(reply.Result, reply.err)
+		if waitElem.callback != nil{
+			waitElem.callback(reply.Result, reply.err)
 		}
 		this.waitList.Remove(headElem)
 	}else {
@@ -40,14 +45,14 @@ func (this *DBOperatorObj) DealReply(reply DBOperationReply){
 	}
 }
 
-func (this *DBOperatorObj) FindOne(collection string, query interface{}, callback func(interface{}, error)){
-	this.DBOp(DBCommand{CmdType:FindOne, Collection:collection, Arguments:[]interface{}{query}}, callback)
+func (this *DBOperatorObj) FindOne(collection string, query_selector ...interface{}) *DBWaitMsg{
+	return this.DBOp(DBCommand{CmdType:FindOne, Collection:collection, Arguments:query_selector})
 }
 
-func (this *DBOperatorObj) Insert(collection string, doc interface{}, callback func(interface{}, error)){
-	this.DBOp(DBCommand{CmdType:Insert, Collection:collection, Arguments:[]interface{}{doc}}, callback)
+func (this *DBOperatorObj) Insert(collection string, docs ...interface{}) *DBWaitMsg{
+	return this.DBOp(DBCommand{CmdType:Insert, Collection:collection, Arguments:docs})
 }
 
-func (this *DBOperatorObj) Update(collection string, query interface{}, modify interface{}, callback func(interface{}, error)){
-	this.DBOp(DBCommand{CmdType:Update, Collection:collection, Arguments:[]interface{}{query, modify}}, callback)
+func (this *DBOperatorObj) Update(collection string, query_modify ...interface{}) *DBWaitMsg{
+	return this.DBOp(DBCommand{CmdType:Update, Collection:collection, Arguments:query_modify})
 }

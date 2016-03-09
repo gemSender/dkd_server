@@ -36,8 +36,17 @@ func StartService(info *mgo.DialInfo, cmdChan chan DBCommand, resultChan chan DB
 	defer session.Close()
 	opMap := map[int]func (*mgo.Collection, DBCommand) (interface{}, error){
 		FindOne : func(collection *mgo.Collection, cmd DBCommand) (interface{}, error){
+			var query *mgo.Query
 			result := bson.M{}
-			queryErr := collection.Find(cmd.Arguments[0]).One(result)
+			if len(cmd.Arguments) > 0 {
+				query = collection.Find(cmd.Arguments[0])
+				if len(cmd.Arguments) > 1{
+					query = query.Select(cmd.Arguments[1])
+				}
+			}else{
+				query = collection.Find(nil)
+			}
+			queryErr := query.One(result)
 			return result, queryErr
 		},
 		Insert : func(collection *mgo.Collection, cmd DBCommand) (interface{}, error){

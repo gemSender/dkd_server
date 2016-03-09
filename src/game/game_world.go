@@ -120,7 +120,7 @@ func (world *GameWorld) OnLogin(binData []byte, msgChannel chan messages.GenRepl
 	y := float32(0)
 	colorIndex := world.rand.Int31n(8)
 	timestamp := time.Now().UnixNano() / 1e6
-	world.DBO.Insert("dkd_login", bson.M{"_id" : *loginMsg.Id, "time" : timestamp}, func(result interface{}, dberr error){
+	world.DBO.Insert("dkd_login", bson.M{"_id" : *loginMsg.Id, "time" : timestamp}).AddCallback(func(result interface{}, dberr error){
 		if dberr != nil{
 			log.Panic(dberr)
 		}else{
