@@ -28,6 +28,7 @@ func (this *DBOperatorObj) DBOp(command DBCommand)  *DBWaitMsg{
 	ret := &DBWaitMsg{CmdId:command.CmdId}
 	this.waitList.PushBack(ret)
 	this.CmdChan <- command
+	log.Print("send command to cmdchan")
 	this.nextCmdId ++
 	return ret
 }

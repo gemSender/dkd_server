@@ -11,6 +11,7 @@ import (
 	"github.com/golang/protobuf/proto"
 	"gopkg.in/mgo.v2"
 	"./data_access"
+	"time"
 )
 
 type ClientMsg struct {
@@ -39,7 +40,7 @@ func GameMainLoop(msgRecvChan chan ClientMsg, dbCmdChan chan data_access.DBComma
 	}
 }
 
-func sender(conn net.Conn, channel chan messages.GenReplyMsg, quitChan chan int){
+func sender(conn net.Conn, channel <- chan messages.GenReplyMsg, quitChan <- chan int){
 	writer := bufio.NewWriter(conn)
 	for{
 		select {
@@ -60,7 +61,7 @@ func sender(conn net.Conn, channel chan messages.GenReplyMsg, quitChan chan int)
 	}
 }
 
-func receiver(conn net.Conn, sendChannel chan messages.GenReplyMsg, gameChan chan ClientMsg, quitChannel chan int){
+func receiver(conn net.Conn, sendChannel chan messages.GenReplyMsg, gameChan chan <- ClientMsg, quitChannel chan <- int){
 	defer conn.Close()
 	idChannel := make(chan string)
 	id := ""
@@ -125,8 +126,8 @@ func receiver(conn net.Conn, sendChannel chan messages.GenReplyMsg, gameChan cha
 	}
 }
 
-func start_database(cmdChan chan data_access.DBCommand, replyChan chan data_access.DBOperationReply)  {
-	dialInfo := mgo.DialInfo{Database:"test", Addrs:[]string{"192.168.0.245"}, Username:"test", Password:"test"}
+func start_database(cmdChan <- chan data_access.DBCommand, replyChan chan <- data_access.DBOperationReply)  {
+	dialInfo := mgo.DialInfo{Database:"test", Addrs:[]string{"192.168.0.245"}, Username:"test", Password:"test", Timeout:time.Second * 2}
 	go data_access.StartService(&dialInfo, cmdChan, replyChan)
 }
 
@@ -144,7 +145,7 @@ func start_listener(gameChan chan ClientMsg)  {
 		if(accErr != nil){
 			log.Panic(accErr)
 		}
-		sendChannel := make(chan messages.GenReplyMsg)
+		sendChannel := make(chan messages.GenReplyMsg, 32)
 		quitChannel := make(chan int)
 		log.Println(conn.RemoteAddr(), " connected")
 		go receiver(conn, sendChannel, gameChan, quitChannel)
@@ -157,9 +158,9 @@ func start_game_looop(gameChan chan ClientMsg, dbCmdChan chan data_access.DBComm
 }
 
 func main(){
-	gameChan := make(chan ClientMsg)
-	dbCmdChan := make(chan data_access.DBCommand)
-	dbReplyChan := make(chan data_access.DBOperationReply)
+	gameChan := make(chan ClientMsg, 1024)
+	dbCmdChan := make(chan data_access.DBCommand, 1024)
+	dbReplyChan := make(chan data_access.DBOperationReply, 32)
 	start_database(dbCmdChan, dbReplyChan)
 	start_game_looop(gameChan, dbCmdChan, dbReplyChan)
 	start_listener(gameChan)

@@ -28,10 +28,14 @@ type DBOperationReply  struct{
 
 
 
-func StartService(info *mgo.DialInfo, cmdChan chan DBCommand, resultChan chan DBOperationReply)  {
+func StartService(info *mgo.DialInfo, cmdChan <- chan DBCommand, resultChan chan <- DBOperationReply)  {
 	session, dialErr:= mgo.DialWithInfo(info)
 	if dialErr != nil{
 		log.Panic(dialErr)
+	}
+	pingErr := session.Ping()
+	if pingErr != nil{
+		log.Panic(pingErr)
 	}
 	defer session.Close()
 	opMap := map[int]func (*mgo.Collection, DBCommand) (interface{}, error){
