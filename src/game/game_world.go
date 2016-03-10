@@ -8,6 +8,8 @@ import (
 	"time"
 	"../data_access"
 	"gopkg.in/mgo.v2/bson"
+	"../scheduler"
+	"fmt"
 )
 
 
@@ -20,11 +22,27 @@ type GameWorld struct{
 	actionDict      map[string]func (int32, []byte)
 	lastUpdateTime  int64
 	nextPlayerIndex int32
+	scheduler scheduler.Scheduler
 }
 
 
 func GetTimeStampMs() int64 {
 	return time.Now().UnixNano() / 1e6
+}
+
+func CreateWorld(dbCmdChan chan data_access.DBCommand) *GameWorld{
+	world := &GameWorld{
+		idIndexMap:make(map[string]int32),
+		indexPlayerMap:make(map[int32]*PlayerState),
+		actionDict:make(map[string]func(int32, []byte)),
+	}
+	world.RegisterCallback("MoveTo", world.OnPlayerMoveTo)
+	world.RegisterCallback("StartPath", world.OnPlayerStartPath)
+	world.rand = rand.New(rand.NewSource(time.Now().UnixNano()))
+	world.lastUpdateTime = GetTimeStampMs()
+	world.DBO = data_access.CreateOperatorObj(dbCmdChan)
+	world.scheduler = NewHeapScheduler(128)
+	return world
 }
 
 func (world *GameWorld) RemovePlayerByIndex(index int32) *PlayerState{
@@ -49,20 +67,6 @@ func (world *GameWorld) NeedUpdate(now int64, framePerSec int32)  bool {
 	return  false
 }
 
-func CreateWorld(dbCmdChan chan data_access.DBCommand) *GameWorld{
-	world := &GameWorld{
-		idIndexMap:make(map[string]int32),
-		indexPlayerMap:make(map[int32]*PlayerState),
-		actionDict:make(map[string]func(int32, []byte)),
-	}
-	world.RegisterCallback("MoveTo", world.OnPlayerMoveTo)
-	world.RegisterCallback("StartPath", world.OnPlayerStartPath)
-	world.rand = rand.New(rand.NewSource(time.Now().UnixNano()))
-	world.lastUpdateTime = GetTimeStampMs()
-	world.DBO = data_access.CreateOperatorObj(dbCmdChan)
-	return world
-}
-
 func (world *GameWorld)  OnPlayerStartPath(index int32, binData[] byte){
 	msg := messages.StartPath{}
 	err := proto.Unmarshal(binData, &msg)
@@ -71,6 +75,9 @@ func (world *GameWorld)  OnPlayerStartPath(index int32, binData[] byte){
 	}
 	player := world.indexPlayerMap[index]
 	player.StartPath(*msg.Sx, *msg.Sy)
+	world.scheduler.ScheduleAfterDelay(func(){
+		fmt.Printf("player now at (%v, %v)\n", player.X, player.Y)
+	}, 1000)
 	pushMsg := messages.PlayerStartPath{Sx:msg.Sx, Sy:msg.Sy, Dx:msg.Dx, Dy:msg.Dy, Index:&index, Timestamp:msg.Timestamp}
 	pushMsgBytes, err1 := proto.Marshal(&pushMsg)
 	if err1 != nil{
@@ -112,6 +119,7 @@ func (world *GameWorld) RegisterCallback(msgType string, callBack func (int32, [
 }
 
 func (world *GameWorld) Update(now int64)  {
+	world.scheduler.TrySchedule()
 	world.lastUpdateTime = now;
 }
 
@@ -140,9 +148,9 @@ func (world *GameWorld) AllocIndex() int32{
 }
 
 func (world *GameWorld) CreatePlayer(playerId string) bson.M{
-	x := (world.rand.Float32() - float32(0.5)) * 2 * 100
-	y := (world.rand.Float32() - float32(0.5)) * 2 * 100
-	colorIndex := world.rand.Int31n(8)
+	x := (world.rand.Float64() - float64(0.5)) * 2 * 100
+	y := (world.rand.Float64() - float64(0.5)) * 2 * 100
+	colorIndex := world.rand.Intn(8)
 	ret := bson.M{"_id" : playerId, "x" : x, "y" : y, "colorIndex" : colorIndex, "level" : 1, "exp" : 0}
 	world.DBO.Insert("player", ret).AddCallback(
 		func(result interface{}, err error) {

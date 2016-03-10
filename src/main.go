@@ -125,7 +125,7 @@ func receiver(conn net.Conn, sendChannel chan messages.GenReplyMsg, gameChan cha
 }
 
 func start_database(cmdChan <- chan data_access.DBCommand, replyChan chan <- data_access.DBOperationReply)  {
-	dialInfo := mgo.DialInfo{Database:"dkd", Addrs:[]string{"192.168.0.245"}, Username:"test", Password:"test", Timeout:time.Second * 2}
+	dialInfo := mgo.DialInfo{Database:"dkd", Addrs:[]string{"localhost"}, Username:"test", Password:"test", Timeout:time.Second * 2}
 	go data_access.StartService(&dialInfo, cmdChan, replyChan)
 }
 
