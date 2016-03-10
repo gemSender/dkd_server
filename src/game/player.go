@@ -3,6 +3,9 @@ import (
 	"../messages/proto_files"
 )
 type PlayerState struct {
+	Level int32
+	Exp int32
+	Index int32
 	Id string
 	X float32
 	Y float32

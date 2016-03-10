@@ -15,28 +15,27 @@ import (
 )
 
 type ClientMsg struct {
-	body []byte
-	channel chan messages.GenReplyMsg
-	id string
-	idChannel chan string
+	body      []byte
+	channel   chan messages.GenReplyMsg
+	index     int32
+	idChannel chan int32
 }
 
 
-func GameMainLoop(msgRecvChan chan ClientMsg, dbCmdChan chan data_access.DBCommand, dbReplyChan chan data_access.DBOperationReply){
+func GameMainLoop(msgRecvChan <- chan ClientMsg, dbCmdChan chan data_access.DBCommand, dbReplyChan chan data_access.DBOperationReply){
 	world := game.CreateWorld(dbCmdChan)
 	for {
 		select {
 		case msg := <- msgRecvChan:
-			world.OnBinaryMessage(msg.body, msg.channel, msg.idChannel, msg.id)
-			//log.Println("recv msg, length is ", len(msg.body))
+			world.OnBinaryMessage(msg.body, msg.channel, msg.idChannel, msg.index)
 		case dbReply := <- dbReplyChan:
 			world.DBO.DealReply(dbReply)
 		default :
 		}
-	}
-	now := game.GetTimeStampMs()
-	if world.NeedUpdate(now, 30) {
-		world.Update(now)
+		now := game.GetTimeStampMs()
+		if world.NeedUpdate(now, 30) {
+			world.Update(now)
+		}
 	}
 }
 
@@ -63,11 +62,11 @@ func sender(conn net.Conn, channel <- chan messages.GenReplyMsg, quitChan <- cha
 
 func receiver(conn net.Conn, sendChannel chan messages.GenReplyMsg, gameChan chan <- ClientMsg, quitChannel chan <- int){
 	defer conn.Close()
-	idChannel := make(chan string)
-	id := ""
+	idChannel := make(chan int32)
+	index := int32(-1)
 	onQuit := func(){
 		quitChannel <- 1
-		gameChan <- ClientMsg{id:id, body:nil}
+		gameChan <- ClientMsg{index:index, body:nil}
 	}
 	defer onQuit()
 	receiveNbytes := func(n int, buf []byte) error{
@@ -88,12 +87,11 @@ func receiver(conn net.Conn, sendChannel chan messages.GenReplyMsg, gameChan cha
 		switch err1 {
 		case nil:
 			n := int(countBuf[0]) + int(countBuf[1]) << 8 + int(countBuf[2]) << 16 + int(countBuf[3]) << 24
-			//log.Println("receive ", n, " bytes from client ", conn.RemoteAddr())
 			dataBuf := make([]byte, n)
 			err2 := receiveNbytes(n, dataBuf)
 			switch  err2{
 			case nil:
-				gameChan <- ClientMsg{body:dataBuf, channel:sendChannel, id:id, idChannel:idChannel}
+				gameChan <- ClientMsg{body:dataBuf, channel:sendChannel, index:index, idChannel:idChannel}
 			default:
 				return err2
 			}
@@ -104,7 +102,7 @@ func receiver(conn net.Conn, sendChannel chan messages.GenReplyMsg, gameChan cha
 	}
 	switch err1 := doRecvMsg(); err1 {
 	case nil:
-		id = <- idChannel
+		index = <- idChannel
 		close(idChannel)
 		for{
 			switch err2:= doRecvMsg(); err2{
@@ -127,7 +125,7 @@ func receiver(conn net.Conn, sendChannel chan messages.GenReplyMsg, gameChan cha
 }
 
 func start_database(cmdChan <- chan data_access.DBCommand, replyChan chan <- data_access.DBOperationReply)  {
-	dialInfo := mgo.DialInfo{Database:"test", Addrs:[]string{"192.168.0.245"}, Username:"test", Password:"test", Timeout:time.Second * 2}
+	dialInfo := mgo.DialInfo{Database:"dkd", Addrs:[]string{"192.168.0.245"}, Username:"test", Password:"test", Timeout:time.Second * 2}
 	go data_access.StartService(&dialInfo, cmdChan, replyChan)
 }
 

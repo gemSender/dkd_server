@@ -57,3 +57,7 @@ func (this *DBOperatorObj) Insert(collection string, docs ...interface{}) *DBWai
 func (this *DBOperatorObj) Update(collection string, query_modify ...interface{}) *DBWaitMsg{
 	return this.DBOp(DBCommand{CmdType:Update, Collection:collection, Arguments:query_modify})
 }
+
+func (this *DBOperatorObj) Upsert(collection string, query_modify ...interface{}) *DBWaitMsg{
+	return this.DBOp(DBCommand{CmdType:Upsert, Collection:collection, Arguments:query_modify})
+}
