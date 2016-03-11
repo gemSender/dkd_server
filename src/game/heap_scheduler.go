@@ -2,10 +2,11 @@ package game
 
 import (
 	"container/heap"
+	"../scheduler"
 )
 
 
-type ScheduleObject struct {
+type scheduleObject struct {
 	TaskId int
 	ExecTime int64
 	Action func()
@@ -13,7 +14,7 @@ type ScheduleObject struct {
 }
 
 type ScheduleHeap struct{
-	slice []ScheduleObject
+	slice []scheduleObject
 	nextTaskId int
 }
 
@@ -32,7 +33,7 @@ func (this *ScheduleHeap) Swap(i, j int){
 }
 
 func (this *ScheduleHeap) Push(x interface{}){
-	this.slice = append(this.slice, x.(ScheduleObject))
+	this.slice = append(this.slice, x.(scheduleObject))
 }
 
 func (this *ScheduleHeap) Pop()  interface{}{
@@ -42,19 +43,13 @@ func (this *ScheduleHeap) Pop()  interface{}{
 	return ret
 }
 
-type TimeError string
-
-func (this TimeError) Error() string {
-	return string(this)
-}
-
 func (this *ScheduleHeap) ScheduleAfterDelay(action func(), delayMs int64) (int, error){
 	if delayMs < 0{
-		return -1, TimeError("delay time must not be less than 0 ms")
+		return -1, scheduler.TimeError("delay time must not be less than 0 ms")
 	}
 	taskId := this.nextTaskId
 	this.nextTaskId ++
-	heap.Push(this, ScheduleObject{TaskId:taskId, ExecTime:GetTimeStampMs() + delayMs, Action:action, Canceled:false})
+	heap.Push(this, scheduleObject{TaskId:taskId, ExecTime:GetTimeStampMs() + delayMs, Action:action, Canceled:false})
 	return taskId, nil
 }
 
@@ -71,7 +66,7 @@ func (this *ScheduleHeap) TrySchedule() int{
 	now := GetTimeStampMs()
 	ret := 0
 	for this.Len() > 0 {
-		obj := heap.Pop(this).(ScheduleObject)
+		obj := heap.Pop(this).(scheduleObject)
 		if now < obj.ExecTime{
 			this.Push(obj)
 			return ret;
@@ -85,7 +80,7 @@ func (this *ScheduleHeap) TrySchedule() int{
 }
 
 func NewHeapScheduler(cap int) *ScheduleHeap{
-	ret := &ScheduleHeap{slice:make([]ScheduleObject, 0, cap), nextTaskId:0}
+	ret := &ScheduleHeap{slice:make([]scheduleObject, 0, cap), nextTaskId:0}
 	heap.Init(ret)
 	return ret
 }
