@@ -4,6 +4,10 @@ import (
 	"../utility/math"
 )
 
+const (
+	Area_Walkable = 0
+	Area_Unwalkable = 1
+)
 type NavMeshError string
 
 func (err NavMeshError) Error() string{
@@ -14,6 +18,12 @@ type NavMeshTriangle struct {
 	Adjs []*NavMeshEdge
 	Indices [3]int
 	Area int
+	ArrIndex int
+	Center math.Vec2
+}
+
+func (this *NavMeshTriangle) GetCenter(vertices []math.Vec2) math.Vec2{
+	return math.VecDivide(math.VecAdd(math.VecAdd(vertices[this.Indices[0]], vertices[this.Indices[1]]), vertices[this.Indices[2]]), 3)
 }
 
 func dist(t1 *NavMeshTriangle, t2 *NavMeshTriangle, vertices []math.Vec2) float32{
@@ -67,6 +77,7 @@ func CreateNavMesh(vertices []math.Vec2, indices []int, areas []int)  (*NavMesh,
 		i1, i2, i3 := indices[i], indices[i + 1], indices[i + 2]
 		triItem.Indices[0], triItem.Indices[1], triItem.Indices[2] = i1, i2, i3
 		triItem.Area = areas[i / 3]
+		triItem.ArrIndex = i
 		addIndex(i1, i2, i)
 		addIndex(i1, i3, i)
 		addIndex(i2, i3, i)
@@ -91,4 +102,8 @@ func CreateNavMesh(vertices []math.Vec2, indices []int, areas []int)  (*NavMesh,
 		tri.Adjs = edge
 	}
 	return &NavMesh{Triangles:triangles, Vertices:vertices}, nil
+}
+
+func (this *NavMesh) GetTriangleByPoint(point math.Vec2) *NavMeshTriangle {
+	return nil
 }
