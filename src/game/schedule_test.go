@@ -21,3 +21,12 @@ func Test_Scheduler(t *testing.T) {
 		sum += s.TrySchedule()
 	}
 }
+
+type test11 struct{
+	bb [3]int
+}
+
+func Test_Arr(t *testing.T)  {
+	t1 := test11{}
+	fmt.Println("2nd of arr", t1.bb[1])
+}
