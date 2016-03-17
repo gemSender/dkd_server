@@ -10,6 +10,7 @@ import (
 	"gopkg.in/mgo.v2/bson"
 	"../scheduler"
 	"fmt"
+	"../navmesh"
 )
 
 
@@ -23,6 +24,7 @@ type GameWorld struct{
 	lastUpdateTime  int64
 	nextPlayerIndex int32
 	scheduler scheduler.Scheduler
+	pathFinder 	*navmesh.PathFinder
 }
 
 
@@ -36,6 +38,11 @@ func CreateWorld(dbCmdChan chan data_access.DBCommand) *GameWorld{
 		indexPlayerMap:make(map[int32]*PlayerState),
 		actionDict:make(map[string]func(int32, []byte)),
 	}
+	nm, err := navmesh.GetNavMeshFromFile("navmesh/navmesh.bytes")
+	if err != nil{
+		log.Panic(err)
+	}
+	world.pathFinder = navmesh.CreatePathFinder(nm)
 	world.RegisterCallback("MoveTo", world.OnPlayerMoveTo)
 	world.RegisterCallback("StartPath", world.OnPlayerStartPath)
 	world.rand = rand.New(rand.NewSource(time.Now().UnixNano()))
