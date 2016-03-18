@@ -41,6 +41,7 @@ func dist(t1 *NavMeshTriangle, t2 *NavMeshTriangle, vertices []math_utility.Vec2
 type NavMeshEdge struct{
 	Cost float32
 	Next *NavMeshTriangle
+	vertices [2]int
 }
 
 
@@ -89,7 +90,7 @@ func CreateNavMesh(vertices []math_utility.Vec2, indices []int, areas []int)  (*
 		triangles[triIndex] = &triItem
 	}
 	for idx, tri := range triangles{
-		edge := make([]*NavMeshEdge, 0, 3)
+		edges := make([]*NavMeshEdge, 0, 3)
 		i1, i2, i3 := tri.Indices[0], tri.Indices[1], tri.Indices[2]
 		addEdge := func(idx1 int, idx2 int) {
 			key := get_hash_key(idx1, idx2)
@@ -97,14 +98,16 @@ func CreateNavMesh(vertices []math_utility.Vec2, indices []int, areas []int)  (*
 				if otherIdx != idx{
 					adjTri := triangles[otherIdx]
 					cost := dist(tri, adjTri, vertices)
-					edge = append(edge, &NavMeshEdge{Cost:cost, Next:adjTri})
+					edge := &NavMeshEdge{Cost:cost, Next:adjTri}
+					edge.vertices[0], edge.vertices[1] = idx1, idx2
+					edges = append(edges, edge)
 				}
 			}
 		}
 		addEdge(i1, i2)
-		addEdge(i1, i3)
 		addEdge(i2, i3)
-		tri.Adjs = edge
+		addEdge(i3, i1)
+		tri.Adjs = edges
 	}
 	return &NavMesh{Triangles:triangles, Vertices:vertices}, nil
 }

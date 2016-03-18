@@ -78,3 +78,69 @@ func (this *PathFinder) FindPath(start math.Vec2, end math.Vec2) []math.Vec2{
 	}
 	return nil
 }
+
+func (this *PathFinder) GetVectices(start math.Vec2, end math.Vec2, edges []*NavMeshEdge) []math.Vec2{
+	vertTable := this.mesh.Vertices
+	vertices := make([]math.Vec2, 0, 16)
+	startPoint := start
+	vertices = append(vertices, startPoint)
+	leftLineEndPoint, rightLineEndPoint := startPoint, startPoint
+	nextEdgeIndex := 0
+	for {
+		if nextEdgeIndex >= len(edges) {
+			break
+		}
+		firstEdge := edges[nextEdgeIndex].vertices
+		leftLineEndPoint, rightLineEndPoint = vertTable[firstEdge[0]], vertTable[firstEdge[1]]
+		if startPoint == leftLineEndPoint {
+			nextEdgeIndex++
+			continue
+		} else if startPoint == rightLineEndPoint{
+			nextEdgeIndex++
+			continue
+		}
+		for {
+			nextEdgeIndex++
+			if nextEdgeIndex >= len(edges){
+				break
+			}
+			nexeEdge := edges[nextEdgeIndex].vertices
+			idx1 := nexeEdge[0]
+			idx2 := nexeEdge[1]
+			pl := vertTable[idx1]
+			pr := vertTable[idx2]
+			v1 := math.Vec2Minus(pl, startPoint) // startPoint -> pl
+			v2 := math.Vec2Minus(pr, startPoint) // startPoint -> pr
+			v3 := math.Vec2Minus(leftLineEndPoint, pl) // pl -> leftLineEndPoint
+			v4 := math.Vec2Minus(leftLineEndPoint, pr) // pr -> leftLineEndPoint
+			v5 := math.Vec2Minus(rightLineEndPoint, pl) // pl -> rightLineEndPoint
+			v6 := math.Vec2Minus(rightLineEndPoint, pr) // pr -> rightLineEndPoint
+			if math.Vec2CrossZ(v2, v4) < 0{
+				startPoint = leftLineEndPoint
+				vertices = append(vertices, startPoint)
+				break
+			}else if math.Vec2CrossZ(v1, v5) > 0{
+				startPoint = rightLineEndPoint
+				vertices = append(vertices, startPoint)
+				break
+			}else {
+				if math.Vec2CrossZ(v1, v3) > 0{
+					leftLineEndPoint = pl
+				}
+				if math.Vec2CrossZ(v2, v6) < 0{
+					rightLineEndPoint = pr
+				}
+			}
+		}
+	}
+	v1 := math.Vec2Minus(end, startPoint)
+	v2 := math.Vec2Minus(leftLineEndPoint, end)
+	v3 := math.Vec2Minus(rightLineEndPoint, end)
+	if math.Vec2CrossZ(v1, v2) < 0 {
+		vertices = append(vertices, leftLineEndPoint)
+	}else if math.Vec2CrossZ(v1, v3) > 0 {
+		vertices = append(vertices, rightLineEndPoint)
+	}
+	vertices = append(vertices, end)
+	return  vertices
+}
