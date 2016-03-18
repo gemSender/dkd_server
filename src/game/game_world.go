@@ -11,6 +11,7 @@ import (
 	"../scheduler"
 	"fmt"
 	"../navmesh"
+	math1  "../utility/math"
 )
 
 
@@ -82,9 +83,6 @@ func (world *GameWorld)  OnPlayerStartPath(index int32, binData[] byte){
 	}
 	player := world.indexPlayerMap[index]
 	player.StartPath(*msg.Sx, *msg.Sy)
-	world.scheduler.ScheduleAfterDelay(func(){
-		fmt.Printf("player now at (%v, %v)\n", player.X, player.Y)
-	}, 1000)
 	pushMsg := messages.PlayerStartPath{Sx:msg.Sx, Sy:msg.Sy, Dx:msg.Dx, Dy:msg.Dy, Index:&index, Timestamp:msg.Timestamp}
 	pushMsgBytes, err1 := proto.Marshal(&pushMsg)
 	if err1 != nil{
@@ -92,6 +90,20 @@ func (world *GameWorld)  OnPlayerStartPath(index int32, binData[] byte){
 	}
 	msgType := "PlayerStartPath"
 	packedMsg := messages.GenReplyMsg{Type:&msgType, Data:pushMsgBytes}
+	{
+		start := math1.Vec2{X:*msg.Sx, Y:*msg.Sy}
+		end := math1.Vec2{X:*msg.Dx, Y:*msg.Dy}
+		path := world.pathFinder.FindPath(start, end)
+		if path != nil{
+			fmt.Println("find path: ")
+			for _, vert := range path{
+				fmt.Printf("(%v, %v) ", vert.X, vert.Y)
+			}
+			fmt.Println()
+		}else{
+			fmt.Println("path not found")
+		}
+	}
 	for key, val := range world.indexPlayerMap {
 		if key != index {
 			val.MsgChan <- packedMsg

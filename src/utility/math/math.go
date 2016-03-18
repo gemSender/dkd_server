@@ -38,3 +38,10 @@ type Line2d struct {
 	Start Vec2
 	End Vec2
 }
+
+func PointInTriangle(A Vec2, B Vec2, C Vec2, P Vec2)  bool {
+	AB := Vec2Minus(B, A)
+	AC := Vec2Minus(C, A)
+	AP := Vec2Minus(P, A)
+	return Vec2CrossZ(AB, AC) * Vec2CrossZ(AB, AP) >= 0
+}

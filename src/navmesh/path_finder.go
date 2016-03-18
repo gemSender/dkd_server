@@ -3,6 +3,7 @@ package navmesh
 import (
 	"../utility/gen_heap"
 	"../utility/math"
+	"fmt"
 )
 
 const (
@@ -10,9 +11,11 @@ const (
 	InCloseList = byte(1)
 	InOpenList = byte(2)
 )
+
 type PathNode struct{
-	triangle *NavMeshTriangle
-	preTriangle *NavMeshTriangle
+	edge *NavMeshEdge
+	degree int
+	preNode *PathNode
 	cost float32
 	point math.Vec2
 }
@@ -30,8 +33,8 @@ func CreatePathFinder(mesh *NavMesh) *PathFinder{
 	ret.initFlag = make([]byte, len(mesh.Triangles))
 	ret.flag = make([]byte, len(mesh.Triangles))
 	ret.openList = gen_heap.Create(func(a interface{}, b interface{}) bool{
-		nodea := a.(PathNode)
-		nodeb := b.(PathNode)
+		nodea := a.(*PathNode)
+		nodeb := b.(*PathNode)
 		return nodea.cost + math.VecDist(nodea.point, ret.target) < nodeb.cost + math.VecDist(nodeb.point, ret.target)
 	})
 	return  ret
@@ -43,33 +46,50 @@ func (this *PathFinder) FindPath(start math.Vec2, end math.Vec2) []math.Vec2{
 	this.openList.Clear()
 	startTriangle := this.mesh.GetTriangleByPoint(start)
 	endTriangle := this.mesh.GetTriangleByPoint(end)
-	this.openList.Push(PathNode{cost:0, point:start, preTriangle:nil, triangle:startTriangle})
+	if startTriangle == endTriangle{
+		return []math.Vec2{start, end}
+	}
+	fmt.Printf("start triangle: %v, end triangle %v\n", startTriangle.ArrIndex, endTriangle.ArrIndex)
+	this.openList.Push(&PathNode{cost:0, point:start, preNode:nil, edge:nil, degree:0})
 	this.flag[startTriangle.ArrIndex] = InOpenList
 	for this.openList.Len() > 0{
-		node := this.openList.Pop().(PathNode)
-		this.flag[node.triangle.ArrIndex] = InCloseList
-		if node.triangle == endTriangle{
-			break
+		node := this.openList.Pop().(*PathNode)
+		var nodeTriangle *NavMeshTriangle
+		if node.preNode == nil {
+			nodeTriangle = startTriangle
+		}else {
+			if node.edge.Next == endTriangle {
+				edgeList := make([]*NavMeshEdge, node.degree)
+				for tempNode := node; tempNode.preNode != nil; tempNode = tempNode.preNode{
+					edgeList[tempNode.degree - 1] = tempNode.edge
+				}
+				return this.GetVectices(start, end, edgeList)
+			}
+			nodeTriangle = node.edge.Next
 		}
-		for _, adjEdges := range node.triangle.Adjs{
-			adjTri := adjEdges.Next
+		fmt.Printf("Node Triangle: %v\n", nodeTriangle.ArrIndex)
+		this.flag[nodeTriangle.ArrIndex] = InCloseList
+		for _, adjEdge := range nodeTriangle.Adjs{
+			adjTri := adjEdge.Next
 			if adjTri.Area != Area_Walkable{
 				continue
 			}
 			switch this.flag[adjTri.ArrIndex] {
 			case Unchecked:
 				this.flag[adjTri.ArrIndex] = InOpenList
-				newNode := PathNode{triangle:adjTri, cost: node.cost + adjEdges.Cost, preTriangle:node.triangle, point:adjTri.Center}
+				newNode := &PathNode{cost: node.cost + adjEdge.Cost, preNode:node, point:adjTri.Center, edge:adjEdge ,degree:node.degree + 1}
 				this.openList.Push(newNode)
 			case InOpenList:
 				index, oldNodeI := this.openList.Find(func(item interface{}) bool{
-					return item.(PathNode).triangle == adjTri
+					return item.(*PathNode).edge.Next == adjTri
 				})
-				oldNode := oldNodeI.(PathNode)
-				compareCost := node.cost + adjEdges.Cost
+				oldNode := oldNodeI.(*PathNode)
+				compareCost := node.cost + adjEdge.Cost
 				if compareCost < oldNode.cost {
-					oldNode.preTriangle = node.triangle
+					oldNode.preNode = node
 					oldNode.cost = compareCost
+					oldNode.edge = adjEdge
+					oldNode.degree = node.degree + 1
 				}
 				this.openList.SetByIndex(index, oldNode)
 			default:
@@ -81,7 +101,7 @@ func (this *PathFinder) FindPath(start math.Vec2, end math.Vec2) []math.Vec2{
 
 func (this *PathFinder) GetVectices(start math.Vec2, end math.Vec2, edges []*NavMeshEdge) []math.Vec2{
 	vertTable := this.mesh.Vertices
-	vertices := make([]math.Vec2, 0, 16)
+	vertices := make([]math.Vec2, 0, 32)
 	startPoint := start
 	vertices = append(vertices, startPoint)
 	leftLineEndPoint, rightLineEndPoint := startPoint, startPoint

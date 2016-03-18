@@ -6,6 +6,7 @@ import (
 	"bufio"
 	"encoding/binary"
 	"math"
+	"fmt"
 )
 
 const (
@@ -65,6 +66,13 @@ func CreateNavMesh(vertices []math_utility.Vec2, indices []int, areas []int)  (*
 	triCount := lenIndices / 3
 	triangles := make([]*NavMeshTriangle, triCount)
 	tempMap := make(map[int64][]int)
+	for i:=0; i < len(vertices); i++{
+		for j:= i+1; j < len(vertices); j++{
+			if(vertices[i] == vertices[j]){
+				fmt.Printf("same vertex, %v: %v, %v: %v\n", i, vertices[i], j, vertices[j])
+			}
+		}
+	}
 	addIndex := func(idx1 int, idx2 int, tIndex int) {
 		key := get_hash_key(idx1, idx2)
 		switch v := tempMap[key] ; v{
@@ -92,6 +100,7 @@ func CreateNavMesh(vertices []math_utility.Vec2, indices []int, areas []int)  (*
 	for idx, tri := range triangles{
 		edges := make([]*NavMeshEdge, 0, 3)
 		i1, i2, i3 := tri.Indices[0], tri.Indices[1], tri.Indices[2]
+		fmt.Printf("%v ->", idx)
 		addEdge := func(idx1 int, idx2 int) {
 			key := get_hash_key(idx1, idx2)
 			for _, otherIdx := range tempMap[key]{
@@ -101,18 +110,26 @@ func CreateNavMesh(vertices []math_utility.Vec2, indices []int, areas []int)  (*
 					edge := &NavMeshEdge{Cost:cost, Next:adjTri}
 					edge.vertices[0], edge.vertices[1] = idx1, idx2
 					edges = append(edges, edge)
+					fmt.Printf(" %v", otherIdx)
 				}
 			}
 		}
 		addEdge(i1, i2)
 		addEdge(i2, i3)
 		addEdge(i3, i1)
+		fmt.Println()
 		tri.Adjs = edges
 	}
 	return &NavMesh{Triangles:triangles, Vertices:vertices}, nil
 }
 
 func (this *NavMesh) GetTriangleByPoint(point math_utility.Vec2) *NavMeshTriangle {
+	for _, t := range this.Triangles{
+		A, B, C := this.Vertices[t.Indices[0]], this.Vertices[t.Indices[1]], this.Vertices[t.Indices[2]]
+		if math_utility.PointInTriangle(A, B, C, point){
+			return t
+		}
+	}
 	return nil
 }
 
