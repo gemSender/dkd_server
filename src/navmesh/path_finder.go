@@ -4,6 +4,7 @@ import (
 	"../utility/gen_heap"
 	"../utility/math"
 	"fmt"
+	"container/heap"
 )
 
 const (
@@ -46,14 +47,14 @@ func (this *PathFinder) FindPath(start math.Vec2, end math.Vec2) []math.Vec2{
 	this.openList.Clear()
 	startTriangle := this.mesh.GetTriangleByPoint(start)
 	endTriangle := this.mesh.GetTriangleByPoint(end)
+	fmt.Printf("start triangle: %v, end triangle %v\n", startTriangle.ArrIndex, endTriangle.ArrIndex)
 	if startTriangle == endTriangle{
 		return []math.Vec2{start, end}
 	}
-	fmt.Printf("start triangle: %v, end triangle %v\n", startTriangle.ArrIndex, endTriangle.ArrIndex)
-	this.openList.Push(&PathNode{cost:0, point:start, preNode:nil, edge:nil, degree:0})
+	heap.Push(this.openList, &PathNode{cost:0, point:start, preNode:nil, edge:nil, degree:0})
 	this.flag[startTriangle.ArrIndex] = InOpenList
 	for this.openList.Len() > 0{
-		node := this.openList.Pop().(*PathNode)
+		node := heap.Pop(this.openList).(*PathNode)
 		var nodeTriangle *NavMeshTriangle
 		if node.preNode == nil {
 			nodeTriangle = startTriangle
@@ -67,7 +68,6 @@ func (this *PathFinder) FindPath(start math.Vec2, end math.Vec2) []math.Vec2{
 			}
 			nodeTriangle = node.edge.Next
 		}
-		fmt.Printf("Node Triangle: %v\n", nodeTriangle.ArrIndex)
 		this.flag[nodeTriangle.ArrIndex] = InCloseList
 		for _, adjEdge := range nodeTriangle.Adjs{
 			adjTri := adjEdge.Next
@@ -78,7 +78,7 @@ func (this *PathFinder) FindPath(start math.Vec2, end math.Vec2) []math.Vec2{
 			case Unchecked:
 				this.flag[adjTri.ArrIndex] = InOpenList
 				newNode := &PathNode{cost: node.cost + adjEdge.Cost, preNode:node, point:adjTri.Center, edge:adjEdge ,degree:node.degree + 1}
-				this.openList.Push(newNode)
+				heap.Push(this.openList, newNode)
 			case InOpenList:
 				index, oldNodeI := this.openList.Find(func(item interface{}) bool{
 					return item.(*PathNode).edge.Next == adjTri

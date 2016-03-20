@@ -38,10 +38,13 @@ type Line2d struct {
 	Start Vec2
 	End Vec2
 }
+func  PointInTriangle(A Vec2, B Vec2, C Vec2, P Vec2) bool{
+	return PBetweenABAC(A, B, C, P) && PBetweenABAC(B, C, A, P) && PBetweenABAC(C, A, B, P);
+}
 
-func PointInTriangle(A Vec2, B Vec2, C Vec2, P Vec2)  bool {
-	AB := Vec2Minus(B, A)
-	AC := Vec2Minus(C, A)
+func PBetweenABAC(A Vec2, B Vec2, C Vec2, P Vec2)  bool {
 	AP := Vec2Minus(P, A)
-	return Vec2CrossZ(AB, AC) * Vec2CrossZ(AB, AP) >= 0
+	PB := Vec2Minus(B, P)
+	PC := Vec2Minus(C, P)
+	return Vec2CrossZ(AP, PB) * Vec2CrossZ(AP, PC) < 0
 }

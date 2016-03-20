@@ -97,7 +97,7 @@ func (world *GameWorld)  OnPlayerStartPath(index int32, binData[] byte){
 		if path != nil{
 			fmt.Println("find path: ")
 			for _, vert := range path{
-				fmt.Printf("(%v, %v) ", vert.X, vert.Y)
+				fmt.Printf("(%v, %v) \n", vert.X, vert.Y)
 			}
 			fmt.Println()
 		}else{
