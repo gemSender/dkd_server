@@ -48,3 +48,15 @@ func PBetweenABAC(A Vec2, B Vec2, C Vec2, P Vec2)  bool {
 	PC := Vec2Minus(C, P)
 	return Vec2CrossZ(AP, PB) * Vec2CrossZ(AP, PC) <= 0
 }
+
+func (v Vec2) Magnitude() float32 {
+	return float32(math.Sqrt(float64(v.X * v.X + v.Y * v.Y)))
+}
+
+func (v Vec2) Normalized()  Vec2{
+	return VecDivide(v, v.Magnitude())
+}
+
+func SameDir(v1 Vec2, v2 Vec2)  bool{
+	return Vec2Dot(v1, v2) > 0 && math.Abs(float64(Vec2CrossZ(v1, v2))) / float64(v1.Magnitude() * v2.Magnitude()) < 0.0000001
+}

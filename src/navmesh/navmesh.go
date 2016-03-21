@@ -1,7 +1,7 @@
 package navmesh
 
 import (
-	math_utility "../utility/math"
+	math1 "../utility/math"
 	"os"
 	"bufio"
 	"encoding/binary"
@@ -20,23 +20,23 @@ func (err NavMeshError) Error() string{
 }
 
 type NavMeshTriangle struct {
-	Adjs []*NavMeshEdge
-	Indices [3]int
-	Area int
+	Adjs     []*NavMeshEdge
+	Indices  [3]int
+	Area     int
 	ArrIndex int
-	Center math_utility.Vec2
+	Center   math1.Vec2
 }
 
-func (this *NavMeshTriangle) GetCenter(vertices []math_utility.Vec2) math_utility.Vec2{
-	return math_utility.VecDivide(math_utility.VecAdd(math_utility.VecAdd(vertices[this.Indices[0]], vertices[this.Indices[1]]), vertices[this.Indices[2]]), 3)
+func (this *NavMeshTriangle) GetCenter(vertices []math1.Vec2) math1.Vec2{
+	return math1.VecDivide(math1.VecAdd(math1.VecAdd(vertices[this.Indices[0]], vertices[this.Indices[1]]), vertices[this.Indices[2]]), 3)
 }
 
-func dist(t1 *NavMeshTriangle, t2 *NavMeshTriangle, vertices []math_utility.Vec2) float32{
+func dist(t1 *NavMeshTriangle, t2 *NavMeshTriangle, vertices []math1.Vec2) float32{
 	p1, p2, p3 := vertices[t1.Indices[0]], vertices[t1.Indices[1]], vertices[t1.Indices[2]]
 	q1, q2, q3 := vertices[t2.Indices[0]], vertices[t2.Indices[1]], vertices[t2.Indices[2]]
-	c1 := math_utility.VecDivide(math_utility.VecAdd(math_utility.VecAdd(p1, p2), p3), 3)
-	c2 := math_utility.VecDivide(math_utility.VecAdd(math_utility.VecAdd(q1, q2), q3), 3)
-	return math_utility.VecDist(c1, c2)
+	c1 := math1.VecDivide(math1.VecAdd(math1.VecAdd(p1, p2), p3), 3)
+	c2 := math1.VecDivide(math1.VecAdd(math1.VecAdd(q1, q2), q3), 3)
+	return math1.VecDist(c1, c2)
 }
 
 type NavMeshEdge struct{
@@ -48,7 +48,7 @@ type NavMeshEdge struct{
 
 type NavMesh struct {
 	Triangles []*NavMeshTriangle
-	Vertices []math_utility.Vec2
+	Vertices []math1.Vec2
 }
 
 func get_hash_key(a int, b int) int64 {
@@ -58,7 +58,7 @@ func get_hash_key(a int, b int) int64 {
 	return int64(a) << 32 | int64(b)
 }
 
-func CreateNavMesh(vertices []math_utility.Vec2, indices []int, areas []int)  (*NavMesh, error){
+func CreateNavMesh(vertices []math1.Vec2, indices []int, areas []int)  (*NavMesh, error){
 	lenIndices := len(indices)
 	if lenIndices % 3 != 0{
 		return nil, NavMeshError("indeces count error")
@@ -123,14 +123,21 @@ func CreateNavMesh(vertices []math_utility.Vec2, indices []int, areas []int)  (*
 	return &NavMesh{Triangles:triangles, Vertices:vertices}, nil
 }
 
-func (this *NavMesh) GetTriangleByPoint(point math_utility.Vec2) *NavMeshTriangle {
+func (this *NavMesh) GetTriangleByPoint(point math1.Vec2) *NavMeshTriangle {
+	minDist := float32(1000)
+	var closetTri *NavMeshTriangle = nil
 	for _, t := range this.Triangles{
 		A, B, C := this.Vertices[t.Indices[0]], this.Vertices[t.Indices[1]], this.Vertices[t.Indices[2]]
-		if math_utility.PointInTriangle(A, B, C, point){
+		if math1.PointInTriangle(A, B, C, point){
 			return t
 		}
+		dist := math1.VecDist(point, t.Center)
+		if dist < minDist{
+			minDist = dist
+			closetTri = t
+		}
 	}
-	return nil
+	return closetTri
 }
 
 func GetNavMeshFromFile(path string) (*NavMesh, error){
@@ -159,12 +166,12 @@ func GetNavMeshFromFile(path string) (*NavMesh, error){
 	intBuf := make([]byte, 4)
 	floatBuf := make([]byte, 8)
 	vertLen := GetIntFromBytes(lenBuf)
-	vertices := make([]math_utility.Vec2, vertLen)
+	vertices := make([]math1.Vec2, vertLen)
 	for i := 0; i < vertLen; i++{
 		if err2 := readNbytes(8, floatBuf); err2 != nil{
 			return nil, err2
 		}
-		point := math_utility.Vec2{
+		point := math1.Vec2{
 			X:GetFloat32FromBytes(floatBuf[:4]),
 			Y:GetFloat32FromBytes(floatBuf[4:]),
 		}
@@ -206,4 +213,65 @@ func GetFloat32FromBytes(buf []byte)  float32{
 
 func GetIntFromBytes(bytes []byte)  int{
 	return (int(bytes[3]) << 24) | (int(bytes[2]) << 16) | (int(bytes[1]) << 8) | int(bytes[0])
+}
+
+func connected(t1 *NavMeshTriangle, t2 *NavMeshTriangle, commonVertIndex int, vertTbl []math1.Vec2)  (bool, int, int){
+	t1p := make([]int, 0, 2)
+	for _, p := range t1.Indices {
+		if p != commonVertIndex {
+			t1p = append(t1p, p)
+		}
+	}
+	t2p := make([]int, 0, 2)
+	for _, p := range t2.Indices {
+		if p != commonVertIndex {
+			t2p = append(t2p, p)
+		}
+	}
+	A := vertTbl[commonVertIndex]
+	BI := t1p[0]
+	CI := t1p[1]
+	DI := t2p[0]
+	EI := t2p[1]
+	AB := math1.Vec2Minus(vertTbl[BI], A)
+	AC := math1.Vec2Minus(vertTbl[CI], A)
+	AD := math1.Vec2Minus(vertTbl[DI], A)
+	AE := math1.Vec2Minus(vertTbl[EI], A)
+	if math1.SameDir(AB, AD) {
+		if BI == DI {
+			return true, BI, BI
+		}
+		if AB.Magnitude() < AD.Magnitude() {
+			return true, BI, BI
+		}
+		return true, BI, DI
+	}
+	if math1.SameDir(AB, AE) {
+		if BI == EI {
+			return true, BI, BI
+		}
+		if AB.Magnitude() < AE.Magnitude() {
+			return true, BI, BI
+		}
+		return true, BI, EI
+	}
+	if math1.SameDir(AC, AD) {
+		if CI == DI {
+			return true, CI, CI
+		}
+		if AC.Magnitude() < AD.Magnitude() {
+			return true, CI, CI
+		}
+		return true, CI, DI
+	}
+	if math1.SameDir(AC, AE){
+		if CI == EI {
+			return true, CI, CI
+		}
+		if AC.Magnitude() < AE.Magnitude() {
+			return true, CI, CI
+		}
+		return true, CI, EI
+	}
+	return false, - 1, -1
 }
