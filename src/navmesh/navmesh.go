@@ -100,7 +100,7 @@ func CreateNavMesh(vertices []math_utility.Vec2, indices []int, areas []int)  (*
 	for idx, tri := range triangles{
 		edges := make([]*NavMeshEdge, 0, 3)
 		i1, i2, i3 := tri.Indices[0], tri.Indices[1], tri.Indices[2]
-		fmt.Printf("%v ->", idx)
+		fmt.Printf("%v (%v, %v, %v) ->", idx, i1, i2, i3)
 		addEdge := func(idx1 int, idx2 int) {
 			key := get_hash_key(idx1, idx2)
 			for _, otherIdx := range tempMap[key]{

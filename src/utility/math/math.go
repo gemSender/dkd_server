@@ -46,5 +46,5 @@ func PBetweenABAC(A Vec2, B Vec2, C Vec2, P Vec2)  bool {
 	AP := Vec2Minus(P, A)
 	PB := Vec2Minus(B, P)
 	PC := Vec2Minus(C, P)
-	return Vec2CrossZ(AP, PB) * Vec2CrossZ(AP, PC) < 0
+	return Vec2CrossZ(AP, PB) * Vec2CrossZ(AP, PC) <= 0
 }
