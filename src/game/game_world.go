@@ -90,23 +90,37 @@ func (world *GameWorld)  OnPlayerStartPath(index int32, binData[] byte){
 	}
 	msgType := "PlayerStartPath"
 	packedMsg := messages.GenReplyMsg{Type:&msgType, Data:pushMsgBytes}
-	{
+	//{
 		start := math1.Vec2{X:*msg.Sx, Y:*msg.Sy}
 		end := math1.Vec2{X:*msg.Dx, Y:*msg.Dy}
 		path := world.pathFinder.FindPath(start, end)
 		if path != nil{
 			fmt.Println("find path: ")
 			for _, vert := range path{
-				fmt.Printf("(%v, %v) \n", vert.X, vert.Y)
+				fmt.Printf("(%v, %v)", vert.X, vert.Y)
 			}
-			fmt.Println()
 		}else{
 			fmt.Println("path not found")
 		}
-	}
+	//}
 	for key, val := range world.indexPlayerMap {
 		if key != index {
 			val.MsgChan <- packedMsg
+		}else {
+			vertices := make([]*messages.Vec2, len(path))
+			for i, v := range path {
+				X := v.X
+				Y := v.Y
+				vertices[i] = &messages.Vec2{X:&X, Y:&Y}
+			}
+			replyMsg := messages.StartPathReply{Vertices:vertices}
+			replyMsgBytes, err := proto.Marshal(&replyMsg)
+			if err != nil{
+				log.Panic(err)
+			}
+			repMsgType := "StartPathReply"
+			isReply := true
+			val.MsgChan <- messages.GenReplyMsg{Type:&repMsgType, IsReply:&isReply, Data:replyMsgBytes}
 		}
 	}
 }

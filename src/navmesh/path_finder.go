@@ -70,6 +70,12 @@ func (this *PathFinder) FindPath(start math.Vec2, end math.Vec2) []math.Vec2{
 		}
 		this.flag[nodeTriangle.ArrIndex] = InCloseList
 		for _, adjEdge := range nodeTriangle.Adjs{
+			var fromPos math.Vec2
+			if node.preNode == nil{
+				fromPos = start
+			}else {
+				fromPos = node.edge.Center
+			}
 			adjTri := adjEdge.Next
 			if adjTri.Area != Area_Walkable{
 				continue
@@ -77,18 +83,21 @@ func (this *PathFinder) FindPath(start math.Vec2, end math.Vec2) []math.Vec2{
 			switch this.flag[adjTri.ArrIndex] {
 			case Unchecked:
 				this.flag[adjTri.ArrIndex] = InOpenList
-				newNode := &PathNode{cost: node.cost + adjEdge.Cost, preNode:node, point:adjTri.Center, edge:adjEdge ,degree:node.degree + 1}
+				addCost, nodePoint := this.mesh.DistPosToEdge(fromPos, adjEdge)
+				newNode := &PathNode{cost: node.cost + addCost, preNode:node, point:nodePoint, edge:adjEdge ,degree:node.degree + 1}
 				heap.Push(this.openList, newNode)
 			case InOpenList:
 				index, oldNodeI := this.openList.Find(func(item interface{}) bool{
 					return item.(*PathNode).edge.Next == adjTri
 				})
 				oldNode := oldNodeI.(*PathNode)
-				compareCost := node.cost + adjEdge.Cost
+				addCost, nodePoint := this.mesh.DistPosToEdge(fromPos, adjEdge)
+				compareCost := node.cost + addCost
 				if compareCost < oldNode.cost {
 					oldNode.preNode = node
 					oldNode.cost = compareCost
 					oldNode.edge = adjEdge
+					oldNode.point = nodePoint
 					oldNode.degree = node.degree + 1
 				}
 				this.openList.SetByIndex(index, oldNode)

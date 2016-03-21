@@ -40,15 +40,21 @@ func dist(t1 *NavMeshTriangle, t2 *NavMeshTriangle, vertices []math1.Vec2) float
 }
 
 type NavMeshEdge struct{
-	Cost float32
+	Center math1.Vec2
 	Next *NavMeshTriangle
 	vertices [2]int
 }
 
 
+
 type NavMesh struct {
 	Triangles []*NavMeshTriangle
 	Vertices []math1.Vec2
+}
+
+func (this *NavMesh) DistPosToEdge(P math1.Vec2, edge *NavMeshEdge) (float32, math1.Vec2){
+	A, B := this.Vertices[edge.vertices[0]], this.Vertices[edge.vertices[1]]
+	return math1.DistPointToSegment(A, B, P)
 }
 
 func get_hash_key(a int, b int) int64 {
@@ -66,13 +72,6 @@ func CreateNavMesh(vertices []math1.Vec2, indices []int, areas []int)  (*NavMesh
 	triCount := lenIndices / 3
 	triangles := make([]*NavMeshTriangle, triCount)
 	tempMap := make(map[int64][]int)
-	for i:=0; i < len(vertices); i++{
-		for j:= i+1; j < len(vertices); j++{
-			if(vertices[i] == vertices[j]){
-				fmt.Printf("same vertex, %v: %v, %v: %v\n", i, vertices[i], j, vertices[j])
-			}
-		}
-	}
 	addIndex := func(idx1 int, idx2 int, tIndex int) {
 		key := get_hash_key(idx1, idx2)
 		switch v := tempMap[key] ; v{
@@ -106,8 +105,7 @@ func CreateNavMesh(vertices []math1.Vec2, indices []int, areas []int)  (*NavMesh
 			for _, otherIdx := range tempMap[key]{
 				if otherIdx != idx{
 					adjTri := triangles[otherIdx]
-					cost := dist(tri, adjTri, vertices)
-					edge := &NavMeshEdge{Cost:cost, Next:adjTri}
+					edge := &NavMeshEdge{Center:math1.VecDivide(math1.VecAdd(vertices[idx1], vertices[idx2]), 2), Next:adjTri}
 					edge.vertices[0], edge.vertices[1] = idx1, idx2
 					edges = append(edges, edge)
 					fmt.Printf(" %v", otherIdx)
