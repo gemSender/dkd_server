@@ -7,6 +7,10 @@ type Vec2 struct {
 	Y float32
 }
 
+type GenSegment interface {
+	GetStartPoint([]Vec2) Vec2
+	GetEndPoint([]Vec2) Vec2
+}
 
 func VecAdd(v1 Vec2, v2 Vec2)  Vec2{
 	return Vec2{X:v1.X + v2.X, Y:v1.Y + v2.Y}
@@ -38,10 +42,19 @@ func Vec2Dot(v1 Vec2, v2 Vec2)  float32{
 	return  v1.X * v2.X + v1.Y * v2.Y
 }
 
-type Line2d struct {
+type Segment struct {
 	Start Vec2
 	End Vec2
 }
+
+func (this *Segment) GetStartPoint(vertTable []Vec2) Vec2 {
+	return this.Start
+}
+
+func (this *Segment) GetEndPoint(vertTable []Vec2) Vec2 {
+	return this.End
+}
+
 func  PointInTriangle(A Vec2, B Vec2, C Vec2, P Vec2) bool{
 	return PBetweenABAC(A, B, C, P) && PBetweenABAC(B, C, A, P) && PBetweenABAC(C, A, B, P);
 }
@@ -62,7 +75,7 @@ func (v Vec2) Normalized()  Vec2{
 }
 
 func SameDir(v1 Vec2, v2 Vec2)  bool{
-	return Vec2Dot(v1, v2) > 0 && math.Abs(float64(Vec2CrossZ(v1, v2))) / float64(v1.Magnitude() * v2.Magnitude()) < 0.0000001
+	return Vec2Dot(v1, v2) > 0 && math.Abs(float64(Vec2CrossZ(v1, v2))) / float64(v1.Magnitude() * v2.Magnitude()) < 0.001
 }
 
 func DistPointToSegment(A Vec2, B Vec2, P Vec2) (float32, Vec2){

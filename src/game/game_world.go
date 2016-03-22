@@ -93,12 +93,12 @@ func (world *GameWorld)  OnPlayerStartPath(index int32, binData[] byte){
 	//{
 		start := math1.Vec2{X:*msg.Sx, Y:*msg.Sy}
 		end := math1.Vec2{X:*msg.Dx, Y:*msg.Dy}
-		path := world.pathFinder.FindPath(start, end)
+		path, edges := world.pathFinder.FindPath(start, end)
 		if path != nil{
-			fmt.Println("find path: ")
-			for _, vert := range path{
-				fmt.Printf("(%v, %v)", vert.X, vert.Y)
-			}
+			//fmt.Println("find path: ")
+			//for _, vert := range path{
+			//	fmt.Printf("(%v, %v)", vert.X, vert.Y)
+			//}
 		}else{
 			fmt.Println("path not found")
 		}
@@ -108,12 +108,18 @@ func (world *GameWorld)  OnPlayerStartPath(index int32, binData[] byte){
 			val.MsgChan <- packedMsg
 		}else {
 			vertices := make([]*messages.Vec2, len(path))
+			replyEdges := make([]*messages.Segment, len(edges))
 			for i, v := range path {
 				X := v.X
 				Y := v.Y
 				vertices[i] = &messages.Vec2{X:&X, Y:&Y}
 			}
-			replyMsg := messages.StartPathReply{Vertices:vertices}
+			for i, e := range edges  {
+				start := e.GetStartPoint(world.pathFinder.Mesh.Vertices)
+				end := e.GetEndPoint(world.pathFinder.Mesh.Vertices)
+				replyEdges[i] = &messages.Segment{Start:&messages.Vec2{X:&start.X, Y:&start.Y}, End:&messages.Vec2{X:&end.X, Y:&end.Y}}
+			}
+			replyMsg := messages.StartPathReply{Vertices:vertices, Edges:replyEdges}
 			replyMsgBytes, err := proto.Marshal(&replyMsg)
 			if err != nil{
 				log.Panic(err)

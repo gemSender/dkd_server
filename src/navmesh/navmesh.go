@@ -40,12 +40,18 @@ func dist(t1 *NavMeshTriangle, t2 *NavMeshTriangle, vertices []math1.Vec2) float
 }
 
 type NavMeshEdge struct{
-	Center math1.Vec2
-	Next *NavMeshTriangle
-	vertices [2]int
+	Center   math1.Vec2
+	Next     *NavMeshTriangle
+	Vertices [2]int
 }
 
+func (this *NavMeshEdge) GetStartPoint(vertTable []math1.Vec2) math1.Vec2 {
+	return vertTable[this.Vertices[0]]
+}
 
+func (this *NavMeshEdge) GetEndPoint(vertTable []math1.Vec2) math1.Vec2 {
+	return vertTable[this.Vertices[1]]
+}
 
 type NavMesh struct {
 	Triangles []*NavMeshTriangle
@@ -53,7 +59,7 @@ type NavMesh struct {
 }
 
 func (this *NavMesh) DistPosToEdge(P math1.Vec2, edge *NavMeshEdge) (float32, math1.Vec2){
-	A, B := this.Vertices[edge.vertices[0]], this.Vertices[edge.vertices[1]]
+	A, B := this.Vertices[edge.Vertices[0]], this.Vertices[edge.Vertices[1]]
 	return math1.DistPointToSegment(A, B, P)
 }
 
@@ -106,7 +112,7 @@ func CreateNavMesh(vertices []math1.Vec2, indices []int, areas []int)  (*NavMesh
 				if otherIdx != idx{
 					adjTri := triangles[otherIdx]
 					edge := &NavMeshEdge{Center:math1.VecDivide(math1.VecAdd(vertices[idx1], vertices[idx2]), 2), Next:adjTri}
-					edge.vertices[0], edge.vertices[1] = idx1, idx2
+					edge.Vertices[0], edge.Vertices[1] = idx1, idx2
 					edges = append(edges, edge)
 					fmt.Printf(" %v", otherIdx)
 				}
