@@ -75,7 +75,7 @@ func (v Vec2) Normalized()  Vec2{
 }
 
 func SameDir(v1 Vec2, v2 Vec2)  bool{
-	return Vec2Dot(v1, v2) > 0 && math.Abs(float64(Vec2CrossZ(v1, v2))) / float64(v1.Magnitude() * v2.Magnitude()) < 0.001
+	return Vec2Dot(v1, v2) > 0 && math.Abs(float64(Vec2CrossZ(v1, v2))) / float64(v1.Magnitude() * v2.Magnitude()) < 0.00001
 }
 
 func DistPointToSegment(A Vec2, B Vec2, P Vec2) (float32, Vec2){

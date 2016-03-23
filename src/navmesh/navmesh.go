@@ -77,17 +77,29 @@ func CreateNavMesh(vertices []math1.Vec2, indices []int, areas []int)  (*NavMesh
 	}
 	triCount := lenIndices / 3
 	triangles := make([]*NavMeshTriangle, triCount)
-	tempMap := make(map[int64][]int)
-	addIndex := func(idx1 int, idx2 int, tIndex int) {
-		key := get_hash_key(idx1, idx2)
-		switch v := tempMap[key] ; v{
+	//tempMap := make(map[int64][]int)
+	testTriMap := make(map[int][]int)
+	//addIndex := func(idx1 int, idx2 int, tIndex int) {
+	//	key := get_hash_key(idx1, idx2)
+	//	switch v := tempMap[key] ; v{
+	//	case nil:
+	//		v = make([]int, 0, 2)
+	//		v = append(v, tIndex)
+	//		tempMap[key] = v
+	//	default:
+	//		v = append(v, tIndex)
+	//		tempMap[key] = v
+	//	}
+	//}
+	addTestMapIndex := func(idx int, triIndex int) {
+		switch v:= testTriMap[idx]; v{
 		case nil:
-			v = make([]int, 0, 2)
-			v = append(v, tIndex)
-			tempMap[key] = v
+			v = make([]int, 0, 6)
+			v = append(v, triIndex)
+			testTriMap[idx] = v
 		default:
-			v = append(v, tIndex)
-			tempMap[key] = v
+			v = append(v, triIndex)
+			testTriMap[idx] = v
 		}
 	}
 	for i := 0; i < lenIndices; i += 3 {
@@ -97,30 +109,71 @@ func CreateNavMesh(vertices []math1.Vec2, indices []int, areas []int)  (*NavMesh
 		triItem.Indices[0], triItem.Indices[1], triItem.Indices[2] = i1, i2, i3
 		triItem.Area = areas[triIndex]
 		triItem.ArrIndex = triIndex
-		addIndex(i1, i2, triIndex)
-		addIndex(i1, i3, triIndex)
-		addIndex(i2, i3, triIndex)
+		//addIndex(i1, i2, triIndex)
+		//addIndex(i1, i3, triIndex)
+		//addIndex(i2, i3, triIndex)
+		addTestMapIndex(i1, triIndex)
+		addTestMapIndex(i2, triIndex)
+		addTestMapIndex(i3, triIndex)
 		triangles[triIndex] = &triItem
 	}
 	for idx, tri := range triangles{
 		edges := make([]*NavMeshEdge, 0, 3)
 		i1, i2, i3 := tri.Indices[0], tri.Indices[1], tri.Indices[2]
 		fmt.Printf("%v (%v, %v, %v) ->", idx, i1, i2, i3)
-		addEdge := func(idx1 int, idx2 int) {
-			key := get_hash_key(idx1, idx2)
-			for _, otherIdx := range tempMap[key]{
+		//addEdge := func(idx1 int, idx2 int) {
+		//	key := get_hash_key(idx1, idx2)
+		//	for _, otherIdx := range tempMap[key]{
+		//		if otherIdx != idx{
+		//			adjTri := triangles[otherIdx]
+		//			edge := &NavMeshEdge{Center:math1.VecDivide(math1.VecAdd(vertices[idx1], vertices[idx2]), 2), Next:adjTri}
+		//			edge.Vertices[0], edge.Vertices[1] = idx1, idx2
+		//			edges = append(edges, edge)
+		//			fmt.Printf(" %v", otherIdx)
+		//		}
+		//	}
+		//}
+		addEdge2 := func(vertIndex int) {
+			for _, otherIdx := range testTriMap[vertIndex]{
 				if otherIdx != idx{
+					checked := false
+					for _, e := range edges  {
+						if e.Next.ArrIndex == otherIdx{
+							checked = true
+							break
+						}
+					}
+					if checked {
+						continue
+					}
 					adjTri := triangles[otherIdx]
-					edge := &NavMeshEdge{Center:math1.VecDivide(math1.VecAdd(vertices[idx1], vertices[idx2]), 2), Next:adjTri}
-					edge.Vertices[0], edge.Vertices[1] = idx1, idx2
-					edges = append(edges, edge)
-					fmt.Printf(" %v", otherIdx)
+					isCon, vertIndex2, Other := connected(tri, adjTri, vertIndex, vertices)
+					if isCon {
+						edgeVert := [2]int{}
+						switch  [2]int{vertIndex, vertIndex2} {
+						case  [2]int{tri.Indices[0], tri.Indices[1]}:
+							fallthrough
+						case  [2]int{tri.Indices[1], tri.Indices[2]}:
+							fallthrough
+						case  [2]int{tri.Indices[2], tri.Indices[0]}:
+							edgeVert[0], edgeVert[1] = vertIndex, Other
+						default:
+							edgeVert[0], edgeVert[1] = Other, vertIndex
+						}
+						edge := &NavMeshEdge{Center:math1.VecDivide(math1.VecAdd(vertices[edgeVert[0]], vertices[edgeVert[1]]), 2), Next:adjTri}
+						edge.Vertices = edgeVert
+						edges = append(edges, edge)
+						fmt.Printf(" %v", otherIdx)
+					}
 				}
 			}
 		}
-		addEdge(i1, i2)
-		addEdge(i2, i3)
-		addEdge(i3, i1)
+		//addEdge(i1, i2)
+		//addEdge(i2, i3)
+		//addEdge(i3, i1)
+		addEdge2(i1)
+		addEdge2(i2)
+		addEdge2(i3)
 		fmt.Println()
 		tri.Adjs = edges
 	}
