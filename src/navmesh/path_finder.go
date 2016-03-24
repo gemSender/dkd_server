@@ -5,7 +5,8 @@ import (
 	"../utility/math"
 	"fmt"
 	"container/heap"
-	"log"
+	//"log"
+	"time"
 )
 
 const (
@@ -112,6 +113,8 @@ func (this *PathFinder) FindPath(start math.Vec2, end math.Vec2) ([]math.Vec2, [
 }
 
 func (this *PathFinder) GetVectices(start math.Vec2, end math.Vec2, edges []math.GenSegment) []math.Vec2{
+	time1 := time.Now().UnixNano()
+	defer fmt.Println("path search time: ", time.Now().UnixNano() - time1)
 	vertTable := this.Mesh.Vertices
 	vertices := make([]math.Vec2, 0, 32)
 	startPoint := start
@@ -127,11 +130,11 @@ func (this *PathFinder) GetVectices(start math.Vec2, end math.Vec2, edges []math
 		leftLineEndPointEdgeIndex, rightLinePointEdgeIndex := firstEdgeIndex, firstEdgeIndex
 		leftLineEndPoint, rightLineEndPoint = firstEdge.GetStartPoint(vertTable), firstEdge.GetEndPoint(vertTable)
 		if math.VecDist(startPoint, leftLineEndPoint) < 0.00001{
-			log.Println("skip edge ", leftLineEndPointEdgeIndex)
+			//log.Println("skip edge ", leftLineEndPointEdgeIndex)
 			firstEdgeIndex++
 			continue
 		} else if math.VecDist(startPoint, rightLineEndPoint) < 0.00001{
-			log.Println("skip edge ", rightLinePointEdgeIndex)
+			//log.Println("skip edge ", rightLinePointEdgeIndex)
 			firstEdgeIndex++
 			continue
 		}
@@ -148,17 +151,17 @@ func (this *PathFinder) GetVectices(start math.Vec2, end math.Vec2, edges []math
 					startPoint = leftLineEndPoint
 					vertices = append(vertices, startPoint)
 					firstEdgeIndex = leftLineEndPointEdgeIndex + 1
-					log.Println("startPoine set on edge for same dir", leftLineEndPointEdgeIndex)
+					//log.Println("startPoine set on edge for same dir", leftLineEndPointEdgeIndex)
 				}else {
 					startPoint = rightLineEndPoint
 					vertices = append(vertices, startPoint)
 					firstEdgeIndex = rightLinePointEdgeIndex + 1
-					log.Println("startPoine set on edge same dir", rightLinePointEdgeIndex)
+					//log.Println("startPoine set on edge same dir", rightLinePointEdgeIndex)
 				}
-				log.Println("check same dir ", leftLineEndPointEdgeIndex, " and ", rightLinePointEdgeIndex, " failed")
+				//log.Println("check same dir ", leftLineEndPointEdgeIndex, " and ", rightLinePointEdgeIndex, " failed")
 				break
 			}
-			log.Println("check same dir ", leftLineEndPointEdgeIndex, " and ", rightLinePointEdgeIndex, " pass(", leftLineEndPoint, ", ", rightLineEndPoint, ")")
+			//log.Println("check same dir ", leftLineEndPointEdgeIndex, " and ", rightLinePointEdgeIndex, " pass(", leftLineEndPoint, ", ", rightLineEndPoint, ")")
 			nextEdge := edges[nextEdgeIndex]
 			pl := nextEdge.GetStartPoint(vertTable)
 			pr := nextEdge.GetEndPoint(vertTable)
@@ -172,23 +175,23 @@ func (this *PathFinder) GetVectices(start math.Vec2, end math.Vec2, edges []math
 				startPoint = leftLineEndPoint
 				vertices = append(vertices, startPoint)
 				firstEdgeIndex = leftLineEndPointEdgeIndex + 1
-				log.Println("startPoine set on edge ", leftLineEndPointEdgeIndex)
+				//log.Println("startPoine set on edge ", leftLineEndPointEdgeIndex)
 				break
 			}else if math.Vec2CrossZ(v1, v5)  * math.Vec2CrossZ(rightLine, math.Vec2Minus(leftLineEndPoint, rightLineEndPoint)) > 0{
 				startPoint = rightLineEndPoint
 				vertices = append(vertices, startPoint)
 				firstEdgeIndex = rightLinePointEdgeIndex + 1
-				log.Println("startPoine set on edge ", rightLinePointEdgeIndex)
+				//log.Println("startPoine set on edge ", rightLinePointEdgeIndex)
 				break
 			}else {
 				templeftLineEndPoint := leftLineEndPoint
 				if math.Vec2CrossZ(v1, v3) * math.Vec2CrossZ(rightLine, math.Vec2Minus(leftLineEndPoint, rightLineEndPoint)) > 0{
-					log.Println("new leftline end point set on Edge ", nextEdgeIndex, " point is ", pl, " when left endpoint is ", leftLineEndPoint)
+					//log.Println("new leftline end point set on Edge ", nextEdgeIndex, " point is ", pl, " when left endpoint is ", leftLineEndPoint)
 					leftLineEndPoint = pl
 					leftLineEndPointEdgeIndex = nextEdgeIndex
 				}
 				if math.Vec2CrossZ(v2, v6) * math.Vec2CrossZ(leftLine, math.Vec2Minus(rightLineEndPoint, templeftLineEndPoint)) > 0{
-					log.Println("new rightline end point set on Edge ", nextEdgeIndex, " point is ", pr, " when right endpoint is ", rightLineEndPoint)
+					//log.Println("new rightline end point set on Edge ", nextEdgeIndex, " point is ", pr, " when right endpoint is ", rightLineEndPoint)
 					rightLineEndPoint = pr
 					rightLinePointEdgeIndex = nextEdgeIndex
 				}

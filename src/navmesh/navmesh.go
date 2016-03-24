@@ -7,6 +7,8 @@ import (
 	"encoding/binary"
 	"math"
 	"fmt"
+	"time"
+	"log"
 )
 
 const (
@@ -147,7 +149,7 @@ func CreateNavMesh(vertices []math1.Vec2, indices []int, areas []int)  (*NavMesh
 						continue
 					}
 					adjTri := triangles[otherIdx]
-					isCon, vertIndex2, Other := connected(tri, adjTri, vertIndex, vertices)
+					isCon, vertIndex2, Other := TrainConnected(tri, adjTri, vertIndex, vertices)
 					if isCon {
 						edgeVert := [2]int{}
 						switch  [2]int{vertIndex, vertIndex2} {
@@ -183,6 +185,8 @@ func CreateNavMesh(vertices []math1.Vec2, indices []int, areas []int)  (*NavMesh
 func (this *NavMesh) GetTriangleByPoint(point math1.Vec2) *NavMeshTriangle {
 	minDist := float32(1000)
 	var closetTri *NavMeshTriangle = nil
+	time1 := time.Now().UnixNano()
+	defer log.Println("triangle search time: ", time.Now().UnixNano(), "<-", time1)
 	for _, t := range this.Triangles{
 		A, B, C := this.Vertices[t.Indices[0]], this.Vertices[t.Indices[1]], this.Vertices[t.Indices[2]]
 		if math1.PointInTriangle(A, B, C, point){
@@ -272,7 +276,7 @@ func GetIntFromBytes(bytes []byte)  int{
 	return (int(bytes[3]) << 24) | (int(bytes[2]) << 16) | (int(bytes[1]) << 8) | int(bytes[0])
 }
 
-func connected(t1 *NavMeshTriangle, t2 *NavMeshTriangle, commonVertIndex int, vertTbl []math1.Vec2)  (bool, int, int){
+func TrainConnected(t1 *NavMeshTriangle, t2 *NavMeshTriangle, commonVertIndex int, vertTbl []math1.Vec2)  (bool, int, int){
 	t1p := make([]int, 0, 2)
 	for _, p := range t1.Indices {
 		if p != commonVertIndex {
