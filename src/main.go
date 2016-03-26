@@ -151,7 +151,7 @@ func start_listener(gameChan chan ClientMsg)  {
 	}
 }
 
-func start_game_looop(gameChan chan ClientMsg, dbCmdChan chan data_access.DBCommand, dbReplyChan chan data_access.DBOperationReply){
+func start_game_loop(gameChan chan ClientMsg, dbCmdChan chan data_access.DBCommand, dbReplyChan chan data_access.DBOperationReply){
 	go GameMainLoop(gameChan, dbCmdChan, dbReplyChan)
 }
 
@@ -160,6 +160,6 @@ func main(){
 	dbCmdChan := make(chan data_access.DBCommand, 1024)
 	dbReplyChan := make(chan data_access.DBOperationReply, 32)
 	start_database(dbCmdChan, dbReplyChan)
-	start_game_looop(gameChan, dbCmdChan, dbReplyChan)
+	start_game_loop(gameChan, dbCmdChan, dbReplyChan)
 	start_listener(gameChan)
 }
