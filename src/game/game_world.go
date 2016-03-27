@@ -12,8 +12,9 @@ import (
 	"fmt"
 	"../navmesh"
 	math1  "../utility/math"
+	"../box2d"
+	"../physis/b2Math"
 )
-
 
 
 type GameWorld struct{
@@ -26,6 +27,8 @@ type GameWorld struct{
 	nextPlayerIndex int32
 	scheduler scheduler.Scheduler
 	pathFinder 	*navmesh.PathFinder
+	phxWorld	Box2D.B2World
+	body		Box2D.B2Body
 }
 
 
@@ -50,7 +53,24 @@ func CreateWorld(dbCmdChan chan data_access.DBCommand) *GameWorld{
 	world.lastUpdateTime = GetTimeStampMs()
 	world.DBO = data_access.CreateOperatorObj(dbCmdChan)
 	world.scheduler = NewHeapScheduler(128)
+	world.InitPhysisWorld()
 	return world
+}
+
+func (world *GameWorld) InitPhysisWorld() {
+	world.phxWorld = Box2D.NewB2World(b2Math.Vec2{X:0, Y:-9})
+	bodyDef := Box2D.NewB2BodyDef()
+	bodyDef.SetPosition(b2Math.Vec2{X:0, Y:100})
+	body := world.phxWorld.CreateBody(bodyDef)
+	body.SetType(Box2D.B2_dynamicBody)
+	fixtDEf := Box2D.NewB2FixtureDef()
+	shape := Box2D.NewB2PolygonShape()
+	shape.SetAsBox(float32(10), float32(10))
+	fixtDEf.SetShape(shape)
+	fixtDEf.SetDensity(1)
+	fixtDEf.SetFriction(0.3)
+	body.CreateFixture(fixtDEf)
+	world.body = body
 }
 
 func (world *GameWorld) RemovePlayerByIndex(index int32) *PlayerState{
@@ -159,7 +179,10 @@ func (world *GameWorld) RegisterCallback(msgType string, callBack func (int32, [
 
 func (world *GameWorld) Update(now int64)  {
 	world.scheduler.TrySchedule()
-	world.lastUpdateTime = now;
+	world.lastUpdateTime = now
+	world.phxWorld.Step(0.03, 6, 2)
+	pos := b2Math.GetVec2FromSwigcptr(world.body.GetPosition().(Box2D.SwigcptrB2Vec2))
+	log.Println(" gravity: ", b2Math.GetVec2FromSwigcptr(world.phxWorld.GetGravity().(Box2D.SwigcptrB2Vec2))," bodypos: ", pos)
 }
 
 func (world *GameWorld) OnPlayerQuit(index int32)  {
