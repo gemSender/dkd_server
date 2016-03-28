@@ -13,15 +13,15 @@
 package Box2D
 
 /*
-#cgo LDFLAGS: -L../lib -lBox2D
+#cgo LDFLAGS: -lBox2D
 #define intgo swig_intgo
 typedef void *swig_voidp;
 
 #include <stdint.h>
 
 
-typedef int intgo;
-typedef unsigned int uintgo;
+typedef long long intgo;
+typedef unsigned long long uintgo;
 
 
 
@@ -30,913 +30,919 @@ typedef struct { void* array; intgo len; intgo cap; } _goslice_;
 
 
 typedef _gostring_ swig_type_1;
-extern void _wrap_Swig_free_Box2D_b1d1b47c7e81f80a(uintptr_t arg1);
-extern double _wrap_b2_angularSlop_Box2D_b1d1b47c7e81f80a(void);
-extern double _wrap_b2_polygonRadius_Box2D_b1d1b47c7e81f80a(void);
-extern double _wrap_b2_maxAngularCorrection_Box2D_b1d1b47c7e81f80a(void);
-extern double _wrap_b2_maxTranslationSquared_Box2D_b1d1b47c7e81f80a(void);
-extern double _wrap_b2_maxRotation_Box2D_b1d1b47c7e81f80a(void);
-extern double _wrap_b2_maxRotationSquared_Box2D_b1d1b47c7e81f80a(void);
-extern double _wrap_b2_angularSleepTolerance_Box2D_b1d1b47c7e81f80a(void);
-extern uintptr_t _wrap_b2Alloc_Box2D_b1d1b47c7e81f80a(swig_intgo arg1);
-extern void _wrap_b2Free_Box2D_b1d1b47c7e81f80a(uintptr_t arg1);
-extern void _wrap_b2Log_Box2D_b1d1b47c7e81f80a(swig_type_1 arg1);
-extern void _wrap_b2Version_major_set_Box2D_b1d1b47c7e81f80a(uintptr_t arg1, swig_intgo arg2);
-extern swig_intgo _wrap_b2Version_major_get_Box2D_b1d1b47c7e81f80a(uintptr_t arg1);
-extern void _wrap_b2Version_minor_set_Box2D_b1d1b47c7e81f80a(uintptr_t arg1, swig_intgo arg2);
-extern swig_intgo _wrap_b2Version_minor_get_Box2D_b1d1b47c7e81f80a(uintptr_t arg1);
-extern void _wrap_b2Version_revision_set_Box2D_b1d1b47c7e81f80a(uintptr_t arg1, swig_intgo arg2);
-extern swig_intgo _wrap_b2Version_revision_get_Box2D_b1d1b47c7e81f80a(uintptr_t arg1);
-extern uintptr_t _wrap_new_b2Version_Box2D_b1d1b47c7e81f80a(void);
-extern void _wrap_delete_b2Version_Box2D_b1d1b47c7e81f80a(uintptr_t arg1);
-extern void _wrap_b2_version_set_Box2D_b1d1b47c7e81f80a(uintptr_t arg1);
-extern uintptr_t _wrap_b2_version_get_Box2D_b1d1b47c7e81f80a(void);
-extern uintptr_t _wrap_new_b2Color__SWIG_0_Box2D_b1d1b47c7e81f80a(void);
-extern uintptr_t _wrap_new_b2Color__SWIG_1_Box2D_b1d1b47c7e81f80a(float arg1, float arg2, float arg3, float arg4);
-extern uintptr_t _wrap_new_b2Color__SWIG_2_Box2D_b1d1b47c7e81f80a(float arg1, float arg2, float arg3);
-extern void _wrap_b2Color_Set__SWIG_0_Box2D_b1d1b47c7e81f80a(uintptr_t arg1, float arg2, float arg3, float arg4, float arg5);
-extern void _wrap_b2Color_Set__SWIG_1_Box2D_b1d1b47c7e81f80a(uintptr_t arg1, float arg2, float arg3, float arg4);
-extern void _wrap_b2Color_r_set_Box2D_b1d1b47c7e81f80a(uintptr_t arg1, float arg2);
-extern float _wrap_b2Color_r_get_Box2D_b1d1b47c7e81f80a(uintptr_t arg1);
-extern void _wrap_b2Color_g_set_Box2D_b1d1b47c7e81f80a(uintptr_t arg1, float arg2);
-extern float _wrap_b2Color_g_get_Box2D_b1d1b47c7e81f80a(uintptr_t arg1);
-extern void _wrap_b2Color_b_set_Box2D_b1d1b47c7e81f80a(uintptr_t arg1, float arg2);
-extern float _wrap_b2Color_b_get_Box2D_b1d1b47c7e81f80a(uintptr_t arg1);
-extern void _wrap_b2Color_a_set_Box2D_b1d1b47c7e81f80a(uintptr_t arg1, float arg2);
-extern float _wrap_b2Color_a_get_Box2D_b1d1b47c7e81f80a(uintptr_t arg1);
-extern void _wrap_delete_b2Color_Box2D_b1d1b47c7e81f80a(uintptr_t arg1);
-extern void _wrap_delete_b2Draw_Box2D_b1d1b47c7e81f80a(uintptr_t arg1);
-extern swig_intgo _wrap_e_shapeBit_b2Draw_Box2D_b1d1b47c7e81f80a(void);
-extern swig_intgo _wrap_e_jointBit_b2Draw_Box2D_b1d1b47c7e81f80a(void);
-extern swig_intgo _wrap_e_aabbBit_b2Draw_Box2D_b1d1b47c7e81f80a(void);
-extern swig_intgo _wrap_e_pairBit_b2Draw_Box2D_b1d1b47c7e81f80a(void);
-extern swig_intgo _wrap_e_centerOfMassBit_b2Draw_Box2D_b1d1b47c7e81f80a(void);
-extern void _wrap_b2Draw_SetFlags_Box2D_b1d1b47c7e81f80a(uintptr_t arg1, swig_intgo arg2);
-extern swig_intgo _wrap_b2Draw_GetFlags_Box2D_b1d1b47c7e81f80a(uintptr_t arg1);
-extern void _wrap_b2Draw_AppendFlags_Box2D_b1d1b47c7e81f80a(uintptr_t arg1, swig_intgo arg2);
-extern void _wrap_b2Draw_ClearFlags_Box2D_b1d1b47c7e81f80a(uintptr_t arg1, swig_intgo arg2);
-extern void _wrap_b2Draw_DrawPolygon_Box2D_b1d1b47c7e81f80a(uintptr_t arg1, uintptr_t arg2, swig_intgo arg3, uintptr_t arg4);
-extern void _wrap_b2Draw_DrawSolidPolygon_Box2D_b1d1b47c7e81f80a(uintptr_t arg1, uintptr_t arg2, swig_intgo arg3, uintptr_t arg4);
-extern void _wrap_b2Draw_DrawCircle_Box2D_b1d1b47c7e81f80a(uintptr_t arg1, uintptr_t arg2, float arg3, uintptr_t arg4);
-extern void _wrap_b2Draw_DrawSolidCircle_Box2D_b1d1b47c7e81f80a(uintptr_t arg1, uintptr_t arg2, float arg3, uintptr_t arg4, uintptr_t arg5);
-extern void _wrap_b2Draw_DrawSegment_Box2D_b1d1b47c7e81f80a(uintptr_t arg1, uintptr_t arg2, uintptr_t arg3, uintptr_t arg4);
-extern void _wrap_b2Draw_DrawTransform_Box2D_b1d1b47c7e81f80a(uintptr_t arg1, uintptr_t arg2);
-extern uintptr_t _wrap_new_b2Timer_Box2D_b1d1b47c7e81f80a(void);
-extern void _wrap_b2Timer_Reset_Box2D_b1d1b47c7e81f80a(uintptr_t arg1);
-extern float _wrap_b2Timer_GetMilliseconds_Box2D_b1d1b47c7e81f80a(uintptr_t arg1);
-extern void _wrap_delete_b2Timer_Box2D_b1d1b47c7e81f80a(uintptr_t arg1);
-extern uintptr_t _wrap_new_b2CircleShape_Box2D_b1d1b47c7e81f80a(void);
-extern uintptr_t _wrap_b2CircleShape_Clone_Box2D_b1d1b47c7e81f80a(uintptr_t arg1, uintptr_t arg2);
-extern swig_intgo _wrap_b2CircleShape_GetChildCount_Box2D_b1d1b47c7e81f80a(uintptr_t arg1);
-extern _Bool _wrap_b2CircleShape_TestPoint_Box2D_b1d1b47c7e81f80a(uintptr_t arg1, uintptr_t arg2, uintptr_t arg3);
-extern _Bool _wrap_b2CircleShape_RayCast_Box2D_b1d1b47c7e81f80a(uintptr_t arg1, uintptr_t arg2, uintptr_t arg3, uintptr_t arg4, swig_intgo arg5);
-extern void _wrap_b2CircleShape_ComputeAABB_Box2D_b1d1b47c7e81f80a(uintptr_t arg1, uintptr_t arg2, uintptr_t arg3, swig_intgo arg4);
-extern void _wrap_b2CircleShape_ComputeMass_Box2D_b1d1b47c7e81f80a(uintptr_t arg1, uintptr_t arg2, float arg3);
-extern swig_intgo _wrap_b2CircleShape_GetSupport_Box2D_b1d1b47c7e81f80a(uintptr_t arg1, uintptr_t arg2);
-extern uintptr_t _wrap_b2CircleShape_GetSupportVertex_Box2D_b1d1b47c7e81f80a(uintptr_t arg1, uintptr_t arg2);
-extern swig_intgo _wrap_b2CircleShape_GetVertexCount_Box2D_b1d1b47c7e81f80a(uintptr_t arg1);
-extern uintptr_t _wrap_b2CircleShape_GetVertex_Box2D_b1d1b47c7e81f80a(uintptr_t arg1, swig_intgo arg2);
-extern void _wrap_b2CircleShape_m_p_set_Box2D_b1d1b47c7e81f80a(uintptr_t arg1, uintptr_t arg2);
-extern uintptr_t _wrap_b2CircleShape_m_p_get_Box2D_b1d1b47c7e81f80a(uintptr_t arg1);
-extern void _wrap_delete_b2CircleShape_Box2D_b1d1b47c7e81f80a(uintptr_t arg1);
-extern uintptr_t _wrap_new_b2EdgeShape_Box2D_b1d1b47c7e81f80a(void);
-extern void _wrap_b2EdgeShape_Set_Box2D_b1d1b47c7e81f80a(uintptr_t arg1, uintptr_t arg2, uintptr_t arg3);
-extern uintptr_t _wrap_b2EdgeShape_Clone_Box2D_b1d1b47c7e81f80a(uintptr_t arg1, uintptr_t arg2);
-extern swig_intgo _wrap_b2EdgeShape_GetChildCount_Box2D_b1d1b47c7e81f80a(uintptr_t arg1);
-extern _Bool _wrap_b2EdgeShape_TestPoint_Box2D_b1d1b47c7e81f80a(uintptr_t arg1, uintptr_t arg2, uintptr_t arg3);
-extern _Bool _wrap_b2EdgeShape_RayCast_Box2D_b1d1b47c7e81f80a(uintptr_t arg1, uintptr_t arg2, uintptr_t arg3, uintptr_t arg4, swig_intgo arg5);
-extern void _wrap_b2EdgeShape_ComputeAABB_Box2D_b1d1b47c7e81f80a(uintptr_t arg1, uintptr_t arg2, uintptr_t arg3, swig_intgo arg4);
-extern void _wrap_b2EdgeShape_ComputeMass_Box2D_b1d1b47c7e81f80a(uintptr_t arg1, uintptr_t arg2, float arg3);
-extern void _wrap_b2EdgeShape_m_vertex1_set_Box2D_b1d1b47c7e81f80a(uintptr_t arg1, uintptr_t arg2);
-extern uintptr_t _wrap_b2EdgeShape_m_vertex1_get_Box2D_b1d1b47c7e81f80a(uintptr_t arg1);
-extern void _wrap_b2EdgeShape_m_vertex2_set_Box2D_b1d1b47c7e81f80a(uintptr_t arg1, uintptr_t arg2);
-extern uintptr_t _wrap_b2EdgeShape_m_vertex2_get_Box2D_b1d1b47c7e81f80a(uintptr_t arg1);
-extern void _wrap_b2EdgeShape_m_vertex0_set_Box2D_b1d1b47c7e81f80a(uintptr_t arg1, uintptr_t arg2);
-extern uintptr_t _wrap_b2EdgeShape_m_vertex0_get_Box2D_b1d1b47c7e81f80a(uintptr_t arg1);
-extern void _wrap_b2EdgeShape_m_vertex3_set_Box2D_b1d1b47c7e81f80a(uintptr_t arg1, uintptr_t arg2);
-extern uintptr_t _wrap_b2EdgeShape_m_vertex3_get_Box2D_b1d1b47c7e81f80a(uintptr_t arg1);
-extern void _wrap_b2EdgeShape_m_hasVertex0_set_Box2D_b1d1b47c7e81f80a(uintptr_t arg1, _Bool arg2);
-extern _Bool _wrap_b2EdgeShape_m_hasVertex0_get_Box2D_b1d1b47c7e81f80a(uintptr_t arg1);
-extern void _wrap_b2EdgeShape_m_hasVertex3_set_Box2D_b1d1b47c7e81f80a(uintptr_t arg1, _Bool arg2);
-extern _Bool _wrap_b2EdgeShape_m_hasVertex3_get_Box2D_b1d1b47c7e81f80a(uintptr_t arg1);
-extern void _wrap_delete_b2EdgeShape_Box2D_b1d1b47c7e81f80a(uintptr_t arg1);
-extern uintptr_t _wrap_new_b2ChainShape_Box2D_b1d1b47c7e81f80a(void);
-extern void _wrap_delete_b2ChainShape_Box2D_b1d1b47c7e81f80a(uintptr_t arg1);
-extern void _wrap_b2ChainShape_Clear_Box2D_b1d1b47c7e81f80a(uintptr_t arg1);
-extern void _wrap_b2ChainShape_CreateLoop_Box2D_b1d1b47c7e81f80a(uintptr_t arg1, uintptr_t arg2, swig_intgo arg3);
-extern void _wrap_b2ChainShape_CreateChain_Box2D_b1d1b47c7e81f80a(uintptr_t arg1, uintptr_t arg2, swig_intgo arg3);
-extern void _wrap_b2ChainShape_SetPrevVertex_Box2D_b1d1b47c7e81f80a(uintptr_t arg1, uintptr_t arg2);
-extern void _wrap_b2ChainShape_SetNextVertex_Box2D_b1d1b47c7e81f80a(uintptr_t arg1, uintptr_t arg2);
-extern uintptr_t _wrap_b2ChainShape_Clone_Box2D_b1d1b47c7e81f80a(uintptr_t arg1, uintptr_t arg2);
-extern swig_intgo _wrap_b2ChainShape_GetChildCount_Box2D_b1d1b47c7e81f80a(uintptr_t arg1);
-extern void _wrap_b2ChainShape_GetChildEdge_Box2D_b1d1b47c7e81f80a(uintptr_t arg1, uintptr_t arg2, swig_intgo arg3);
-extern _Bool _wrap_b2ChainShape_TestPoint_Box2D_b1d1b47c7e81f80a(uintptr_t arg1, uintptr_t arg2, uintptr_t arg3);
-extern _Bool _wrap_b2ChainShape_RayCast_Box2D_b1d1b47c7e81f80a(uintptr_t arg1, uintptr_t arg2, uintptr_t arg3, uintptr_t arg4, swig_intgo arg5);
-extern void _wrap_b2ChainShape_ComputeAABB_Box2D_b1d1b47c7e81f80a(uintptr_t arg1, uintptr_t arg2, uintptr_t arg3, swig_intgo arg4);
-extern void _wrap_b2ChainShape_ComputeMass_Box2D_b1d1b47c7e81f80a(uintptr_t arg1, uintptr_t arg2, float arg3);
-extern void _wrap_b2ChainShape_m_vertices_set_Box2D_b1d1b47c7e81f80a(uintptr_t arg1, uintptr_t arg2);
-extern uintptr_t _wrap_b2ChainShape_m_vertices_get_Box2D_b1d1b47c7e81f80a(uintptr_t arg1);
-extern void _wrap_b2ChainShape_m_count_set_Box2D_b1d1b47c7e81f80a(uintptr_t arg1, swig_intgo arg2);
-extern swig_intgo _wrap_b2ChainShape_m_count_get_Box2D_b1d1b47c7e81f80a(uintptr_t arg1);
-extern void _wrap_b2ChainShape_m_prevVertex_set_Box2D_b1d1b47c7e81f80a(uintptr_t arg1, uintptr_t arg2);
-extern uintptr_t _wrap_b2ChainShape_m_prevVertex_get_Box2D_b1d1b47c7e81f80a(uintptr_t arg1);
-extern void _wrap_b2ChainShape_m_nextVertex_set_Box2D_b1d1b47c7e81f80a(uintptr_t arg1, uintptr_t arg2);
-extern uintptr_t _wrap_b2ChainShape_m_nextVertex_get_Box2D_b1d1b47c7e81f80a(uintptr_t arg1);
-extern void _wrap_b2ChainShape_m_hasPrevVertex_set_Box2D_b1d1b47c7e81f80a(uintptr_t arg1, _Bool arg2);
-extern _Bool _wrap_b2ChainShape_m_hasPrevVertex_get_Box2D_b1d1b47c7e81f80a(uintptr_t arg1);
-extern void _wrap_b2ChainShape_m_hasNextVertex_set_Box2D_b1d1b47c7e81f80a(uintptr_t arg1, _Bool arg2);
-extern _Bool _wrap_b2ChainShape_m_hasNextVertex_get_Box2D_b1d1b47c7e81f80a(uintptr_t arg1);
-extern uintptr_t _wrap_new_b2PolygonShape_Box2D_b1d1b47c7e81f80a(void);
-extern uintptr_t _wrap_b2PolygonShape_Clone_Box2D_b1d1b47c7e81f80a(uintptr_t arg1, uintptr_t arg2);
-extern swig_intgo _wrap_b2PolygonShape_GetChildCount_Box2D_b1d1b47c7e81f80a(uintptr_t arg1);
-extern void _wrap_b2PolygonShape_Set_Box2D_b1d1b47c7e81f80a(uintptr_t arg1, uintptr_t arg2, swig_intgo arg3);
-extern void _wrap_b2PolygonShape_SetAsBox__SWIG_0_Box2D_b1d1b47c7e81f80a(uintptr_t arg1, float arg2, float arg3);
-extern void _wrap_b2PolygonShape_SetAsBox__SWIG_1_Box2D_b1d1b47c7e81f80a(uintptr_t arg1, float arg2, float arg3, uintptr_t arg4, float arg5);
-extern _Bool _wrap_b2PolygonShape_TestPoint_Box2D_b1d1b47c7e81f80a(uintptr_t arg1, uintptr_t arg2, uintptr_t arg3);
-extern _Bool _wrap_b2PolygonShape_RayCast_Box2D_b1d1b47c7e81f80a(uintptr_t arg1, uintptr_t arg2, uintptr_t arg3, uintptr_t arg4, swig_intgo arg5);
-extern void _wrap_b2PolygonShape_ComputeAABB_Box2D_b1d1b47c7e81f80a(uintptr_t arg1, uintptr_t arg2, uintptr_t arg3, swig_intgo arg4);
-extern void _wrap_b2PolygonShape_ComputeMass_Box2D_b1d1b47c7e81f80a(uintptr_t arg1, uintptr_t arg2, float arg3);
-extern swig_intgo _wrap_b2PolygonShape_GetVertexCount_Box2D_b1d1b47c7e81f80a(uintptr_t arg1);
-extern uintptr_t _wrap_b2PolygonShape_GetVertex_Box2D_b1d1b47c7e81f80a(uintptr_t arg1, swig_intgo arg2);
-extern _Bool _wrap_b2PolygonShape_Validate_Box2D_b1d1b47c7e81f80a(uintptr_t arg1);
-extern void _wrap_b2PolygonShape_m_centroid_set_Box2D_b1d1b47c7e81f80a(uintptr_t arg1, uintptr_t arg2);
-extern uintptr_t _wrap_b2PolygonShape_m_centroid_get_Box2D_b1d1b47c7e81f80a(uintptr_t arg1);
-extern void _wrap_b2PolygonShape_m_vertices_set_Box2D_b1d1b47c7e81f80a(uintptr_t arg1, uintptr_t arg2);
-extern uintptr_t _wrap_b2PolygonShape_m_vertices_get_Box2D_b1d1b47c7e81f80a(uintptr_t arg1);
-extern void _wrap_b2PolygonShape_m_normals_set_Box2D_b1d1b47c7e81f80a(uintptr_t arg1, uintptr_t arg2);
-extern uintptr_t _wrap_b2PolygonShape_m_normals_get_Box2D_b1d1b47c7e81f80a(uintptr_t arg1);
-extern void _wrap_b2PolygonShape_m_count_set_Box2D_b1d1b47c7e81f80a(uintptr_t arg1, swig_intgo arg2);
-extern swig_intgo _wrap_b2PolygonShape_m_count_get_Box2D_b1d1b47c7e81f80a(uintptr_t arg1);
-extern void _wrap_delete_b2PolygonShape_Box2D_b1d1b47c7e81f80a(uintptr_t arg1);
-extern void _wrap_b2Pair_proxyIdA_set_Box2D_b1d1b47c7e81f80a(uintptr_t arg1, swig_intgo arg2);
-extern swig_intgo _wrap_b2Pair_proxyIdA_get_Box2D_b1d1b47c7e81f80a(uintptr_t arg1);
-extern void _wrap_b2Pair_proxyIdB_set_Box2D_b1d1b47c7e81f80a(uintptr_t arg1, swig_intgo arg2);
-extern swig_intgo _wrap_b2Pair_proxyIdB_get_Box2D_b1d1b47c7e81f80a(uintptr_t arg1);
-extern uintptr_t _wrap_new_b2Pair_Box2D_b1d1b47c7e81f80a(void);
-extern void _wrap_delete_b2Pair_Box2D_b1d1b47c7e81f80a(uintptr_t arg1);
-extern swig_intgo _wrap_e_nullProxy_b2BroadPhase_Box2D_b1d1b47c7e81f80a(void);
-extern uintptr_t _wrap_new_b2BroadPhase_Box2D_b1d1b47c7e81f80a(void);
-extern void _wrap_delete_b2BroadPhase_Box2D_b1d1b47c7e81f80a(uintptr_t arg1);
-extern swig_intgo _wrap_b2BroadPhase_CreateProxy_Box2D_b1d1b47c7e81f80a(uintptr_t arg1, uintptr_t arg2, uintptr_t arg3);
-extern void _wrap_b2BroadPhase_DestroyProxy_Box2D_b1d1b47c7e81f80a(uintptr_t arg1, swig_intgo arg2);
-extern void _wrap_b2BroadPhase_MoveProxy_Box2D_b1d1b47c7e81f80a(uintptr_t arg1, swig_intgo arg2, uintptr_t arg3, uintptr_t arg4);
-extern void _wrap_b2BroadPhase_TouchProxy_Box2D_b1d1b47c7e81f80a(uintptr_t arg1, swig_intgo arg2);
-extern uintptr_t _wrap_b2BroadPhase_GetFatAABB_Box2D_b1d1b47c7e81f80a(uintptr_t arg1, swig_intgo arg2);
-extern uintptr_t _wrap_b2BroadPhase_GetUserData_Box2D_b1d1b47c7e81f80a(uintptr_t arg1, swig_intgo arg2);
-extern _Bool _wrap_b2BroadPhase_TestOverlap_Box2D_b1d1b47c7e81f80a(uintptr_t arg1, swig_intgo arg2, swig_intgo arg3);
-extern swig_intgo _wrap_b2BroadPhase_GetProxyCount_Box2D_b1d1b47c7e81f80a(uintptr_t arg1);
-extern swig_intgo _wrap_b2BroadPhase_GetTreeHeight_Box2D_b1d1b47c7e81f80a(uintptr_t arg1);
-extern swig_intgo _wrap_b2BroadPhase_GetTreeBalance_Box2D_b1d1b47c7e81f80a(uintptr_t arg1);
-extern float _wrap_b2BroadPhase_GetTreeQuality_Box2D_b1d1b47c7e81f80a(uintptr_t arg1);
-extern void _wrap_b2BroadPhase_ShiftOrigin_Box2D_b1d1b47c7e81f80a(uintptr_t arg1, uintptr_t arg2);
-extern _Bool _wrap_b2PairLessThan_Box2D_b1d1b47c7e81f80a(uintptr_t arg1, uintptr_t arg2);
-extern uintptr_t _wrap_new_b2DistanceProxy_Box2D_b1d1b47c7e81f80a(void);
-extern void _wrap_b2DistanceProxy_Set_Box2D_b1d1b47c7e81f80a(uintptr_t arg1, uintptr_t arg2, swig_intgo arg3);
-extern swig_intgo _wrap_b2DistanceProxy_GetSupport_Box2D_b1d1b47c7e81f80a(uintptr_t arg1, uintptr_t arg2);
-extern uintptr_t _wrap_b2DistanceProxy_GetSupportVertex_Box2D_b1d1b47c7e81f80a(uintptr_t arg1, uintptr_t arg2);
-extern swig_intgo _wrap_b2DistanceProxy_GetVertexCount_Box2D_b1d1b47c7e81f80a(uintptr_t arg1);
-extern uintptr_t _wrap_b2DistanceProxy_GetVertex_Box2D_b1d1b47c7e81f80a(uintptr_t arg1, swig_intgo arg2);
-extern void _wrap_b2DistanceProxy_m_buffer_set_Box2D_b1d1b47c7e81f80a(uintptr_t arg1, uintptr_t arg2);
-extern uintptr_t _wrap_b2DistanceProxy_m_buffer_get_Box2D_b1d1b47c7e81f80a(uintptr_t arg1);
-extern void _wrap_b2DistanceProxy_m_vertices_set_Box2D_b1d1b47c7e81f80a(uintptr_t arg1, uintptr_t arg2);
-extern uintptr_t _wrap_b2DistanceProxy_m_vertices_get_Box2D_b1d1b47c7e81f80a(uintptr_t arg1);
-extern void _wrap_b2DistanceProxy_m_count_set_Box2D_b1d1b47c7e81f80a(uintptr_t arg1, swig_intgo arg2);
-extern swig_intgo _wrap_b2DistanceProxy_m_count_get_Box2D_b1d1b47c7e81f80a(uintptr_t arg1);
-extern void _wrap_b2DistanceProxy_m_radius_set_Box2D_b1d1b47c7e81f80a(uintptr_t arg1, float arg2);
-extern float _wrap_b2DistanceProxy_m_radius_get_Box2D_b1d1b47c7e81f80a(uintptr_t arg1);
-extern void _wrap_delete_b2DistanceProxy_Box2D_b1d1b47c7e81f80a(uintptr_t arg1);
-extern void _wrap_b2SimplexCache_metric_set_Box2D_b1d1b47c7e81f80a(uintptr_t arg1, float arg2);
-extern float _wrap_b2SimplexCache_metric_get_Box2D_b1d1b47c7e81f80a(uintptr_t arg1);
-extern void _wrap_b2SimplexCache_count_set_Box2D_b1d1b47c7e81f80a(uintptr_t arg1, short arg2);
-extern short _wrap_b2SimplexCache_count_get_Box2D_b1d1b47c7e81f80a(uintptr_t arg1);
-extern void _wrap_b2SimplexCache_indexA_set_Box2D_b1d1b47c7e81f80a(uintptr_t arg1, swig_voidp arg2);
-extern swig_voidp _wrap_b2SimplexCache_indexA_get_Box2D_b1d1b47c7e81f80a(uintptr_t arg1);
-extern void _wrap_b2SimplexCache_indexB_set_Box2D_b1d1b47c7e81f80a(uintptr_t arg1, swig_voidp arg2);
-extern swig_voidp _wrap_b2SimplexCache_indexB_get_Box2D_b1d1b47c7e81f80a(uintptr_t arg1);
-extern uintptr_t _wrap_new_b2SimplexCache_Box2D_b1d1b47c7e81f80a(void);
-extern void _wrap_delete_b2SimplexCache_Box2D_b1d1b47c7e81f80a(uintptr_t arg1);
-extern void _wrap_b2DistanceInput_proxyA_set_Box2D_b1d1b47c7e81f80a(uintptr_t arg1, uintptr_t arg2);
-extern uintptr_t _wrap_b2DistanceInput_proxyA_get_Box2D_b1d1b47c7e81f80a(uintptr_t arg1);
-extern void _wrap_b2DistanceInput_proxyB_set_Box2D_b1d1b47c7e81f80a(uintptr_t arg1, uintptr_t arg2);
-extern uintptr_t _wrap_b2DistanceInput_proxyB_get_Box2D_b1d1b47c7e81f80a(uintptr_t arg1);
-extern void _wrap_b2DistanceInput_transformA_set_Box2D_b1d1b47c7e81f80a(uintptr_t arg1, uintptr_t arg2);
-extern uintptr_t _wrap_b2DistanceInput_transformA_get_Box2D_b1d1b47c7e81f80a(uintptr_t arg1);
-extern void _wrap_b2DistanceInput_transformB_set_Box2D_b1d1b47c7e81f80a(uintptr_t arg1, uintptr_t arg2);
-extern uintptr_t _wrap_b2DistanceInput_transformB_get_Box2D_b1d1b47c7e81f80a(uintptr_t arg1);
-extern void _wrap_b2DistanceInput_useRadii_set_Box2D_b1d1b47c7e81f80a(uintptr_t arg1, _Bool arg2);
-extern _Bool _wrap_b2DistanceInput_useRadii_get_Box2D_b1d1b47c7e81f80a(uintptr_t arg1);
-extern uintptr_t _wrap_new_b2DistanceInput_Box2D_b1d1b47c7e81f80a(void);
-extern void _wrap_delete_b2DistanceInput_Box2D_b1d1b47c7e81f80a(uintptr_t arg1);
-extern void _wrap_b2DistanceOutput_pointA_set_Box2D_b1d1b47c7e81f80a(uintptr_t arg1, uintptr_t arg2);
-extern uintptr_t _wrap_b2DistanceOutput_pointA_get_Box2D_b1d1b47c7e81f80a(uintptr_t arg1);
-extern void _wrap_b2DistanceOutput_pointB_set_Box2D_b1d1b47c7e81f80a(uintptr_t arg1, uintptr_t arg2);
-extern uintptr_t _wrap_b2DistanceOutput_pointB_get_Box2D_b1d1b47c7e81f80a(uintptr_t arg1);
-extern void _wrap_b2DistanceOutput_distance_set_Box2D_b1d1b47c7e81f80a(uintptr_t arg1, float arg2);
-extern float _wrap_b2DistanceOutput_distance_get_Box2D_b1d1b47c7e81f80a(uintptr_t arg1);
-extern void _wrap_b2DistanceOutput_iterations_set_Box2D_b1d1b47c7e81f80a(uintptr_t arg1, swig_intgo arg2);
-extern swig_intgo _wrap_b2DistanceOutput_iterations_get_Box2D_b1d1b47c7e81f80a(uintptr_t arg1);
-extern uintptr_t _wrap_new_b2DistanceOutput_Box2D_b1d1b47c7e81f80a(void);
-extern void _wrap_delete_b2DistanceOutput_Box2D_b1d1b47c7e81f80a(uintptr_t arg1);
-extern void _wrap_b2Distance_Box2D_b1d1b47c7e81f80a(uintptr_t arg1, uintptr_t arg2, uintptr_t arg3);
-extern swig_intgo _wrap_b2_nullNode_Box2D_b1d1b47c7e81f80a(void);
-extern _Bool _wrap_b2TreeNode_IsLeaf_Box2D_b1d1b47c7e81f80a(uintptr_t arg1);
-extern void _wrap_b2TreeNode_aabb_set_Box2D_b1d1b47c7e81f80a(uintptr_t arg1, uintptr_t arg2);
-extern uintptr_t _wrap_b2TreeNode_aabb_get_Box2D_b1d1b47c7e81f80a(uintptr_t arg1);
-extern void _wrap_b2TreeNode_userData_set_Box2D_b1d1b47c7e81f80a(uintptr_t arg1, uintptr_t arg2);
-extern uintptr_t _wrap_b2TreeNode_userData_get_Box2D_b1d1b47c7e81f80a(uintptr_t arg1);
-extern void _wrap_b2TreeNode_child1_set_Box2D_b1d1b47c7e81f80a(uintptr_t arg1, swig_intgo arg2);
-extern swig_intgo _wrap_b2TreeNode_child1_get_Box2D_b1d1b47c7e81f80a(uintptr_t arg1);
-extern void _wrap_b2TreeNode_child2_set_Box2D_b1d1b47c7e81f80a(uintptr_t arg1, swig_intgo arg2);
-extern swig_intgo _wrap_b2TreeNode_child2_get_Box2D_b1d1b47c7e81f80a(uintptr_t arg1);
-extern void _wrap_b2TreeNode_height_set_Box2D_b1d1b47c7e81f80a(uintptr_t arg1, swig_intgo arg2);
-extern swig_intgo _wrap_b2TreeNode_height_get_Box2D_b1d1b47c7e81f80a(uintptr_t arg1);
-extern uintptr_t _wrap_new_b2TreeNode_Box2D_b1d1b47c7e81f80a(void);
-extern void _wrap_delete_b2TreeNode_Box2D_b1d1b47c7e81f80a(uintptr_t arg1);
-extern uintptr_t _wrap_new_b2DynamicTree_Box2D_b1d1b47c7e81f80a(void);
-extern void _wrap_delete_b2DynamicTree_Box2D_b1d1b47c7e81f80a(uintptr_t arg1);
-extern swig_intgo _wrap_b2DynamicTree_CreateProxy_Box2D_b1d1b47c7e81f80a(uintptr_t arg1, uintptr_t arg2, uintptr_t arg3);
-extern void _wrap_b2DynamicTree_DestroyProxy_Box2D_b1d1b47c7e81f80a(uintptr_t arg1, swig_intgo arg2);
-extern _Bool _wrap_b2DynamicTree_MoveProxy_Box2D_b1d1b47c7e81f80a(uintptr_t arg1, swig_intgo arg2, uintptr_t arg3, uintptr_t arg4);
-extern uintptr_t _wrap_b2DynamicTree_GetUserData_Box2D_b1d1b47c7e81f80a(uintptr_t arg1, swig_intgo arg2);
-extern uintptr_t _wrap_b2DynamicTree_GetFatAABB_Box2D_b1d1b47c7e81f80a(uintptr_t arg1, swig_intgo arg2);
-extern void _wrap_b2DynamicTree_Validate_Box2D_b1d1b47c7e81f80a(uintptr_t arg1);
-extern swig_intgo _wrap_b2DynamicTree_GetHeight_Box2D_b1d1b47c7e81f80a(uintptr_t arg1);
-extern swig_intgo _wrap_b2DynamicTree_GetMaxBalance_Box2D_b1d1b47c7e81f80a(uintptr_t arg1);
-extern float _wrap_b2DynamicTree_GetAreaRatio_Box2D_b1d1b47c7e81f80a(uintptr_t arg1);
-extern void _wrap_b2DynamicTree_RebuildBottomUp_Box2D_b1d1b47c7e81f80a(uintptr_t arg1);
-extern void _wrap_b2DynamicTree_ShiftOrigin_Box2D_b1d1b47c7e81f80a(uintptr_t arg1, uintptr_t arg2);
-extern void _wrap_b2TOIInput_proxyA_set_Box2D_b1d1b47c7e81f80a(uintptr_t arg1, uintptr_t arg2);
-extern uintptr_t _wrap_b2TOIInput_proxyA_get_Box2D_b1d1b47c7e81f80a(uintptr_t arg1);
-extern void _wrap_b2TOIInput_proxyB_set_Box2D_b1d1b47c7e81f80a(uintptr_t arg1, uintptr_t arg2);
-extern uintptr_t _wrap_b2TOIInput_proxyB_get_Box2D_b1d1b47c7e81f80a(uintptr_t arg1);
-extern void _wrap_b2TOIInput_sweepA_set_Box2D_b1d1b47c7e81f80a(uintptr_t arg1, uintptr_t arg2);
-extern uintptr_t _wrap_b2TOIInput_sweepA_get_Box2D_b1d1b47c7e81f80a(uintptr_t arg1);
-extern void _wrap_b2TOIInput_sweepB_set_Box2D_b1d1b47c7e81f80a(uintptr_t arg1, uintptr_t arg2);
-extern uintptr_t _wrap_b2TOIInput_sweepB_get_Box2D_b1d1b47c7e81f80a(uintptr_t arg1);
-extern void _wrap_b2TOIInput_tMax_set_Box2D_b1d1b47c7e81f80a(uintptr_t arg1, float arg2);
-extern float _wrap_b2TOIInput_tMax_get_Box2D_b1d1b47c7e81f80a(uintptr_t arg1);
-extern uintptr_t _wrap_new_b2TOIInput_Box2D_b1d1b47c7e81f80a(void);
-extern void _wrap_delete_b2TOIInput_Box2D_b1d1b47c7e81f80a(uintptr_t arg1);
-extern swig_intgo _wrap_e_unknown_b2TOIOutput_Box2D_b1d1b47c7e81f80a(void);
-extern swig_intgo _wrap_e_failed_b2TOIOutput_Box2D_b1d1b47c7e81f80a(void);
-extern swig_intgo _wrap_e_overlapped_b2TOIOutput_Box2D_b1d1b47c7e81f80a(void);
-extern swig_intgo _wrap_e_touching_b2TOIOutput_Box2D_b1d1b47c7e81f80a(void);
-extern swig_intgo _wrap_e_separated_b2TOIOutput_Box2D_b1d1b47c7e81f80a(void);
-extern void _wrap_b2TOIOutput_state_set_Box2D_b1d1b47c7e81f80a(uintptr_t arg1, swig_intgo arg2);
-extern swig_intgo _wrap_b2TOIOutput_state_get_Box2D_b1d1b47c7e81f80a(uintptr_t arg1);
-extern void _wrap_b2TOIOutput_t_set_Box2D_b1d1b47c7e81f80a(uintptr_t arg1, float arg2);
-extern float _wrap_b2TOIOutput_t_get_Box2D_b1d1b47c7e81f80a(uintptr_t arg1);
-extern uintptr_t _wrap_new_b2TOIOutput_Box2D_b1d1b47c7e81f80a(void);
-extern void _wrap_delete_b2TOIOutput_Box2D_b1d1b47c7e81f80a(uintptr_t arg1);
-extern void _wrap_b2TimeOfImpact_Box2D_b1d1b47c7e81f80a(uintptr_t arg1, uintptr_t arg2);
-extern swig_intgo _wrap_b2_staticBody_Box2D_b1d1b47c7e81f80a(void);
-extern swig_intgo _wrap_b2_kinematicBody_Box2D_b1d1b47c7e81f80a(void);
-extern swig_intgo _wrap_b2_dynamicBody_Box2D_b1d1b47c7e81f80a(void);
-extern uintptr_t _wrap_new_b2BodyDef_Box2D_b1d1b47c7e81f80a(void);
-extern void _wrap_b2BodyDef_Xtype_set_Box2D_b1d1b47c7e81f80a(uintptr_t arg1, swig_intgo arg2);
-extern swig_intgo _wrap_b2BodyDef_Xtype_get_Box2D_b1d1b47c7e81f80a(uintptr_t arg1);
-extern void _wrap_b2BodyDef_position_set_Box2D_b1d1b47c7e81f80a(uintptr_t arg1, uintptr_t arg2);
-extern uintptr_t _wrap_b2BodyDef_position_get_Box2D_b1d1b47c7e81f80a(uintptr_t arg1);
-extern void _wrap_b2BodyDef_angle_set_Box2D_b1d1b47c7e81f80a(uintptr_t arg1, float arg2);
-extern float _wrap_b2BodyDef_angle_get_Box2D_b1d1b47c7e81f80a(uintptr_t arg1);
-extern void _wrap_b2BodyDef_linearVelocity_set_Box2D_b1d1b47c7e81f80a(uintptr_t arg1, uintptr_t arg2);
-extern uintptr_t _wrap_b2BodyDef_linearVelocity_get_Box2D_b1d1b47c7e81f80a(uintptr_t arg1);
-extern void _wrap_b2BodyDef_angularVelocity_set_Box2D_b1d1b47c7e81f80a(uintptr_t arg1, float arg2);
-extern float _wrap_b2BodyDef_angularVelocity_get_Box2D_b1d1b47c7e81f80a(uintptr_t arg1);
-extern void _wrap_b2BodyDef_linearDamping_set_Box2D_b1d1b47c7e81f80a(uintptr_t arg1, float arg2);
-extern float _wrap_b2BodyDef_linearDamping_get_Box2D_b1d1b47c7e81f80a(uintptr_t arg1);
-extern void _wrap_b2BodyDef_angularDamping_set_Box2D_b1d1b47c7e81f80a(uintptr_t arg1, float arg2);
-extern float _wrap_b2BodyDef_angularDamping_get_Box2D_b1d1b47c7e81f80a(uintptr_t arg1);
-extern void _wrap_b2BodyDef_allowSleep_set_Box2D_b1d1b47c7e81f80a(uintptr_t arg1, _Bool arg2);
-extern _Bool _wrap_b2BodyDef_allowSleep_get_Box2D_b1d1b47c7e81f80a(uintptr_t arg1);
-extern void _wrap_b2BodyDef_awake_set_Box2D_b1d1b47c7e81f80a(uintptr_t arg1, _Bool arg2);
-extern _Bool _wrap_b2BodyDef_awake_get_Box2D_b1d1b47c7e81f80a(uintptr_t arg1);
-extern void _wrap_b2BodyDef_fixedRotation_set_Box2D_b1d1b47c7e81f80a(uintptr_t arg1, _Bool arg2);
-extern _Bool _wrap_b2BodyDef_fixedRotation_get_Box2D_b1d1b47c7e81f80a(uintptr_t arg1);
-extern void _wrap_b2BodyDef_bullet_set_Box2D_b1d1b47c7e81f80a(uintptr_t arg1, _Bool arg2);
-extern _Bool _wrap_b2BodyDef_bullet_get_Box2D_b1d1b47c7e81f80a(uintptr_t arg1);
-extern void _wrap_b2BodyDef_active_set_Box2D_b1d1b47c7e81f80a(uintptr_t arg1, _Bool arg2);
-extern _Bool _wrap_b2BodyDef_active_get_Box2D_b1d1b47c7e81f80a(uintptr_t arg1);
-extern void _wrap_b2BodyDef_userData_set_Box2D_b1d1b47c7e81f80a(uintptr_t arg1, uintptr_t arg2);
-extern uintptr_t _wrap_b2BodyDef_userData_get_Box2D_b1d1b47c7e81f80a(uintptr_t arg1);
-extern void _wrap_b2BodyDef_gravityScale_set_Box2D_b1d1b47c7e81f80a(uintptr_t arg1, float arg2);
-extern float _wrap_b2BodyDef_gravityScale_get_Box2D_b1d1b47c7e81f80a(uintptr_t arg1);
-extern void _wrap_delete_b2BodyDef_Box2D_b1d1b47c7e81f80a(uintptr_t arg1);
-extern uintptr_t _wrap_b2Body_CreateFixture__SWIG_0_Box2D_b1d1b47c7e81f80a(uintptr_t arg1, uintptr_t arg2);
-extern uintptr_t _wrap_b2Body_CreateFixture__SWIG_1_Box2D_b1d1b47c7e81f80a(uintptr_t arg1, uintptr_t arg2, float arg3);
-extern void _wrap_b2Body_DestroyFixture_Box2D_b1d1b47c7e81f80a(uintptr_t arg1, uintptr_t arg2);
-extern void _wrap_b2Body_SetTransform_Box2D_b1d1b47c7e81f80a(uintptr_t arg1, uintptr_t arg2, float arg3);
-extern uintptr_t _wrap_b2Body_GetTransform_Box2D_b1d1b47c7e81f80a(uintptr_t arg1);
-extern uintptr_t _wrap_b2Body_GetPosition_Box2D_b1d1b47c7e81f80a(uintptr_t arg1);
-extern float _wrap_b2Body_GetAngle_Box2D_b1d1b47c7e81f80a(uintptr_t arg1);
-extern uintptr_t _wrap_b2Body_GetWorldCenter_Box2D_b1d1b47c7e81f80a(uintptr_t arg1);
-extern uintptr_t _wrap_b2Body_GetLocalCenter_Box2D_b1d1b47c7e81f80a(uintptr_t arg1);
-extern void _wrap_b2Body_SetLinearVelocity_Box2D_b1d1b47c7e81f80a(uintptr_t arg1, uintptr_t arg2);
-extern uintptr_t _wrap_b2Body_GetLinearVelocity_Box2D_b1d1b47c7e81f80a(uintptr_t arg1);
-extern void _wrap_b2Body_SetAngularVelocity_Box2D_b1d1b47c7e81f80a(uintptr_t arg1, float arg2);
-extern float _wrap_b2Body_GetAngularVelocity_Box2D_b1d1b47c7e81f80a(uintptr_t arg1);
-extern void _wrap_b2Body_ApplyForce_Box2D_b1d1b47c7e81f80a(uintptr_t arg1, uintptr_t arg2, uintptr_t arg3, _Bool arg4);
-extern void _wrap_b2Body_ApplyForceToCenter_Box2D_b1d1b47c7e81f80a(uintptr_t arg1, uintptr_t arg2, _Bool arg3);
-extern void _wrap_b2Body_ApplyTorque_Box2D_b1d1b47c7e81f80a(uintptr_t arg1, float arg2, _Bool arg3);
-extern void _wrap_b2Body_ApplyLinearImpulse_Box2D_b1d1b47c7e81f80a(uintptr_t arg1, uintptr_t arg2, uintptr_t arg3, _Bool arg4);
-extern void _wrap_b2Body_ApplyAngularImpulse_Box2D_b1d1b47c7e81f80a(uintptr_t arg1, float arg2, _Bool arg3);
-extern float _wrap_b2Body_GetMass_Box2D_b1d1b47c7e81f80a(uintptr_t arg1);
-extern float _wrap_b2Body_GetInertia_Box2D_b1d1b47c7e81f80a(uintptr_t arg1);
-extern void _wrap_b2Body_GetMassData_Box2D_b1d1b47c7e81f80a(uintptr_t arg1, uintptr_t arg2);
-extern void _wrap_b2Body_SetMassData_Box2D_b1d1b47c7e81f80a(uintptr_t arg1, uintptr_t arg2);
-extern void _wrap_b2Body_ResetMassData_Box2D_b1d1b47c7e81f80a(uintptr_t arg1);
-extern uintptr_t _wrap_b2Body_GetWorldPoint_Box2D_b1d1b47c7e81f80a(uintptr_t arg1, uintptr_t arg2);
-extern uintptr_t _wrap_b2Body_GetWorldVector_Box2D_b1d1b47c7e81f80a(uintptr_t arg1, uintptr_t arg2);
-extern uintptr_t _wrap_b2Body_GetLocalPoint_Box2D_b1d1b47c7e81f80a(uintptr_t arg1, uintptr_t arg2);
-extern uintptr_t _wrap_b2Body_GetLocalVector_Box2D_b1d1b47c7e81f80a(uintptr_t arg1, uintptr_t arg2);
-extern uintptr_t _wrap_b2Body_GetLinearVelocityFromWorldPoint_Box2D_b1d1b47c7e81f80a(uintptr_t arg1, uintptr_t arg2);
-extern uintptr_t _wrap_b2Body_GetLinearVelocityFromLocalPoint_Box2D_b1d1b47c7e81f80a(uintptr_t arg1, uintptr_t arg2);
-extern float _wrap_b2Body_GetLinearDamping_Box2D_b1d1b47c7e81f80a(uintptr_t arg1);
-extern void _wrap_b2Body_SetLinearDamping_Box2D_b1d1b47c7e81f80a(uintptr_t arg1, float arg2);
-extern float _wrap_b2Body_GetAngularDamping_Box2D_b1d1b47c7e81f80a(uintptr_t arg1);
-extern void _wrap_b2Body_SetAngularDamping_Box2D_b1d1b47c7e81f80a(uintptr_t arg1, float arg2);
-extern float _wrap_b2Body_GetGravityScale_Box2D_b1d1b47c7e81f80a(uintptr_t arg1);
-extern void _wrap_b2Body_SetGravityScale_Box2D_b1d1b47c7e81f80a(uintptr_t arg1, float arg2);
-extern void _wrap_b2Body_SetType_Box2D_b1d1b47c7e81f80a(uintptr_t arg1, swig_intgo arg2);
-extern swig_intgo _wrap_b2Body_GetType_Box2D_b1d1b47c7e81f80a(uintptr_t arg1);
-extern void _wrap_b2Body_SetBullet_Box2D_b1d1b47c7e81f80a(uintptr_t arg1, _Bool arg2);
-extern _Bool _wrap_b2Body_IsBullet_Box2D_b1d1b47c7e81f80a(uintptr_t arg1);
-extern void _wrap_b2Body_SetSleepingAllowed_Box2D_b1d1b47c7e81f80a(uintptr_t arg1, _Bool arg2);
-extern _Bool _wrap_b2Body_IsSleepingAllowed_Box2D_b1d1b47c7e81f80a(uintptr_t arg1);
-extern void _wrap_b2Body_SetAwake_Box2D_b1d1b47c7e81f80a(uintptr_t arg1, _Bool arg2);
-extern _Bool _wrap_b2Body_IsAwake_Box2D_b1d1b47c7e81f80a(uintptr_t arg1);
-extern void _wrap_b2Body_SetActive_Box2D_b1d1b47c7e81f80a(uintptr_t arg1, _Bool arg2);
-extern _Bool _wrap_b2Body_IsActive_Box2D_b1d1b47c7e81f80a(uintptr_t arg1);
-extern void _wrap_b2Body_SetFixedRotation_Box2D_b1d1b47c7e81f80a(uintptr_t arg1, _Bool arg2);
-extern _Bool _wrap_b2Body_IsFixedRotation_Box2D_b1d1b47c7e81f80a(uintptr_t arg1);
-extern uintptr_t _wrap_b2Body_GetFixtureList__SWIG_0_Box2D_b1d1b47c7e81f80a(uintptr_t arg1);
-extern uintptr_t _wrap_b2Body_GetFixtureList__SWIG_1_Box2D_b1d1b47c7e81f80a(uintptr_t arg1);
-extern uintptr_t _wrap_b2Body_GetJointList__SWIG_0_Box2D_b1d1b47c7e81f80a(uintptr_t arg1);
-extern uintptr_t _wrap_b2Body_GetJointList__SWIG_1_Box2D_b1d1b47c7e81f80a(uintptr_t arg1);
-extern uintptr_t _wrap_b2Body_GetContactList__SWIG_0_Box2D_b1d1b47c7e81f80a(uintptr_t arg1);
-extern uintptr_t _wrap_b2Body_GetContactList__SWIG_1_Box2D_b1d1b47c7e81f80a(uintptr_t arg1);
-extern uintptr_t _wrap_b2Body_GetNext__SWIG_0_Box2D_b1d1b47c7e81f80a(uintptr_t arg1);
-extern uintptr_t _wrap_b2Body_GetNext__SWIG_1_Box2D_b1d1b47c7e81f80a(uintptr_t arg1);
-extern uintptr_t _wrap_b2Body_GetUserData_Box2D_b1d1b47c7e81f80a(uintptr_t arg1);
-extern void _wrap_b2Body_SetUserData_Box2D_b1d1b47c7e81f80a(uintptr_t arg1, uintptr_t arg2);
-extern uintptr_t _wrap_b2Body_GetWorld__SWIG_0_Box2D_b1d1b47c7e81f80a(uintptr_t arg1);
-extern uintptr_t _wrap_b2Body_GetWorld__SWIG_1_Box2D_b1d1b47c7e81f80a(uintptr_t arg1);
-extern void _wrap_b2Body_Dump_Box2D_b1d1b47c7e81f80a(uintptr_t arg1);
-extern uintptr_t _wrap_new_b2Filter_Box2D_b1d1b47c7e81f80a(void);
-extern void _wrap_b2Filter_categoryBits_set_Box2D_b1d1b47c7e81f80a(uintptr_t arg1, short arg2);
-extern short _wrap_b2Filter_categoryBits_get_Box2D_b1d1b47c7e81f80a(uintptr_t arg1);
-extern void _wrap_b2Filter_maskBits_set_Box2D_b1d1b47c7e81f80a(uintptr_t arg1, short arg2);
-extern short _wrap_b2Filter_maskBits_get_Box2D_b1d1b47c7e81f80a(uintptr_t arg1);
-extern void _wrap_b2Filter_groupIndex_set_Box2D_b1d1b47c7e81f80a(uintptr_t arg1, short arg2);
-extern short _wrap_b2Filter_groupIndex_get_Box2D_b1d1b47c7e81f80a(uintptr_t arg1);
-extern void _wrap_delete_b2Filter_Box2D_b1d1b47c7e81f80a(uintptr_t arg1);
-extern uintptr_t _wrap_new_b2FixtureDef_Box2D_b1d1b47c7e81f80a(void);
-extern void _wrap_b2FixtureDef_shape_set_Box2D_b1d1b47c7e81f80a(uintptr_t arg1, uintptr_t arg2);
-extern uintptr_t _wrap_b2FixtureDef_shape_get_Box2D_b1d1b47c7e81f80a(uintptr_t arg1);
-extern void _wrap_b2FixtureDef_userData_set_Box2D_b1d1b47c7e81f80a(uintptr_t arg1, uintptr_t arg2);
-extern uintptr_t _wrap_b2FixtureDef_userData_get_Box2D_b1d1b47c7e81f80a(uintptr_t arg1);
-extern void _wrap_b2FixtureDef_friction_set_Box2D_b1d1b47c7e81f80a(uintptr_t arg1, float arg2);
-extern float _wrap_b2FixtureDef_friction_get_Box2D_b1d1b47c7e81f80a(uintptr_t arg1);
-extern void _wrap_b2FixtureDef_restitution_set_Box2D_b1d1b47c7e81f80a(uintptr_t arg1, float arg2);
-extern float _wrap_b2FixtureDef_restitution_get_Box2D_b1d1b47c7e81f80a(uintptr_t arg1);
-extern void _wrap_b2FixtureDef_density_set_Box2D_b1d1b47c7e81f80a(uintptr_t arg1, float arg2);
-extern float _wrap_b2FixtureDef_density_get_Box2D_b1d1b47c7e81f80a(uintptr_t arg1);
-extern void _wrap_b2FixtureDef_isSensor_set_Box2D_b1d1b47c7e81f80a(uintptr_t arg1, _Bool arg2);
-extern _Bool _wrap_b2FixtureDef_isSensor_get_Box2D_b1d1b47c7e81f80a(uintptr_t arg1);
-extern void _wrap_b2FixtureDef_filter_set_Box2D_b1d1b47c7e81f80a(uintptr_t arg1, uintptr_t arg2);
-extern uintptr_t _wrap_b2FixtureDef_filter_get_Box2D_b1d1b47c7e81f80a(uintptr_t arg1);
-extern void _wrap_delete_b2FixtureDef_Box2D_b1d1b47c7e81f80a(uintptr_t arg1);
-extern void _wrap_b2FixtureProxy_aabb_set_Box2D_b1d1b47c7e81f80a(uintptr_t arg1, uintptr_t arg2);
-extern uintptr_t _wrap_b2FixtureProxy_aabb_get_Box2D_b1d1b47c7e81f80a(uintptr_t arg1);
-extern void _wrap_b2FixtureProxy_fixture_set_Box2D_b1d1b47c7e81f80a(uintptr_t arg1, uintptr_t arg2);
-extern uintptr_t _wrap_b2FixtureProxy_fixture_get_Box2D_b1d1b47c7e81f80a(uintptr_t arg1);
-extern void _wrap_b2FixtureProxy_childIndex_set_Box2D_b1d1b47c7e81f80a(uintptr_t arg1, swig_intgo arg2);
-extern swig_intgo _wrap_b2FixtureProxy_childIndex_get_Box2D_b1d1b47c7e81f80a(uintptr_t arg1);
-extern void _wrap_b2FixtureProxy_proxyId_set_Box2D_b1d1b47c7e81f80a(uintptr_t arg1, swig_intgo arg2);
-extern swig_intgo _wrap_b2FixtureProxy_proxyId_get_Box2D_b1d1b47c7e81f80a(uintptr_t arg1);
-extern uintptr_t _wrap_new_b2FixtureProxy_Box2D_b1d1b47c7e81f80a(void);
-extern void _wrap_delete_b2FixtureProxy_Box2D_b1d1b47c7e81f80a(uintptr_t arg1);
-extern uintptr_t _wrap_b2Fixture_GetType_Box2D_b1d1b47c7e81f80a(uintptr_t arg1);
-extern uintptr_t _wrap_b2Fixture_GetShape__SWIG_0_Box2D_b1d1b47c7e81f80a(uintptr_t arg1);
-extern uintptr_t _wrap_b2Fixture_GetShape__SWIG_1_Box2D_b1d1b47c7e81f80a(uintptr_t arg1);
-extern void _wrap_b2Fixture_SetSensor_Box2D_b1d1b47c7e81f80a(uintptr_t arg1, _Bool arg2);
-extern _Bool _wrap_b2Fixture_IsSensor_Box2D_b1d1b47c7e81f80a(uintptr_t arg1);
-extern void _wrap_b2Fixture_SetFilterData_Box2D_b1d1b47c7e81f80a(uintptr_t arg1, uintptr_t arg2);
-extern uintptr_t _wrap_b2Fixture_GetFilterData_Box2D_b1d1b47c7e81f80a(uintptr_t arg1);
-extern void _wrap_b2Fixture_Refilter_Box2D_b1d1b47c7e81f80a(uintptr_t arg1);
-extern uintptr_t _wrap_b2Fixture_GetBody__SWIG_0_Box2D_b1d1b47c7e81f80a(uintptr_t arg1);
-extern uintptr_t _wrap_b2Fixture_GetBody__SWIG_1_Box2D_b1d1b47c7e81f80a(uintptr_t arg1);
-extern uintptr_t _wrap_b2Fixture_GetNext__SWIG_0_Box2D_b1d1b47c7e81f80a(uintptr_t arg1);
-extern uintptr_t _wrap_b2Fixture_GetNext__SWIG_1_Box2D_b1d1b47c7e81f80a(uintptr_t arg1);
-extern uintptr_t _wrap_b2Fixture_GetUserData_Box2D_b1d1b47c7e81f80a(uintptr_t arg1);
-extern void _wrap_b2Fixture_SetUserData_Box2D_b1d1b47c7e81f80a(uintptr_t arg1, uintptr_t arg2);
-extern _Bool _wrap_b2Fixture_TestPoint_Box2D_b1d1b47c7e81f80a(uintptr_t arg1, uintptr_t arg2);
-extern _Bool _wrap_b2Fixture_RayCast_Box2D_b1d1b47c7e81f80a(uintptr_t arg1, uintptr_t arg2, uintptr_t arg3, swig_intgo arg4);
-extern void _wrap_b2Fixture_GetMassData_Box2D_b1d1b47c7e81f80a(uintptr_t arg1, uintptr_t arg2);
-extern void _wrap_b2Fixture_SetDensity_Box2D_b1d1b47c7e81f80a(uintptr_t arg1, float arg2);
-extern float _wrap_b2Fixture_GetDensity_Box2D_b1d1b47c7e81f80a(uintptr_t arg1);
-extern float _wrap_b2Fixture_GetFriction_Box2D_b1d1b47c7e81f80a(uintptr_t arg1);
-extern void _wrap_b2Fixture_SetFriction_Box2D_b1d1b47c7e81f80a(uintptr_t arg1, float arg2);
-extern float _wrap_b2Fixture_GetRestitution_Box2D_b1d1b47c7e81f80a(uintptr_t arg1);
-extern void _wrap_b2Fixture_SetRestitution_Box2D_b1d1b47c7e81f80a(uintptr_t arg1, float arg2);
-extern uintptr_t _wrap_b2Fixture_GetAABB_Box2D_b1d1b47c7e81f80a(uintptr_t arg1, swig_intgo arg2);
-extern void _wrap_b2Fixture_Dump_Box2D_b1d1b47c7e81f80a(uintptr_t arg1, swig_intgo arg2);
-extern void _wrap_delete_b2Fixture_Box2D_b1d1b47c7e81f80a(uintptr_t arg1);
-extern void _wrap_delete_b2DestructionListener_Box2D_b1d1b47c7e81f80a(uintptr_t arg1);
-extern void _wrap_b2DestructionListener_SayGoodbye__SWIG_0_Box2D_b1d1b47c7e81f80a(uintptr_t arg1, uintptr_t arg2);
-extern void _wrap_b2DestructionListener_SayGoodbye__SWIG_1_Box2D_b1d1b47c7e81f80a(uintptr_t arg1, uintptr_t arg2);
-extern void _wrap_delete_b2ContactFilter_Box2D_b1d1b47c7e81f80a(uintptr_t arg1);
-extern _Bool _wrap_b2ContactFilter_ShouldCollide_Box2D_b1d1b47c7e81f80a(uintptr_t arg1, uintptr_t arg2, uintptr_t arg3);
-extern uintptr_t _wrap_new_b2ContactFilter_Box2D_b1d1b47c7e81f80a(void);
-extern void _wrap_b2ContactImpulse_normalImpulses_set_Box2D_b1d1b47c7e81f80a(uintptr_t arg1, swig_voidp arg2);
-extern swig_voidp _wrap_b2ContactImpulse_normalImpulses_get_Box2D_b1d1b47c7e81f80a(uintptr_t arg1);
-extern void _wrap_b2ContactImpulse_tangentImpulses_set_Box2D_b1d1b47c7e81f80a(uintptr_t arg1, swig_voidp arg2);
-extern swig_voidp _wrap_b2ContactImpulse_tangentImpulses_get_Box2D_b1d1b47c7e81f80a(uintptr_t arg1);
-extern void _wrap_b2ContactImpulse_count_set_Box2D_b1d1b47c7e81f80a(uintptr_t arg1, swig_intgo arg2);
-extern swig_intgo _wrap_b2ContactImpulse_count_get_Box2D_b1d1b47c7e81f80a(uintptr_t arg1);
-extern uintptr_t _wrap_new_b2ContactImpulse_Box2D_b1d1b47c7e81f80a(void);
-extern void _wrap_delete_b2ContactImpulse_Box2D_b1d1b47c7e81f80a(uintptr_t arg1);
-extern void _wrap_delete_b2ContactListener_Box2D_b1d1b47c7e81f80a(uintptr_t arg1);
-extern void _wrap_b2ContactListener_BeginContact_Box2D_b1d1b47c7e81f80a(uintptr_t arg1, uintptr_t arg2);
-extern void _wrap_b2ContactListener_EndContact_Box2D_b1d1b47c7e81f80a(uintptr_t arg1, uintptr_t arg2);
-extern void _wrap_b2ContactListener_PreSolve_Box2D_b1d1b47c7e81f80a(uintptr_t arg1, uintptr_t arg2, uintptr_t arg3);
-extern void _wrap_b2ContactListener_PostSolve_Box2D_b1d1b47c7e81f80a(uintptr_t arg1, uintptr_t arg2, uintptr_t arg3);
-extern uintptr_t _wrap_new_b2ContactListener_Box2D_b1d1b47c7e81f80a(void);
-extern void _wrap_delete_b2QueryCallback_Box2D_b1d1b47c7e81f80a(uintptr_t arg1);
-extern _Bool _wrap_b2QueryCallback_ReportFixture_Box2D_b1d1b47c7e81f80a(uintptr_t arg1, uintptr_t arg2);
-extern void _wrap_delete_b2RayCastCallback_Box2D_b1d1b47c7e81f80a(uintptr_t arg1);
-extern float _wrap_b2RayCastCallback_ReportFixture_Box2D_b1d1b47c7e81f80a(uintptr_t arg1, uintptr_t arg2, uintptr_t arg3, uintptr_t arg4, float arg5);
-extern void _wrap_b2Profile_step_set_Box2D_b1d1b47c7e81f80a(uintptr_t arg1, float arg2);
-extern float _wrap_b2Profile_step_get_Box2D_b1d1b47c7e81f80a(uintptr_t arg1);
-extern void _wrap_b2Profile_collide_set_Box2D_b1d1b47c7e81f80a(uintptr_t arg1, float arg2);
-extern float _wrap_b2Profile_collide_get_Box2D_b1d1b47c7e81f80a(uintptr_t arg1);
-extern void _wrap_b2Profile_solve_set_Box2D_b1d1b47c7e81f80a(uintptr_t arg1, float arg2);
-extern float _wrap_b2Profile_solve_get_Box2D_b1d1b47c7e81f80a(uintptr_t arg1);
-extern void _wrap_b2Profile_solveInit_set_Box2D_b1d1b47c7e81f80a(uintptr_t arg1, float arg2);
-extern float _wrap_b2Profile_solveInit_get_Box2D_b1d1b47c7e81f80a(uintptr_t arg1);
-extern void _wrap_b2Profile_solveVelocity_set_Box2D_b1d1b47c7e81f80a(uintptr_t arg1, float arg2);
-extern float _wrap_b2Profile_solveVelocity_get_Box2D_b1d1b47c7e81f80a(uintptr_t arg1);
-extern void _wrap_b2Profile_solvePosition_set_Box2D_b1d1b47c7e81f80a(uintptr_t arg1, float arg2);
-extern float _wrap_b2Profile_solvePosition_get_Box2D_b1d1b47c7e81f80a(uintptr_t arg1);
-extern void _wrap_b2Profile_broadphase_set_Box2D_b1d1b47c7e81f80a(uintptr_t arg1, float arg2);
-extern float _wrap_b2Profile_broadphase_get_Box2D_b1d1b47c7e81f80a(uintptr_t arg1);
-extern void _wrap_b2Profile_solveTOI_set_Box2D_b1d1b47c7e81f80a(uintptr_t arg1, float arg2);
-extern float _wrap_b2Profile_solveTOI_get_Box2D_b1d1b47c7e81f80a(uintptr_t arg1);
-extern uintptr_t _wrap_new_b2Profile_Box2D_b1d1b47c7e81f80a(void);
-extern void _wrap_delete_b2Profile_Box2D_b1d1b47c7e81f80a(uintptr_t arg1);
-extern void _wrap_b2TimeStep_dt_set_Box2D_b1d1b47c7e81f80a(uintptr_t arg1, float arg2);
-extern float _wrap_b2TimeStep_dt_get_Box2D_b1d1b47c7e81f80a(uintptr_t arg1);
-extern void _wrap_b2TimeStep_inv_dt_set_Box2D_b1d1b47c7e81f80a(uintptr_t arg1, float arg2);
-extern float _wrap_b2TimeStep_inv_dt_get_Box2D_b1d1b47c7e81f80a(uintptr_t arg1);
-extern void _wrap_b2TimeStep_dtRatio_set_Box2D_b1d1b47c7e81f80a(uintptr_t arg1, float arg2);
-extern float _wrap_b2TimeStep_dtRatio_get_Box2D_b1d1b47c7e81f80a(uintptr_t arg1);
-extern void _wrap_b2TimeStep_velocityIterations_set_Box2D_b1d1b47c7e81f80a(uintptr_t arg1, swig_intgo arg2);
-extern swig_intgo _wrap_b2TimeStep_velocityIterations_get_Box2D_b1d1b47c7e81f80a(uintptr_t arg1);
-extern void _wrap_b2TimeStep_positionIterations_set_Box2D_b1d1b47c7e81f80a(uintptr_t arg1, swig_intgo arg2);
-extern swig_intgo _wrap_b2TimeStep_positionIterations_get_Box2D_b1d1b47c7e81f80a(uintptr_t arg1);
-extern void _wrap_b2TimeStep_warmStarting_set_Box2D_b1d1b47c7e81f80a(uintptr_t arg1, _Bool arg2);
-extern _Bool _wrap_b2TimeStep_warmStarting_get_Box2D_b1d1b47c7e81f80a(uintptr_t arg1);
-extern uintptr_t _wrap_new_b2TimeStep_Box2D_b1d1b47c7e81f80a(void);
-extern void _wrap_delete_b2TimeStep_Box2D_b1d1b47c7e81f80a(uintptr_t arg1);
-extern void _wrap_b2Position_c_set_Box2D_b1d1b47c7e81f80a(uintptr_t arg1, uintptr_t arg2);
-extern uintptr_t _wrap_b2Position_c_get_Box2D_b1d1b47c7e81f80a(uintptr_t arg1);
-extern void _wrap_b2Position_a_set_Box2D_b1d1b47c7e81f80a(uintptr_t arg1, float arg2);
-extern float _wrap_b2Position_a_get_Box2D_b1d1b47c7e81f80a(uintptr_t arg1);
-extern uintptr_t _wrap_new_b2Position_Box2D_b1d1b47c7e81f80a(void);
-extern void _wrap_delete_b2Position_Box2D_b1d1b47c7e81f80a(uintptr_t arg1);
-extern void _wrap_b2Velocity_v_set_Box2D_b1d1b47c7e81f80a(uintptr_t arg1, uintptr_t arg2);
-extern uintptr_t _wrap_b2Velocity_v_get_Box2D_b1d1b47c7e81f80a(uintptr_t arg1);
-extern void _wrap_b2Velocity_w_set_Box2D_b1d1b47c7e81f80a(uintptr_t arg1, float arg2);
-extern float _wrap_b2Velocity_w_get_Box2D_b1d1b47c7e81f80a(uintptr_t arg1);
-extern uintptr_t _wrap_new_b2Velocity_Box2D_b1d1b47c7e81f80a(void);
-extern void _wrap_delete_b2Velocity_Box2D_b1d1b47c7e81f80a(uintptr_t arg1);
-extern void _wrap_b2SolverData_step_set_Box2D_b1d1b47c7e81f80a(uintptr_t arg1, uintptr_t arg2);
-extern uintptr_t _wrap_b2SolverData_step_get_Box2D_b1d1b47c7e81f80a(uintptr_t arg1);
-extern void _wrap_b2SolverData_positions_set_Box2D_b1d1b47c7e81f80a(uintptr_t arg1, uintptr_t arg2);
-extern uintptr_t _wrap_b2SolverData_positions_get_Box2D_b1d1b47c7e81f80a(uintptr_t arg1);
-extern void _wrap_b2SolverData_velocities_set_Box2D_b1d1b47c7e81f80a(uintptr_t arg1, uintptr_t arg2);
-extern uintptr_t _wrap_b2SolverData_velocities_get_Box2D_b1d1b47c7e81f80a(uintptr_t arg1);
-extern uintptr_t _wrap_new_b2SolverData_Box2D_b1d1b47c7e81f80a(void);
-extern void _wrap_delete_b2SolverData_Box2D_b1d1b47c7e81f80a(uintptr_t arg1);
-extern uintptr_t _wrap_new_b2World_Box2D_b1d1b47c7e81f80a(uintptr_t arg1);
-extern void _wrap_delete_b2World_Box2D_b1d1b47c7e81f80a(uintptr_t arg1);
-extern void _wrap_b2World_SetDestructionListener_Box2D_b1d1b47c7e81f80a(uintptr_t arg1, uintptr_t arg2);
-extern void _wrap_b2World_SetContactFilter_Box2D_b1d1b47c7e81f80a(uintptr_t arg1, uintptr_t arg2);
-extern void _wrap_b2World_SetContactListener_Box2D_b1d1b47c7e81f80a(uintptr_t arg1, uintptr_t arg2);
-extern void _wrap_b2World_SetDebugDraw_Box2D_b1d1b47c7e81f80a(uintptr_t arg1, uintptr_t arg2);
-extern uintptr_t _wrap_b2World_CreateBody_Box2D_b1d1b47c7e81f80a(uintptr_t arg1, uintptr_t arg2);
-extern void _wrap_b2World_DestroyBody_Box2D_b1d1b47c7e81f80a(uintptr_t arg1, uintptr_t arg2);
-extern uintptr_t _wrap_b2World_CreateJoint_Box2D_b1d1b47c7e81f80a(uintptr_t arg1, uintptr_t arg2);
-extern void _wrap_b2World_DestroyJoint_Box2D_b1d1b47c7e81f80a(uintptr_t arg1, uintptr_t arg2);
-extern void _wrap_b2World_Step_Box2D_b1d1b47c7e81f80a(uintptr_t arg1, float arg2, swig_intgo arg3, swig_intgo arg4);
-extern void _wrap_b2World_ClearForces_Box2D_b1d1b47c7e81f80a(uintptr_t arg1);
-extern void _wrap_b2World_DrawDebugData_Box2D_b1d1b47c7e81f80a(uintptr_t arg1);
-extern void _wrap_b2World_QueryAABB_Box2D_b1d1b47c7e81f80a(uintptr_t arg1, uintptr_t arg2, uintptr_t arg3);
-extern void _wrap_b2World_RayCast_Box2D_b1d1b47c7e81f80a(uintptr_t arg1, uintptr_t arg2, uintptr_t arg3, uintptr_t arg4);
-extern uintptr_t _wrap_b2World_GetBodyList__SWIG_0_Box2D_b1d1b47c7e81f80a(uintptr_t arg1);
-extern uintptr_t _wrap_b2World_GetBodyList__SWIG_1_Box2D_b1d1b47c7e81f80a(uintptr_t arg1);
-extern uintptr_t _wrap_b2World_GetJointList__SWIG_0_Box2D_b1d1b47c7e81f80a(uintptr_t arg1);
-extern uintptr_t _wrap_b2World_GetJointList__SWIG_1_Box2D_b1d1b47c7e81f80a(uintptr_t arg1);
-extern uintptr_t _wrap_b2World_GetContactList__SWIG_0_Box2D_b1d1b47c7e81f80a(uintptr_t arg1);
-extern uintptr_t _wrap_b2World_GetContactList__SWIG_1_Box2D_b1d1b47c7e81f80a(uintptr_t arg1);
-extern void _wrap_b2World_SetAllowSleeping_Box2D_b1d1b47c7e81f80a(uintptr_t arg1, _Bool arg2);
-extern _Bool _wrap_b2World_GetAllowSleeping_Box2D_b1d1b47c7e81f80a(uintptr_t arg1);
-extern void _wrap_b2World_SetWarmStarting_Box2D_b1d1b47c7e81f80a(uintptr_t arg1, _Bool arg2);
-extern _Bool _wrap_b2World_GetWarmStarting_Box2D_b1d1b47c7e81f80a(uintptr_t arg1);
-extern void _wrap_b2World_SetContinuousPhysics_Box2D_b1d1b47c7e81f80a(uintptr_t arg1, _Bool arg2);
-extern _Bool _wrap_b2World_GetContinuousPhysics_Box2D_b1d1b47c7e81f80a(uintptr_t arg1);
-extern void _wrap_b2World_SetSubStepping_Box2D_b1d1b47c7e81f80a(uintptr_t arg1, _Bool arg2);
-extern _Bool _wrap_b2World_GetSubStepping_Box2D_b1d1b47c7e81f80a(uintptr_t arg1);
-extern swig_intgo _wrap_b2World_GetProxyCount_Box2D_b1d1b47c7e81f80a(uintptr_t arg1);
-extern swig_intgo _wrap_b2World_GetBodyCount_Box2D_b1d1b47c7e81f80a(uintptr_t arg1);
-extern swig_intgo _wrap_b2World_GetJointCount_Box2D_b1d1b47c7e81f80a(uintptr_t arg1);
-extern swig_intgo _wrap_b2World_GetContactCount_Box2D_b1d1b47c7e81f80a(uintptr_t arg1);
-extern swig_intgo _wrap_b2World_GetTreeHeight_Box2D_b1d1b47c7e81f80a(uintptr_t arg1);
-extern swig_intgo _wrap_b2World_GetTreeBalance_Box2D_b1d1b47c7e81f80a(uintptr_t arg1);
-extern float _wrap_b2World_GetTreeQuality_Box2D_b1d1b47c7e81f80a(uintptr_t arg1);
-extern void _wrap_b2World_SetGravity_Box2D_b1d1b47c7e81f80a(uintptr_t arg1, uintptr_t arg2);
-extern uintptr_t _wrap_b2World_GetGravity_Box2D_b1d1b47c7e81f80a(uintptr_t arg1);
-extern _Bool _wrap_b2World_IsLocked_Box2D_b1d1b47c7e81f80a(uintptr_t arg1);
-extern void _wrap_b2World_SetAutoClearForces_Box2D_b1d1b47c7e81f80a(uintptr_t arg1, _Bool arg2);
-extern _Bool _wrap_b2World_GetAutoClearForces_Box2D_b1d1b47c7e81f80a(uintptr_t arg1);
-extern void _wrap_b2World_ShiftOrigin_Box2D_b1d1b47c7e81f80a(uintptr_t arg1, uintptr_t arg2);
-extern uintptr_t _wrap_b2World_GetContactManager_Box2D_b1d1b47c7e81f80a(uintptr_t arg1);
-extern uintptr_t _wrap_b2World_GetProfile_Box2D_b1d1b47c7e81f80a(uintptr_t arg1);
-extern void _wrap_b2World_Dump_Box2D_b1d1b47c7e81f80a(uintptr_t arg1);
-extern float _wrap_b2MixFriction_Box2D_b1d1b47c7e81f80a(float arg1, float arg2);
-extern float _wrap_b2MixRestitution_Box2D_b1d1b47c7e81f80a(float arg1, float arg2);
-extern void _wrap_b2ContactRegister_createFcn_set_Box2D_b1d1b47c7e81f80a(uintptr_t arg1, swig_voidp arg2);
-extern swig_voidp _wrap_b2ContactRegister_createFcn_get_Box2D_b1d1b47c7e81f80a(uintptr_t arg1);
-extern void _wrap_b2ContactRegister_destroyFcn_set_Box2D_b1d1b47c7e81f80a(uintptr_t arg1, swig_voidp arg2);
-extern swig_voidp _wrap_b2ContactRegister_destroyFcn_get_Box2D_b1d1b47c7e81f80a(uintptr_t arg1);
-extern void _wrap_b2ContactRegister_primary_set_Box2D_b1d1b47c7e81f80a(uintptr_t arg1, _Bool arg2);
-extern _Bool _wrap_b2ContactRegister_primary_get_Box2D_b1d1b47c7e81f80a(uintptr_t arg1);
-extern uintptr_t _wrap_new_b2ContactRegister_Box2D_b1d1b47c7e81f80a(void);
-extern void _wrap_delete_b2ContactRegister_Box2D_b1d1b47c7e81f80a(uintptr_t arg1);
-extern void _wrap_b2ContactEdge_other_set_Box2D_b1d1b47c7e81f80a(uintptr_t arg1, uintptr_t arg2);
-extern uintptr_t _wrap_b2ContactEdge_other_get_Box2D_b1d1b47c7e81f80a(uintptr_t arg1);
-extern void _wrap_b2ContactEdge_contact_set_Box2D_b1d1b47c7e81f80a(uintptr_t arg1, uintptr_t arg2);
-extern uintptr_t _wrap_b2ContactEdge_contact_get_Box2D_b1d1b47c7e81f80a(uintptr_t arg1);
-extern void _wrap_b2ContactEdge_prev_set_Box2D_b1d1b47c7e81f80a(uintptr_t arg1, uintptr_t arg2);
-extern uintptr_t _wrap_b2ContactEdge_prev_get_Box2D_b1d1b47c7e81f80a(uintptr_t arg1);
-extern void _wrap_b2ContactEdge_next_set_Box2D_b1d1b47c7e81f80a(uintptr_t arg1, uintptr_t arg2);
-extern uintptr_t _wrap_b2ContactEdge_next_get_Box2D_b1d1b47c7e81f80a(uintptr_t arg1);
-extern uintptr_t _wrap_new_b2ContactEdge_Box2D_b1d1b47c7e81f80a(void);
-extern void _wrap_delete_b2ContactEdge_Box2D_b1d1b47c7e81f80a(uintptr_t arg1);
-extern uintptr_t _wrap_b2Contact_GetManifold__SWIG_0_Box2D_b1d1b47c7e81f80a(uintptr_t arg1);
-extern uintptr_t _wrap_b2Contact_GetManifold__SWIG_1_Box2D_b1d1b47c7e81f80a(uintptr_t arg1);
-extern void _wrap_b2Contact_GetWorldManifold_Box2D_b1d1b47c7e81f80a(uintptr_t arg1, uintptr_t arg2);
-extern _Bool _wrap_b2Contact_IsTouching_Box2D_b1d1b47c7e81f80a(uintptr_t arg1);
-extern void _wrap_b2Contact_SetEnabled_Box2D_b1d1b47c7e81f80a(uintptr_t arg1, _Bool arg2);
-extern _Bool _wrap_b2Contact_IsEnabled_Box2D_b1d1b47c7e81f80a(uintptr_t arg1);
-extern uintptr_t _wrap_b2Contact_GetNext__SWIG_0_Box2D_b1d1b47c7e81f80a(uintptr_t arg1);
-extern uintptr_t _wrap_b2Contact_GetNext__SWIG_1_Box2D_b1d1b47c7e81f80a(uintptr_t arg1);
-extern uintptr_t _wrap_b2Contact_GetFixtureA__SWIG_0_Box2D_b1d1b47c7e81f80a(uintptr_t arg1);
-extern uintptr_t _wrap_b2Contact_GetFixtureA__SWIG_1_Box2D_b1d1b47c7e81f80a(uintptr_t arg1);
-extern swig_intgo _wrap_b2Contact_GetChildIndexA_Box2D_b1d1b47c7e81f80a(uintptr_t arg1);
-extern uintptr_t _wrap_b2Contact_GetFixtureB__SWIG_0_Box2D_b1d1b47c7e81f80a(uintptr_t arg1);
-extern uintptr_t _wrap_b2Contact_GetFixtureB__SWIG_1_Box2D_b1d1b47c7e81f80a(uintptr_t arg1);
-extern swig_intgo _wrap_b2Contact_GetChildIndexB_Box2D_b1d1b47c7e81f80a(uintptr_t arg1);
-extern void _wrap_b2Contact_SetFriction_Box2D_b1d1b47c7e81f80a(uintptr_t arg1, float arg2);
-extern float _wrap_b2Contact_GetFriction_Box2D_b1d1b47c7e81f80a(uintptr_t arg1);
-extern void _wrap_b2Contact_ResetFriction_Box2D_b1d1b47c7e81f80a(uintptr_t arg1);
-extern void _wrap_b2Contact_SetRestitution_Box2D_b1d1b47c7e81f80a(uintptr_t arg1, float arg2);
-extern float _wrap_b2Contact_GetRestitution_Box2D_b1d1b47c7e81f80a(uintptr_t arg1);
-extern void _wrap_b2Contact_ResetRestitution_Box2D_b1d1b47c7e81f80a(uintptr_t arg1);
-extern void _wrap_b2Contact_SetTangentSpeed_Box2D_b1d1b47c7e81f80a(uintptr_t arg1, float arg2);
-extern float _wrap_b2Contact_GetTangentSpeed_Box2D_b1d1b47c7e81f80a(uintptr_t arg1);
-extern void _wrap_b2Contact_Evaluate_Box2D_b1d1b47c7e81f80a(uintptr_t arg1, uintptr_t arg2, uintptr_t arg3, uintptr_t arg4);
-extern uintptr_t _wrap_new_b2DistanceJointDef_Box2D_b1d1b47c7e81f80a(void);
-extern void _wrap_b2DistanceJointDef_Initialize_Box2D_b1d1b47c7e81f80a(uintptr_t arg1, uintptr_t arg2, uintptr_t arg3, uintptr_t arg4, uintptr_t arg5);
-extern void _wrap_b2DistanceJointDef_localAnchorA_set_Box2D_b1d1b47c7e81f80a(uintptr_t arg1, uintptr_t arg2);
-extern uintptr_t _wrap_b2DistanceJointDef_localAnchorA_get_Box2D_b1d1b47c7e81f80a(uintptr_t arg1);
-extern void _wrap_b2DistanceJointDef_localAnchorB_set_Box2D_b1d1b47c7e81f80a(uintptr_t arg1, uintptr_t arg2);
-extern uintptr_t _wrap_b2DistanceJointDef_localAnchorB_get_Box2D_b1d1b47c7e81f80a(uintptr_t arg1);
-extern void _wrap_b2DistanceJointDef_length_set_Box2D_b1d1b47c7e81f80a(uintptr_t arg1, float arg2);
-extern float _wrap_b2DistanceJointDef_length_get_Box2D_b1d1b47c7e81f80a(uintptr_t arg1);
-extern void _wrap_b2DistanceJointDef_frequencyHz_set_Box2D_b1d1b47c7e81f80a(uintptr_t arg1, float arg2);
-extern float _wrap_b2DistanceJointDef_frequencyHz_get_Box2D_b1d1b47c7e81f80a(uintptr_t arg1);
-extern void _wrap_b2DistanceJointDef_dampingRatio_set_Box2D_b1d1b47c7e81f80a(uintptr_t arg1, float arg2);
-extern float _wrap_b2DistanceJointDef_dampingRatio_get_Box2D_b1d1b47c7e81f80a(uintptr_t arg1);
-extern void _wrap_delete_b2DistanceJointDef_Box2D_b1d1b47c7e81f80a(uintptr_t arg1);
-extern uintptr_t _wrap_b2DistanceJoint_GetAnchorA_Box2D_b1d1b47c7e81f80a(uintptr_t arg1);
-extern uintptr_t _wrap_b2DistanceJoint_GetAnchorB_Box2D_b1d1b47c7e81f80a(uintptr_t arg1);
-extern uintptr_t _wrap_b2DistanceJoint_GetReactionForce_Box2D_b1d1b47c7e81f80a(uintptr_t arg1, float arg2);
-extern float _wrap_b2DistanceJoint_GetReactionTorque_Box2D_b1d1b47c7e81f80a(uintptr_t arg1, float arg2);
-extern uintptr_t _wrap_b2DistanceJoint_GetLocalAnchorA_Box2D_b1d1b47c7e81f80a(uintptr_t arg1);
-extern uintptr_t _wrap_b2DistanceJoint_GetLocalAnchorB_Box2D_b1d1b47c7e81f80a(uintptr_t arg1);
-extern void _wrap_b2DistanceJoint_SetLength_Box2D_b1d1b47c7e81f80a(uintptr_t arg1, float arg2);
-extern float _wrap_b2DistanceJoint_GetLength_Box2D_b1d1b47c7e81f80a(uintptr_t arg1);
-extern void _wrap_b2DistanceJoint_SetFrequency_Box2D_b1d1b47c7e81f80a(uintptr_t arg1, float arg2);
-extern float _wrap_b2DistanceJoint_GetFrequency_Box2D_b1d1b47c7e81f80a(uintptr_t arg1);
-extern void _wrap_b2DistanceJoint_SetDampingRatio_Box2D_b1d1b47c7e81f80a(uintptr_t arg1, float arg2);
-extern float _wrap_b2DistanceJoint_GetDampingRatio_Box2D_b1d1b47c7e81f80a(uintptr_t arg1);
-extern void _wrap_b2DistanceJoint_Dump_Box2D_b1d1b47c7e81f80a(uintptr_t arg1);
-extern void _wrap_delete_b2DistanceJoint_Box2D_b1d1b47c7e81f80a(uintptr_t arg1);
-extern uintptr_t _wrap_new_b2FrictionJointDef_Box2D_b1d1b47c7e81f80a(void);
-extern void _wrap_b2FrictionJointDef_Initialize_Box2D_b1d1b47c7e81f80a(uintptr_t arg1, uintptr_t arg2, uintptr_t arg3, uintptr_t arg4);
-extern void _wrap_b2FrictionJointDef_localAnchorA_set_Box2D_b1d1b47c7e81f80a(uintptr_t arg1, uintptr_t arg2);
-extern uintptr_t _wrap_b2FrictionJointDef_localAnchorA_get_Box2D_b1d1b47c7e81f80a(uintptr_t arg1);
-extern void _wrap_b2FrictionJointDef_localAnchorB_set_Box2D_b1d1b47c7e81f80a(uintptr_t arg1, uintptr_t arg2);
-extern uintptr_t _wrap_b2FrictionJointDef_localAnchorB_get_Box2D_b1d1b47c7e81f80a(uintptr_t arg1);
-extern void _wrap_b2FrictionJointDef_maxForce_set_Box2D_b1d1b47c7e81f80a(uintptr_t arg1, float arg2);
-extern float _wrap_b2FrictionJointDef_maxForce_get_Box2D_b1d1b47c7e81f80a(uintptr_t arg1);
-extern void _wrap_b2FrictionJointDef_maxTorque_set_Box2D_b1d1b47c7e81f80a(uintptr_t arg1, float arg2);
-extern float _wrap_b2FrictionJointDef_maxTorque_get_Box2D_b1d1b47c7e81f80a(uintptr_t arg1);
-extern void _wrap_delete_b2FrictionJointDef_Box2D_b1d1b47c7e81f80a(uintptr_t arg1);
-extern uintptr_t _wrap_b2FrictionJoint_GetAnchorA_Box2D_b1d1b47c7e81f80a(uintptr_t arg1);
-extern uintptr_t _wrap_b2FrictionJoint_GetAnchorB_Box2D_b1d1b47c7e81f80a(uintptr_t arg1);
-extern uintptr_t _wrap_b2FrictionJoint_GetReactionForce_Box2D_b1d1b47c7e81f80a(uintptr_t arg1, float arg2);
-extern float _wrap_b2FrictionJoint_GetReactionTorque_Box2D_b1d1b47c7e81f80a(uintptr_t arg1, float arg2);
-extern uintptr_t _wrap_b2FrictionJoint_GetLocalAnchorA_Box2D_b1d1b47c7e81f80a(uintptr_t arg1);
-extern uintptr_t _wrap_b2FrictionJoint_GetLocalAnchorB_Box2D_b1d1b47c7e81f80a(uintptr_t arg1);
-extern void _wrap_b2FrictionJoint_SetMaxForce_Box2D_b1d1b47c7e81f80a(uintptr_t arg1, float arg2);
-extern float _wrap_b2FrictionJoint_GetMaxForce_Box2D_b1d1b47c7e81f80a(uintptr_t arg1);
-extern void _wrap_b2FrictionJoint_SetMaxTorque_Box2D_b1d1b47c7e81f80a(uintptr_t arg1, float arg2);
-extern float _wrap_b2FrictionJoint_GetMaxTorque_Box2D_b1d1b47c7e81f80a(uintptr_t arg1);
-extern void _wrap_b2FrictionJoint_Dump_Box2D_b1d1b47c7e81f80a(uintptr_t arg1);
-extern void _wrap_delete_b2FrictionJoint_Box2D_b1d1b47c7e81f80a(uintptr_t arg1);
-extern uintptr_t _wrap_new_b2GearJointDef_Box2D_b1d1b47c7e81f80a(void);
-extern void _wrap_b2GearJointDef_joint1_set_Box2D_b1d1b47c7e81f80a(uintptr_t arg1, uintptr_t arg2);
-extern uintptr_t _wrap_b2GearJointDef_joint1_get_Box2D_b1d1b47c7e81f80a(uintptr_t arg1);
-extern void _wrap_b2GearJointDef_joint2_set_Box2D_b1d1b47c7e81f80a(uintptr_t arg1, uintptr_t arg2);
-extern uintptr_t _wrap_b2GearJointDef_joint2_get_Box2D_b1d1b47c7e81f80a(uintptr_t arg1);
-extern void _wrap_b2GearJointDef_ratio_set_Box2D_b1d1b47c7e81f80a(uintptr_t arg1, float arg2);
-extern float _wrap_b2GearJointDef_ratio_get_Box2D_b1d1b47c7e81f80a(uintptr_t arg1);
-extern void _wrap_delete_b2GearJointDef_Box2D_b1d1b47c7e81f80a(uintptr_t arg1);
-extern uintptr_t _wrap_b2GearJoint_GetAnchorA_Box2D_b1d1b47c7e81f80a(uintptr_t arg1);
-extern uintptr_t _wrap_b2GearJoint_GetAnchorB_Box2D_b1d1b47c7e81f80a(uintptr_t arg1);
-extern uintptr_t _wrap_b2GearJoint_GetReactionForce_Box2D_b1d1b47c7e81f80a(uintptr_t arg1, float arg2);
-extern float _wrap_b2GearJoint_GetReactionTorque_Box2D_b1d1b47c7e81f80a(uintptr_t arg1, float arg2);
-extern uintptr_t _wrap_b2GearJoint_GetJoint1_Box2D_b1d1b47c7e81f80a(uintptr_t arg1);
-extern uintptr_t _wrap_b2GearJoint_GetJoint2_Box2D_b1d1b47c7e81f80a(uintptr_t arg1);
-extern void _wrap_b2GearJoint_SetRatio_Box2D_b1d1b47c7e81f80a(uintptr_t arg1, float arg2);
-extern float _wrap_b2GearJoint_GetRatio_Box2D_b1d1b47c7e81f80a(uintptr_t arg1);
-extern void _wrap_b2GearJoint_Dump_Box2D_b1d1b47c7e81f80a(uintptr_t arg1);
-extern void _wrap_delete_b2GearJoint_Box2D_b1d1b47c7e81f80a(uintptr_t arg1);
-extern uintptr_t _wrap_new_b2MotorJointDef_Box2D_b1d1b47c7e81f80a(void);
-extern void _wrap_b2MotorJointDef_Initialize_Box2D_b1d1b47c7e81f80a(uintptr_t arg1, uintptr_t arg2, uintptr_t arg3);
-extern void _wrap_b2MotorJointDef_linearOffset_set_Box2D_b1d1b47c7e81f80a(uintptr_t arg1, uintptr_t arg2);
-extern uintptr_t _wrap_b2MotorJointDef_linearOffset_get_Box2D_b1d1b47c7e81f80a(uintptr_t arg1);
-extern void _wrap_b2MotorJointDef_angularOffset_set_Box2D_b1d1b47c7e81f80a(uintptr_t arg1, float arg2);
-extern float _wrap_b2MotorJointDef_angularOffset_get_Box2D_b1d1b47c7e81f80a(uintptr_t arg1);
-extern void _wrap_b2MotorJointDef_maxForce_set_Box2D_b1d1b47c7e81f80a(uintptr_t arg1, float arg2);
-extern float _wrap_b2MotorJointDef_maxForce_get_Box2D_b1d1b47c7e81f80a(uintptr_t arg1);
-extern void _wrap_b2MotorJointDef_maxTorque_set_Box2D_b1d1b47c7e81f80a(uintptr_t arg1, float arg2);
-extern float _wrap_b2MotorJointDef_maxTorque_get_Box2D_b1d1b47c7e81f80a(uintptr_t arg1);
-extern void _wrap_b2MotorJointDef_correctionFactor_set_Box2D_b1d1b47c7e81f80a(uintptr_t arg1, float arg2);
-extern float _wrap_b2MotorJointDef_correctionFactor_get_Box2D_b1d1b47c7e81f80a(uintptr_t arg1);
-extern void _wrap_delete_b2MotorJointDef_Box2D_b1d1b47c7e81f80a(uintptr_t arg1);
-extern uintptr_t _wrap_b2MotorJoint_GetAnchorA_Box2D_b1d1b47c7e81f80a(uintptr_t arg1);
-extern uintptr_t _wrap_b2MotorJoint_GetAnchorB_Box2D_b1d1b47c7e81f80a(uintptr_t arg1);
-extern uintptr_t _wrap_b2MotorJoint_GetReactionForce_Box2D_b1d1b47c7e81f80a(uintptr_t arg1, float arg2);
-extern float _wrap_b2MotorJoint_GetReactionTorque_Box2D_b1d1b47c7e81f80a(uintptr_t arg1, float arg2);
-extern void _wrap_b2MotorJoint_SetLinearOffset_Box2D_b1d1b47c7e81f80a(uintptr_t arg1, uintptr_t arg2);
-extern uintptr_t _wrap_b2MotorJoint_GetLinearOffset_Box2D_b1d1b47c7e81f80a(uintptr_t arg1);
-extern void _wrap_b2MotorJoint_SetAngularOffset_Box2D_b1d1b47c7e81f80a(uintptr_t arg1, float arg2);
-extern float _wrap_b2MotorJoint_GetAngularOffset_Box2D_b1d1b47c7e81f80a(uintptr_t arg1);
-extern void _wrap_b2MotorJoint_SetMaxForce_Box2D_b1d1b47c7e81f80a(uintptr_t arg1, float arg2);
-extern float _wrap_b2MotorJoint_GetMaxForce_Box2D_b1d1b47c7e81f80a(uintptr_t arg1);
-extern void _wrap_b2MotorJoint_SetMaxTorque_Box2D_b1d1b47c7e81f80a(uintptr_t arg1, float arg2);
-extern float _wrap_b2MotorJoint_GetMaxTorque_Box2D_b1d1b47c7e81f80a(uintptr_t arg1);
-extern void _wrap_b2MotorJoint_SetCorrectionFactor_Box2D_b1d1b47c7e81f80a(uintptr_t arg1, float arg2);
-extern float _wrap_b2MotorJoint_GetCorrectionFactor_Box2D_b1d1b47c7e81f80a(uintptr_t arg1);
-extern void _wrap_b2MotorJoint_Dump_Box2D_b1d1b47c7e81f80a(uintptr_t arg1);
-extern void _wrap_delete_b2MotorJoint_Box2D_b1d1b47c7e81f80a(uintptr_t arg1);
-extern uintptr_t _wrap_new_b2MouseJointDef_Box2D_b1d1b47c7e81f80a(void);
-extern void _wrap_b2MouseJointDef_target_set_Box2D_b1d1b47c7e81f80a(uintptr_t arg1, uintptr_t arg2);
-extern uintptr_t _wrap_b2MouseJointDef_target_get_Box2D_b1d1b47c7e81f80a(uintptr_t arg1);
-extern void _wrap_b2MouseJointDef_maxForce_set_Box2D_b1d1b47c7e81f80a(uintptr_t arg1, float arg2);
-extern float _wrap_b2MouseJointDef_maxForce_get_Box2D_b1d1b47c7e81f80a(uintptr_t arg1);
-extern void _wrap_b2MouseJointDef_frequencyHz_set_Box2D_b1d1b47c7e81f80a(uintptr_t arg1, float arg2);
-extern float _wrap_b2MouseJointDef_frequencyHz_get_Box2D_b1d1b47c7e81f80a(uintptr_t arg1);
-extern void _wrap_b2MouseJointDef_dampingRatio_set_Box2D_b1d1b47c7e81f80a(uintptr_t arg1, float arg2);
-extern float _wrap_b2MouseJointDef_dampingRatio_get_Box2D_b1d1b47c7e81f80a(uintptr_t arg1);
-extern void _wrap_delete_b2MouseJointDef_Box2D_b1d1b47c7e81f80a(uintptr_t arg1);
-extern uintptr_t _wrap_b2MouseJoint_GetAnchorA_Box2D_b1d1b47c7e81f80a(uintptr_t arg1);
-extern uintptr_t _wrap_b2MouseJoint_GetAnchorB_Box2D_b1d1b47c7e81f80a(uintptr_t arg1);
-extern uintptr_t _wrap_b2MouseJoint_GetReactionForce_Box2D_b1d1b47c7e81f80a(uintptr_t arg1, float arg2);
-extern float _wrap_b2MouseJoint_GetReactionTorque_Box2D_b1d1b47c7e81f80a(uintptr_t arg1, float arg2);
-extern void _wrap_b2MouseJoint_SetTarget_Box2D_b1d1b47c7e81f80a(uintptr_t arg1, uintptr_t arg2);
-extern uintptr_t _wrap_b2MouseJoint_GetTarget_Box2D_b1d1b47c7e81f80a(uintptr_t arg1);
-extern void _wrap_b2MouseJoint_SetMaxForce_Box2D_b1d1b47c7e81f80a(uintptr_t arg1, float arg2);
-extern float _wrap_b2MouseJoint_GetMaxForce_Box2D_b1d1b47c7e81f80a(uintptr_t arg1);
-extern void _wrap_b2MouseJoint_SetFrequency_Box2D_b1d1b47c7e81f80a(uintptr_t arg1, float arg2);
-extern float _wrap_b2MouseJoint_GetFrequency_Box2D_b1d1b47c7e81f80a(uintptr_t arg1);
-extern void _wrap_b2MouseJoint_SetDampingRatio_Box2D_b1d1b47c7e81f80a(uintptr_t arg1, float arg2);
-extern float _wrap_b2MouseJoint_GetDampingRatio_Box2D_b1d1b47c7e81f80a(uintptr_t arg1);
-extern void _wrap_b2MouseJoint_Dump_Box2D_b1d1b47c7e81f80a(uintptr_t arg1);
-extern void _wrap_b2MouseJoint_ShiftOrigin_Box2D_b1d1b47c7e81f80a(uintptr_t arg1, uintptr_t arg2);
-extern void _wrap_delete_b2MouseJoint_Box2D_b1d1b47c7e81f80a(uintptr_t arg1);
-extern uintptr_t _wrap_new_b2PrismaticJointDef_Box2D_b1d1b47c7e81f80a(void);
-extern void _wrap_b2PrismaticJointDef_Initialize_Box2D_b1d1b47c7e81f80a(uintptr_t arg1, uintptr_t arg2, uintptr_t arg3, uintptr_t arg4, uintptr_t arg5);
-extern void _wrap_b2PrismaticJointDef_localAnchorA_set_Box2D_b1d1b47c7e81f80a(uintptr_t arg1, uintptr_t arg2);
-extern uintptr_t _wrap_b2PrismaticJointDef_localAnchorA_get_Box2D_b1d1b47c7e81f80a(uintptr_t arg1);
-extern void _wrap_b2PrismaticJointDef_localAnchorB_set_Box2D_b1d1b47c7e81f80a(uintptr_t arg1, uintptr_t arg2);
-extern uintptr_t _wrap_b2PrismaticJointDef_localAnchorB_get_Box2D_b1d1b47c7e81f80a(uintptr_t arg1);
-extern void _wrap_b2PrismaticJointDef_localAxisA_set_Box2D_b1d1b47c7e81f80a(uintptr_t arg1, uintptr_t arg2);
-extern uintptr_t _wrap_b2PrismaticJointDef_localAxisA_get_Box2D_b1d1b47c7e81f80a(uintptr_t arg1);
-extern void _wrap_b2PrismaticJointDef_referenceAngle_set_Box2D_b1d1b47c7e81f80a(uintptr_t arg1, float arg2);
-extern float _wrap_b2PrismaticJointDef_referenceAngle_get_Box2D_b1d1b47c7e81f80a(uintptr_t arg1);
-extern void _wrap_b2PrismaticJointDef_enableLimit_set_Box2D_b1d1b47c7e81f80a(uintptr_t arg1, _Bool arg2);
-extern _Bool _wrap_b2PrismaticJointDef_enableLimit_get_Box2D_b1d1b47c7e81f80a(uintptr_t arg1);
-extern void _wrap_b2PrismaticJointDef_lowerTranslation_set_Box2D_b1d1b47c7e81f80a(uintptr_t arg1, float arg2);
-extern float _wrap_b2PrismaticJointDef_lowerTranslation_get_Box2D_b1d1b47c7e81f80a(uintptr_t arg1);
-extern void _wrap_b2PrismaticJointDef_upperTranslation_set_Box2D_b1d1b47c7e81f80a(uintptr_t arg1, float arg2);
-extern float _wrap_b2PrismaticJointDef_upperTranslation_get_Box2D_b1d1b47c7e81f80a(uintptr_t arg1);
-extern void _wrap_b2PrismaticJointDef_enableMotor_set_Box2D_b1d1b47c7e81f80a(uintptr_t arg1, _Bool arg2);
-extern _Bool _wrap_b2PrismaticJointDef_enableMotor_get_Box2D_b1d1b47c7e81f80a(uintptr_t arg1);
-extern void _wrap_b2PrismaticJointDef_maxMotorForce_set_Box2D_b1d1b47c7e81f80a(uintptr_t arg1, float arg2);
-extern float _wrap_b2PrismaticJointDef_maxMotorForce_get_Box2D_b1d1b47c7e81f80a(uintptr_t arg1);
-extern void _wrap_b2PrismaticJointDef_motorSpeed_set_Box2D_b1d1b47c7e81f80a(uintptr_t arg1, float arg2);
-extern float _wrap_b2PrismaticJointDef_motorSpeed_get_Box2D_b1d1b47c7e81f80a(uintptr_t arg1);
-extern void _wrap_delete_b2PrismaticJointDef_Box2D_b1d1b47c7e81f80a(uintptr_t arg1);
-extern uintptr_t _wrap_b2PrismaticJoint_GetAnchorA_Box2D_b1d1b47c7e81f80a(uintptr_t arg1);
-extern uintptr_t _wrap_b2PrismaticJoint_GetAnchorB_Box2D_b1d1b47c7e81f80a(uintptr_t arg1);
-extern uintptr_t _wrap_b2PrismaticJoint_GetReactionForce_Box2D_b1d1b47c7e81f80a(uintptr_t arg1, float arg2);
-extern float _wrap_b2PrismaticJoint_GetReactionTorque_Box2D_b1d1b47c7e81f80a(uintptr_t arg1, float arg2);
-extern uintptr_t _wrap_b2PrismaticJoint_GetLocalAnchorA_Box2D_b1d1b47c7e81f80a(uintptr_t arg1);
-extern uintptr_t _wrap_b2PrismaticJoint_GetLocalAnchorB_Box2D_b1d1b47c7e81f80a(uintptr_t arg1);
-extern uintptr_t _wrap_b2PrismaticJoint_GetLocalAxisA_Box2D_b1d1b47c7e81f80a(uintptr_t arg1);
-extern float _wrap_b2PrismaticJoint_GetReferenceAngle_Box2D_b1d1b47c7e81f80a(uintptr_t arg1);
-extern float _wrap_b2PrismaticJoint_GetJointTranslation_Box2D_b1d1b47c7e81f80a(uintptr_t arg1);
-extern float _wrap_b2PrismaticJoint_GetJointSpeed_Box2D_b1d1b47c7e81f80a(uintptr_t arg1);
-extern _Bool _wrap_b2PrismaticJoint_IsLimitEnabled_Box2D_b1d1b47c7e81f80a(uintptr_t arg1);
-extern void _wrap_b2PrismaticJoint_EnableLimit_Box2D_b1d1b47c7e81f80a(uintptr_t arg1, _Bool arg2);
-extern float _wrap_b2PrismaticJoint_GetLowerLimit_Box2D_b1d1b47c7e81f80a(uintptr_t arg1);
-extern float _wrap_b2PrismaticJoint_GetUpperLimit_Box2D_b1d1b47c7e81f80a(uintptr_t arg1);
-extern void _wrap_b2PrismaticJoint_SetLimits_Box2D_b1d1b47c7e81f80a(uintptr_t arg1, float arg2, float arg3);
-extern _Bool _wrap_b2PrismaticJoint_IsMotorEnabled_Box2D_b1d1b47c7e81f80a(uintptr_t arg1);
-extern void _wrap_b2PrismaticJoint_EnableMotor_Box2D_b1d1b47c7e81f80a(uintptr_t arg1, _Bool arg2);
-extern void _wrap_b2PrismaticJoint_SetMotorSpeed_Box2D_b1d1b47c7e81f80a(uintptr_t arg1, float arg2);
-extern float _wrap_b2PrismaticJoint_GetMotorSpeed_Box2D_b1d1b47c7e81f80a(uintptr_t arg1);
-extern void _wrap_b2PrismaticJoint_SetMaxMotorForce_Box2D_b1d1b47c7e81f80a(uintptr_t arg1, float arg2);
-extern float _wrap_b2PrismaticJoint_GetMaxMotorForce_Box2D_b1d1b47c7e81f80a(uintptr_t arg1);
-extern float _wrap_b2PrismaticJoint_GetMotorForce_Box2D_b1d1b47c7e81f80a(uintptr_t arg1, float arg2);
-extern void _wrap_b2PrismaticJoint_Dump_Box2D_b1d1b47c7e81f80a(uintptr_t arg1);
-extern void _wrap_delete_b2PrismaticJoint_Box2D_b1d1b47c7e81f80a(uintptr_t arg1);
-extern float _wrap_b2_minPulleyLength_get_Box2D_b1d1b47c7e81f80a(void);
-extern uintptr_t _wrap_new_b2PulleyJointDef_Box2D_b1d1b47c7e81f80a(void);
-extern void _wrap_b2PulleyJointDef_Initialize_Box2D_b1d1b47c7e81f80a(uintptr_t arg1, uintptr_t arg2, uintptr_t arg3, uintptr_t arg4, uintptr_t arg5, uintptr_t arg6, uintptr_t arg7, float arg8);
-extern void _wrap_b2PulleyJointDef_groundAnchorA_set_Box2D_b1d1b47c7e81f80a(uintptr_t arg1, uintptr_t arg2);
-extern uintptr_t _wrap_b2PulleyJointDef_groundAnchorA_get_Box2D_b1d1b47c7e81f80a(uintptr_t arg1);
-extern void _wrap_b2PulleyJointDef_groundAnchorB_set_Box2D_b1d1b47c7e81f80a(uintptr_t arg1, uintptr_t arg2);
-extern uintptr_t _wrap_b2PulleyJointDef_groundAnchorB_get_Box2D_b1d1b47c7e81f80a(uintptr_t arg1);
-extern void _wrap_b2PulleyJointDef_localAnchorA_set_Box2D_b1d1b47c7e81f80a(uintptr_t arg1, uintptr_t arg2);
-extern uintptr_t _wrap_b2PulleyJointDef_localAnchorA_get_Box2D_b1d1b47c7e81f80a(uintptr_t arg1);
-extern void _wrap_b2PulleyJointDef_localAnchorB_set_Box2D_b1d1b47c7e81f80a(uintptr_t arg1, uintptr_t arg2);
-extern uintptr_t _wrap_b2PulleyJointDef_localAnchorB_get_Box2D_b1d1b47c7e81f80a(uintptr_t arg1);
-extern void _wrap_b2PulleyJointDef_lengthA_set_Box2D_b1d1b47c7e81f80a(uintptr_t arg1, float arg2);
-extern float _wrap_b2PulleyJointDef_lengthA_get_Box2D_b1d1b47c7e81f80a(uintptr_t arg1);
-extern void _wrap_b2PulleyJointDef_lengthB_set_Box2D_b1d1b47c7e81f80a(uintptr_t arg1, float arg2);
-extern float _wrap_b2PulleyJointDef_lengthB_get_Box2D_b1d1b47c7e81f80a(uintptr_t arg1);
-extern void _wrap_b2PulleyJointDef_ratio_set_Box2D_b1d1b47c7e81f80a(uintptr_t arg1, float arg2);
-extern float _wrap_b2PulleyJointDef_ratio_get_Box2D_b1d1b47c7e81f80a(uintptr_t arg1);
-extern void _wrap_delete_b2PulleyJointDef_Box2D_b1d1b47c7e81f80a(uintptr_t arg1);
-extern uintptr_t _wrap_b2PulleyJoint_GetAnchorA_Box2D_b1d1b47c7e81f80a(uintptr_t arg1);
-extern uintptr_t _wrap_b2PulleyJoint_GetAnchorB_Box2D_b1d1b47c7e81f80a(uintptr_t arg1);
-extern uintptr_t _wrap_b2PulleyJoint_GetReactionForce_Box2D_b1d1b47c7e81f80a(uintptr_t arg1, float arg2);
-extern float _wrap_b2PulleyJoint_GetReactionTorque_Box2D_b1d1b47c7e81f80a(uintptr_t arg1, float arg2);
-extern uintptr_t _wrap_b2PulleyJoint_GetGroundAnchorA_Box2D_b1d1b47c7e81f80a(uintptr_t arg1);
-extern uintptr_t _wrap_b2PulleyJoint_GetGroundAnchorB_Box2D_b1d1b47c7e81f80a(uintptr_t arg1);
-extern float _wrap_b2PulleyJoint_GetLengthA_Box2D_b1d1b47c7e81f80a(uintptr_t arg1);
-extern float _wrap_b2PulleyJoint_GetLengthB_Box2D_b1d1b47c7e81f80a(uintptr_t arg1);
-extern float _wrap_b2PulleyJoint_GetRatio_Box2D_b1d1b47c7e81f80a(uintptr_t arg1);
-extern float _wrap_b2PulleyJoint_GetCurrentLengthA_Box2D_b1d1b47c7e81f80a(uintptr_t arg1);
-extern float _wrap_b2PulleyJoint_GetCurrentLengthB_Box2D_b1d1b47c7e81f80a(uintptr_t arg1);
-extern void _wrap_b2PulleyJoint_Dump_Box2D_b1d1b47c7e81f80a(uintptr_t arg1);
-extern void _wrap_b2PulleyJoint_ShiftOrigin_Box2D_b1d1b47c7e81f80a(uintptr_t arg1, uintptr_t arg2);
-extern void _wrap_delete_b2PulleyJoint_Box2D_b1d1b47c7e81f80a(uintptr_t arg1);
-extern uintptr_t _wrap_new_b2RevoluteJointDef_Box2D_b1d1b47c7e81f80a(void);
-extern void _wrap_b2RevoluteJointDef_Initialize_Box2D_b1d1b47c7e81f80a(uintptr_t arg1, uintptr_t arg2, uintptr_t arg3, uintptr_t arg4);
-extern void _wrap_b2RevoluteJointDef_localAnchorA_set_Box2D_b1d1b47c7e81f80a(uintptr_t arg1, uintptr_t arg2);
-extern uintptr_t _wrap_b2RevoluteJointDef_localAnchorA_get_Box2D_b1d1b47c7e81f80a(uintptr_t arg1);
-extern void _wrap_b2RevoluteJointDef_localAnchorB_set_Box2D_b1d1b47c7e81f80a(uintptr_t arg1, uintptr_t arg2);
-extern uintptr_t _wrap_b2RevoluteJointDef_localAnchorB_get_Box2D_b1d1b47c7e81f80a(uintptr_t arg1);
-extern void _wrap_b2RevoluteJointDef_referenceAngle_set_Box2D_b1d1b47c7e81f80a(uintptr_t arg1, float arg2);
-extern float _wrap_b2RevoluteJointDef_referenceAngle_get_Box2D_b1d1b47c7e81f80a(uintptr_t arg1);
-extern void _wrap_b2RevoluteJointDef_enableLimit_set_Box2D_b1d1b47c7e81f80a(uintptr_t arg1, _Bool arg2);
-extern _Bool _wrap_b2RevoluteJointDef_enableLimit_get_Box2D_b1d1b47c7e81f80a(uintptr_t arg1);
-extern void _wrap_b2RevoluteJointDef_lowerAngle_set_Box2D_b1d1b47c7e81f80a(uintptr_t arg1, float arg2);
-extern float _wrap_b2RevoluteJointDef_lowerAngle_get_Box2D_b1d1b47c7e81f80a(uintptr_t arg1);
-extern void _wrap_b2RevoluteJointDef_upperAngle_set_Box2D_b1d1b47c7e81f80a(uintptr_t arg1, float arg2);
-extern float _wrap_b2RevoluteJointDef_upperAngle_get_Box2D_b1d1b47c7e81f80a(uintptr_t arg1);
-extern void _wrap_b2RevoluteJointDef_enableMotor_set_Box2D_b1d1b47c7e81f80a(uintptr_t arg1, _Bool arg2);
-extern _Bool _wrap_b2RevoluteJointDef_enableMotor_get_Box2D_b1d1b47c7e81f80a(uintptr_t arg1);
-extern void _wrap_b2RevoluteJointDef_motorSpeed_set_Box2D_b1d1b47c7e81f80a(uintptr_t arg1, float arg2);
-extern float _wrap_b2RevoluteJointDef_motorSpeed_get_Box2D_b1d1b47c7e81f80a(uintptr_t arg1);
-extern void _wrap_b2RevoluteJointDef_maxMotorTorque_set_Box2D_b1d1b47c7e81f80a(uintptr_t arg1, float arg2);
-extern float _wrap_b2RevoluteJointDef_maxMotorTorque_get_Box2D_b1d1b47c7e81f80a(uintptr_t arg1);
-extern void _wrap_delete_b2RevoluteJointDef_Box2D_b1d1b47c7e81f80a(uintptr_t arg1);
-extern uintptr_t _wrap_b2RevoluteJoint_GetAnchorA_Box2D_b1d1b47c7e81f80a(uintptr_t arg1);
-extern uintptr_t _wrap_b2RevoluteJoint_GetAnchorB_Box2D_b1d1b47c7e81f80a(uintptr_t arg1);
-extern uintptr_t _wrap_b2RevoluteJoint_GetLocalAnchorA_Box2D_b1d1b47c7e81f80a(uintptr_t arg1);
-extern uintptr_t _wrap_b2RevoluteJoint_GetLocalAnchorB_Box2D_b1d1b47c7e81f80a(uintptr_t arg1);
-extern float _wrap_b2RevoluteJoint_GetReferenceAngle_Box2D_b1d1b47c7e81f80a(uintptr_t arg1);
-extern float _wrap_b2RevoluteJoint_GetJointAngle_Box2D_b1d1b47c7e81f80a(uintptr_t arg1);
-extern float _wrap_b2RevoluteJoint_GetJointSpeed_Box2D_b1d1b47c7e81f80a(uintptr_t arg1);
-extern _Bool _wrap_b2RevoluteJoint_IsLimitEnabled_Box2D_b1d1b47c7e81f80a(uintptr_t arg1);
-extern void _wrap_b2RevoluteJoint_EnableLimit_Box2D_b1d1b47c7e81f80a(uintptr_t arg1, _Bool arg2);
-extern float _wrap_b2RevoluteJoint_GetLowerLimit_Box2D_b1d1b47c7e81f80a(uintptr_t arg1);
-extern float _wrap_b2RevoluteJoint_GetUpperLimit_Box2D_b1d1b47c7e81f80a(uintptr_t arg1);
-extern void _wrap_b2RevoluteJoint_SetLimits_Box2D_b1d1b47c7e81f80a(uintptr_t arg1, float arg2, float arg3);
-extern _Bool _wrap_b2RevoluteJoint_IsMotorEnabled_Box2D_b1d1b47c7e81f80a(uintptr_t arg1);
-extern void _wrap_b2RevoluteJoint_EnableMotor_Box2D_b1d1b47c7e81f80a(uintptr_t arg1, _Bool arg2);
-extern void _wrap_b2RevoluteJoint_SetMotorSpeed_Box2D_b1d1b47c7e81f80a(uintptr_t arg1, float arg2);
-extern float _wrap_b2RevoluteJoint_GetMotorSpeed_Box2D_b1d1b47c7e81f80a(uintptr_t arg1);
-extern void _wrap_b2RevoluteJoint_SetMaxMotorTorque_Box2D_b1d1b47c7e81f80a(uintptr_t arg1, float arg2);
-extern float _wrap_b2RevoluteJoint_GetMaxMotorTorque_Box2D_b1d1b47c7e81f80a(uintptr_t arg1);
-extern uintptr_t _wrap_b2RevoluteJoint_GetReactionForce_Box2D_b1d1b47c7e81f80a(uintptr_t arg1, float arg2);
-extern float _wrap_b2RevoluteJoint_GetReactionTorque_Box2D_b1d1b47c7e81f80a(uintptr_t arg1, float arg2);
-extern float _wrap_b2RevoluteJoint_GetMotorTorque_Box2D_b1d1b47c7e81f80a(uintptr_t arg1, float arg2);
-extern void _wrap_b2RevoluteJoint_Dump_Box2D_b1d1b47c7e81f80a(uintptr_t arg1);
-extern void _wrap_delete_b2RevoluteJoint_Box2D_b1d1b47c7e81f80a(uintptr_t arg1);
-extern uintptr_t _wrap_new_b2RopeJointDef_Box2D_b1d1b47c7e81f80a(void);
-extern void _wrap_b2RopeJointDef_localAnchorA_set_Box2D_b1d1b47c7e81f80a(uintptr_t arg1, uintptr_t arg2);
-extern uintptr_t _wrap_b2RopeJointDef_localAnchorA_get_Box2D_b1d1b47c7e81f80a(uintptr_t arg1);
-extern void _wrap_b2RopeJointDef_localAnchorB_set_Box2D_b1d1b47c7e81f80a(uintptr_t arg1, uintptr_t arg2);
-extern uintptr_t _wrap_b2RopeJointDef_localAnchorB_get_Box2D_b1d1b47c7e81f80a(uintptr_t arg1);
-extern void _wrap_b2RopeJointDef_maxLength_set_Box2D_b1d1b47c7e81f80a(uintptr_t arg1, float arg2);
-extern float _wrap_b2RopeJointDef_maxLength_get_Box2D_b1d1b47c7e81f80a(uintptr_t arg1);
-extern void _wrap_delete_b2RopeJointDef_Box2D_b1d1b47c7e81f80a(uintptr_t arg1);
-extern uintptr_t _wrap_b2RopeJoint_GetAnchorA_Box2D_b1d1b47c7e81f80a(uintptr_t arg1);
-extern uintptr_t _wrap_b2RopeJoint_GetAnchorB_Box2D_b1d1b47c7e81f80a(uintptr_t arg1);
-extern uintptr_t _wrap_b2RopeJoint_GetReactionForce_Box2D_b1d1b47c7e81f80a(uintptr_t arg1, float arg2);
-extern float _wrap_b2RopeJoint_GetReactionTorque_Box2D_b1d1b47c7e81f80a(uintptr_t arg1, float arg2);
-extern uintptr_t _wrap_b2RopeJoint_GetLocalAnchorA_Box2D_b1d1b47c7e81f80a(uintptr_t arg1);
-extern uintptr_t _wrap_b2RopeJoint_GetLocalAnchorB_Box2D_b1d1b47c7e81f80a(uintptr_t arg1);
-extern void _wrap_b2RopeJoint_SetMaxLength_Box2D_b1d1b47c7e81f80a(uintptr_t arg1, float arg2);
-extern float _wrap_b2RopeJoint_GetMaxLength_Box2D_b1d1b47c7e81f80a(uintptr_t arg1);
-extern uintptr_t _wrap_b2RopeJoint_GetLimitState_Box2D_b1d1b47c7e81f80a(uintptr_t arg1);
-extern void _wrap_b2RopeJoint_Dump_Box2D_b1d1b47c7e81f80a(uintptr_t arg1);
-extern void _wrap_delete_b2RopeJoint_Box2D_b1d1b47c7e81f80a(uintptr_t arg1);
-extern uintptr_t _wrap_new_b2WeldJointDef_Box2D_b1d1b47c7e81f80a(void);
-extern void _wrap_b2WeldJointDef_Initialize_Box2D_b1d1b47c7e81f80a(uintptr_t arg1, uintptr_t arg2, uintptr_t arg3, uintptr_t arg4);
-extern void _wrap_b2WeldJointDef_localAnchorA_set_Box2D_b1d1b47c7e81f80a(uintptr_t arg1, uintptr_t arg2);
-extern uintptr_t _wrap_b2WeldJointDef_localAnchorA_get_Box2D_b1d1b47c7e81f80a(uintptr_t arg1);
-extern void _wrap_b2WeldJointDef_localAnchorB_set_Box2D_b1d1b47c7e81f80a(uintptr_t arg1, uintptr_t arg2);
-extern uintptr_t _wrap_b2WeldJointDef_localAnchorB_get_Box2D_b1d1b47c7e81f80a(uintptr_t arg1);
-extern void _wrap_b2WeldJointDef_referenceAngle_set_Box2D_b1d1b47c7e81f80a(uintptr_t arg1, float arg2);
-extern float _wrap_b2WeldJointDef_referenceAngle_get_Box2D_b1d1b47c7e81f80a(uintptr_t arg1);
-extern void _wrap_b2WeldJointDef_frequencyHz_set_Box2D_b1d1b47c7e81f80a(uintptr_t arg1, float arg2);
-extern float _wrap_b2WeldJointDef_frequencyHz_get_Box2D_b1d1b47c7e81f80a(uintptr_t arg1);
-extern void _wrap_b2WeldJointDef_dampingRatio_set_Box2D_b1d1b47c7e81f80a(uintptr_t arg1, float arg2);
-extern float _wrap_b2WeldJointDef_dampingRatio_get_Box2D_b1d1b47c7e81f80a(uintptr_t arg1);
-extern void _wrap_delete_b2WeldJointDef_Box2D_b1d1b47c7e81f80a(uintptr_t arg1);
-extern uintptr_t _wrap_b2WeldJoint_GetAnchorA_Box2D_b1d1b47c7e81f80a(uintptr_t arg1);
-extern uintptr_t _wrap_b2WeldJoint_GetAnchorB_Box2D_b1d1b47c7e81f80a(uintptr_t arg1);
-extern uintptr_t _wrap_b2WeldJoint_GetReactionForce_Box2D_b1d1b47c7e81f80a(uintptr_t arg1, float arg2);
-extern float _wrap_b2WeldJoint_GetReactionTorque_Box2D_b1d1b47c7e81f80a(uintptr_t arg1, float arg2);
-extern uintptr_t _wrap_b2WeldJoint_GetLocalAnchorA_Box2D_b1d1b47c7e81f80a(uintptr_t arg1);
-extern uintptr_t _wrap_b2WeldJoint_GetLocalAnchorB_Box2D_b1d1b47c7e81f80a(uintptr_t arg1);
-extern float _wrap_b2WeldJoint_GetReferenceAngle_Box2D_b1d1b47c7e81f80a(uintptr_t arg1);
-extern void _wrap_b2WeldJoint_SetFrequency_Box2D_b1d1b47c7e81f80a(uintptr_t arg1, float arg2);
-extern float _wrap_b2WeldJoint_GetFrequency_Box2D_b1d1b47c7e81f80a(uintptr_t arg1);
-extern void _wrap_b2WeldJoint_SetDampingRatio_Box2D_b1d1b47c7e81f80a(uintptr_t arg1, float arg2);
-extern float _wrap_b2WeldJoint_GetDampingRatio_Box2D_b1d1b47c7e81f80a(uintptr_t arg1);
-extern void _wrap_b2WeldJoint_Dump_Box2D_b1d1b47c7e81f80a(uintptr_t arg1);
-extern void _wrap_delete_b2WeldJoint_Box2D_b1d1b47c7e81f80a(uintptr_t arg1);
-extern uintptr_t _wrap_new_b2WheelJointDef_Box2D_b1d1b47c7e81f80a(void);
-extern void _wrap_b2WheelJointDef_Initialize_Box2D_b1d1b47c7e81f80a(uintptr_t arg1, uintptr_t arg2, uintptr_t arg3, uintptr_t arg4, uintptr_t arg5);
-extern void _wrap_b2WheelJointDef_localAnchorA_set_Box2D_b1d1b47c7e81f80a(uintptr_t arg1, uintptr_t arg2);
-extern uintptr_t _wrap_b2WheelJointDef_localAnchorA_get_Box2D_b1d1b47c7e81f80a(uintptr_t arg1);
-extern void _wrap_b2WheelJointDef_localAnchorB_set_Box2D_b1d1b47c7e81f80a(uintptr_t arg1, uintptr_t arg2);
-extern uintptr_t _wrap_b2WheelJointDef_localAnchorB_get_Box2D_b1d1b47c7e81f80a(uintptr_t arg1);
-extern void _wrap_b2WheelJointDef_localAxisA_set_Box2D_b1d1b47c7e81f80a(uintptr_t arg1, uintptr_t arg2);
-extern uintptr_t _wrap_b2WheelJointDef_localAxisA_get_Box2D_b1d1b47c7e81f80a(uintptr_t arg1);
-extern void _wrap_b2WheelJointDef_enableMotor_set_Box2D_b1d1b47c7e81f80a(uintptr_t arg1, _Bool arg2);
-extern _Bool _wrap_b2WheelJointDef_enableMotor_get_Box2D_b1d1b47c7e81f80a(uintptr_t arg1);
-extern void _wrap_b2WheelJointDef_maxMotorTorque_set_Box2D_b1d1b47c7e81f80a(uintptr_t arg1, float arg2);
-extern float _wrap_b2WheelJointDef_maxMotorTorque_get_Box2D_b1d1b47c7e81f80a(uintptr_t arg1);
-extern void _wrap_b2WheelJointDef_motorSpeed_set_Box2D_b1d1b47c7e81f80a(uintptr_t arg1, float arg2);
-extern float _wrap_b2WheelJointDef_motorSpeed_get_Box2D_b1d1b47c7e81f80a(uintptr_t arg1);
-extern void _wrap_b2WheelJointDef_frequencyHz_set_Box2D_b1d1b47c7e81f80a(uintptr_t arg1, float arg2);
-extern float _wrap_b2WheelJointDef_frequencyHz_get_Box2D_b1d1b47c7e81f80a(uintptr_t arg1);
-extern void _wrap_b2WheelJointDef_dampingRatio_set_Box2D_b1d1b47c7e81f80a(uintptr_t arg1, float arg2);
-extern float _wrap_b2WheelJointDef_dampingRatio_get_Box2D_b1d1b47c7e81f80a(uintptr_t arg1);
-extern void _wrap_delete_b2WheelJointDef_Box2D_b1d1b47c7e81f80a(uintptr_t arg1);
-extern uintptr_t _wrap_b2WheelJoint_GetAnchorA_Box2D_b1d1b47c7e81f80a(uintptr_t arg1);
-extern uintptr_t _wrap_b2WheelJoint_GetAnchorB_Box2D_b1d1b47c7e81f80a(uintptr_t arg1);
-extern uintptr_t _wrap_b2WheelJoint_GetReactionForce_Box2D_b1d1b47c7e81f80a(uintptr_t arg1, float arg2);
-extern float _wrap_b2WheelJoint_GetReactionTorque_Box2D_b1d1b47c7e81f80a(uintptr_t arg1, float arg2);
-extern uintptr_t _wrap_b2WheelJoint_GetLocalAnchorA_Box2D_b1d1b47c7e81f80a(uintptr_t arg1);
-extern uintptr_t _wrap_b2WheelJoint_GetLocalAnchorB_Box2D_b1d1b47c7e81f80a(uintptr_t arg1);
-extern uintptr_t _wrap_b2WheelJoint_GetLocalAxisA_Box2D_b1d1b47c7e81f80a(uintptr_t arg1);
-extern float _wrap_b2WheelJoint_GetJointTranslation_Box2D_b1d1b47c7e81f80a(uintptr_t arg1);
-extern float _wrap_b2WheelJoint_GetJointSpeed_Box2D_b1d1b47c7e81f80a(uintptr_t arg1);
-extern _Bool _wrap_b2WheelJoint_IsMotorEnabled_Box2D_b1d1b47c7e81f80a(uintptr_t arg1);
-extern void _wrap_b2WheelJoint_EnableMotor_Box2D_b1d1b47c7e81f80a(uintptr_t arg1, _Bool arg2);
-extern void _wrap_b2WheelJoint_SetMotorSpeed_Box2D_b1d1b47c7e81f80a(uintptr_t arg1, float arg2);
-extern float _wrap_b2WheelJoint_GetMotorSpeed_Box2D_b1d1b47c7e81f80a(uintptr_t arg1);
-extern void _wrap_b2WheelJoint_SetMaxMotorTorque_Box2D_b1d1b47c7e81f80a(uintptr_t arg1, float arg2);
-extern float _wrap_b2WheelJoint_GetMaxMotorTorque_Box2D_b1d1b47c7e81f80a(uintptr_t arg1);
-extern float _wrap_b2WheelJoint_GetMotorTorque_Box2D_b1d1b47c7e81f80a(uintptr_t arg1, float arg2);
-extern void _wrap_b2WheelJoint_SetSpringFrequencyHz_Box2D_b1d1b47c7e81f80a(uintptr_t arg1, float arg2);
-extern float _wrap_b2WheelJoint_GetSpringFrequencyHz_Box2D_b1d1b47c7e81f80a(uintptr_t arg1);
-extern void _wrap_b2WheelJoint_SetSpringDampingRatio_Box2D_b1d1b47c7e81f80a(uintptr_t arg1, float arg2);
-extern float _wrap_b2WheelJoint_GetSpringDampingRatio_Box2D_b1d1b47c7e81f80a(uintptr_t arg1);
-extern void _wrap_b2WheelJoint_Dump_Box2D_b1d1b47c7e81f80a(uintptr_t arg1);
-extern void _wrap_delete_b2WheelJoint_Box2D_b1d1b47c7e81f80a(uintptr_t arg1);
+extern void _wrap_Swig_free_Box2D_553c0f9515edf50e(uintptr_t arg1);
+extern double _wrap_b2_angularSlop_Box2D_553c0f9515edf50e(void);
+extern double _wrap_b2_polygonRadius_Box2D_553c0f9515edf50e(void);
+extern double _wrap_b2_maxAngularCorrection_Box2D_553c0f9515edf50e(void);
+extern double _wrap_b2_maxTranslationSquared_Box2D_553c0f9515edf50e(void);
+extern double _wrap_b2_maxRotation_Box2D_553c0f9515edf50e(void);
+extern double _wrap_b2_maxRotationSquared_Box2D_553c0f9515edf50e(void);
+extern double _wrap_b2_angularSleepTolerance_Box2D_553c0f9515edf50e(void);
+extern uintptr_t _wrap_b2Alloc_Box2D_553c0f9515edf50e(swig_intgo arg1);
+extern void _wrap_b2Free_Box2D_553c0f9515edf50e(uintptr_t arg1);
+extern void _wrap_b2Log_Box2D_553c0f9515edf50e(swig_type_1 arg1);
+extern void _wrap_b2Version_major_set_Box2D_553c0f9515edf50e(uintptr_t arg1, swig_intgo arg2);
+extern swig_intgo _wrap_b2Version_major_get_Box2D_553c0f9515edf50e(uintptr_t arg1);
+extern void _wrap_b2Version_minor_set_Box2D_553c0f9515edf50e(uintptr_t arg1, swig_intgo arg2);
+extern swig_intgo _wrap_b2Version_minor_get_Box2D_553c0f9515edf50e(uintptr_t arg1);
+extern void _wrap_b2Version_revision_set_Box2D_553c0f9515edf50e(uintptr_t arg1, swig_intgo arg2);
+extern swig_intgo _wrap_b2Version_revision_get_Box2D_553c0f9515edf50e(uintptr_t arg1);
+extern uintptr_t _wrap_new_b2Version_Box2D_553c0f9515edf50e(void);
+extern void _wrap_delete_b2Version_Box2D_553c0f9515edf50e(uintptr_t arg1);
+extern void _wrap_b2_version_set_Box2D_553c0f9515edf50e(uintptr_t arg1);
+extern uintptr_t _wrap_b2_version_get_Box2D_553c0f9515edf50e(void);
+extern uintptr_t _wrap_new_b2Color__SWIG_0_Box2D_553c0f9515edf50e(void);
+extern uintptr_t _wrap_new_b2Color__SWIG_1_Box2D_553c0f9515edf50e(float arg1, float arg2, float arg3, float arg4);
+extern uintptr_t _wrap_new_b2Color__SWIG_2_Box2D_553c0f9515edf50e(float arg1, float arg2, float arg3);
+extern void _wrap_b2Color_Set__SWIG_0_Box2D_553c0f9515edf50e(uintptr_t arg1, float arg2, float arg3, float arg4, float arg5);
+extern void _wrap_b2Color_Set__SWIG_1_Box2D_553c0f9515edf50e(uintptr_t arg1, float arg2, float arg3, float arg4);
+extern void _wrap_b2Color_r_set_Box2D_553c0f9515edf50e(uintptr_t arg1, float arg2);
+extern float _wrap_b2Color_r_get_Box2D_553c0f9515edf50e(uintptr_t arg1);
+extern void _wrap_b2Color_g_set_Box2D_553c0f9515edf50e(uintptr_t arg1, float arg2);
+extern float _wrap_b2Color_g_get_Box2D_553c0f9515edf50e(uintptr_t arg1);
+extern void _wrap_b2Color_b_set_Box2D_553c0f9515edf50e(uintptr_t arg1, float arg2);
+extern float _wrap_b2Color_b_get_Box2D_553c0f9515edf50e(uintptr_t arg1);
+extern void _wrap_b2Color_a_set_Box2D_553c0f9515edf50e(uintptr_t arg1, float arg2);
+extern float _wrap_b2Color_a_get_Box2D_553c0f9515edf50e(uintptr_t arg1);
+extern void _wrap_delete_b2Color_Box2D_553c0f9515edf50e(uintptr_t arg1);
+extern void _wrap_delete_b2Draw_Box2D_553c0f9515edf50e(uintptr_t arg1);
+extern swig_intgo _wrap_e_shapeBit_b2Draw_Box2D_553c0f9515edf50e(void);
+extern swig_intgo _wrap_e_jointBit_b2Draw_Box2D_553c0f9515edf50e(void);
+extern swig_intgo _wrap_e_aabbBit_b2Draw_Box2D_553c0f9515edf50e(void);
+extern swig_intgo _wrap_e_pairBit_b2Draw_Box2D_553c0f9515edf50e(void);
+extern swig_intgo _wrap_e_centerOfMassBit_b2Draw_Box2D_553c0f9515edf50e(void);
+extern void _wrap_b2Draw_SetFlags_Box2D_553c0f9515edf50e(uintptr_t arg1, swig_intgo arg2);
+extern swig_intgo _wrap_b2Draw_GetFlags_Box2D_553c0f9515edf50e(uintptr_t arg1);
+extern void _wrap_b2Draw_AppendFlags_Box2D_553c0f9515edf50e(uintptr_t arg1, swig_intgo arg2);
+extern void _wrap_b2Draw_ClearFlags_Box2D_553c0f9515edf50e(uintptr_t arg1, swig_intgo arg2);
+extern void _wrap_b2Draw_DrawPolygon_Box2D_553c0f9515edf50e(uintptr_t arg1, uintptr_t arg2, swig_intgo arg3, uintptr_t arg4);
+extern void _wrap_b2Draw_DrawSolidPolygon_Box2D_553c0f9515edf50e(uintptr_t arg1, uintptr_t arg2, swig_intgo arg3, uintptr_t arg4);
+extern void _wrap_b2Draw_DrawCircle_Box2D_553c0f9515edf50e(uintptr_t arg1, uintptr_t arg2, float arg3, uintptr_t arg4);
+extern void _wrap_b2Draw_DrawSolidCircle_Box2D_553c0f9515edf50e(uintptr_t arg1, uintptr_t arg2, float arg3, uintptr_t arg4, uintptr_t arg5);
+extern void _wrap_b2Draw_DrawSegment_Box2D_553c0f9515edf50e(uintptr_t arg1, uintptr_t arg2, uintptr_t arg3, uintptr_t arg4);
+extern void _wrap_b2Draw_DrawTransform_Box2D_553c0f9515edf50e(uintptr_t arg1, uintptr_t arg2);
+extern uintptr_t _wrap_new_b2Timer_Box2D_553c0f9515edf50e(void);
+extern void _wrap_b2Timer_Reset_Box2D_553c0f9515edf50e(uintptr_t arg1);
+extern float _wrap_b2Timer_GetMilliseconds_Box2D_553c0f9515edf50e(uintptr_t arg1);
+extern void _wrap_delete_b2Timer_Box2D_553c0f9515edf50e(uintptr_t arg1);
+extern uintptr_t _wrap_new_b2CircleShape_Box2D_553c0f9515edf50e(void);
+extern uintptr_t _wrap_b2CircleShape_Clone_Box2D_553c0f9515edf50e(uintptr_t arg1, uintptr_t arg2);
+extern swig_intgo _wrap_b2CircleShape_GetChildCount_Box2D_553c0f9515edf50e(uintptr_t arg1);
+extern _Bool _wrap_b2CircleShape_TestPoint_Box2D_553c0f9515edf50e(uintptr_t arg1, uintptr_t arg2, uintptr_t arg3);
+extern _Bool _wrap_b2CircleShape_RayCast_Box2D_553c0f9515edf50e(uintptr_t arg1, uintptr_t arg2, uintptr_t arg3, uintptr_t arg4, swig_intgo arg5);
+extern void _wrap_b2CircleShape_ComputeAABB_Box2D_553c0f9515edf50e(uintptr_t arg1, uintptr_t arg2, uintptr_t arg3, swig_intgo arg4);
+extern void _wrap_b2CircleShape_ComputeMass_Box2D_553c0f9515edf50e(uintptr_t arg1, uintptr_t arg2, float arg3);
+extern swig_intgo _wrap_b2CircleShape_GetSupport_Box2D_553c0f9515edf50e(uintptr_t arg1, uintptr_t arg2);
+extern uintptr_t _wrap_b2CircleShape_GetSupportVertex_Box2D_553c0f9515edf50e(uintptr_t arg1, uintptr_t arg2);
+extern swig_intgo _wrap_b2CircleShape_GetVertexCount_Box2D_553c0f9515edf50e(uintptr_t arg1);
+extern uintptr_t _wrap_b2CircleShape_GetVertex_Box2D_553c0f9515edf50e(uintptr_t arg1, swig_intgo arg2);
+extern void _wrap_b2CircleShape_m_p_set_Box2D_553c0f9515edf50e(uintptr_t arg1, uintptr_t arg2);
+extern uintptr_t _wrap_b2CircleShape_m_p_get_Box2D_553c0f9515edf50e(uintptr_t arg1);
+extern void _wrap_delete_b2CircleShape_Box2D_553c0f9515edf50e(uintptr_t arg1);
+extern uintptr_t _wrap_new_b2EdgeShape_Box2D_553c0f9515edf50e(void);
+extern void _wrap_b2EdgeShape_Set_Box2D_553c0f9515edf50e(uintptr_t arg1, uintptr_t arg2, uintptr_t arg3);
+extern uintptr_t _wrap_b2EdgeShape_Clone_Box2D_553c0f9515edf50e(uintptr_t arg1, uintptr_t arg2);
+extern swig_intgo _wrap_b2EdgeShape_GetChildCount_Box2D_553c0f9515edf50e(uintptr_t arg1);
+extern _Bool _wrap_b2EdgeShape_TestPoint_Box2D_553c0f9515edf50e(uintptr_t arg1, uintptr_t arg2, uintptr_t arg3);
+extern _Bool _wrap_b2EdgeShape_RayCast_Box2D_553c0f9515edf50e(uintptr_t arg1, uintptr_t arg2, uintptr_t arg3, uintptr_t arg4, swig_intgo arg5);
+extern void _wrap_b2EdgeShape_ComputeAABB_Box2D_553c0f9515edf50e(uintptr_t arg1, uintptr_t arg2, uintptr_t arg3, swig_intgo arg4);
+extern void _wrap_b2EdgeShape_ComputeMass_Box2D_553c0f9515edf50e(uintptr_t arg1, uintptr_t arg2, float arg3);
+extern void _wrap_b2EdgeShape_m_vertex1_set_Box2D_553c0f9515edf50e(uintptr_t arg1, uintptr_t arg2);
+extern uintptr_t _wrap_b2EdgeShape_m_vertex1_get_Box2D_553c0f9515edf50e(uintptr_t arg1);
+extern void _wrap_b2EdgeShape_m_vertex2_set_Box2D_553c0f9515edf50e(uintptr_t arg1, uintptr_t arg2);
+extern uintptr_t _wrap_b2EdgeShape_m_vertex2_get_Box2D_553c0f9515edf50e(uintptr_t arg1);
+extern void _wrap_b2EdgeShape_m_vertex0_set_Box2D_553c0f9515edf50e(uintptr_t arg1, uintptr_t arg2);
+extern uintptr_t _wrap_b2EdgeShape_m_vertex0_get_Box2D_553c0f9515edf50e(uintptr_t arg1);
+extern void _wrap_b2EdgeShape_m_vertex3_set_Box2D_553c0f9515edf50e(uintptr_t arg1, uintptr_t arg2);
+extern uintptr_t _wrap_b2EdgeShape_m_vertex3_get_Box2D_553c0f9515edf50e(uintptr_t arg1);
+extern void _wrap_b2EdgeShape_m_hasVertex0_set_Box2D_553c0f9515edf50e(uintptr_t arg1, _Bool arg2);
+extern _Bool _wrap_b2EdgeShape_m_hasVertex0_get_Box2D_553c0f9515edf50e(uintptr_t arg1);
+extern void _wrap_b2EdgeShape_m_hasVertex3_set_Box2D_553c0f9515edf50e(uintptr_t arg1, _Bool arg2);
+extern _Bool _wrap_b2EdgeShape_m_hasVertex3_get_Box2D_553c0f9515edf50e(uintptr_t arg1);
+extern void _wrap_delete_b2EdgeShape_Box2D_553c0f9515edf50e(uintptr_t arg1);
+extern uintptr_t _wrap_new_b2ChainShape_Box2D_553c0f9515edf50e(void);
+extern void _wrap_delete_b2ChainShape_Box2D_553c0f9515edf50e(uintptr_t arg1);
+extern void _wrap_b2ChainShape_Clear_Box2D_553c0f9515edf50e(uintptr_t arg1);
+extern void _wrap_b2ChainShape_CreateLoop_Box2D_553c0f9515edf50e(uintptr_t arg1, uintptr_t arg2, swig_intgo arg3);
+extern void _wrap_b2ChainShape_CreateChain_Box2D_553c0f9515edf50e(uintptr_t arg1, uintptr_t arg2, swig_intgo arg3);
+extern void _wrap_b2ChainShape_SetPrevVertex_Box2D_553c0f9515edf50e(uintptr_t arg1, uintptr_t arg2);
+extern void _wrap_b2ChainShape_SetNextVertex_Box2D_553c0f9515edf50e(uintptr_t arg1, uintptr_t arg2);
+extern uintptr_t _wrap_b2ChainShape_Clone_Box2D_553c0f9515edf50e(uintptr_t arg1, uintptr_t arg2);
+extern swig_intgo _wrap_b2ChainShape_GetChildCount_Box2D_553c0f9515edf50e(uintptr_t arg1);
+extern void _wrap_b2ChainShape_GetChildEdge_Box2D_553c0f9515edf50e(uintptr_t arg1, uintptr_t arg2, swig_intgo arg3);
+extern _Bool _wrap_b2ChainShape_TestPoint_Box2D_553c0f9515edf50e(uintptr_t arg1, uintptr_t arg2, uintptr_t arg3);
+extern _Bool _wrap_b2ChainShape_RayCast_Box2D_553c0f9515edf50e(uintptr_t arg1, uintptr_t arg2, uintptr_t arg3, uintptr_t arg4, swig_intgo arg5);
+extern void _wrap_b2ChainShape_ComputeAABB_Box2D_553c0f9515edf50e(uintptr_t arg1, uintptr_t arg2, uintptr_t arg3, swig_intgo arg4);
+extern void _wrap_b2ChainShape_ComputeMass_Box2D_553c0f9515edf50e(uintptr_t arg1, uintptr_t arg2, float arg3);
+extern void _wrap_b2ChainShape_m_vertices_set_Box2D_553c0f9515edf50e(uintptr_t arg1, uintptr_t arg2);
+extern uintptr_t _wrap_b2ChainShape_m_vertices_get_Box2D_553c0f9515edf50e(uintptr_t arg1);
+extern void _wrap_b2ChainShape_m_count_set_Box2D_553c0f9515edf50e(uintptr_t arg1, swig_intgo arg2);
+extern swig_intgo _wrap_b2ChainShape_m_count_get_Box2D_553c0f9515edf50e(uintptr_t arg1);
+extern void _wrap_b2ChainShape_m_prevVertex_set_Box2D_553c0f9515edf50e(uintptr_t arg1, uintptr_t arg2);
+extern uintptr_t _wrap_b2ChainShape_m_prevVertex_get_Box2D_553c0f9515edf50e(uintptr_t arg1);
+extern void _wrap_b2ChainShape_m_nextVertex_set_Box2D_553c0f9515edf50e(uintptr_t arg1, uintptr_t arg2);
+extern uintptr_t _wrap_b2ChainShape_m_nextVertex_get_Box2D_553c0f9515edf50e(uintptr_t arg1);
+extern void _wrap_b2ChainShape_m_hasPrevVertex_set_Box2D_553c0f9515edf50e(uintptr_t arg1, _Bool arg2);
+extern _Bool _wrap_b2ChainShape_m_hasPrevVertex_get_Box2D_553c0f9515edf50e(uintptr_t arg1);
+extern void _wrap_b2ChainShape_m_hasNextVertex_set_Box2D_553c0f9515edf50e(uintptr_t arg1, _Bool arg2);
+extern _Bool _wrap_b2ChainShape_m_hasNextVertex_get_Box2D_553c0f9515edf50e(uintptr_t arg1);
+extern uintptr_t _wrap_new_b2PolygonShape_Box2D_553c0f9515edf50e(void);
+extern uintptr_t _wrap_b2PolygonShape_Clone_Box2D_553c0f9515edf50e(uintptr_t arg1, uintptr_t arg2);
+extern swig_intgo _wrap_b2PolygonShape_GetChildCount_Box2D_553c0f9515edf50e(uintptr_t arg1);
+extern void _wrap_b2PolygonShape_Set_Box2D_553c0f9515edf50e(uintptr_t arg1, uintptr_t arg2, swig_intgo arg3);
+extern void _wrap_b2PolygonShape_SetAsBox__SWIG_0_Box2D_553c0f9515edf50e(uintptr_t arg1, float arg2, float arg3);
+extern void _wrap_b2PolygonShape_SetAsBox__SWIG_1_Box2D_553c0f9515edf50e(uintptr_t arg1, float arg2, float arg3, uintptr_t arg4, float arg5);
+extern _Bool _wrap_b2PolygonShape_TestPoint_Box2D_553c0f9515edf50e(uintptr_t arg1, uintptr_t arg2, uintptr_t arg3);
+extern _Bool _wrap_b2PolygonShape_RayCast_Box2D_553c0f9515edf50e(uintptr_t arg1, uintptr_t arg2, uintptr_t arg3, uintptr_t arg4, swig_intgo arg5);
+extern void _wrap_b2PolygonShape_ComputeAABB_Box2D_553c0f9515edf50e(uintptr_t arg1, uintptr_t arg2, uintptr_t arg3, swig_intgo arg4);
+extern void _wrap_b2PolygonShape_ComputeMass_Box2D_553c0f9515edf50e(uintptr_t arg1, uintptr_t arg2, float arg3);
+extern swig_intgo _wrap_b2PolygonShape_GetVertexCount_Box2D_553c0f9515edf50e(uintptr_t arg1);
+extern uintptr_t _wrap_b2PolygonShape_GetVertex_Box2D_553c0f9515edf50e(uintptr_t arg1, swig_intgo arg2);
+extern _Bool _wrap_b2PolygonShape_Validate_Box2D_553c0f9515edf50e(uintptr_t arg1);
+extern void _wrap_b2PolygonShape_m_centroid_set_Box2D_553c0f9515edf50e(uintptr_t arg1, uintptr_t arg2);
+extern uintptr_t _wrap_b2PolygonShape_m_centroid_get_Box2D_553c0f9515edf50e(uintptr_t arg1);
+extern void _wrap_b2PolygonShape_m_vertices_set_Box2D_553c0f9515edf50e(uintptr_t arg1, uintptr_t arg2);
+extern uintptr_t _wrap_b2PolygonShape_m_vertices_get_Box2D_553c0f9515edf50e(uintptr_t arg1);
+extern void _wrap_b2PolygonShape_m_normals_set_Box2D_553c0f9515edf50e(uintptr_t arg1, uintptr_t arg2);
+extern uintptr_t _wrap_b2PolygonShape_m_normals_get_Box2D_553c0f9515edf50e(uintptr_t arg1);
+extern void _wrap_b2PolygonShape_m_count_set_Box2D_553c0f9515edf50e(uintptr_t arg1, swig_intgo arg2);
+extern swig_intgo _wrap_b2PolygonShape_m_count_get_Box2D_553c0f9515edf50e(uintptr_t arg1);
+extern void _wrap_delete_b2PolygonShape_Box2D_553c0f9515edf50e(uintptr_t arg1);
+extern void _wrap_b2Pair_proxyIdA_set_Box2D_553c0f9515edf50e(uintptr_t arg1, swig_intgo arg2);
+extern swig_intgo _wrap_b2Pair_proxyIdA_get_Box2D_553c0f9515edf50e(uintptr_t arg1);
+extern void _wrap_b2Pair_proxyIdB_set_Box2D_553c0f9515edf50e(uintptr_t arg1, swig_intgo arg2);
+extern swig_intgo _wrap_b2Pair_proxyIdB_get_Box2D_553c0f9515edf50e(uintptr_t arg1);
+extern uintptr_t _wrap_new_b2Pair_Box2D_553c0f9515edf50e(void);
+extern void _wrap_delete_b2Pair_Box2D_553c0f9515edf50e(uintptr_t arg1);
+extern swig_intgo _wrap_e_nullProxy_b2BroadPhase_Box2D_553c0f9515edf50e(void);
+extern uintptr_t _wrap_new_b2BroadPhase_Box2D_553c0f9515edf50e(void);
+extern void _wrap_delete_b2BroadPhase_Box2D_553c0f9515edf50e(uintptr_t arg1);
+extern swig_intgo _wrap_b2BroadPhase_CreateProxy_Box2D_553c0f9515edf50e(uintptr_t arg1, uintptr_t arg2, uintptr_t arg3);
+extern void _wrap_b2BroadPhase_DestroyProxy_Box2D_553c0f9515edf50e(uintptr_t arg1, swig_intgo arg2);
+extern void _wrap_b2BroadPhase_MoveProxy_Box2D_553c0f9515edf50e(uintptr_t arg1, swig_intgo arg2, uintptr_t arg3, uintptr_t arg4);
+extern void _wrap_b2BroadPhase_TouchProxy_Box2D_553c0f9515edf50e(uintptr_t arg1, swig_intgo arg2);
+extern uintptr_t _wrap_b2BroadPhase_GetFatAABB_Box2D_553c0f9515edf50e(uintptr_t arg1, swig_intgo arg2);
+extern uintptr_t _wrap_b2BroadPhase_GetUserData_Box2D_553c0f9515edf50e(uintptr_t arg1, swig_intgo arg2);
+extern _Bool _wrap_b2BroadPhase_TestOverlap_Box2D_553c0f9515edf50e(uintptr_t arg1, swig_intgo arg2, swig_intgo arg3);
+extern swig_intgo _wrap_b2BroadPhase_GetProxyCount_Box2D_553c0f9515edf50e(uintptr_t arg1);
+extern swig_intgo _wrap_b2BroadPhase_GetTreeHeight_Box2D_553c0f9515edf50e(uintptr_t arg1);
+extern swig_intgo _wrap_b2BroadPhase_GetTreeBalance_Box2D_553c0f9515edf50e(uintptr_t arg1);
+extern float _wrap_b2BroadPhase_GetTreeQuality_Box2D_553c0f9515edf50e(uintptr_t arg1);
+extern void _wrap_b2BroadPhase_ShiftOrigin_Box2D_553c0f9515edf50e(uintptr_t arg1, uintptr_t arg2);
+extern _Bool _wrap_b2PairLessThan_Box2D_553c0f9515edf50e(uintptr_t arg1, uintptr_t arg2);
+extern uintptr_t _wrap_new_b2DistanceProxy_Box2D_553c0f9515edf50e(void);
+extern void _wrap_b2DistanceProxy_Set_Box2D_553c0f9515edf50e(uintptr_t arg1, uintptr_t arg2, swig_intgo arg3);
+extern swig_intgo _wrap_b2DistanceProxy_GetSupport_Box2D_553c0f9515edf50e(uintptr_t arg1, uintptr_t arg2);
+extern uintptr_t _wrap_b2DistanceProxy_GetSupportVertex_Box2D_553c0f9515edf50e(uintptr_t arg1, uintptr_t arg2);
+extern swig_intgo _wrap_b2DistanceProxy_GetVertexCount_Box2D_553c0f9515edf50e(uintptr_t arg1);
+extern uintptr_t _wrap_b2DistanceProxy_GetVertex_Box2D_553c0f9515edf50e(uintptr_t arg1, swig_intgo arg2);
+extern void _wrap_b2DistanceProxy_m_buffer_set_Box2D_553c0f9515edf50e(uintptr_t arg1, uintptr_t arg2);
+extern uintptr_t _wrap_b2DistanceProxy_m_buffer_get_Box2D_553c0f9515edf50e(uintptr_t arg1);
+extern void _wrap_b2DistanceProxy_m_vertices_set_Box2D_553c0f9515edf50e(uintptr_t arg1, uintptr_t arg2);
+extern uintptr_t _wrap_b2DistanceProxy_m_vertices_get_Box2D_553c0f9515edf50e(uintptr_t arg1);
+extern void _wrap_b2DistanceProxy_m_count_set_Box2D_553c0f9515edf50e(uintptr_t arg1, swig_intgo arg2);
+extern swig_intgo _wrap_b2DistanceProxy_m_count_get_Box2D_553c0f9515edf50e(uintptr_t arg1);
+extern void _wrap_b2DistanceProxy_m_radius_set_Box2D_553c0f9515edf50e(uintptr_t arg1, float arg2);
+extern float _wrap_b2DistanceProxy_m_radius_get_Box2D_553c0f9515edf50e(uintptr_t arg1);
+extern void _wrap_delete_b2DistanceProxy_Box2D_553c0f9515edf50e(uintptr_t arg1);
+extern void _wrap_b2SimplexCache_metric_set_Box2D_553c0f9515edf50e(uintptr_t arg1, float arg2);
+extern float _wrap_b2SimplexCache_metric_get_Box2D_553c0f9515edf50e(uintptr_t arg1);
+extern void _wrap_b2SimplexCache_count_set_Box2D_553c0f9515edf50e(uintptr_t arg1, short arg2);
+extern short _wrap_b2SimplexCache_count_get_Box2D_553c0f9515edf50e(uintptr_t arg1);
+extern void _wrap_b2SimplexCache_indexA_set_Box2D_553c0f9515edf50e(uintptr_t arg1, swig_voidp arg2);
+extern swig_voidp _wrap_b2SimplexCache_indexA_get_Box2D_553c0f9515edf50e(uintptr_t arg1);
+extern void _wrap_b2SimplexCache_indexB_set_Box2D_553c0f9515edf50e(uintptr_t arg1, swig_voidp arg2);
+extern swig_voidp _wrap_b2SimplexCache_indexB_get_Box2D_553c0f9515edf50e(uintptr_t arg1);
+extern uintptr_t _wrap_new_b2SimplexCache_Box2D_553c0f9515edf50e(void);
+extern void _wrap_delete_b2SimplexCache_Box2D_553c0f9515edf50e(uintptr_t arg1);
+extern void _wrap_b2DistanceInput_proxyA_set_Box2D_553c0f9515edf50e(uintptr_t arg1, uintptr_t arg2);
+extern uintptr_t _wrap_b2DistanceInput_proxyA_get_Box2D_553c0f9515edf50e(uintptr_t arg1);
+extern void _wrap_b2DistanceInput_proxyB_set_Box2D_553c0f9515edf50e(uintptr_t arg1, uintptr_t arg2);
+extern uintptr_t _wrap_b2DistanceInput_proxyB_get_Box2D_553c0f9515edf50e(uintptr_t arg1);
+extern void _wrap_b2DistanceInput_transformA_set_Box2D_553c0f9515edf50e(uintptr_t arg1, uintptr_t arg2);
+extern uintptr_t _wrap_b2DistanceInput_transformA_get_Box2D_553c0f9515edf50e(uintptr_t arg1);
+extern void _wrap_b2DistanceInput_transformB_set_Box2D_553c0f9515edf50e(uintptr_t arg1, uintptr_t arg2);
+extern uintptr_t _wrap_b2DistanceInput_transformB_get_Box2D_553c0f9515edf50e(uintptr_t arg1);
+extern void _wrap_b2DistanceInput_useRadii_set_Box2D_553c0f9515edf50e(uintptr_t arg1, _Bool arg2);
+extern _Bool _wrap_b2DistanceInput_useRadii_get_Box2D_553c0f9515edf50e(uintptr_t arg1);
+extern uintptr_t _wrap_new_b2DistanceInput_Box2D_553c0f9515edf50e(void);
+extern void _wrap_delete_b2DistanceInput_Box2D_553c0f9515edf50e(uintptr_t arg1);
+extern void _wrap_b2DistanceOutput_pointA_set_Box2D_553c0f9515edf50e(uintptr_t arg1, uintptr_t arg2);
+extern uintptr_t _wrap_b2DistanceOutput_pointA_get_Box2D_553c0f9515edf50e(uintptr_t arg1);
+extern void _wrap_b2DistanceOutput_pointB_set_Box2D_553c0f9515edf50e(uintptr_t arg1, uintptr_t arg2);
+extern uintptr_t _wrap_b2DistanceOutput_pointB_get_Box2D_553c0f9515edf50e(uintptr_t arg1);
+extern void _wrap_b2DistanceOutput_distance_set_Box2D_553c0f9515edf50e(uintptr_t arg1, float arg2);
+extern float _wrap_b2DistanceOutput_distance_get_Box2D_553c0f9515edf50e(uintptr_t arg1);
+extern void _wrap_b2DistanceOutput_iterations_set_Box2D_553c0f9515edf50e(uintptr_t arg1, swig_intgo arg2);
+extern swig_intgo _wrap_b2DistanceOutput_iterations_get_Box2D_553c0f9515edf50e(uintptr_t arg1);
+extern uintptr_t _wrap_new_b2DistanceOutput_Box2D_553c0f9515edf50e(void);
+extern void _wrap_delete_b2DistanceOutput_Box2D_553c0f9515edf50e(uintptr_t arg1);
+extern void _wrap_b2Distance_Box2D_553c0f9515edf50e(uintptr_t arg1, uintptr_t arg2, uintptr_t arg3);
+extern swig_intgo _wrap_b2_nullNode_Box2D_553c0f9515edf50e(void);
+extern _Bool _wrap_b2TreeNode_IsLeaf_Box2D_553c0f9515edf50e(uintptr_t arg1);
+extern void _wrap_b2TreeNode_aabb_set_Box2D_553c0f9515edf50e(uintptr_t arg1, uintptr_t arg2);
+extern uintptr_t _wrap_b2TreeNode_aabb_get_Box2D_553c0f9515edf50e(uintptr_t arg1);
+extern void _wrap_b2TreeNode_userData_set_Box2D_553c0f9515edf50e(uintptr_t arg1, uintptr_t arg2);
+extern uintptr_t _wrap_b2TreeNode_userData_get_Box2D_553c0f9515edf50e(uintptr_t arg1);
+extern void _wrap_b2TreeNode_child1_set_Box2D_553c0f9515edf50e(uintptr_t arg1, swig_intgo arg2);
+extern swig_intgo _wrap_b2TreeNode_child1_get_Box2D_553c0f9515edf50e(uintptr_t arg1);
+extern void _wrap_b2TreeNode_child2_set_Box2D_553c0f9515edf50e(uintptr_t arg1, swig_intgo arg2);
+extern swig_intgo _wrap_b2TreeNode_child2_get_Box2D_553c0f9515edf50e(uintptr_t arg1);
+extern void _wrap_b2TreeNode_height_set_Box2D_553c0f9515edf50e(uintptr_t arg1, swig_intgo arg2);
+extern swig_intgo _wrap_b2TreeNode_height_get_Box2D_553c0f9515edf50e(uintptr_t arg1);
+extern uintptr_t _wrap_new_b2TreeNode_Box2D_553c0f9515edf50e(void);
+extern void _wrap_delete_b2TreeNode_Box2D_553c0f9515edf50e(uintptr_t arg1);
+extern uintptr_t _wrap_new_b2DynamicTree_Box2D_553c0f9515edf50e(void);
+extern void _wrap_delete_b2DynamicTree_Box2D_553c0f9515edf50e(uintptr_t arg1);
+extern swig_intgo _wrap_b2DynamicTree_CreateProxy_Box2D_553c0f9515edf50e(uintptr_t arg1, uintptr_t arg2, uintptr_t arg3);
+extern void _wrap_b2DynamicTree_DestroyProxy_Box2D_553c0f9515edf50e(uintptr_t arg1, swig_intgo arg2);
+extern _Bool _wrap_b2DynamicTree_MoveProxy_Box2D_553c0f9515edf50e(uintptr_t arg1, swig_intgo arg2, uintptr_t arg3, uintptr_t arg4);
+extern uintptr_t _wrap_b2DynamicTree_GetUserData_Box2D_553c0f9515edf50e(uintptr_t arg1, swig_intgo arg2);
+extern uintptr_t _wrap_b2DynamicTree_GetFatAABB_Box2D_553c0f9515edf50e(uintptr_t arg1, swig_intgo arg2);
+extern void _wrap_b2DynamicTree_Validate_Box2D_553c0f9515edf50e(uintptr_t arg1);
+extern swig_intgo _wrap_b2DynamicTree_GetHeight_Box2D_553c0f9515edf50e(uintptr_t arg1);
+extern swig_intgo _wrap_b2DynamicTree_GetMaxBalance_Box2D_553c0f9515edf50e(uintptr_t arg1);
+extern float _wrap_b2DynamicTree_GetAreaRatio_Box2D_553c0f9515edf50e(uintptr_t arg1);
+extern void _wrap_b2DynamicTree_RebuildBottomUp_Box2D_553c0f9515edf50e(uintptr_t arg1);
+extern void _wrap_b2DynamicTree_ShiftOrigin_Box2D_553c0f9515edf50e(uintptr_t arg1, uintptr_t arg2);
+extern void _wrap_b2TOIInput_proxyA_set_Box2D_553c0f9515edf50e(uintptr_t arg1, uintptr_t arg2);
+extern uintptr_t _wrap_b2TOIInput_proxyA_get_Box2D_553c0f9515edf50e(uintptr_t arg1);
+extern void _wrap_b2TOIInput_proxyB_set_Box2D_553c0f9515edf50e(uintptr_t arg1, uintptr_t arg2);
+extern uintptr_t _wrap_b2TOIInput_proxyB_get_Box2D_553c0f9515edf50e(uintptr_t arg1);
+extern void _wrap_b2TOIInput_sweepA_set_Box2D_553c0f9515edf50e(uintptr_t arg1, uintptr_t arg2);
+extern uintptr_t _wrap_b2TOIInput_sweepA_get_Box2D_553c0f9515edf50e(uintptr_t arg1);
+extern void _wrap_b2TOIInput_sweepB_set_Box2D_553c0f9515edf50e(uintptr_t arg1, uintptr_t arg2);
+extern uintptr_t _wrap_b2TOIInput_sweepB_get_Box2D_553c0f9515edf50e(uintptr_t arg1);
+extern void _wrap_b2TOIInput_tMax_set_Box2D_553c0f9515edf50e(uintptr_t arg1, float arg2);
+extern float _wrap_b2TOIInput_tMax_get_Box2D_553c0f9515edf50e(uintptr_t arg1);
+extern uintptr_t _wrap_new_b2TOIInput_Box2D_553c0f9515edf50e(void);
+extern void _wrap_delete_b2TOIInput_Box2D_553c0f9515edf50e(uintptr_t arg1);
+extern swig_intgo _wrap_e_unknown_b2TOIOutput_Box2D_553c0f9515edf50e(void);
+extern swig_intgo _wrap_e_failed_b2TOIOutput_Box2D_553c0f9515edf50e(void);
+extern swig_intgo _wrap_e_overlapped_b2TOIOutput_Box2D_553c0f9515edf50e(void);
+extern swig_intgo _wrap_e_touching_b2TOIOutput_Box2D_553c0f9515edf50e(void);
+extern swig_intgo _wrap_e_separated_b2TOIOutput_Box2D_553c0f9515edf50e(void);
+extern void _wrap_b2TOIOutput_state_set_Box2D_553c0f9515edf50e(uintptr_t arg1, swig_intgo arg2);
+extern swig_intgo _wrap_b2TOIOutput_state_get_Box2D_553c0f9515edf50e(uintptr_t arg1);
+extern void _wrap_b2TOIOutput_t_set_Box2D_553c0f9515edf50e(uintptr_t arg1, float arg2);
+extern float _wrap_b2TOIOutput_t_get_Box2D_553c0f9515edf50e(uintptr_t arg1);
+extern uintptr_t _wrap_new_b2TOIOutput_Box2D_553c0f9515edf50e(void);
+extern void _wrap_delete_b2TOIOutput_Box2D_553c0f9515edf50e(uintptr_t arg1);
+extern void _wrap_b2TimeOfImpact_Box2D_553c0f9515edf50e(uintptr_t arg1, uintptr_t arg2);
+extern swig_intgo _wrap_b2_staticBody_Box2D_553c0f9515edf50e(void);
+extern swig_intgo _wrap_b2_kinematicBody_Box2D_553c0f9515edf50e(void);
+extern swig_intgo _wrap_b2_dynamicBody_Box2D_553c0f9515edf50e(void);
+extern uintptr_t _wrap_new_b2BodyDef_Box2D_553c0f9515edf50e(void);
+extern void _wrap_b2BodyDef_Xtype_set_Box2D_553c0f9515edf50e(uintptr_t arg1, swig_intgo arg2);
+extern swig_intgo _wrap_b2BodyDef_Xtype_get_Box2D_553c0f9515edf50e(uintptr_t arg1);
+extern void _wrap_b2BodyDef_position_set_Box2D_553c0f9515edf50e(uintptr_t arg1, uintptr_t arg2);
+extern uintptr_t _wrap_b2BodyDef_position_get_Box2D_553c0f9515edf50e(uintptr_t arg1);
+extern void _wrap_b2BodyDef_angle_set_Box2D_553c0f9515edf50e(uintptr_t arg1, float arg2);
+extern float _wrap_b2BodyDef_angle_get_Box2D_553c0f9515edf50e(uintptr_t arg1);
+extern void _wrap_b2BodyDef_linearVelocity_set_Box2D_553c0f9515edf50e(uintptr_t arg1, uintptr_t arg2);
+extern uintptr_t _wrap_b2BodyDef_linearVelocity_get_Box2D_553c0f9515edf50e(uintptr_t arg1);
+extern void _wrap_b2BodyDef_angularVelocity_set_Box2D_553c0f9515edf50e(uintptr_t arg1, float arg2);
+extern float _wrap_b2BodyDef_angularVelocity_get_Box2D_553c0f9515edf50e(uintptr_t arg1);
+extern void _wrap_b2BodyDef_linearDamping_set_Box2D_553c0f9515edf50e(uintptr_t arg1, float arg2);
+extern float _wrap_b2BodyDef_linearDamping_get_Box2D_553c0f9515edf50e(uintptr_t arg1);
+extern void _wrap_b2BodyDef_angularDamping_set_Box2D_553c0f9515edf50e(uintptr_t arg1, float arg2);
+extern float _wrap_b2BodyDef_angularDamping_get_Box2D_553c0f9515edf50e(uintptr_t arg1);
+extern void _wrap_b2BodyDef_allowSleep_set_Box2D_553c0f9515edf50e(uintptr_t arg1, _Bool arg2);
+extern _Bool _wrap_b2BodyDef_allowSleep_get_Box2D_553c0f9515edf50e(uintptr_t arg1);
+extern void _wrap_b2BodyDef_awake_set_Box2D_553c0f9515edf50e(uintptr_t arg1, _Bool arg2);
+extern _Bool _wrap_b2BodyDef_awake_get_Box2D_553c0f9515edf50e(uintptr_t arg1);
+extern void _wrap_b2BodyDef_fixedRotation_set_Box2D_553c0f9515edf50e(uintptr_t arg1, _Bool arg2);
+extern _Bool _wrap_b2BodyDef_fixedRotation_get_Box2D_553c0f9515edf50e(uintptr_t arg1);
+extern void _wrap_b2BodyDef_bullet_set_Box2D_553c0f9515edf50e(uintptr_t arg1, _Bool arg2);
+extern _Bool _wrap_b2BodyDef_bullet_get_Box2D_553c0f9515edf50e(uintptr_t arg1);
+extern void _wrap_b2BodyDef_active_set_Box2D_553c0f9515edf50e(uintptr_t arg1, _Bool arg2);
+extern _Bool _wrap_b2BodyDef_active_get_Box2D_553c0f9515edf50e(uintptr_t arg1);
+extern void _wrap_b2BodyDef_userData_set_Box2D_553c0f9515edf50e(uintptr_t arg1, uintptr_t arg2);
+extern uintptr_t _wrap_b2BodyDef_userData_get_Box2D_553c0f9515edf50e(uintptr_t arg1);
+extern void _wrap_b2BodyDef_gravityScale_set_Box2D_553c0f9515edf50e(uintptr_t arg1, float arg2);
+extern float _wrap_b2BodyDef_gravityScale_get_Box2D_553c0f9515edf50e(uintptr_t arg1);
+extern void _wrap_delete_b2BodyDef_Box2D_553c0f9515edf50e(uintptr_t arg1);
+extern uintptr_t _wrap_b2Body_CreateFixture__SWIG_0_Box2D_553c0f9515edf50e(uintptr_t arg1, uintptr_t arg2);
+extern uintptr_t _wrap_b2Body_CreateFixture__SWIG_1_Box2D_553c0f9515edf50e(uintptr_t arg1, uintptr_t arg2, float arg3);
+extern void _wrap_b2Body_DestroyFixture_Box2D_553c0f9515edf50e(uintptr_t arg1, uintptr_t arg2);
+extern void _wrap_b2Body_SetTransform_Box2D_553c0f9515edf50e(uintptr_t arg1, uintptr_t arg2, float arg3);
+extern uintptr_t _wrap_b2Body_GetTransform_Box2D_553c0f9515edf50e(uintptr_t arg1);
+extern uintptr_t _wrap_b2Body_GetPosition_Box2D_553c0f9515edf50e(uintptr_t arg1);
+extern float _wrap_b2Body_GetAngle_Box2D_553c0f9515edf50e(uintptr_t arg1);
+extern uintptr_t _wrap_b2Body_GetWorldCenter_Box2D_553c0f9515edf50e(uintptr_t arg1);
+extern uintptr_t _wrap_b2Body_GetLocalCenter_Box2D_553c0f9515edf50e(uintptr_t arg1);
+extern void _wrap_b2Body_SetLinearVelocity_Box2D_553c0f9515edf50e(uintptr_t arg1, uintptr_t arg2);
+extern uintptr_t _wrap_b2Body_GetLinearVelocity_Box2D_553c0f9515edf50e(uintptr_t arg1);
+extern void _wrap_b2Body_SetAngularVelocity_Box2D_553c0f9515edf50e(uintptr_t arg1, float arg2);
+extern float _wrap_b2Body_GetAngularVelocity_Box2D_553c0f9515edf50e(uintptr_t arg1);
+extern void _wrap_b2Body_ApplyForce_Box2D_553c0f9515edf50e(uintptr_t arg1, uintptr_t arg2, uintptr_t arg3, _Bool arg4);
+extern void _wrap_b2Body_ApplyForceToCenter_Box2D_553c0f9515edf50e(uintptr_t arg1, uintptr_t arg2, _Bool arg3);
+extern void _wrap_b2Body_ApplyTorque_Box2D_553c0f9515edf50e(uintptr_t arg1, float arg2, _Bool arg3);
+extern void _wrap_b2Body_ApplyLinearImpulse_Box2D_553c0f9515edf50e(uintptr_t arg1, uintptr_t arg2, uintptr_t arg3, _Bool arg4);
+extern void _wrap_b2Body_ApplyAngularImpulse_Box2D_553c0f9515edf50e(uintptr_t arg1, float arg2, _Bool arg3);
+extern float _wrap_b2Body_GetMass_Box2D_553c0f9515edf50e(uintptr_t arg1);
+extern float _wrap_b2Body_GetInertia_Box2D_553c0f9515edf50e(uintptr_t arg1);
+extern void _wrap_b2Body_GetMassData_Box2D_553c0f9515edf50e(uintptr_t arg1, uintptr_t arg2);
+extern void _wrap_b2Body_SetMassData_Box2D_553c0f9515edf50e(uintptr_t arg1, uintptr_t arg2);
+extern void _wrap_b2Body_ResetMassData_Box2D_553c0f9515edf50e(uintptr_t arg1);
+extern uintptr_t _wrap_b2Body_GetWorldPoint_Box2D_553c0f9515edf50e(uintptr_t arg1, uintptr_t arg2);
+extern uintptr_t _wrap_b2Body_GetWorldVector_Box2D_553c0f9515edf50e(uintptr_t arg1, uintptr_t arg2);
+extern uintptr_t _wrap_b2Body_GetLocalPoint_Box2D_553c0f9515edf50e(uintptr_t arg1, uintptr_t arg2);
+extern uintptr_t _wrap_b2Body_GetLocalVector_Box2D_553c0f9515edf50e(uintptr_t arg1, uintptr_t arg2);
+extern uintptr_t _wrap_b2Body_GetLinearVelocityFromWorldPoint_Box2D_553c0f9515edf50e(uintptr_t arg1, uintptr_t arg2);
+extern uintptr_t _wrap_b2Body_GetLinearVelocityFromLocalPoint_Box2D_553c0f9515edf50e(uintptr_t arg1, uintptr_t arg2);
+extern float _wrap_b2Body_GetLinearDamping_Box2D_553c0f9515edf50e(uintptr_t arg1);
+extern void _wrap_b2Body_SetLinearDamping_Box2D_553c0f9515edf50e(uintptr_t arg1, float arg2);
+extern float _wrap_b2Body_GetAngularDamping_Box2D_553c0f9515edf50e(uintptr_t arg1);
+extern void _wrap_b2Body_SetAngularDamping_Box2D_553c0f9515edf50e(uintptr_t arg1, float arg2);
+extern float _wrap_b2Body_GetGravityScale_Box2D_553c0f9515edf50e(uintptr_t arg1);
+extern void _wrap_b2Body_SetGravityScale_Box2D_553c0f9515edf50e(uintptr_t arg1, float arg2);
+extern void _wrap_b2Body_SetType_Box2D_553c0f9515edf50e(uintptr_t arg1, swig_intgo arg2);
+extern swig_intgo _wrap_b2Body_GetType_Box2D_553c0f9515edf50e(uintptr_t arg1);
+extern void _wrap_b2Body_SetBullet_Box2D_553c0f9515edf50e(uintptr_t arg1, _Bool arg2);
+extern _Bool _wrap_b2Body_IsBullet_Box2D_553c0f9515edf50e(uintptr_t arg1);
+extern void _wrap_b2Body_SetSleepingAllowed_Box2D_553c0f9515edf50e(uintptr_t arg1, _Bool arg2);
+extern _Bool _wrap_b2Body_IsSleepingAllowed_Box2D_553c0f9515edf50e(uintptr_t arg1);
+extern void _wrap_b2Body_SetAwake_Box2D_553c0f9515edf50e(uintptr_t arg1, _Bool arg2);
+extern _Bool _wrap_b2Body_IsAwake_Box2D_553c0f9515edf50e(uintptr_t arg1);
+extern void _wrap_b2Body_SetActive_Box2D_553c0f9515edf50e(uintptr_t arg1, _Bool arg2);
+extern _Bool _wrap_b2Body_IsActive_Box2D_553c0f9515edf50e(uintptr_t arg1);
+extern void _wrap_b2Body_SetFixedRotation_Box2D_553c0f9515edf50e(uintptr_t arg1, _Bool arg2);
+extern _Bool _wrap_b2Body_IsFixedRotation_Box2D_553c0f9515edf50e(uintptr_t arg1);
+extern uintptr_t _wrap_b2Body_GetFixtureList__SWIG_0_Box2D_553c0f9515edf50e(uintptr_t arg1);
+extern uintptr_t _wrap_b2Body_GetFixtureList__SWIG_1_Box2D_553c0f9515edf50e(uintptr_t arg1);
+extern uintptr_t _wrap_b2Body_GetJointList__SWIG_0_Box2D_553c0f9515edf50e(uintptr_t arg1);
+extern uintptr_t _wrap_b2Body_GetJointList__SWIG_1_Box2D_553c0f9515edf50e(uintptr_t arg1);
+extern uintptr_t _wrap_b2Body_GetContactList__SWIG_0_Box2D_553c0f9515edf50e(uintptr_t arg1);
+extern uintptr_t _wrap_b2Body_GetContactList__SWIG_1_Box2D_553c0f9515edf50e(uintptr_t arg1);
+extern uintptr_t _wrap_b2Body_GetNext__SWIG_0_Box2D_553c0f9515edf50e(uintptr_t arg1);
+extern uintptr_t _wrap_b2Body_GetNext__SWIG_1_Box2D_553c0f9515edf50e(uintptr_t arg1);
+extern uintptr_t _wrap_b2Body_GetUserData_Box2D_553c0f9515edf50e(uintptr_t arg1);
+extern void _wrap_b2Body_SetUserData_Box2D_553c0f9515edf50e(uintptr_t arg1, uintptr_t arg2);
+extern uintptr_t _wrap_b2Body_GetWorld__SWIG_0_Box2D_553c0f9515edf50e(uintptr_t arg1);
+extern uintptr_t _wrap_b2Body_GetWorld__SWIG_1_Box2D_553c0f9515edf50e(uintptr_t arg1);
+extern void _wrap_b2Body_Dump_Box2D_553c0f9515edf50e(uintptr_t arg1);
+extern uintptr_t _wrap_new_b2Filter_Box2D_553c0f9515edf50e(void);
+extern void _wrap_b2Filter_categoryBits_set_Box2D_553c0f9515edf50e(uintptr_t arg1, short arg2);
+extern short _wrap_b2Filter_categoryBits_get_Box2D_553c0f9515edf50e(uintptr_t arg1);
+extern void _wrap_b2Filter_maskBits_set_Box2D_553c0f9515edf50e(uintptr_t arg1, short arg2);
+extern short _wrap_b2Filter_maskBits_get_Box2D_553c0f9515edf50e(uintptr_t arg1);
+extern void _wrap_b2Filter_groupIndex_set_Box2D_553c0f9515edf50e(uintptr_t arg1, short arg2);
+extern short _wrap_b2Filter_groupIndex_get_Box2D_553c0f9515edf50e(uintptr_t arg1);
+extern void _wrap_delete_b2Filter_Box2D_553c0f9515edf50e(uintptr_t arg1);
+extern uintptr_t _wrap_new_b2FixtureDef_Box2D_553c0f9515edf50e(void);
+extern void _wrap_b2FixtureDef_shape_set_Box2D_553c0f9515edf50e(uintptr_t arg1, uintptr_t arg2);
+extern uintptr_t _wrap_b2FixtureDef_shape_get_Box2D_553c0f9515edf50e(uintptr_t arg1);
+extern void _wrap_b2FixtureDef_userData_set_Box2D_553c0f9515edf50e(uintptr_t arg1, uintptr_t arg2);
+extern uintptr_t _wrap_b2FixtureDef_userData_get_Box2D_553c0f9515edf50e(uintptr_t arg1);
+extern void _wrap_b2FixtureDef_friction_set_Box2D_553c0f9515edf50e(uintptr_t arg1, float arg2);
+extern float _wrap_b2FixtureDef_friction_get_Box2D_553c0f9515edf50e(uintptr_t arg1);
+extern void _wrap_b2FixtureDef_restitution_set_Box2D_553c0f9515edf50e(uintptr_t arg1, float arg2);
+extern float _wrap_b2FixtureDef_restitution_get_Box2D_553c0f9515edf50e(uintptr_t arg1);
+extern void _wrap_b2FixtureDef_density_set_Box2D_553c0f9515edf50e(uintptr_t arg1, float arg2);
+extern float _wrap_b2FixtureDef_density_get_Box2D_553c0f9515edf50e(uintptr_t arg1);
+extern void _wrap_b2FixtureDef_isSensor_set_Box2D_553c0f9515edf50e(uintptr_t arg1, _Bool arg2);
+extern _Bool _wrap_b2FixtureDef_isSensor_get_Box2D_553c0f9515edf50e(uintptr_t arg1);
+extern void _wrap_b2FixtureDef_filter_set_Box2D_553c0f9515edf50e(uintptr_t arg1, uintptr_t arg2);
+extern uintptr_t _wrap_b2FixtureDef_filter_get_Box2D_553c0f9515edf50e(uintptr_t arg1);
+extern void _wrap_delete_b2FixtureDef_Box2D_553c0f9515edf50e(uintptr_t arg1);
+extern void _wrap_b2FixtureProxy_aabb_set_Box2D_553c0f9515edf50e(uintptr_t arg1, uintptr_t arg2);
+extern uintptr_t _wrap_b2FixtureProxy_aabb_get_Box2D_553c0f9515edf50e(uintptr_t arg1);
+extern void _wrap_b2FixtureProxy_fixture_set_Box2D_553c0f9515edf50e(uintptr_t arg1, uintptr_t arg2);
+extern uintptr_t _wrap_b2FixtureProxy_fixture_get_Box2D_553c0f9515edf50e(uintptr_t arg1);
+extern void _wrap_b2FixtureProxy_childIndex_set_Box2D_553c0f9515edf50e(uintptr_t arg1, swig_intgo arg2);
+extern swig_intgo _wrap_b2FixtureProxy_childIndex_get_Box2D_553c0f9515edf50e(uintptr_t arg1);
+extern void _wrap_b2FixtureProxy_proxyId_set_Box2D_553c0f9515edf50e(uintptr_t arg1, swig_intgo arg2);
+extern swig_intgo _wrap_b2FixtureProxy_proxyId_get_Box2D_553c0f9515edf50e(uintptr_t arg1);
+extern uintptr_t _wrap_new_b2FixtureProxy_Box2D_553c0f9515edf50e(void);
+extern void _wrap_delete_b2FixtureProxy_Box2D_553c0f9515edf50e(uintptr_t arg1);
+extern uintptr_t _wrap_b2Fixture_GetType_Box2D_553c0f9515edf50e(uintptr_t arg1);
+extern uintptr_t _wrap_b2Fixture_GetShape__SWIG_0_Box2D_553c0f9515edf50e(uintptr_t arg1);
+extern uintptr_t _wrap_b2Fixture_GetShape__SWIG_1_Box2D_553c0f9515edf50e(uintptr_t arg1);
+extern void _wrap_b2Fixture_SetSensor_Box2D_553c0f9515edf50e(uintptr_t arg1, _Bool arg2);
+extern _Bool _wrap_b2Fixture_IsSensor_Box2D_553c0f9515edf50e(uintptr_t arg1);
+extern void _wrap_b2Fixture_SetFilterData_Box2D_553c0f9515edf50e(uintptr_t arg1, uintptr_t arg2);
+extern uintptr_t _wrap_b2Fixture_GetFilterData_Box2D_553c0f9515edf50e(uintptr_t arg1);
+extern void _wrap_b2Fixture_Refilter_Box2D_553c0f9515edf50e(uintptr_t arg1);
+extern uintptr_t _wrap_b2Fixture_GetBody__SWIG_0_Box2D_553c0f9515edf50e(uintptr_t arg1);
+extern uintptr_t _wrap_b2Fixture_GetBody__SWIG_1_Box2D_553c0f9515edf50e(uintptr_t arg1);
+extern uintptr_t _wrap_b2Fixture_GetNext__SWIG_0_Box2D_553c0f9515edf50e(uintptr_t arg1);
+extern uintptr_t _wrap_b2Fixture_GetNext__SWIG_1_Box2D_553c0f9515edf50e(uintptr_t arg1);
+extern uintptr_t _wrap_b2Fixture_GetUserData_Box2D_553c0f9515edf50e(uintptr_t arg1);
+extern void _wrap_b2Fixture_SetUserData_Box2D_553c0f9515edf50e(uintptr_t arg1, uintptr_t arg2);
+extern _Bool _wrap_b2Fixture_TestPoint_Box2D_553c0f9515edf50e(uintptr_t arg1, uintptr_t arg2);
+extern _Bool _wrap_b2Fixture_RayCast_Box2D_553c0f9515edf50e(uintptr_t arg1, uintptr_t arg2, uintptr_t arg3, swig_intgo arg4);
+extern void _wrap_b2Fixture_GetMassData_Box2D_553c0f9515edf50e(uintptr_t arg1, uintptr_t arg2);
+extern void _wrap_b2Fixture_SetDensity_Box2D_553c0f9515edf50e(uintptr_t arg1, float arg2);
+extern float _wrap_b2Fixture_GetDensity_Box2D_553c0f9515edf50e(uintptr_t arg1);
+extern float _wrap_b2Fixture_GetFriction_Box2D_553c0f9515edf50e(uintptr_t arg1);
+extern void _wrap_b2Fixture_SetFriction_Box2D_553c0f9515edf50e(uintptr_t arg1, float arg2);
+extern float _wrap_b2Fixture_GetRestitution_Box2D_553c0f9515edf50e(uintptr_t arg1);
+extern void _wrap_b2Fixture_SetRestitution_Box2D_553c0f9515edf50e(uintptr_t arg1, float arg2);
+extern uintptr_t _wrap_b2Fixture_GetAABB_Box2D_553c0f9515edf50e(uintptr_t arg1, swig_intgo arg2);
+extern void _wrap_b2Fixture_Dump_Box2D_553c0f9515edf50e(uintptr_t arg1, swig_intgo arg2);
+extern void _wrap_delete_b2Fixture_Box2D_553c0f9515edf50e(uintptr_t arg1);
+extern void _wrap_delete_b2DestructionListener_Box2D_553c0f9515edf50e(uintptr_t arg1);
+extern void _wrap_b2DestructionListener_SayGoodbye__SWIG_0_Box2D_553c0f9515edf50e(uintptr_t arg1, uintptr_t arg2);
+extern void _wrap_b2DestructionListener_SayGoodbye__SWIG_1_Box2D_553c0f9515edf50e(uintptr_t arg1, uintptr_t arg2);
+extern void _wrap_delete_b2ContactFilter_Box2D_553c0f9515edf50e(uintptr_t arg1);
+extern _Bool _wrap_b2ContactFilter_ShouldCollide_Box2D_553c0f9515edf50e(uintptr_t arg1, uintptr_t arg2, uintptr_t arg3);
+extern uintptr_t _wrap_new_b2ContactFilter_Box2D_553c0f9515edf50e(void);
+extern void _wrap_b2ContactImpulse_normalImpulses_set_Box2D_553c0f9515edf50e(uintptr_t arg1, swig_voidp arg2);
+extern swig_voidp _wrap_b2ContactImpulse_normalImpulses_get_Box2D_553c0f9515edf50e(uintptr_t arg1);
+extern void _wrap_b2ContactImpulse_tangentImpulses_set_Box2D_553c0f9515edf50e(uintptr_t arg1, swig_voidp arg2);
+extern swig_voidp _wrap_b2ContactImpulse_tangentImpulses_get_Box2D_553c0f9515edf50e(uintptr_t arg1);
+extern void _wrap_b2ContactImpulse_count_set_Box2D_553c0f9515edf50e(uintptr_t arg1, swig_intgo arg2);
+extern swig_intgo _wrap_b2ContactImpulse_count_get_Box2D_553c0f9515edf50e(uintptr_t arg1);
+extern uintptr_t _wrap_new_b2ContactImpulse_Box2D_553c0f9515edf50e(void);
+extern void _wrap_delete_b2ContactImpulse_Box2D_553c0f9515edf50e(uintptr_t arg1);
+extern uintptr_t _wrap__swig_NewDirectorB2ContactListenerB2ContactListener_Box2D_553c0f9515edf50e(int);
+extern void _wrap_DeleteDirectorB2ContactListener_Box2D_553c0f9515edf50e(uintptr_t arg1);
+extern void _wrap__swig_DirectorB2ContactListener_upcall_BeginContact_Box2D_553c0f9515edf50e(uintptr_t, uintptr_t contact);
+extern void _wrap__swig_DirectorB2ContactListener_upcall_EndContact_Box2D_553c0f9515edf50e(uintptr_t, uintptr_t contact);
+extern void _wrap__swig_DirectorB2ContactListener_upcall_PreSolve_Box2D_553c0f9515edf50e(uintptr_t, uintptr_t contact, uintptr_t oldManifold);
+extern void _wrap__swig_DirectorB2ContactListener_upcall_PostSolve_Box2D_553c0f9515edf50e(uintptr_t, uintptr_t contact, uintptr_t impulse);
+extern void _wrap_delete_b2ContactListener_Box2D_553c0f9515edf50e(uintptr_t arg1);
+extern void _wrap_b2ContactListener_BeginContact_Box2D_553c0f9515edf50e(uintptr_t arg1, uintptr_t arg2);
+extern void _wrap_b2ContactListener_EndContact_Box2D_553c0f9515edf50e(uintptr_t arg1, uintptr_t arg2);
+extern void _wrap_b2ContactListener_PreSolve_Box2D_553c0f9515edf50e(uintptr_t arg1, uintptr_t arg2, uintptr_t arg3);
+extern void _wrap_b2ContactListener_PostSolve_Box2D_553c0f9515edf50e(uintptr_t arg1, uintptr_t arg2, uintptr_t arg3);
+extern uintptr_t _wrap_new_b2ContactListener_Box2D_553c0f9515edf50e(void);
+extern void _wrap_delete_b2QueryCallback_Box2D_553c0f9515edf50e(uintptr_t arg1);
+extern _Bool _wrap_b2QueryCallback_ReportFixture_Box2D_553c0f9515edf50e(uintptr_t arg1, uintptr_t arg2);
+extern void _wrap_delete_b2RayCastCallback_Box2D_553c0f9515edf50e(uintptr_t arg1);
+extern float _wrap_b2RayCastCallback_ReportFixture_Box2D_553c0f9515edf50e(uintptr_t arg1, uintptr_t arg2, uintptr_t arg3, uintptr_t arg4, float arg5);
+extern void _wrap_b2Profile_step_set_Box2D_553c0f9515edf50e(uintptr_t arg1, float arg2);
+extern float _wrap_b2Profile_step_get_Box2D_553c0f9515edf50e(uintptr_t arg1);
+extern void _wrap_b2Profile_collide_set_Box2D_553c0f9515edf50e(uintptr_t arg1, float arg2);
+extern float _wrap_b2Profile_collide_get_Box2D_553c0f9515edf50e(uintptr_t arg1);
+extern void _wrap_b2Profile_solve_set_Box2D_553c0f9515edf50e(uintptr_t arg1, float arg2);
+extern float _wrap_b2Profile_solve_get_Box2D_553c0f9515edf50e(uintptr_t arg1);
+extern void _wrap_b2Profile_solveInit_set_Box2D_553c0f9515edf50e(uintptr_t arg1, float arg2);
+extern float _wrap_b2Profile_solveInit_get_Box2D_553c0f9515edf50e(uintptr_t arg1);
+extern void _wrap_b2Profile_solveVelocity_set_Box2D_553c0f9515edf50e(uintptr_t arg1, float arg2);
+extern float _wrap_b2Profile_solveVelocity_get_Box2D_553c0f9515edf50e(uintptr_t arg1);
+extern void _wrap_b2Profile_solvePosition_set_Box2D_553c0f9515edf50e(uintptr_t arg1, float arg2);
+extern float _wrap_b2Profile_solvePosition_get_Box2D_553c0f9515edf50e(uintptr_t arg1);
+extern void _wrap_b2Profile_broadphase_set_Box2D_553c0f9515edf50e(uintptr_t arg1, float arg2);
+extern float _wrap_b2Profile_broadphase_get_Box2D_553c0f9515edf50e(uintptr_t arg1);
+extern void _wrap_b2Profile_solveTOI_set_Box2D_553c0f9515edf50e(uintptr_t arg1, float arg2);
+extern float _wrap_b2Profile_solveTOI_get_Box2D_553c0f9515edf50e(uintptr_t arg1);
+extern uintptr_t _wrap_new_b2Profile_Box2D_553c0f9515edf50e(void);
+extern void _wrap_delete_b2Profile_Box2D_553c0f9515edf50e(uintptr_t arg1);
+extern void _wrap_b2TimeStep_dt_set_Box2D_553c0f9515edf50e(uintptr_t arg1, float arg2);
+extern float _wrap_b2TimeStep_dt_get_Box2D_553c0f9515edf50e(uintptr_t arg1);
+extern void _wrap_b2TimeStep_inv_dt_set_Box2D_553c0f9515edf50e(uintptr_t arg1, float arg2);
+extern float _wrap_b2TimeStep_inv_dt_get_Box2D_553c0f9515edf50e(uintptr_t arg1);
+extern void _wrap_b2TimeStep_dtRatio_set_Box2D_553c0f9515edf50e(uintptr_t arg1, float arg2);
+extern float _wrap_b2TimeStep_dtRatio_get_Box2D_553c0f9515edf50e(uintptr_t arg1);
+extern void _wrap_b2TimeStep_velocityIterations_set_Box2D_553c0f9515edf50e(uintptr_t arg1, swig_intgo arg2);
+extern swig_intgo _wrap_b2TimeStep_velocityIterations_get_Box2D_553c0f9515edf50e(uintptr_t arg1);
+extern void _wrap_b2TimeStep_positionIterations_set_Box2D_553c0f9515edf50e(uintptr_t arg1, swig_intgo arg2);
+extern swig_intgo _wrap_b2TimeStep_positionIterations_get_Box2D_553c0f9515edf50e(uintptr_t arg1);
+extern void _wrap_b2TimeStep_warmStarting_set_Box2D_553c0f9515edf50e(uintptr_t arg1, _Bool arg2);
+extern _Bool _wrap_b2TimeStep_warmStarting_get_Box2D_553c0f9515edf50e(uintptr_t arg1);
+extern uintptr_t _wrap_new_b2TimeStep_Box2D_553c0f9515edf50e(void);
+extern void _wrap_delete_b2TimeStep_Box2D_553c0f9515edf50e(uintptr_t arg1);
+extern void _wrap_b2Position_c_set_Box2D_553c0f9515edf50e(uintptr_t arg1, uintptr_t arg2);
+extern uintptr_t _wrap_b2Position_c_get_Box2D_553c0f9515edf50e(uintptr_t arg1);
+extern void _wrap_b2Position_a_set_Box2D_553c0f9515edf50e(uintptr_t arg1, float arg2);
+extern float _wrap_b2Position_a_get_Box2D_553c0f9515edf50e(uintptr_t arg1);
+extern uintptr_t _wrap_new_b2Position_Box2D_553c0f9515edf50e(void);
+extern void _wrap_delete_b2Position_Box2D_553c0f9515edf50e(uintptr_t arg1);
+extern void _wrap_b2Velocity_v_set_Box2D_553c0f9515edf50e(uintptr_t arg1, uintptr_t arg2);
+extern uintptr_t _wrap_b2Velocity_v_get_Box2D_553c0f9515edf50e(uintptr_t arg1);
+extern void _wrap_b2Velocity_w_set_Box2D_553c0f9515edf50e(uintptr_t arg1, float arg2);
+extern float _wrap_b2Velocity_w_get_Box2D_553c0f9515edf50e(uintptr_t arg1);
+extern uintptr_t _wrap_new_b2Velocity_Box2D_553c0f9515edf50e(void);
+extern void _wrap_delete_b2Velocity_Box2D_553c0f9515edf50e(uintptr_t arg1);
+extern void _wrap_b2SolverData_step_set_Box2D_553c0f9515edf50e(uintptr_t arg1, uintptr_t arg2);
+extern uintptr_t _wrap_b2SolverData_step_get_Box2D_553c0f9515edf50e(uintptr_t arg1);
+extern void _wrap_b2SolverData_positions_set_Box2D_553c0f9515edf50e(uintptr_t arg1, uintptr_t arg2);
+extern uintptr_t _wrap_b2SolverData_positions_get_Box2D_553c0f9515edf50e(uintptr_t arg1);
+extern void _wrap_b2SolverData_velocities_set_Box2D_553c0f9515edf50e(uintptr_t arg1, uintptr_t arg2);
+extern uintptr_t _wrap_b2SolverData_velocities_get_Box2D_553c0f9515edf50e(uintptr_t arg1);
+extern uintptr_t _wrap_new_b2SolverData_Box2D_553c0f9515edf50e(void);
+extern void _wrap_delete_b2SolverData_Box2D_553c0f9515edf50e(uintptr_t arg1);
+extern uintptr_t _wrap_new_b2World_Box2D_553c0f9515edf50e(uintptr_t arg1);
+extern void _wrap_delete_b2World_Box2D_553c0f9515edf50e(uintptr_t arg1);
+extern void _wrap_b2World_SetDestructionListener_Box2D_553c0f9515edf50e(uintptr_t arg1, uintptr_t arg2);
+extern void _wrap_b2World_SetContactFilter_Box2D_553c0f9515edf50e(uintptr_t arg1, uintptr_t arg2);
+extern void _wrap_b2World_SetContactListener_Box2D_553c0f9515edf50e(uintptr_t arg1, uintptr_t arg2);
+extern void _wrap_b2World_SetDebugDraw_Box2D_553c0f9515edf50e(uintptr_t arg1, uintptr_t arg2);
+extern uintptr_t _wrap_b2World_CreateBody_Box2D_553c0f9515edf50e(uintptr_t arg1, uintptr_t arg2);
+extern void _wrap_b2World_DestroyBody_Box2D_553c0f9515edf50e(uintptr_t arg1, uintptr_t arg2);
+extern uintptr_t _wrap_b2World_CreateJoint_Box2D_553c0f9515edf50e(uintptr_t arg1, uintptr_t arg2);
+extern void _wrap_b2World_DestroyJoint_Box2D_553c0f9515edf50e(uintptr_t arg1, uintptr_t arg2);
+extern void _wrap_b2World_Step_Box2D_553c0f9515edf50e(uintptr_t arg1, float arg2, swig_intgo arg3, swig_intgo arg4);
+extern void _wrap_b2World_ClearForces_Box2D_553c0f9515edf50e(uintptr_t arg1);
+extern void _wrap_b2World_DrawDebugData_Box2D_553c0f9515edf50e(uintptr_t arg1);
+extern void _wrap_b2World_QueryAABB_Box2D_553c0f9515edf50e(uintptr_t arg1, uintptr_t arg2, uintptr_t arg3);
+extern void _wrap_b2World_RayCast_Box2D_553c0f9515edf50e(uintptr_t arg1, uintptr_t arg2, uintptr_t arg3, uintptr_t arg4);
+extern uintptr_t _wrap_b2World_GetBodyList__SWIG_0_Box2D_553c0f9515edf50e(uintptr_t arg1);
+extern uintptr_t _wrap_b2World_GetBodyList__SWIG_1_Box2D_553c0f9515edf50e(uintptr_t arg1);
+extern uintptr_t _wrap_b2World_GetJointList__SWIG_0_Box2D_553c0f9515edf50e(uintptr_t arg1);
+extern uintptr_t _wrap_b2World_GetJointList__SWIG_1_Box2D_553c0f9515edf50e(uintptr_t arg1);
+extern uintptr_t _wrap_b2World_GetContactList__SWIG_0_Box2D_553c0f9515edf50e(uintptr_t arg1);
+extern uintptr_t _wrap_b2World_GetContactList__SWIG_1_Box2D_553c0f9515edf50e(uintptr_t arg1);
+extern void _wrap_b2World_SetAllowSleeping_Box2D_553c0f9515edf50e(uintptr_t arg1, _Bool arg2);
+extern _Bool _wrap_b2World_GetAllowSleeping_Box2D_553c0f9515edf50e(uintptr_t arg1);
+extern void _wrap_b2World_SetWarmStarting_Box2D_553c0f9515edf50e(uintptr_t arg1, _Bool arg2);
+extern _Bool _wrap_b2World_GetWarmStarting_Box2D_553c0f9515edf50e(uintptr_t arg1);
+extern void _wrap_b2World_SetContinuousPhysics_Box2D_553c0f9515edf50e(uintptr_t arg1, _Bool arg2);
+extern _Bool _wrap_b2World_GetContinuousPhysics_Box2D_553c0f9515edf50e(uintptr_t arg1);
+extern void _wrap_b2World_SetSubStepping_Box2D_553c0f9515edf50e(uintptr_t arg1, _Bool arg2);
+extern _Bool _wrap_b2World_GetSubStepping_Box2D_553c0f9515edf50e(uintptr_t arg1);
+extern swig_intgo _wrap_b2World_GetProxyCount_Box2D_553c0f9515edf50e(uintptr_t arg1);
+extern swig_intgo _wrap_b2World_GetBodyCount_Box2D_553c0f9515edf50e(uintptr_t arg1);
+extern swig_intgo _wrap_b2World_GetJointCount_Box2D_553c0f9515edf50e(uintptr_t arg1);
+extern swig_intgo _wrap_b2World_GetContactCount_Box2D_553c0f9515edf50e(uintptr_t arg1);
+extern swig_intgo _wrap_b2World_GetTreeHeight_Box2D_553c0f9515edf50e(uintptr_t arg1);
+extern swig_intgo _wrap_b2World_GetTreeBalance_Box2D_553c0f9515edf50e(uintptr_t arg1);
+extern float _wrap_b2World_GetTreeQuality_Box2D_553c0f9515edf50e(uintptr_t arg1);
+extern void _wrap_b2World_SetGravity_Box2D_553c0f9515edf50e(uintptr_t arg1, uintptr_t arg2);
+extern uintptr_t _wrap_b2World_GetGravity_Box2D_553c0f9515edf50e(uintptr_t arg1);
+extern _Bool _wrap_b2World_IsLocked_Box2D_553c0f9515edf50e(uintptr_t arg1);
+extern void _wrap_b2World_SetAutoClearForces_Box2D_553c0f9515edf50e(uintptr_t arg1, _Bool arg2);
+extern _Bool _wrap_b2World_GetAutoClearForces_Box2D_553c0f9515edf50e(uintptr_t arg1);
+extern void _wrap_b2World_ShiftOrigin_Box2D_553c0f9515edf50e(uintptr_t arg1, uintptr_t arg2);
+extern uintptr_t _wrap_b2World_GetContactManager_Box2D_553c0f9515edf50e(uintptr_t arg1);
+extern uintptr_t _wrap_b2World_GetProfile_Box2D_553c0f9515edf50e(uintptr_t arg1);
+extern void _wrap_b2World_Dump_Box2D_553c0f9515edf50e(uintptr_t arg1);
+extern float _wrap_b2MixFriction_Box2D_553c0f9515edf50e(float arg1, float arg2);
+extern float _wrap_b2MixRestitution_Box2D_553c0f9515edf50e(float arg1, float arg2);
+extern void _wrap_b2ContactRegister_createFcn_set_Box2D_553c0f9515edf50e(uintptr_t arg1, swig_voidp arg2);
+extern swig_voidp _wrap_b2ContactRegister_createFcn_get_Box2D_553c0f9515edf50e(uintptr_t arg1);
+extern void _wrap_b2ContactRegister_destroyFcn_set_Box2D_553c0f9515edf50e(uintptr_t arg1, swig_voidp arg2);
+extern swig_voidp _wrap_b2ContactRegister_destroyFcn_get_Box2D_553c0f9515edf50e(uintptr_t arg1);
+extern void _wrap_b2ContactRegister_primary_set_Box2D_553c0f9515edf50e(uintptr_t arg1, _Bool arg2);
+extern _Bool _wrap_b2ContactRegister_primary_get_Box2D_553c0f9515edf50e(uintptr_t arg1);
+extern uintptr_t _wrap_new_b2ContactRegister_Box2D_553c0f9515edf50e(void);
+extern void _wrap_delete_b2ContactRegister_Box2D_553c0f9515edf50e(uintptr_t arg1);
+extern void _wrap_b2ContactEdge_other_set_Box2D_553c0f9515edf50e(uintptr_t arg1, uintptr_t arg2);
+extern uintptr_t _wrap_b2ContactEdge_other_get_Box2D_553c0f9515edf50e(uintptr_t arg1);
+extern void _wrap_b2ContactEdge_contact_set_Box2D_553c0f9515edf50e(uintptr_t arg1, uintptr_t arg2);
+extern uintptr_t _wrap_b2ContactEdge_contact_get_Box2D_553c0f9515edf50e(uintptr_t arg1);
+extern void _wrap_b2ContactEdge_prev_set_Box2D_553c0f9515edf50e(uintptr_t arg1, uintptr_t arg2);
+extern uintptr_t _wrap_b2ContactEdge_prev_get_Box2D_553c0f9515edf50e(uintptr_t arg1);
+extern void _wrap_b2ContactEdge_next_set_Box2D_553c0f9515edf50e(uintptr_t arg1, uintptr_t arg2);
+extern uintptr_t _wrap_b2ContactEdge_next_get_Box2D_553c0f9515edf50e(uintptr_t arg1);
+extern uintptr_t _wrap_new_b2ContactEdge_Box2D_553c0f9515edf50e(void);
+extern void _wrap_delete_b2ContactEdge_Box2D_553c0f9515edf50e(uintptr_t arg1);
+extern uintptr_t _wrap_b2Contact_GetManifold__SWIG_0_Box2D_553c0f9515edf50e(uintptr_t arg1);
+extern uintptr_t _wrap_b2Contact_GetManifold__SWIG_1_Box2D_553c0f9515edf50e(uintptr_t arg1);
+extern void _wrap_b2Contact_GetWorldManifold_Box2D_553c0f9515edf50e(uintptr_t arg1, uintptr_t arg2);
+extern _Bool _wrap_b2Contact_IsTouching_Box2D_553c0f9515edf50e(uintptr_t arg1);
+extern void _wrap_b2Contact_SetEnabled_Box2D_553c0f9515edf50e(uintptr_t arg1, _Bool arg2);
+extern _Bool _wrap_b2Contact_IsEnabled_Box2D_553c0f9515edf50e(uintptr_t arg1);
+extern uintptr_t _wrap_b2Contact_GetNext__SWIG_0_Box2D_553c0f9515edf50e(uintptr_t arg1);
+extern uintptr_t _wrap_b2Contact_GetNext__SWIG_1_Box2D_553c0f9515edf50e(uintptr_t arg1);
+extern uintptr_t _wrap_b2Contact_GetFixtureA__SWIG_0_Box2D_553c0f9515edf50e(uintptr_t arg1);
+extern uintptr_t _wrap_b2Contact_GetFixtureA__SWIG_1_Box2D_553c0f9515edf50e(uintptr_t arg1);
+extern swig_intgo _wrap_b2Contact_GetChildIndexA_Box2D_553c0f9515edf50e(uintptr_t arg1);
+extern uintptr_t _wrap_b2Contact_GetFixtureB__SWIG_0_Box2D_553c0f9515edf50e(uintptr_t arg1);
+extern uintptr_t _wrap_b2Contact_GetFixtureB__SWIG_1_Box2D_553c0f9515edf50e(uintptr_t arg1);
+extern swig_intgo _wrap_b2Contact_GetChildIndexB_Box2D_553c0f9515edf50e(uintptr_t arg1);
+extern void _wrap_b2Contact_SetFriction_Box2D_553c0f9515edf50e(uintptr_t arg1, float arg2);
+extern float _wrap_b2Contact_GetFriction_Box2D_553c0f9515edf50e(uintptr_t arg1);
+extern void _wrap_b2Contact_ResetFriction_Box2D_553c0f9515edf50e(uintptr_t arg1);
+extern void _wrap_b2Contact_SetRestitution_Box2D_553c0f9515edf50e(uintptr_t arg1, float arg2);
+extern float _wrap_b2Contact_GetRestitution_Box2D_553c0f9515edf50e(uintptr_t arg1);
+extern void _wrap_b2Contact_ResetRestitution_Box2D_553c0f9515edf50e(uintptr_t arg1);
+extern void _wrap_b2Contact_SetTangentSpeed_Box2D_553c0f9515edf50e(uintptr_t arg1, float arg2);
+extern float _wrap_b2Contact_GetTangentSpeed_Box2D_553c0f9515edf50e(uintptr_t arg1);
+extern void _wrap_b2Contact_Evaluate_Box2D_553c0f9515edf50e(uintptr_t arg1, uintptr_t arg2, uintptr_t arg3, uintptr_t arg4);
+extern uintptr_t _wrap_new_b2DistanceJointDef_Box2D_553c0f9515edf50e(void);
+extern void _wrap_b2DistanceJointDef_Initialize_Box2D_553c0f9515edf50e(uintptr_t arg1, uintptr_t arg2, uintptr_t arg3, uintptr_t arg4, uintptr_t arg5);
+extern void _wrap_b2DistanceJointDef_localAnchorA_set_Box2D_553c0f9515edf50e(uintptr_t arg1, uintptr_t arg2);
+extern uintptr_t _wrap_b2DistanceJointDef_localAnchorA_get_Box2D_553c0f9515edf50e(uintptr_t arg1);
+extern void _wrap_b2DistanceJointDef_localAnchorB_set_Box2D_553c0f9515edf50e(uintptr_t arg1, uintptr_t arg2);
+extern uintptr_t _wrap_b2DistanceJointDef_localAnchorB_get_Box2D_553c0f9515edf50e(uintptr_t arg1);
+extern void _wrap_b2DistanceJointDef_length_set_Box2D_553c0f9515edf50e(uintptr_t arg1, float arg2);
+extern float _wrap_b2DistanceJointDef_length_get_Box2D_553c0f9515edf50e(uintptr_t arg1);
+extern void _wrap_b2DistanceJointDef_frequencyHz_set_Box2D_553c0f9515edf50e(uintptr_t arg1, float arg2);
+extern float _wrap_b2DistanceJointDef_frequencyHz_get_Box2D_553c0f9515edf50e(uintptr_t arg1);
+extern void _wrap_b2DistanceJointDef_dampingRatio_set_Box2D_553c0f9515edf50e(uintptr_t arg1, float arg2);
+extern float _wrap_b2DistanceJointDef_dampingRatio_get_Box2D_553c0f9515edf50e(uintptr_t arg1);
+extern void _wrap_delete_b2DistanceJointDef_Box2D_553c0f9515edf50e(uintptr_t arg1);
+extern uintptr_t _wrap_b2DistanceJoint_GetAnchorA_Box2D_553c0f9515edf50e(uintptr_t arg1);
+extern uintptr_t _wrap_b2DistanceJoint_GetAnchorB_Box2D_553c0f9515edf50e(uintptr_t arg1);
+extern uintptr_t _wrap_b2DistanceJoint_GetReactionForce_Box2D_553c0f9515edf50e(uintptr_t arg1, float arg2);
+extern float _wrap_b2DistanceJoint_GetReactionTorque_Box2D_553c0f9515edf50e(uintptr_t arg1, float arg2);
+extern uintptr_t _wrap_b2DistanceJoint_GetLocalAnchorA_Box2D_553c0f9515edf50e(uintptr_t arg1);
+extern uintptr_t _wrap_b2DistanceJoint_GetLocalAnchorB_Box2D_553c0f9515edf50e(uintptr_t arg1);
+extern void _wrap_b2DistanceJoint_SetLength_Box2D_553c0f9515edf50e(uintptr_t arg1, float arg2);
+extern float _wrap_b2DistanceJoint_GetLength_Box2D_553c0f9515edf50e(uintptr_t arg1);
+extern void _wrap_b2DistanceJoint_SetFrequency_Box2D_553c0f9515edf50e(uintptr_t arg1, float arg2);
+extern float _wrap_b2DistanceJoint_GetFrequency_Box2D_553c0f9515edf50e(uintptr_t arg1);
+extern void _wrap_b2DistanceJoint_SetDampingRatio_Box2D_553c0f9515edf50e(uintptr_t arg1, float arg2);
+extern float _wrap_b2DistanceJoint_GetDampingRatio_Box2D_553c0f9515edf50e(uintptr_t arg1);
+extern void _wrap_b2DistanceJoint_Dump_Box2D_553c0f9515edf50e(uintptr_t arg1);
+extern void _wrap_delete_b2DistanceJoint_Box2D_553c0f9515edf50e(uintptr_t arg1);
+extern uintptr_t _wrap_new_b2FrictionJointDef_Box2D_553c0f9515edf50e(void);
+extern void _wrap_b2FrictionJointDef_Initialize_Box2D_553c0f9515edf50e(uintptr_t arg1, uintptr_t arg2, uintptr_t arg3, uintptr_t arg4);
+extern void _wrap_b2FrictionJointDef_localAnchorA_set_Box2D_553c0f9515edf50e(uintptr_t arg1, uintptr_t arg2);
+extern uintptr_t _wrap_b2FrictionJointDef_localAnchorA_get_Box2D_553c0f9515edf50e(uintptr_t arg1);
+extern void _wrap_b2FrictionJointDef_localAnchorB_set_Box2D_553c0f9515edf50e(uintptr_t arg1, uintptr_t arg2);
+extern uintptr_t _wrap_b2FrictionJointDef_localAnchorB_get_Box2D_553c0f9515edf50e(uintptr_t arg1);
+extern void _wrap_b2FrictionJointDef_maxForce_set_Box2D_553c0f9515edf50e(uintptr_t arg1, float arg2);
+extern float _wrap_b2FrictionJointDef_maxForce_get_Box2D_553c0f9515edf50e(uintptr_t arg1);
+extern void _wrap_b2FrictionJointDef_maxTorque_set_Box2D_553c0f9515edf50e(uintptr_t arg1, float arg2);
+extern float _wrap_b2FrictionJointDef_maxTorque_get_Box2D_553c0f9515edf50e(uintptr_t arg1);
+extern void _wrap_delete_b2FrictionJointDef_Box2D_553c0f9515edf50e(uintptr_t arg1);
+extern uintptr_t _wrap_b2FrictionJoint_GetAnchorA_Box2D_553c0f9515edf50e(uintptr_t arg1);
+extern uintptr_t _wrap_b2FrictionJoint_GetAnchorB_Box2D_553c0f9515edf50e(uintptr_t arg1);
+extern uintptr_t _wrap_b2FrictionJoint_GetReactionForce_Box2D_553c0f9515edf50e(uintptr_t arg1, float arg2);
+extern float _wrap_b2FrictionJoint_GetReactionTorque_Box2D_553c0f9515edf50e(uintptr_t arg1, float arg2);
+extern uintptr_t _wrap_b2FrictionJoint_GetLocalAnchorA_Box2D_553c0f9515edf50e(uintptr_t arg1);
+extern uintptr_t _wrap_b2FrictionJoint_GetLocalAnchorB_Box2D_553c0f9515edf50e(uintptr_t arg1);
+extern void _wrap_b2FrictionJoint_SetMaxForce_Box2D_553c0f9515edf50e(uintptr_t arg1, float arg2);
+extern float _wrap_b2FrictionJoint_GetMaxForce_Box2D_553c0f9515edf50e(uintptr_t arg1);
+extern void _wrap_b2FrictionJoint_SetMaxTorque_Box2D_553c0f9515edf50e(uintptr_t arg1, float arg2);
+extern float _wrap_b2FrictionJoint_GetMaxTorque_Box2D_553c0f9515edf50e(uintptr_t arg1);
+extern void _wrap_b2FrictionJoint_Dump_Box2D_553c0f9515edf50e(uintptr_t arg1);
+extern void _wrap_delete_b2FrictionJoint_Box2D_553c0f9515edf50e(uintptr_t arg1);
+extern uintptr_t _wrap_new_b2GearJointDef_Box2D_553c0f9515edf50e(void);
+extern void _wrap_b2GearJointDef_joint1_set_Box2D_553c0f9515edf50e(uintptr_t arg1, uintptr_t arg2);
+extern uintptr_t _wrap_b2GearJointDef_joint1_get_Box2D_553c0f9515edf50e(uintptr_t arg1);
+extern void _wrap_b2GearJointDef_joint2_set_Box2D_553c0f9515edf50e(uintptr_t arg1, uintptr_t arg2);
+extern uintptr_t _wrap_b2GearJointDef_joint2_get_Box2D_553c0f9515edf50e(uintptr_t arg1);
+extern void _wrap_b2GearJointDef_ratio_set_Box2D_553c0f9515edf50e(uintptr_t arg1, float arg2);
+extern float _wrap_b2GearJointDef_ratio_get_Box2D_553c0f9515edf50e(uintptr_t arg1);
+extern void _wrap_delete_b2GearJointDef_Box2D_553c0f9515edf50e(uintptr_t arg1);
+extern uintptr_t _wrap_b2GearJoint_GetAnchorA_Box2D_553c0f9515edf50e(uintptr_t arg1);
+extern uintptr_t _wrap_b2GearJoint_GetAnchorB_Box2D_553c0f9515edf50e(uintptr_t arg1);
+extern uintptr_t _wrap_b2GearJoint_GetReactionForce_Box2D_553c0f9515edf50e(uintptr_t arg1, float arg2);
+extern float _wrap_b2GearJoint_GetReactionTorque_Box2D_553c0f9515edf50e(uintptr_t arg1, float arg2);
+extern uintptr_t _wrap_b2GearJoint_GetJoint1_Box2D_553c0f9515edf50e(uintptr_t arg1);
+extern uintptr_t _wrap_b2GearJoint_GetJoint2_Box2D_553c0f9515edf50e(uintptr_t arg1);
+extern void _wrap_b2GearJoint_SetRatio_Box2D_553c0f9515edf50e(uintptr_t arg1, float arg2);
+extern float _wrap_b2GearJoint_GetRatio_Box2D_553c0f9515edf50e(uintptr_t arg1);
+extern void _wrap_b2GearJoint_Dump_Box2D_553c0f9515edf50e(uintptr_t arg1);
+extern void _wrap_delete_b2GearJoint_Box2D_553c0f9515edf50e(uintptr_t arg1);
+extern uintptr_t _wrap_new_b2MotorJointDef_Box2D_553c0f9515edf50e(void);
+extern void _wrap_b2MotorJointDef_Initialize_Box2D_553c0f9515edf50e(uintptr_t arg1, uintptr_t arg2, uintptr_t arg3);
+extern void _wrap_b2MotorJointDef_linearOffset_set_Box2D_553c0f9515edf50e(uintptr_t arg1, uintptr_t arg2);
+extern uintptr_t _wrap_b2MotorJointDef_linearOffset_get_Box2D_553c0f9515edf50e(uintptr_t arg1);
+extern void _wrap_b2MotorJointDef_angularOffset_set_Box2D_553c0f9515edf50e(uintptr_t arg1, float arg2);
+extern float _wrap_b2MotorJointDef_angularOffset_get_Box2D_553c0f9515edf50e(uintptr_t arg1);
+extern void _wrap_b2MotorJointDef_maxForce_set_Box2D_553c0f9515edf50e(uintptr_t arg1, float arg2);
+extern float _wrap_b2MotorJointDef_maxForce_get_Box2D_553c0f9515edf50e(uintptr_t arg1);
+extern void _wrap_b2MotorJointDef_maxTorque_set_Box2D_553c0f9515edf50e(uintptr_t arg1, float arg2);
+extern float _wrap_b2MotorJointDef_maxTorque_get_Box2D_553c0f9515edf50e(uintptr_t arg1);
+extern void _wrap_b2MotorJointDef_correctionFactor_set_Box2D_553c0f9515edf50e(uintptr_t arg1, float arg2);
+extern float _wrap_b2MotorJointDef_correctionFactor_get_Box2D_553c0f9515edf50e(uintptr_t arg1);
+extern void _wrap_delete_b2MotorJointDef_Box2D_553c0f9515edf50e(uintptr_t arg1);
+extern uintptr_t _wrap_b2MotorJoint_GetAnchorA_Box2D_553c0f9515edf50e(uintptr_t arg1);
+extern uintptr_t _wrap_b2MotorJoint_GetAnchorB_Box2D_553c0f9515edf50e(uintptr_t arg1);
+extern uintptr_t _wrap_b2MotorJoint_GetReactionForce_Box2D_553c0f9515edf50e(uintptr_t arg1, float arg2);
+extern float _wrap_b2MotorJoint_GetReactionTorque_Box2D_553c0f9515edf50e(uintptr_t arg1, float arg2);
+extern void _wrap_b2MotorJoint_SetLinearOffset_Box2D_553c0f9515edf50e(uintptr_t arg1, uintptr_t arg2);
+extern uintptr_t _wrap_b2MotorJoint_GetLinearOffset_Box2D_553c0f9515edf50e(uintptr_t arg1);
+extern void _wrap_b2MotorJoint_SetAngularOffset_Box2D_553c0f9515edf50e(uintptr_t arg1, float arg2);
+extern float _wrap_b2MotorJoint_GetAngularOffset_Box2D_553c0f9515edf50e(uintptr_t arg1);
+extern void _wrap_b2MotorJoint_SetMaxForce_Box2D_553c0f9515edf50e(uintptr_t arg1, float arg2);
+extern float _wrap_b2MotorJoint_GetMaxForce_Box2D_553c0f9515edf50e(uintptr_t arg1);
+extern void _wrap_b2MotorJoint_SetMaxTorque_Box2D_553c0f9515edf50e(uintptr_t arg1, float arg2);
+extern float _wrap_b2MotorJoint_GetMaxTorque_Box2D_553c0f9515edf50e(uintptr_t arg1);
+extern void _wrap_b2MotorJoint_SetCorrectionFactor_Box2D_553c0f9515edf50e(uintptr_t arg1, float arg2);
+extern float _wrap_b2MotorJoint_GetCorrectionFactor_Box2D_553c0f9515edf50e(uintptr_t arg1);
+extern void _wrap_b2MotorJoint_Dump_Box2D_553c0f9515edf50e(uintptr_t arg1);
+extern void _wrap_delete_b2MotorJoint_Box2D_553c0f9515edf50e(uintptr_t arg1);
+extern uintptr_t _wrap_new_b2MouseJointDef_Box2D_553c0f9515edf50e(void);
+extern void _wrap_b2MouseJointDef_target_set_Box2D_553c0f9515edf50e(uintptr_t arg1, uintptr_t arg2);
+extern uintptr_t _wrap_b2MouseJointDef_target_get_Box2D_553c0f9515edf50e(uintptr_t arg1);
+extern void _wrap_b2MouseJointDef_maxForce_set_Box2D_553c0f9515edf50e(uintptr_t arg1, float arg2);
+extern float _wrap_b2MouseJointDef_maxForce_get_Box2D_553c0f9515edf50e(uintptr_t arg1);
+extern void _wrap_b2MouseJointDef_frequencyHz_set_Box2D_553c0f9515edf50e(uintptr_t arg1, float arg2);
+extern float _wrap_b2MouseJointDef_frequencyHz_get_Box2D_553c0f9515edf50e(uintptr_t arg1);
+extern void _wrap_b2MouseJointDef_dampingRatio_set_Box2D_553c0f9515edf50e(uintptr_t arg1, float arg2);
+extern float _wrap_b2MouseJointDef_dampingRatio_get_Box2D_553c0f9515edf50e(uintptr_t arg1);
+extern void _wrap_delete_b2MouseJointDef_Box2D_553c0f9515edf50e(uintptr_t arg1);
+extern uintptr_t _wrap_b2MouseJoint_GetAnchorA_Box2D_553c0f9515edf50e(uintptr_t arg1);
+extern uintptr_t _wrap_b2MouseJoint_GetAnchorB_Box2D_553c0f9515edf50e(uintptr_t arg1);
+extern uintptr_t _wrap_b2MouseJoint_GetReactionForce_Box2D_553c0f9515edf50e(uintptr_t arg1, float arg2);
+extern float _wrap_b2MouseJoint_GetReactionTorque_Box2D_553c0f9515edf50e(uintptr_t arg1, float arg2);
+extern void _wrap_b2MouseJoint_SetTarget_Box2D_553c0f9515edf50e(uintptr_t arg1, uintptr_t arg2);
+extern uintptr_t _wrap_b2MouseJoint_GetTarget_Box2D_553c0f9515edf50e(uintptr_t arg1);
+extern void _wrap_b2MouseJoint_SetMaxForce_Box2D_553c0f9515edf50e(uintptr_t arg1, float arg2);
+extern float _wrap_b2MouseJoint_GetMaxForce_Box2D_553c0f9515edf50e(uintptr_t arg1);
+extern void _wrap_b2MouseJoint_SetFrequency_Box2D_553c0f9515edf50e(uintptr_t arg1, float arg2);
+extern float _wrap_b2MouseJoint_GetFrequency_Box2D_553c0f9515edf50e(uintptr_t arg1);
+extern void _wrap_b2MouseJoint_SetDampingRatio_Box2D_553c0f9515edf50e(uintptr_t arg1, float arg2);
+extern float _wrap_b2MouseJoint_GetDampingRatio_Box2D_553c0f9515edf50e(uintptr_t arg1);
+extern void _wrap_b2MouseJoint_Dump_Box2D_553c0f9515edf50e(uintptr_t arg1);
+extern void _wrap_b2MouseJoint_ShiftOrigin_Box2D_553c0f9515edf50e(uintptr_t arg1, uintptr_t arg2);
+extern void _wrap_delete_b2MouseJoint_Box2D_553c0f9515edf50e(uintptr_t arg1);
+extern uintptr_t _wrap_new_b2PrismaticJointDef_Box2D_553c0f9515edf50e(void);
+extern void _wrap_b2PrismaticJointDef_Initialize_Box2D_553c0f9515edf50e(uintptr_t arg1, uintptr_t arg2, uintptr_t arg3, uintptr_t arg4, uintptr_t arg5);
+extern void _wrap_b2PrismaticJointDef_localAnchorA_set_Box2D_553c0f9515edf50e(uintptr_t arg1, uintptr_t arg2);
+extern uintptr_t _wrap_b2PrismaticJointDef_localAnchorA_get_Box2D_553c0f9515edf50e(uintptr_t arg1);
+extern void _wrap_b2PrismaticJointDef_localAnchorB_set_Box2D_553c0f9515edf50e(uintptr_t arg1, uintptr_t arg2);
+extern uintptr_t _wrap_b2PrismaticJointDef_localAnchorB_get_Box2D_553c0f9515edf50e(uintptr_t arg1);
+extern void _wrap_b2PrismaticJointDef_localAxisA_set_Box2D_553c0f9515edf50e(uintptr_t arg1, uintptr_t arg2);
+extern uintptr_t _wrap_b2PrismaticJointDef_localAxisA_get_Box2D_553c0f9515edf50e(uintptr_t arg1);
+extern void _wrap_b2PrismaticJointDef_referenceAngle_set_Box2D_553c0f9515edf50e(uintptr_t arg1, float arg2);
+extern float _wrap_b2PrismaticJointDef_referenceAngle_get_Box2D_553c0f9515edf50e(uintptr_t arg1);
+extern void _wrap_b2PrismaticJointDef_enableLimit_set_Box2D_553c0f9515edf50e(uintptr_t arg1, _Bool arg2);
+extern _Bool _wrap_b2PrismaticJointDef_enableLimit_get_Box2D_553c0f9515edf50e(uintptr_t arg1);
+extern void _wrap_b2PrismaticJointDef_lowerTranslation_set_Box2D_553c0f9515edf50e(uintptr_t arg1, float arg2);
+extern float _wrap_b2PrismaticJointDef_lowerTranslation_get_Box2D_553c0f9515edf50e(uintptr_t arg1);
+extern void _wrap_b2PrismaticJointDef_upperTranslation_set_Box2D_553c0f9515edf50e(uintptr_t arg1, float arg2);
+extern float _wrap_b2PrismaticJointDef_upperTranslation_get_Box2D_553c0f9515edf50e(uintptr_t arg1);
+extern void _wrap_b2PrismaticJointDef_enableMotor_set_Box2D_553c0f9515edf50e(uintptr_t arg1, _Bool arg2);
+extern _Bool _wrap_b2PrismaticJointDef_enableMotor_get_Box2D_553c0f9515edf50e(uintptr_t arg1);
+extern void _wrap_b2PrismaticJointDef_maxMotorForce_set_Box2D_553c0f9515edf50e(uintptr_t arg1, float arg2);
+extern float _wrap_b2PrismaticJointDef_maxMotorForce_get_Box2D_553c0f9515edf50e(uintptr_t arg1);
+extern void _wrap_b2PrismaticJointDef_motorSpeed_set_Box2D_553c0f9515edf50e(uintptr_t arg1, float arg2);
+extern float _wrap_b2PrismaticJointDef_motorSpeed_get_Box2D_553c0f9515edf50e(uintptr_t arg1);
+extern void _wrap_delete_b2PrismaticJointDef_Box2D_553c0f9515edf50e(uintptr_t arg1);
+extern uintptr_t _wrap_b2PrismaticJoint_GetAnchorA_Box2D_553c0f9515edf50e(uintptr_t arg1);
+extern uintptr_t _wrap_b2PrismaticJoint_GetAnchorB_Box2D_553c0f9515edf50e(uintptr_t arg1);
+extern uintptr_t _wrap_b2PrismaticJoint_GetReactionForce_Box2D_553c0f9515edf50e(uintptr_t arg1, float arg2);
+extern float _wrap_b2PrismaticJoint_GetReactionTorque_Box2D_553c0f9515edf50e(uintptr_t arg1, float arg2);
+extern uintptr_t _wrap_b2PrismaticJoint_GetLocalAnchorA_Box2D_553c0f9515edf50e(uintptr_t arg1);
+extern uintptr_t _wrap_b2PrismaticJoint_GetLocalAnchorB_Box2D_553c0f9515edf50e(uintptr_t arg1);
+extern uintptr_t _wrap_b2PrismaticJoint_GetLocalAxisA_Box2D_553c0f9515edf50e(uintptr_t arg1);
+extern float _wrap_b2PrismaticJoint_GetReferenceAngle_Box2D_553c0f9515edf50e(uintptr_t arg1);
+extern float _wrap_b2PrismaticJoint_GetJointTranslation_Box2D_553c0f9515edf50e(uintptr_t arg1);
+extern float _wrap_b2PrismaticJoint_GetJointSpeed_Box2D_553c0f9515edf50e(uintptr_t arg1);
+extern _Bool _wrap_b2PrismaticJoint_IsLimitEnabled_Box2D_553c0f9515edf50e(uintptr_t arg1);
+extern void _wrap_b2PrismaticJoint_EnableLimit_Box2D_553c0f9515edf50e(uintptr_t arg1, _Bool arg2);
+extern float _wrap_b2PrismaticJoint_GetLowerLimit_Box2D_553c0f9515edf50e(uintptr_t arg1);
+extern float _wrap_b2PrismaticJoint_GetUpperLimit_Box2D_553c0f9515edf50e(uintptr_t arg1);
+extern void _wrap_b2PrismaticJoint_SetLimits_Box2D_553c0f9515edf50e(uintptr_t arg1, float arg2, float arg3);
+extern _Bool _wrap_b2PrismaticJoint_IsMotorEnabled_Box2D_553c0f9515edf50e(uintptr_t arg1);
+extern void _wrap_b2PrismaticJoint_EnableMotor_Box2D_553c0f9515edf50e(uintptr_t arg1, _Bool arg2);
+extern void _wrap_b2PrismaticJoint_SetMotorSpeed_Box2D_553c0f9515edf50e(uintptr_t arg1, float arg2);
+extern float _wrap_b2PrismaticJoint_GetMotorSpeed_Box2D_553c0f9515edf50e(uintptr_t arg1);
+extern void _wrap_b2PrismaticJoint_SetMaxMotorForce_Box2D_553c0f9515edf50e(uintptr_t arg1, float arg2);
+extern float _wrap_b2PrismaticJoint_GetMaxMotorForce_Box2D_553c0f9515edf50e(uintptr_t arg1);
+extern float _wrap_b2PrismaticJoint_GetMotorForce_Box2D_553c0f9515edf50e(uintptr_t arg1, float arg2);
+extern void _wrap_b2PrismaticJoint_Dump_Box2D_553c0f9515edf50e(uintptr_t arg1);
+extern void _wrap_delete_b2PrismaticJoint_Box2D_553c0f9515edf50e(uintptr_t arg1);
+extern float _wrap_b2_minPulleyLength_get_Box2D_553c0f9515edf50e(void);
+extern uintptr_t _wrap_new_b2PulleyJointDef_Box2D_553c0f9515edf50e(void);
+extern void _wrap_b2PulleyJointDef_Initialize_Box2D_553c0f9515edf50e(uintptr_t arg1, uintptr_t arg2, uintptr_t arg3, uintptr_t arg4, uintptr_t arg5, uintptr_t arg6, uintptr_t arg7, float arg8);
+extern void _wrap_b2PulleyJointDef_groundAnchorA_set_Box2D_553c0f9515edf50e(uintptr_t arg1, uintptr_t arg2);
+extern uintptr_t _wrap_b2PulleyJointDef_groundAnchorA_get_Box2D_553c0f9515edf50e(uintptr_t arg1);
+extern void _wrap_b2PulleyJointDef_groundAnchorB_set_Box2D_553c0f9515edf50e(uintptr_t arg1, uintptr_t arg2);
+extern uintptr_t _wrap_b2PulleyJointDef_groundAnchorB_get_Box2D_553c0f9515edf50e(uintptr_t arg1);
+extern void _wrap_b2PulleyJointDef_localAnchorA_set_Box2D_553c0f9515edf50e(uintptr_t arg1, uintptr_t arg2);
+extern uintptr_t _wrap_b2PulleyJointDef_localAnchorA_get_Box2D_553c0f9515edf50e(uintptr_t arg1);
+extern void _wrap_b2PulleyJointDef_localAnchorB_set_Box2D_553c0f9515edf50e(uintptr_t arg1, uintptr_t arg2);
+extern uintptr_t _wrap_b2PulleyJointDef_localAnchorB_get_Box2D_553c0f9515edf50e(uintptr_t arg1);
+extern void _wrap_b2PulleyJointDef_lengthA_set_Box2D_553c0f9515edf50e(uintptr_t arg1, float arg2);
+extern float _wrap_b2PulleyJointDef_lengthA_get_Box2D_553c0f9515edf50e(uintptr_t arg1);
+extern void _wrap_b2PulleyJointDef_lengthB_set_Box2D_553c0f9515edf50e(uintptr_t arg1, float arg2);
+extern float _wrap_b2PulleyJointDef_lengthB_get_Box2D_553c0f9515edf50e(uintptr_t arg1);
+extern void _wrap_b2PulleyJointDef_ratio_set_Box2D_553c0f9515edf50e(uintptr_t arg1, float arg2);
+extern float _wrap_b2PulleyJointDef_ratio_get_Box2D_553c0f9515edf50e(uintptr_t arg1);
+extern void _wrap_delete_b2PulleyJointDef_Box2D_553c0f9515edf50e(uintptr_t arg1);
+extern uintptr_t _wrap_b2PulleyJoint_GetAnchorA_Box2D_553c0f9515edf50e(uintptr_t arg1);
+extern uintptr_t _wrap_b2PulleyJoint_GetAnchorB_Box2D_553c0f9515edf50e(uintptr_t arg1);
+extern uintptr_t _wrap_b2PulleyJoint_GetReactionForce_Box2D_553c0f9515edf50e(uintptr_t arg1, float arg2);
+extern float _wrap_b2PulleyJoint_GetReactionTorque_Box2D_553c0f9515edf50e(uintptr_t arg1, float arg2);
+extern uintptr_t _wrap_b2PulleyJoint_GetGroundAnchorA_Box2D_553c0f9515edf50e(uintptr_t arg1);
+extern uintptr_t _wrap_b2PulleyJoint_GetGroundAnchorB_Box2D_553c0f9515edf50e(uintptr_t arg1);
+extern float _wrap_b2PulleyJoint_GetLengthA_Box2D_553c0f9515edf50e(uintptr_t arg1);
+extern float _wrap_b2PulleyJoint_GetLengthB_Box2D_553c0f9515edf50e(uintptr_t arg1);
+extern float _wrap_b2PulleyJoint_GetRatio_Box2D_553c0f9515edf50e(uintptr_t arg1);
+extern float _wrap_b2PulleyJoint_GetCurrentLengthA_Box2D_553c0f9515edf50e(uintptr_t arg1);
+extern float _wrap_b2PulleyJoint_GetCurrentLengthB_Box2D_553c0f9515edf50e(uintptr_t arg1);
+extern void _wrap_b2PulleyJoint_Dump_Box2D_553c0f9515edf50e(uintptr_t arg1);
+extern void _wrap_b2PulleyJoint_ShiftOrigin_Box2D_553c0f9515edf50e(uintptr_t arg1, uintptr_t arg2);
+extern void _wrap_delete_b2PulleyJoint_Box2D_553c0f9515edf50e(uintptr_t arg1);
+extern uintptr_t _wrap_new_b2RevoluteJointDef_Box2D_553c0f9515edf50e(void);
+extern void _wrap_b2RevoluteJointDef_Initialize_Box2D_553c0f9515edf50e(uintptr_t arg1, uintptr_t arg2, uintptr_t arg3, uintptr_t arg4);
+extern void _wrap_b2RevoluteJointDef_localAnchorA_set_Box2D_553c0f9515edf50e(uintptr_t arg1, uintptr_t arg2);
+extern uintptr_t _wrap_b2RevoluteJointDef_localAnchorA_get_Box2D_553c0f9515edf50e(uintptr_t arg1);
+extern void _wrap_b2RevoluteJointDef_localAnchorB_set_Box2D_553c0f9515edf50e(uintptr_t arg1, uintptr_t arg2);
+extern uintptr_t _wrap_b2RevoluteJointDef_localAnchorB_get_Box2D_553c0f9515edf50e(uintptr_t arg1);
+extern void _wrap_b2RevoluteJointDef_referenceAngle_set_Box2D_553c0f9515edf50e(uintptr_t arg1, float arg2);
+extern float _wrap_b2RevoluteJointDef_referenceAngle_get_Box2D_553c0f9515edf50e(uintptr_t arg1);
+extern void _wrap_b2RevoluteJointDef_enableLimit_set_Box2D_553c0f9515edf50e(uintptr_t arg1, _Bool arg2);
+extern _Bool _wrap_b2RevoluteJointDef_enableLimit_get_Box2D_553c0f9515edf50e(uintptr_t arg1);
+extern void _wrap_b2RevoluteJointDef_lowerAngle_set_Box2D_553c0f9515edf50e(uintptr_t arg1, float arg2);
+extern float _wrap_b2RevoluteJointDef_lowerAngle_get_Box2D_553c0f9515edf50e(uintptr_t arg1);
+extern void _wrap_b2RevoluteJointDef_upperAngle_set_Box2D_553c0f9515edf50e(uintptr_t arg1, float arg2);
+extern float _wrap_b2RevoluteJointDef_upperAngle_get_Box2D_553c0f9515edf50e(uintptr_t arg1);
+extern void _wrap_b2RevoluteJointDef_enableMotor_set_Box2D_553c0f9515edf50e(uintptr_t arg1, _Bool arg2);
+extern _Bool _wrap_b2RevoluteJointDef_enableMotor_get_Box2D_553c0f9515edf50e(uintptr_t arg1);
+extern void _wrap_b2RevoluteJointDef_motorSpeed_set_Box2D_553c0f9515edf50e(uintptr_t arg1, float arg2);
+extern float _wrap_b2RevoluteJointDef_motorSpeed_get_Box2D_553c0f9515edf50e(uintptr_t arg1);
+extern void _wrap_b2RevoluteJointDef_maxMotorTorque_set_Box2D_553c0f9515edf50e(uintptr_t arg1, float arg2);
+extern float _wrap_b2RevoluteJointDef_maxMotorTorque_get_Box2D_553c0f9515edf50e(uintptr_t arg1);
+extern void _wrap_delete_b2RevoluteJointDef_Box2D_553c0f9515edf50e(uintptr_t arg1);
+extern uintptr_t _wrap_b2RevoluteJoint_GetAnchorA_Box2D_553c0f9515edf50e(uintptr_t arg1);
+extern uintptr_t _wrap_b2RevoluteJoint_GetAnchorB_Box2D_553c0f9515edf50e(uintptr_t arg1);
+extern uintptr_t _wrap_b2RevoluteJoint_GetLocalAnchorA_Box2D_553c0f9515edf50e(uintptr_t arg1);
+extern uintptr_t _wrap_b2RevoluteJoint_GetLocalAnchorB_Box2D_553c0f9515edf50e(uintptr_t arg1);
+extern float _wrap_b2RevoluteJoint_GetReferenceAngle_Box2D_553c0f9515edf50e(uintptr_t arg1);
+extern float _wrap_b2RevoluteJoint_GetJointAngle_Box2D_553c0f9515edf50e(uintptr_t arg1);
+extern float _wrap_b2RevoluteJoint_GetJointSpeed_Box2D_553c0f9515edf50e(uintptr_t arg1);
+extern _Bool _wrap_b2RevoluteJoint_IsLimitEnabled_Box2D_553c0f9515edf50e(uintptr_t arg1);
+extern void _wrap_b2RevoluteJoint_EnableLimit_Box2D_553c0f9515edf50e(uintptr_t arg1, _Bool arg2);
+extern float _wrap_b2RevoluteJoint_GetLowerLimit_Box2D_553c0f9515edf50e(uintptr_t arg1);
+extern float _wrap_b2RevoluteJoint_GetUpperLimit_Box2D_553c0f9515edf50e(uintptr_t arg1);
+extern void _wrap_b2RevoluteJoint_SetLimits_Box2D_553c0f9515edf50e(uintptr_t arg1, float arg2, float arg3);
+extern _Bool _wrap_b2RevoluteJoint_IsMotorEnabled_Box2D_553c0f9515edf50e(uintptr_t arg1);
+extern void _wrap_b2RevoluteJoint_EnableMotor_Box2D_553c0f9515edf50e(uintptr_t arg1, _Bool arg2);
+extern void _wrap_b2RevoluteJoint_SetMotorSpeed_Box2D_553c0f9515edf50e(uintptr_t arg1, float arg2);
+extern float _wrap_b2RevoluteJoint_GetMotorSpeed_Box2D_553c0f9515edf50e(uintptr_t arg1);
+extern void _wrap_b2RevoluteJoint_SetMaxMotorTorque_Box2D_553c0f9515edf50e(uintptr_t arg1, float arg2);
+extern float _wrap_b2RevoluteJoint_GetMaxMotorTorque_Box2D_553c0f9515edf50e(uintptr_t arg1);
+extern uintptr_t _wrap_b2RevoluteJoint_GetReactionForce_Box2D_553c0f9515edf50e(uintptr_t arg1, float arg2);
+extern float _wrap_b2RevoluteJoint_GetReactionTorque_Box2D_553c0f9515edf50e(uintptr_t arg1, float arg2);
+extern float _wrap_b2RevoluteJoint_GetMotorTorque_Box2D_553c0f9515edf50e(uintptr_t arg1, float arg2);
+extern void _wrap_b2RevoluteJoint_Dump_Box2D_553c0f9515edf50e(uintptr_t arg1);
+extern void _wrap_delete_b2RevoluteJoint_Box2D_553c0f9515edf50e(uintptr_t arg1);
+extern uintptr_t _wrap_new_b2RopeJointDef_Box2D_553c0f9515edf50e(void);
+extern void _wrap_b2RopeJointDef_localAnchorA_set_Box2D_553c0f9515edf50e(uintptr_t arg1, uintptr_t arg2);
+extern uintptr_t _wrap_b2RopeJointDef_localAnchorA_get_Box2D_553c0f9515edf50e(uintptr_t arg1);
+extern void _wrap_b2RopeJointDef_localAnchorB_set_Box2D_553c0f9515edf50e(uintptr_t arg1, uintptr_t arg2);
+extern uintptr_t _wrap_b2RopeJointDef_localAnchorB_get_Box2D_553c0f9515edf50e(uintptr_t arg1);
+extern void _wrap_b2RopeJointDef_maxLength_set_Box2D_553c0f9515edf50e(uintptr_t arg1, float arg2);
+extern float _wrap_b2RopeJointDef_maxLength_get_Box2D_553c0f9515edf50e(uintptr_t arg1);
+extern void _wrap_delete_b2RopeJointDef_Box2D_553c0f9515edf50e(uintptr_t arg1);
+extern uintptr_t _wrap_b2RopeJoint_GetAnchorA_Box2D_553c0f9515edf50e(uintptr_t arg1);
+extern uintptr_t _wrap_b2RopeJoint_GetAnchorB_Box2D_553c0f9515edf50e(uintptr_t arg1);
+extern uintptr_t _wrap_b2RopeJoint_GetReactionForce_Box2D_553c0f9515edf50e(uintptr_t arg1, float arg2);
+extern float _wrap_b2RopeJoint_GetReactionTorque_Box2D_553c0f9515edf50e(uintptr_t arg1, float arg2);
+extern uintptr_t _wrap_b2RopeJoint_GetLocalAnchorA_Box2D_553c0f9515edf50e(uintptr_t arg1);
+extern uintptr_t _wrap_b2RopeJoint_GetLocalAnchorB_Box2D_553c0f9515edf50e(uintptr_t arg1);
+extern void _wrap_b2RopeJoint_SetMaxLength_Box2D_553c0f9515edf50e(uintptr_t arg1, float arg2);
+extern float _wrap_b2RopeJoint_GetMaxLength_Box2D_553c0f9515edf50e(uintptr_t arg1);
+extern uintptr_t _wrap_b2RopeJoint_GetLimitState_Box2D_553c0f9515edf50e(uintptr_t arg1);
+extern void _wrap_b2RopeJoint_Dump_Box2D_553c0f9515edf50e(uintptr_t arg1);
+extern void _wrap_delete_b2RopeJoint_Box2D_553c0f9515edf50e(uintptr_t arg1);
+extern uintptr_t _wrap_new_b2WeldJointDef_Box2D_553c0f9515edf50e(void);
+extern void _wrap_b2WeldJointDef_Initialize_Box2D_553c0f9515edf50e(uintptr_t arg1, uintptr_t arg2, uintptr_t arg3, uintptr_t arg4);
+extern void _wrap_b2WeldJointDef_localAnchorA_set_Box2D_553c0f9515edf50e(uintptr_t arg1, uintptr_t arg2);
+extern uintptr_t _wrap_b2WeldJointDef_localAnchorA_get_Box2D_553c0f9515edf50e(uintptr_t arg1);
+extern void _wrap_b2WeldJointDef_localAnchorB_set_Box2D_553c0f9515edf50e(uintptr_t arg1, uintptr_t arg2);
+extern uintptr_t _wrap_b2WeldJointDef_localAnchorB_get_Box2D_553c0f9515edf50e(uintptr_t arg1);
+extern void _wrap_b2WeldJointDef_referenceAngle_set_Box2D_553c0f9515edf50e(uintptr_t arg1, float arg2);
+extern float _wrap_b2WeldJointDef_referenceAngle_get_Box2D_553c0f9515edf50e(uintptr_t arg1);
+extern void _wrap_b2WeldJointDef_frequencyHz_set_Box2D_553c0f9515edf50e(uintptr_t arg1, float arg2);
+extern float _wrap_b2WeldJointDef_frequencyHz_get_Box2D_553c0f9515edf50e(uintptr_t arg1);
+extern void _wrap_b2WeldJointDef_dampingRatio_set_Box2D_553c0f9515edf50e(uintptr_t arg1, float arg2);
+extern float _wrap_b2WeldJointDef_dampingRatio_get_Box2D_553c0f9515edf50e(uintptr_t arg1);
+extern void _wrap_delete_b2WeldJointDef_Box2D_553c0f9515edf50e(uintptr_t arg1);
+extern uintptr_t _wrap_b2WeldJoint_GetAnchorA_Box2D_553c0f9515edf50e(uintptr_t arg1);
+extern uintptr_t _wrap_b2WeldJoint_GetAnchorB_Box2D_553c0f9515edf50e(uintptr_t arg1);
+extern uintptr_t _wrap_b2WeldJoint_GetReactionForce_Box2D_553c0f9515edf50e(uintptr_t arg1, float arg2);
+extern float _wrap_b2WeldJoint_GetReactionTorque_Box2D_553c0f9515edf50e(uintptr_t arg1, float arg2);
+extern uintptr_t _wrap_b2WeldJoint_GetLocalAnchorA_Box2D_553c0f9515edf50e(uintptr_t arg1);
+extern uintptr_t _wrap_b2WeldJoint_GetLocalAnchorB_Box2D_553c0f9515edf50e(uintptr_t arg1);
+extern float _wrap_b2WeldJoint_GetReferenceAngle_Box2D_553c0f9515edf50e(uintptr_t arg1);
+extern void _wrap_b2WeldJoint_SetFrequency_Box2D_553c0f9515edf50e(uintptr_t arg1, float arg2);
+extern float _wrap_b2WeldJoint_GetFrequency_Box2D_553c0f9515edf50e(uintptr_t arg1);
+extern void _wrap_b2WeldJoint_SetDampingRatio_Box2D_553c0f9515edf50e(uintptr_t arg1, float arg2);
+extern float _wrap_b2WeldJoint_GetDampingRatio_Box2D_553c0f9515edf50e(uintptr_t arg1);
+extern void _wrap_b2WeldJoint_Dump_Box2D_553c0f9515edf50e(uintptr_t arg1);
+extern void _wrap_delete_b2WeldJoint_Box2D_553c0f9515edf50e(uintptr_t arg1);
+extern uintptr_t _wrap_new_b2WheelJointDef_Box2D_553c0f9515edf50e(void);
+extern void _wrap_b2WheelJointDef_Initialize_Box2D_553c0f9515edf50e(uintptr_t arg1, uintptr_t arg2, uintptr_t arg3, uintptr_t arg4, uintptr_t arg5);
+extern void _wrap_b2WheelJointDef_localAnchorA_set_Box2D_553c0f9515edf50e(uintptr_t arg1, uintptr_t arg2);
+extern uintptr_t _wrap_b2WheelJointDef_localAnchorA_get_Box2D_553c0f9515edf50e(uintptr_t arg1);
+extern void _wrap_b2WheelJointDef_localAnchorB_set_Box2D_553c0f9515edf50e(uintptr_t arg1, uintptr_t arg2);
+extern uintptr_t _wrap_b2WheelJointDef_localAnchorB_get_Box2D_553c0f9515edf50e(uintptr_t arg1);
+extern void _wrap_b2WheelJointDef_localAxisA_set_Box2D_553c0f9515edf50e(uintptr_t arg1, uintptr_t arg2);
+extern uintptr_t _wrap_b2WheelJointDef_localAxisA_get_Box2D_553c0f9515edf50e(uintptr_t arg1);
+extern void _wrap_b2WheelJointDef_enableMotor_set_Box2D_553c0f9515edf50e(uintptr_t arg1, _Bool arg2);
+extern _Bool _wrap_b2WheelJointDef_enableMotor_get_Box2D_553c0f9515edf50e(uintptr_t arg1);
+extern void _wrap_b2WheelJointDef_maxMotorTorque_set_Box2D_553c0f9515edf50e(uintptr_t arg1, float arg2);
+extern float _wrap_b2WheelJointDef_maxMotorTorque_get_Box2D_553c0f9515edf50e(uintptr_t arg1);
+extern void _wrap_b2WheelJointDef_motorSpeed_set_Box2D_553c0f9515edf50e(uintptr_t arg1, float arg2);
+extern float _wrap_b2WheelJointDef_motorSpeed_get_Box2D_553c0f9515edf50e(uintptr_t arg1);
+extern void _wrap_b2WheelJointDef_frequencyHz_set_Box2D_553c0f9515edf50e(uintptr_t arg1, float arg2);
+extern float _wrap_b2WheelJointDef_frequencyHz_get_Box2D_553c0f9515edf50e(uintptr_t arg1);
+extern void _wrap_b2WheelJointDef_dampingRatio_set_Box2D_553c0f9515edf50e(uintptr_t arg1, float arg2);
+extern float _wrap_b2WheelJointDef_dampingRatio_get_Box2D_553c0f9515edf50e(uintptr_t arg1);
+extern void _wrap_delete_b2WheelJointDef_Box2D_553c0f9515edf50e(uintptr_t arg1);
+extern uintptr_t _wrap_b2WheelJoint_GetAnchorA_Box2D_553c0f9515edf50e(uintptr_t arg1);
+extern uintptr_t _wrap_b2WheelJoint_GetAnchorB_Box2D_553c0f9515edf50e(uintptr_t arg1);
+extern uintptr_t _wrap_b2WheelJoint_GetReactionForce_Box2D_553c0f9515edf50e(uintptr_t arg1, float arg2);
+extern float _wrap_b2WheelJoint_GetReactionTorque_Box2D_553c0f9515edf50e(uintptr_t arg1, float arg2);
+extern uintptr_t _wrap_b2WheelJoint_GetLocalAnchorA_Box2D_553c0f9515edf50e(uintptr_t arg1);
+extern uintptr_t _wrap_b2WheelJoint_GetLocalAnchorB_Box2D_553c0f9515edf50e(uintptr_t arg1);
+extern uintptr_t _wrap_b2WheelJoint_GetLocalAxisA_Box2D_553c0f9515edf50e(uintptr_t arg1);
+extern float _wrap_b2WheelJoint_GetJointTranslation_Box2D_553c0f9515edf50e(uintptr_t arg1);
+extern float _wrap_b2WheelJoint_GetJointSpeed_Box2D_553c0f9515edf50e(uintptr_t arg1);
+extern _Bool _wrap_b2WheelJoint_IsMotorEnabled_Box2D_553c0f9515edf50e(uintptr_t arg1);
+extern void _wrap_b2WheelJoint_EnableMotor_Box2D_553c0f9515edf50e(uintptr_t arg1, _Bool arg2);
+extern void _wrap_b2WheelJoint_SetMotorSpeed_Box2D_553c0f9515edf50e(uintptr_t arg1, float arg2);
+extern float _wrap_b2WheelJoint_GetMotorSpeed_Box2D_553c0f9515edf50e(uintptr_t arg1);
+extern void _wrap_b2WheelJoint_SetMaxMotorTorque_Box2D_553c0f9515edf50e(uintptr_t arg1, float arg2);
+extern float _wrap_b2WheelJoint_GetMaxMotorTorque_Box2D_553c0f9515edf50e(uintptr_t arg1);
+extern float _wrap_b2WheelJoint_GetMotorTorque_Box2D_553c0f9515edf50e(uintptr_t arg1, float arg2);
+extern void _wrap_b2WheelJoint_SetSpringFrequencyHz_Box2D_553c0f9515edf50e(uintptr_t arg1, float arg2);
+extern float _wrap_b2WheelJoint_GetSpringFrequencyHz_Box2D_553c0f9515edf50e(uintptr_t arg1);
+extern void _wrap_b2WheelJoint_SetSpringDampingRatio_Box2D_553c0f9515edf50e(uintptr_t arg1, float arg2);
+extern float _wrap_b2WheelJoint_GetSpringDampingRatio_Box2D_553c0f9515edf50e(uintptr_t arg1);
+extern void _wrap_b2WheelJoint_Dump_Box2D_553c0f9515edf50e(uintptr_t arg1);
+extern void _wrap_delete_b2WheelJoint_Box2D_553c0f9515edf50e(uintptr_t arg1);
 #undef intgo
 */
 import "C"
@@ -962,7 +968,7 @@ type _ sync.Mutex
 
 func Swig_free(arg1 uintptr) {
 	_swig_i_0 := arg1
-	C._wrap_Swig_free_Box2D_b1d1b47c7e81f80a(C.uintptr_t(_swig_i_0))
+	C._wrap_Swig_free_Box2D_553c0f9515edf50e(C.uintptr_t(_swig_i_0))
 }
 
 const B2_pi float64 = 3.14159265359
@@ -973,14 +979,14 @@ const B2_aabbMultiplier float64 = 2.0
 const B2_linearSlop float64 = 0.005
 func _swig_getb2_angularSlop() (_swig_ret float64) {
 	var swig_r float64
-	swig_r = (float64)(C._wrap_b2_angularSlop_Box2D_b1d1b47c7e81f80a())
+	swig_r = (float64)(C._wrap_b2_angularSlop_Box2D_553c0f9515edf50e())
 	return swig_r
 }
 
 var B2_angularSlop float64 = _swig_getb2_angularSlop()
 func _swig_getb2_polygonRadius() (_swig_ret float64) {
 	var swig_r float64
-	swig_r = (float64)(C._wrap_b2_polygonRadius_Box2D_b1d1b47c7e81f80a())
+	swig_r = (float64)(C._wrap_b2_polygonRadius_Box2D_553c0f9515edf50e())
 	return swig_r
 }
 
@@ -991,7 +997,7 @@ const B2_velocityThreshold float64 = 1.0
 const B2_maxLinearCorrection float64 = 0.2
 func _swig_getb2_maxAngularCorrection() (_swig_ret float64) {
 	var swig_r float64
-	swig_r = (float64)(C._wrap_b2_maxAngularCorrection_Box2D_b1d1b47c7e81f80a())
+	swig_r = (float64)(C._wrap_b2_maxAngularCorrection_Box2D_553c0f9515edf50e())
 	return swig_r
 }
 
@@ -999,21 +1005,21 @@ var B2_maxAngularCorrection float64 = _swig_getb2_maxAngularCorrection()
 const B2_maxTranslation float64 = 2.0
 func _swig_getb2_maxTranslationSquared() (_swig_ret float64) {
 	var swig_r float64
-	swig_r = (float64)(C._wrap_b2_maxTranslationSquared_Box2D_b1d1b47c7e81f80a())
+	swig_r = (float64)(C._wrap_b2_maxTranslationSquared_Box2D_553c0f9515edf50e())
 	return swig_r
 }
 
 var B2_maxTranslationSquared float64 = _swig_getb2_maxTranslationSquared()
 func _swig_getb2_maxRotation() (_swig_ret float64) {
 	var swig_r float64
-	swig_r = (float64)(C._wrap_b2_maxRotation_Box2D_b1d1b47c7e81f80a())
+	swig_r = (float64)(C._wrap_b2_maxRotation_Box2D_553c0f9515edf50e())
 	return swig_r
 }
 
 var B2_maxRotation float64 = _swig_getb2_maxRotation()
 func _swig_getb2_maxRotationSquared() (_swig_ret float64) {
 	var swig_r float64
-	swig_r = (float64)(C._wrap_b2_maxRotationSquared_Box2D_b1d1b47c7e81f80a())
+	swig_r = (float64)(C._wrap_b2_maxRotationSquared_Box2D_553c0f9515edf50e())
 	return swig_r
 }
 
@@ -1024,7 +1030,7 @@ const B2_timeToSleep float64 = 0.5
 const B2_linearSleepTolerance float64 = 0.01
 func _swig_getb2_angularSleepTolerance() (_swig_ret float64) {
 	var swig_r float64
-	swig_r = (float64)(C._wrap_b2_angularSleepTolerance_Box2D_b1d1b47c7e81f80a())
+	swig_r = (float64)(C._wrap_b2_angularSleepTolerance_Box2D_553c0f9515edf50e())
 	return swig_r
 }
 
@@ -1032,18 +1038,18 @@ var B2_angularSleepTolerance float64 = _swig_getb2_angularSleepTolerance()
 func B2Alloc(arg1 int) (_swig_ret uintptr) {
 	var swig_r uintptr
 	_swig_i_0 := arg1
-	swig_r = (uintptr)(C._wrap_b2Alloc_Box2D_b1d1b47c7e81f80a(C.swig_intgo(_swig_i_0)))
+	swig_r = (uintptr)(C._wrap_b2Alloc_Box2D_553c0f9515edf50e(C.swig_intgo(_swig_i_0)))
 	return swig_r
 }
 
 func B2Free(arg1 uintptr) {
 	_swig_i_0 := arg1
-	C._wrap_b2Free_Box2D_b1d1b47c7e81f80a(C.uintptr_t(_swig_i_0))
+	C._wrap_b2Free_Box2D_553c0f9515edf50e(C.uintptr_t(_swig_i_0))
 }
 
 func B2Log(arg1 string) {
 	_swig_i_0 := arg1
-	C._wrap_b2Log_Box2D_b1d1b47c7e81f80a(*(*C.swig_type_1)(unsafe.Pointer(&_swig_i_0)))
+	C._wrap_b2Log_Box2D_553c0f9515edf50e(*(*C.swig_type_1)(unsafe.Pointer(&_swig_i_0)))
 	if Swig_escape_always_false {
 		Swig_escape_val = arg1
 	}
@@ -1061,51 +1067,51 @@ func (p SwigcptrB2Version) SwigIsB2Version() {
 func (arg1 SwigcptrB2Version) SetMajor(arg2 int) {
 	_swig_i_0 := arg1
 	_swig_i_1 := arg2
-	C._wrap_b2Version_major_set_Box2D_b1d1b47c7e81f80a(C.uintptr_t(_swig_i_0), C.swig_intgo(_swig_i_1))
+	C._wrap_b2Version_major_set_Box2D_553c0f9515edf50e(C.uintptr_t(_swig_i_0), C.swig_intgo(_swig_i_1))
 }
 
 func (arg1 SwigcptrB2Version) GetMajor() (_swig_ret int) {
 	var swig_r int
 	_swig_i_0 := arg1
-	swig_r = (int)(C._wrap_b2Version_major_get_Box2D_b1d1b47c7e81f80a(C.uintptr_t(_swig_i_0)))
+	swig_r = (int)(C._wrap_b2Version_major_get_Box2D_553c0f9515edf50e(C.uintptr_t(_swig_i_0)))
 	return swig_r
 }
 
 func (arg1 SwigcptrB2Version) SetMinor(arg2 int) {
 	_swig_i_0 := arg1
 	_swig_i_1 := arg2
-	C._wrap_b2Version_minor_set_Box2D_b1d1b47c7e81f80a(C.uintptr_t(_swig_i_0), C.swig_intgo(_swig_i_1))
+	C._wrap_b2Version_minor_set_Box2D_553c0f9515edf50e(C.uintptr_t(_swig_i_0), C.swig_intgo(_swig_i_1))
 }
 
 func (arg1 SwigcptrB2Version) GetMinor() (_swig_ret int) {
 	var swig_r int
 	_swig_i_0 := arg1
-	swig_r = (int)(C._wrap_b2Version_minor_get_Box2D_b1d1b47c7e81f80a(C.uintptr_t(_swig_i_0)))
+	swig_r = (int)(C._wrap_b2Version_minor_get_Box2D_553c0f9515edf50e(C.uintptr_t(_swig_i_0)))
 	return swig_r
 }
 
 func (arg1 SwigcptrB2Version) SetRevision(arg2 int) {
 	_swig_i_0 := arg1
 	_swig_i_1 := arg2
-	C._wrap_b2Version_revision_set_Box2D_b1d1b47c7e81f80a(C.uintptr_t(_swig_i_0), C.swig_intgo(_swig_i_1))
+	C._wrap_b2Version_revision_set_Box2D_553c0f9515edf50e(C.uintptr_t(_swig_i_0), C.swig_intgo(_swig_i_1))
 }
 
 func (arg1 SwigcptrB2Version) GetRevision() (_swig_ret int) {
 	var swig_r int
 	_swig_i_0 := arg1
-	swig_r = (int)(C._wrap_b2Version_revision_get_Box2D_b1d1b47c7e81f80a(C.uintptr_t(_swig_i_0)))
+	swig_r = (int)(C._wrap_b2Version_revision_get_Box2D_553c0f9515edf50e(C.uintptr_t(_swig_i_0)))
 	return swig_r
 }
 
 func NewB2Version() (_swig_ret B2Version) {
 	var swig_r B2Version
-	swig_r = (B2Version)(SwigcptrB2Version(C._wrap_new_b2Version_Box2D_b1d1b47c7e81f80a()))
+	swig_r = (B2Version)(SwigcptrB2Version(C._wrap_new_b2Version_Box2D_553c0f9515edf50e()))
 	return swig_r
 }
 
 func DeleteB2Version(arg1 B2Version) {
 	_swig_i_0 := arg1.Swigcptr()
-	C._wrap_delete_b2Version_Box2D_b1d1b47c7e81f80a(C.uintptr_t(_swig_i_0))
+	C._wrap_delete_b2Version_Box2D_553c0f9515edf50e(C.uintptr_t(_swig_i_0))
 }
 
 type B2Version interface {
@@ -1121,12 +1127,12 @@ type B2Version interface {
 
 func SetB2_version(arg1 B2Version) {
 	_swig_i_0 := arg1.Swigcptr()
-	C._wrap_b2_version_set_Box2D_b1d1b47c7e81f80a(C.uintptr_t(_swig_i_0))
+	C._wrap_b2_version_set_Box2D_553c0f9515edf50e(C.uintptr_t(_swig_i_0))
 }
 
 func GetB2_version() (_swig_ret B2Version) {
 	var swig_r B2Version
-	swig_r = (B2Version)(SwigcptrB2Version(C._wrap_b2_version_get_Box2D_b1d1b47c7e81f80a()))
+	swig_r = (B2Version)(SwigcptrB2Version(C._wrap_b2_version_get_Box2D_553c0f9515edf50e()))
 	return swig_r
 }
 
@@ -1141,7 +1147,7 @@ func (p SwigcptrB2Color) SwigIsB2Color() {
 
 func NewB2Color__SWIG_0() (_swig_ret B2Color) {
 	var swig_r B2Color
-	swig_r = (B2Color)(SwigcptrB2Color(C._wrap_new_b2Color__SWIG_0_Box2D_b1d1b47c7e81f80a()))
+	swig_r = (B2Color)(SwigcptrB2Color(C._wrap_new_b2Color__SWIG_0_Box2D_553c0f9515edf50e()))
 	return swig_r
 }
 
@@ -1151,7 +1157,7 @@ func NewB2Color__SWIG_1(arg1 float32, arg2 float32, arg3 float32, arg4 float32) 
 	_swig_i_1 := arg2
 	_swig_i_2 := arg3
 	_swig_i_3 := arg4
-	swig_r = (B2Color)(SwigcptrB2Color(C._wrap_new_b2Color__SWIG_1_Box2D_b1d1b47c7e81f80a(C.float(_swig_i_0), C.float(_swig_i_1), C.float(_swig_i_2), C.float(_swig_i_3))))
+	swig_r = (B2Color)(SwigcptrB2Color(C._wrap_new_b2Color__SWIG_1_Box2D_553c0f9515edf50e(C.float(_swig_i_0), C.float(_swig_i_1), C.float(_swig_i_2), C.float(_swig_i_3))))
 	return swig_r
 }
 
@@ -1160,7 +1166,7 @@ func NewB2Color__SWIG_2(arg1 float32, arg2 float32, arg3 float32) (_swig_ret B2C
 	_swig_i_0 := arg1
 	_swig_i_1 := arg2
 	_swig_i_2 := arg3
-	swig_r = (B2Color)(SwigcptrB2Color(C._wrap_new_b2Color__SWIG_2_Box2D_b1d1b47c7e81f80a(C.float(_swig_i_0), C.float(_swig_i_1), C.float(_swig_i_2))))
+	swig_r = (B2Color)(SwigcptrB2Color(C._wrap_new_b2Color__SWIG_2_Box2D_553c0f9515edf50e(C.float(_swig_i_0), C.float(_swig_i_1), C.float(_swig_i_2))))
 	return swig_r
 }
 
@@ -1184,7 +1190,7 @@ func (arg1 SwigcptrB2Color) Set__SWIG_0(arg2 float32, arg3 float32, arg4 float32
 	_swig_i_2 := arg3
 	_swig_i_3 := arg4
 	_swig_i_4 := arg5
-	C._wrap_b2Color_Set__SWIG_0_Box2D_b1d1b47c7e81f80a(C.uintptr_t(_swig_i_0), C.float(_swig_i_1), C.float(_swig_i_2), C.float(_swig_i_3), C.float(_swig_i_4))
+	C._wrap_b2Color_Set__SWIG_0_Box2D_553c0f9515edf50e(C.uintptr_t(_swig_i_0), C.float(_swig_i_1), C.float(_swig_i_2), C.float(_swig_i_3), C.float(_swig_i_4))
 }
 
 func (arg1 SwigcptrB2Color) Set__SWIG_1(arg2 float32, arg3 float32, arg4 float32) {
@@ -1192,7 +1198,7 @@ func (arg1 SwigcptrB2Color) Set__SWIG_1(arg2 float32, arg3 float32, arg4 float32
 	_swig_i_1 := arg2
 	_swig_i_2 := arg3
 	_swig_i_3 := arg4
-	C._wrap_b2Color_Set__SWIG_1_Box2D_b1d1b47c7e81f80a(C.uintptr_t(_swig_i_0), C.float(_swig_i_1), C.float(_swig_i_2), C.float(_swig_i_3))
+	C._wrap_b2Color_Set__SWIG_1_Box2D_553c0f9515edf50e(C.uintptr_t(_swig_i_0), C.float(_swig_i_1), C.float(_swig_i_2), C.float(_swig_i_3))
 }
 
 func (p SwigcptrB2Color) Set(a ...interface{}) {
@@ -1211,58 +1217,58 @@ func (p SwigcptrB2Color) Set(a ...interface{}) {
 func (arg1 SwigcptrB2Color) SetR(arg2 float32) {
 	_swig_i_0 := arg1
 	_swig_i_1 := arg2
-	C._wrap_b2Color_r_set_Box2D_b1d1b47c7e81f80a(C.uintptr_t(_swig_i_0), C.float(_swig_i_1))
+	C._wrap_b2Color_r_set_Box2D_553c0f9515edf50e(C.uintptr_t(_swig_i_0), C.float(_swig_i_1))
 }
 
 func (arg1 SwigcptrB2Color) GetR() (_swig_ret float32) {
 	var swig_r float32
 	_swig_i_0 := arg1
-	swig_r = (float32)(C._wrap_b2Color_r_get_Box2D_b1d1b47c7e81f80a(C.uintptr_t(_swig_i_0)))
+	swig_r = (float32)(C._wrap_b2Color_r_get_Box2D_553c0f9515edf50e(C.uintptr_t(_swig_i_0)))
 	return swig_r
 }
 
 func (arg1 SwigcptrB2Color) SetG(arg2 float32) {
 	_swig_i_0 := arg1
 	_swig_i_1 := arg2
-	C._wrap_b2Color_g_set_Box2D_b1d1b47c7e81f80a(C.uintptr_t(_swig_i_0), C.float(_swig_i_1))
+	C._wrap_b2Color_g_set_Box2D_553c0f9515edf50e(C.uintptr_t(_swig_i_0), C.float(_swig_i_1))
 }
 
 func (arg1 SwigcptrB2Color) GetG() (_swig_ret float32) {
 	var swig_r float32
 	_swig_i_0 := arg1
-	swig_r = (float32)(C._wrap_b2Color_g_get_Box2D_b1d1b47c7e81f80a(C.uintptr_t(_swig_i_0)))
+	swig_r = (float32)(C._wrap_b2Color_g_get_Box2D_553c0f9515edf50e(C.uintptr_t(_swig_i_0)))
 	return swig_r
 }
 
 func (arg1 SwigcptrB2Color) SetB(arg2 float32) {
 	_swig_i_0 := arg1
 	_swig_i_1 := arg2
-	C._wrap_b2Color_b_set_Box2D_b1d1b47c7e81f80a(C.uintptr_t(_swig_i_0), C.float(_swig_i_1))
+	C._wrap_b2Color_b_set_Box2D_553c0f9515edf50e(C.uintptr_t(_swig_i_0), C.float(_swig_i_1))
 }
 
 func (arg1 SwigcptrB2Color) GetB() (_swig_ret float32) {
 	var swig_r float32
 	_swig_i_0 := arg1
-	swig_r = (float32)(C._wrap_b2Color_b_get_Box2D_b1d1b47c7e81f80a(C.uintptr_t(_swig_i_0)))
+	swig_r = (float32)(C._wrap_b2Color_b_get_Box2D_553c0f9515edf50e(C.uintptr_t(_swig_i_0)))
 	return swig_r
 }
 
 func (arg1 SwigcptrB2Color) SetA(arg2 float32) {
 	_swig_i_0 := arg1
 	_swig_i_1 := arg2
-	C._wrap_b2Color_a_set_Box2D_b1d1b47c7e81f80a(C.uintptr_t(_swig_i_0), C.float(_swig_i_1))
+	C._wrap_b2Color_a_set_Box2D_553c0f9515edf50e(C.uintptr_t(_swig_i_0), C.float(_swig_i_1))
 }
 
 func (arg1 SwigcptrB2Color) GetA() (_swig_ret float32) {
 	var swig_r float32
 	_swig_i_0 := arg1
-	swig_r = (float32)(C._wrap_b2Color_a_get_Box2D_b1d1b47c7e81f80a(C.uintptr_t(_swig_i_0)))
+	swig_r = (float32)(C._wrap_b2Color_a_get_Box2D_553c0f9515edf50e(C.uintptr_t(_swig_i_0)))
 	return swig_r
 }
 
 func DeleteB2Color(arg1 B2Color) {
 	_swig_i_0 := arg1.Swigcptr()
-	C._wrap_delete_b2Color_Box2D_b1d1b47c7e81f80a(C.uintptr_t(_swig_i_0))
+	C._wrap_delete_b2Color_Box2D_553c0f9515edf50e(C.uintptr_t(_swig_i_0))
 }
 
 type B2Color interface {
@@ -1290,40 +1296,40 @@ func (p SwigcptrB2Draw) SwigIsB2Draw() {
 
 func DeleteB2Draw(arg1 B2Draw) {
 	_swig_i_0 := arg1.Swigcptr()
-	C._wrap_delete_b2Draw_Box2D_b1d1b47c7e81f80a(C.uintptr_t(_swig_i_0))
+	C._wrap_delete_b2Draw_Box2D_553c0f9515edf50e(C.uintptr_t(_swig_i_0))
 }
 
 func _swig_getb2Draw_e_shapeBit_b2Draw() (_swig_ret int) {
 	var swig_r int
-	swig_r = (int)(C._wrap_e_shapeBit_b2Draw_Box2D_b1d1b47c7e81f80a())
+	swig_r = (int)(C._wrap_e_shapeBit_b2Draw_Box2D_553c0f9515edf50e())
 	return swig_r
 }
 
 var B2DrawE_shapeBit int = _swig_getb2Draw_e_shapeBit_b2Draw()
 func _swig_getb2Draw_e_jointBit_b2Draw() (_swig_ret int) {
 	var swig_r int
-	swig_r = (int)(C._wrap_e_jointBit_b2Draw_Box2D_b1d1b47c7e81f80a())
+	swig_r = (int)(C._wrap_e_jointBit_b2Draw_Box2D_553c0f9515edf50e())
 	return swig_r
 }
 
 var B2DrawE_jointBit int = _swig_getb2Draw_e_jointBit_b2Draw()
 func _swig_getb2Draw_e_aabbBit_b2Draw() (_swig_ret int) {
 	var swig_r int
-	swig_r = (int)(C._wrap_e_aabbBit_b2Draw_Box2D_b1d1b47c7e81f80a())
+	swig_r = (int)(C._wrap_e_aabbBit_b2Draw_Box2D_553c0f9515edf50e())
 	return swig_r
 }
 
 var B2DrawE_aabbBit int = _swig_getb2Draw_e_aabbBit_b2Draw()
 func _swig_getb2Draw_e_pairBit_b2Draw() (_swig_ret int) {
 	var swig_r int
-	swig_r = (int)(C._wrap_e_pairBit_b2Draw_Box2D_b1d1b47c7e81f80a())
+	swig_r = (int)(C._wrap_e_pairBit_b2Draw_Box2D_553c0f9515edf50e())
 	return swig_r
 }
 
 var B2DrawE_pairBit int = _swig_getb2Draw_e_pairBit_b2Draw()
 func _swig_getb2Draw_e_centerOfMassBit_b2Draw() (_swig_ret int) {
 	var swig_r int
-	swig_r = (int)(C._wrap_e_centerOfMassBit_b2Draw_Box2D_b1d1b47c7e81f80a())
+	swig_r = (int)(C._wrap_e_centerOfMassBit_b2Draw_Box2D_553c0f9515edf50e())
 	return swig_r
 }
 
@@ -1331,26 +1337,26 @@ var B2DrawE_centerOfMassBit int = _swig_getb2Draw_e_centerOfMassBit_b2Draw()
 func (arg1 SwigcptrB2Draw) SetFlags(arg2 uint) {
 	_swig_i_0 := arg1
 	_swig_i_1 := arg2
-	C._wrap_b2Draw_SetFlags_Box2D_b1d1b47c7e81f80a(C.uintptr_t(_swig_i_0), C.swig_intgo(_swig_i_1))
+	C._wrap_b2Draw_SetFlags_Box2D_553c0f9515edf50e(C.uintptr_t(_swig_i_0), C.swig_intgo(_swig_i_1))
 }
 
 func (arg1 SwigcptrB2Draw) GetFlags() (_swig_ret uint) {
 	var swig_r uint
 	_swig_i_0 := arg1
-	swig_r = (uint)(C._wrap_b2Draw_GetFlags_Box2D_b1d1b47c7e81f80a(C.uintptr_t(_swig_i_0)))
+	swig_r = (uint)(C._wrap_b2Draw_GetFlags_Box2D_553c0f9515edf50e(C.uintptr_t(_swig_i_0)))
 	return swig_r
 }
 
 func (arg1 SwigcptrB2Draw) AppendFlags(arg2 uint) {
 	_swig_i_0 := arg1
 	_swig_i_1 := arg2
-	C._wrap_b2Draw_AppendFlags_Box2D_b1d1b47c7e81f80a(C.uintptr_t(_swig_i_0), C.swig_intgo(_swig_i_1))
+	C._wrap_b2Draw_AppendFlags_Box2D_553c0f9515edf50e(C.uintptr_t(_swig_i_0), C.swig_intgo(_swig_i_1))
 }
 
 func (arg1 SwigcptrB2Draw) ClearFlags(arg2 uint) {
 	_swig_i_0 := arg1
 	_swig_i_1 := arg2
-	C._wrap_b2Draw_ClearFlags_Box2D_b1d1b47c7e81f80a(C.uintptr_t(_swig_i_0), C.swig_intgo(_swig_i_1))
+	C._wrap_b2Draw_ClearFlags_Box2D_553c0f9515edf50e(C.uintptr_t(_swig_i_0), C.swig_intgo(_swig_i_1))
 }
 
 func (arg1 SwigcptrB2Draw) DrawPolygon(arg2 B2Vec2, arg3 int, arg4 B2Color) {
@@ -1358,7 +1364,7 @@ func (arg1 SwigcptrB2Draw) DrawPolygon(arg2 B2Vec2, arg3 int, arg4 B2Color) {
 	_swig_i_1 := arg2.Swigcptr()
 	_swig_i_2 := arg3
 	_swig_i_3 := arg4.Swigcptr()
-	C._wrap_b2Draw_DrawPolygon_Box2D_b1d1b47c7e81f80a(C.uintptr_t(_swig_i_0), C.uintptr_t(_swig_i_1), C.swig_intgo(_swig_i_2), C.uintptr_t(_swig_i_3))
+	C._wrap_b2Draw_DrawPolygon_Box2D_553c0f9515edf50e(C.uintptr_t(_swig_i_0), C.uintptr_t(_swig_i_1), C.swig_intgo(_swig_i_2), C.uintptr_t(_swig_i_3))
 }
 
 func (arg1 SwigcptrB2Draw) DrawSolidPolygon(arg2 B2Vec2, arg3 int, arg4 B2Color) {
@@ -1366,7 +1372,7 @@ func (arg1 SwigcptrB2Draw) DrawSolidPolygon(arg2 B2Vec2, arg3 int, arg4 B2Color)
 	_swig_i_1 := arg2.Swigcptr()
 	_swig_i_2 := arg3
 	_swig_i_3 := arg4.Swigcptr()
-	C._wrap_b2Draw_DrawSolidPolygon_Box2D_b1d1b47c7e81f80a(C.uintptr_t(_swig_i_0), C.uintptr_t(_swig_i_1), C.swig_intgo(_swig_i_2), C.uintptr_t(_swig_i_3))
+	C._wrap_b2Draw_DrawSolidPolygon_Box2D_553c0f9515edf50e(C.uintptr_t(_swig_i_0), C.uintptr_t(_swig_i_1), C.swig_intgo(_swig_i_2), C.uintptr_t(_swig_i_3))
 }
 
 func (arg1 SwigcptrB2Draw) DrawCircle(arg2 B2Vec2, arg3 float32, arg4 B2Color) {
@@ -1374,7 +1380,7 @@ func (arg1 SwigcptrB2Draw) DrawCircle(arg2 B2Vec2, arg3 float32, arg4 B2Color) {
 	_swig_i_1 := arg2.Swigcptr()
 	_swig_i_2 := arg3
 	_swig_i_3 := arg4.Swigcptr()
-	C._wrap_b2Draw_DrawCircle_Box2D_b1d1b47c7e81f80a(C.uintptr_t(_swig_i_0), C.uintptr_t(_swig_i_1), C.float(_swig_i_2), C.uintptr_t(_swig_i_3))
+	C._wrap_b2Draw_DrawCircle_Box2D_553c0f9515edf50e(C.uintptr_t(_swig_i_0), C.uintptr_t(_swig_i_1), C.float(_swig_i_2), C.uintptr_t(_swig_i_3))
 }
 
 func (arg1 SwigcptrB2Draw) DrawSolidCircle(arg2 B2Vec2, arg3 float32, arg4 B2Vec2, arg5 B2Color) {
@@ -1383,7 +1389,7 @@ func (arg1 SwigcptrB2Draw) DrawSolidCircle(arg2 B2Vec2, arg3 float32, arg4 B2Vec
 	_swig_i_2 := arg3
 	_swig_i_3 := arg4.Swigcptr()
 	_swig_i_4 := arg5.Swigcptr()
-	C._wrap_b2Draw_DrawSolidCircle_Box2D_b1d1b47c7e81f80a(C.uintptr_t(_swig_i_0), C.uintptr_t(_swig_i_1), C.float(_swig_i_2), C.uintptr_t(_swig_i_3), C.uintptr_t(_swig_i_4))
+	C._wrap_b2Draw_DrawSolidCircle_Box2D_553c0f9515edf50e(C.uintptr_t(_swig_i_0), C.uintptr_t(_swig_i_1), C.float(_swig_i_2), C.uintptr_t(_swig_i_3), C.uintptr_t(_swig_i_4))
 }
 
 func (arg1 SwigcptrB2Draw) DrawSegment(arg2 B2Vec2, arg3 B2Vec2, arg4 B2Color) {
@@ -1391,13 +1397,13 @@ func (arg1 SwigcptrB2Draw) DrawSegment(arg2 B2Vec2, arg3 B2Vec2, arg4 B2Color) {
 	_swig_i_1 := arg2.Swigcptr()
 	_swig_i_2 := arg3.Swigcptr()
 	_swig_i_3 := arg4.Swigcptr()
-	C._wrap_b2Draw_DrawSegment_Box2D_b1d1b47c7e81f80a(C.uintptr_t(_swig_i_0), C.uintptr_t(_swig_i_1), C.uintptr_t(_swig_i_2), C.uintptr_t(_swig_i_3))
+	C._wrap_b2Draw_DrawSegment_Box2D_553c0f9515edf50e(C.uintptr_t(_swig_i_0), C.uintptr_t(_swig_i_1), C.uintptr_t(_swig_i_2), C.uintptr_t(_swig_i_3))
 }
 
 func (arg1 SwigcptrB2Draw) DrawTransform(arg2 B2Transform) {
 	_swig_i_0 := arg1
 	_swig_i_1 := arg2.Swigcptr()
-	C._wrap_b2Draw_DrawTransform_Box2D_b1d1b47c7e81f80a(C.uintptr_t(_swig_i_0), C.uintptr_t(_swig_i_1))
+	C._wrap_b2Draw_DrawTransform_Box2D_553c0f9515edf50e(C.uintptr_t(_swig_i_0), C.uintptr_t(_swig_i_1))
 }
 
 type B2Draw interface {
@@ -1426,25 +1432,25 @@ func (p SwigcptrB2Timer) SwigIsB2Timer() {
 
 func NewB2Timer() (_swig_ret B2Timer) {
 	var swig_r B2Timer
-	swig_r = (B2Timer)(SwigcptrB2Timer(C._wrap_new_b2Timer_Box2D_b1d1b47c7e81f80a()))
+	swig_r = (B2Timer)(SwigcptrB2Timer(C._wrap_new_b2Timer_Box2D_553c0f9515edf50e()))
 	return swig_r
 }
 
 func (arg1 SwigcptrB2Timer) Reset() {
 	_swig_i_0 := arg1
-	C._wrap_b2Timer_Reset_Box2D_b1d1b47c7e81f80a(C.uintptr_t(_swig_i_0))
+	C._wrap_b2Timer_Reset_Box2D_553c0f9515edf50e(C.uintptr_t(_swig_i_0))
 }
 
 func (arg1 SwigcptrB2Timer) GetMilliseconds() (_swig_ret float32) {
 	var swig_r float32
 	_swig_i_0 := arg1
-	swig_r = (float32)(C._wrap_b2Timer_GetMilliseconds_Box2D_b1d1b47c7e81f80a(C.uintptr_t(_swig_i_0)))
+	swig_r = (float32)(C._wrap_b2Timer_GetMilliseconds_Box2D_553c0f9515edf50e(C.uintptr_t(_swig_i_0)))
 	return swig_r
 }
 
 func DeleteB2Timer(arg1 B2Timer) {
 	_swig_i_0 := arg1.Swigcptr()
-	C._wrap_delete_b2Timer_Box2D_b1d1b47c7e81f80a(C.uintptr_t(_swig_i_0))
+	C._wrap_delete_b2Timer_Box2D_553c0f9515edf50e(C.uintptr_t(_swig_i_0))
 }
 
 type B2Timer interface {
@@ -1465,7 +1471,7 @@ func (p SwigcptrB2CircleShape) SwigIsB2CircleShape() {
 
 func NewB2CircleShape() (_swig_ret B2CircleShape) {
 	var swig_r B2CircleShape
-	swig_r = (B2CircleShape)(SwigcptrB2CircleShape(C._wrap_new_b2CircleShape_Box2D_b1d1b47c7e81f80a()))
+	swig_r = (B2CircleShape)(SwigcptrB2CircleShape(C._wrap_new_b2CircleShape_Box2D_553c0f9515edf50e()))
 	return swig_r
 }
 
@@ -1473,14 +1479,14 @@ func (arg1 SwigcptrB2CircleShape) Clone(arg2 B2BlockAllocator) (_swig_ret B2Shap
 	var swig_r B2Shape
 	_swig_i_0 := arg1
 	_swig_i_1 := arg2.Swigcptr()
-	swig_r = (B2Shape)(SwigcptrB2Shape(C._wrap_b2CircleShape_Clone_Box2D_b1d1b47c7e81f80a(C.uintptr_t(_swig_i_0), C.uintptr_t(_swig_i_1))))
+	swig_r = (B2Shape)(SwigcptrB2Shape(C._wrap_b2CircleShape_Clone_Box2D_553c0f9515edf50e(C.uintptr_t(_swig_i_0), C.uintptr_t(_swig_i_1))))
 	return swig_r
 }
 
 func (arg1 SwigcptrB2CircleShape) GetChildCount() (_swig_ret int) {
 	var swig_r int
 	_swig_i_0 := arg1
-	swig_r = (int)(C._wrap_b2CircleShape_GetChildCount_Box2D_b1d1b47c7e81f80a(C.uintptr_t(_swig_i_0)))
+	swig_r = (int)(C._wrap_b2CircleShape_GetChildCount_Box2D_553c0f9515edf50e(C.uintptr_t(_swig_i_0)))
 	return swig_r
 }
 
@@ -1489,7 +1495,7 @@ func (arg1 SwigcptrB2CircleShape) TestPoint(arg2 B2Transform, arg3 B2Vec2) (_swi
 	_swig_i_0 := arg1
 	_swig_i_1 := arg2.Swigcptr()
 	_swig_i_2 := arg3.Swigcptr()
-	swig_r = (bool)(C._wrap_b2CircleShape_TestPoint_Box2D_b1d1b47c7e81f80a(C.uintptr_t(_swig_i_0), C.uintptr_t(_swig_i_1), C.uintptr_t(_swig_i_2)))
+	swig_r = (bool)(C._wrap_b2CircleShape_TestPoint_Box2D_553c0f9515edf50e(C.uintptr_t(_swig_i_0), C.uintptr_t(_swig_i_1), C.uintptr_t(_swig_i_2)))
 	return swig_r
 }
 
@@ -1500,7 +1506,7 @@ func (arg1 SwigcptrB2CircleShape) RayCast(arg2 B2RayCastOutput, arg3 B2RayCastIn
 	_swig_i_2 := arg3.Swigcptr()
 	_swig_i_3 := arg4.Swigcptr()
 	_swig_i_4 := arg5
-	swig_r = (bool)(C._wrap_b2CircleShape_RayCast_Box2D_b1d1b47c7e81f80a(C.uintptr_t(_swig_i_0), C.uintptr_t(_swig_i_1), C.uintptr_t(_swig_i_2), C.uintptr_t(_swig_i_3), C.swig_intgo(_swig_i_4)))
+	swig_r = (bool)(C._wrap_b2CircleShape_RayCast_Box2D_553c0f9515edf50e(C.uintptr_t(_swig_i_0), C.uintptr_t(_swig_i_1), C.uintptr_t(_swig_i_2), C.uintptr_t(_swig_i_3), C.swig_intgo(_swig_i_4)))
 	return swig_r
 }
 
@@ -1509,21 +1515,21 @@ func (arg1 SwigcptrB2CircleShape) ComputeAABB(arg2 B2AABB, arg3 B2Transform, arg
 	_swig_i_1 := arg2.Swigcptr()
 	_swig_i_2 := arg3.Swigcptr()
 	_swig_i_3 := arg4
-	C._wrap_b2CircleShape_ComputeAABB_Box2D_b1d1b47c7e81f80a(C.uintptr_t(_swig_i_0), C.uintptr_t(_swig_i_1), C.uintptr_t(_swig_i_2), C.swig_intgo(_swig_i_3))
+	C._wrap_b2CircleShape_ComputeAABB_Box2D_553c0f9515edf50e(C.uintptr_t(_swig_i_0), C.uintptr_t(_swig_i_1), C.uintptr_t(_swig_i_2), C.swig_intgo(_swig_i_3))
 }
 
 func (arg1 SwigcptrB2CircleShape) ComputeMass(arg2 B2MassData, arg3 float32) {
 	_swig_i_0 := arg1
 	_swig_i_1 := arg2.Swigcptr()
 	_swig_i_2 := arg3
-	C._wrap_b2CircleShape_ComputeMass_Box2D_b1d1b47c7e81f80a(C.uintptr_t(_swig_i_0), C.uintptr_t(_swig_i_1), C.float(_swig_i_2))
+	C._wrap_b2CircleShape_ComputeMass_Box2D_553c0f9515edf50e(C.uintptr_t(_swig_i_0), C.uintptr_t(_swig_i_1), C.float(_swig_i_2))
 }
 
 func (arg1 SwigcptrB2CircleShape) GetSupport(arg2 B2Vec2) (_swig_ret int) {
 	var swig_r int
 	_swig_i_0 := arg1
 	_swig_i_1 := arg2.Swigcptr()
-	swig_r = (int)(C._wrap_b2CircleShape_GetSupport_Box2D_b1d1b47c7e81f80a(C.uintptr_t(_swig_i_0), C.uintptr_t(_swig_i_1)))
+	swig_r = (int)(C._wrap_b2CircleShape_GetSupport_Box2D_553c0f9515edf50e(C.uintptr_t(_swig_i_0), C.uintptr_t(_swig_i_1)))
 	return swig_r
 }
 
@@ -1531,14 +1537,14 @@ func (arg1 SwigcptrB2CircleShape) GetSupportVertex(arg2 B2Vec2) (_swig_ret B2Vec
 	var swig_r B2Vec2
 	_swig_i_0 := arg1
 	_swig_i_1 := arg2.Swigcptr()
-	swig_r = (B2Vec2)(SwigcptrB2Vec2(C._wrap_b2CircleShape_GetSupportVertex_Box2D_b1d1b47c7e81f80a(C.uintptr_t(_swig_i_0), C.uintptr_t(_swig_i_1))))
+	swig_r = (B2Vec2)(SwigcptrB2Vec2(C._wrap_b2CircleShape_GetSupportVertex_Box2D_553c0f9515edf50e(C.uintptr_t(_swig_i_0), C.uintptr_t(_swig_i_1))))
 	return swig_r
 }
 
 func (arg1 SwigcptrB2CircleShape) GetVertexCount() (_swig_ret int) {
 	var swig_r int
 	_swig_i_0 := arg1
-	swig_r = (int)(C._wrap_b2CircleShape_GetVertexCount_Box2D_b1d1b47c7e81f80a(C.uintptr_t(_swig_i_0)))
+	swig_r = (int)(C._wrap_b2CircleShape_GetVertexCount_Box2D_553c0f9515edf50e(C.uintptr_t(_swig_i_0)))
 	return swig_r
 }
 
@@ -1546,26 +1552,26 @@ func (arg1 SwigcptrB2CircleShape) GetVertex(arg2 int) (_swig_ret B2Vec2) {
 	var swig_r B2Vec2
 	_swig_i_0 := arg1
 	_swig_i_1 := arg2
-	swig_r = (B2Vec2)(SwigcptrB2Vec2(C._wrap_b2CircleShape_GetVertex_Box2D_b1d1b47c7e81f80a(C.uintptr_t(_swig_i_0), C.swig_intgo(_swig_i_1))))
+	swig_r = (B2Vec2)(SwigcptrB2Vec2(C._wrap_b2CircleShape_GetVertex_Box2D_553c0f9515edf50e(C.uintptr_t(_swig_i_0), C.swig_intgo(_swig_i_1))))
 	return swig_r
 }
 
 func (arg1 SwigcptrB2CircleShape) SetM_p(arg2 B2Vec2) {
 	_swig_i_0 := arg1
 	_swig_i_1 := arg2.Swigcptr()
-	C._wrap_b2CircleShape_m_p_set_Box2D_b1d1b47c7e81f80a(C.uintptr_t(_swig_i_0), C.uintptr_t(_swig_i_1))
+	C._wrap_b2CircleShape_m_p_set_Box2D_553c0f9515edf50e(C.uintptr_t(_swig_i_0), C.uintptr_t(_swig_i_1))
 }
 
 func (arg1 SwigcptrB2CircleShape) GetM_p() (_swig_ret B2Vec2) {
 	var swig_r B2Vec2
 	_swig_i_0 := arg1
-	swig_r = (B2Vec2)(SwigcptrB2Vec2(C._wrap_b2CircleShape_m_p_get_Box2D_b1d1b47c7e81f80a(C.uintptr_t(_swig_i_0))))
+	swig_r = (B2Vec2)(SwigcptrB2Vec2(C._wrap_b2CircleShape_m_p_get_Box2D_553c0f9515edf50e(C.uintptr_t(_swig_i_0))))
 	return swig_r
 }
 
 func DeleteB2CircleShape(arg1 B2CircleShape) {
 	_swig_i_0 := arg1.Swigcptr()
-	C._wrap_delete_b2CircleShape_Box2D_b1d1b47c7e81f80a(C.uintptr_t(_swig_i_0))
+	C._wrap_delete_b2CircleShape_Box2D_553c0f9515edf50e(C.uintptr_t(_swig_i_0))
 }
 
 type B2CircleShape interface {
@@ -1596,7 +1602,7 @@ func (p SwigcptrB2EdgeShape) SwigIsB2EdgeShape() {
 
 func NewB2EdgeShape() (_swig_ret B2EdgeShape) {
 	var swig_r B2EdgeShape
-	swig_r = (B2EdgeShape)(SwigcptrB2EdgeShape(C._wrap_new_b2EdgeShape_Box2D_b1d1b47c7e81f80a()))
+	swig_r = (B2EdgeShape)(SwigcptrB2EdgeShape(C._wrap_new_b2EdgeShape_Box2D_553c0f9515edf50e()))
 	return swig_r
 }
 
@@ -1604,21 +1610,21 @@ func (arg1 SwigcptrB2EdgeShape) Set(arg2 B2Vec2, arg3 B2Vec2) {
 	_swig_i_0 := arg1
 	_swig_i_1 := arg2.Swigcptr()
 	_swig_i_2 := arg3.Swigcptr()
-	C._wrap_b2EdgeShape_Set_Box2D_b1d1b47c7e81f80a(C.uintptr_t(_swig_i_0), C.uintptr_t(_swig_i_1), C.uintptr_t(_swig_i_2))
+	C._wrap_b2EdgeShape_Set_Box2D_553c0f9515edf50e(C.uintptr_t(_swig_i_0), C.uintptr_t(_swig_i_1), C.uintptr_t(_swig_i_2))
 }
 
 func (arg1 SwigcptrB2EdgeShape) Clone(arg2 B2BlockAllocator) (_swig_ret B2Shape) {
 	var swig_r B2Shape
 	_swig_i_0 := arg1
 	_swig_i_1 := arg2.Swigcptr()
-	swig_r = (B2Shape)(SwigcptrB2Shape(C._wrap_b2EdgeShape_Clone_Box2D_b1d1b47c7e81f80a(C.uintptr_t(_swig_i_0), C.uintptr_t(_swig_i_1))))
+	swig_r = (B2Shape)(SwigcptrB2Shape(C._wrap_b2EdgeShape_Clone_Box2D_553c0f9515edf50e(C.uintptr_t(_swig_i_0), C.uintptr_t(_swig_i_1))))
 	return swig_r
 }
 
 func (arg1 SwigcptrB2EdgeShape) GetChildCount() (_swig_ret int) {
 	var swig_r int
 	_swig_i_0 := arg1
-	swig_r = (int)(C._wrap_b2EdgeShape_GetChildCount_Box2D_b1d1b47c7e81f80a(C.uintptr_t(_swig_i_0)))
+	swig_r = (int)(C._wrap_b2EdgeShape_GetChildCount_Box2D_553c0f9515edf50e(C.uintptr_t(_swig_i_0)))
 	return swig_r
 }
 
@@ -1627,7 +1633,7 @@ func (arg1 SwigcptrB2EdgeShape) TestPoint(arg2 B2Transform, arg3 B2Vec2) (_swig_
 	_swig_i_0 := arg1
 	_swig_i_1 := arg2.Swigcptr()
 	_swig_i_2 := arg3.Swigcptr()
-	swig_r = (bool)(C._wrap_b2EdgeShape_TestPoint_Box2D_b1d1b47c7e81f80a(C.uintptr_t(_swig_i_0), C.uintptr_t(_swig_i_1), C.uintptr_t(_swig_i_2)))
+	swig_r = (bool)(C._wrap_b2EdgeShape_TestPoint_Box2D_553c0f9515edf50e(C.uintptr_t(_swig_i_0), C.uintptr_t(_swig_i_1), C.uintptr_t(_swig_i_2)))
 	return swig_r
 }
 
@@ -1638,7 +1644,7 @@ func (arg1 SwigcptrB2EdgeShape) RayCast(arg2 B2RayCastOutput, arg3 B2RayCastInpu
 	_swig_i_2 := arg3.Swigcptr()
 	_swig_i_3 := arg4.Swigcptr()
 	_swig_i_4 := arg5
-	swig_r = (bool)(C._wrap_b2EdgeShape_RayCast_Box2D_b1d1b47c7e81f80a(C.uintptr_t(_swig_i_0), C.uintptr_t(_swig_i_1), C.uintptr_t(_swig_i_2), C.uintptr_t(_swig_i_3), C.swig_intgo(_swig_i_4)))
+	swig_r = (bool)(C._wrap_b2EdgeShape_RayCast_Box2D_553c0f9515edf50e(C.uintptr_t(_swig_i_0), C.uintptr_t(_swig_i_1), C.uintptr_t(_swig_i_2), C.uintptr_t(_swig_i_3), C.swig_intgo(_swig_i_4)))
 	return swig_r
 }
 
@@ -1647,97 +1653,97 @@ func (arg1 SwigcptrB2EdgeShape) ComputeAABB(arg2 B2AABB, arg3 B2Transform, arg4 
 	_swig_i_1 := arg2.Swigcptr()
 	_swig_i_2 := arg3.Swigcptr()
 	_swig_i_3 := arg4
-	C._wrap_b2EdgeShape_ComputeAABB_Box2D_b1d1b47c7e81f80a(C.uintptr_t(_swig_i_0), C.uintptr_t(_swig_i_1), C.uintptr_t(_swig_i_2), C.swig_intgo(_swig_i_3))
+	C._wrap_b2EdgeShape_ComputeAABB_Box2D_553c0f9515edf50e(C.uintptr_t(_swig_i_0), C.uintptr_t(_swig_i_1), C.uintptr_t(_swig_i_2), C.swig_intgo(_swig_i_3))
 }
 
 func (arg1 SwigcptrB2EdgeShape) ComputeMass(arg2 B2MassData, arg3 float32) {
 	_swig_i_0 := arg1
 	_swig_i_1 := arg2.Swigcptr()
 	_swig_i_2 := arg3
-	C._wrap_b2EdgeShape_ComputeMass_Box2D_b1d1b47c7e81f80a(C.uintptr_t(_swig_i_0), C.uintptr_t(_swig_i_1), C.float(_swig_i_2))
+	C._wrap_b2EdgeShape_ComputeMass_Box2D_553c0f9515edf50e(C.uintptr_t(_swig_i_0), C.uintptr_t(_swig_i_1), C.float(_swig_i_2))
 }
 
 func (arg1 SwigcptrB2EdgeShape) SetM_vertex1(arg2 B2Vec2) {
 	_swig_i_0 := arg1
 	_swig_i_1 := arg2.Swigcptr()
-	C._wrap_b2EdgeShape_m_vertex1_set_Box2D_b1d1b47c7e81f80a(C.uintptr_t(_swig_i_0), C.uintptr_t(_swig_i_1))
+	C._wrap_b2EdgeShape_m_vertex1_set_Box2D_553c0f9515edf50e(C.uintptr_t(_swig_i_0), C.uintptr_t(_swig_i_1))
 }
 
 func (arg1 SwigcptrB2EdgeShape) GetM_vertex1() (_swig_ret B2Vec2) {
 	var swig_r B2Vec2
 	_swig_i_0 := arg1
-	swig_r = (B2Vec2)(SwigcptrB2Vec2(C._wrap_b2EdgeShape_m_vertex1_get_Box2D_b1d1b47c7e81f80a(C.uintptr_t(_swig_i_0))))
+	swig_r = (B2Vec2)(SwigcptrB2Vec2(C._wrap_b2EdgeShape_m_vertex1_get_Box2D_553c0f9515edf50e(C.uintptr_t(_swig_i_0))))
 	return swig_r
 }
 
 func (arg1 SwigcptrB2EdgeShape) SetM_vertex2(arg2 B2Vec2) {
 	_swig_i_0 := arg1
 	_swig_i_1 := arg2.Swigcptr()
-	C._wrap_b2EdgeShape_m_vertex2_set_Box2D_b1d1b47c7e81f80a(C.uintptr_t(_swig_i_0), C.uintptr_t(_swig_i_1))
+	C._wrap_b2EdgeShape_m_vertex2_set_Box2D_553c0f9515edf50e(C.uintptr_t(_swig_i_0), C.uintptr_t(_swig_i_1))
 }
 
 func (arg1 SwigcptrB2EdgeShape) GetM_vertex2() (_swig_ret B2Vec2) {
 	var swig_r B2Vec2
 	_swig_i_0 := arg1
-	swig_r = (B2Vec2)(SwigcptrB2Vec2(C._wrap_b2EdgeShape_m_vertex2_get_Box2D_b1d1b47c7e81f80a(C.uintptr_t(_swig_i_0))))
+	swig_r = (B2Vec2)(SwigcptrB2Vec2(C._wrap_b2EdgeShape_m_vertex2_get_Box2D_553c0f9515edf50e(C.uintptr_t(_swig_i_0))))
 	return swig_r
 }
 
 func (arg1 SwigcptrB2EdgeShape) SetM_vertex0(arg2 B2Vec2) {
 	_swig_i_0 := arg1
 	_swig_i_1 := arg2.Swigcptr()
-	C._wrap_b2EdgeShape_m_vertex0_set_Box2D_b1d1b47c7e81f80a(C.uintptr_t(_swig_i_0), C.uintptr_t(_swig_i_1))
+	C._wrap_b2EdgeShape_m_vertex0_set_Box2D_553c0f9515edf50e(C.uintptr_t(_swig_i_0), C.uintptr_t(_swig_i_1))
 }
 
 func (arg1 SwigcptrB2EdgeShape) GetM_vertex0() (_swig_ret B2Vec2) {
 	var swig_r B2Vec2
 	_swig_i_0 := arg1
-	swig_r = (B2Vec2)(SwigcptrB2Vec2(C._wrap_b2EdgeShape_m_vertex0_get_Box2D_b1d1b47c7e81f80a(C.uintptr_t(_swig_i_0))))
+	swig_r = (B2Vec2)(SwigcptrB2Vec2(C._wrap_b2EdgeShape_m_vertex0_get_Box2D_553c0f9515edf50e(C.uintptr_t(_swig_i_0))))
 	return swig_r
 }
 
 func (arg1 SwigcptrB2EdgeShape) SetM_vertex3(arg2 B2Vec2) {
 	_swig_i_0 := arg1
 	_swig_i_1 := arg2.Swigcptr()
-	C._wrap_b2EdgeShape_m_vertex3_set_Box2D_b1d1b47c7e81f80a(C.uintptr_t(_swig_i_0), C.uintptr_t(_swig_i_1))
+	C._wrap_b2EdgeShape_m_vertex3_set_Box2D_553c0f9515edf50e(C.uintptr_t(_swig_i_0), C.uintptr_t(_swig_i_1))
 }
 
 func (arg1 SwigcptrB2EdgeShape) GetM_vertex3() (_swig_ret B2Vec2) {
 	var swig_r B2Vec2
 	_swig_i_0 := arg1
-	swig_r = (B2Vec2)(SwigcptrB2Vec2(C._wrap_b2EdgeShape_m_vertex3_get_Box2D_b1d1b47c7e81f80a(C.uintptr_t(_swig_i_0))))
+	swig_r = (B2Vec2)(SwigcptrB2Vec2(C._wrap_b2EdgeShape_m_vertex3_get_Box2D_553c0f9515edf50e(C.uintptr_t(_swig_i_0))))
 	return swig_r
 }
 
 func (arg1 SwigcptrB2EdgeShape) SetM_hasVertex0(arg2 bool) {
 	_swig_i_0 := arg1
 	_swig_i_1 := arg2
-	C._wrap_b2EdgeShape_m_hasVertex0_set_Box2D_b1d1b47c7e81f80a(C.uintptr_t(_swig_i_0), C._Bool(_swig_i_1))
+	C._wrap_b2EdgeShape_m_hasVertex0_set_Box2D_553c0f9515edf50e(C.uintptr_t(_swig_i_0), C._Bool(_swig_i_1))
 }
 
 func (arg1 SwigcptrB2EdgeShape) GetM_hasVertex0() (_swig_ret bool) {
 	var swig_r bool
 	_swig_i_0 := arg1
-	swig_r = (bool)(C._wrap_b2EdgeShape_m_hasVertex0_get_Box2D_b1d1b47c7e81f80a(C.uintptr_t(_swig_i_0)))
+	swig_r = (bool)(C._wrap_b2EdgeShape_m_hasVertex0_get_Box2D_553c0f9515edf50e(C.uintptr_t(_swig_i_0)))
 	return swig_r
 }
 
 func (arg1 SwigcptrB2EdgeShape) SetM_hasVertex3(arg2 bool) {
 	_swig_i_0 := arg1
 	_swig_i_1 := arg2
-	C._wrap_b2EdgeShape_m_hasVertex3_set_Box2D_b1d1b47c7e81f80a(C.uintptr_t(_swig_i_0), C._Bool(_swig_i_1))
+	C._wrap_b2EdgeShape_m_hasVertex3_set_Box2D_553c0f9515edf50e(C.uintptr_t(_swig_i_0), C._Bool(_swig_i_1))
 }
 
 func (arg1 SwigcptrB2EdgeShape) GetM_hasVertex3() (_swig_ret bool) {
 	var swig_r bool
 	_swig_i_0 := arg1
-	swig_r = (bool)(C._wrap_b2EdgeShape_m_hasVertex3_get_Box2D_b1d1b47c7e81f80a(C.uintptr_t(_swig_i_0)))
+	swig_r = (bool)(C._wrap_b2EdgeShape_m_hasVertex3_get_Box2D_553c0f9515edf50e(C.uintptr_t(_swig_i_0)))
 	return swig_r
 }
 
 func DeleteB2EdgeShape(arg1 B2EdgeShape) {
 	_swig_i_0 := arg1.Swigcptr()
-	C._wrap_delete_b2EdgeShape_Box2D_b1d1b47c7e81f80a(C.uintptr_t(_swig_i_0))
+	C._wrap_delete_b2EdgeShape_Box2D_553c0f9515edf50e(C.uintptr_t(_swig_i_0))
 }
 
 type B2EdgeShape interface {
@@ -1775,58 +1781,58 @@ func (p SwigcptrB2ChainShape) SwigIsB2ChainShape() {
 
 func NewB2ChainShape() (_swig_ret B2ChainShape) {
 	var swig_r B2ChainShape
-	swig_r = (B2ChainShape)(SwigcptrB2ChainShape(C._wrap_new_b2ChainShape_Box2D_b1d1b47c7e81f80a()))
+	swig_r = (B2ChainShape)(SwigcptrB2ChainShape(C._wrap_new_b2ChainShape_Box2D_553c0f9515edf50e()))
 	return swig_r
 }
 
 func DeleteB2ChainShape(arg1 B2ChainShape) {
 	_swig_i_0 := arg1.Swigcptr()
-	C._wrap_delete_b2ChainShape_Box2D_b1d1b47c7e81f80a(C.uintptr_t(_swig_i_0))
+	C._wrap_delete_b2ChainShape_Box2D_553c0f9515edf50e(C.uintptr_t(_swig_i_0))
 }
 
 func (arg1 SwigcptrB2ChainShape) Clear() {
 	_swig_i_0 := arg1
-	C._wrap_b2ChainShape_Clear_Box2D_b1d1b47c7e81f80a(C.uintptr_t(_swig_i_0))
+	C._wrap_b2ChainShape_Clear_Box2D_553c0f9515edf50e(C.uintptr_t(_swig_i_0))
 }
 
 func (arg1 SwigcptrB2ChainShape) CreateLoop(arg2 B2Vec2, arg3 int) {
 	_swig_i_0 := arg1
 	_swig_i_1 := arg2.Swigcptr()
 	_swig_i_2 := arg3
-	C._wrap_b2ChainShape_CreateLoop_Box2D_b1d1b47c7e81f80a(C.uintptr_t(_swig_i_0), C.uintptr_t(_swig_i_1), C.swig_intgo(_swig_i_2))
+	C._wrap_b2ChainShape_CreateLoop_Box2D_553c0f9515edf50e(C.uintptr_t(_swig_i_0), C.uintptr_t(_swig_i_1), C.swig_intgo(_swig_i_2))
 }
 
 func (arg1 SwigcptrB2ChainShape) CreateChain(arg2 B2Vec2, arg3 int) {
 	_swig_i_0 := arg1
 	_swig_i_1 := arg2.Swigcptr()
 	_swig_i_2 := arg3
-	C._wrap_b2ChainShape_CreateChain_Box2D_b1d1b47c7e81f80a(C.uintptr_t(_swig_i_0), C.uintptr_t(_swig_i_1), C.swig_intgo(_swig_i_2))
+	C._wrap_b2ChainShape_CreateChain_Box2D_553c0f9515edf50e(C.uintptr_t(_swig_i_0), C.uintptr_t(_swig_i_1), C.swig_intgo(_swig_i_2))
 }
 
 func (arg1 SwigcptrB2ChainShape) SetPrevVertex(arg2 B2Vec2) {
 	_swig_i_0 := arg1
 	_swig_i_1 := arg2.Swigcptr()
-	C._wrap_b2ChainShape_SetPrevVertex_Box2D_b1d1b47c7e81f80a(C.uintptr_t(_swig_i_0), C.uintptr_t(_swig_i_1))
+	C._wrap_b2ChainShape_SetPrevVertex_Box2D_553c0f9515edf50e(C.uintptr_t(_swig_i_0), C.uintptr_t(_swig_i_1))
 }
 
 func (arg1 SwigcptrB2ChainShape) SetNextVertex(arg2 B2Vec2) {
 	_swig_i_0 := arg1
 	_swig_i_1 := arg2.Swigcptr()
-	C._wrap_b2ChainShape_SetNextVertex_Box2D_b1d1b47c7e81f80a(C.uintptr_t(_swig_i_0), C.uintptr_t(_swig_i_1))
+	C._wrap_b2ChainShape_SetNextVertex_Box2D_553c0f9515edf50e(C.uintptr_t(_swig_i_0), C.uintptr_t(_swig_i_1))
 }
 
 func (arg1 SwigcptrB2ChainShape) Clone(arg2 B2BlockAllocator) (_swig_ret B2Shape) {
 	var swig_r B2Shape
 	_swig_i_0 := arg1
 	_swig_i_1 := arg2.Swigcptr()
-	swig_r = (B2Shape)(SwigcptrB2Shape(C._wrap_b2ChainShape_Clone_Box2D_b1d1b47c7e81f80a(C.uintptr_t(_swig_i_0), C.uintptr_t(_swig_i_1))))
+	swig_r = (B2Shape)(SwigcptrB2Shape(C._wrap_b2ChainShape_Clone_Box2D_553c0f9515edf50e(C.uintptr_t(_swig_i_0), C.uintptr_t(_swig_i_1))))
 	return swig_r
 }
 
 func (arg1 SwigcptrB2ChainShape) GetChildCount() (_swig_ret int) {
 	var swig_r int
 	_swig_i_0 := arg1
-	swig_r = (int)(C._wrap_b2ChainShape_GetChildCount_Box2D_b1d1b47c7e81f80a(C.uintptr_t(_swig_i_0)))
+	swig_r = (int)(C._wrap_b2ChainShape_GetChildCount_Box2D_553c0f9515edf50e(C.uintptr_t(_swig_i_0)))
 	return swig_r
 }
 
@@ -1834,7 +1840,7 @@ func (arg1 SwigcptrB2ChainShape) GetChildEdge(arg2 B2EdgeShape, arg3 int) {
 	_swig_i_0 := arg1
 	_swig_i_1 := arg2.Swigcptr()
 	_swig_i_2 := arg3
-	C._wrap_b2ChainShape_GetChildEdge_Box2D_b1d1b47c7e81f80a(C.uintptr_t(_swig_i_0), C.uintptr_t(_swig_i_1), C.swig_intgo(_swig_i_2))
+	C._wrap_b2ChainShape_GetChildEdge_Box2D_553c0f9515edf50e(C.uintptr_t(_swig_i_0), C.uintptr_t(_swig_i_1), C.swig_intgo(_swig_i_2))
 }
 
 func (arg1 SwigcptrB2ChainShape) TestPoint(arg2 B2Transform, arg3 B2Vec2) (_swig_ret bool) {
@@ -1842,7 +1848,7 @@ func (arg1 SwigcptrB2ChainShape) TestPoint(arg2 B2Transform, arg3 B2Vec2) (_swig
 	_swig_i_0 := arg1
 	_swig_i_1 := arg2.Swigcptr()
 	_swig_i_2 := arg3.Swigcptr()
-	swig_r = (bool)(C._wrap_b2ChainShape_TestPoint_Box2D_b1d1b47c7e81f80a(C.uintptr_t(_swig_i_0), C.uintptr_t(_swig_i_1), C.uintptr_t(_swig_i_2)))
+	swig_r = (bool)(C._wrap_b2ChainShape_TestPoint_Box2D_553c0f9515edf50e(C.uintptr_t(_swig_i_0), C.uintptr_t(_swig_i_1), C.uintptr_t(_swig_i_2)))
 	return swig_r
 }
 
@@ -1853,7 +1859,7 @@ func (arg1 SwigcptrB2ChainShape) RayCast(arg2 B2RayCastOutput, arg3 B2RayCastInp
 	_swig_i_2 := arg3.Swigcptr()
 	_swig_i_3 := arg4.Swigcptr()
 	_swig_i_4 := arg5
-	swig_r = (bool)(C._wrap_b2ChainShape_RayCast_Box2D_b1d1b47c7e81f80a(C.uintptr_t(_swig_i_0), C.uintptr_t(_swig_i_1), C.uintptr_t(_swig_i_2), C.uintptr_t(_swig_i_3), C.swig_intgo(_swig_i_4)))
+	swig_r = (bool)(C._wrap_b2ChainShape_RayCast_Box2D_553c0f9515edf50e(C.uintptr_t(_swig_i_0), C.uintptr_t(_swig_i_1), C.uintptr_t(_swig_i_2), C.uintptr_t(_swig_i_3), C.swig_intgo(_swig_i_4)))
 	return swig_r
 }
 
@@ -1862,91 +1868,91 @@ func (arg1 SwigcptrB2ChainShape) ComputeAABB(arg2 B2AABB, arg3 B2Transform, arg4
 	_swig_i_1 := arg2.Swigcptr()
 	_swig_i_2 := arg3.Swigcptr()
 	_swig_i_3 := arg4
-	C._wrap_b2ChainShape_ComputeAABB_Box2D_b1d1b47c7e81f80a(C.uintptr_t(_swig_i_0), C.uintptr_t(_swig_i_1), C.uintptr_t(_swig_i_2), C.swig_intgo(_swig_i_3))
+	C._wrap_b2ChainShape_ComputeAABB_Box2D_553c0f9515edf50e(C.uintptr_t(_swig_i_0), C.uintptr_t(_swig_i_1), C.uintptr_t(_swig_i_2), C.swig_intgo(_swig_i_3))
 }
 
 func (arg1 SwigcptrB2ChainShape) ComputeMass(arg2 B2MassData, arg3 float32) {
 	_swig_i_0 := arg1
 	_swig_i_1 := arg2.Swigcptr()
 	_swig_i_2 := arg3
-	C._wrap_b2ChainShape_ComputeMass_Box2D_b1d1b47c7e81f80a(C.uintptr_t(_swig_i_0), C.uintptr_t(_swig_i_1), C.float(_swig_i_2))
+	C._wrap_b2ChainShape_ComputeMass_Box2D_553c0f9515edf50e(C.uintptr_t(_swig_i_0), C.uintptr_t(_swig_i_1), C.float(_swig_i_2))
 }
 
 func (arg1 SwigcptrB2ChainShape) SetM_vertices(arg2 B2Vec2) {
 	_swig_i_0 := arg1
 	_swig_i_1 := arg2.Swigcptr()
-	C._wrap_b2ChainShape_m_vertices_set_Box2D_b1d1b47c7e81f80a(C.uintptr_t(_swig_i_0), C.uintptr_t(_swig_i_1))
+	C._wrap_b2ChainShape_m_vertices_set_Box2D_553c0f9515edf50e(C.uintptr_t(_swig_i_0), C.uintptr_t(_swig_i_1))
 }
 
 func (arg1 SwigcptrB2ChainShape) GetM_vertices() (_swig_ret B2Vec2) {
 	var swig_r B2Vec2
 	_swig_i_0 := arg1
-	swig_r = (B2Vec2)(SwigcptrB2Vec2(C._wrap_b2ChainShape_m_vertices_get_Box2D_b1d1b47c7e81f80a(C.uintptr_t(_swig_i_0))))
+	swig_r = (B2Vec2)(SwigcptrB2Vec2(C._wrap_b2ChainShape_m_vertices_get_Box2D_553c0f9515edf50e(C.uintptr_t(_swig_i_0))))
 	return swig_r
 }
 
 func (arg1 SwigcptrB2ChainShape) SetM_count(arg2 int) {
 	_swig_i_0 := arg1
 	_swig_i_1 := arg2
-	C._wrap_b2ChainShape_m_count_set_Box2D_b1d1b47c7e81f80a(C.uintptr_t(_swig_i_0), C.swig_intgo(_swig_i_1))
+	C._wrap_b2ChainShape_m_count_set_Box2D_553c0f9515edf50e(C.uintptr_t(_swig_i_0), C.swig_intgo(_swig_i_1))
 }
 
 func (arg1 SwigcptrB2ChainShape) GetM_count() (_swig_ret int) {
 	var swig_r int
 	_swig_i_0 := arg1
-	swig_r = (int)(C._wrap_b2ChainShape_m_count_get_Box2D_b1d1b47c7e81f80a(C.uintptr_t(_swig_i_0)))
+	swig_r = (int)(C._wrap_b2ChainShape_m_count_get_Box2D_553c0f9515edf50e(C.uintptr_t(_swig_i_0)))
 	return swig_r
 }
 
 func (arg1 SwigcptrB2ChainShape) SetM_prevVertex(arg2 B2Vec2) {
 	_swig_i_0 := arg1
 	_swig_i_1 := arg2.Swigcptr()
-	C._wrap_b2ChainShape_m_prevVertex_set_Box2D_b1d1b47c7e81f80a(C.uintptr_t(_swig_i_0), C.uintptr_t(_swig_i_1))
+	C._wrap_b2ChainShape_m_prevVertex_set_Box2D_553c0f9515edf50e(C.uintptr_t(_swig_i_0), C.uintptr_t(_swig_i_1))
 }
 
 func (arg1 SwigcptrB2ChainShape) GetM_prevVertex() (_swig_ret B2Vec2) {
 	var swig_r B2Vec2
 	_swig_i_0 := arg1
-	swig_r = (B2Vec2)(SwigcptrB2Vec2(C._wrap_b2ChainShape_m_prevVertex_get_Box2D_b1d1b47c7e81f80a(C.uintptr_t(_swig_i_0))))
+	swig_r = (B2Vec2)(SwigcptrB2Vec2(C._wrap_b2ChainShape_m_prevVertex_get_Box2D_553c0f9515edf50e(C.uintptr_t(_swig_i_0))))
 	return swig_r
 }
 
 func (arg1 SwigcptrB2ChainShape) SetM_nextVertex(arg2 B2Vec2) {
 	_swig_i_0 := arg1
 	_swig_i_1 := arg2.Swigcptr()
-	C._wrap_b2ChainShape_m_nextVertex_set_Box2D_b1d1b47c7e81f80a(C.uintptr_t(_swig_i_0), C.uintptr_t(_swig_i_1))
+	C._wrap_b2ChainShape_m_nextVertex_set_Box2D_553c0f9515edf50e(C.uintptr_t(_swig_i_0), C.uintptr_t(_swig_i_1))
 }
 
 func (arg1 SwigcptrB2ChainShape) GetM_nextVertex() (_swig_ret B2Vec2) {
 	var swig_r B2Vec2
 	_swig_i_0 := arg1
-	swig_r = (B2Vec2)(SwigcptrB2Vec2(C._wrap_b2ChainShape_m_nextVertex_get_Box2D_b1d1b47c7e81f80a(C.uintptr_t(_swig_i_0))))
+	swig_r = (B2Vec2)(SwigcptrB2Vec2(C._wrap_b2ChainShape_m_nextVertex_get_Box2D_553c0f9515edf50e(C.uintptr_t(_swig_i_0))))
 	return swig_r
 }
 
 func (arg1 SwigcptrB2ChainShape) SetM_hasPrevVertex(arg2 bool) {
 	_swig_i_0 := arg1
 	_swig_i_1 := arg2
-	C._wrap_b2ChainShape_m_hasPrevVertex_set_Box2D_b1d1b47c7e81f80a(C.uintptr_t(_swig_i_0), C._Bool(_swig_i_1))
+	C._wrap_b2ChainShape_m_hasPrevVertex_set_Box2D_553c0f9515edf50e(C.uintptr_t(_swig_i_0), C._Bool(_swig_i_1))
 }
 
 func (arg1 SwigcptrB2ChainShape) GetM_hasPrevVertex() (_swig_ret bool) {
 	var swig_r bool
 	_swig_i_0 := arg1
-	swig_r = (bool)(C._wrap_b2ChainShape_m_hasPrevVertex_get_Box2D_b1d1b47c7e81f80a(C.uintptr_t(_swig_i_0)))
+	swig_r = (bool)(C._wrap_b2ChainShape_m_hasPrevVertex_get_Box2D_553c0f9515edf50e(C.uintptr_t(_swig_i_0)))
 	return swig_r
 }
 
 func (arg1 SwigcptrB2ChainShape) SetM_hasNextVertex(arg2 bool) {
 	_swig_i_0 := arg1
 	_swig_i_1 := arg2
-	C._wrap_b2ChainShape_m_hasNextVertex_set_Box2D_b1d1b47c7e81f80a(C.uintptr_t(_swig_i_0), C._Bool(_swig_i_1))
+	C._wrap_b2ChainShape_m_hasNextVertex_set_Box2D_553c0f9515edf50e(C.uintptr_t(_swig_i_0), C._Bool(_swig_i_1))
 }
 
 func (arg1 SwigcptrB2ChainShape) GetM_hasNextVertex() (_swig_ret bool) {
 	var swig_r bool
 	_swig_i_0 := arg1
-	swig_r = (bool)(C._wrap_b2ChainShape_m_hasNextVertex_get_Box2D_b1d1b47c7e81f80a(C.uintptr_t(_swig_i_0)))
+	swig_r = (bool)(C._wrap_b2ChainShape_m_hasNextVertex_get_Box2D_553c0f9515edf50e(C.uintptr_t(_swig_i_0)))
 	return swig_r
 }
 
@@ -1990,7 +1996,7 @@ func (p SwigcptrB2PolygonShape) SwigIsB2PolygonShape() {
 
 func NewB2PolygonShape() (_swig_ret B2PolygonShape) {
 	var swig_r B2PolygonShape
-	swig_r = (B2PolygonShape)(SwigcptrB2PolygonShape(C._wrap_new_b2PolygonShape_Box2D_b1d1b47c7e81f80a()))
+	swig_r = (B2PolygonShape)(SwigcptrB2PolygonShape(C._wrap_new_b2PolygonShape_Box2D_553c0f9515edf50e()))
 	return swig_r
 }
 
@@ -1998,14 +2004,14 @@ func (arg1 SwigcptrB2PolygonShape) Clone(arg2 B2BlockAllocator) (_swig_ret B2Sha
 	var swig_r B2Shape
 	_swig_i_0 := arg1
 	_swig_i_1 := arg2.Swigcptr()
-	swig_r = (B2Shape)(SwigcptrB2Shape(C._wrap_b2PolygonShape_Clone_Box2D_b1d1b47c7e81f80a(C.uintptr_t(_swig_i_0), C.uintptr_t(_swig_i_1))))
+	swig_r = (B2Shape)(SwigcptrB2Shape(C._wrap_b2PolygonShape_Clone_Box2D_553c0f9515edf50e(C.uintptr_t(_swig_i_0), C.uintptr_t(_swig_i_1))))
 	return swig_r
 }
 
 func (arg1 SwigcptrB2PolygonShape) GetChildCount() (_swig_ret int) {
 	var swig_r int
 	_swig_i_0 := arg1
-	swig_r = (int)(C._wrap_b2PolygonShape_GetChildCount_Box2D_b1d1b47c7e81f80a(C.uintptr_t(_swig_i_0)))
+	swig_r = (int)(C._wrap_b2PolygonShape_GetChildCount_Box2D_553c0f9515edf50e(C.uintptr_t(_swig_i_0)))
 	return swig_r
 }
 
@@ -2013,14 +2019,14 @@ func (arg1 SwigcptrB2PolygonShape) Set(arg2 B2Vec2, arg3 int) {
 	_swig_i_0 := arg1
 	_swig_i_1 := arg2.Swigcptr()
 	_swig_i_2 := arg3
-	C._wrap_b2PolygonShape_Set_Box2D_b1d1b47c7e81f80a(C.uintptr_t(_swig_i_0), C.uintptr_t(_swig_i_1), C.swig_intgo(_swig_i_2))
+	C._wrap_b2PolygonShape_Set_Box2D_553c0f9515edf50e(C.uintptr_t(_swig_i_0), C.uintptr_t(_swig_i_1), C.swig_intgo(_swig_i_2))
 }
 
 func (arg1 SwigcptrB2PolygonShape) SetAsBox__SWIG_0(arg2 float32, arg3 float32) {
 	_swig_i_0 := arg1
 	_swig_i_1 := arg2
 	_swig_i_2 := arg3
-	C._wrap_b2PolygonShape_SetAsBox__SWIG_0_Box2D_b1d1b47c7e81f80a(C.uintptr_t(_swig_i_0), C.float(_swig_i_1), C.float(_swig_i_2))
+	C._wrap_b2PolygonShape_SetAsBox__SWIG_0_Box2D_553c0f9515edf50e(C.uintptr_t(_swig_i_0), C.float(_swig_i_1), C.float(_swig_i_2))
 }
 
 func (arg1 SwigcptrB2PolygonShape) SetAsBox__SWIG_1(arg2 float32, arg3 float32, arg4 B2Vec2, arg5 float32) {
@@ -2029,7 +2035,7 @@ func (arg1 SwigcptrB2PolygonShape) SetAsBox__SWIG_1(arg2 float32, arg3 float32, 
 	_swig_i_2 := arg3
 	_swig_i_3 := arg4.Swigcptr()
 	_swig_i_4 := arg5
-	C._wrap_b2PolygonShape_SetAsBox__SWIG_1_Box2D_b1d1b47c7e81f80a(C.uintptr_t(_swig_i_0), C.float(_swig_i_1), C.float(_swig_i_2), C.uintptr_t(_swig_i_3), C.float(_swig_i_4))
+	C._wrap_b2PolygonShape_SetAsBox__SWIG_1_Box2D_553c0f9515edf50e(C.uintptr_t(_swig_i_0), C.float(_swig_i_1), C.float(_swig_i_2), C.uintptr_t(_swig_i_3), C.float(_swig_i_4))
 }
 
 func (p SwigcptrB2PolygonShape) SetAsBox(a ...interface{}) {
@@ -2050,7 +2056,7 @@ func (arg1 SwigcptrB2PolygonShape) TestPoint(arg2 B2Transform, arg3 B2Vec2) (_sw
 	_swig_i_0 := arg1
 	_swig_i_1 := arg2.Swigcptr()
 	_swig_i_2 := arg3.Swigcptr()
-	swig_r = (bool)(C._wrap_b2PolygonShape_TestPoint_Box2D_b1d1b47c7e81f80a(C.uintptr_t(_swig_i_0), C.uintptr_t(_swig_i_1), C.uintptr_t(_swig_i_2)))
+	swig_r = (bool)(C._wrap_b2PolygonShape_TestPoint_Box2D_553c0f9515edf50e(C.uintptr_t(_swig_i_0), C.uintptr_t(_swig_i_1), C.uintptr_t(_swig_i_2)))
 	return swig_r
 }
 
@@ -2061,7 +2067,7 @@ func (arg1 SwigcptrB2PolygonShape) RayCast(arg2 B2RayCastOutput, arg3 B2RayCastI
 	_swig_i_2 := arg3.Swigcptr()
 	_swig_i_3 := arg4.Swigcptr()
 	_swig_i_4 := arg5
-	swig_r = (bool)(C._wrap_b2PolygonShape_RayCast_Box2D_b1d1b47c7e81f80a(C.uintptr_t(_swig_i_0), C.uintptr_t(_swig_i_1), C.uintptr_t(_swig_i_2), C.uintptr_t(_swig_i_3), C.swig_intgo(_swig_i_4)))
+	swig_r = (bool)(C._wrap_b2PolygonShape_RayCast_Box2D_553c0f9515edf50e(C.uintptr_t(_swig_i_0), C.uintptr_t(_swig_i_1), C.uintptr_t(_swig_i_2), C.uintptr_t(_swig_i_3), C.swig_intgo(_swig_i_4)))
 	return swig_r
 }
 
@@ -2070,20 +2076,20 @@ func (arg1 SwigcptrB2PolygonShape) ComputeAABB(arg2 B2AABB, arg3 B2Transform, ar
 	_swig_i_1 := arg2.Swigcptr()
 	_swig_i_2 := arg3.Swigcptr()
 	_swig_i_3 := arg4
-	C._wrap_b2PolygonShape_ComputeAABB_Box2D_b1d1b47c7e81f80a(C.uintptr_t(_swig_i_0), C.uintptr_t(_swig_i_1), C.uintptr_t(_swig_i_2), C.swig_intgo(_swig_i_3))
+	C._wrap_b2PolygonShape_ComputeAABB_Box2D_553c0f9515edf50e(C.uintptr_t(_swig_i_0), C.uintptr_t(_swig_i_1), C.uintptr_t(_swig_i_2), C.swig_intgo(_swig_i_3))
 }
 
 func (arg1 SwigcptrB2PolygonShape) ComputeMass(arg2 B2MassData, arg3 float32) {
 	_swig_i_0 := arg1
 	_swig_i_1 := arg2.Swigcptr()
 	_swig_i_2 := arg3
-	C._wrap_b2PolygonShape_ComputeMass_Box2D_b1d1b47c7e81f80a(C.uintptr_t(_swig_i_0), C.uintptr_t(_swig_i_1), C.float(_swig_i_2))
+	C._wrap_b2PolygonShape_ComputeMass_Box2D_553c0f9515edf50e(C.uintptr_t(_swig_i_0), C.uintptr_t(_swig_i_1), C.float(_swig_i_2))
 }
 
 func (arg1 SwigcptrB2PolygonShape) GetVertexCount() (_swig_ret int) {
 	var swig_r int
 	_swig_i_0 := arg1
-	swig_r = (int)(C._wrap_b2PolygonShape_GetVertexCount_Box2D_b1d1b47c7e81f80a(C.uintptr_t(_swig_i_0)))
+	swig_r = (int)(C._wrap_b2PolygonShape_GetVertexCount_Box2D_553c0f9515edf50e(C.uintptr_t(_swig_i_0)))
 	return swig_r
 }
 
@@ -2091,72 +2097,72 @@ func (arg1 SwigcptrB2PolygonShape) GetVertex(arg2 int) (_swig_ret B2Vec2) {
 	var swig_r B2Vec2
 	_swig_i_0 := arg1
 	_swig_i_1 := arg2
-	swig_r = (B2Vec2)(SwigcptrB2Vec2(C._wrap_b2PolygonShape_GetVertex_Box2D_b1d1b47c7e81f80a(C.uintptr_t(_swig_i_0), C.swig_intgo(_swig_i_1))))
+	swig_r = (B2Vec2)(SwigcptrB2Vec2(C._wrap_b2PolygonShape_GetVertex_Box2D_553c0f9515edf50e(C.uintptr_t(_swig_i_0), C.swig_intgo(_swig_i_1))))
 	return swig_r
 }
 
 func (arg1 SwigcptrB2PolygonShape) Validate() (_swig_ret bool) {
 	var swig_r bool
 	_swig_i_0 := arg1
-	swig_r = (bool)(C._wrap_b2PolygonShape_Validate_Box2D_b1d1b47c7e81f80a(C.uintptr_t(_swig_i_0)))
+	swig_r = (bool)(C._wrap_b2PolygonShape_Validate_Box2D_553c0f9515edf50e(C.uintptr_t(_swig_i_0)))
 	return swig_r
 }
 
 func (arg1 SwigcptrB2PolygonShape) SetM_centroid(arg2 B2Vec2) {
 	_swig_i_0 := arg1
 	_swig_i_1 := arg2.Swigcptr()
-	C._wrap_b2PolygonShape_m_centroid_set_Box2D_b1d1b47c7e81f80a(C.uintptr_t(_swig_i_0), C.uintptr_t(_swig_i_1))
+	C._wrap_b2PolygonShape_m_centroid_set_Box2D_553c0f9515edf50e(C.uintptr_t(_swig_i_0), C.uintptr_t(_swig_i_1))
 }
 
 func (arg1 SwigcptrB2PolygonShape) GetM_centroid() (_swig_ret B2Vec2) {
 	var swig_r B2Vec2
 	_swig_i_0 := arg1
-	swig_r = (B2Vec2)(SwigcptrB2Vec2(C._wrap_b2PolygonShape_m_centroid_get_Box2D_b1d1b47c7e81f80a(C.uintptr_t(_swig_i_0))))
+	swig_r = (B2Vec2)(SwigcptrB2Vec2(C._wrap_b2PolygonShape_m_centroid_get_Box2D_553c0f9515edf50e(C.uintptr_t(_swig_i_0))))
 	return swig_r
 }
 
 func (arg1 SwigcptrB2PolygonShape) SetM_vertices(arg2 B2Vec2) {
 	_swig_i_0 := arg1
 	_swig_i_1 := arg2.Swigcptr()
-	C._wrap_b2PolygonShape_m_vertices_set_Box2D_b1d1b47c7e81f80a(C.uintptr_t(_swig_i_0), C.uintptr_t(_swig_i_1))
+	C._wrap_b2PolygonShape_m_vertices_set_Box2D_553c0f9515edf50e(C.uintptr_t(_swig_i_0), C.uintptr_t(_swig_i_1))
 }
 
 func (arg1 SwigcptrB2PolygonShape) GetM_vertices() (_swig_ret B2Vec2) {
 	var swig_r B2Vec2
 	_swig_i_0 := arg1
-	swig_r = (B2Vec2)(SwigcptrB2Vec2(C._wrap_b2PolygonShape_m_vertices_get_Box2D_b1d1b47c7e81f80a(C.uintptr_t(_swig_i_0))))
+	swig_r = (B2Vec2)(SwigcptrB2Vec2(C._wrap_b2PolygonShape_m_vertices_get_Box2D_553c0f9515edf50e(C.uintptr_t(_swig_i_0))))
 	return swig_r
 }
 
 func (arg1 SwigcptrB2PolygonShape) SetM_normals(arg2 B2Vec2) {
 	_swig_i_0 := arg1
 	_swig_i_1 := arg2.Swigcptr()
-	C._wrap_b2PolygonShape_m_normals_set_Box2D_b1d1b47c7e81f80a(C.uintptr_t(_swig_i_0), C.uintptr_t(_swig_i_1))
+	C._wrap_b2PolygonShape_m_normals_set_Box2D_553c0f9515edf50e(C.uintptr_t(_swig_i_0), C.uintptr_t(_swig_i_1))
 }
 
 func (arg1 SwigcptrB2PolygonShape) GetM_normals() (_swig_ret B2Vec2) {
 	var swig_r B2Vec2
 	_swig_i_0 := arg1
-	swig_r = (B2Vec2)(SwigcptrB2Vec2(C._wrap_b2PolygonShape_m_normals_get_Box2D_b1d1b47c7e81f80a(C.uintptr_t(_swig_i_0))))
+	swig_r = (B2Vec2)(SwigcptrB2Vec2(C._wrap_b2PolygonShape_m_normals_get_Box2D_553c0f9515edf50e(C.uintptr_t(_swig_i_0))))
 	return swig_r
 }
 
 func (arg1 SwigcptrB2PolygonShape) SetM_count(arg2 int) {
 	_swig_i_0 := arg1
 	_swig_i_1 := arg2
-	C._wrap_b2PolygonShape_m_count_set_Box2D_b1d1b47c7e81f80a(C.uintptr_t(_swig_i_0), C.swig_intgo(_swig_i_1))
+	C._wrap_b2PolygonShape_m_count_set_Box2D_553c0f9515edf50e(C.uintptr_t(_swig_i_0), C.swig_intgo(_swig_i_1))
 }
 
 func (arg1 SwigcptrB2PolygonShape) GetM_count() (_swig_ret int) {
 	var swig_r int
 	_swig_i_0 := arg1
-	swig_r = (int)(C._wrap_b2PolygonShape_m_count_get_Box2D_b1d1b47c7e81f80a(C.uintptr_t(_swig_i_0)))
+	swig_r = (int)(C._wrap_b2PolygonShape_m_count_get_Box2D_553c0f9515edf50e(C.uintptr_t(_swig_i_0)))
 	return swig_r
 }
 
 func DeleteB2PolygonShape(arg1 B2PolygonShape) {
 	_swig_i_0 := arg1.Swigcptr()
-	C._wrap_delete_b2PolygonShape_Box2D_b1d1b47c7e81f80a(C.uintptr_t(_swig_i_0))
+	C._wrap_delete_b2PolygonShape_Box2D_553c0f9515edf50e(C.uintptr_t(_swig_i_0))
 }
 
 type B2PolygonShape interface {
@@ -2195,38 +2201,38 @@ func (p SwigcptrB2Pair) SwigIsB2Pair() {
 func (arg1 SwigcptrB2Pair) SetProxyIdA(arg2 int) {
 	_swig_i_0 := arg1
 	_swig_i_1 := arg2
-	C._wrap_b2Pair_proxyIdA_set_Box2D_b1d1b47c7e81f80a(C.uintptr_t(_swig_i_0), C.swig_intgo(_swig_i_1))
+	C._wrap_b2Pair_proxyIdA_set_Box2D_553c0f9515edf50e(C.uintptr_t(_swig_i_0), C.swig_intgo(_swig_i_1))
 }
 
 func (arg1 SwigcptrB2Pair) GetProxyIdA() (_swig_ret int) {
 	var swig_r int
 	_swig_i_0 := arg1
-	swig_r = (int)(C._wrap_b2Pair_proxyIdA_get_Box2D_b1d1b47c7e81f80a(C.uintptr_t(_swig_i_0)))
+	swig_r = (int)(C._wrap_b2Pair_proxyIdA_get_Box2D_553c0f9515edf50e(C.uintptr_t(_swig_i_0)))
 	return swig_r
 }
 
 func (arg1 SwigcptrB2Pair) SetProxyIdB(arg2 int) {
 	_swig_i_0 := arg1
 	_swig_i_1 := arg2
-	C._wrap_b2Pair_proxyIdB_set_Box2D_b1d1b47c7e81f80a(C.uintptr_t(_swig_i_0), C.swig_intgo(_swig_i_1))
+	C._wrap_b2Pair_proxyIdB_set_Box2D_553c0f9515edf50e(C.uintptr_t(_swig_i_0), C.swig_intgo(_swig_i_1))
 }
 
 func (arg1 SwigcptrB2Pair) GetProxyIdB() (_swig_ret int) {
 	var swig_r int
 	_swig_i_0 := arg1
-	swig_r = (int)(C._wrap_b2Pair_proxyIdB_get_Box2D_b1d1b47c7e81f80a(C.uintptr_t(_swig_i_0)))
+	swig_r = (int)(C._wrap_b2Pair_proxyIdB_get_Box2D_553c0f9515edf50e(C.uintptr_t(_swig_i_0)))
 	return swig_r
 }
 
 func NewB2Pair() (_swig_ret B2Pair) {
 	var swig_r B2Pair
-	swig_r = (B2Pair)(SwigcptrB2Pair(C._wrap_new_b2Pair_Box2D_b1d1b47c7e81f80a()))
+	swig_r = (B2Pair)(SwigcptrB2Pair(C._wrap_new_b2Pair_Box2D_553c0f9515edf50e()))
 	return swig_r
 }
 
 func DeleteB2Pair(arg1 B2Pair) {
 	_swig_i_0 := arg1.Swigcptr()
-	C._wrap_delete_b2Pair_Box2D_b1d1b47c7e81f80a(C.uintptr_t(_swig_i_0))
+	C._wrap_delete_b2Pair_Box2D_553c0f9515edf50e(C.uintptr_t(_swig_i_0))
 }
 
 type B2Pair interface {
@@ -2249,20 +2255,20 @@ func (p SwigcptrB2BroadPhase) SwigIsB2BroadPhase() {
 
 func _swig_getb2BroadPhase_e_nullProxy_b2BroadPhase() (_swig_ret int) {
 	var swig_r int
-	swig_r = (int)(C._wrap_e_nullProxy_b2BroadPhase_Box2D_b1d1b47c7e81f80a())
+	swig_r = (int)(C._wrap_e_nullProxy_b2BroadPhase_Box2D_553c0f9515edf50e())
 	return swig_r
 }
 
 var B2BroadPhaseE_nullProxy int = _swig_getb2BroadPhase_e_nullProxy_b2BroadPhase()
 func NewB2BroadPhase() (_swig_ret B2BroadPhase) {
 	var swig_r B2BroadPhase
-	swig_r = (B2BroadPhase)(SwigcptrB2BroadPhase(C._wrap_new_b2BroadPhase_Box2D_b1d1b47c7e81f80a()))
+	swig_r = (B2BroadPhase)(SwigcptrB2BroadPhase(C._wrap_new_b2BroadPhase_Box2D_553c0f9515edf50e()))
 	return swig_r
 }
 
 func DeleteB2BroadPhase(arg1 B2BroadPhase) {
 	_swig_i_0 := arg1.Swigcptr()
-	C._wrap_delete_b2BroadPhase_Box2D_b1d1b47c7e81f80a(C.uintptr_t(_swig_i_0))
+	C._wrap_delete_b2BroadPhase_Box2D_553c0f9515edf50e(C.uintptr_t(_swig_i_0))
 }
 
 func (arg1 SwigcptrB2BroadPhase) CreateProxy(arg2 B2AABB, arg3 uintptr) (_swig_ret int) {
@@ -2270,14 +2276,14 @@ func (arg1 SwigcptrB2BroadPhase) CreateProxy(arg2 B2AABB, arg3 uintptr) (_swig_r
 	_swig_i_0 := arg1
 	_swig_i_1 := arg2.Swigcptr()
 	_swig_i_2 := arg3
-	swig_r = (int)(C._wrap_b2BroadPhase_CreateProxy_Box2D_b1d1b47c7e81f80a(C.uintptr_t(_swig_i_0), C.uintptr_t(_swig_i_1), C.uintptr_t(_swig_i_2)))
+	swig_r = (int)(C._wrap_b2BroadPhase_CreateProxy_Box2D_553c0f9515edf50e(C.uintptr_t(_swig_i_0), C.uintptr_t(_swig_i_1), C.uintptr_t(_swig_i_2)))
 	return swig_r
 }
 
 func (arg1 SwigcptrB2BroadPhase) DestroyProxy(arg2 int) {
 	_swig_i_0 := arg1
 	_swig_i_1 := arg2
-	C._wrap_b2BroadPhase_DestroyProxy_Box2D_b1d1b47c7e81f80a(C.uintptr_t(_swig_i_0), C.swig_intgo(_swig_i_1))
+	C._wrap_b2BroadPhase_DestroyProxy_Box2D_553c0f9515edf50e(C.uintptr_t(_swig_i_0), C.swig_intgo(_swig_i_1))
 }
 
 func (arg1 SwigcptrB2BroadPhase) MoveProxy(arg2 int, arg3 B2AABB, arg4 B2Vec2) {
@@ -2285,20 +2291,20 @@ func (arg1 SwigcptrB2BroadPhase) MoveProxy(arg2 int, arg3 B2AABB, arg4 B2Vec2) {
 	_swig_i_1 := arg2
 	_swig_i_2 := arg3.Swigcptr()
 	_swig_i_3 := arg4.Swigcptr()
-	C._wrap_b2BroadPhase_MoveProxy_Box2D_b1d1b47c7e81f80a(C.uintptr_t(_swig_i_0), C.swig_intgo(_swig_i_1), C.uintptr_t(_swig_i_2), C.uintptr_t(_swig_i_3))
+	C._wrap_b2BroadPhase_MoveProxy_Box2D_553c0f9515edf50e(C.uintptr_t(_swig_i_0), C.swig_intgo(_swig_i_1), C.uintptr_t(_swig_i_2), C.uintptr_t(_swig_i_3))
 }
 
 func (arg1 SwigcptrB2BroadPhase) TouchProxy(arg2 int) {
 	_swig_i_0 := arg1
 	_swig_i_1 := arg2
-	C._wrap_b2BroadPhase_TouchProxy_Box2D_b1d1b47c7e81f80a(C.uintptr_t(_swig_i_0), C.swig_intgo(_swig_i_1))
+	C._wrap_b2BroadPhase_TouchProxy_Box2D_553c0f9515edf50e(C.uintptr_t(_swig_i_0), C.swig_intgo(_swig_i_1))
 }
 
 func (arg1 SwigcptrB2BroadPhase) GetFatAABB(arg2 int) (_swig_ret B2AABB) {
 	var swig_r B2AABB
 	_swig_i_0 := arg1
 	_swig_i_1 := arg2
-	swig_r = (B2AABB)(SwigcptrB2AABB(C._wrap_b2BroadPhase_GetFatAABB_Box2D_b1d1b47c7e81f80a(C.uintptr_t(_swig_i_0), C.swig_intgo(_swig_i_1))))
+	swig_r = (B2AABB)(SwigcptrB2AABB(C._wrap_b2BroadPhase_GetFatAABB_Box2D_553c0f9515edf50e(C.uintptr_t(_swig_i_0), C.swig_intgo(_swig_i_1))))
 	return swig_r
 }
 
@@ -2306,7 +2312,7 @@ func (arg1 SwigcptrB2BroadPhase) GetUserData(arg2 int) (_swig_ret uintptr) {
 	var swig_r uintptr
 	_swig_i_0 := arg1
 	_swig_i_1 := arg2
-	swig_r = (uintptr)(C._wrap_b2BroadPhase_GetUserData_Box2D_b1d1b47c7e81f80a(C.uintptr_t(_swig_i_0), C.swig_intgo(_swig_i_1)))
+	swig_r = (uintptr)(C._wrap_b2BroadPhase_GetUserData_Box2D_553c0f9515edf50e(C.uintptr_t(_swig_i_0), C.swig_intgo(_swig_i_1)))
 	return swig_r
 }
 
@@ -2315,42 +2321,42 @@ func (arg1 SwigcptrB2BroadPhase) TestOverlap(arg2 int, arg3 int) (_swig_ret bool
 	_swig_i_0 := arg1
 	_swig_i_1 := arg2
 	_swig_i_2 := arg3
-	swig_r = (bool)(C._wrap_b2BroadPhase_TestOverlap_Box2D_b1d1b47c7e81f80a(C.uintptr_t(_swig_i_0), C.swig_intgo(_swig_i_1), C.swig_intgo(_swig_i_2)))
+	swig_r = (bool)(C._wrap_b2BroadPhase_TestOverlap_Box2D_553c0f9515edf50e(C.uintptr_t(_swig_i_0), C.swig_intgo(_swig_i_1), C.swig_intgo(_swig_i_2)))
 	return swig_r
 }
 
 func (arg1 SwigcptrB2BroadPhase) GetProxyCount() (_swig_ret int) {
 	var swig_r int
 	_swig_i_0 := arg1
-	swig_r = (int)(C._wrap_b2BroadPhase_GetProxyCount_Box2D_b1d1b47c7e81f80a(C.uintptr_t(_swig_i_0)))
+	swig_r = (int)(C._wrap_b2BroadPhase_GetProxyCount_Box2D_553c0f9515edf50e(C.uintptr_t(_swig_i_0)))
 	return swig_r
 }
 
 func (arg1 SwigcptrB2BroadPhase) GetTreeHeight() (_swig_ret int) {
 	var swig_r int
 	_swig_i_0 := arg1
-	swig_r = (int)(C._wrap_b2BroadPhase_GetTreeHeight_Box2D_b1d1b47c7e81f80a(C.uintptr_t(_swig_i_0)))
+	swig_r = (int)(C._wrap_b2BroadPhase_GetTreeHeight_Box2D_553c0f9515edf50e(C.uintptr_t(_swig_i_0)))
 	return swig_r
 }
 
 func (arg1 SwigcptrB2BroadPhase) GetTreeBalance() (_swig_ret int) {
 	var swig_r int
 	_swig_i_0 := arg1
-	swig_r = (int)(C._wrap_b2BroadPhase_GetTreeBalance_Box2D_b1d1b47c7e81f80a(C.uintptr_t(_swig_i_0)))
+	swig_r = (int)(C._wrap_b2BroadPhase_GetTreeBalance_Box2D_553c0f9515edf50e(C.uintptr_t(_swig_i_0)))
 	return swig_r
 }
 
 func (arg1 SwigcptrB2BroadPhase) GetTreeQuality() (_swig_ret float32) {
 	var swig_r float32
 	_swig_i_0 := arg1
-	swig_r = (float32)(C._wrap_b2BroadPhase_GetTreeQuality_Box2D_b1d1b47c7e81f80a(C.uintptr_t(_swig_i_0)))
+	swig_r = (float32)(C._wrap_b2BroadPhase_GetTreeQuality_Box2D_553c0f9515edf50e(C.uintptr_t(_swig_i_0)))
 	return swig_r
 }
 
 func (arg1 SwigcptrB2BroadPhase) ShiftOrigin(arg2 B2Vec2) {
 	_swig_i_0 := arg1
 	_swig_i_1 := arg2.Swigcptr()
-	C._wrap_b2BroadPhase_ShiftOrigin_Box2D_b1d1b47c7e81f80a(C.uintptr_t(_swig_i_0), C.uintptr_t(_swig_i_1))
+	C._wrap_b2BroadPhase_ShiftOrigin_Box2D_553c0f9515edf50e(C.uintptr_t(_swig_i_0), C.uintptr_t(_swig_i_1))
 }
 
 type B2BroadPhase interface {
@@ -2374,7 +2380,7 @@ func B2PairLessThan(arg1 B2Pair, arg2 B2Pair) (_swig_ret bool) {
 	var swig_r bool
 	_swig_i_0 := arg1.Swigcptr()
 	_swig_i_1 := arg2.Swigcptr()
-	swig_r = (bool)(C._wrap_b2PairLessThan_Box2D_b1d1b47c7e81f80a(C.uintptr_t(_swig_i_0), C.uintptr_t(_swig_i_1)))
+	swig_r = (bool)(C._wrap_b2PairLessThan_Box2D_553c0f9515edf50e(C.uintptr_t(_swig_i_0), C.uintptr_t(_swig_i_1)))
 	return swig_r
 }
 
@@ -2389,7 +2395,7 @@ func (p SwigcptrB2DistanceProxy) SwigIsB2DistanceProxy() {
 
 func NewB2DistanceProxy() (_swig_ret B2DistanceProxy) {
 	var swig_r B2DistanceProxy
-	swig_r = (B2DistanceProxy)(SwigcptrB2DistanceProxy(C._wrap_new_b2DistanceProxy_Box2D_b1d1b47c7e81f80a()))
+	swig_r = (B2DistanceProxy)(SwigcptrB2DistanceProxy(C._wrap_new_b2DistanceProxy_Box2D_553c0f9515edf50e()))
 	return swig_r
 }
 
@@ -2397,14 +2403,14 @@ func (arg1 SwigcptrB2DistanceProxy) Set(arg2 B2Shape, arg3 int) {
 	_swig_i_0 := arg1
 	_swig_i_1 := arg2.Swigcptr()
 	_swig_i_2 := arg3
-	C._wrap_b2DistanceProxy_Set_Box2D_b1d1b47c7e81f80a(C.uintptr_t(_swig_i_0), C.uintptr_t(_swig_i_1), C.swig_intgo(_swig_i_2))
+	C._wrap_b2DistanceProxy_Set_Box2D_553c0f9515edf50e(C.uintptr_t(_swig_i_0), C.uintptr_t(_swig_i_1), C.swig_intgo(_swig_i_2))
 }
 
 func (arg1 SwigcptrB2DistanceProxy) GetSupport(arg2 B2Vec2) (_swig_ret int) {
 	var swig_r int
 	_swig_i_0 := arg1
 	_swig_i_1 := arg2.Swigcptr()
-	swig_r = (int)(C._wrap_b2DistanceProxy_GetSupport_Box2D_b1d1b47c7e81f80a(C.uintptr_t(_swig_i_0), C.uintptr_t(_swig_i_1)))
+	swig_r = (int)(C._wrap_b2DistanceProxy_GetSupport_Box2D_553c0f9515edf50e(C.uintptr_t(_swig_i_0), C.uintptr_t(_swig_i_1)))
 	return swig_r
 }
 
@@ -2412,14 +2418,14 @@ func (arg1 SwigcptrB2DistanceProxy) GetSupportVertex(arg2 B2Vec2) (_swig_ret B2V
 	var swig_r B2Vec2
 	_swig_i_0 := arg1
 	_swig_i_1 := arg2.Swigcptr()
-	swig_r = (B2Vec2)(SwigcptrB2Vec2(C._wrap_b2DistanceProxy_GetSupportVertex_Box2D_b1d1b47c7e81f80a(C.uintptr_t(_swig_i_0), C.uintptr_t(_swig_i_1))))
+	swig_r = (B2Vec2)(SwigcptrB2Vec2(C._wrap_b2DistanceProxy_GetSupportVertex_Box2D_553c0f9515edf50e(C.uintptr_t(_swig_i_0), C.uintptr_t(_swig_i_1))))
 	return swig_r
 }
 
 func (arg1 SwigcptrB2DistanceProxy) GetVertexCount() (_swig_ret int) {
 	var swig_r int
 	_swig_i_0 := arg1
-	swig_r = (int)(C._wrap_b2DistanceProxy_GetVertexCount_Box2D_b1d1b47c7e81f80a(C.uintptr_t(_swig_i_0)))
+	swig_r = (int)(C._wrap_b2DistanceProxy_GetVertexCount_Box2D_553c0f9515edf50e(C.uintptr_t(_swig_i_0)))
 	return swig_r
 }
 
@@ -2427,65 +2433,65 @@ func (arg1 SwigcptrB2DistanceProxy) GetVertex(arg2 int) (_swig_ret B2Vec2) {
 	var swig_r B2Vec2
 	_swig_i_0 := arg1
 	_swig_i_1 := arg2
-	swig_r = (B2Vec2)(SwigcptrB2Vec2(C._wrap_b2DistanceProxy_GetVertex_Box2D_b1d1b47c7e81f80a(C.uintptr_t(_swig_i_0), C.swig_intgo(_swig_i_1))))
+	swig_r = (B2Vec2)(SwigcptrB2Vec2(C._wrap_b2DistanceProxy_GetVertex_Box2D_553c0f9515edf50e(C.uintptr_t(_swig_i_0), C.swig_intgo(_swig_i_1))))
 	return swig_r
 }
 
 func (arg1 SwigcptrB2DistanceProxy) SetM_buffer(arg2 B2Vec2) {
 	_swig_i_0 := arg1
 	_swig_i_1 := arg2.Swigcptr()
-	C._wrap_b2DistanceProxy_m_buffer_set_Box2D_b1d1b47c7e81f80a(C.uintptr_t(_swig_i_0), C.uintptr_t(_swig_i_1))
+	C._wrap_b2DistanceProxy_m_buffer_set_Box2D_553c0f9515edf50e(C.uintptr_t(_swig_i_0), C.uintptr_t(_swig_i_1))
 }
 
 func (arg1 SwigcptrB2DistanceProxy) GetM_buffer() (_swig_ret B2Vec2) {
 	var swig_r B2Vec2
 	_swig_i_0 := arg1
-	swig_r = (B2Vec2)(SwigcptrB2Vec2(C._wrap_b2DistanceProxy_m_buffer_get_Box2D_b1d1b47c7e81f80a(C.uintptr_t(_swig_i_0))))
+	swig_r = (B2Vec2)(SwigcptrB2Vec2(C._wrap_b2DistanceProxy_m_buffer_get_Box2D_553c0f9515edf50e(C.uintptr_t(_swig_i_0))))
 	return swig_r
 }
 
 func (arg1 SwigcptrB2DistanceProxy) SetM_vertices(arg2 B2Vec2) {
 	_swig_i_0 := arg1
 	_swig_i_1 := arg2.Swigcptr()
-	C._wrap_b2DistanceProxy_m_vertices_set_Box2D_b1d1b47c7e81f80a(C.uintptr_t(_swig_i_0), C.uintptr_t(_swig_i_1))
+	C._wrap_b2DistanceProxy_m_vertices_set_Box2D_553c0f9515edf50e(C.uintptr_t(_swig_i_0), C.uintptr_t(_swig_i_1))
 }
 
 func (arg1 SwigcptrB2DistanceProxy) GetM_vertices() (_swig_ret B2Vec2) {
 	var swig_r B2Vec2
 	_swig_i_0 := arg1
-	swig_r = (B2Vec2)(SwigcptrB2Vec2(C._wrap_b2DistanceProxy_m_vertices_get_Box2D_b1d1b47c7e81f80a(C.uintptr_t(_swig_i_0))))
+	swig_r = (B2Vec2)(SwigcptrB2Vec2(C._wrap_b2DistanceProxy_m_vertices_get_Box2D_553c0f9515edf50e(C.uintptr_t(_swig_i_0))))
 	return swig_r
 }
 
 func (arg1 SwigcptrB2DistanceProxy) SetM_count(arg2 int) {
 	_swig_i_0 := arg1
 	_swig_i_1 := arg2
-	C._wrap_b2DistanceProxy_m_count_set_Box2D_b1d1b47c7e81f80a(C.uintptr_t(_swig_i_0), C.swig_intgo(_swig_i_1))
+	C._wrap_b2DistanceProxy_m_count_set_Box2D_553c0f9515edf50e(C.uintptr_t(_swig_i_0), C.swig_intgo(_swig_i_1))
 }
 
 func (arg1 SwigcptrB2DistanceProxy) GetM_count() (_swig_ret int) {
 	var swig_r int
 	_swig_i_0 := arg1
-	swig_r = (int)(C._wrap_b2DistanceProxy_m_count_get_Box2D_b1d1b47c7e81f80a(C.uintptr_t(_swig_i_0)))
+	swig_r = (int)(C._wrap_b2DistanceProxy_m_count_get_Box2D_553c0f9515edf50e(C.uintptr_t(_swig_i_0)))
 	return swig_r
 }
 
 func (arg1 SwigcptrB2DistanceProxy) SetM_radius(arg2 float32) {
 	_swig_i_0 := arg1
 	_swig_i_1 := arg2
-	C._wrap_b2DistanceProxy_m_radius_set_Box2D_b1d1b47c7e81f80a(C.uintptr_t(_swig_i_0), C.float(_swig_i_1))
+	C._wrap_b2DistanceProxy_m_radius_set_Box2D_553c0f9515edf50e(C.uintptr_t(_swig_i_0), C.float(_swig_i_1))
 }
 
 func (arg1 SwigcptrB2DistanceProxy) GetM_radius() (_swig_ret float32) {
 	var swig_r float32
 	_swig_i_0 := arg1
-	swig_r = (float32)(C._wrap_b2DistanceProxy_m_radius_get_Box2D_b1d1b47c7e81f80a(C.uintptr_t(_swig_i_0)))
+	swig_r = (float32)(C._wrap_b2DistanceProxy_m_radius_get_Box2D_553c0f9515edf50e(C.uintptr_t(_swig_i_0)))
 	return swig_r
 }
 
 func DeleteB2DistanceProxy(arg1 B2DistanceProxy) {
 	_swig_i_0 := arg1.Swigcptr()
-	C._wrap_delete_b2DistanceProxy_Box2D_b1d1b47c7e81f80a(C.uintptr_t(_swig_i_0))
+	C._wrap_delete_b2DistanceProxy_Box2D_553c0f9515edf50e(C.uintptr_t(_swig_i_0))
 }
 
 type B2DistanceProxy interface {
@@ -2518,64 +2524,64 @@ func (p SwigcptrB2SimplexCache) SwigIsB2SimplexCache() {
 func (arg1 SwigcptrB2SimplexCache) SetMetric(arg2 float32) {
 	_swig_i_0 := arg1
 	_swig_i_1 := arg2
-	C._wrap_b2SimplexCache_metric_set_Box2D_b1d1b47c7e81f80a(C.uintptr_t(_swig_i_0), C.float(_swig_i_1))
+	C._wrap_b2SimplexCache_metric_set_Box2D_553c0f9515edf50e(C.uintptr_t(_swig_i_0), C.float(_swig_i_1))
 }
 
 func (arg1 SwigcptrB2SimplexCache) GetMetric() (_swig_ret float32) {
 	var swig_r float32
 	_swig_i_0 := arg1
-	swig_r = (float32)(C._wrap_b2SimplexCache_metric_get_Box2D_b1d1b47c7e81f80a(C.uintptr_t(_swig_i_0)))
+	swig_r = (float32)(C._wrap_b2SimplexCache_metric_get_Box2D_553c0f9515edf50e(C.uintptr_t(_swig_i_0)))
 	return swig_r
 }
 
 func (arg1 SwigcptrB2SimplexCache) SetCount(arg2 uint16) {
 	_swig_i_0 := arg1
 	_swig_i_1 := arg2
-	C._wrap_b2SimplexCache_count_set_Box2D_b1d1b47c7e81f80a(C.uintptr_t(_swig_i_0), C.short(_swig_i_1))
+	C._wrap_b2SimplexCache_count_set_Box2D_553c0f9515edf50e(C.uintptr_t(_swig_i_0), C.short(_swig_i_1))
 }
 
 func (arg1 SwigcptrB2SimplexCache) GetCount() (_swig_ret uint16) {
 	var swig_r uint16
 	_swig_i_0 := arg1
-	swig_r = (uint16)(C._wrap_b2SimplexCache_count_get_Box2D_b1d1b47c7e81f80a(C.uintptr_t(_swig_i_0)))
+	swig_r = (uint16)(C._wrap_b2SimplexCache_count_get_Box2D_553c0f9515edf50e(C.uintptr_t(_swig_i_0)))
 	return swig_r
 }
 
 func (arg1 SwigcptrB2SimplexCache) SetIndexA(arg2 *byte) {
 	_swig_i_0 := arg1
 	_swig_i_1 := arg2
-	C._wrap_b2SimplexCache_indexA_set_Box2D_b1d1b47c7e81f80a(C.uintptr_t(_swig_i_0), C.swig_voidp(_swig_i_1))
+	C._wrap_b2SimplexCache_indexA_set_Box2D_553c0f9515edf50e(C.uintptr_t(_swig_i_0), C.swig_voidp(_swig_i_1))
 }
 
 func (arg1 SwigcptrB2SimplexCache) GetIndexA() (_swig_ret *byte) {
 	var swig_r *byte
 	_swig_i_0 := arg1
-	swig_r = (*byte)(C._wrap_b2SimplexCache_indexA_get_Box2D_b1d1b47c7e81f80a(C.uintptr_t(_swig_i_0)))
+	swig_r = (*byte)(C._wrap_b2SimplexCache_indexA_get_Box2D_553c0f9515edf50e(C.uintptr_t(_swig_i_0)))
 	return swig_r
 }
 
 func (arg1 SwigcptrB2SimplexCache) SetIndexB(arg2 *byte) {
 	_swig_i_0 := arg1
 	_swig_i_1 := arg2
-	C._wrap_b2SimplexCache_indexB_set_Box2D_b1d1b47c7e81f80a(C.uintptr_t(_swig_i_0), C.swig_voidp(_swig_i_1))
+	C._wrap_b2SimplexCache_indexB_set_Box2D_553c0f9515edf50e(C.uintptr_t(_swig_i_0), C.swig_voidp(_swig_i_1))
 }
 
 func (arg1 SwigcptrB2SimplexCache) GetIndexB() (_swig_ret *byte) {
 	var swig_r *byte
 	_swig_i_0 := arg1
-	swig_r = (*byte)(C._wrap_b2SimplexCache_indexB_get_Box2D_b1d1b47c7e81f80a(C.uintptr_t(_swig_i_0)))
+	swig_r = (*byte)(C._wrap_b2SimplexCache_indexB_get_Box2D_553c0f9515edf50e(C.uintptr_t(_swig_i_0)))
 	return swig_r
 }
 
 func NewB2SimplexCache() (_swig_ret B2SimplexCache) {
 	var swig_r B2SimplexCache
-	swig_r = (B2SimplexCache)(SwigcptrB2SimplexCache(C._wrap_new_b2SimplexCache_Box2D_b1d1b47c7e81f80a()))
+	swig_r = (B2SimplexCache)(SwigcptrB2SimplexCache(C._wrap_new_b2SimplexCache_Box2D_553c0f9515edf50e()))
 	return swig_r
 }
 
 func DeleteB2SimplexCache(arg1 B2SimplexCache) {
 	_swig_i_0 := arg1.Swigcptr()
-	C._wrap_delete_b2SimplexCache_Box2D_b1d1b47c7e81f80a(C.uintptr_t(_swig_i_0))
+	C._wrap_delete_b2SimplexCache_Box2D_553c0f9515edf50e(C.uintptr_t(_swig_i_0))
 }
 
 type B2SimplexCache interface {
@@ -2603,77 +2609,77 @@ func (p SwigcptrB2DistanceInput) SwigIsB2DistanceInput() {
 func (arg1 SwigcptrB2DistanceInput) SetProxyA(arg2 B2DistanceProxy) {
 	_swig_i_0 := arg1
 	_swig_i_1 := arg2.Swigcptr()
-	C._wrap_b2DistanceInput_proxyA_set_Box2D_b1d1b47c7e81f80a(C.uintptr_t(_swig_i_0), C.uintptr_t(_swig_i_1))
+	C._wrap_b2DistanceInput_proxyA_set_Box2D_553c0f9515edf50e(C.uintptr_t(_swig_i_0), C.uintptr_t(_swig_i_1))
 }
 
 func (arg1 SwigcptrB2DistanceInput) GetProxyA() (_swig_ret B2DistanceProxy) {
 	var swig_r B2DistanceProxy
 	_swig_i_0 := arg1
-	swig_r = (B2DistanceProxy)(SwigcptrB2DistanceProxy(C._wrap_b2DistanceInput_proxyA_get_Box2D_b1d1b47c7e81f80a(C.uintptr_t(_swig_i_0))))
+	swig_r = (B2DistanceProxy)(SwigcptrB2DistanceProxy(C._wrap_b2DistanceInput_proxyA_get_Box2D_553c0f9515edf50e(C.uintptr_t(_swig_i_0))))
 	return swig_r
 }
 
 func (arg1 SwigcptrB2DistanceInput) SetProxyB(arg2 B2DistanceProxy) {
 	_swig_i_0 := arg1
 	_swig_i_1 := arg2.Swigcptr()
-	C._wrap_b2DistanceInput_proxyB_set_Box2D_b1d1b47c7e81f80a(C.uintptr_t(_swig_i_0), C.uintptr_t(_swig_i_1))
+	C._wrap_b2DistanceInput_proxyB_set_Box2D_553c0f9515edf50e(C.uintptr_t(_swig_i_0), C.uintptr_t(_swig_i_1))
 }
 
 func (arg1 SwigcptrB2DistanceInput) GetProxyB() (_swig_ret B2DistanceProxy) {
 	var swig_r B2DistanceProxy
 	_swig_i_0 := arg1
-	swig_r = (B2DistanceProxy)(SwigcptrB2DistanceProxy(C._wrap_b2DistanceInput_proxyB_get_Box2D_b1d1b47c7e81f80a(C.uintptr_t(_swig_i_0))))
+	swig_r = (B2DistanceProxy)(SwigcptrB2DistanceProxy(C._wrap_b2DistanceInput_proxyB_get_Box2D_553c0f9515edf50e(C.uintptr_t(_swig_i_0))))
 	return swig_r
 }
 
 func (arg1 SwigcptrB2DistanceInput) SetTransformA(arg2 B2Transform) {
 	_swig_i_0 := arg1
 	_swig_i_1 := arg2.Swigcptr()
-	C._wrap_b2DistanceInput_transformA_set_Box2D_b1d1b47c7e81f80a(C.uintptr_t(_swig_i_0), C.uintptr_t(_swig_i_1))
+	C._wrap_b2DistanceInput_transformA_set_Box2D_553c0f9515edf50e(C.uintptr_t(_swig_i_0), C.uintptr_t(_swig_i_1))
 }
 
 func (arg1 SwigcptrB2DistanceInput) GetTransformA() (_swig_ret B2Transform) {
 	var swig_r B2Transform
 	_swig_i_0 := arg1
-	swig_r = (B2Transform)(SwigcptrB2Transform(C._wrap_b2DistanceInput_transformA_get_Box2D_b1d1b47c7e81f80a(C.uintptr_t(_swig_i_0))))
+	swig_r = (B2Transform)(SwigcptrB2Transform(C._wrap_b2DistanceInput_transformA_get_Box2D_553c0f9515edf50e(C.uintptr_t(_swig_i_0))))
 	return swig_r
 }
 
 func (arg1 SwigcptrB2DistanceInput) SetTransformB(arg2 B2Transform) {
 	_swig_i_0 := arg1
 	_swig_i_1 := arg2.Swigcptr()
-	C._wrap_b2DistanceInput_transformB_set_Box2D_b1d1b47c7e81f80a(C.uintptr_t(_swig_i_0), C.uintptr_t(_swig_i_1))
+	C._wrap_b2DistanceInput_transformB_set_Box2D_553c0f9515edf50e(C.uintptr_t(_swig_i_0), C.uintptr_t(_swig_i_1))
 }
 
 func (arg1 SwigcptrB2DistanceInput) GetTransformB() (_swig_ret B2Transform) {
 	var swig_r B2Transform
 	_swig_i_0 := arg1
-	swig_r = (B2Transform)(SwigcptrB2Transform(C._wrap_b2DistanceInput_transformB_get_Box2D_b1d1b47c7e81f80a(C.uintptr_t(_swig_i_0))))
+	swig_r = (B2Transform)(SwigcptrB2Transform(C._wrap_b2DistanceInput_transformB_get_Box2D_553c0f9515edf50e(C.uintptr_t(_swig_i_0))))
 	return swig_r
 }
 
 func (arg1 SwigcptrB2DistanceInput) SetUseRadii(arg2 bool) {
 	_swig_i_0 := arg1
 	_swig_i_1 := arg2
-	C._wrap_b2DistanceInput_useRadii_set_Box2D_b1d1b47c7e81f80a(C.uintptr_t(_swig_i_0), C._Bool(_swig_i_1))
+	C._wrap_b2DistanceInput_useRadii_set_Box2D_553c0f9515edf50e(C.uintptr_t(_swig_i_0), C._Bool(_swig_i_1))
 }
 
 func (arg1 SwigcptrB2DistanceInput) GetUseRadii() (_swig_ret bool) {
 	var swig_r bool
 	_swig_i_0 := arg1
-	swig_r = (bool)(C._wrap_b2DistanceInput_useRadii_get_Box2D_b1d1b47c7e81f80a(C.uintptr_t(_swig_i_0)))
+	swig_r = (bool)(C._wrap_b2DistanceInput_useRadii_get_Box2D_553c0f9515edf50e(C.uintptr_t(_swig_i_0)))
 	return swig_r
 }
 
 func NewB2DistanceInput() (_swig_ret B2DistanceInput) {
 	var swig_r B2DistanceInput
-	swig_r = (B2DistanceInput)(SwigcptrB2DistanceInput(C._wrap_new_b2DistanceInput_Box2D_b1d1b47c7e81f80a()))
+	swig_r = (B2DistanceInput)(SwigcptrB2DistanceInput(C._wrap_new_b2DistanceInput_Box2D_553c0f9515edf50e()))
 	return swig_r
 }
 
 func DeleteB2DistanceInput(arg1 B2DistanceInput) {
 	_swig_i_0 := arg1.Swigcptr()
-	C._wrap_delete_b2DistanceInput_Box2D_b1d1b47c7e81f80a(C.uintptr_t(_swig_i_0))
+	C._wrap_delete_b2DistanceInput_Box2D_553c0f9515edf50e(C.uintptr_t(_swig_i_0))
 }
 
 type B2DistanceInput interface {
@@ -2703,64 +2709,64 @@ func (p SwigcptrB2DistanceOutput) SwigIsB2DistanceOutput() {
 func (arg1 SwigcptrB2DistanceOutput) SetPointA(arg2 B2Vec2) {
 	_swig_i_0 := arg1
 	_swig_i_1 := arg2.Swigcptr()
-	C._wrap_b2DistanceOutput_pointA_set_Box2D_b1d1b47c7e81f80a(C.uintptr_t(_swig_i_0), C.uintptr_t(_swig_i_1))
+	C._wrap_b2DistanceOutput_pointA_set_Box2D_553c0f9515edf50e(C.uintptr_t(_swig_i_0), C.uintptr_t(_swig_i_1))
 }
 
 func (arg1 SwigcptrB2DistanceOutput) GetPointA() (_swig_ret B2Vec2) {
 	var swig_r B2Vec2
 	_swig_i_0 := arg1
-	swig_r = (B2Vec2)(SwigcptrB2Vec2(C._wrap_b2DistanceOutput_pointA_get_Box2D_b1d1b47c7e81f80a(C.uintptr_t(_swig_i_0))))
+	swig_r = (B2Vec2)(SwigcptrB2Vec2(C._wrap_b2DistanceOutput_pointA_get_Box2D_553c0f9515edf50e(C.uintptr_t(_swig_i_0))))
 	return swig_r
 }
 
 func (arg1 SwigcptrB2DistanceOutput) SetPointB(arg2 B2Vec2) {
 	_swig_i_0 := arg1
 	_swig_i_1 := arg2.Swigcptr()
-	C._wrap_b2DistanceOutput_pointB_set_Box2D_b1d1b47c7e81f80a(C.uintptr_t(_swig_i_0), C.uintptr_t(_swig_i_1))
+	C._wrap_b2DistanceOutput_pointB_set_Box2D_553c0f9515edf50e(C.uintptr_t(_swig_i_0), C.uintptr_t(_swig_i_1))
 }
 
 func (arg1 SwigcptrB2DistanceOutput) GetPointB() (_swig_ret B2Vec2) {
 	var swig_r B2Vec2
 	_swig_i_0 := arg1
-	swig_r = (B2Vec2)(SwigcptrB2Vec2(C._wrap_b2DistanceOutput_pointB_get_Box2D_b1d1b47c7e81f80a(C.uintptr_t(_swig_i_0))))
+	swig_r = (B2Vec2)(SwigcptrB2Vec2(C._wrap_b2DistanceOutput_pointB_get_Box2D_553c0f9515edf50e(C.uintptr_t(_swig_i_0))))
 	return swig_r
 }
 
 func (arg1 SwigcptrB2DistanceOutput) SetDistance(arg2 float32) {
 	_swig_i_0 := arg1
 	_swig_i_1 := arg2
-	C._wrap_b2DistanceOutput_distance_set_Box2D_b1d1b47c7e81f80a(C.uintptr_t(_swig_i_0), C.float(_swig_i_1))
+	C._wrap_b2DistanceOutput_distance_set_Box2D_553c0f9515edf50e(C.uintptr_t(_swig_i_0), C.float(_swig_i_1))
 }
 
 func (arg1 SwigcptrB2DistanceOutput) GetDistance() (_swig_ret float32) {
 	var swig_r float32
 	_swig_i_0 := arg1
-	swig_r = (float32)(C._wrap_b2DistanceOutput_distance_get_Box2D_b1d1b47c7e81f80a(C.uintptr_t(_swig_i_0)))
+	swig_r = (float32)(C._wrap_b2DistanceOutput_distance_get_Box2D_553c0f9515edf50e(C.uintptr_t(_swig_i_0)))
 	return swig_r
 }
 
 func (arg1 SwigcptrB2DistanceOutput) SetIterations(arg2 int) {
 	_swig_i_0 := arg1
 	_swig_i_1 := arg2
-	C._wrap_b2DistanceOutput_iterations_set_Box2D_b1d1b47c7e81f80a(C.uintptr_t(_swig_i_0), C.swig_intgo(_swig_i_1))
+	C._wrap_b2DistanceOutput_iterations_set_Box2D_553c0f9515edf50e(C.uintptr_t(_swig_i_0), C.swig_intgo(_swig_i_1))
 }
 
 func (arg1 SwigcptrB2DistanceOutput) GetIterations() (_swig_ret int) {
 	var swig_r int
 	_swig_i_0 := arg1
-	swig_r = (int)(C._wrap_b2DistanceOutput_iterations_get_Box2D_b1d1b47c7e81f80a(C.uintptr_t(_swig_i_0)))
+	swig_r = (int)(C._wrap_b2DistanceOutput_iterations_get_Box2D_553c0f9515edf50e(C.uintptr_t(_swig_i_0)))
 	return swig_r
 }
 
 func NewB2DistanceOutput() (_swig_ret B2DistanceOutput) {
 	var swig_r B2DistanceOutput
-	swig_r = (B2DistanceOutput)(SwigcptrB2DistanceOutput(C._wrap_new_b2DistanceOutput_Box2D_b1d1b47c7e81f80a()))
+	swig_r = (B2DistanceOutput)(SwigcptrB2DistanceOutput(C._wrap_new_b2DistanceOutput_Box2D_553c0f9515edf50e()))
 	return swig_r
 }
 
 func DeleteB2DistanceOutput(arg1 B2DistanceOutput) {
 	_swig_i_0 := arg1.Swigcptr()
-	C._wrap_delete_b2DistanceOutput_Box2D_b1d1b47c7e81f80a(C.uintptr_t(_swig_i_0))
+	C._wrap_delete_b2DistanceOutput_Box2D_553c0f9515edf50e(C.uintptr_t(_swig_i_0))
 }
 
 type B2DistanceOutput interface {
@@ -2780,12 +2786,12 @@ func B2Distance(arg1 B2DistanceOutput, arg2 B2SimplexCache, arg3 B2DistanceInput
 	_swig_i_0 := arg1.Swigcptr()
 	_swig_i_1 := arg2.Swigcptr()
 	_swig_i_2 := arg3.Swigcptr()
-	C._wrap_b2Distance_Box2D_b1d1b47c7e81f80a(C.uintptr_t(_swig_i_0), C.uintptr_t(_swig_i_1), C.uintptr_t(_swig_i_2))
+	C._wrap_b2Distance_Box2D_553c0f9515edf50e(C.uintptr_t(_swig_i_0), C.uintptr_t(_swig_i_1), C.uintptr_t(_swig_i_2))
 }
 
 func _swig_getb2_nullNode() (_swig_ret int) {
 	var swig_r int
-	swig_r = (int)(C._wrap_b2_nullNode_Box2D_b1d1b47c7e81f80a())
+	swig_r = (int)(C._wrap_b2_nullNode_Box2D_553c0f9515edf50e())
 	return swig_r
 }
 
@@ -2802,84 +2808,84 @@ func (p SwigcptrB2TreeNode) SwigIsB2TreeNode() {
 func (arg1 SwigcptrB2TreeNode) IsLeaf() (_swig_ret bool) {
 	var swig_r bool
 	_swig_i_0 := arg1
-	swig_r = (bool)(C._wrap_b2TreeNode_IsLeaf_Box2D_b1d1b47c7e81f80a(C.uintptr_t(_swig_i_0)))
+	swig_r = (bool)(C._wrap_b2TreeNode_IsLeaf_Box2D_553c0f9515edf50e(C.uintptr_t(_swig_i_0)))
 	return swig_r
 }
 
 func (arg1 SwigcptrB2TreeNode) SetAabb(arg2 B2AABB) {
 	_swig_i_0 := arg1
 	_swig_i_1 := arg2.Swigcptr()
-	C._wrap_b2TreeNode_aabb_set_Box2D_b1d1b47c7e81f80a(C.uintptr_t(_swig_i_0), C.uintptr_t(_swig_i_1))
+	C._wrap_b2TreeNode_aabb_set_Box2D_553c0f9515edf50e(C.uintptr_t(_swig_i_0), C.uintptr_t(_swig_i_1))
 }
 
 func (arg1 SwigcptrB2TreeNode) GetAabb() (_swig_ret B2AABB) {
 	var swig_r B2AABB
 	_swig_i_0 := arg1
-	swig_r = (B2AABB)(SwigcptrB2AABB(C._wrap_b2TreeNode_aabb_get_Box2D_b1d1b47c7e81f80a(C.uintptr_t(_swig_i_0))))
+	swig_r = (B2AABB)(SwigcptrB2AABB(C._wrap_b2TreeNode_aabb_get_Box2D_553c0f9515edf50e(C.uintptr_t(_swig_i_0))))
 	return swig_r
 }
 
 func (arg1 SwigcptrB2TreeNode) SetUserData(arg2 uintptr) {
 	_swig_i_0 := arg1
 	_swig_i_1 := arg2
-	C._wrap_b2TreeNode_userData_set_Box2D_b1d1b47c7e81f80a(C.uintptr_t(_swig_i_0), C.uintptr_t(_swig_i_1))
+	C._wrap_b2TreeNode_userData_set_Box2D_553c0f9515edf50e(C.uintptr_t(_swig_i_0), C.uintptr_t(_swig_i_1))
 }
 
 func (arg1 SwigcptrB2TreeNode) GetUserData() (_swig_ret uintptr) {
 	var swig_r uintptr
 	_swig_i_0 := arg1
-	swig_r = (uintptr)(C._wrap_b2TreeNode_userData_get_Box2D_b1d1b47c7e81f80a(C.uintptr_t(_swig_i_0)))
+	swig_r = (uintptr)(C._wrap_b2TreeNode_userData_get_Box2D_553c0f9515edf50e(C.uintptr_t(_swig_i_0)))
 	return swig_r
 }
 
 func (arg1 SwigcptrB2TreeNode) SetChild1(arg2 int) {
 	_swig_i_0 := arg1
 	_swig_i_1 := arg2
-	C._wrap_b2TreeNode_child1_set_Box2D_b1d1b47c7e81f80a(C.uintptr_t(_swig_i_0), C.swig_intgo(_swig_i_1))
+	C._wrap_b2TreeNode_child1_set_Box2D_553c0f9515edf50e(C.uintptr_t(_swig_i_0), C.swig_intgo(_swig_i_1))
 }
 
 func (arg1 SwigcptrB2TreeNode) GetChild1() (_swig_ret int) {
 	var swig_r int
 	_swig_i_0 := arg1
-	swig_r = (int)(C._wrap_b2TreeNode_child1_get_Box2D_b1d1b47c7e81f80a(C.uintptr_t(_swig_i_0)))
+	swig_r = (int)(C._wrap_b2TreeNode_child1_get_Box2D_553c0f9515edf50e(C.uintptr_t(_swig_i_0)))
 	return swig_r
 }
 
 func (arg1 SwigcptrB2TreeNode) SetChild2(arg2 int) {
 	_swig_i_0 := arg1
 	_swig_i_1 := arg2
-	C._wrap_b2TreeNode_child2_set_Box2D_b1d1b47c7e81f80a(C.uintptr_t(_swig_i_0), C.swig_intgo(_swig_i_1))
+	C._wrap_b2TreeNode_child2_set_Box2D_553c0f9515edf50e(C.uintptr_t(_swig_i_0), C.swig_intgo(_swig_i_1))
 }
 
 func (arg1 SwigcptrB2TreeNode) GetChild2() (_swig_ret int) {
 	var swig_r int
 	_swig_i_0 := arg1
-	swig_r = (int)(C._wrap_b2TreeNode_child2_get_Box2D_b1d1b47c7e81f80a(C.uintptr_t(_swig_i_0)))
+	swig_r = (int)(C._wrap_b2TreeNode_child2_get_Box2D_553c0f9515edf50e(C.uintptr_t(_swig_i_0)))
 	return swig_r
 }
 
 func (arg1 SwigcptrB2TreeNode) SetHeight(arg2 int) {
 	_swig_i_0 := arg1
 	_swig_i_1 := arg2
-	C._wrap_b2TreeNode_height_set_Box2D_b1d1b47c7e81f80a(C.uintptr_t(_swig_i_0), C.swig_intgo(_swig_i_1))
+	C._wrap_b2TreeNode_height_set_Box2D_553c0f9515edf50e(C.uintptr_t(_swig_i_0), C.swig_intgo(_swig_i_1))
 }
 
 func (arg1 SwigcptrB2TreeNode) GetHeight() (_swig_ret int) {
 	var swig_r int
 	_swig_i_0 := arg1
-	swig_r = (int)(C._wrap_b2TreeNode_height_get_Box2D_b1d1b47c7e81f80a(C.uintptr_t(_swig_i_0)))
+	swig_r = (int)(C._wrap_b2TreeNode_height_get_Box2D_553c0f9515edf50e(C.uintptr_t(_swig_i_0)))
 	return swig_r
 }
 
 func NewB2TreeNode() (_swig_ret B2TreeNode) {
 	var swig_r B2TreeNode
-	swig_r = (B2TreeNode)(SwigcptrB2TreeNode(C._wrap_new_b2TreeNode_Box2D_b1d1b47c7e81f80a()))
+	swig_r = (B2TreeNode)(SwigcptrB2TreeNode(C._wrap_new_b2TreeNode_Box2D_553c0f9515edf50e()))
 	return swig_r
 }
 
 func DeleteB2TreeNode(arg1 B2TreeNode) {
 	_swig_i_0 := arg1.Swigcptr()
-	C._wrap_delete_b2TreeNode_Box2D_b1d1b47c7e81f80a(C.uintptr_t(_swig_i_0))
+	C._wrap_delete_b2TreeNode_Box2D_553c0f9515edf50e(C.uintptr_t(_swig_i_0))
 }
 
 type B2TreeNode interface {
@@ -2909,13 +2915,13 @@ func (p SwigcptrB2DynamicTree) SwigIsB2DynamicTree() {
 
 func NewB2DynamicTree() (_swig_ret B2DynamicTree) {
 	var swig_r B2DynamicTree
-	swig_r = (B2DynamicTree)(SwigcptrB2DynamicTree(C._wrap_new_b2DynamicTree_Box2D_b1d1b47c7e81f80a()))
+	swig_r = (B2DynamicTree)(SwigcptrB2DynamicTree(C._wrap_new_b2DynamicTree_Box2D_553c0f9515edf50e()))
 	return swig_r
 }
 
 func DeleteB2DynamicTree(arg1 B2DynamicTree) {
 	_swig_i_0 := arg1.Swigcptr()
-	C._wrap_delete_b2DynamicTree_Box2D_b1d1b47c7e81f80a(C.uintptr_t(_swig_i_0))
+	C._wrap_delete_b2DynamicTree_Box2D_553c0f9515edf50e(C.uintptr_t(_swig_i_0))
 }
 
 func (arg1 SwigcptrB2DynamicTree) CreateProxy(arg2 B2AABB, arg3 uintptr) (_swig_ret int) {
@@ -2923,14 +2929,14 @@ func (arg1 SwigcptrB2DynamicTree) CreateProxy(arg2 B2AABB, arg3 uintptr) (_swig_
 	_swig_i_0 := arg1
 	_swig_i_1 := arg2.Swigcptr()
 	_swig_i_2 := arg3
-	swig_r = (int)(C._wrap_b2DynamicTree_CreateProxy_Box2D_b1d1b47c7e81f80a(C.uintptr_t(_swig_i_0), C.uintptr_t(_swig_i_1), C.uintptr_t(_swig_i_2)))
+	swig_r = (int)(C._wrap_b2DynamicTree_CreateProxy_Box2D_553c0f9515edf50e(C.uintptr_t(_swig_i_0), C.uintptr_t(_swig_i_1), C.uintptr_t(_swig_i_2)))
 	return swig_r
 }
 
 func (arg1 SwigcptrB2DynamicTree) DestroyProxy(arg2 int) {
 	_swig_i_0 := arg1
 	_swig_i_1 := arg2
-	C._wrap_b2DynamicTree_DestroyProxy_Box2D_b1d1b47c7e81f80a(C.uintptr_t(_swig_i_0), C.swig_intgo(_swig_i_1))
+	C._wrap_b2DynamicTree_DestroyProxy_Box2D_553c0f9515edf50e(C.uintptr_t(_swig_i_0), C.swig_intgo(_swig_i_1))
 }
 
 func (arg1 SwigcptrB2DynamicTree) MoveProxy(arg2 int, arg3 B2AABB, arg4 B2Vec2) (_swig_ret bool) {
@@ -2939,7 +2945,7 @@ func (arg1 SwigcptrB2DynamicTree) MoveProxy(arg2 int, arg3 B2AABB, arg4 B2Vec2) 
 	_swig_i_1 := arg2
 	_swig_i_2 := arg3.Swigcptr()
 	_swig_i_3 := arg4.Swigcptr()
-	swig_r = (bool)(C._wrap_b2DynamicTree_MoveProxy_Box2D_b1d1b47c7e81f80a(C.uintptr_t(_swig_i_0), C.swig_intgo(_swig_i_1), C.uintptr_t(_swig_i_2), C.uintptr_t(_swig_i_3)))
+	swig_r = (bool)(C._wrap_b2DynamicTree_MoveProxy_Box2D_553c0f9515edf50e(C.uintptr_t(_swig_i_0), C.swig_intgo(_swig_i_1), C.uintptr_t(_swig_i_2), C.uintptr_t(_swig_i_3)))
 	return swig_r
 }
 
@@ -2947,7 +2953,7 @@ func (arg1 SwigcptrB2DynamicTree) GetUserData(arg2 int) (_swig_ret uintptr) {
 	var swig_r uintptr
 	_swig_i_0 := arg1
 	_swig_i_1 := arg2
-	swig_r = (uintptr)(C._wrap_b2DynamicTree_GetUserData_Box2D_b1d1b47c7e81f80a(C.uintptr_t(_swig_i_0), C.swig_intgo(_swig_i_1)))
+	swig_r = (uintptr)(C._wrap_b2DynamicTree_GetUserData_Box2D_553c0f9515edf50e(C.uintptr_t(_swig_i_0), C.swig_intgo(_swig_i_1)))
 	return swig_r
 }
 
@@ -2955,45 +2961,45 @@ func (arg1 SwigcptrB2DynamicTree) GetFatAABB(arg2 int) (_swig_ret B2AABB) {
 	var swig_r B2AABB
 	_swig_i_0 := arg1
 	_swig_i_1 := arg2
-	swig_r = (B2AABB)(SwigcptrB2AABB(C._wrap_b2DynamicTree_GetFatAABB_Box2D_b1d1b47c7e81f80a(C.uintptr_t(_swig_i_0), C.swig_intgo(_swig_i_1))))
+	swig_r = (B2AABB)(SwigcptrB2AABB(C._wrap_b2DynamicTree_GetFatAABB_Box2D_553c0f9515edf50e(C.uintptr_t(_swig_i_0), C.swig_intgo(_swig_i_1))))
 	return swig_r
 }
 
 func (arg1 SwigcptrB2DynamicTree) Validate() {
 	_swig_i_0 := arg1
-	C._wrap_b2DynamicTree_Validate_Box2D_b1d1b47c7e81f80a(C.uintptr_t(_swig_i_0))
+	C._wrap_b2DynamicTree_Validate_Box2D_553c0f9515edf50e(C.uintptr_t(_swig_i_0))
 }
 
 func (arg1 SwigcptrB2DynamicTree) GetHeight() (_swig_ret int) {
 	var swig_r int
 	_swig_i_0 := arg1
-	swig_r = (int)(C._wrap_b2DynamicTree_GetHeight_Box2D_b1d1b47c7e81f80a(C.uintptr_t(_swig_i_0)))
+	swig_r = (int)(C._wrap_b2DynamicTree_GetHeight_Box2D_553c0f9515edf50e(C.uintptr_t(_swig_i_0)))
 	return swig_r
 }
 
 func (arg1 SwigcptrB2DynamicTree) GetMaxBalance() (_swig_ret int) {
 	var swig_r int
 	_swig_i_0 := arg1
-	swig_r = (int)(C._wrap_b2DynamicTree_GetMaxBalance_Box2D_b1d1b47c7e81f80a(C.uintptr_t(_swig_i_0)))
+	swig_r = (int)(C._wrap_b2DynamicTree_GetMaxBalance_Box2D_553c0f9515edf50e(C.uintptr_t(_swig_i_0)))
 	return swig_r
 }
 
 func (arg1 SwigcptrB2DynamicTree) GetAreaRatio() (_swig_ret float32) {
 	var swig_r float32
 	_swig_i_0 := arg1
-	swig_r = (float32)(C._wrap_b2DynamicTree_GetAreaRatio_Box2D_b1d1b47c7e81f80a(C.uintptr_t(_swig_i_0)))
+	swig_r = (float32)(C._wrap_b2DynamicTree_GetAreaRatio_Box2D_553c0f9515edf50e(C.uintptr_t(_swig_i_0)))
 	return swig_r
 }
 
 func (arg1 SwigcptrB2DynamicTree) RebuildBottomUp() {
 	_swig_i_0 := arg1
-	C._wrap_b2DynamicTree_RebuildBottomUp_Box2D_b1d1b47c7e81f80a(C.uintptr_t(_swig_i_0))
+	C._wrap_b2DynamicTree_RebuildBottomUp_Box2D_553c0f9515edf50e(C.uintptr_t(_swig_i_0))
 }
 
 func (arg1 SwigcptrB2DynamicTree) ShiftOrigin(arg2 B2Vec2) {
 	_swig_i_0 := arg1
 	_swig_i_1 := arg2.Swigcptr()
-	C._wrap_b2DynamicTree_ShiftOrigin_Box2D_b1d1b47c7e81f80a(C.uintptr_t(_swig_i_0), C.uintptr_t(_swig_i_1))
+	C._wrap_b2DynamicTree_ShiftOrigin_Box2D_553c0f9515edf50e(C.uintptr_t(_swig_i_0), C.uintptr_t(_swig_i_1))
 }
 
 type B2DynamicTree interface {
@@ -3024,77 +3030,77 @@ func (p SwigcptrB2TOIInput) SwigIsB2TOIInput() {
 func (arg1 SwigcptrB2TOIInput) SetProxyA(arg2 B2DistanceProxy) {
 	_swig_i_0 := arg1
 	_swig_i_1 := arg2.Swigcptr()
-	C._wrap_b2TOIInput_proxyA_set_Box2D_b1d1b47c7e81f80a(C.uintptr_t(_swig_i_0), C.uintptr_t(_swig_i_1))
+	C._wrap_b2TOIInput_proxyA_set_Box2D_553c0f9515edf50e(C.uintptr_t(_swig_i_0), C.uintptr_t(_swig_i_1))
 }
 
 func (arg1 SwigcptrB2TOIInput) GetProxyA() (_swig_ret B2DistanceProxy) {
 	var swig_r B2DistanceProxy
 	_swig_i_0 := arg1
-	swig_r = (B2DistanceProxy)(SwigcptrB2DistanceProxy(C._wrap_b2TOIInput_proxyA_get_Box2D_b1d1b47c7e81f80a(C.uintptr_t(_swig_i_0))))
+	swig_r = (B2DistanceProxy)(SwigcptrB2DistanceProxy(C._wrap_b2TOIInput_proxyA_get_Box2D_553c0f9515edf50e(C.uintptr_t(_swig_i_0))))
 	return swig_r
 }
 
 func (arg1 SwigcptrB2TOIInput) SetProxyB(arg2 B2DistanceProxy) {
 	_swig_i_0 := arg1
 	_swig_i_1 := arg2.Swigcptr()
-	C._wrap_b2TOIInput_proxyB_set_Box2D_b1d1b47c7e81f80a(C.uintptr_t(_swig_i_0), C.uintptr_t(_swig_i_1))
+	C._wrap_b2TOIInput_proxyB_set_Box2D_553c0f9515edf50e(C.uintptr_t(_swig_i_0), C.uintptr_t(_swig_i_1))
 }
 
 func (arg1 SwigcptrB2TOIInput) GetProxyB() (_swig_ret B2DistanceProxy) {
 	var swig_r B2DistanceProxy
 	_swig_i_0 := arg1
-	swig_r = (B2DistanceProxy)(SwigcptrB2DistanceProxy(C._wrap_b2TOIInput_proxyB_get_Box2D_b1d1b47c7e81f80a(C.uintptr_t(_swig_i_0))))
+	swig_r = (B2DistanceProxy)(SwigcptrB2DistanceProxy(C._wrap_b2TOIInput_proxyB_get_Box2D_553c0f9515edf50e(C.uintptr_t(_swig_i_0))))
 	return swig_r
 }
 
 func (arg1 SwigcptrB2TOIInput) SetSweepA(arg2 B2Sweep) {
 	_swig_i_0 := arg1
 	_swig_i_1 := arg2.Swigcptr()
-	C._wrap_b2TOIInput_sweepA_set_Box2D_b1d1b47c7e81f80a(C.uintptr_t(_swig_i_0), C.uintptr_t(_swig_i_1))
+	C._wrap_b2TOIInput_sweepA_set_Box2D_553c0f9515edf50e(C.uintptr_t(_swig_i_0), C.uintptr_t(_swig_i_1))
 }
 
 func (arg1 SwigcptrB2TOIInput) GetSweepA() (_swig_ret B2Sweep) {
 	var swig_r B2Sweep
 	_swig_i_0 := arg1
-	swig_r = (B2Sweep)(SwigcptrB2Sweep(C._wrap_b2TOIInput_sweepA_get_Box2D_b1d1b47c7e81f80a(C.uintptr_t(_swig_i_0))))
+	swig_r = (B2Sweep)(SwigcptrB2Sweep(C._wrap_b2TOIInput_sweepA_get_Box2D_553c0f9515edf50e(C.uintptr_t(_swig_i_0))))
 	return swig_r
 }
 
 func (arg1 SwigcptrB2TOIInput) SetSweepB(arg2 B2Sweep) {
 	_swig_i_0 := arg1
 	_swig_i_1 := arg2.Swigcptr()
-	C._wrap_b2TOIInput_sweepB_set_Box2D_b1d1b47c7e81f80a(C.uintptr_t(_swig_i_0), C.uintptr_t(_swig_i_1))
+	C._wrap_b2TOIInput_sweepB_set_Box2D_553c0f9515edf50e(C.uintptr_t(_swig_i_0), C.uintptr_t(_swig_i_1))
 }
 
 func (arg1 SwigcptrB2TOIInput) GetSweepB() (_swig_ret B2Sweep) {
 	var swig_r B2Sweep
 	_swig_i_0 := arg1
-	swig_r = (B2Sweep)(SwigcptrB2Sweep(C._wrap_b2TOIInput_sweepB_get_Box2D_b1d1b47c7e81f80a(C.uintptr_t(_swig_i_0))))
+	swig_r = (B2Sweep)(SwigcptrB2Sweep(C._wrap_b2TOIInput_sweepB_get_Box2D_553c0f9515edf50e(C.uintptr_t(_swig_i_0))))
 	return swig_r
 }
 
 func (arg1 SwigcptrB2TOIInput) SetTMax(arg2 float32) {
 	_swig_i_0 := arg1
 	_swig_i_1 := arg2
-	C._wrap_b2TOIInput_tMax_set_Box2D_b1d1b47c7e81f80a(C.uintptr_t(_swig_i_0), C.float(_swig_i_1))
+	C._wrap_b2TOIInput_tMax_set_Box2D_553c0f9515edf50e(C.uintptr_t(_swig_i_0), C.float(_swig_i_1))
 }
 
 func (arg1 SwigcptrB2TOIInput) GetTMax() (_swig_ret float32) {
 	var swig_r float32
 	_swig_i_0 := arg1
-	swig_r = (float32)(C._wrap_b2TOIInput_tMax_get_Box2D_b1d1b47c7e81f80a(C.uintptr_t(_swig_i_0)))
+	swig_r = (float32)(C._wrap_b2TOIInput_tMax_get_Box2D_553c0f9515edf50e(C.uintptr_t(_swig_i_0)))
 	return swig_r
 }
 
 func NewB2TOIInput() (_swig_ret B2TOIInput) {
 	var swig_r B2TOIInput
-	swig_r = (B2TOIInput)(SwigcptrB2TOIInput(C._wrap_new_b2TOIInput_Box2D_b1d1b47c7e81f80a()))
+	swig_r = (B2TOIInput)(SwigcptrB2TOIInput(C._wrap_new_b2TOIInput_Box2D_553c0f9515edf50e()))
 	return swig_r
 }
 
 func DeleteB2TOIInput(arg1 B2TOIInput) {
 	_swig_i_0 := arg1.Swigcptr()
-	C._wrap_delete_b2TOIInput_Box2D_b1d1b47c7e81f80a(C.uintptr_t(_swig_i_0))
+	C._wrap_delete_b2TOIInput_Box2D_553c0f9515edf50e(C.uintptr_t(_swig_i_0))
 }
 
 type B2TOIInput interface {
@@ -3124,35 +3130,35 @@ func (p SwigcptrB2TOIOutput) SwigIsB2TOIOutput() {
 type B2TOIOutputState int
 func _swig_getb2TOIOutput_e_unknown_b2TOIOutput() (_swig_ret B2TOIOutputState) {
 	var swig_r B2TOIOutputState
-	swig_r = (B2TOIOutputState)(C._wrap_e_unknown_b2TOIOutput_Box2D_b1d1b47c7e81f80a())
+	swig_r = (B2TOIOutputState)(C._wrap_e_unknown_b2TOIOutput_Box2D_553c0f9515edf50e())
 	return swig_r
 }
 
 var B2TOIOutputE_unknown B2TOIOutputState = _swig_getb2TOIOutput_e_unknown_b2TOIOutput()
 func _swig_getb2TOIOutput_e_failed_b2TOIOutput() (_swig_ret B2TOIOutputState) {
 	var swig_r B2TOIOutputState
-	swig_r = (B2TOIOutputState)(C._wrap_e_failed_b2TOIOutput_Box2D_b1d1b47c7e81f80a())
+	swig_r = (B2TOIOutputState)(C._wrap_e_failed_b2TOIOutput_Box2D_553c0f9515edf50e())
 	return swig_r
 }
 
 var B2TOIOutputE_failed B2TOIOutputState = _swig_getb2TOIOutput_e_failed_b2TOIOutput()
 func _swig_getb2TOIOutput_e_overlapped_b2TOIOutput() (_swig_ret B2TOIOutputState) {
 	var swig_r B2TOIOutputState
-	swig_r = (B2TOIOutputState)(C._wrap_e_overlapped_b2TOIOutput_Box2D_b1d1b47c7e81f80a())
+	swig_r = (B2TOIOutputState)(C._wrap_e_overlapped_b2TOIOutput_Box2D_553c0f9515edf50e())
 	return swig_r
 }
 
 var B2TOIOutputE_overlapped B2TOIOutputState = _swig_getb2TOIOutput_e_overlapped_b2TOIOutput()
 func _swig_getb2TOIOutput_e_touching_b2TOIOutput() (_swig_ret B2TOIOutputState) {
 	var swig_r B2TOIOutputState
-	swig_r = (B2TOIOutputState)(C._wrap_e_touching_b2TOIOutput_Box2D_b1d1b47c7e81f80a())
+	swig_r = (B2TOIOutputState)(C._wrap_e_touching_b2TOIOutput_Box2D_553c0f9515edf50e())
 	return swig_r
 }
 
 var B2TOIOutputE_touching B2TOIOutputState = _swig_getb2TOIOutput_e_touching_b2TOIOutput()
 func _swig_getb2TOIOutput_e_separated_b2TOIOutput() (_swig_ret B2TOIOutputState) {
 	var swig_r B2TOIOutputState
-	swig_r = (B2TOIOutputState)(C._wrap_e_separated_b2TOIOutput_Box2D_b1d1b47c7e81f80a())
+	swig_r = (B2TOIOutputState)(C._wrap_e_separated_b2TOIOutput_Box2D_553c0f9515edf50e())
 	return swig_r
 }
 
@@ -3160,38 +3166,38 @@ var B2TOIOutputE_separated B2TOIOutputState = _swig_getb2TOIOutput_e_separated_b
 func (arg1 SwigcptrB2TOIOutput) SetState(arg2 B2TOIOutputState) {
 	_swig_i_0 := arg1
 	_swig_i_1 := arg2
-	C._wrap_b2TOIOutput_state_set_Box2D_b1d1b47c7e81f80a(C.uintptr_t(_swig_i_0), C.swig_intgo(_swig_i_1))
+	C._wrap_b2TOIOutput_state_set_Box2D_553c0f9515edf50e(C.uintptr_t(_swig_i_0), C.swig_intgo(_swig_i_1))
 }
 
 func (arg1 SwigcptrB2TOIOutput) GetState() (_swig_ret B2TOIOutputState) {
 	var swig_r B2TOIOutputState
 	_swig_i_0 := arg1
-	swig_r = (B2TOIOutputState)(C._wrap_b2TOIOutput_state_get_Box2D_b1d1b47c7e81f80a(C.uintptr_t(_swig_i_0)))
+	swig_r = (B2TOIOutputState)(C._wrap_b2TOIOutput_state_get_Box2D_553c0f9515edf50e(C.uintptr_t(_swig_i_0)))
 	return swig_r
 }
 
 func (arg1 SwigcptrB2TOIOutput) SetT(arg2 float32) {
 	_swig_i_0 := arg1
 	_swig_i_1 := arg2
-	C._wrap_b2TOIOutput_t_set_Box2D_b1d1b47c7e81f80a(C.uintptr_t(_swig_i_0), C.float(_swig_i_1))
+	C._wrap_b2TOIOutput_t_set_Box2D_553c0f9515edf50e(C.uintptr_t(_swig_i_0), C.float(_swig_i_1))
 }
 
 func (arg1 SwigcptrB2TOIOutput) GetT() (_swig_ret float32) {
 	var swig_r float32
 	_swig_i_0 := arg1
-	swig_r = (float32)(C._wrap_b2TOIOutput_t_get_Box2D_b1d1b47c7e81f80a(C.uintptr_t(_swig_i_0)))
+	swig_r = (float32)(C._wrap_b2TOIOutput_t_get_Box2D_553c0f9515edf50e(C.uintptr_t(_swig_i_0)))
 	return swig_r
 }
 
 func NewB2TOIOutput() (_swig_ret B2TOIOutput) {
 	var swig_r B2TOIOutput
-	swig_r = (B2TOIOutput)(SwigcptrB2TOIOutput(C._wrap_new_b2TOIOutput_Box2D_b1d1b47c7e81f80a()))
+	swig_r = (B2TOIOutput)(SwigcptrB2TOIOutput(C._wrap_new_b2TOIOutput_Box2D_553c0f9515edf50e()))
 	return swig_r
 }
 
 func DeleteB2TOIOutput(arg1 B2TOIOutput) {
 	_swig_i_0 := arg1.Swigcptr()
-	C._wrap_delete_b2TOIOutput_Box2D_b1d1b47c7e81f80a(C.uintptr_t(_swig_i_0))
+	C._wrap_delete_b2TOIOutput_Box2D_553c0f9515edf50e(C.uintptr_t(_swig_i_0))
 }
 
 type B2TOIOutput interface {
@@ -3206,27 +3212,27 @@ type B2TOIOutput interface {
 func B2TimeOfImpact(arg1 B2TOIOutput, arg2 B2TOIInput) {
 	_swig_i_0 := arg1.Swigcptr()
 	_swig_i_1 := arg2.Swigcptr()
-	C._wrap_b2TimeOfImpact_Box2D_b1d1b47c7e81f80a(C.uintptr_t(_swig_i_0), C.uintptr_t(_swig_i_1))
+	C._wrap_b2TimeOfImpact_Box2D_553c0f9515edf50e(C.uintptr_t(_swig_i_0), C.uintptr_t(_swig_i_1))
 }
 
 type B2BodyType int
 func _swig_getb2_staticBody() (_swig_ret B2BodyType) {
 	var swig_r B2BodyType
-	swig_r = (B2BodyType)(C._wrap_b2_staticBody_Box2D_b1d1b47c7e81f80a())
+	swig_r = (B2BodyType)(C._wrap_b2_staticBody_Box2D_553c0f9515edf50e())
 	return swig_r
 }
 
 var B2_staticBody B2BodyType = _swig_getb2_staticBody()
 func _swig_getb2_kinematicBody() (_swig_ret B2BodyType) {
 	var swig_r B2BodyType
-	swig_r = (B2BodyType)(C._wrap_b2_kinematicBody_Box2D_b1d1b47c7e81f80a())
+	swig_r = (B2BodyType)(C._wrap_b2_kinematicBody_Box2D_553c0f9515edf50e())
 	return swig_r
 }
 
 var B2_kinematicBody B2BodyType = _swig_getb2_kinematicBody()
 func _swig_getb2_dynamicBody() (_swig_ret B2BodyType) {
 	var swig_r B2BodyType
-	swig_r = (B2BodyType)(C._wrap_b2_dynamicBody_Box2D_b1d1b47c7e81f80a())
+	swig_r = (B2BodyType)(C._wrap_b2_dynamicBody_Box2D_553c0f9515edf50e())
 	return swig_r
 }
 
@@ -3242,195 +3248,195 @@ func (p SwigcptrB2BodyDef) SwigIsB2BodyDef() {
 
 func NewB2BodyDef() (_swig_ret B2BodyDef) {
 	var swig_r B2BodyDef
-	swig_r = (B2BodyDef)(SwigcptrB2BodyDef(C._wrap_new_b2BodyDef_Box2D_b1d1b47c7e81f80a()))
+	swig_r = (B2BodyDef)(SwigcptrB2BodyDef(C._wrap_new_b2BodyDef_Box2D_553c0f9515edf50e()))
 	return swig_r
 }
 
 func (arg1 SwigcptrB2BodyDef) SetXtype(arg2 B2BodyType) {
 	_swig_i_0 := arg1
 	_swig_i_1 := arg2
-	C._wrap_b2BodyDef_Xtype_set_Box2D_b1d1b47c7e81f80a(C.uintptr_t(_swig_i_0), C.swig_intgo(_swig_i_1))
+	C._wrap_b2BodyDef_Xtype_set_Box2D_553c0f9515edf50e(C.uintptr_t(_swig_i_0), C.swig_intgo(_swig_i_1))
 }
 
 func (arg1 SwigcptrB2BodyDef) GetXtype() (_swig_ret B2BodyType) {
 	var swig_r B2BodyType
 	_swig_i_0 := arg1
-	swig_r = (B2BodyType)(C._wrap_b2BodyDef_Xtype_get_Box2D_b1d1b47c7e81f80a(C.uintptr_t(_swig_i_0)))
+	swig_r = (B2BodyType)(C._wrap_b2BodyDef_Xtype_get_Box2D_553c0f9515edf50e(C.uintptr_t(_swig_i_0)))
 	return swig_r
 }
 
 func (arg1 SwigcptrB2BodyDef) SetPosition(arg2 B2Vec2) {
 	_swig_i_0 := arg1
 	_swig_i_1 := arg2.Swigcptr()
-	C._wrap_b2BodyDef_position_set_Box2D_b1d1b47c7e81f80a(C.uintptr_t(_swig_i_0), C.uintptr_t(_swig_i_1))
+	C._wrap_b2BodyDef_position_set_Box2D_553c0f9515edf50e(C.uintptr_t(_swig_i_0), C.uintptr_t(_swig_i_1))
 }
 
 func (arg1 SwigcptrB2BodyDef) GetPosition() (_swig_ret B2Vec2) {
 	var swig_r B2Vec2
 	_swig_i_0 := arg1
-	swig_r = (B2Vec2)(SwigcptrB2Vec2(C._wrap_b2BodyDef_position_get_Box2D_b1d1b47c7e81f80a(C.uintptr_t(_swig_i_0))))
+	swig_r = (B2Vec2)(SwigcptrB2Vec2(C._wrap_b2BodyDef_position_get_Box2D_553c0f9515edf50e(C.uintptr_t(_swig_i_0))))
 	return swig_r
 }
 
 func (arg1 SwigcptrB2BodyDef) SetAngle(arg2 float32) {
 	_swig_i_0 := arg1
 	_swig_i_1 := arg2
-	C._wrap_b2BodyDef_angle_set_Box2D_b1d1b47c7e81f80a(C.uintptr_t(_swig_i_0), C.float(_swig_i_1))
+	C._wrap_b2BodyDef_angle_set_Box2D_553c0f9515edf50e(C.uintptr_t(_swig_i_0), C.float(_swig_i_1))
 }
 
 func (arg1 SwigcptrB2BodyDef) GetAngle() (_swig_ret float32) {
 	var swig_r float32
 	_swig_i_0 := arg1
-	swig_r = (float32)(C._wrap_b2BodyDef_angle_get_Box2D_b1d1b47c7e81f80a(C.uintptr_t(_swig_i_0)))
+	swig_r = (float32)(C._wrap_b2BodyDef_angle_get_Box2D_553c0f9515edf50e(C.uintptr_t(_swig_i_0)))
 	return swig_r
 }
 
 func (arg1 SwigcptrB2BodyDef) SetLinearVelocity(arg2 B2Vec2) {
 	_swig_i_0 := arg1
 	_swig_i_1 := arg2.Swigcptr()
-	C._wrap_b2BodyDef_linearVelocity_set_Box2D_b1d1b47c7e81f80a(C.uintptr_t(_swig_i_0), C.uintptr_t(_swig_i_1))
+	C._wrap_b2BodyDef_linearVelocity_set_Box2D_553c0f9515edf50e(C.uintptr_t(_swig_i_0), C.uintptr_t(_swig_i_1))
 }
 
 func (arg1 SwigcptrB2BodyDef) GetLinearVelocity() (_swig_ret B2Vec2) {
 	var swig_r B2Vec2
 	_swig_i_0 := arg1
-	swig_r = (B2Vec2)(SwigcptrB2Vec2(C._wrap_b2BodyDef_linearVelocity_get_Box2D_b1d1b47c7e81f80a(C.uintptr_t(_swig_i_0))))
+	swig_r = (B2Vec2)(SwigcptrB2Vec2(C._wrap_b2BodyDef_linearVelocity_get_Box2D_553c0f9515edf50e(C.uintptr_t(_swig_i_0))))
 	return swig_r
 }
 
 func (arg1 SwigcptrB2BodyDef) SetAngularVelocity(arg2 float32) {
 	_swig_i_0 := arg1
 	_swig_i_1 := arg2
-	C._wrap_b2BodyDef_angularVelocity_set_Box2D_b1d1b47c7e81f80a(C.uintptr_t(_swig_i_0), C.float(_swig_i_1))
+	C._wrap_b2BodyDef_angularVelocity_set_Box2D_553c0f9515edf50e(C.uintptr_t(_swig_i_0), C.float(_swig_i_1))
 }
 
 func (arg1 SwigcptrB2BodyDef) GetAngularVelocity() (_swig_ret float32) {
 	var swig_r float32
 	_swig_i_0 := arg1
-	swig_r = (float32)(C._wrap_b2BodyDef_angularVelocity_get_Box2D_b1d1b47c7e81f80a(C.uintptr_t(_swig_i_0)))
+	swig_r = (float32)(C._wrap_b2BodyDef_angularVelocity_get_Box2D_553c0f9515edf50e(C.uintptr_t(_swig_i_0)))
 	return swig_r
 }
 
 func (arg1 SwigcptrB2BodyDef) SetLinearDamping(arg2 float32) {
 	_swig_i_0 := arg1
 	_swig_i_1 := arg2
-	C._wrap_b2BodyDef_linearDamping_set_Box2D_b1d1b47c7e81f80a(C.uintptr_t(_swig_i_0), C.float(_swig_i_1))
+	C._wrap_b2BodyDef_linearDamping_set_Box2D_553c0f9515edf50e(C.uintptr_t(_swig_i_0), C.float(_swig_i_1))
 }
 
 func (arg1 SwigcptrB2BodyDef) GetLinearDamping() (_swig_ret float32) {
 	var swig_r float32
 	_swig_i_0 := arg1
-	swig_r = (float32)(C._wrap_b2BodyDef_linearDamping_get_Box2D_b1d1b47c7e81f80a(C.uintptr_t(_swig_i_0)))
+	swig_r = (float32)(C._wrap_b2BodyDef_linearDamping_get_Box2D_553c0f9515edf50e(C.uintptr_t(_swig_i_0)))
 	return swig_r
 }
 
 func (arg1 SwigcptrB2BodyDef) SetAngularDamping(arg2 float32) {
 	_swig_i_0 := arg1
 	_swig_i_1 := arg2
-	C._wrap_b2BodyDef_angularDamping_set_Box2D_b1d1b47c7e81f80a(C.uintptr_t(_swig_i_0), C.float(_swig_i_1))
+	C._wrap_b2BodyDef_angularDamping_set_Box2D_553c0f9515edf50e(C.uintptr_t(_swig_i_0), C.float(_swig_i_1))
 }
 
 func (arg1 SwigcptrB2BodyDef) GetAngularDamping() (_swig_ret float32) {
 	var swig_r float32
 	_swig_i_0 := arg1
-	swig_r = (float32)(C._wrap_b2BodyDef_angularDamping_get_Box2D_b1d1b47c7e81f80a(C.uintptr_t(_swig_i_0)))
+	swig_r = (float32)(C._wrap_b2BodyDef_angularDamping_get_Box2D_553c0f9515edf50e(C.uintptr_t(_swig_i_0)))
 	return swig_r
 }
 
 func (arg1 SwigcptrB2BodyDef) SetAllowSleep(arg2 bool) {
 	_swig_i_0 := arg1
 	_swig_i_1 := arg2
-	C._wrap_b2BodyDef_allowSleep_set_Box2D_b1d1b47c7e81f80a(C.uintptr_t(_swig_i_0), C._Bool(_swig_i_1))
+	C._wrap_b2BodyDef_allowSleep_set_Box2D_553c0f9515edf50e(C.uintptr_t(_swig_i_0), C._Bool(_swig_i_1))
 }
 
 func (arg1 SwigcptrB2BodyDef) GetAllowSleep() (_swig_ret bool) {
 	var swig_r bool
 	_swig_i_0 := arg1
-	swig_r = (bool)(C._wrap_b2BodyDef_allowSleep_get_Box2D_b1d1b47c7e81f80a(C.uintptr_t(_swig_i_0)))
+	swig_r = (bool)(C._wrap_b2BodyDef_allowSleep_get_Box2D_553c0f9515edf50e(C.uintptr_t(_swig_i_0)))
 	return swig_r
 }
 
 func (arg1 SwigcptrB2BodyDef) SetAwake(arg2 bool) {
 	_swig_i_0 := arg1
 	_swig_i_1 := arg2
-	C._wrap_b2BodyDef_awake_set_Box2D_b1d1b47c7e81f80a(C.uintptr_t(_swig_i_0), C._Bool(_swig_i_1))
+	C._wrap_b2BodyDef_awake_set_Box2D_553c0f9515edf50e(C.uintptr_t(_swig_i_0), C._Bool(_swig_i_1))
 }
 
 func (arg1 SwigcptrB2BodyDef) GetAwake() (_swig_ret bool) {
 	var swig_r bool
 	_swig_i_0 := arg1
-	swig_r = (bool)(C._wrap_b2BodyDef_awake_get_Box2D_b1d1b47c7e81f80a(C.uintptr_t(_swig_i_0)))
+	swig_r = (bool)(C._wrap_b2BodyDef_awake_get_Box2D_553c0f9515edf50e(C.uintptr_t(_swig_i_0)))
 	return swig_r
 }
 
 func (arg1 SwigcptrB2BodyDef) SetFixedRotation(arg2 bool) {
 	_swig_i_0 := arg1
 	_swig_i_1 := arg2
-	C._wrap_b2BodyDef_fixedRotation_set_Box2D_b1d1b47c7e81f80a(C.uintptr_t(_swig_i_0), C._Bool(_swig_i_1))
+	C._wrap_b2BodyDef_fixedRotation_set_Box2D_553c0f9515edf50e(C.uintptr_t(_swig_i_0), C._Bool(_swig_i_1))
 }
 
 func (arg1 SwigcptrB2BodyDef) GetFixedRotation() (_swig_ret bool) {
 	var swig_r bool
 	_swig_i_0 := arg1
-	swig_r = (bool)(C._wrap_b2BodyDef_fixedRotation_get_Box2D_b1d1b47c7e81f80a(C.uintptr_t(_swig_i_0)))
+	swig_r = (bool)(C._wrap_b2BodyDef_fixedRotation_get_Box2D_553c0f9515edf50e(C.uintptr_t(_swig_i_0)))
 	return swig_r
 }
 
 func (arg1 SwigcptrB2BodyDef) SetBullet(arg2 bool) {
 	_swig_i_0 := arg1
 	_swig_i_1 := arg2
-	C._wrap_b2BodyDef_bullet_set_Box2D_b1d1b47c7e81f80a(C.uintptr_t(_swig_i_0), C._Bool(_swig_i_1))
+	C._wrap_b2BodyDef_bullet_set_Box2D_553c0f9515edf50e(C.uintptr_t(_swig_i_0), C._Bool(_swig_i_1))
 }
 
 func (arg1 SwigcptrB2BodyDef) GetBullet() (_swig_ret bool) {
 	var swig_r bool
 	_swig_i_0 := arg1
-	swig_r = (bool)(C._wrap_b2BodyDef_bullet_get_Box2D_b1d1b47c7e81f80a(C.uintptr_t(_swig_i_0)))
+	swig_r = (bool)(C._wrap_b2BodyDef_bullet_get_Box2D_553c0f9515edf50e(C.uintptr_t(_swig_i_0)))
 	return swig_r
 }
 
 func (arg1 SwigcptrB2BodyDef) SetActive(arg2 bool) {
 	_swig_i_0 := arg1
 	_swig_i_1 := arg2
-	C._wrap_b2BodyDef_active_set_Box2D_b1d1b47c7e81f80a(C.uintptr_t(_swig_i_0), C._Bool(_swig_i_1))
+	C._wrap_b2BodyDef_active_set_Box2D_553c0f9515edf50e(C.uintptr_t(_swig_i_0), C._Bool(_swig_i_1))
 }
 
 func (arg1 SwigcptrB2BodyDef) GetActive() (_swig_ret bool) {
 	var swig_r bool
 	_swig_i_0 := arg1
-	swig_r = (bool)(C._wrap_b2BodyDef_active_get_Box2D_b1d1b47c7e81f80a(C.uintptr_t(_swig_i_0)))
+	swig_r = (bool)(C._wrap_b2BodyDef_active_get_Box2D_553c0f9515edf50e(C.uintptr_t(_swig_i_0)))
 	return swig_r
 }
 
 func (arg1 SwigcptrB2BodyDef) SetUserData(arg2 uintptr) {
 	_swig_i_0 := arg1
 	_swig_i_1 := arg2
-	C._wrap_b2BodyDef_userData_set_Box2D_b1d1b47c7e81f80a(C.uintptr_t(_swig_i_0), C.uintptr_t(_swig_i_1))
+	C._wrap_b2BodyDef_userData_set_Box2D_553c0f9515edf50e(C.uintptr_t(_swig_i_0), C.uintptr_t(_swig_i_1))
 }
 
 func (arg1 SwigcptrB2BodyDef) GetUserData() (_swig_ret uintptr) {
 	var swig_r uintptr
 	_swig_i_0 := arg1
-	swig_r = (uintptr)(C._wrap_b2BodyDef_userData_get_Box2D_b1d1b47c7e81f80a(C.uintptr_t(_swig_i_0)))
+	swig_r = (uintptr)(C._wrap_b2BodyDef_userData_get_Box2D_553c0f9515edf50e(C.uintptr_t(_swig_i_0)))
 	return swig_r
 }
 
 func (arg1 SwigcptrB2BodyDef) SetGravityScale(arg2 float32) {
 	_swig_i_0 := arg1
 	_swig_i_1 := arg2
-	C._wrap_b2BodyDef_gravityScale_set_Box2D_b1d1b47c7e81f80a(C.uintptr_t(_swig_i_0), C.float(_swig_i_1))
+	C._wrap_b2BodyDef_gravityScale_set_Box2D_553c0f9515edf50e(C.uintptr_t(_swig_i_0), C.float(_swig_i_1))
 }
 
 func (arg1 SwigcptrB2BodyDef) GetGravityScale() (_swig_ret float32) {
 	var swig_r float32
 	_swig_i_0 := arg1
-	swig_r = (float32)(C._wrap_b2BodyDef_gravityScale_get_Box2D_b1d1b47c7e81f80a(C.uintptr_t(_swig_i_0)))
+	swig_r = (float32)(C._wrap_b2BodyDef_gravityScale_get_Box2D_553c0f9515edf50e(C.uintptr_t(_swig_i_0)))
 	return swig_r
 }
 
 func DeleteB2BodyDef(arg1 B2BodyDef) {
 	_swig_i_0 := arg1.Swigcptr()
-	C._wrap_delete_b2BodyDef_Box2D_b1d1b47c7e81f80a(C.uintptr_t(_swig_i_0))
+	C._wrap_delete_b2BodyDef_Box2D_553c0f9515edf50e(C.uintptr_t(_swig_i_0))
 }
 
 type B2BodyDef interface {
@@ -3479,7 +3485,7 @@ func (arg1 SwigcptrB2Body) CreateFixture__SWIG_0(arg2 B2FixtureDef) (_swig_ret B
 	var swig_r B2Fixture
 	_swig_i_0 := arg1
 	_swig_i_1 := arg2.Swigcptr()
-	swig_r = (B2Fixture)(SwigcptrB2Fixture(C._wrap_b2Body_CreateFixture__SWIG_0_Box2D_b1d1b47c7e81f80a(C.uintptr_t(_swig_i_0), C.uintptr_t(_swig_i_1))))
+	swig_r = (B2Fixture)(SwigcptrB2Fixture(C._wrap_b2Body_CreateFixture__SWIG_0_Box2D_553c0f9515edf50e(C.uintptr_t(_swig_i_0), C.uintptr_t(_swig_i_1))))
 	return swig_r
 }
 
@@ -3488,7 +3494,7 @@ func (arg1 SwigcptrB2Body) CreateFixture__SWIG_1(arg2 B2Shape, arg3 float32) (_s
 	_swig_i_0 := arg1
 	_swig_i_1 := arg2.Swigcptr()
 	_swig_i_2 := arg3
-	swig_r = (B2Fixture)(SwigcptrB2Fixture(C._wrap_b2Body_CreateFixture__SWIG_1_Box2D_b1d1b47c7e81f80a(C.uintptr_t(_swig_i_0), C.uintptr_t(_swig_i_1), C.float(_swig_i_2))))
+	swig_r = (B2Fixture)(SwigcptrB2Fixture(C._wrap_b2Body_CreateFixture__SWIG_1_Box2D_553c0f9515edf50e(C.uintptr_t(_swig_i_0), C.uintptr_t(_swig_i_1), C.float(_swig_i_2))))
 	return swig_r
 }
 
@@ -3506,74 +3512,74 @@ func (p SwigcptrB2Body) CreateFixture(a ...interface{}) B2Fixture {
 func (arg1 SwigcptrB2Body) DestroyFixture(arg2 B2Fixture) {
 	_swig_i_0 := arg1
 	_swig_i_1 := arg2.Swigcptr()
-	C._wrap_b2Body_DestroyFixture_Box2D_b1d1b47c7e81f80a(C.uintptr_t(_swig_i_0), C.uintptr_t(_swig_i_1))
+	C._wrap_b2Body_DestroyFixture_Box2D_553c0f9515edf50e(C.uintptr_t(_swig_i_0), C.uintptr_t(_swig_i_1))
 }
 
 func (arg1 SwigcptrB2Body) SetTransform(arg2 B2Vec2, arg3 float32) {
 	_swig_i_0 := arg1
 	_swig_i_1 := arg2.Swigcptr()
 	_swig_i_2 := arg3
-	C._wrap_b2Body_SetTransform_Box2D_b1d1b47c7e81f80a(C.uintptr_t(_swig_i_0), C.uintptr_t(_swig_i_1), C.float(_swig_i_2))
+	C._wrap_b2Body_SetTransform_Box2D_553c0f9515edf50e(C.uintptr_t(_swig_i_0), C.uintptr_t(_swig_i_1), C.float(_swig_i_2))
 }
 
 func (arg1 SwigcptrB2Body) GetTransform() (_swig_ret B2Transform) {
 	var swig_r B2Transform
 	_swig_i_0 := arg1
-	swig_r = (B2Transform)(SwigcptrB2Transform(C._wrap_b2Body_GetTransform_Box2D_b1d1b47c7e81f80a(C.uintptr_t(_swig_i_0))))
+	swig_r = (B2Transform)(SwigcptrB2Transform(C._wrap_b2Body_GetTransform_Box2D_553c0f9515edf50e(C.uintptr_t(_swig_i_0))))
 	return swig_r
 }
 
 func (arg1 SwigcptrB2Body) GetPosition() (_swig_ret B2Vec2) {
 	var swig_r B2Vec2
 	_swig_i_0 := arg1
-	swig_r = (B2Vec2)(SwigcptrB2Vec2(C._wrap_b2Body_GetPosition_Box2D_b1d1b47c7e81f80a(C.uintptr_t(_swig_i_0))))
+	swig_r = (B2Vec2)(SwigcptrB2Vec2(C._wrap_b2Body_GetPosition_Box2D_553c0f9515edf50e(C.uintptr_t(_swig_i_0))))
 	return swig_r
 }
 
 func (arg1 SwigcptrB2Body) GetAngle() (_swig_ret float32) {
 	var swig_r float32
 	_swig_i_0 := arg1
-	swig_r = (float32)(C._wrap_b2Body_GetAngle_Box2D_b1d1b47c7e81f80a(C.uintptr_t(_swig_i_0)))
+	swig_r = (float32)(C._wrap_b2Body_GetAngle_Box2D_553c0f9515edf50e(C.uintptr_t(_swig_i_0)))
 	return swig_r
 }
 
 func (arg1 SwigcptrB2Body) GetWorldCenter() (_swig_ret B2Vec2) {
 	var swig_r B2Vec2
 	_swig_i_0 := arg1
-	swig_r = (B2Vec2)(SwigcptrB2Vec2(C._wrap_b2Body_GetWorldCenter_Box2D_b1d1b47c7e81f80a(C.uintptr_t(_swig_i_0))))
+	swig_r = (B2Vec2)(SwigcptrB2Vec2(C._wrap_b2Body_GetWorldCenter_Box2D_553c0f9515edf50e(C.uintptr_t(_swig_i_0))))
 	return swig_r
 }
 
 func (arg1 SwigcptrB2Body) GetLocalCenter() (_swig_ret B2Vec2) {
 	var swig_r B2Vec2
 	_swig_i_0 := arg1
-	swig_r = (B2Vec2)(SwigcptrB2Vec2(C._wrap_b2Body_GetLocalCenter_Box2D_b1d1b47c7e81f80a(C.uintptr_t(_swig_i_0))))
+	swig_r = (B2Vec2)(SwigcptrB2Vec2(C._wrap_b2Body_GetLocalCenter_Box2D_553c0f9515edf50e(C.uintptr_t(_swig_i_0))))
 	return swig_r
 }
 
 func (arg1 SwigcptrB2Body) SetLinearVelocity(arg2 B2Vec2) {
 	_swig_i_0 := arg1
 	_swig_i_1 := arg2.Swigcptr()
-	C._wrap_b2Body_SetLinearVelocity_Box2D_b1d1b47c7e81f80a(C.uintptr_t(_swig_i_0), C.uintptr_t(_swig_i_1))
+	C._wrap_b2Body_SetLinearVelocity_Box2D_553c0f9515edf50e(C.uintptr_t(_swig_i_0), C.uintptr_t(_swig_i_1))
 }
 
 func (arg1 SwigcptrB2Body) GetLinearVelocity() (_swig_ret B2Vec2) {
 	var swig_r B2Vec2
 	_swig_i_0 := arg1
-	swig_r = (B2Vec2)(SwigcptrB2Vec2(C._wrap_b2Body_GetLinearVelocity_Box2D_b1d1b47c7e81f80a(C.uintptr_t(_swig_i_0))))
+	swig_r = (B2Vec2)(SwigcptrB2Vec2(C._wrap_b2Body_GetLinearVelocity_Box2D_553c0f9515edf50e(C.uintptr_t(_swig_i_0))))
 	return swig_r
 }
 
 func (arg1 SwigcptrB2Body) SetAngularVelocity(arg2 float32) {
 	_swig_i_0 := arg1
 	_swig_i_1 := arg2
-	C._wrap_b2Body_SetAngularVelocity_Box2D_b1d1b47c7e81f80a(C.uintptr_t(_swig_i_0), C.float(_swig_i_1))
+	C._wrap_b2Body_SetAngularVelocity_Box2D_553c0f9515edf50e(C.uintptr_t(_swig_i_0), C.float(_swig_i_1))
 }
 
 func (arg1 SwigcptrB2Body) GetAngularVelocity() (_swig_ret float32) {
 	var swig_r float32
 	_swig_i_0 := arg1
-	swig_r = (float32)(C._wrap_b2Body_GetAngularVelocity_Box2D_b1d1b47c7e81f80a(C.uintptr_t(_swig_i_0)))
+	swig_r = (float32)(C._wrap_b2Body_GetAngularVelocity_Box2D_553c0f9515edf50e(C.uintptr_t(_swig_i_0)))
 	return swig_r
 }
 
@@ -3582,21 +3588,21 @@ func (arg1 SwigcptrB2Body) ApplyForce(arg2 B2Vec2, arg3 B2Vec2, arg4 bool) {
 	_swig_i_1 := arg2.Swigcptr()
 	_swig_i_2 := arg3.Swigcptr()
 	_swig_i_3 := arg4
-	C._wrap_b2Body_ApplyForce_Box2D_b1d1b47c7e81f80a(C.uintptr_t(_swig_i_0), C.uintptr_t(_swig_i_1), C.uintptr_t(_swig_i_2), C._Bool(_swig_i_3))
+	C._wrap_b2Body_ApplyForce_Box2D_553c0f9515edf50e(C.uintptr_t(_swig_i_0), C.uintptr_t(_swig_i_1), C.uintptr_t(_swig_i_2), C._Bool(_swig_i_3))
 }
 
 func (arg1 SwigcptrB2Body) ApplyForceToCenter(arg2 B2Vec2, arg3 bool) {
 	_swig_i_0 := arg1
 	_swig_i_1 := arg2.Swigcptr()
 	_swig_i_2 := arg3
-	C._wrap_b2Body_ApplyForceToCenter_Box2D_b1d1b47c7e81f80a(C.uintptr_t(_swig_i_0), C.uintptr_t(_swig_i_1), C._Bool(_swig_i_2))
+	C._wrap_b2Body_ApplyForceToCenter_Box2D_553c0f9515edf50e(C.uintptr_t(_swig_i_0), C.uintptr_t(_swig_i_1), C._Bool(_swig_i_2))
 }
 
 func (arg1 SwigcptrB2Body) ApplyTorque(arg2 float32, arg3 bool) {
 	_swig_i_0 := arg1
 	_swig_i_1 := arg2
 	_swig_i_2 := arg3
-	C._wrap_b2Body_ApplyTorque_Box2D_b1d1b47c7e81f80a(C.uintptr_t(_swig_i_0), C.float(_swig_i_1), C._Bool(_swig_i_2))
+	C._wrap_b2Body_ApplyTorque_Box2D_553c0f9515edf50e(C.uintptr_t(_swig_i_0), C.float(_swig_i_1), C._Bool(_swig_i_2))
 }
 
 func (arg1 SwigcptrB2Body) ApplyLinearImpulse(arg2 B2Vec2, arg3 B2Vec2, arg4 bool) {
@@ -3604,52 +3610,52 @@ func (arg1 SwigcptrB2Body) ApplyLinearImpulse(arg2 B2Vec2, arg3 B2Vec2, arg4 boo
 	_swig_i_1 := arg2.Swigcptr()
 	_swig_i_2 := arg3.Swigcptr()
 	_swig_i_3 := arg4
-	C._wrap_b2Body_ApplyLinearImpulse_Box2D_b1d1b47c7e81f80a(C.uintptr_t(_swig_i_0), C.uintptr_t(_swig_i_1), C.uintptr_t(_swig_i_2), C._Bool(_swig_i_3))
+	C._wrap_b2Body_ApplyLinearImpulse_Box2D_553c0f9515edf50e(C.uintptr_t(_swig_i_0), C.uintptr_t(_swig_i_1), C.uintptr_t(_swig_i_2), C._Bool(_swig_i_3))
 }
 
 func (arg1 SwigcptrB2Body) ApplyAngularImpulse(arg2 float32, arg3 bool) {
 	_swig_i_0 := arg1
 	_swig_i_1 := arg2
 	_swig_i_2 := arg3
-	C._wrap_b2Body_ApplyAngularImpulse_Box2D_b1d1b47c7e81f80a(C.uintptr_t(_swig_i_0), C.float(_swig_i_1), C._Bool(_swig_i_2))
+	C._wrap_b2Body_ApplyAngularImpulse_Box2D_553c0f9515edf50e(C.uintptr_t(_swig_i_0), C.float(_swig_i_1), C._Bool(_swig_i_2))
 }
 
 func (arg1 SwigcptrB2Body) GetMass() (_swig_ret float32) {
 	var swig_r float32
 	_swig_i_0 := arg1
-	swig_r = (float32)(C._wrap_b2Body_GetMass_Box2D_b1d1b47c7e81f80a(C.uintptr_t(_swig_i_0)))
+	swig_r = (float32)(C._wrap_b2Body_GetMass_Box2D_553c0f9515edf50e(C.uintptr_t(_swig_i_0)))
 	return swig_r
 }
 
 func (arg1 SwigcptrB2Body) GetInertia() (_swig_ret float32) {
 	var swig_r float32
 	_swig_i_0 := arg1
-	swig_r = (float32)(C._wrap_b2Body_GetInertia_Box2D_b1d1b47c7e81f80a(C.uintptr_t(_swig_i_0)))
+	swig_r = (float32)(C._wrap_b2Body_GetInertia_Box2D_553c0f9515edf50e(C.uintptr_t(_swig_i_0)))
 	return swig_r
 }
 
 func (arg1 SwigcptrB2Body) GetMassData(arg2 B2MassData) {
 	_swig_i_0 := arg1
 	_swig_i_1 := arg2.Swigcptr()
-	C._wrap_b2Body_GetMassData_Box2D_b1d1b47c7e81f80a(C.uintptr_t(_swig_i_0), C.uintptr_t(_swig_i_1))
+	C._wrap_b2Body_GetMassData_Box2D_553c0f9515edf50e(C.uintptr_t(_swig_i_0), C.uintptr_t(_swig_i_1))
 }
 
 func (arg1 SwigcptrB2Body) SetMassData(arg2 B2MassData) {
 	_swig_i_0 := arg1
 	_swig_i_1 := arg2.Swigcptr()
-	C._wrap_b2Body_SetMassData_Box2D_b1d1b47c7e81f80a(C.uintptr_t(_swig_i_0), C.uintptr_t(_swig_i_1))
+	C._wrap_b2Body_SetMassData_Box2D_553c0f9515edf50e(C.uintptr_t(_swig_i_0), C.uintptr_t(_swig_i_1))
 }
 
 func (arg1 SwigcptrB2Body) ResetMassData() {
 	_swig_i_0 := arg1
-	C._wrap_b2Body_ResetMassData_Box2D_b1d1b47c7e81f80a(C.uintptr_t(_swig_i_0))
+	C._wrap_b2Body_ResetMassData_Box2D_553c0f9515edf50e(C.uintptr_t(_swig_i_0))
 }
 
 func (arg1 SwigcptrB2Body) GetWorldPoint(arg2 B2Vec2) (_swig_ret B2Vec2) {
 	var swig_r B2Vec2
 	_swig_i_0 := arg1
 	_swig_i_1 := arg2.Swigcptr()
-	swig_r = (B2Vec2)(SwigcptrB2Vec2(C._wrap_b2Body_GetWorldPoint_Box2D_b1d1b47c7e81f80a(C.uintptr_t(_swig_i_0), C.uintptr_t(_swig_i_1))))
+	swig_r = (B2Vec2)(SwigcptrB2Vec2(C._wrap_b2Body_GetWorldPoint_Box2D_553c0f9515edf50e(C.uintptr_t(_swig_i_0), C.uintptr_t(_swig_i_1))))
 	return swig_r
 }
 
@@ -3657,7 +3663,7 @@ func (arg1 SwigcptrB2Body) GetWorldVector(arg2 B2Vec2) (_swig_ret B2Vec2) {
 	var swig_r B2Vec2
 	_swig_i_0 := arg1
 	_swig_i_1 := arg2.Swigcptr()
-	swig_r = (B2Vec2)(SwigcptrB2Vec2(C._wrap_b2Body_GetWorldVector_Box2D_b1d1b47c7e81f80a(C.uintptr_t(_swig_i_0), C.uintptr_t(_swig_i_1))))
+	swig_r = (B2Vec2)(SwigcptrB2Vec2(C._wrap_b2Body_GetWorldVector_Box2D_553c0f9515edf50e(C.uintptr_t(_swig_i_0), C.uintptr_t(_swig_i_1))))
 	return swig_r
 }
 
@@ -3665,7 +3671,7 @@ func (arg1 SwigcptrB2Body) GetLocalPoint(arg2 B2Vec2) (_swig_ret B2Vec2) {
 	var swig_r B2Vec2
 	_swig_i_0 := arg1
 	_swig_i_1 := arg2.Swigcptr()
-	swig_r = (B2Vec2)(SwigcptrB2Vec2(C._wrap_b2Body_GetLocalPoint_Box2D_b1d1b47c7e81f80a(C.uintptr_t(_swig_i_0), C.uintptr_t(_swig_i_1))))
+	swig_r = (B2Vec2)(SwigcptrB2Vec2(C._wrap_b2Body_GetLocalPoint_Box2D_553c0f9515edf50e(C.uintptr_t(_swig_i_0), C.uintptr_t(_swig_i_1))))
 	return swig_r
 }
 
@@ -3673,7 +3679,7 @@ func (arg1 SwigcptrB2Body) GetLocalVector(arg2 B2Vec2) (_swig_ret B2Vec2) {
 	var swig_r B2Vec2
 	_swig_i_0 := arg1
 	_swig_i_1 := arg2.Swigcptr()
-	swig_r = (B2Vec2)(SwigcptrB2Vec2(C._wrap_b2Body_GetLocalVector_Box2D_b1d1b47c7e81f80a(C.uintptr_t(_swig_i_0), C.uintptr_t(_swig_i_1))))
+	swig_r = (B2Vec2)(SwigcptrB2Vec2(C._wrap_b2Body_GetLocalVector_Box2D_553c0f9515edf50e(C.uintptr_t(_swig_i_0), C.uintptr_t(_swig_i_1))))
 	return swig_r
 }
 
@@ -3681,7 +3687,7 @@ func (arg1 SwigcptrB2Body) GetLinearVelocityFromWorldPoint(arg2 B2Vec2) (_swig_r
 	var swig_r B2Vec2
 	_swig_i_0 := arg1
 	_swig_i_1 := arg2.Swigcptr()
-	swig_r = (B2Vec2)(SwigcptrB2Vec2(C._wrap_b2Body_GetLinearVelocityFromWorldPoint_Box2D_b1d1b47c7e81f80a(C.uintptr_t(_swig_i_0), C.uintptr_t(_swig_i_1))))
+	swig_r = (B2Vec2)(SwigcptrB2Vec2(C._wrap_b2Body_GetLinearVelocityFromWorldPoint_Box2D_553c0f9515edf50e(C.uintptr_t(_swig_i_0), C.uintptr_t(_swig_i_1))))
 	return swig_r
 }
 
@@ -3689,138 +3695,138 @@ func (arg1 SwigcptrB2Body) GetLinearVelocityFromLocalPoint(arg2 B2Vec2) (_swig_r
 	var swig_r B2Vec2
 	_swig_i_0 := arg1
 	_swig_i_1 := arg2.Swigcptr()
-	swig_r = (B2Vec2)(SwigcptrB2Vec2(C._wrap_b2Body_GetLinearVelocityFromLocalPoint_Box2D_b1d1b47c7e81f80a(C.uintptr_t(_swig_i_0), C.uintptr_t(_swig_i_1))))
+	swig_r = (B2Vec2)(SwigcptrB2Vec2(C._wrap_b2Body_GetLinearVelocityFromLocalPoint_Box2D_553c0f9515edf50e(C.uintptr_t(_swig_i_0), C.uintptr_t(_swig_i_1))))
 	return swig_r
 }
 
 func (arg1 SwigcptrB2Body) GetLinearDamping() (_swig_ret float32) {
 	var swig_r float32
 	_swig_i_0 := arg1
-	swig_r = (float32)(C._wrap_b2Body_GetLinearDamping_Box2D_b1d1b47c7e81f80a(C.uintptr_t(_swig_i_0)))
+	swig_r = (float32)(C._wrap_b2Body_GetLinearDamping_Box2D_553c0f9515edf50e(C.uintptr_t(_swig_i_0)))
 	return swig_r
 }
 
 func (arg1 SwigcptrB2Body) SetLinearDamping(arg2 float32) {
 	_swig_i_0 := arg1
 	_swig_i_1 := arg2
-	C._wrap_b2Body_SetLinearDamping_Box2D_b1d1b47c7e81f80a(C.uintptr_t(_swig_i_0), C.float(_swig_i_1))
+	C._wrap_b2Body_SetLinearDamping_Box2D_553c0f9515edf50e(C.uintptr_t(_swig_i_0), C.float(_swig_i_1))
 }
 
 func (arg1 SwigcptrB2Body) GetAngularDamping() (_swig_ret float32) {
 	var swig_r float32
 	_swig_i_0 := arg1
-	swig_r = (float32)(C._wrap_b2Body_GetAngularDamping_Box2D_b1d1b47c7e81f80a(C.uintptr_t(_swig_i_0)))
+	swig_r = (float32)(C._wrap_b2Body_GetAngularDamping_Box2D_553c0f9515edf50e(C.uintptr_t(_swig_i_0)))
 	return swig_r
 }
 
 func (arg1 SwigcptrB2Body) SetAngularDamping(arg2 float32) {
 	_swig_i_0 := arg1
 	_swig_i_1 := arg2
-	C._wrap_b2Body_SetAngularDamping_Box2D_b1d1b47c7e81f80a(C.uintptr_t(_swig_i_0), C.float(_swig_i_1))
+	C._wrap_b2Body_SetAngularDamping_Box2D_553c0f9515edf50e(C.uintptr_t(_swig_i_0), C.float(_swig_i_1))
 }
 
 func (arg1 SwigcptrB2Body) GetGravityScale() (_swig_ret float32) {
 	var swig_r float32
 	_swig_i_0 := arg1
-	swig_r = (float32)(C._wrap_b2Body_GetGravityScale_Box2D_b1d1b47c7e81f80a(C.uintptr_t(_swig_i_0)))
+	swig_r = (float32)(C._wrap_b2Body_GetGravityScale_Box2D_553c0f9515edf50e(C.uintptr_t(_swig_i_0)))
 	return swig_r
 }
 
 func (arg1 SwigcptrB2Body) SetGravityScale(arg2 float32) {
 	_swig_i_0 := arg1
 	_swig_i_1 := arg2
-	C._wrap_b2Body_SetGravityScale_Box2D_b1d1b47c7e81f80a(C.uintptr_t(_swig_i_0), C.float(_swig_i_1))
+	C._wrap_b2Body_SetGravityScale_Box2D_553c0f9515edf50e(C.uintptr_t(_swig_i_0), C.float(_swig_i_1))
 }
 
 func (arg1 SwigcptrB2Body) SetType(arg2 B2BodyType) {
 	_swig_i_0 := arg1
 	_swig_i_1 := arg2
-	C._wrap_b2Body_SetType_Box2D_b1d1b47c7e81f80a(C.uintptr_t(_swig_i_0), C.swig_intgo(_swig_i_1))
+	C._wrap_b2Body_SetType_Box2D_553c0f9515edf50e(C.uintptr_t(_swig_i_0), C.swig_intgo(_swig_i_1))
 }
 
 func (arg1 SwigcptrB2Body) GetType() (_swig_ret B2BodyType) {
 	var swig_r B2BodyType
 	_swig_i_0 := arg1
-	swig_r = (B2BodyType)(C._wrap_b2Body_GetType_Box2D_b1d1b47c7e81f80a(C.uintptr_t(_swig_i_0)))
+	swig_r = (B2BodyType)(C._wrap_b2Body_GetType_Box2D_553c0f9515edf50e(C.uintptr_t(_swig_i_0)))
 	return swig_r
 }
 
 func (arg1 SwigcptrB2Body) SetBullet(arg2 bool) {
 	_swig_i_0 := arg1
 	_swig_i_1 := arg2
-	C._wrap_b2Body_SetBullet_Box2D_b1d1b47c7e81f80a(C.uintptr_t(_swig_i_0), C._Bool(_swig_i_1))
+	C._wrap_b2Body_SetBullet_Box2D_553c0f9515edf50e(C.uintptr_t(_swig_i_0), C._Bool(_swig_i_1))
 }
 
 func (arg1 SwigcptrB2Body) IsBullet() (_swig_ret bool) {
 	var swig_r bool
 	_swig_i_0 := arg1
-	swig_r = (bool)(C._wrap_b2Body_IsBullet_Box2D_b1d1b47c7e81f80a(C.uintptr_t(_swig_i_0)))
+	swig_r = (bool)(C._wrap_b2Body_IsBullet_Box2D_553c0f9515edf50e(C.uintptr_t(_swig_i_0)))
 	return swig_r
 }
 
 func (arg1 SwigcptrB2Body) SetSleepingAllowed(arg2 bool) {
 	_swig_i_0 := arg1
 	_swig_i_1 := arg2
-	C._wrap_b2Body_SetSleepingAllowed_Box2D_b1d1b47c7e81f80a(C.uintptr_t(_swig_i_0), C._Bool(_swig_i_1))
+	C._wrap_b2Body_SetSleepingAllowed_Box2D_553c0f9515edf50e(C.uintptr_t(_swig_i_0), C._Bool(_swig_i_1))
 }
 
 func (arg1 SwigcptrB2Body) IsSleepingAllowed() (_swig_ret bool) {
 	var swig_r bool
 	_swig_i_0 := arg1
-	swig_r = (bool)(C._wrap_b2Body_IsSleepingAllowed_Box2D_b1d1b47c7e81f80a(C.uintptr_t(_swig_i_0)))
+	swig_r = (bool)(C._wrap_b2Body_IsSleepingAllowed_Box2D_553c0f9515edf50e(C.uintptr_t(_swig_i_0)))
 	return swig_r
 }
 
 func (arg1 SwigcptrB2Body) SetAwake(arg2 bool) {
 	_swig_i_0 := arg1
 	_swig_i_1 := arg2
-	C._wrap_b2Body_SetAwake_Box2D_b1d1b47c7e81f80a(C.uintptr_t(_swig_i_0), C._Bool(_swig_i_1))
+	C._wrap_b2Body_SetAwake_Box2D_553c0f9515edf50e(C.uintptr_t(_swig_i_0), C._Bool(_swig_i_1))
 }
 
 func (arg1 SwigcptrB2Body) IsAwake() (_swig_ret bool) {
 	var swig_r bool
 	_swig_i_0 := arg1
-	swig_r = (bool)(C._wrap_b2Body_IsAwake_Box2D_b1d1b47c7e81f80a(C.uintptr_t(_swig_i_0)))
+	swig_r = (bool)(C._wrap_b2Body_IsAwake_Box2D_553c0f9515edf50e(C.uintptr_t(_swig_i_0)))
 	return swig_r
 }
 
 func (arg1 SwigcptrB2Body) SetActive(arg2 bool) {
 	_swig_i_0 := arg1
 	_swig_i_1 := arg2
-	C._wrap_b2Body_SetActive_Box2D_b1d1b47c7e81f80a(C.uintptr_t(_swig_i_0), C._Bool(_swig_i_1))
+	C._wrap_b2Body_SetActive_Box2D_553c0f9515edf50e(C.uintptr_t(_swig_i_0), C._Bool(_swig_i_1))
 }
 
 func (arg1 SwigcptrB2Body) IsActive() (_swig_ret bool) {
 	var swig_r bool
 	_swig_i_0 := arg1
-	swig_r = (bool)(C._wrap_b2Body_IsActive_Box2D_b1d1b47c7e81f80a(C.uintptr_t(_swig_i_0)))
+	swig_r = (bool)(C._wrap_b2Body_IsActive_Box2D_553c0f9515edf50e(C.uintptr_t(_swig_i_0)))
 	return swig_r
 }
 
 func (arg1 SwigcptrB2Body) SetFixedRotation(arg2 bool) {
 	_swig_i_0 := arg1
 	_swig_i_1 := arg2
-	C._wrap_b2Body_SetFixedRotation_Box2D_b1d1b47c7e81f80a(C.uintptr_t(_swig_i_0), C._Bool(_swig_i_1))
+	C._wrap_b2Body_SetFixedRotation_Box2D_553c0f9515edf50e(C.uintptr_t(_swig_i_0), C._Bool(_swig_i_1))
 }
 
 func (arg1 SwigcptrB2Body) IsFixedRotation() (_swig_ret bool) {
 	var swig_r bool
 	_swig_i_0 := arg1
-	swig_r = (bool)(C._wrap_b2Body_IsFixedRotation_Box2D_b1d1b47c7e81f80a(C.uintptr_t(_swig_i_0)))
+	swig_r = (bool)(C._wrap_b2Body_IsFixedRotation_Box2D_553c0f9515edf50e(C.uintptr_t(_swig_i_0)))
 	return swig_r
 }
 
 func (arg1 SwigcptrB2Body) GetFixtureList__SWIG_0() (_swig_ret B2Fixture) {
 	var swig_r B2Fixture
 	_swig_i_0 := arg1
-	swig_r = (B2Fixture)(SwigcptrB2Fixture(C._wrap_b2Body_GetFixtureList__SWIG_0_Box2D_b1d1b47c7e81f80a(C.uintptr_t(_swig_i_0))))
+	swig_r = (B2Fixture)(SwigcptrB2Fixture(C._wrap_b2Body_GetFixtureList__SWIG_0_Box2D_553c0f9515edf50e(C.uintptr_t(_swig_i_0))))
 	return swig_r
 }
 
 func (arg1 SwigcptrB2Body) GetFixtureList__SWIG_1() (_swig_ret B2Fixture) {
 	var swig_r B2Fixture
 	_swig_i_0 := arg1
-	swig_r = (B2Fixture)(SwigcptrB2Fixture(C._wrap_b2Body_GetFixtureList__SWIG_1_Box2D_b1d1b47c7e81f80a(C.uintptr_t(_swig_i_0))))
+	swig_r = (B2Fixture)(SwigcptrB2Fixture(C._wrap_b2Body_GetFixtureList__SWIG_1_Box2D_553c0f9515edf50e(C.uintptr_t(_swig_i_0))))
 	return swig_r
 }
 
@@ -3838,14 +3844,14 @@ func (p SwigcptrB2Body) GetFixtureList(a ...interface{}) interface{} {
 func (arg1 SwigcptrB2Body) GetJointList__SWIG_0() (_swig_ret B2JointEdge) {
 	var swig_r B2JointEdge
 	_swig_i_0 := arg1
-	swig_r = (B2JointEdge)(SwigcptrB2JointEdge(C._wrap_b2Body_GetJointList__SWIG_0_Box2D_b1d1b47c7e81f80a(C.uintptr_t(_swig_i_0))))
+	swig_r = (B2JointEdge)(SwigcptrB2JointEdge(C._wrap_b2Body_GetJointList__SWIG_0_Box2D_553c0f9515edf50e(C.uintptr_t(_swig_i_0))))
 	return swig_r
 }
 
 func (arg1 SwigcptrB2Body) GetJointList__SWIG_1() (_swig_ret B2JointEdge) {
 	var swig_r B2JointEdge
 	_swig_i_0 := arg1
-	swig_r = (B2JointEdge)(SwigcptrB2JointEdge(C._wrap_b2Body_GetJointList__SWIG_1_Box2D_b1d1b47c7e81f80a(C.uintptr_t(_swig_i_0))))
+	swig_r = (B2JointEdge)(SwigcptrB2JointEdge(C._wrap_b2Body_GetJointList__SWIG_1_Box2D_553c0f9515edf50e(C.uintptr_t(_swig_i_0))))
 	return swig_r
 }
 
@@ -3863,14 +3869,14 @@ func (p SwigcptrB2Body) GetJointList(a ...interface{}) interface{} {
 func (arg1 SwigcptrB2Body) GetContactList__SWIG_0() (_swig_ret B2ContactEdge) {
 	var swig_r B2ContactEdge
 	_swig_i_0 := arg1
-	swig_r = (B2ContactEdge)(SwigcptrB2ContactEdge(C._wrap_b2Body_GetContactList__SWIG_0_Box2D_b1d1b47c7e81f80a(C.uintptr_t(_swig_i_0))))
+	swig_r = (B2ContactEdge)(SwigcptrB2ContactEdge(C._wrap_b2Body_GetContactList__SWIG_0_Box2D_553c0f9515edf50e(C.uintptr_t(_swig_i_0))))
 	return swig_r
 }
 
 func (arg1 SwigcptrB2Body) GetContactList__SWIG_1() (_swig_ret B2ContactEdge) {
 	var swig_r B2ContactEdge
 	_swig_i_0 := arg1
-	swig_r = (B2ContactEdge)(SwigcptrB2ContactEdge(C._wrap_b2Body_GetContactList__SWIG_1_Box2D_b1d1b47c7e81f80a(C.uintptr_t(_swig_i_0))))
+	swig_r = (B2ContactEdge)(SwigcptrB2ContactEdge(C._wrap_b2Body_GetContactList__SWIG_1_Box2D_553c0f9515edf50e(C.uintptr_t(_swig_i_0))))
 	return swig_r
 }
 
@@ -3888,14 +3894,14 @@ func (p SwigcptrB2Body) GetContactList(a ...interface{}) interface{} {
 func (arg1 SwigcptrB2Body) GetNext__SWIG_0() (_swig_ret B2Body) {
 	var swig_r B2Body
 	_swig_i_0 := arg1
-	swig_r = (B2Body)(SwigcptrB2Body(C._wrap_b2Body_GetNext__SWIG_0_Box2D_b1d1b47c7e81f80a(C.uintptr_t(_swig_i_0))))
+	swig_r = (B2Body)(SwigcptrB2Body(C._wrap_b2Body_GetNext__SWIG_0_Box2D_553c0f9515edf50e(C.uintptr_t(_swig_i_0))))
 	return swig_r
 }
 
 func (arg1 SwigcptrB2Body) GetNext__SWIG_1() (_swig_ret B2Body) {
 	var swig_r B2Body
 	_swig_i_0 := arg1
-	swig_r = (B2Body)(SwigcptrB2Body(C._wrap_b2Body_GetNext__SWIG_1_Box2D_b1d1b47c7e81f80a(C.uintptr_t(_swig_i_0))))
+	swig_r = (B2Body)(SwigcptrB2Body(C._wrap_b2Body_GetNext__SWIG_1_Box2D_553c0f9515edf50e(C.uintptr_t(_swig_i_0))))
 	return swig_r
 }
 
@@ -3913,27 +3919,27 @@ func (p SwigcptrB2Body) GetNext(a ...interface{}) interface{} {
 func (arg1 SwigcptrB2Body) GetUserData() (_swig_ret uintptr) {
 	var swig_r uintptr
 	_swig_i_0 := arg1
-	swig_r = (uintptr)(C._wrap_b2Body_GetUserData_Box2D_b1d1b47c7e81f80a(C.uintptr_t(_swig_i_0)))
+	swig_r = (uintptr)(C._wrap_b2Body_GetUserData_Box2D_553c0f9515edf50e(C.uintptr_t(_swig_i_0)))
 	return swig_r
 }
 
 func (arg1 SwigcptrB2Body) SetUserData(arg2 uintptr) {
 	_swig_i_0 := arg1
 	_swig_i_1 := arg2
-	C._wrap_b2Body_SetUserData_Box2D_b1d1b47c7e81f80a(C.uintptr_t(_swig_i_0), C.uintptr_t(_swig_i_1))
+	C._wrap_b2Body_SetUserData_Box2D_553c0f9515edf50e(C.uintptr_t(_swig_i_0), C.uintptr_t(_swig_i_1))
 }
 
 func (arg1 SwigcptrB2Body) GetWorld__SWIG_0() (_swig_ret B2World) {
 	var swig_r B2World
 	_swig_i_0 := arg1
-	swig_r = (B2World)(SwigcptrB2World(C._wrap_b2Body_GetWorld__SWIG_0_Box2D_b1d1b47c7e81f80a(C.uintptr_t(_swig_i_0))))
+	swig_r = (B2World)(SwigcptrB2World(C._wrap_b2Body_GetWorld__SWIG_0_Box2D_553c0f9515edf50e(C.uintptr_t(_swig_i_0))))
 	return swig_r
 }
 
 func (arg1 SwigcptrB2Body) GetWorld__SWIG_1() (_swig_ret B2World) {
 	var swig_r B2World
 	_swig_i_0 := arg1
-	swig_r = (B2World)(SwigcptrB2World(C._wrap_b2Body_GetWorld__SWIG_1_Box2D_b1d1b47c7e81f80a(C.uintptr_t(_swig_i_0))))
+	swig_r = (B2World)(SwigcptrB2World(C._wrap_b2Body_GetWorld__SWIG_1_Box2D_553c0f9515edf50e(C.uintptr_t(_swig_i_0))))
 	return swig_r
 }
 
@@ -3950,7 +3956,7 @@ func (p SwigcptrB2Body) GetWorld(a ...interface{}) interface{} {
 
 func (arg1 SwigcptrB2Body) Dump() {
 	_swig_i_0 := arg1
-	C._wrap_b2Body_Dump_Box2D_b1d1b47c7e81f80a(C.uintptr_t(_swig_i_0))
+	C._wrap_b2Body_Dump_Box2D_553c0f9515edf50e(C.uintptr_t(_swig_i_0))
 }
 
 type B2Body interface {
@@ -4023,52 +4029,52 @@ func (p SwigcptrB2Filter) SwigIsB2Filter() {
 
 func NewB2Filter() (_swig_ret B2Filter) {
 	var swig_r B2Filter
-	swig_r = (B2Filter)(SwigcptrB2Filter(C._wrap_new_b2Filter_Box2D_b1d1b47c7e81f80a()))
+	swig_r = (B2Filter)(SwigcptrB2Filter(C._wrap_new_b2Filter_Box2D_553c0f9515edf50e()))
 	return swig_r
 }
 
 func (arg1 SwigcptrB2Filter) SetCategoryBits(arg2 uint16) {
 	_swig_i_0 := arg1
 	_swig_i_1 := arg2
-	C._wrap_b2Filter_categoryBits_set_Box2D_b1d1b47c7e81f80a(C.uintptr_t(_swig_i_0), C.short(_swig_i_1))
+	C._wrap_b2Filter_categoryBits_set_Box2D_553c0f9515edf50e(C.uintptr_t(_swig_i_0), C.short(_swig_i_1))
 }
 
 func (arg1 SwigcptrB2Filter) GetCategoryBits() (_swig_ret uint16) {
 	var swig_r uint16
 	_swig_i_0 := arg1
-	swig_r = (uint16)(C._wrap_b2Filter_categoryBits_get_Box2D_b1d1b47c7e81f80a(C.uintptr_t(_swig_i_0)))
+	swig_r = (uint16)(C._wrap_b2Filter_categoryBits_get_Box2D_553c0f9515edf50e(C.uintptr_t(_swig_i_0)))
 	return swig_r
 }
 
 func (arg1 SwigcptrB2Filter) SetMaskBits(arg2 uint16) {
 	_swig_i_0 := arg1
 	_swig_i_1 := arg2
-	C._wrap_b2Filter_maskBits_set_Box2D_b1d1b47c7e81f80a(C.uintptr_t(_swig_i_0), C.short(_swig_i_1))
+	C._wrap_b2Filter_maskBits_set_Box2D_553c0f9515edf50e(C.uintptr_t(_swig_i_0), C.short(_swig_i_1))
 }
 
 func (arg1 SwigcptrB2Filter) GetMaskBits() (_swig_ret uint16) {
 	var swig_r uint16
 	_swig_i_0 := arg1
-	swig_r = (uint16)(C._wrap_b2Filter_maskBits_get_Box2D_b1d1b47c7e81f80a(C.uintptr_t(_swig_i_0)))
+	swig_r = (uint16)(C._wrap_b2Filter_maskBits_get_Box2D_553c0f9515edf50e(C.uintptr_t(_swig_i_0)))
 	return swig_r
 }
 
 func (arg1 SwigcptrB2Filter) SetGroupIndex(arg2 int16) {
 	_swig_i_0 := arg1
 	_swig_i_1 := arg2
-	C._wrap_b2Filter_groupIndex_set_Box2D_b1d1b47c7e81f80a(C.uintptr_t(_swig_i_0), C.short(_swig_i_1))
+	C._wrap_b2Filter_groupIndex_set_Box2D_553c0f9515edf50e(C.uintptr_t(_swig_i_0), C.short(_swig_i_1))
 }
 
 func (arg1 SwigcptrB2Filter) GetGroupIndex() (_swig_ret int16) {
 	var swig_r int16
 	_swig_i_0 := arg1
-	swig_r = (int16)(C._wrap_b2Filter_groupIndex_get_Box2D_b1d1b47c7e81f80a(C.uintptr_t(_swig_i_0)))
+	swig_r = (int16)(C._wrap_b2Filter_groupIndex_get_Box2D_553c0f9515edf50e(C.uintptr_t(_swig_i_0)))
 	return swig_r
 }
 
 func DeleteB2Filter(arg1 B2Filter) {
 	_swig_i_0 := arg1.Swigcptr()
-	C._wrap_delete_b2Filter_Box2D_b1d1b47c7e81f80a(C.uintptr_t(_swig_i_0))
+	C._wrap_delete_b2Filter_Box2D_553c0f9515edf50e(C.uintptr_t(_swig_i_0))
 }
 
 type B2Filter interface {
@@ -4093,104 +4099,104 @@ func (p SwigcptrB2FixtureDef) SwigIsB2FixtureDef() {
 
 func NewB2FixtureDef() (_swig_ret B2FixtureDef) {
 	var swig_r B2FixtureDef
-	swig_r = (B2FixtureDef)(SwigcptrB2FixtureDef(C._wrap_new_b2FixtureDef_Box2D_b1d1b47c7e81f80a()))
+	swig_r = (B2FixtureDef)(SwigcptrB2FixtureDef(C._wrap_new_b2FixtureDef_Box2D_553c0f9515edf50e()))
 	return swig_r
 }
 
 func (arg1 SwigcptrB2FixtureDef) SetShape(arg2 B2Shape) {
 	_swig_i_0 := arg1
 	_swig_i_1 := arg2.Swigcptr()
-	C._wrap_b2FixtureDef_shape_set_Box2D_b1d1b47c7e81f80a(C.uintptr_t(_swig_i_0), C.uintptr_t(_swig_i_1))
+	C._wrap_b2FixtureDef_shape_set_Box2D_553c0f9515edf50e(C.uintptr_t(_swig_i_0), C.uintptr_t(_swig_i_1))
 }
 
 func (arg1 SwigcptrB2FixtureDef) GetShape() (_swig_ret B2Shape) {
 	var swig_r B2Shape
 	_swig_i_0 := arg1
-	swig_r = (B2Shape)(SwigcptrB2Shape(C._wrap_b2FixtureDef_shape_get_Box2D_b1d1b47c7e81f80a(C.uintptr_t(_swig_i_0))))
+	swig_r = (B2Shape)(SwigcptrB2Shape(C._wrap_b2FixtureDef_shape_get_Box2D_553c0f9515edf50e(C.uintptr_t(_swig_i_0))))
 	return swig_r
 }
 
 func (arg1 SwigcptrB2FixtureDef) SetUserData(arg2 uintptr) {
 	_swig_i_0 := arg1
 	_swig_i_1 := arg2
-	C._wrap_b2FixtureDef_userData_set_Box2D_b1d1b47c7e81f80a(C.uintptr_t(_swig_i_0), C.uintptr_t(_swig_i_1))
+	C._wrap_b2FixtureDef_userData_set_Box2D_553c0f9515edf50e(C.uintptr_t(_swig_i_0), C.uintptr_t(_swig_i_1))
 }
 
 func (arg1 SwigcptrB2FixtureDef) GetUserData() (_swig_ret uintptr) {
 	var swig_r uintptr
 	_swig_i_0 := arg1
-	swig_r = (uintptr)(C._wrap_b2FixtureDef_userData_get_Box2D_b1d1b47c7e81f80a(C.uintptr_t(_swig_i_0)))
+	swig_r = (uintptr)(C._wrap_b2FixtureDef_userData_get_Box2D_553c0f9515edf50e(C.uintptr_t(_swig_i_0)))
 	return swig_r
 }
 
 func (arg1 SwigcptrB2FixtureDef) SetFriction(arg2 float32) {
 	_swig_i_0 := arg1
 	_swig_i_1 := arg2
-	C._wrap_b2FixtureDef_friction_set_Box2D_b1d1b47c7e81f80a(C.uintptr_t(_swig_i_0), C.float(_swig_i_1))
+	C._wrap_b2FixtureDef_friction_set_Box2D_553c0f9515edf50e(C.uintptr_t(_swig_i_0), C.float(_swig_i_1))
 }
 
 func (arg1 SwigcptrB2FixtureDef) GetFriction() (_swig_ret float32) {
 	var swig_r float32
 	_swig_i_0 := arg1
-	swig_r = (float32)(C._wrap_b2FixtureDef_friction_get_Box2D_b1d1b47c7e81f80a(C.uintptr_t(_swig_i_0)))
+	swig_r = (float32)(C._wrap_b2FixtureDef_friction_get_Box2D_553c0f9515edf50e(C.uintptr_t(_swig_i_0)))
 	return swig_r
 }
 
 func (arg1 SwigcptrB2FixtureDef) SetRestitution(arg2 float32) {
 	_swig_i_0 := arg1
 	_swig_i_1 := arg2
-	C._wrap_b2FixtureDef_restitution_set_Box2D_b1d1b47c7e81f80a(C.uintptr_t(_swig_i_0), C.float(_swig_i_1))
+	C._wrap_b2FixtureDef_restitution_set_Box2D_553c0f9515edf50e(C.uintptr_t(_swig_i_0), C.float(_swig_i_1))
 }
 
 func (arg1 SwigcptrB2FixtureDef) GetRestitution() (_swig_ret float32) {
 	var swig_r float32
 	_swig_i_0 := arg1
-	swig_r = (float32)(C._wrap_b2FixtureDef_restitution_get_Box2D_b1d1b47c7e81f80a(C.uintptr_t(_swig_i_0)))
+	swig_r = (float32)(C._wrap_b2FixtureDef_restitution_get_Box2D_553c0f9515edf50e(C.uintptr_t(_swig_i_0)))
 	return swig_r
 }
 
 func (arg1 SwigcptrB2FixtureDef) SetDensity(arg2 float32) {
 	_swig_i_0 := arg1
 	_swig_i_1 := arg2
-	C._wrap_b2FixtureDef_density_set_Box2D_b1d1b47c7e81f80a(C.uintptr_t(_swig_i_0), C.float(_swig_i_1))
+	C._wrap_b2FixtureDef_density_set_Box2D_553c0f9515edf50e(C.uintptr_t(_swig_i_0), C.float(_swig_i_1))
 }
 
 func (arg1 SwigcptrB2FixtureDef) GetDensity() (_swig_ret float32) {
 	var swig_r float32
 	_swig_i_0 := arg1
-	swig_r = (float32)(C._wrap_b2FixtureDef_density_get_Box2D_b1d1b47c7e81f80a(C.uintptr_t(_swig_i_0)))
+	swig_r = (float32)(C._wrap_b2FixtureDef_density_get_Box2D_553c0f9515edf50e(C.uintptr_t(_swig_i_0)))
 	return swig_r
 }
 
 func (arg1 SwigcptrB2FixtureDef) SetIsSensor(arg2 bool) {
 	_swig_i_0 := arg1
 	_swig_i_1 := arg2
-	C._wrap_b2FixtureDef_isSensor_set_Box2D_b1d1b47c7e81f80a(C.uintptr_t(_swig_i_0), C._Bool(_swig_i_1))
+	C._wrap_b2FixtureDef_isSensor_set_Box2D_553c0f9515edf50e(C.uintptr_t(_swig_i_0), C._Bool(_swig_i_1))
 }
 
 func (arg1 SwigcptrB2FixtureDef) GetIsSensor() (_swig_ret bool) {
 	var swig_r bool
 	_swig_i_0 := arg1
-	swig_r = (bool)(C._wrap_b2FixtureDef_isSensor_get_Box2D_b1d1b47c7e81f80a(C.uintptr_t(_swig_i_0)))
+	swig_r = (bool)(C._wrap_b2FixtureDef_isSensor_get_Box2D_553c0f9515edf50e(C.uintptr_t(_swig_i_0)))
 	return swig_r
 }
 
 func (arg1 SwigcptrB2FixtureDef) SetFilter(arg2 B2Filter) {
 	_swig_i_0 := arg1
 	_swig_i_1 := arg2.Swigcptr()
-	C._wrap_b2FixtureDef_filter_set_Box2D_b1d1b47c7e81f80a(C.uintptr_t(_swig_i_0), C.uintptr_t(_swig_i_1))
+	C._wrap_b2FixtureDef_filter_set_Box2D_553c0f9515edf50e(C.uintptr_t(_swig_i_0), C.uintptr_t(_swig_i_1))
 }
 
 func (arg1 SwigcptrB2FixtureDef) GetFilter() (_swig_ret B2Filter) {
 	var swig_r B2Filter
 	_swig_i_0 := arg1
-	swig_r = (B2Filter)(SwigcptrB2Filter(C._wrap_b2FixtureDef_filter_get_Box2D_b1d1b47c7e81f80a(C.uintptr_t(_swig_i_0))))
+	swig_r = (B2Filter)(SwigcptrB2Filter(C._wrap_b2FixtureDef_filter_get_Box2D_553c0f9515edf50e(C.uintptr_t(_swig_i_0))))
 	return swig_r
 }
 
 func DeleteB2FixtureDef(arg1 B2FixtureDef) {
 	_swig_i_0 := arg1.Swigcptr()
-	C._wrap_delete_b2FixtureDef_Box2D_b1d1b47c7e81f80a(C.uintptr_t(_swig_i_0))
+	C._wrap_delete_b2FixtureDef_Box2D_553c0f9515edf50e(C.uintptr_t(_swig_i_0))
 }
 
 type B2FixtureDef interface {
@@ -4224,64 +4230,64 @@ func (p SwigcptrB2FixtureProxy) SwigIsB2FixtureProxy() {
 func (arg1 SwigcptrB2FixtureProxy) SetAabb(arg2 B2AABB) {
 	_swig_i_0 := arg1
 	_swig_i_1 := arg2.Swigcptr()
-	C._wrap_b2FixtureProxy_aabb_set_Box2D_b1d1b47c7e81f80a(C.uintptr_t(_swig_i_0), C.uintptr_t(_swig_i_1))
+	C._wrap_b2FixtureProxy_aabb_set_Box2D_553c0f9515edf50e(C.uintptr_t(_swig_i_0), C.uintptr_t(_swig_i_1))
 }
 
 func (arg1 SwigcptrB2FixtureProxy) GetAabb() (_swig_ret B2AABB) {
 	var swig_r B2AABB
 	_swig_i_0 := arg1
-	swig_r = (B2AABB)(SwigcptrB2AABB(C._wrap_b2FixtureProxy_aabb_get_Box2D_b1d1b47c7e81f80a(C.uintptr_t(_swig_i_0))))
+	swig_r = (B2AABB)(SwigcptrB2AABB(C._wrap_b2FixtureProxy_aabb_get_Box2D_553c0f9515edf50e(C.uintptr_t(_swig_i_0))))
 	return swig_r
 }
 
 func (arg1 SwigcptrB2FixtureProxy) SetFixture(arg2 B2Fixture) {
 	_swig_i_0 := arg1
 	_swig_i_1 := arg2.Swigcptr()
-	C._wrap_b2FixtureProxy_fixture_set_Box2D_b1d1b47c7e81f80a(C.uintptr_t(_swig_i_0), C.uintptr_t(_swig_i_1))
+	C._wrap_b2FixtureProxy_fixture_set_Box2D_553c0f9515edf50e(C.uintptr_t(_swig_i_0), C.uintptr_t(_swig_i_1))
 }
 
 func (arg1 SwigcptrB2FixtureProxy) GetFixture() (_swig_ret B2Fixture) {
 	var swig_r B2Fixture
 	_swig_i_0 := arg1
-	swig_r = (B2Fixture)(SwigcptrB2Fixture(C._wrap_b2FixtureProxy_fixture_get_Box2D_b1d1b47c7e81f80a(C.uintptr_t(_swig_i_0))))
+	swig_r = (B2Fixture)(SwigcptrB2Fixture(C._wrap_b2FixtureProxy_fixture_get_Box2D_553c0f9515edf50e(C.uintptr_t(_swig_i_0))))
 	return swig_r
 }
 
 func (arg1 SwigcptrB2FixtureProxy) SetChildIndex(arg2 int) {
 	_swig_i_0 := arg1
 	_swig_i_1 := arg2
-	C._wrap_b2FixtureProxy_childIndex_set_Box2D_b1d1b47c7e81f80a(C.uintptr_t(_swig_i_0), C.swig_intgo(_swig_i_1))
+	C._wrap_b2FixtureProxy_childIndex_set_Box2D_553c0f9515edf50e(C.uintptr_t(_swig_i_0), C.swig_intgo(_swig_i_1))
 }
 
 func (arg1 SwigcptrB2FixtureProxy) GetChildIndex() (_swig_ret int) {
 	var swig_r int
 	_swig_i_0 := arg1
-	swig_r = (int)(C._wrap_b2FixtureProxy_childIndex_get_Box2D_b1d1b47c7e81f80a(C.uintptr_t(_swig_i_0)))
+	swig_r = (int)(C._wrap_b2FixtureProxy_childIndex_get_Box2D_553c0f9515edf50e(C.uintptr_t(_swig_i_0)))
 	return swig_r
 }
 
 func (arg1 SwigcptrB2FixtureProxy) SetProxyId(arg2 int) {
 	_swig_i_0 := arg1
 	_swig_i_1 := arg2
-	C._wrap_b2FixtureProxy_proxyId_set_Box2D_b1d1b47c7e81f80a(C.uintptr_t(_swig_i_0), C.swig_intgo(_swig_i_1))
+	C._wrap_b2FixtureProxy_proxyId_set_Box2D_553c0f9515edf50e(C.uintptr_t(_swig_i_0), C.swig_intgo(_swig_i_1))
 }
 
 func (arg1 SwigcptrB2FixtureProxy) GetProxyId() (_swig_ret int) {
 	var swig_r int
 	_swig_i_0 := arg1
-	swig_r = (int)(C._wrap_b2FixtureProxy_proxyId_get_Box2D_b1d1b47c7e81f80a(C.uintptr_t(_swig_i_0)))
+	swig_r = (int)(C._wrap_b2FixtureProxy_proxyId_get_Box2D_553c0f9515edf50e(C.uintptr_t(_swig_i_0)))
 	return swig_r
 }
 
 func NewB2FixtureProxy() (_swig_ret B2FixtureProxy) {
 	var swig_r B2FixtureProxy
-	swig_r = (B2FixtureProxy)(SwigcptrB2FixtureProxy(C._wrap_new_b2FixtureProxy_Box2D_b1d1b47c7e81f80a()))
+	swig_r = (B2FixtureProxy)(SwigcptrB2FixtureProxy(C._wrap_new_b2FixtureProxy_Box2D_553c0f9515edf50e()))
 	return swig_r
 }
 
 func DeleteB2FixtureProxy(arg1 B2FixtureProxy) {
 	_swig_i_0 := arg1.Swigcptr()
-	C._wrap_delete_b2FixtureProxy_Box2D_b1d1b47c7e81f80a(C.uintptr_t(_swig_i_0))
+	C._wrap_delete_b2FixtureProxy_Box2D_553c0f9515edf50e(C.uintptr_t(_swig_i_0))
 }
 
 type B2FixtureProxy interface {
@@ -4309,21 +4315,21 @@ func (p SwigcptrB2Fixture) SwigIsB2Fixture() {
 func (arg1 SwigcptrB2Fixture) GetType() (_swig_ret B2Shape_Type) {
 	var swig_r B2Shape_Type
 	_swig_i_0 := arg1
-	swig_r = (B2Shape_Type)(SwigcptrB2Shape_Type(C._wrap_b2Fixture_GetType_Box2D_b1d1b47c7e81f80a(C.uintptr_t(_swig_i_0))))
+	swig_r = (B2Shape_Type)(SwigcptrB2Shape_Type(C._wrap_b2Fixture_GetType_Box2D_553c0f9515edf50e(C.uintptr_t(_swig_i_0))))
 	return swig_r
 }
 
 func (arg1 SwigcptrB2Fixture) GetShape__SWIG_0() (_swig_ret B2Shape) {
 	var swig_r B2Shape
 	_swig_i_0 := arg1
-	swig_r = (B2Shape)(SwigcptrB2Shape(C._wrap_b2Fixture_GetShape__SWIG_0_Box2D_b1d1b47c7e81f80a(C.uintptr_t(_swig_i_0))))
+	swig_r = (B2Shape)(SwigcptrB2Shape(C._wrap_b2Fixture_GetShape__SWIG_0_Box2D_553c0f9515edf50e(C.uintptr_t(_swig_i_0))))
 	return swig_r
 }
 
 func (arg1 SwigcptrB2Fixture) GetShape__SWIG_1() (_swig_ret B2Shape) {
 	var swig_r B2Shape
 	_swig_i_0 := arg1
-	swig_r = (B2Shape)(SwigcptrB2Shape(C._wrap_b2Fixture_GetShape__SWIG_1_Box2D_b1d1b47c7e81f80a(C.uintptr_t(_swig_i_0))))
+	swig_r = (B2Shape)(SwigcptrB2Shape(C._wrap_b2Fixture_GetShape__SWIG_1_Box2D_553c0f9515edf50e(C.uintptr_t(_swig_i_0))))
 	return swig_r
 }
 
@@ -4341,45 +4347,45 @@ func (p SwigcptrB2Fixture) GetShape(a ...interface{}) interface{} {
 func (arg1 SwigcptrB2Fixture) SetSensor(arg2 bool) {
 	_swig_i_0 := arg1
 	_swig_i_1 := arg2
-	C._wrap_b2Fixture_SetSensor_Box2D_b1d1b47c7e81f80a(C.uintptr_t(_swig_i_0), C._Bool(_swig_i_1))
+	C._wrap_b2Fixture_SetSensor_Box2D_553c0f9515edf50e(C.uintptr_t(_swig_i_0), C._Bool(_swig_i_1))
 }
 
 func (arg1 SwigcptrB2Fixture) IsSensor() (_swig_ret bool) {
 	var swig_r bool
 	_swig_i_0 := arg1
-	swig_r = (bool)(C._wrap_b2Fixture_IsSensor_Box2D_b1d1b47c7e81f80a(C.uintptr_t(_swig_i_0)))
+	swig_r = (bool)(C._wrap_b2Fixture_IsSensor_Box2D_553c0f9515edf50e(C.uintptr_t(_swig_i_0)))
 	return swig_r
 }
 
 func (arg1 SwigcptrB2Fixture) SetFilterData(arg2 B2Filter) {
 	_swig_i_0 := arg1
 	_swig_i_1 := arg2.Swigcptr()
-	C._wrap_b2Fixture_SetFilterData_Box2D_b1d1b47c7e81f80a(C.uintptr_t(_swig_i_0), C.uintptr_t(_swig_i_1))
+	C._wrap_b2Fixture_SetFilterData_Box2D_553c0f9515edf50e(C.uintptr_t(_swig_i_0), C.uintptr_t(_swig_i_1))
 }
 
 func (arg1 SwigcptrB2Fixture) GetFilterData() (_swig_ret B2Filter) {
 	var swig_r B2Filter
 	_swig_i_0 := arg1
-	swig_r = (B2Filter)(SwigcptrB2Filter(C._wrap_b2Fixture_GetFilterData_Box2D_b1d1b47c7e81f80a(C.uintptr_t(_swig_i_0))))
+	swig_r = (B2Filter)(SwigcptrB2Filter(C._wrap_b2Fixture_GetFilterData_Box2D_553c0f9515edf50e(C.uintptr_t(_swig_i_0))))
 	return swig_r
 }
 
 func (arg1 SwigcptrB2Fixture) Refilter() {
 	_swig_i_0 := arg1
-	C._wrap_b2Fixture_Refilter_Box2D_b1d1b47c7e81f80a(C.uintptr_t(_swig_i_0))
+	C._wrap_b2Fixture_Refilter_Box2D_553c0f9515edf50e(C.uintptr_t(_swig_i_0))
 }
 
 func (arg1 SwigcptrB2Fixture) GetBody__SWIG_0() (_swig_ret B2Body) {
 	var swig_r B2Body
 	_swig_i_0 := arg1
-	swig_r = (B2Body)(SwigcptrB2Body(C._wrap_b2Fixture_GetBody__SWIG_0_Box2D_b1d1b47c7e81f80a(C.uintptr_t(_swig_i_0))))
+	swig_r = (B2Body)(SwigcptrB2Body(C._wrap_b2Fixture_GetBody__SWIG_0_Box2D_553c0f9515edf50e(C.uintptr_t(_swig_i_0))))
 	return swig_r
 }
 
 func (arg1 SwigcptrB2Fixture) GetBody__SWIG_1() (_swig_ret B2Body) {
 	var swig_r B2Body
 	_swig_i_0 := arg1
-	swig_r = (B2Body)(SwigcptrB2Body(C._wrap_b2Fixture_GetBody__SWIG_1_Box2D_b1d1b47c7e81f80a(C.uintptr_t(_swig_i_0))))
+	swig_r = (B2Body)(SwigcptrB2Body(C._wrap_b2Fixture_GetBody__SWIG_1_Box2D_553c0f9515edf50e(C.uintptr_t(_swig_i_0))))
 	return swig_r
 }
 
@@ -4397,14 +4403,14 @@ func (p SwigcptrB2Fixture) GetBody(a ...interface{}) interface{} {
 func (arg1 SwigcptrB2Fixture) GetNext__SWIG_0() (_swig_ret B2Fixture) {
 	var swig_r B2Fixture
 	_swig_i_0 := arg1
-	swig_r = (B2Fixture)(SwigcptrB2Fixture(C._wrap_b2Fixture_GetNext__SWIG_0_Box2D_b1d1b47c7e81f80a(C.uintptr_t(_swig_i_0))))
+	swig_r = (B2Fixture)(SwigcptrB2Fixture(C._wrap_b2Fixture_GetNext__SWIG_0_Box2D_553c0f9515edf50e(C.uintptr_t(_swig_i_0))))
 	return swig_r
 }
 
 func (arg1 SwigcptrB2Fixture) GetNext__SWIG_1() (_swig_ret B2Fixture) {
 	var swig_r B2Fixture
 	_swig_i_0 := arg1
-	swig_r = (B2Fixture)(SwigcptrB2Fixture(C._wrap_b2Fixture_GetNext__SWIG_1_Box2D_b1d1b47c7e81f80a(C.uintptr_t(_swig_i_0))))
+	swig_r = (B2Fixture)(SwigcptrB2Fixture(C._wrap_b2Fixture_GetNext__SWIG_1_Box2D_553c0f9515edf50e(C.uintptr_t(_swig_i_0))))
 	return swig_r
 }
 
@@ -4422,21 +4428,21 @@ func (p SwigcptrB2Fixture) GetNext(a ...interface{}) interface{} {
 func (arg1 SwigcptrB2Fixture) GetUserData() (_swig_ret uintptr) {
 	var swig_r uintptr
 	_swig_i_0 := arg1
-	swig_r = (uintptr)(C._wrap_b2Fixture_GetUserData_Box2D_b1d1b47c7e81f80a(C.uintptr_t(_swig_i_0)))
+	swig_r = (uintptr)(C._wrap_b2Fixture_GetUserData_Box2D_553c0f9515edf50e(C.uintptr_t(_swig_i_0)))
 	return swig_r
 }
 
 func (arg1 SwigcptrB2Fixture) SetUserData(arg2 uintptr) {
 	_swig_i_0 := arg1
 	_swig_i_1 := arg2
-	C._wrap_b2Fixture_SetUserData_Box2D_b1d1b47c7e81f80a(C.uintptr_t(_swig_i_0), C.uintptr_t(_swig_i_1))
+	C._wrap_b2Fixture_SetUserData_Box2D_553c0f9515edf50e(C.uintptr_t(_swig_i_0), C.uintptr_t(_swig_i_1))
 }
 
 func (arg1 SwigcptrB2Fixture) TestPoint(arg2 B2Vec2) (_swig_ret bool) {
 	var swig_r bool
 	_swig_i_0 := arg1
 	_swig_i_1 := arg2.Swigcptr()
-	swig_r = (bool)(C._wrap_b2Fixture_TestPoint_Box2D_b1d1b47c7e81f80a(C.uintptr_t(_swig_i_0), C.uintptr_t(_swig_i_1)))
+	swig_r = (bool)(C._wrap_b2Fixture_TestPoint_Box2D_553c0f9515edf50e(C.uintptr_t(_swig_i_0), C.uintptr_t(_swig_i_1)))
 	return swig_r
 }
 
@@ -4446,72 +4452,72 @@ func (arg1 SwigcptrB2Fixture) RayCast(arg2 B2RayCastOutput, arg3 B2RayCastInput,
 	_swig_i_1 := arg2.Swigcptr()
 	_swig_i_2 := arg3.Swigcptr()
 	_swig_i_3 := arg4
-	swig_r = (bool)(C._wrap_b2Fixture_RayCast_Box2D_b1d1b47c7e81f80a(C.uintptr_t(_swig_i_0), C.uintptr_t(_swig_i_1), C.uintptr_t(_swig_i_2), C.swig_intgo(_swig_i_3)))
+	swig_r = (bool)(C._wrap_b2Fixture_RayCast_Box2D_553c0f9515edf50e(C.uintptr_t(_swig_i_0), C.uintptr_t(_swig_i_1), C.uintptr_t(_swig_i_2), C.swig_intgo(_swig_i_3)))
 	return swig_r
 }
 
 func (arg1 SwigcptrB2Fixture) GetMassData(arg2 B2MassData) {
 	_swig_i_0 := arg1
 	_swig_i_1 := arg2.Swigcptr()
-	C._wrap_b2Fixture_GetMassData_Box2D_b1d1b47c7e81f80a(C.uintptr_t(_swig_i_0), C.uintptr_t(_swig_i_1))
+	C._wrap_b2Fixture_GetMassData_Box2D_553c0f9515edf50e(C.uintptr_t(_swig_i_0), C.uintptr_t(_swig_i_1))
 }
 
 func (arg1 SwigcptrB2Fixture) SetDensity(arg2 float32) {
 	_swig_i_0 := arg1
 	_swig_i_1 := arg2
-	C._wrap_b2Fixture_SetDensity_Box2D_b1d1b47c7e81f80a(C.uintptr_t(_swig_i_0), C.float(_swig_i_1))
+	C._wrap_b2Fixture_SetDensity_Box2D_553c0f9515edf50e(C.uintptr_t(_swig_i_0), C.float(_swig_i_1))
 }
 
 func (arg1 SwigcptrB2Fixture) GetDensity() (_swig_ret float32) {
 	var swig_r float32
 	_swig_i_0 := arg1
-	swig_r = (float32)(C._wrap_b2Fixture_GetDensity_Box2D_b1d1b47c7e81f80a(C.uintptr_t(_swig_i_0)))
+	swig_r = (float32)(C._wrap_b2Fixture_GetDensity_Box2D_553c0f9515edf50e(C.uintptr_t(_swig_i_0)))
 	return swig_r
 }
 
 func (arg1 SwigcptrB2Fixture) GetFriction() (_swig_ret float32) {
 	var swig_r float32
 	_swig_i_0 := arg1
-	swig_r = (float32)(C._wrap_b2Fixture_GetFriction_Box2D_b1d1b47c7e81f80a(C.uintptr_t(_swig_i_0)))
+	swig_r = (float32)(C._wrap_b2Fixture_GetFriction_Box2D_553c0f9515edf50e(C.uintptr_t(_swig_i_0)))
 	return swig_r
 }
 
 func (arg1 SwigcptrB2Fixture) SetFriction(arg2 float32) {
 	_swig_i_0 := arg1
 	_swig_i_1 := arg2
-	C._wrap_b2Fixture_SetFriction_Box2D_b1d1b47c7e81f80a(C.uintptr_t(_swig_i_0), C.float(_swig_i_1))
+	C._wrap_b2Fixture_SetFriction_Box2D_553c0f9515edf50e(C.uintptr_t(_swig_i_0), C.float(_swig_i_1))
 }
 
 func (arg1 SwigcptrB2Fixture) GetRestitution() (_swig_ret float32) {
 	var swig_r float32
 	_swig_i_0 := arg1
-	swig_r = (float32)(C._wrap_b2Fixture_GetRestitution_Box2D_b1d1b47c7e81f80a(C.uintptr_t(_swig_i_0)))
+	swig_r = (float32)(C._wrap_b2Fixture_GetRestitution_Box2D_553c0f9515edf50e(C.uintptr_t(_swig_i_0)))
 	return swig_r
 }
 
 func (arg1 SwigcptrB2Fixture) SetRestitution(arg2 float32) {
 	_swig_i_0 := arg1
 	_swig_i_1 := arg2
-	C._wrap_b2Fixture_SetRestitution_Box2D_b1d1b47c7e81f80a(C.uintptr_t(_swig_i_0), C.float(_swig_i_1))
+	C._wrap_b2Fixture_SetRestitution_Box2D_553c0f9515edf50e(C.uintptr_t(_swig_i_0), C.float(_swig_i_1))
 }
 
 func (arg1 SwigcptrB2Fixture) GetAABB(arg2 int) (_swig_ret B2AABB) {
 	var swig_r B2AABB
 	_swig_i_0 := arg1
 	_swig_i_1 := arg2
-	swig_r = (B2AABB)(SwigcptrB2AABB(C._wrap_b2Fixture_GetAABB_Box2D_b1d1b47c7e81f80a(C.uintptr_t(_swig_i_0), C.swig_intgo(_swig_i_1))))
+	swig_r = (B2AABB)(SwigcptrB2AABB(C._wrap_b2Fixture_GetAABB_Box2D_553c0f9515edf50e(C.uintptr_t(_swig_i_0), C.swig_intgo(_swig_i_1))))
 	return swig_r
 }
 
 func (arg1 SwigcptrB2Fixture) Dump(arg2 int) {
 	_swig_i_0 := arg1
 	_swig_i_1 := arg2
-	C._wrap_b2Fixture_Dump_Box2D_b1d1b47c7e81f80a(C.uintptr_t(_swig_i_0), C.swig_intgo(_swig_i_1))
+	C._wrap_b2Fixture_Dump_Box2D_553c0f9515edf50e(C.uintptr_t(_swig_i_0), C.swig_intgo(_swig_i_1))
 }
 
 func DeleteB2Fixture(arg1 B2Fixture) {
 	_swig_i_0 := arg1.Swigcptr()
-	C._wrap_delete_b2Fixture_Box2D_b1d1b47c7e81f80a(C.uintptr_t(_swig_i_0))
+	C._wrap_delete_b2Fixture_Box2D_553c0f9515edf50e(C.uintptr_t(_swig_i_0))
 }
 
 type B2Fixture interface {
@@ -4552,19 +4558,19 @@ func (p SwigcptrB2DestructionListener) SwigIsB2DestructionListener() {
 
 func DeleteB2DestructionListener(arg1 B2DestructionListener) {
 	_swig_i_0 := arg1.Swigcptr()
-	C._wrap_delete_b2DestructionListener_Box2D_b1d1b47c7e81f80a(C.uintptr_t(_swig_i_0))
+	C._wrap_delete_b2DestructionListener_Box2D_553c0f9515edf50e(C.uintptr_t(_swig_i_0))
 }
 
 func (arg1 SwigcptrB2DestructionListener) SayGoodbye__SWIG_0(arg2 B2Joint) {
 	_swig_i_0 := arg1
 	_swig_i_1 := arg2.Swigcptr()
-	C._wrap_b2DestructionListener_SayGoodbye__SWIG_0_Box2D_b1d1b47c7e81f80a(C.uintptr_t(_swig_i_0), C.uintptr_t(_swig_i_1))
+	C._wrap_b2DestructionListener_SayGoodbye__SWIG_0_Box2D_553c0f9515edf50e(C.uintptr_t(_swig_i_0), C.uintptr_t(_swig_i_1))
 }
 
 func (arg1 SwigcptrB2DestructionListener) SayGoodbye__SWIG_1(arg2 B2Fixture) {
 	_swig_i_0 := arg1
 	_swig_i_1 := arg2.Swigcptr()
-	C._wrap_b2DestructionListener_SayGoodbye__SWIG_1_Box2D_b1d1b47c7e81f80a(C.uintptr_t(_swig_i_0), C.uintptr_t(_swig_i_1))
+	C._wrap_b2DestructionListener_SayGoodbye__SWIG_1_Box2D_553c0f9515edf50e(C.uintptr_t(_swig_i_0), C.uintptr_t(_swig_i_1))
 }
 
 func (p SwigcptrB2DestructionListener) SayGoodbye(a ...interface{}) {
@@ -4601,7 +4607,7 @@ func (p SwigcptrB2ContactFilter) SwigIsB2ContactFilter() {
 
 func DeleteB2ContactFilter(arg1 B2ContactFilter) {
 	_swig_i_0 := arg1.Swigcptr()
-	C._wrap_delete_b2ContactFilter_Box2D_b1d1b47c7e81f80a(C.uintptr_t(_swig_i_0))
+	C._wrap_delete_b2ContactFilter_Box2D_553c0f9515edf50e(C.uintptr_t(_swig_i_0))
 }
 
 func (arg1 SwigcptrB2ContactFilter) ShouldCollide(arg2 B2Fixture, arg3 B2Fixture) (_swig_ret bool) {
@@ -4609,13 +4615,13 @@ func (arg1 SwigcptrB2ContactFilter) ShouldCollide(arg2 B2Fixture, arg3 B2Fixture
 	_swig_i_0 := arg1
 	_swig_i_1 := arg2.Swigcptr()
 	_swig_i_2 := arg3.Swigcptr()
-	swig_r = (bool)(C._wrap_b2ContactFilter_ShouldCollide_Box2D_b1d1b47c7e81f80a(C.uintptr_t(_swig_i_0), C.uintptr_t(_swig_i_1), C.uintptr_t(_swig_i_2)))
+	swig_r = (bool)(C._wrap_b2ContactFilter_ShouldCollide_Box2D_553c0f9515edf50e(C.uintptr_t(_swig_i_0), C.uintptr_t(_swig_i_1), C.uintptr_t(_swig_i_2)))
 	return swig_r
 }
 
 func NewB2ContactFilter() (_swig_ret B2ContactFilter) {
 	var swig_r B2ContactFilter
-	swig_r = (B2ContactFilter)(SwigcptrB2ContactFilter(C._wrap_new_b2ContactFilter_Box2D_b1d1b47c7e81f80a()))
+	swig_r = (B2ContactFilter)(SwigcptrB2ContactFilter(C._wrap_new_b2ContactFilter_Box2D_553c0f9515edf50e()))
 	return swig_r
 }
 
@@ -4637,51 +4643,51 @@ func (p SwigcptrB2ContactImpulse) SwigIsB2ContactImpulse() {
 func (arg1 SwigcptrB2ContactImpulse) SetNormalImpulses(arg2 *float32) {
 	_swig_i_0 := arg1
 	_swig_i_1 := arg2
-	C._wrap_b2ContactImpulse_normalImpulses_set_Box2D_b1d1b47c7e81f80a(C.uintptr_t(_swig_i_0), C.swig_voidp(_swig_i_1))
+	C._wrap_b2ContactImpulse_normalImpulses_set_Box2D_553c0f9515edf50e(C.uintptr_t(_swig_i_0), C.swig_voidp(_swig_i_1))
 }
 
 func (arg1 SwigcptrB2ContactImpulse) GetNormalImpulses() (_swig_ret *float32) {
 	var swig_r *float32
 	_swig_i_0 := arg1
-	swig_r = (*float32)(C._wrap_b2ContactImpulse_normalImpulses_get_Box2D_b1d1b47c7e81f80a(C.uintptr_t(_swig_i_0)))
+	swig_r = (*float32)(C._wrap_b2ContactImpulse_normalImpulses_get_Box2D_553c0f9515edf50e(C.uintptr_t(_swig_i_0)))
 	return swig_r
 }
 
 func (arg1 SwigcptrB2ContactImpulse) SetTangentImpulses(arg2 *float32) {
 	_swig_i_0 := arg1
 	_swig_i_1 := arg2
-	C._wrap_b2ContactImpulse_tangentImpulses_set_Box2D_b1d1b47c7e81f80a(C.uintptr_t(_swig_i_0), C.swig_voidp(_swig_i_1))
+	C._wrap_b2ContactImpulse_tangentImpulses_set_Box2D_553c0f9515edf50e(C.uintptr_t(_swig_i_0), C.swig_voidp(_swig_i_1))
 }
 
 func (arg1 SwigcptrB2ContactImpulse) GetTangentImpulses() (_swig_ret *float32) {
 	var swig_r *float32
 	_swig_i_0 := arg1
-	swig_r = (*float32)(C._wrap_b2ContactImpulse_tangentImpulses_get_Box2D_b1d1b47c7e81f80a(C.uintptr_t(_swig_i_0)))
+	swig_r = (*float32)(C._wrap_b2ContactImpulse_tangentImpulses_get_Box2D_553c0f9515edf50e(C.uintptr_t(_swig_i_0)))
 	return swig_r
 }
 
 func (arg1 SwigcptrB2ContactImpulse) SetCount(arg2 int) {
 	_swig_i_0 := arg1
 	_swig_i_1 := arg2
-	C._wrap_b2ContactImpulse_count_set_Box2D_b1d1b47c7e81f80a(C.uintptr_t(_swig_i_0), C.swig_intgo(_swig_i_1))
+	C._wrap_b2ContactImpulse_count_set_Box2D_553c0f9515edf50e(C.uintptr_t(_swig_i_0), C.swig_intgo(_swig_i_1))
 }
 
 func (arg1 SwigcptrB2ContactImpulse) GetCount() (_swig_ret int) {
 	var swig_r int
 	_swig_i_0 := arg1
-	swig_r = (int)(C._wrap_b2ContactImpulse_count_get_Box2D_b1d1b47c7e81f80a(C.uintptr_t(_swig_i_0)))
+	swig_r = (int)(C._wrap_b2ContactImpulse_count_get_Box2D_553c0f9515edf50e(C.uintptr_t(_swig_i_0)))
 	return swig_r
 }
 
 func NewB2ContactImpulse() (_swig_ret B2ContactImpulse) {
 	var swig_r B2ContactImpulse
-	swig_r = (B2ContactImpulse)(SwigcptrB2ContactImpulse(C._wrap_new_b2ContactImpulse_Box2D_b1d1b47c7e81f80a()))
+	swig_r = (B2ContactImpulse)(SwigcptrB2ContactImpulse(C._wrap_new_b2ContactImpulse_Box2D_553c0f9515edf50e()))
 	return swig_r
 }
 
 func DeleteB2ContactImpulse(arg1 B2ContactImpulse) {
 	_swig_i_0 := arg1.Swigcptr()
-	C._wrap_delete_b2ContactImpulse_Box2D_b1d1b47c7e81f80a(C.uintptr_t(_swig_i_0))
+	C._wrap_delete_b2ContactImpulse_Box2D_553c0f9515edf50e(C.uintptr_t(_swig_i_0))
 }
 
 type B2ContactImpulse interface {
@@ -4695,6 +4701,139 @@ type B2ContactImpulse interface {
 	GetCount() (_swig_ret int)
 }
 
+type _swig_DirectorB2ContactListener struct {
+	SwigcptrB2ContactListener
+	v interface{}
+}
+
+func (p *_swig_DirectorB2ContactListener) Swigcptr() uintptr {
+	return p.SwigcptrB2ContactListener.Swigcptr()
+}
+
+func (p *_swig_DirectorB2ContactListener) SwigIsB2ContactListener() {
+}
+
+func (p *_swig_DirectorB2ContactListener) DirectorInterface() interface{} {
+	return p.v
+}
+
+func NewDirectorB2ContactListener(v interface{}) B2ContactListener {
+	p := &_swig_DirectorB2ContactListener{0, v}
+	p.SwigcptrB2ContactListener = SwigcptrB2ContactListener(C._wrap__swig_NewDirectorB2ContactListenerB2ContactListener_Box2D_553c0f9515edf50e(C.int(swigDirectorAdd(p))))
+	return p
+}
+
+func DeleteDirectorB2ContactListener(arg1 B2ContactListener) {
+	_swig_i_0 := arg1.Swigcptr()
+	C._wrap_DeleteDirectorB2ContactListener_Box2D_553c0f9515edf50e(C.uintptr_t(_swig_i_0))
+}
+
+//export Swiggo_DeleteDirector_b2ContactListener_Box2D_553c0f9515edf50e
+func Swiggo_DeleteDirector_b2ContactListener_Box2D_553c0f9515edf50e(c int) {
+	swigDirectorLookup(c).(*_swig_DirectorB2ContactListener).SwigcptrB2ContactListener = 0
+	swigDirectorDelete(c)
+}
+
+type _swig_DirectorInterfaceB2ContactListenerBeginContact interface {
+	BeginContact(B2Contact)
+}
+
+func (swig_p *_swig_DirectorB2ContactListener) BeginContact(contact B2Contact) {
+	if swig_g, swig_ok := swig_p.v.(_swig_DirectorInterfaceB2ContactListenerBeginContact); swig_ok {
+		swig_g.BeginContact(contact)
+		return
+	}
+	_swig_i_0 := contact.Swigcptr()
+	C._wrap__swig_DirectorB2ContactListener_upcall_BeginContact_Box2D_553c0f9515edf50e(C.uintptr_t(swig_p.SwigcptrB2ContactListener), C.uintptr_t(_swig_i_0))
+}
+
+func DirectorB2ContactListenerBeginContact(p B2ContactListener, arg2 B2Contact) {
+	_swig_i_0 := arg2.Swigcptr()
+	C._wrap__swig_DirectorB2ContactListener_upcall_BeginContact_Box2D_553c0f9515edf50e(C.uintptr_t(p.(*_swig_DirectorB2ContactListener).SwigcptrB2ContactListener), C.uintptr_t(_swig_i_0))
+}
+
+//export Swig_DirectorB2ContactListener_callback_BeginContact_Box2D_553c0f9515edf50e
+func Swig_DirectorB2ContactListener_callback_BeginContact_Box2D_553c0f9515edf50e(swig_c int, arg2 uintptr) {
+	swig_p := swigDirectorLookup(swig_c).(*_swig_DirectorB2ContactListener)
+	swig_p.BeginContact(SwigcptrB2Contact(arg2))
+}
+
+type _swig_DirectorInterfaceB2ContactListenerEndContact interface {
+	EndContact(B2Contact)
+}
+
+func (swig_p *_swig_DirectorB2ContactListener) EndContact(contact B2Contact) {
+	if swig_g, swig_ok := swig_p.v.(_swig_DirectorInterfaceB2ContactListenerEndContact); swig_ok {
+		swig_g.EndContact(contact)
+		return
+	}
+	_swig_i_0 := contact.Swigcptr()
+	C._wrap__swig_DirectorB2ContactListener_upcall_EndContact_Box2D_553c0f9515edf50e(C.uintptr_t(swig_p.SwigcptrB2ContactListener), C.uintptr_t(_swig_i_0))
+}
+
+func DirectorB2ContactListenerEndContact(p B2ContactListener, arg2 B2Contact) {
+	_swig_i_0 := arg2.Swigcptr()
+	C._wrap__swig_DirectorB2ContactListener_upcall_EndContact_Box2D_553c0f9515edf50e(C.uintptr_t(p.(*_swig_DirectorB2ContactListener).SwigcptrB2ContactListener), C.uintptr_t(_swig_i_0))
+}
+
+//export Swig_DirectorB2ContactListener_callback_EndContact_Box2D_553c0f9515edf50e
+func Swig_DirectorB2ContactListener_callback_EndContact_Box2D_553c0f9515edf50e(swig_c int, arg2 uintptr) {
+	swig_p := swigDirectorLookup(swig_c).(*_swig_DirectorB2ContactListener)
+	swig_p.EndContact(SwigcptrB2Contact(arg2))
+}
+
+type _swig_DirectorInterfaceB2ContactListenerPreSolve interface {
+	PreSolve(B2Contact, B2Manifold)
+}
+
+func (swig_p *_swig_DirectorB2ContactListener) PreSolve(contact B2Contact, oldManifold B2Manifold) {
+	if swig_g, swig_ok := swig_p.v.(_swig_DirectorInterfaceB2ContactListenerPreSolve); swig_ok {
+		swig_g.PreSolve(contact, oldManifold)
+		return
+	}
+	_swig_i_0 := contact.Swigcptr()
+	_swig_i_1 := oldManifold.Swigcptr()
+	C._wrap__swig_DirectorB2ContactListener_upcall_PreSolve_Box2D_553c0f9515edf50e(C.uintptr_t(swig_p.SwigcptrB2ContactListener), C.uintptr_t(_swig_i_0), C.uintptr_t(_swig_i_1))
+}
+
+func DirectorB2ContactListenerPreSolve(p B2ContactListener, arg2 B2Contact, arg3 B2Manifold) {
+	_swig_i_0 := arg2.Swigcptr()
+	_swig_i_1 := arg3.Swigcptr()
+	C._wrap__swig_DirectorB2ContactListener_upcall_PreSolve_Box2D_553c0f9515edf50e(C.uintptr_t(p.(*_swig_DirectorB2ContactListener).SwigcptrB2ContactListener), C.uintptr_t(_swig_i_0), C.uintptr_t(_swig_i_1))
+}
+
+//export Swig_DirectorB2ContactListener_callback_PreSolve_Box2D_553c0f9515edf50e
+func Swig_DirectorB2ContactListener_callback_PreSolve_Box2D_553c0f9515edf50e(swig_c int, arg2 uintptr, arg3 uintptr) {
+	swig_p := swigDirectorLookup(swig_c).(*_swig_DirectorB2ContactListener)
+	swig_p.PreSolve(SwigcptrB2Contact(arg2), SwigcptrB2Manifold(arg3))
+}
+
+type _swig_DirectorInterfaceB2ContactListenerPostSolve interface {
+	PostSolve(B2Contact, B2ContactImpulse)
+}
+
+func (swig_p *_swig_DirectorB2ContactListener) PostSolve(contact B2Contact, impulse B2ContactImpulse) {
+	if swig_g, swig_ok := swig_p.v.(_swig_DirectorInterfaceB2ContactListenerPostSolve); swig_ok {
+		swig_g.PostSolve(contact, impulse)
+		return
+	}
+	_swig_i_0 := contact.Swigcptr()
+	_swig_i_1 := impulse.Swigcptr()
+	C._wrap__swig_DirectorB2ContactListener_upcall_PostSolve_Box2D_553c0f9515edf50e(C.uintptr_t(swig_p.SwigcptrB2ContactListener), C.uintptr_t(_swig_i_0), C.uintptr_t(_swig_i_1))
+}
+
+func DirectorB2ContactListenerPostSolve(p B2ContactListener, arg2 B2Contact, arg3 B2ContactImpulse) {
+	_swig_i_0 := arg2.Swigcptr()
+	_swig_i_1 := arg3.Swigcptr()
+	C._wrap__swig_DirectorB2ContactListener_upcall_PostSolve_Box2D_553c0f9515edf50e(C.uintptr_t(p.(*_swig_DirectorB2ContactListener).SwigcptrB2ContactListener), C.uintptr_t(_swig_i_0), C.uintptr_t(_swig_i_1))
+}
+
+//export Swig_DirectorB2ContactListener_callback_PostSolve_Box2D_553c0f9515edf50e
+func Swig_DirectorB2ContactListener_callback_PostSolve_Box2D_553c0f9515edf50e(swig_c int, arg2 uintptr, arg3 uintptr) {
+	swig_p := swigDirectorLookup(swig_c).(*_swig_DirectorB2ContactListener)
+	swig_p.PostSolve(SwigcptrB2Contact(arg2), SwigcptrB2ContactImpulse(arg3))
+}
+
 type SwigcptrB2ContactListener uintptr
 
 func (p SwigcptrB2ContactListener) Swigcptr() uintptr {
@@ -4704,46 +4843,51 @@ func (p SwigcptrB2ContactListener) Swigcptr() uintptr {
 func (p SwigcptrB2ContactListener) SwigIsB2ContactListener() {
 }
 
+func (p SwigcptrB2ContactListener) DirectorInterface() interface{} {
+	return nil
+}
+
 func DeleteB2ContactListener(arg1 B2ContactListener) {
 	_swig_i_0 := arg1.Swigcptr()
-	C._wrap_delete_b2ContactListener_Box2D_b1d1b47c7e81f80a(C.uintptr_t(_swig_i_0))
+	C._wrap_delete_b2ContactListener_Box2D_553c0f9515edf50e(C.uintptr_t(_swig_i_0))
 }
 
 func (arg1 SwigcptrB2ContactListener) BeginContact(arg2 B2Contact) {
 	_swig_i_0 := arg1
 	_swig_i_1 := arg2.Swigcptr()
-	C._wrap_b2ContactListener_BeginContact_Box2D_b1d1b47c7e81f80a(C.uintptr_t(_swig_i_0), C.uintptr_t(_swig_i_1))
+	C._wrap_b2ContactListener_BeginContact_Box2D_553c0f9515edf50e(C.uintptr_t(_swig_i_0), C.uintptr_t(_swig_i_1))
 }
 
 func (arg1 SwigcptrB2ContactListener) EndContact(arg2 B2Contact) {
 	_swig_i_0 := arg1
 	_swig_i_1 := arg2.Swigcptr()
-	C._wrap_b2ContactListener_EndContact_Box2D_b1d1b47c7e81f80a(C.uintptr_t(_swig_i_0), C.uintptr_t(_swig_i_1))
+	C._wrap_b2ContactListener_EndContact_Box2D_553c0f9515edf50e(C.uintptr_t(_swig_i_0), C.uintptr_t(_swig_i_1))
 }
 
 func (arg1 SwigcptrB2ContactListener) PreSolve(arg2 B2Contact, arg3 B2Manifold) {
 	_swig_i_0 := arg1
 	_swig_i_1 := arg2.Swigcptr()
 	_swig_i_2 := arg3.Swigcptr()
-	C._wrap_b2ContactListener_PreSolve_Box2D_b1d1b47c7e81f80a(C.uintptr_t(_swig_i_0), C.uintptr_t(_swig_i_1), C.uintptr_t(_swig_i_2))
+	C._wrap_b2ContactListener_PreSolve_Box2D_553c0f9515edf50e(C.uintptr_t(_swig_i_0), C.uintptr_t(_swig_i_1), C.uintptr_t(_swig_i_2))
 }
 
 func (arg1 SwigcptrB2ContactListener) PostSolve(arg2 B2Contact, arg3 B2ContactImpulse) {
 	_swig_i_0 := arg1
 	_swig_i_1 := arg2.Swigcptr()
 	_swig_i_2 := arg3.Swigcptr()
-	C._wrap_b2ContactListener_PostSolve_Box2D_b1d1b47c7e81f80a(C.uintptr_t(_swig_i_0), C.uintptr_t(_swig_i_1), C.uintptr_t(_swig_i_2))
+	C._wrap_b2ContactListener_PostSolve_Box2D_553c0f9515edf50e(C.uintptr_t(_swig_i_0), C.uintptr_t(_swig_i_1), C.uintptr_t(_swig_i_2))
 }
 
 func NewB2ContactListener() (_swig_ret B2ContactListener) {
 	var swig_r B2ContactListener
-	swig_r = (B2ContactListener)(SwigcptrB2ContactListener(C._wrap_new_b2ContactListener_Box2D_b1d1b47c7e81f80a()))
+	swig_r = (B2ContactListener)(SwigcptrB2ContactListener(C._wrap_new_b2ContactListener_Box2D_553c0f9515edf50e()))
 	return swig_r
 }
 
 type B2ContactListener interface {
 	Swigcptr() uintptr
 	SwigIsB2ContactListener()
+	DirectorInterface() interface{}
 	BeginContact(arg2 B2Contact)
 	EndContact(arg2 B2Contact)
 	PreSolve(arg2 B2Contact, arg3 B2Manifold)
@@ -4761,14 +4905,14 @@ func (p SwigcptrB2QueryCallback) SwigIsB2QueryCallback() {
 
 func DeleteB2QueryCallback(arg1 B2QueryCallback) {
 	_swig_i_0 := arg1.Swigcptr()
-	C._wrap_delete_b2QueryCallback_Box2D_b1d1b47c7e81f80a(C.uintptr_t(_swig_i_0))
+	C._wrap_delete_b2QueryCallback_Box2D_553c0f9515edf50e(C.uintptr_t(_swig_i_0))
 }
 
 func (arg1 SwigcptrB2QueryCallback) ReportFixture(arg2 B2Fixture) (_swig_ret bool) {
 	var swig_r bool
 	_swig_i_0 := arg1
 	_swig_i_1 := arg2.Swigcptr()
-	swig_r = (bool)(C._wrap_b2QueryCallback_ReportFixture_Box2D_b1d1b47c7e81f80a(C.uintptr_t(_swig_i_0), C.uintptr_t(_swig_i_1)))
+	swig_r = (bool)(C._wrap_b2QueryCallback_ReportFixture_Box2D_553c0f9515edf50e(C.uintptr_t(_swig_i_0), C.uintptr_t(_swig_i_1)))
 	return swig_r
 }
 
@@ -4789,7 +4933,7 @@ func (p SwigcptrB2RayCastCallback) SwigIsB2RayCastCallback() {
 
 func DeleteB2RayCastCallback(arg1 B2RayCastCallback) {
 	_swig_i_0 := arg1.Swigcptr()
-	C._wrap_delete_b2RayCastCallback_Box2D_b1d1b47c7e81f80a(C.uintptr_t(_swig_i_0))
+	C._wrap_delete_b2RayCastCallback_Box2D_553c0f9515edf50e(C.uintptr_t(_swig_i_0))
 }
 
 func (arg1 SwigcptrB2RayCastCallback) ReportFixture(arg2 B2Fixture, arg3 B2Vec2, arg4 B2Vec2, arg5 float32) (_swig_ret float32) {
@@ -4799,7 +4943,7 @@ func (arg1 SwigcptrB2RayCastCallback) ReportFixture(arg2 B2Fixture, arg3 B2Vec2,
 	_swig_i_2 := arg3.Swigcptr()
 	_swig_i_3 := arg4.Swigcptr()
 	_swig_i_4 := arg5
-	swig_r = (float32)(C._wrap_b2RayCastCallback_ReportFixture_Box2D_b1d1b47c7e81f80a(C.uintptr_t(_swig_i_0), C.uintptr_t(_swig_i_1), C.uintptr_t(_swig_i_2), C.uintptr_t(_swig_i_3), C.float(_swig_i_4)))
+	swig_r = (float32)(C._wrap_b2RayCastCallback_ReportFixture_Box2D_553c0f9515edf50e(C.uintptr_t(_swig_i_0), C.uintptr_t(_swig_i_1), C.uintptr_t(_swig_i_2), C.uintptr_t(_swig_i_3), C.float(_swig_i_4)))
 	return swig_r
 }
 
@@ -4821,116 +4965,116 @@ func (p SwigcptrB2Profile) SwigIsB2Profile() {
 func (arg1 SwigcptrB2Profile) SetStep(arg2 float32) {
 	_swig_i_0 := arg1
 	_swig_i_1 := arg2
-	C._wrap_b2Profile_step_set_Box2D_b1d1b47c7e81f80a(C.uintptr_t(_swig_i_0), C.float(_swig_i_1))
+	C._wrap_b2Profile_step_set_Box2D_553c0f9515edf50e(C.uintptr_t(_swig_i_0), C.float(_swig_i_1))
 }
 
 func (arg1 SwigcptrB2Profile) GetStep() (_swig_ret float32) {
 	var swig_r float32
 	_swig_i_0 := arg1
-	swig_r = (float32)(C._wrap_b2Profile_step_get_Box2D_b1d1b47c7e81f80a(C.uintptr_t(_swig_i_0)))
+	swig_r = (float32)(C._wrap_b2Profile_step_get_Box2D_553c0f9515edf50e(C.uintptr_t(_swig_i_0)))
 	return swig_r
 }
 
 func (arg1 SwigcptrB2Profile) SetCollide(arg2 float32) {
 	_swig_i_0 := arg1
 	_swig_i_1 := arg2
-	C._wrap_b2Profile_collide_set_Box2D_b1d1b47c7e81f80a(C.uintptr_t(_swig_i_0), C.float(_swig_i_1))
+	C._wrap_b2Profile_collide_set_Box2D_553c0f9515edf50e(C.uintptr_t(_swig_i_0), C.float(_swig_i_1))
 }
 
 func (arg1 SwigcptrB2Profile) GetCollide() (_swig_ret float32) {
 	var swig_r float32
 	_swig_i_0 := arg1
-	swig_r = (float32)(C._wrap_b2Profile_collide_get_Box2D_b1d1b47c7e81f80a(C.uintptr_t(_swig_i_0)))
+	swig_r = (float32)(C._wrap_b2Profile_collide_get_Box2D_553c0f9515edf50e(C.uintptr_t(_swig_i_0)))
 	return swig_r
 }
 
 func (arg1 SwigcptrB2Profile) SetSolve(arg2 float32) {
 	_swig_i_0 := arg1
 	_swig_i_1 := arg2
-	C._wrap_b2Profile_solve_set_Box2D_b1d1b47c7e81f80a(C.uintptr_t(_swig_i_0), C.float(_swig_i_1))
+	C._wrap_b2Profile_solve_set_Box2D_553c0f9515edf50e(C.uintptr_t(_swig_i_0), C.float(_swig_i_1))
 }
 
 func (arg1 SwigcptrB2Profile) GetSolve() (_swig_ret float32) {
 	var swig_r float32
 	_swig_i_0 := arg1
-	swig_r = (float32)(C._wrap_b2Profile_solve_get_Box2D_b1d1b47c7e81f80a(C.uintptr_t(_swig_i_0)))
+	swig_r = (float32)(C._wrap_b2Profile_solve_get_Box2D_553c0f9515edf50e(C.uintptr_t(_swig_i_0)))
 	return swig_r
 }
 
 func (arg1 SwigcptrB2Profile) SetSolveInit(arg2 float32) {
 	_swig_i_0 := arg1
 	_swig_i_1 := arg2
-	C._wrap_b2Profile_solveInit_set_Box2D_b1d1b47c7e81f80a(C.uintptr_t(_swig_i_0), C.float(_swig_i_1))
+	C._wrap_b2Profile_solveInit_set_Box2D_553c0f9515edf50e(C.uintptr_t(_swig_i_0), C.float(_swig_i_1))
 }
 
 func (arg1 SwigcptrB2Profile) GetSolveInit() (_swig_ret float32) {
 	var swig_r float32
 	_swig_i_0 := arg1
-	swig_r = (float32)(C._wrap_b2Profile_solveInit_get_Box2D_b1d1b47c7e81f80a(C.uintptr_t(_swig_i_0)))
+	swig_r = (float32)(C._wrap_b2Profile_solveInit_get_Box2D_553c0f9515edf50e(C.uintptr_t(_swig_i_0)))
 	return swig_r
 }
 
 func (arg1 SwigcptrB2Profile) SetSolveVelocity(arg2 float32) {
 	_swig_i_0 := arg1
 	_swig_i_1 := arg2
-	C._wrap_b2Profile_solveVelocity_set_Box2D_b1d1b47c7e81f80a(C.uintptr_t(_swig_i_0), C.float(_swig_i_1))
+	C._wrap_b2Profile_solveVelocity_set_Box2D_553c0f9515edf50e(C.uintptr_t(_swig_i_0), C.float(_swig_i_1))
 }
 
 func (arg1 SwigcptrB2Profile) GetSolveVelocity() (_swig_ret float32) {
 	var swig_r float32
 	_swig_i_0 := arg1
-	swig_r = (float32)(C._wrap_b2Profile_solveVelocity_get_Box2D_b1d1b47c7e81f80a(C.uintptr_t(_swig_i_0)))
+	swig_r = (float32)(C._wrap_b2Profile_solveVelocity_get_Box2D_553c0f9515edf50e(C.uintptr_t(_swig_i_0)))
 	return swig_r
 }
 
 func (arg1 SwigcptrB2Profile) SetSolvePosition(arg2 float32) {
 	_swig_i_0 := arg1
 	_swig_i_1 := arg2
-	C._wrap_b2Profile_solvePosition_set_Box2D_b1d1b47c7e81f80a(C.uintptr_t(_swig_i_0), C.float(_swig_i_1))
+	C._wrap_b2Profile_solvePosition_set_Box2D_553c0f9515edf50e(C.uintptr_t(_swig_i_0), C.float(_swig_i_1))
 }
 
 func (arg1 SwigcptrB2Profile) GetSolvePosition() (_swig_ret float32) {
 	var swig_r float32
 	_swig_i_0 := arg1
-	swig_r = (float32)(C._wrap_b2Profile_solvePosition_get_Box2D_b1d1b47c7e81f80a(C.uintptr_t(_swig_i_0)))
+	swig_r = (float32)(C._wrap_b2Profile_solvePosition_get_Box2D_553c0f9515edf50e(C.uintptr_t(_swig_i_0)))
 	return swig_r
 }
 
 func (arg1 SwigcptrB2Profile) SetBroadphase(arg2 float32) {
 	_swig_i_0 := arg1
 	_swig_i_1 := arg2
-	C._wrap_b2Profile_broadphase_set_Box2D_b1d1b47c7e81f80a(C.uintptr_t(_swig_i_0), C.float(_swig_i_1))
+	C._wrap_b2Profile_broadphase_set_Box2D_553c0f9515edf50e(C.uintptr_t(_swig_i_0), C.float(_swig_i_1))
 }
 
 func (arg1 SwigcptrB2Profile) GetBroadphase() (_swig_ret float32) {
 	var swig_r float32
 	_swig_i_0 := arg1
-	swig_r = (float32)(C._wrap_b2Profile_broadphase_get_Box2D_b1d1b47c7e81f80a(C.uintptr_t(_swig_i_0)))
+	swig_r = (float32)(C._wrap_b2Profile_broadphase_get_Box2D_553c0f9515edf50e(C.uintptr_t(_swig_i_0)))
 	return swig_r
 }
 
 func (arg1 SwigcptrB2Profile) SetSolveTOI(arg2 float32) {
 	_swig_i_0 := arg1
 	_swig_i_1 := arg2
-	C._wrap_b2Profile_solveTOI_set_Box2D_b1d1b47c7e81f80a(C.uintptr_t(_swig_i_0), C.float(_swig_i_1))
+	C._wrap_b2Profile_solveTOI_set_Box2D_553c0f9515edf50e(C.uintptr_t(_swig_i_0), C.float(_swig_i_1))
 }
 
 func (arg1 SwigcptrB2Profile) GetSolveTOI() (_swig_ret float32) {
 	var swig_r float32
 	_swig_i_0 := arg1
-	swig_r = (float32)(C._wrap_b2Profile_solveTOI_get_Box2D_b1d1b47c7e81f80a(C.uintptr_t(_swig_i_0)))
+	swig_r = (float32)(C._wrap_b2Profile_solveTOI_get_Box2D_553c0f9515edf50e(C.uintptr_t(_swig_i_0)))
 	return swig_r
 }
 
 func NewB2Profile() (_swig_ret B2Profile) {
 	var swig_r B2Profile
-	swig_r = (B2Profile)(SwigcptrB2Profile(C._wrap_new_b2Profile_Box2D_b1d1b47c7e81f80a()))
+	swig_r = (B2Profile)(SwigcptrB2Profile(C._wrap_new_b2Profile_Box2D_553c0f9515edf50e()))
 	return swig_r
 }
 
 func DeleteB2Profile(arg1 B2Profile) {
 	_swig_i_0 := arg1.Swigcptr()
-	C._wrap_delete_b2Profile_Box2D_b1d1b47c7e81f80a(C.uintptr_t(_swig_i_0))
+	C._wrap_delete_b2Profile_Box2D_553c0f9515edf50e(C.uintptr_t(_swig_i_0))
 }
 
 type B2Profile interface {
@@ -4966,90 +5110,90 @@ func (p SwigcptrB2TimeStep) SwigIsB2TimeStep() {
 func (arg1 SwigcptrB2TimeStep) SetDt(arg2 float32) {
 	_swig_i_0 := arg1
 	_swig_i_1 := arg2
-	C._wrap_b2TimeStep_dt_set_Box2D_b1d1b47c7e81f80a(C.uintptr_t(_swig_i_0), C.float(_swig_i_1))
+	C._wrap_b2TimeStep_dt_set_Box2D_553c0f9515edf50e(C.uintptr_t(_swig_i_0), C.float(_swig_i_1))
 }
 
 func (arg1 SwigcptrB2TimeStep) GetDt() (_swig_ret float32) {
 	var swig_r float32
 	_swig_i_0 := arg1
-	swig_r = (float32)(C._wrap_b2TimeStep_dt_get_Box2D_b1d1b47c7e81f80a(C.uintptr_t(_swig_i_0)))
+	swig_r = (float32)(C._wrap_b2TimeStep_dt_get_Box2D_553c0f9515edf50e(C.uintptr_t(_swig_i_0)))
 	return swig_r
 }
 
 func (arg1 SwigcptrB2TimeStep) SetInv_dt(arg2 float32) {
 	_swig_i_0 := arg1
 	_swig_i_1 := arg2
-	C._wrap_b2TimeStep_inv_dt_set_Box2D_b1d1b47c7e81f80a(C.uintptr_t(_swig_i_0), C.float(_swig_i_1))
+	C._wrap_b2TimeStep_inv_dt_set_Box2D_553c0f9515edf50e(C.uintptr_t(_swig_i_0), C.float(_swig_i_1))
 }
 
 func (arg1 SwigcptrB2TimeStep) GetInv_dt() (_swig_ret float32) {
 	var swig_r float32
 	_swig_i_0 := arg1
-	swig_r = (float32)(C._wrap_b2TimeStep_inv_dt_get_Box2D_b1d1b47c7e81f80a(C.uintptr_t(_swig_i_0)))
+	swig_r = (float32)(C._wrap_b2TimeStep_inv_dt_get_Box2D_553c0f9515edf50e(C.uintptr_t(_swig_i_0)))
 	return swig_r
 }
 
 func (arg1 SwigcptrB2TimeStep) SetDtRatio(arg2 float32) {
 	_swig_i_0 := arg1
 	_swig_i_1 := arg2
-	C._wrap_b2TimeStep_dtRatio_set_Box2D_b1d1b47c7e81f80a(C.uintptr_t(_swig_i_0), C.float(_swig_i_1))
+	C._wrap_b2TimeStep_dtRatio_set_Box2D_553c0f9515edf50e(C.uintptr_t(_swig_i_0), C.float(_swig_i_1))
 }
 
 func (arg1 SwigcptrB2TimeStep) GetDtRatio() (_swig_ret float32) {
 	var swig_r float32
 	_swig_i_0 := arg1
-	swig_r = (float32)(C._wrap_b2TimeStep_dtRatio_get_Box2D_b1d1b47c7e81f80a(C.uintptr_t(_swig_i_0)))
+	swig_r = (float32)(C._wrap_b2TimeStep_dtRatio_get_Box2D_553c0f9515edf50e(C.uintptr_t(_swig_i_0)))
 	return swig_r
 }
 
 func (arg1 SwigcptrB2TimeStep) SetVelocityIterations(arg2 int) {
 	_swig_i_0 := arg1
 	_swig_i_1 := arg2
-	C._wrap_b2TimeStep_velocityIterations_set_Box2D_b1d1b47c7e81f80a(C.uintptr_t(_swig_i_0), C.swig_intgo(_swig_i_1))
+	C._wrap_b2TimeStep_velocityIterations_set_Box2D_553c0f9515edf50e(C.uintptr_t(_swig_i_0), C.swig_intgo(_swig_i_1))
 }
 
 func (arg1 SwigcptrB2TimeStep) GetVelocityIterations() (_swig_ret int) {
 	var swig_r int
 	_swig_i_0 := arg1
-	swig_r = (int)(C._wrap_b2TimeStep_velocityIterations_get_Box2D_b1d1b47c7e81f80a(C.uintptr_t(_swig_i_0)))
+	swig_r = (int)(C._wrap_b2TimeStep_velocityIterations_get_Box2D_553c0f9515edf50e(C.uintptr_t(_swig_i_0)))
 	return swig_r
 }
 
 func (arg1 SwigcptrB2TimeStep) SetPositionIterations(arg2 int) {
 	_swig_i_0 := arg1
 	_swig_i_1 := arg2
-	C._wrap_b2TimeStep_positionIterations_set_Box2D_b1d1b47c7e81f80a(C.uintptr_t(_swig_i_0), C.swig_intgo(_swig_i_1))
+	C._wrap_b2TimeStep_positionIterations_set_Box2D_553c0f9515edf50e(C.uintptr_t(_swig_i_0), C.swig_intgo(_swig_i_1))
 }
 
 func (arg1 SwigcptrB2TimeStep) GetPositionIterations() (_swig_ret int) {
 	var swig_r int
 	_swig_i_0 := arg1
-	swig_r = (int)(C._wrap_b2TimeStep_positionIterations_get_Box2D_b1d1b47c7e81f80a(C.uintptr_t(_swig_i_0)))
+	swig_r = (int)(C._wrap_b2TimeStep_positionIterations_get_Box2D_553c0f9515edf50e(C.uintptr_t(_swig_i_0)))
 	return swig_r
 }
 
 func (arg1 SwigcptrB2TimeStep) SetWarmStarting(arg2 bool) {
 	_swig_i_0 := arg1
 	_swig_i_1 := arg2
-	C._wrap_b2TimeStep_warmStarting_set_Box2D_b1d1b47c7e81f80a(C.uintptr_t(_swig_i_0), C._Bool(_swig_i_1))
+	C._wrap_b2TimeStep_warmStarting_set_Box2D_553c0f9515edf50e(C.uintptr_t(_swig_i_0), C._Bool(_swig_i_1))
 }
 
 func (arg1 SwigcptrB2TimeStep) GetWarmStarting() (_swig_ret bool) {
 	var swig_r bool
 	_swig_i_0 := arg1
-	swig_r = (bool)(C._wrap_b2TimeStep_warmStarting_get_Box2D_b1d1b47c7e81f80a(C.uintptr_t(_swig_i_0)))
+	swig_r = (bool)(C._wrap_b2TimeStep_warmStarting_get_Box2D_553c0f9515edf50e(C.uintptr_t(_swig_i_0)))
 	return swig_r
 }
 
 func NewB2TimeStep() (_swig_ret B2TimeStep) {
 	var swig_r B2TimeStep
-	swig_r = (B2TimeStep)(SwigcptrB2TimeStep(C._wrap_new_b2TimeStep_Box2D_b1d1b47c7e81f80a()))
+	swig_r = (B2TimeStep)(SwigcptrB2TimeStep(C._wrap_new_b2TimeStep_Box2D_553c0f9515edf50e()))
 	return swig_r
 }
 
 func DeleteB2TimeStep(arg1 B2TimeStep) {
 	_swig_i_0 := arg1.Swigcptr()
-	C._wrap_delete_b2TimeStep_Box2D_b1d1b47c7e81f80a(C.uintptr_t(_swig_i_0))
+	C._wrap_delete_b2TimeStep_Box2D_553c0f9515edf50e(C.uintptr_t(_swig_i_0))
 }
 
 type B2TimeStep interface {
@@ -5081,38 +5225,38 @@ func (p SwigcptrB2Position) SwigIsB2Position() {
 func (arg1 SwigcptrB2Position) SetC(arg2 B2Vec2) {
 	_swig_i_0 := arg1
 	_swig_i_1 := arg2.Swigcptr()
-	C._wrap_b2Position_c_set_Box2D_b1d1b47c7e81f80a(C.uintptr_t(_swig_i_0), C.uintptr_t(_swig_i_1))
+	C._wrap_b2Position_c_set_Box2D_553c0f9515edf50e(C.uintptr_t(_swig_i_0), C.uintptr_t(_swig_i_1))
 }
 
 func (arg1 SwigcptrB2Position) GetC() (_swig_ret B2Vec2) {
 	var swig_r B2Vec2
 	_swig_i_0 := arg1
-	swig_r = (B2Vec2)(SwigcptrB2Vec2(C._wrap_b2Position_c_get_Box2D_b1d1b47c7e81f80a(C.uintptr_t(_swig_i_0))))
+	swig_r = (B2Vec2)(SwigcptrB2Vec2(C._wrap_b2Position_c_get_Box2D_553c0f9515edf50e(C.uintptr_t(_swig_i_0))))
 	return swig_r
 }
 
 func (arg1 SwigcptrB2Position) SetA(arg2 float32) {
 	_swig_i_0 := arg1
 	_swig_i_1 := arg2
-	C._wrap_b2Position_a_set_Box2D_b1d1b47c7e81f80a(C.uintptr_t(_swig_i_0), C.float(_swig_i_1))
+	C._wrap_b2Position_a_set_Box2D_553c0f9515edf50e(C.uintptr_t(_swig_i_0), C.float(_swig_i_1))
 }
 
 func (arg1 SwigcptrB2Position) GetA() (_swig_ret float32) {
 	var swig_r float32
 	_swig_i_0 := arg1
-	swig_r = (float32)(C._wrap_b2Position_a_get_Box2D_b1d1b47c7e81f80a(C.uintptr_t(_swig_i_0)))
+	swig_r = (float32)(C._wrap_b2Position_a_get_Box2D_553c0f9515edf50e(C.uintptr_t(_swig_i_0)))
 	return swig_r
 }
 
 func NewB2Position() (_swig_ret B2Position) {
 	var swig_r B2Position
-	swig_r = (B2Position)(SwigcptrB2Position(C._wrap_new_b2Position_Box2D_b1d1b47c7e81f80a()))
+	swig_r = (B2Position)(SwigcptrB2Position(C._wrap_new_b2Position_Box2D_553c0f9515edf50e()))
 	return swig_r
 }
 
 func DeleteB2Position(arg1 B2Position) {
 	_swig_i_0 := arg1.Swigcptr()
-	C._wrap_delete_b2Position_Box2D_b1d1b47c7e81f80a(C.uintptr_t(_swig_i_0))
+	C._wrap_delete_b2Position_Box2D_553c0f9515edf50e(C.uintptr_t(_swig_i_0))
 }
 
 type B2Position interface {
@@ -5136,38 +5280,38 @@ func (p SwigcptrB2Velocity) SwigIsB2Velocity() {
 func (arg1 SwigcptrB2Velocity) SetV(arg2 B2Vec2) {
 	_swig_i_0 := arg1
 	_swig_i_1 := arg2.Swigcptr()
-	C._wrap_b2Velocity_v_set_Box2D_b1d1b47c7e81f80a(C.uintptr_t(_swig_i_0), C.uintptr_t(_swig_i_1))
+	C._wrap_b2Velocity_v_set_Box2D_553c0f9515edf50e(C.uintptr_t(_swig_i_0), C.uintptr_t(_swig_i_1))
 }
 
 func (arg1 SwigcptrB2Velocity) GetV() (_swig_ret B2Vec2) {
 	var swig_r B2Vec2
 	_swig_i_0 := arg1
-	swig_r = (B2Vec2)(SwigcptrB2Vec2(C._wrap_b2Velocity_v_get_Box2D_b1d1b47c7e81f80a(C.uintptr_t(_swig_i_0))))
+	swig_r = (B2Vec2)(SwigcptrB2Vec2(C._wrap_b2Velocity_v_get_Box2D_553c0f9515edf50e(C.uintptr_t(_swig_i_0))))
 	return swig_r
 }
 
 func (arg1 SwigcptrB2Velocity) SetW(arg2 float32) {
 	_swig_i_0 := arg1
 	_swig_i_1 := arg2
-	C._wrap_b2Velocity_w_set_Box2D_b1d1b47c7e81f80a(C.uintptr_t(_swig_i_0), C.float(_swig_i_1))
+	C._wrap_b2Velocity_w_set_Box2D_553c0f9515edf50e(C.uintptr_t(_swig_i_0), C.float(_swig_i_1))
 }
 
 func (arg1 SwigcptrB2Velocity) GetW() (_swig_ret float32) {
 	var swig_r float32
 	_swig_i_0 := arg1
-	swig_r = (float32)(C._wrap_b2Velocity_w_get_Box2D_b1d1b47c7e81f80a(C.uintptr_t(_swig_i_0)))
+	swig_r = (float32)(C._wrap_b2Velocity_w_get_Box2D_553c0f9515edf50e(C.uintptr_t(_swig_i_0)))
 	return swig_r
 }
 
 func NewB2Velocity() (_swig_ret B2Velocity) {
 	var swig_r B2Velocity
-	swig_r = (B2Velocity)(SwigcptrB2Velocity(C._wrap_new_b2Velocity_Box2D_b1d1b47c7e81f80a()))
+	swig_r = (B2Velocity)(SwigcptrB2Velocity(C._wrap_new_b2Velocity_Box2D_553c0f9515edf50e()))
 	return swig_r
 }
 
 func DeleteB2Velocity(arg1 B2Velocity) {
 	_swig_i_0 := arg1.Swigcptr()
-	C._wrap_delete_b2Velocity_Box2D_b1d1b47c7e81f80a(C.uintptr_t(_swig_i_0))
+	C._wrap_delete_b2Velocity_Box2D_553c0f9515edf50e(C.uintptr_t(_swig_i_0))
 }
 
 type B2Velocity interface {
@@ -5191,51 +5335,51 @@ func (p SwigcptrB2SolverData) SwigIsB2SolverData() {
 func (arg1 SwigcptrB2SolverData) SetStep(arg2 B2TimeStep) {
 	_swig_i_0 := arg1
 	_swig_i_1 := arg2.Swigcptr()
-	C._wrap_b2SolverData_step_set_Box2D_b1d1b47c7e81f80a(C.uintptr_t(_swig_i_0), C.uintptr_t(_swig_i_1))
+	C._wrap_b2SolverData_step_set_Box2D_553c0f9515edf50e(C.uintptr_t(_swig_i_0), C.uintptr_t(_swig_i_1))
 }
 
 func (arg1 SwigcptrB2SolverData) GetStep() (_swig_ret B2TimeStep) {
 	var swig_r B2TimeStep
 	_swig_i_0 := arg1
-	swig_r = (B2TimeStep)(SwigcptrB2TimeStep(C._wrap_b2SolverData_step_get_Box2D_b1d1b47c7e81f80a(C.uintptr_t(_swig_i_0))))
+	swig_r = (B2TimeStep)(SwigcptrB2TimeStep(C._wrap_b2SolverData_step_get_Box2D_553c0f9515edf50e(C.uintptr_t(_swig_i_0))))
 	return swig_r
 }
 
 func (arg1 SwigcptrB2SolverData) SetPositions(arg2 B2Position) {
 	_swig_i_0 := arg1
 	_swig_i_1 := arg2.Swigcptr()
-	C._wrap_b2SolverData_positions_set_Box2D_b1d1b47c7e81f80a(C.uintptr_t(_swig_i_0), C.uintptr_t(_swig_i_1))
+	C._wrap_b2SolverData_positions_set_Box2D_553c0f9515edf50e(C.uintptr_t(_swig_i_0), C.uintptr_t(_swig_i_1))
 }
 
 func (arg1 SwigcptrB2SolverData) GetPositions() (_swig_ret B2Position) {
 	var swig_r B2Position
 	_swig_i_0 := arg1
-	swig_r = (B2Position)(SwigcptrB2Position(C._wrap_b2SolverData_positions_get_Box2D_b1d1b47c7e81f80a(C.uintptr_t(_swig_i_0))))
+	swig_r = (B2Position)(SwigcptrB2Position(C._wrap_b2SolverData_positions_get_Box2D_553c0f9515edf50e(C.uintptr_t(_swig_i_0))))
 	return swig_r
 }
 
 func (arg1 SwigcptrB2SolverData) SetVelocities(arg2 B2Velocity) {
 	_swig_i_0 := arg1
 	_swig_i_1 := arg2.Swigcptr()
-	C._wrap_b2SolverData_velocities_set_Box2D_b1d1b47c7e81f80a(C.uintptr_t(_swig_i_0), C.uintptr_t(_swig_i_1))
+	C._wrap_b2SolverData_velocities_set_Box2D_553c0f9515edf50e(C.uintptr_t(_swig_i_0), C.uintptr_t(_swig_i_1))
 }
 
 func (arg1 SwigcptrB2SolverData) GetVelocities() (_swig_ret B2Velocity) {
 	var swig_r B2Velocity
 	_swig_i_0 := arg1
-	swig_r = (B2Velocity)(SwigcptrB2Velocity(C._wrap_b2SolverData_velocities_get_Box2D_b1d1b47c7e81f80a(C.uintptr_t(_swig_i_0))))
+	swig_r = (B2Velocity)(SwigcptrB2Velocity(C._wrap_b2SolverData_velocities_get_Box2D_553c0f9515edf50e(C.uintptr_t(_swig_i_0))))
 	return swig_r
 }
 
 func NewB2SolverData() (_swig_ret B2SolverData) {
 	var swig_r B2SolverData
-	swig_r = (B2SolverData)(SwigcptrB2SolverData(C._wrap_new_b2SolverData_Box2D_b1d1b47c7e81f80a()))
+	swig_r = (B2SolverData)(SwigcptrB2SolverData(C._wrap_new_b2SolverData_Box2D_553c0f9515edf50e()))
 	return swig_r
 }
 
 func DeleteB2SolverData(arg1 B2SolverData) {
 	_swig_i_0 := arg1.Swigcptr()
-	C._wrap_delete_b2SolverData_Box2D_b1d1b47c7e81f80a(C.uintptr_t(_swig_i_0))
+	C._wrap_delete_b2SolverData_Box2D_553c0f9515edf50e(C.uintptr_t(_swig_i_0))
 }
 
 type B2SolverData interface {
@@ -5261,65 +5405,65 @@ func (p SwigcptrB2World) SwigIsB2World() {
 func NewB2World(arg1 B2Vec2) (_swig_ret B2World) {
 	var swig_r B2World
 	_swig_i_0 := arg1.Swigcptr()
-	swig_r = (B2World)(SwigcptrB2World(C._wrap_new_b2World_Box2D_b1d1b47c7e81f80a(C.uintptr_t(_swig_i_0))))
+	swig_r = (B2World)(SwigcptrB2World(C._wrap_new_b2World_Box2D_553c0f9515edf50e(C.uintptr_t(_swig_i_0))))
 	return swig_r
 }
 
 func DeleteB2World(arg1 B2World) {
 	_swig_i_0 := arg1.Swigcptr()
-	C._wrap_delete_b2World_Box2D_b1d1b47c7e81f80a(C.uintptr_t(_swig_i_0))
+	C._wrap_delete_b2World_Box2D_553c0f9515edf50e(C.uintptr_t(_swig_i_0))
 }
 
 func (arg1 SwigcptrB2World) SetDestructionListener(arg2 B2DestructionListener) {
 	_swig_i_0 := arg1
 	_swig_i_1 := arg2.Swigcptr()
-	C._wrap_b2World_SetDestructionListener_Box2D_b1d1b47c7e81f80a(C.uintptr_t(_swig_i_0), C.uintptr_t(_swig_i_1))
+	C._wrap_b2World_SetDestructionListener_Box2D_553c0f9515edf50e(C.uintptr_t(_swig_i_0), C.uintptr_t(_swig_i_1))
 }
 
 func (arg1 SwigcptrB2World) SetContactFilter(arg2 B2ContactFilter) {
 	_swig_i_0 := arg1
 	_swig_i_1 := arg2.Swigcptr()
-	C._wrap_b2World_SetContactFilter_Box2D_b1d1b47c7e81f80a(C.uintptr_t(_swig_i_0), C.uintptr_t(_swig_i_1))
+	C._wrap_b2World_SetContactFilter_Box2D_553c0f9515edf50e(C.uintptr_t(_swig_i_0), C.uintptr_t(_swig_i_1))
 }
 
 func (arg1 SwigcptrB2World) SetContactListener(arg2 B2ContactListener) {
 	_swig_i_0 := arg1
 	_swig_i_1 := arg2.Swigcptr()
-	C._wrap_b2World_SetContactListener_Box2D_b1d1b47c7e81f80a(C.uintptr_t(_swig_i_0), C.uintptr_t(_swig_i_1))
+	C._wrap_b2World_SetContactListener_Box2D_553c0f9515edf50e(C.uintptr_t(_swig_i_0), C.uintptr_t(_swig_i_1))
 }
 
 func (arg1 SwigcptrB2World) SetDebugDraw(arg2 B2Draw) {
 	_swig_i_0 := arg1
 	_swig_i_1 := arg2.Swigcptr()
-	C._wrap_b2World_SetDebugDraw_Box2D_b1d1b47c7e81f80a(C.uintptr_t(_swig_i_0), C.uintptr_t(_swig_i_1))
+	C._wrap_b2World_SetDebugDraw_Box2D_553c0f9515edf50e(C.uintptr_t(_swig_i_0), C.uintptr_t(_swig_i_1))
 }
 
 func (arg1 SwigcptrB2World) CreateBody(arg2 B2BodyDef) (_swig_ret B2Body) {
 	var swig_r B2Body
 	_swig_i_0 := arg1
 	_swig_i_1 := arg2.Swigcptr()
-	swig_r = (B2Body)(SwigcptrB2Body(C._wrap_b2World_CreateBody_Box2D_b1d1b47c7e81f80a(C.uintptr_t(_swig_i_0), C.uintptr_t(_swig_i_1))))
+	swig_r = (B2Body)(SwigcptrB2Body(C._wrap_b2World_CreateBody_Box2D_553c0f9515edf50e(C.uintptr_t(_swig_i_0), C.uintptr_t(_swig_i_1))))
 	return swig_r
 }
 
 func (arg1 SwigcptrB2World) DestroyBody(arg2 B2Body) {
 	_swig_i_0 := arg1
 	_swig_i_1 := arg2.Swigcptr()
-	C._wrap_b2World_DestroyBody_Box2D_b1d1b47c7e81f80a(C.uintptr_t(_swig_i_0), C.uintptr_t(_swig_i_1))
+	C._wrap_b2World_DestroyBody_Box2D_553c0f9515edf50e(C.uintptr_t(_swig_i_0), C.uintptr_t(_swig_i_1))
 }
 
 func (arg1 SwigcptrB2World) CreateJoint(arg2 B2JointDef) (_swig_ret B2Joint) {
 	var swig_r B2Joint
 	_swig_i_0 := arg1
 	_swig_i_1 := arg2.Swigcptr()
-	swig_r = (B2Joint)(SwigcptrB2Joint(C._wrap_b2World_CreateJoint_Box2D_b1d1b47c7e81f80a(C.uintptr_t(_swig_i_0), C.uintptr_t(_swig_i_1))))
+	swig_r = (B2Joint)(SwigcptrB2Joint(C._wrap_b2World_CreateJoint_Box2D_553c0f9515edf50e(C.uintptr_t(_swig_i_0), C.uintptr_t(_swig_i_1))))
 	return swig_r
 }
 
 func (arg1 SwigcptrB2World) DestroyJoint(arg2 B2Joint) {
 	_swig_i_0 := arg1
 	_swig_i_1 := arg2.Swigcptr()
-	C._wrap_b2World_DestroyJoint_Box2D_b1d1b47c7e81f80a(C.uintptr_t(_swig_i_0), C.uintptr_t(_swig_i_1))
+	C._wrap_b2World_DestroyJoint_Box2D_553c0f9515edf50e(C.uintptr_t(_swig_i_0), C.uintptr_t(_swig_i_1))
 }
 
 func (arg1 SwigcptrB2World) Step(arg2 float32, arg3 int, arg4 int) {
@@ -5327,24 +5471,24 @@ func (arg1 SwigcptrB2World) Step(arg2 float32, arg3 int, arg4 int) {
 	_swig_i_1 := arg2
 	_swig_i_2 := arg3
 	_swig_i_3 := arg4
-	C._wrap_b2World_Step_Box2D_b1d1b47c7e81f80a(C.uintptr_t(_swig_i_0), C.float(_swig_i_1), C.swig_intgo(_swig_i_2), C.swig_intgo(_swig_i_3))
+	C._wrap_b2World_Step_Box2D_553c0f9515edf50e(C.uintptr_t(_swig_i_0), C.float(_swig_i_1), C.swig_intgo(_swig_i_2), C.swig_intgo(_swig_i_3))
 }
 
 func (arg1 SwigcptrB2World) ClearForces() {
 	_swig_i_0 := arg1
-	C._wrap_b2World_ClearForces_Box2D_b1d1b47c7e81f80a(C.uintptr_t(_swig_i_0))
+	C._wrap_b2World_ClearForces_Box2D_553c0f9515edf50e(C.uintptr_t(_swig_i_0))
 }
 
 func (arg1 SwigcptrB2World) DrawDebugData() {
 	_swig_i_0 := arg1
-	C._wrap_b2World_DrawDebugData_Box2D_b1d1b47c7e81f80a(C.uintptr_t(_swig_i_0))
+	C._wrap_b2World_DrawDebugData_Box2D_553c0f9515edf50e(C.uintptr_t(_swig_i_0))
 }
 
 func (arg1 SwigcptrB2World) QueryAABB(arg2 B2QueryCallback, arg3 B2AABB) {
 	_swig_i_0 := arg1
 	_swig_i_1 := arg2.Swigcptr()
 	_swig_i_2 := arg3.Swigcptr()
-	C._wrap_b2World_QueryAABB_Box2D_b1d1b47c7e81f80a(C.uintptr_t(_swig_i_0), C.uintptr_t(_swig_i_1), C.uintptr_t(_swig_i_2))
+	C._wrap_b2World_QueryAABB_Box2D_553c0f9515edf50e(C.uintptr_t(_swig_i_0), C.uintptr_t(_swig_i_1), C.uintptr_t(_swig_i_2))
 }
 
 func (arg1 SwigcptrB2World) RayCast(arg2 B2RayCastCallback, arg3 B2Vec2, arg4 B2Vec2) {
@@ -5352,20 +5496,20 @@ func (arg1 SwigcptrB2World) RayCast(arg2 B2RayCastCallback, arg3 B2Vec2, arg4 B2
 	_swig_i_1 := arg2.Swigcptr()
 	_swig_i_2 := arg3.Swigcptr()
 	_swig_i_3 := arg4.Swigcptr()
-	C._wrap_b2World_RayCast_Box2D_b1d1b47c7e81f80a(C.uintptr_t(_swig_i_0), C.uintptr_t(_swig_i_1), C.uintptr_t(_swig_i_2), C.uintptr_t(_swig_i_3))
+	C._wrap_b2World_RayCast_Box2D_553c0f9515edf50e(C.uintptr_t(_swig_i_0), C.uintptr_t(_swig_i_1), C.uintptr_t(_swig_i_2), C.uintptr_t(_swig_i_3))
 }
 
 func (arg1 SwigcptrB2World) GetBodyList__SWIG_0() (_swig_ret B2Body) {
 	var swig_r B2Body
 	_swig_i_0 := arg1
-	swig_r = (B2Body)(SwigcptrB2Body(C._wrap_b2World_GetBodyList__SWIG_0_Box2D_b1d1b47c7e81f80a(C.uintptr_t(_swig_i_0))))
+	swig_r = (B2Body)(SwigcptrB2Body(C._wrap_b2World_GetBodyList__SWIG_0_Box2D_553c0f9515edf50e(C.uintptr_t(_swig_i_0))))
 	return swig_r
 }
 
 func (arg1 SwigcptrB2World) GetBodyList__SWIG_1() (_swig_ret B2Body) {
 	var swig_r B2Body
 	_swig_i_0 := arg1
-	swig_r = (B2Body)(SwigcptrB2Body(C._wrap_b2World_GetBodyList__SWIG_1_Box2D_b1d1b47c7e81f80a(C.uintptr_t(_swig_i_0))))
+	swig_r = (B2Body)(SwigcptrB2Body(C._wrap_b2World_GetBodyList__SWIG_1_Box2D_553c0f9515edf50e(C.uintptr_t(_swig_i_0))))
 	return swig_r
 }
 
@@ -5383,14 +5527,14 @@ func (p SwigcptrB2World) GetBodyList(a ...interface{}) interface{} {
 func (arg1 SwigcptrB2World) GetJointList__SWIG_0() (_swig_ret B2Joint) {
 	var swig_r B2Joint
 	_swig_i_0 := arg1
-	swig_r = (B2Joint)(SwigcptrB2Joint(C._wrap_b2World_GetJointList__SWIG_0_Box2D_b1d1b47c7e81f80a(C.uintptr_t(_swig_i_0))))
+	swig_r = (B2Joint)(SwigcptrB2Joint(C._wrap_b2World_GetJointList__SWIG_0_Box2D_553c0f9515edf50e(C.uintptr_t(_swig_i_0))))
 	return swig_r
 }
 
 func (arg1 SwigcptrB2World) GetJointList__SWIG_1() (_swig_ret B2Joint) {
 	var swig_r B2Joint
 	_swig_i_0 := arg1
-	swig_r = (B2Joint)(SwigcptrB2Joint(C._wrap_b2World_GetJointList__SWIG_1_Box2D_b1d1b47c7e81f80a(C.uintptr_t(_swig_i_0))))
+	swig_r = (B2Joint)(SwigcptrB2Joint(C._wrap_b2World_GetJointList__SWIG_1_Box2D_553c0f9515edf50e(C.uintptr_t(_swig_i_0))))
 	return swig_r
 }
 
@@ -5408,14 +5552,14 @@ func (p SwigcptrB2World) GetJointList(a ...interface{}) interface{} {
 func (arg1 SwigcptrB2World) GetContactList__SWIG_0() (_swig_ret B2Contact) {
 	var swig_r B2Contact
 	_swig_i_0 := arg1
-	swig_r = (B2Contact)(SwigcptrB2Contact(C._wrap_b2World_GetContactList__SWIG_0_Box2D_b1d1b47c7e81f80a(C.uintptr_t(_swig_i_0))))
+	swig_r = (B2Contact)(SwigcptrB2Contact(C._wrap_b2World_GetContactList__SWIG_0_Box2D_553c0f9515edf50e(C.uintptr_t(_swig_i_0))))
 	return swig_r
 }
 
 func (arg1 SwigcptrB2World) GetContactList__SWIG_1() (_swig_ret B2Contact) {
 	var swig_r B2Contact
 	_swig_i_0 := arg1
-	swig_r = (B2Contact)(SwigcptrB2Contact(C._wrap_b2World_GetContactList__SWIG_1_Box2D_b1d1b47c7e81f80a(C.uintptr_t(_swig_i_0))))
+	swig_r = (B2Contact)(SwigcptrB2Contact(C._wrap_b2World_GetContactList__SWIG_1_Box2D_553c0f9515edf50e(C.uintptr_t(_swig_i_0))))
 	return swig_r
 }
 
@@ -5433,160 +5577,160 @@ func (p SwigcptrB2World) GetContactList(a ...interface{}) interface{} {
 func (arg1 SwigcptrB2World) SetAllowSleeping(arg2 bool) {
 	_swig_i_0 := arg1
 	_swig_i_1 := arg2
-	C._wrap_b2World_SetAllowSleeping_Box2D_b1d1b47c7e81f80a(C.uintptr_t(_swig_i_0), C._Bool(_swig_i_1))
+	C._wrap_b2World_SetAllowSleeping_Box2D_553c0f9515edf50e(C.uintptr_t(_swig_i_0), C._Bool(_swig_i_1))
 }
 
 func (arg1 SwigcptrB2World) GetAllowSleeping() (_swig_ret bool) {
 	var swig_r bool
 	_swig_i_0 := arg1
-	swig_r = (bool)(C._wrap_b2World_GetAllowSleeping_Box2D_b1d1b47c7e81f80a(C.uintptr_t(_swig_i_0)))
+	swig_r = (bool)(C._wrap_b2World_GetAllowSleeping_Box2D_553c0f9515edf50e(C.uintptr_t(_swig_i_0)))
 	return swig_r
 }
 
 func (arg1 SwigcptrB2World) SetWarmStarting(arg2 bool) {
 	_swig_i_0 := arg1
 	_swig_i_1 := arg2
-	C._wrap_b2World_SetWarmStarting_Box2D_b1d1b47c7e81f80a(C.uintptr_t(_swig_i_0), C._Bool(_swig_i_1))
+	C._wrap_b2World_SetWarmStarting_Box2D_553c0f9515edf50e(C.uintptr_t(_swig_i_0), C._Bool(_swig_i_1))
 }
 
 func (arg1 SwigcptrB2World) GetWarmStarting() (_swig_ret bool) {
 	var swig_r bool
 	_swig_i_0 := arg1
-	swig_r = (bool)(C._wrap_b2World_GetWarmStarting_Box2D_b1d1b47c7e81f80a(C.uintptr_t(_swig_i_0)))
+	swig_r = (bool)(C._wrap_b2World_GetWarmStarting_Box2D_553c0f9515edf50e(C.uintptr_t(_swig_i_0)))
 	return swig_r
 }
 
 func (arg1 SwigcptrB2World) SetContinuousPhysics(arg2 bool) {
 	_swig_i_0 := arg1
 	_swig_i_1 := arg2
-	C._wrap_b2World_SetContinuousPhysics_Box2D_b1d1b47c7e81f80a(C.uintptr_t(_swig_i_0), C._Bool(_swig_i_1))
+	C._wrap_b2World_SetContinuousPhysics_Box2D_553c0f9515edf50e(C.uintptr_t(_swig_i_0), C._Bool(_swig_i_1))
 }
 
 func (arg1 SwigcptrB2World) GetContinuousPhysics() (_swig_ret bool) {
 	var swig_r bool
 	_swig_i_0 := arg1
-	swig_r = (bool)(C._wrap_b2World_GetContinuousPhysics_Box2D_b1d1b47c7e81f80a(C.uintptr_t(_swig_i_0)))
+	swig_r = (bool)(C._wrap_b2World_GetContinuousPhysics_Box2D_553c0f9515edf50e(C.uintptr_t(_swig_i_0)))
 	return swig_r
 }
 
 func (arg1 SwigcptrB2World) SetSubStepping(arg2 bool) {
 	_swig_i_0 := arg1
 	_swig_i_1 := arg2
-	C._wrap_b2World_SetSubStepping_Box2D_b1d1b47c7e81f80a(C.uintptr_t(_swig_i_0), C._Bool(_swig_i_1))
+	C._wrap_b2World_SetSubStepping_Box2D_553c0f9515edf50e(C.uintptr_t(_swig_i_0), C._Bool(_swig_i_1))
 }
 
 func (arg1 SwigcptrB2World) GetSubStepping() (_swig_ret bool) {
 	var swig_r bool
 	_swig_i_0 := arg1
-	swig_r = (bool)(C._wrap_b2World_GetSubStepping_Box2D_b1d1b47c7e81f80a(C.uintptr_t(_swig_i_0)))
+	swig_r = (bool)(C._wrap_b2World_GetSubStepping_Box2D_553c0f9515edf50e(C.uintptr_t(_swig_i_0)))
 	return swig_r
 }
 
 func (arg1 SwigcptrB2World) GetProxyCount() (_swig_ret int) {
 	var swig_r int
 	_swig_i_0 := arg1
-	swig_r = (int)(C._wrap_b2World_GetProxyCount_Box2D_b1d1b47c7e81f80a(C.uintptr_t(_swig_i_0)))
+	swig_r = (int)(C._wrap_b2World_GetProxyCount_Box2D_553c0f9515edf50e(C.uintptr_t(_swig_i_0)))
 	return swig_r
 }
 
 func (arg1 SwigcptrB2World) GetBodyCount() (_swig_ret int) {
 	var swig_r int
 	_swig_i_0 := arg1
-	swig_r = (int)(C._wrap_b2World_GetBodyCount_Box2D_b1d1b47c7e81f80a(C.uintptr_t(_swig_i_0)))
+	swig_r = (int)(C._wrap_b2World_GetBodyCount_Box2D_553c0f9515edf50e(C.uintptr_t(_swig_i_0)))
 	return swig_r
 }
 
 func (arg1 SwigcptrB2World) GetJointCount() (_swig_ret int) {
 	var swig_r int
 	_swig_i_0 := arg1
-	swig_r = (int)(C._wrap_b2World_GetJointCount_Box2D_b1d1b47c7e81f80a(C.uintptr_t(_swig_i_0)))
+	swig_r = (int)(C._wrap_b2World_GetJointCount_Box2D_553c0f9515edf50e(C.uintptr_t(_swig_i_0)))
 	return swig_r
 }
 
 func (arg1 SwigcptrB2World) GetContactCount() (_swig_ret int) {
 	var swig_r int
 	_swig_i_0 := arg1
-	swig_r = (int)(C._wrap_b2World_GetContactCount_Box2D_b1d1b47c7e81f80a(C.uintptr_t(_swig_i_0)))
+	swig_r = (int)(C._wrap_b2World_GetContactCount_Box2D_553c0f9515edf50e(C.uintptr_t(_swig_i_0)))
 	return swig_r
 }
 
 func (arg1 SwigcptrB2World) GetTreeHeight() (_swig_ret int) {
 	var swig_r int
 	_swig_i_0 := arg1
-	swig_r = (int)(C._wrap_b2World_GetTreeHeight_Box2D_b1d1b47c7e81f80a(C.uintptr_t(_swig_i_0)))
+	swig_r = (int)(C._wrap_b2World_GetTreeHeight_Box2D_553c0f9515edf50e(C.uintptr_t(_swig_i_0)))
 	return swig_r
 }
 
 func (arg1 SwigcptrB2World) GetTreeBalance() (_swig_ret int) {
 	var swig_r int
 	_swig_i_0 := arg1
-	swig_r = (int)(C._wrap_b2World_GetTreeBalance_Box2D_b1d1b47c7e81f80a(C.uintptr_t(_swig_i_0)))
+	swig_r = (int)(C._wrap_b2World_GetTreeBalance_Box2D_553c0f9515edf50e(C.uintptr_t(_swig_i_0)))
 	return swig_r
 }
 
 func (arg1 SwigcptrB2World) GetTreeQuality() (_swig_ret float32) {
 	var swig_r float32
 	_swig_i_0 := arg1
-	swig_r = (float32)(C._wrap_b2World_GetTreeQuality_Box2D_b1d1b47c7e81f80a(C.uintptr_t(_swig_i_0)))
+	swig_r = (float32)(C._wrap_b2World_GetTreeQuality_Box2D_553c0f9515edf50e(C.uintptr_t(_swig_i_0)))
 	return swig_r
 }
 
 func (arg1 SwigcptrB2World) SetGravity(arg2 B2Vec2) {
 	_swig_i_0 := arg1
 	_swig_i_1 := arg2.Swigcptr()
-	C._wrap_b2World_SetGravity_Box2D_b1d1b47c7e81f80a(C.uintptr_t(_swig_i_0), C.uintptr_t(_swig_i_1))
+	C._wrap_b2World_SetGravity_Box2D_553c0f9515edf50e(C.uintptr_t(_swig_i_0), C.uintptr_t(_swig_i_1))
 }
 
 func (arg1 SwigcptrB2World) GetGravity() (_swig_ret B2Vec2) {
 	var swig_r B2Vec2
 	_swig_i_0 := arg1
-	swig_r = (B2Vec2)(SwigcptrB2Vec2(C._wrap_b2World_GetGravity_Box2D_b1d1b47c7e81f80a(C.uintptr_t(_swig_i_0))))
+	swig_r = (B2Vec2)(SwigcptrB2Vec2(C._wrap_b2World_GetGravity_Box2D_553c0f9515edf50e(C.uintptr_t(_swig_i_0))))
 	return swig_r
 }
 
 func (arg1 SwigcptrB2World) IsLocked() (_swig_ret bool) {
 	var swig_r bool
 	_swig_i_0 := arg1
-	swig_r = (bool)(C._wrap_b2World_IsLocked_Box2D_b1d1b47c7e81f80a(C.uintptr_t(_swig_i_0)))
+	swig_r = (bool)(C._wrap_b2World_IsLocked_Box2D_553c0f9515edf50e(C.uintptr_t(_swig_i_0)))
 	return swig_r
 }
 
 func (arg1 SwigcptrB2World) SetAutoClearForces(arg2 bool) {
 	_swig_i_0 := arg1
 	_swig_i_1 := arg2
-	C._wrap_b2World_SetAutoClearForces_Box2D_b1d1b47c7e81f80a(C.uintptr_t(_swig_i_0), C._Bool(_swig_i_1))
+	C._wrap_b2World_SetAutoClearForces_Box2D_553c0f9515edf50e(C.uintptr_t(_swig_i_0), C._Bool(_swig_i_1))
 }
 
 func (arg1 SwigcptrB2World) GetAutoClearForces() (_swig_ret bool) {
 	var swig_r bool
 	_swig_i_0 := arg1
-	swig_r = (bool)(C._wrap_b2World_GetAutoClearForces_Box2D_b1d1b47c7e81f80a(C.uintptr_t(_swig_i_0)))
+	swig_r = (bool)(C._wrap_b2World_GetAutoClearForces_Box2D_553c0f9515edf50e(C.uintptr_t(_swig_i_0)))
 	return swig_r
 }
 
 func (arg1 SwigcptrB2World) ShiftOrigin(arg2 B2Vec2) {
 	_swig_i_0 := arg1
 	_swig_i_1 := arg2.Swigcptr()
-	C._wrap_b2World_ShiftOrigin_Box2D_b1d1b47c7e81f80a(C.uintptr_t(_swig_i_0), C.uintptr_t(_swig_i_1))
+	C._wrap_b2World_ShiftOrigin_Box2D_553c0f9515edf50e(C.uintptr_t(_swig_i_0), C.uintptr_t(_swig_i_1))
 }
 
 func (arg1 SwigcptrB2World) GetContactManager() (_swig_ret B2ContactManager) {
 	var swig_r B2ContactManager
 	_swig_i_0 := arg1
-	swig_r = (B2ContactManager)(SwigcptrB2ContactManager(C._wrap_b2World_GetContactManager_Box2D_b1d1b47c7e81f80a(C.uintptr_t(_swig_i_0))))
+	swig_r = (B2ContactManager)(SwigcptrB2ContactManager(C._wrap_b2World_GetContactManager_Box2D_553c0f9515edf50e(C.uintptr_t(_swig_i_0))))
 	return swig_r
 }
 
 func (arg1 SwigcptrB2World) GetProfile() (_swig_ret B2Profile) {
 	var swig_r B2Profile
 	_swig_i_0 := arg1
-	swig_r = (B2Profile)(SwigcptrB2Profile(C._wrap_b2World_GetProfile_Box2D_b1d1b47c7e81f80a(C.uintptr_t(_swig_i_0))))
+	swig_r = (B2Profile)(SwigcptrB2Profile(C._wrap_b2World_GetProfile_Box2D_553c0f9515edf50e(C.uintptr_t(_swig_i_0))))
 	return swig_r
 }
 
 func (arg1 SwigcptrB2World) Dump() {
 	_swig_i_0 := arg1
-	C._wrap_b2World_Dump_Box2D_b1d1b47c7e81f80a(C.uintptr_t(_swig_i_0))
+	C._wrap_b2World_Dump_Box2D_553c0f9515edf50e(C.uintptr_t(_swig_i_0))
 }
 
 type B2World interface {
@@ -5638,7 +5782,7 @@ func B2MixFriction(arg1 float32, arg2 float32) (_swig_ret float32) {
 	var swig_r float32
 	_swig_i_0 := arg1
 	_swig_i_1 := arg2
-	swig_r = (float32)(C._wrap_b2MixFriction_Box2D_b1d1b47c7e81f80a(C.float(_swig_i_0), C.float(_swig_i_1)))
+	swig_r = (float32)(C._wrap_b2MixFriction_Box2D_553c0f9515edf50e(C.float(_swig_i_0), C.float(_swig_i_1)))
 	return swig_r
 }
 
@@ -5646,7 +5790,7 @@ func B2MixRestitution(arg1 float32, arg2 float32) (_swig_ret float32) {
 	var swig_r float32
 	_swig_i_0 := arg1
 	_swig_i_1 := arg2
-	swig_r = (float32)(C._wrap_b2MixRestitution_Box2D_b1d1b47c7e81f80a(C.float(_swig_i_0), C.float(_swig_i_1)))
+	swig_r = (float32)(C._wrap_b2MixRestitution_Box2D_553c0f9515edf50e(C.float(_swig_i_0), C.float(_swig_i_1)))
 	return swig_r
 }
 
@@ -5662,51 +5806,51 @@ func (p SwigcptrB2ContactRegister) SwigIsB2ContactRegister() {
 func (arg1 SwigcptrB2ContactRegister) SetCreateFcn(arg2 *_swig_fnptr) {
 	_swig_i_0 := arg1
 	_swig_i_1 := arg2
-	C._wrap_b2ContactRegister_createFcn_set_Box2D_b1d1b47c7e81f80a(C.uintptr_t(_swig_i_0), C.swig_voidp(_swig_i_1))
+	C._wrap_b2ContactRegister_createFcn_set_Box2D_553c0f9515edf50e(C.uintptr_t(_swig_i_0), C.swig_voidp(_swig_i_1))
 }
 
 func (arg1 SwigcptrB2ContactRegister) GetCreateFcn() (_swig_ret *_swig_fnptr) {
 	var swig_r *_swig_fnptr
 	_swig_i_0 := arg1
-	swig_r = (*_swig_fnptr)(C._wrap_b2ContactRegister_createFcn_get_Box2D_b1d1b47c7e81f80a(C.uintptr_t(_swig_i_0)))
+	swig_r = (*_swig_fnptr)(C._wrap_b2ContactRegister_createFcn_get_Box2D_553c0f9515edf50e(C.uintptr_t(_swig_i_0)))
 	return swig_r
 }
 
 func (arg1 SwigcptrB2ContactRegister) SetDestroyFcn(arg2 *_swig_fnptr) {
 	_swig_i_0 := arg1
 	_swig_i_1 := arg2
-	C._wrap_b2ContactRegister_destroyFcn_set_Box2D_b1d1b47c7e81f80a(C.uintptr_t(_swig_i_0), C.swig_voidp(_swig_i_1))
+	C._wrap_b2ContactRegister_destroyFcn_set_Box2D_553c0f9515edf50e(C.uintptr_t(_swig_i_0), C.swig_voidp(_swig_i_1))
 }
 
 func (arg1 SwigcptrB2ContactRegister) GetDestroyFcn() (_swig_ret *_swig_fnptr) {
 	var swig_r *_swig_fnptr
 	_swig_i_0 := arg1
-	swig_r = (*_swig_fnptr)(C._wrap_b2ContactRegister_destroyFcn_get_Box2D_b1d1b47c7e81f80a(C.uintptr_t(_swig_i_0)))
+	swig_r = (*_swig_fnptr)(C._wrap_b2ContactRegister_destroyFcn_get_Box2D_553c0f9515edf50e(C.uintptr_t(_swig_i_0)))
 	return swig_r
 }
 
 func (arg1 SwigcptrB2ContactRegister) SetPrimary(arg2 bool) {
 	_swig_i_0 := arg1
 	_swig_i_1 := arg2
-	C._wrap_b2ContactRegister_primary_set_Box2D_b1d1b47c7e81f80a(C.uintptr_t(_swig_i_0), C._Bool(_swig_i_1))
+	C._wrap_b2ContactRegister_primary_set_Box2D_553c0f9515edf50e(C.uintptr_t(_swig_i_0), C._Bool(_swig_i_1))
 }
 
 func (arg1 SwigcptrB2ContactRegister) GetPrimary() (_swig_ret bool) {
 	var swig_r bool
 	_swig_i_0 := arg1
-	swig_r = (bool)(C._wrap_b2ContactRegister_primary_get_Box2D_b1d1b47c7e81f80a(C.uintptr_t(_swig_i_0)))
+	swig_r = (bool)(C._wrap_b2ContactRegister_primary_get_Box2D_553c0f9515edf50e(C.uintptr_t(_swig_i_0)))
 	return swig_r
 }
 
 func NewB2ContactRegister() (_swig_ret B2ContactRegister) {
 	var swig_r B2ContactRegister
-	swig_r = (B2ContactRegister)(SwigcptrB2ContactRegister(C._wrap_new_b2ContactRegister_Box2D_b1d1b47c7e81f80a()))
+	swig_r = (B2ContactRegister)(SwigcptrB2ContactRegister(C._wrap_new_b2ContactRegister_Box2D_553c0f9515edf50e()))
 	return swig_r
 }
 
 func DeleteB2ContactRegister(arg1 B2ContactRegister) {
 	_swig_i_0 := arg1.Swigcptr()
-	C._wrap_delete_b2ContactRegister_Box2D_b1d1b47c7e81f80a(C.uintptr_t(_swig_i_0))
+	C._wrap_delete_b2ContactRegister_Box2D_553c0f9515edf50e(C.uintptr_t(_swig_i_0))
 }
 
 type B2ContactRegister interface {
@@ -5732,64 +5876,64 @@ func (p SwigcptrB2ContactEdge) SwigIsB2ContactEdge() {
 func (arg1 SwigcptrB2ContactEdge) SetOther(arg2 B2Body) {
 	_swig_i_0 := arg1
 	_swig_i_1 := arg2.Swigcptr()
-	C._wrap_b2ContactEdge_other_set_Box2D_b1d1b47c7e81f80a(C.uintptr_t(_swig_i_0), C.uintptr_t(_swig_i_1))
+	C._wrap_b2ContactEdge_other_set_Box2D_553c0f9515edf50e(C.uintptr_t(_swig_i_0), C.uintptr_t(_swig_i_1))
 }
 
 func (arg1 SwigcptrB2ContactEdge) GetOther() (_swig_ret B2Body) {
 	var swig_r B2Body
 	_swig_i_0 := arg1
-	swig_r = (B2Body)(SwigcptrB2Body(C._wrap_b2ContactEdge_other_get_Box2D_b1d1b47c7e81f80a(C.uintptr_t(_swig_i_0))))
+	swig_r = (B2Body)(SwigcptrB2Body(C._wrap_b2ContactEdge_other_get_Box2D_553c0f9515edf50e(C.uintptr_t(_swig_i_0))))
 	return swig_r
 }
 
 func (arg1 SwigcptrB2ContactEdge) SetContact(arg2 B2Contact) {
 	_swig_i_0 := arg1
 	_swig_i_1 := arg2.Swigcptr()
-	C._wrap_b2ContactEdge_contact_set_Box2D_b1d1b47c7e81f80a(C.uintptr_t(_swig_i_0), C.uintptr_t(_swig_i_1))
+	C._wrap_b2ContactEdge_contact_set_Box2D_553c0f9515edf50e(C.uintptr_t(_swig_i_0), C.uintptr_t(_swig_i_1))
 }
 
 func (arg1 SwigcptrB2ContactEdge) GetContact() (_swig_ret B2Contact) {
 	var swig_r B2Contact
 	_swig_i_0 := arg1
-	swig_r = (B2Contact)(SwigcptrB2Contact(C._wrap_b2ContactEdge_contact_get_Box2D_b1d1b47c7e81f80a(C.uintptr_t(_swig_i_0))))
+	swig_r = (B2Contact)(SwigcptrB2Contact(C._wrap_b2ContactEdge_contact_get_Box2D_553c0f9515edf50e(C.uintptr_t(_swig_i_0))))
 	return swig_r
 }
 
 func (arg1 SwigcptrB2ContactEdge) SetPrev(arg2 B2ContactEdge) {
 	_swig_i_0 := arg1
 	_swig_i_1 := arg2.Swigcptr()
-	C._wrap_b2ContactEdge_prev_set_Box2D_b1d1b47c7e81f80a(C.uintptr_t(_swig_i_0), C.uintptr_t(_swig_i_1))
+	C._wrap_b2ContactEdge_prev_set_Box2D_553c0f9515edf50e(C.uintptr_t(_swig_i_0), C.uintptr_t(_swig_i_1))
 }
 
 func (arg1 SwigcptrB2ContactEdge) GetPrev() (_swig_ret B2ContactEdge) {
 	var swig_r B2ContactEdge
 	_swig_i_0 := arg1
-	swig_r = (B2ContactEdge)(SwigcptrB2ContactEdge(C._wrap_b2ContactEdge_prev_get_Box2D_b1d1b47c7e81f80a(C.uintptr_t(_swig_i_0))))
+	swig_r = (B2ContactEdge)(SwigcptrB2ContactEdge(C._wrap_b2ContactEdge_prev_get_Box2D_553c0f9515edf50e(C.uintptr_t(_swig_i_0))))
 	return swig_r
 }
 
 func (arg1 SwigcptrB2ContactEdge) SetNext(arg2 B2ContactEdge) {
 	_swig_i_0 := arg1
 	_swig_i_1 := arg2.Swigcptr()
-	C._wrap_b2ContactEdge_next_set_Box2D_b1d1b47c7e81f80a(C.uintptr_t(_swig_i_0), C.uintptr_t(_swig_i_1))
+	C._wrap_b2ContactEdge_next_set_Box2D_553c0f9515edf50e(C.uintptr_t(_swig_i_0), C.uintptr_t(_swig_i_1))
 }
 
 func (arg1 SwigcptrB2ContactEdge) GetNext() (_swig_ret B2ContactEdge) {
 	var swig_r B2ContactEdge
 	_swig_i_0 := arg1
-	swig_r = (B2ContactEdge)(SwigcptrB2ContactEdge(C._wrap_b2ContactEdge_next_get_Box2D_b1d1b47c7e81f80a(C.uintptr_t(_swig_i_0))))
+	swig_r = (B2ContactEdge)(SwigcptrB2ContactEdge(C._wrap_b2ContactEdge_next_get_Box2D_553c0f9515edf50e(C.uintptr_t(_swig_i_0))))
 	return swig_r
 }
 
 func NewB2ContactEdge() (_swig_ret B2ContactEdge) {
 	var swig_r B2ContactEdge
-	swig_r = (B2ContactEdge)(SwigcptrB2ContactEdge(C._wrap_new_b2ContactEdge_Box2D_b1d1b47c7e81f80a()))
+	swig_r = (B2ContactEdge)(SwigcptrB2ContactEdge(C._wrap_new_b2ContactEdge_Box2D_553c0f9515edf50e()))
 	return swig_r
 }
 
 func DeleteB2ContactEdge(arg1 B2ContactEdge) {
 	_swig_i_0 := arg1.Swigcptr()
-	C._wrap_delete_b2ContactEdge_Box2D_b1d1b47c7e81f80a(C.uintptr_t(_swig_i_0))
+	C._wrap_delete_b2ContactEdge_Box2D_553c0f9515edf50e(C.uintptr_t(_swig_i_0))
 }
 
 type B2ContactEdge interface {
@@ -5817,14 +5961,14 @@ func (p SwigcptrB2Contact) SwigIsB2Contact() {
 func (arg1 SwigcptrB2Contact) GetManifold__SWIG_0() (_swig_ret B2Manifold) {
 	var swig_r B2Manifold
 	_swig_i_0 := arg1
-	swig_r = (B2Manifold)(SwigcptrB2Manifold(C._wrap_b2Contact_GetManifold__SWIG_0_Box2D_b1d1b47c7e81f80a(C.uintptr_t(_swig_i_0))))
+	swig_r = (B2Manifold)(SwigcptrB2Manifold(C._wrap_b2Contact_GetManifold__SWIG_0_Box2D_553c0f9515edf50e(C.uintptr_t(_swig_i_0))))
 	return swig_r
 }
 
 func (arg1 SwigcptrB2Contact) GetManifold__SWIG_1() (_swig_ret B2Manifold) {
 	var swig_r B2Manifold
 	_swig_i_0 := arg1
-	swig_r = (B2Manifold)(SwigcptrB2Manifold(C._wrap_b2Contact_GetManifold__SWIG_1_Box2D_b1d1b47c7e81f80a(C.uintptr_t(_swig_i_0))))
+	swig_r = (B2Manifold)(SwigcptrB2Manifold(C._wrap_b2Contact_GetManifold__SWIG_1_Box2D_553c0f9515edf50e(C.uintptr_t(_swig_i_0))))
 	return swig_r
 }
 
@@ -5842,40 +5986,40 @@ func (p SwigcptrB2Contact) GetManifold(a ...interface{}) interface{} {
 func (arg1 SwigcptrB2Contact) GetWorldManifold(arg2 B2WorldManifold) {
 	_swig_i_0 := arg1
 	_swig_i_1 := arg2.Swigcptr()
-	C._wrap_b2Contact_GetWorldManifold_Box2D_b1d1b47c7e81f80a(C.uintptr_t(_swig_i_0), C.uintptr_t(_swig_i_1))
+	C._wrap_b2Contact_GetWorldManifold_Box2D_553c0f9515edf50e(C.uintptr_t(_swig_i_0), C.uintptr_t(_swig_i_1))
 }
 
 func (arg1 SwigcptrB2Contact) IsTouching() (_swig_ret bool) {
 	var swig_r bool
 	_swig_i_0 := arg1
-	swig_r = (bool)(C._wrap_b2Contact_IsTouching_Box2D_b1d1b47c7e81f80a(C.uintptr_t(_swig_i_0)))
+	swig_r = (bool)(C._wrap_b2Contact_IsTouching_Box2D_553c0f9515edf50e(C.uintptr_t(_swig_i_0)))
 	return swig_r
 }
 
 func (arg1 SwigcptrB2Contact) SetEnabled(arg2 bool) {
 	_swig_i_0 := arg1
 	_swig_i_1 := arg2
-	C._wrap_b2Contact_SetEnabled_Box2D_b1d1b47c7e81f80a(C.uintptr_t(_swig_i_0), C._Bool(_swig_i_1))
+	C._wrap_b2Contact_SetEnabled_Box2D_553c0f9515edf50e(C.uintptr_t(_swig_i_0), C._Bool(_swig_i_1))
 }
 
 func (arg1 SwigcptrB2Contact) IsEnabled() (_swig_ret bool) {
 	var swig_r bool
 	_swig_i_0 := arg1
-	swig_r = (bool)(C._wrap_b2Contact_IsEnabled_Box2D_b1d1b47c7e81f80a(C.uintptr_t(_swig_i_0)))
+	swig_r = (bool)(C._wrap_b2Contact_IsEnabled_Box2D_553c0f9515edf50e(C.uintptr_t(_swig_i_0)))
 	return swig_r
 }
 
 func (arg1 SwigcptrB2Contact) GetNext__SWIG_0() (_swig_ret B2Contact) {
 	var swig_r B2Contact
 	_swig_i_0 := arg1
-	swig_r = (B2Contact)(SwigcptrB2Contact(C._wrap_b2Contact_GetNext__SWIG_0_Box2D_b1d1b47c7e81f80a(C.uintptr_t(_swig_i_0))))
+	swig_r = (B2Contact)(SwigcptrB2Contact(C._wrap_b2Contact_GetNext__SWIG_0_Box2D_553c0f9515edf50e(C.uintptr_t(_swig_i_0))))
 	return swig_r
 }
 
 func (arg1 SwigcptrB2Contact) GetNext__SWIG_1() (_swig_ret B2Contact) {
 	var swig_r B2Contact
 	_swig_i_0 := arg1
-	swig_r = (B2Contact)(SwigcptrB2Contact(C._wrap_b2Contact_GetNext__SWIG_1_Box2D_b1d1b47c7e81f80a(C.uintptr_t(_swig_i_0))))
+	swig_r = (B2Contact)(SwigcptrB2Contact(C._wrap_b2Contact_GetNext__SWIG_1_Box2D_553c0f9515edf50e(C.uintptr_t(_swig_i_0))))
 	return swig_r
 }
 
@@ -5893,14 +6037,14 @@ func (p SwigcptrB2Contact) GetNext(a ...interface{}) interface{} {
 func (arg1 SwigcptrB2Contact) GetFixtureA__SWIG_0() (_swig_ret B2Fixture) {
 	var swig_r B2Fixture
 	_swig_i_0 := arg1
-	swig_r = (B2Fixture)(SwigcptrB2Fixture(C._wrap_b2Contact_GetFixtureA__SWIG_0_Box2D_b1d1b47c7e81f80a(C.uintptr_t(_swig_i_0))))
+	swig_r = (B2Fixture)(SwigcptrB2Fixture(C._wrap_b2Contact_GetFixtureA__SWIG_0_Box2D_553c0f9515edf50e(C.uintptr_t(_swig_i_0))))
 	return swig_r
 }
 
 func (arg1 SwigcptrB2Contact) GetFixtureA__SWIG_1() (_swig_ret B2Fixture) {
 	var swig_r B2Fixture
 	_swig_i_0 := arg1
-	swig_r = (B2Fixture)(SwigcptrB2Fixture(C._wrap_b2Contact_GetFixtureA__SWIG_1_Box2D_b1d1b47c7e81f80a(C.uintptr_t(_swig_i_0))))
+	swig_r = (B2Fixture)(SwigcptrB2Fixture(C._wrap_b2Contact_GetFixtureA__SWIG_1_Box2D_553c0f9515edf50e(C.uintptr_t(_swig_i_0))))
 	return swig_r
 }
 
@@ -5918,21 +6062,21 @@ func (p SwigcptrB2Contact) GetFixtureA(a ...interface{}) interface{} {
 func (arg1 SwigcptrB2Contact) GetChildIndexA() (_swig_ret int) {
 	var swig_r int
 	_swig_i_0 := arg1
-	swig_r = (int)(C._wrap_b2Contact_GetChildIndexA_Box2D_b1d1b47c7e81f80a(C.uintptr_t(_swig_i_0)))
+	swig_r = (int)(C._wrap_b2Contact_GetChildIndexA_Box2D_553c0f9515edf50e(C.uintptr_t(_swig_i_0)))
 	return swig_r
 }
 
 func (arg1 SwigcptrB2Contact) GetFixtureB__SWIG_0() (_swig_ret B2Fixture) {
 	var swig_r B2Fixture
 	_swig_i_0 := arg1
-	swig_r = (B2Fixture)(SwigcptrB2Fixture(C._wrap_b2Contact_GetFixtureB__SWIG_0_Box2D_b1d1b47c7e81f80a(C.uintptr_t(_swig_i_0))))
+	swig_r = (B2Fixture)(SwigcptrB2Fixture(C._wrap_b2Contact_GetFixtureB__SWIG_0_Box2D_553c0f9515edf50e(C.uintptr_t(_swig_i_0))))
 	return swig_r
 }
 
 func (arg1 SwigcptrB2Contact) GetFixtureB__SWIG_1() (_swig_ret B2Fixture) {
 	var swig_r B2Fixture
 	_swig_i_0 := arg1
-	swig_r = (B2Fixture)(SwigcptrB2Fixture(C._wrap_b2Contact_GetFixtureB__SWIG_1_Box2D_b1d1b47c7e81f80a(C.uintptr_t(_swig_i_0))))
+	swig_r = (B2Fixture)(SwigcptrB2Fixture(C._wrap_b2Contact_GetFixtureB__SWIG_1_Box2D_553c0f9515edf50e(C.uintptr_t(_swig_i_0))))
 	return swig_r
 }
 
@@ -5950,56 +6094,56 @@ func (p SwigcptrB2Contact) GetFixtureB(a ...interface{}) interface{} {
 func (arg1 SwigcptrB2Contact) GetChildIndexB() (_swig_ret int) {
 	var swig_r int
 	_swig_i_0 := arg1
-	swig_r = (int)(C._wrap_b2Contact_GetChildIndexB_Box2D_b1d1b47c7e81f80a(C.uintptr_t(_swig_i_0)))
+	swig_r = (int)(C._wrap_b2Contact_GetChildIndexB_Box2D_553c0f9515edf50e(C.uintptr_t(_swig_i_0)))
 	return swig_r
 }
 
 func (arg1 SwigcptrB2Contact) SetFriction(arg2 float32) {
 	_swig_i_0 := arg1
 	_swig_i_1 := arg2
-	C._wrap_b2Contact_SetFriction_Box2D_b1d1b47c7e81f80a(C.uintptr_t(_swig_i_0), C.float(_swig_i_1))
+	C._wrap_b2Contact_SetFriction_Box2D_553c0f9515edf50e(C.uintptr_t(_swig_i_0), C.float(_swig_i_1))
 }
 
 func (arg1 SwigcptrB2Contact) GetFriction() (_swig_ret float32) {
 	var swig_r float32
 	_swig_i_0 := arg1
-	swig_r = (float32)(C._wrap_b2Contact_GetFriction_Box2D_b1d1b47c7e81f80a(C.uintptr_t(_swig_i_0)))
+	swig_r = (float32)(C._wrap_b2Contact_GetFriction_Box2D_553c0f9515edf50e(C.uintptr_t(_swig_i_0)))
 	return swig_r
 }
 
 func (arg1 SwigcptrB2Contact) ResetFriction() {
 	_swig_i_0 := arg1
-	C._wrap_b2Contact_ResetFriction_Box2D_b1d1b47c7e81f80a(C.uintptr_t(_swig_i_0))
+	C._wrap_b2Contact_ResetFriction_Box2D_553c0f9515edf50e(C.uintptr_t(_swig_i_0))
 }
 
 func (arg1 SwigcptrB2Contact) SetRestitution(arg2 float32) {
 	_swig_i_0 := arg1
 	_swig_i_1 := arg2
-	C._wrap_b2Contact_SetRestitution_Box2D_b1d1b47c7e81f80a(C.uintptr_t(_swig_i_0), C.float(_swig_i_1))
+	C._wrap_b2Contact_SetRestitution_Box2D_553c0f9515edf50e(C.uintptr_t(_swig_i_0), C.float(_swig_i_1))
 }
 
 func (arg1 SwigcptrB2Contact) GetRestitution() (_swig_ret float32) {
 	var swig_r float32
 	_swig_i_0 := arg1
-	swig_r = (float32)(C._wrap_b2Contact_GetRestitution_Box2D_b1d1b47c7e81f80a(C.uintptr_t(_swig_i_0)))
+	swig_r = (float32)(C._wrap_b2Contact_GetRestitution_Box2D_553c0f9515edf50e(C.uintptr_t(_swig_i_0)))
 	return swig_r
 }
 
 func (arg1 SwigcptrB2Contact) ResetRestitution() {
 	_swig_i_0 := arg1
-	C._wrap_b2Contact_ResetRestitution_Box2D_b1d1b47c7e81f80a(C.uintptr_t(_swig_i_0))
+	C._wrap_b2Contact_ResetRestitution_Box2D_553c0f9515edf50e(C.uintptr_t(_swig_i_0))
 }
 
 func (arg1 SwigcptrB2Contact) SetTangentSpeed(arg2 float32) {
 	_swig_i_0 := arg1
 	_swig_i_1 := arg2
-	C._wrap_b2Contact_SetTangentSpeed_Box2D_b1d1b47c7e81f80a(C.uintptr_t(_swig_i_0), C.float(_swig_i_1))
+	C._wrap_b2Contact_SetTangentSpeed_Box2D_553c0f9515edf50e(C.uintptr_t(_swig_i_0), C.float(_swig_i_1))
 }
 
 func (arg1 SwigcptrB2Contact) GetTangentSpeed() (_swig_ret float32) {
 	var swig_r float32
 	_swig_i_0 := arg1
-	swig_r = (float32)(C._wrap_b2Contact_GetTangentSpeed_Box2D_b1d1b47c7e81f80a(C.uintptr_t(_swig_i_0)))
+	swig_r = (float32)(C._wrap_b2Contact_GetTangentSpeed_Box2D_553c0f9515edf50e(C.uintptr_t(_swig_i_0)))
 	return swig_r
 }
 
@@ -6008,7 +6152,7 @@ func (arg1 SwigcptrB2Contact) Evaluate(arg2 B2Manifold, arg3 B2Transform, arg4 B
 	_swig_i_1 := arg2.Swigcptr()
 	_swig_i_2 := arg3.Swigcptr()
 	_swig_i_3 := arg4.Swigcptr()
-	C._wrap_b2Contact_Evaluate_Box2D_b1d1b47c7e81f80a(C.uintptr_t(_swig_i_0), C.uintptr_t(_swig_i_1), C.uintptr_t(_swig_i_2), C.uintptr_t(_swig_i_3))
+	C._wrap_b2Contact_Evaluate_Box2D_553c0f9515edf50e(C.uintptr_t(_swig_i_0), C.uintptr_t(_swig_i_1), C.uintptr_t(_swig_i_2), C.uintptr_t(_swig_i_3))
 }
 
 type B2Contact interface {
@@ -6046,7 +6190,7 @@ func (p SwigcptrB2DistanceJointDef) SwigIsB2DistanceJointDef() {
 
 func NewB2DistanceJointDef() (_swig_ret B2DistanceJointDef) {
 	var swig_r B2DistanceJointDef
-	swig_r = (B2DistanceJointDef)(SwigcptrB2DistanceJointDef(C._wrap_new_b2DistanceJointDef_Box2D_b1d1b47c7e81f80a()))
+	swig_r = (B2DistanceJointDef)(SwigcptrB2DistanceJointDef(C._wrap_new_b2DistanceJointDef_Box2D_553c0f9515edf50e()))
 	return swig_r
 }
 
@@ -6056,77 +6200,77 @@ func (arg1 SwigcptrB2DistanceJointDef) Initialize(arg2 B2Body, arg3 B2Body, arg4
 	_swig_i_2 := arg3.Swigcptr()
 	_swig_i_3 := arg4.Swigcptr()
 	_swig_i_4 := arg5.Swigcptr()
-	C._wrap_b2DistanceJointDef_Initialize_Box2D_b1d1b47c7e81f80a(C.uintptr_t(_swig_i_0), C.uintptr_t(_swig_i_1), C.uintptr_t(_swig_i_2), C.uintptr_t(_swig_i_3), C.uintptr_t(_swig_i_4))
+	C._wrap_b2DistanceJointDef_Initialize_Box2D_553c0f9515edf50e(C.uintptr_t(_swig_i_0), C.uintptr_t(_swig_i_1), C.uintptr_t(_swig_i_2), C.uintptr_t(_swig_i_3), C.uintptr_t(_swig_i_4))
 }
 
 func (arg1 SwigcptrB2DistanceJointDef) SetLocalAnchorA(arg2 B2Vec2) {
 	_swig_i_0 := arg1
 	_swig_i_1 := arg2.Swigcptr()
-	C._wrap_b2DistanceJointDef_localAnchorA_set_Box2D_b1d1b47c7e81f80a(C.uintptr_t(_swig_i_0), C.uintptr_t(_swig_i_1))
+	C._wrap_b2DistanceJointDef_localAnchorA_set_Box2D_553c0f9515edf50e(C.uintptr_t(_swig_i_0), C.uintptr_t(_swig_i_1))
 }
 
 func (arg1 SwigcptrB2DistanceJointDef) GetLocalAnchorA() (_swig_ret B2Vec2) {
 	var swig_r B2Vec2
 	_swig_i_0 := arg1
-	swig_r = (B2Vec2)(SwigcptrB2Vec2(C._wrap_b2DistanceJointDef_localAnchorA_get_Box2D_b1d1b47c7e81f80a(C.uintptr_t(_swig_i_0))))
+	swig_r = (B2Vec2)(SwigcptrB2Vec2(C._wrap_b2DistanceJointDef_localAnchorA_get_Box2D_553c0f9515edf50e(C.uintptr_t(_swig_i_0))))
 	return swig_r
 }
 
 func (arg1 SwigcptrB2DistanceJointDef) SetLocalAnchorB(arg2 B2Vec2) {
 	_swig_i_0 := arg1
 	_swig_i_1 := arg2.Swigcptr()
-	C._wrap_b2DistanceJointDef_localAnchorB_set_Box2D_b1d1b47c7e81f80a(C.uintptr_t(_swig_i_0), C.uintptr_t(_swig_i_1))
+	C._wrap_b2DistanceJointDef_localAnchorB_set_Box2D_553c0f9515edf50e(C.uintptr_t(_swig_i_0), C.uintptr_t(_swig_i_1))
 }
 
 func (arg1 SwigcptrB2DistanceJointDef) GetLocalAnchorB() (_swig_ret B2Vec2) {
 	var swig_r B2Vec2
 	_swig_i_0 := arg1
-	swig_r = (B2Vec2)(SwigcptrB2Vec2(C._wrap_b2DistanceJointDef_localAnchorB_get_Box2D_b1d1b47c7e81f80a(C.uintptr_t(_swig_i_0))))
+	swig_r = (B2Vec2)(SwigcptrB2Vec2(C._wrap_b2DistanceJointDef_localAnchorB_get_Box2D_553c0f9515edf50e(C.uintptr_t(_swig_i_0))))
 	return swig_r
 }
 
 func (arg1 SwigcptrB2DistanceJointDef) SetLength(arg2 float32) {
 	_swig_i_0 := arg1
 	_swig_i_1 := arg2
-	C._wrap_b2DistanceJointDef_length_set_Box2D_b1d1b47c7e81f80a(C.uintptr_t(_swig_i_0), C.float(_swig_i_1))
+	C._wrap_b2DistanceJointDef_length_set_Box2D_553c0f9515edf50e(C.uintptr_t(_swig_i_0), C.float(_swig_i_1))
 }
 
 func (arg1 SwigcptrB2DistanceJointDef) GetLength() (_swig_ret float32) {
 	var swig_r float32
 	_swig_i_0 := arg1
-	swig_r = (float32)(C._wrap_b2DistanceJointDef_length_get_Box2D_b1d1b47c7e81f80a(C.uintptr_t(_swig_i_0)))
+	swig_r = (float32)(C._wrap_b2DistanceJointDef_length_get_Box2D_553c0f9515edf50e(C.uintptr_t(_swig_i_0)))
 	return swig_r
 }
 
 func (arg1 SwigcptrB2DistanceJointDef) SetFrequencyHz(arg2 float32) {
 	_swig_i_0 := arg1
 	_swig_i_1 := arg2
-	C._wrap_b2DistanceJointDef_frequencyHz_set_Box2D_b1d1b47c7e81f80a(C.uintptr_t(_swig_i_0), C.float(_swig_i_1))
+	C._wrap_b2DistanceJointDef_frequencyHz_set_Box2D_553c0f9515edf50e(C.uintptr_t(_swig_i_0), C.float(_swig_i_1))
 }
 
 func (arg1 SwigcptrB2DistanceJointDef) GetFrequencyHz() (_swig_ret float32) {
 	var swig_r float32
 	_swig_i_0 := arg1
-	swig_r = (float32)(C._wrap_b2DistanceJointDef_frequencyHz_get_Box2D_b1d1b47c7e81f80a(C.uintptr_t(_swig_i_0)))
+	swig_r = (float32)(C._wrap_b2DistanceJointDef_frequencyHz_get_Box2D_553c0f9515edf50e(C.uintptr_t(_swig_i_0)))
 	return swig_r
 }
 
 func (arg1 SwigcptrB2DistanceJointDef) SetDampingRatio(arg2 float32) {
 	_swig_i_0 := arg1
 	_swig_i_1 := arg2
-	C._wrap_b2DistanceJointDef_dampingRatio_set_Box2D_b1d1b47c7e81f80a(C.uintptr_t(_swig_i_0), C.float(_swig_i_1))
+	C._wrap_b2DistanceJointDef_dampingRatio_set_Box2D_553c0f9515edf50e(C.uintptr_t(_swig_i_0), C.float(_swig_i_1))
 }
 
 func (arg1 SwigcptrB2DistanceJointDef) GetDampingRatio() (_swig_ret float32) {
 	var swig_r float32
 	_swig_i_0 := arg1
-	swig_r = (float32)(C._wrap_b2DistanceJointDef_dampingRatio_get_Box2D_b1d1b47c7e81f80a(C.uintptr_t(_swig_i_0)))
+	swig_r = (float32)(C._wrap_b2DistanceJointDef_dampingRatio_get_Box2D_553c0f9515edf50e(C.uintptr_t(_swig_i_0)))
 	return swig_r
 }
 
 func DeleteB2DistanceJointDef(arg1 B2DistanceJointDef) {
 	_swig_i_0 := arg1.Swigcptr()
-	C._wrap_delete_b2DistanceJointDef_Box2D_b1d1b47c7e81f80a(C.uintptr_t(_swig_i_0))
+	C._wrap_delete_b2DistanceJointDef_Box2D_553c0f9515edf50e(C.uintptr_t(_swig_i_0))
 }
 
 type B2DistanceJointDef interface {
@@ -6157,14 +6301,14 @@ func (p SwigcptrB2DistanceJoint) SwigIsB2DistanceJoint() {
 func (arg1 SwigcptrB2DistanceJoint) GetAnchorA() (_swig_ret B2Vec2) {
 	var swig_r B2Vec2
 	_swig_i_0 := arg1
-	swig_r = (B2Vec2)(SwigcptrB2Vec2(C._wrap_b2DistanceJoint_GetAnchorA_Box2D_b1d1b47c7e81f80a(C.uintptr_t(_swig_i_0))))
+	swig_r = (B2Vec2)(SwigcptrB2Vec2(C._wrap_b2DistanceJoint_GetAnchorA_Box2D_553c0f9515edf50e(C.uintptr_t(_swig_i_0))))
 	return swig_r
 }
 
 func (arg1 SwigcptrB2DistanceJoint) GetAnchorB() (_swig_ret B2Vec2) {
 	var swig_r B2Vec2
 	_swig_i_0 := arg1
-	swig_r = (B2Vec2)(SwigcptrB2Vec2(C._wrap_b2DistanceJoint_GetAnchorB_Box2D_b1d1b47c7e81f80a(C.uintptr_t(_swig_i_0))))
+	swig_r = (B2Vec2)(SwigcptrB2Vec2(C._wrap_b2DistanceJoint_GetAnchorB_Box2D_553c0f9515edf50e(C.uintptr_t(_swig_i_0))))
 	return swig_r
 }
 
@@ -6172,7 +6316,7 @@ func (arg1 SwigcptrB2DistanceJoint) GetReactionForce(arg2 float32) (_swig_ret B2
 	var swig_r B2Vec2
 	_swig_i_0 := arg1
 	_swig_i_1 := arg2
-	swig_r = (B2Vec2)(SwigcptrB2Vec2(C._wrap_b2DistanceJoint_GetReactionForce_Box2D_b1d1b47c7e81f80a(C.uintptr_t(_swig_i_0), C.float(_swig_i_1))))
+	swig_r = (B2Vec2)(SwigcptrB2Vec2(C._wrap_b2DistanceJoint_GetReactionForce_Box2D_553c0f9515edf50e(C.uintptr_t(_swig_i_0), C.float(_swig_i_1))))
 	return swig_r
 }
 
@@ -6180,71 +6324,71 @@ func (arg1 SwigcptrB2DistanceJoint) GetReactionTorque(arg2 float32) (_swig_ret f
 	var swig_r float32
 	_swig_i_0 := arg1
 	_swig_i_1 := arg2
-	swig_r = (float32)(C._wrap_b2DistanceJoint_GetReactionTorque_Box2D_b1d1b47c7e81f80a(C.uintptr_t(_swig_i_0), C.float(_swig_i_1)))
+	swig_r = (float32)(C._wrap_b2DistanceJoint_GetReactionTorque_Box2D_553c0f9515edf50e(C.uintptr_t(_swig_i_0), C.float(_swig_i_1)))
 	return swig_r
 }
 
 func (arg1 SwigcptrB2DistanceJoint) GetLocalAnchorA() (_swig_ret B2Vec2) {
 	var swig_r B2Vec2
 	_swig_i_0 := arg1
-	swig_r = (B2Vec2)(SwigcptrB2Vec2(C._wrap_b2DistanceJoint_GetLocalAnchorA_Box2D_b1d1b47c7e81f80a(C.uintptr_t(_swig_i_0))))
+	swig_r = (B2Vec2)(SwigcptrB2Vec2(C._wrap_b2DistanceJoint_GetLocalAnchorA_Box2D_553c0f9515edf50e(C.uintptr_t(_swig_i_0))))
 	return swig_r
 }
 
 func (arg1 SwigcptrB2DistanceJoint) GetLocalAnchorB() (_swig_ret B2Vec2) {
 	var swig_r B2Vec2
 	_swig_i_0 := arg1
-	swig_r = (B2Vec2)(SwigcptrB2Vec2(C._wrap_b2DistanceJoint_GetLocalAnchorB_Box2D_b1d1b47c7e81f80a(C.uintptr_t(_swig_i_0))))
+	swig_r = (B2Vec2)(SwigcptrB2Vec2(C._wrap_b2DistanceJoint_GetLocalAnchorB_Box2D_553c0f9515edf50e(C.uintptr_t(_swig_i_0))))
 	return swig_r
 }
 
 func (arg1 SwigcptrB2DistanceJoint) SetLength(arg2 float32) {
 	_swig_i_0 := arg1
 	_swig_i_1 := arg2
-	C._wrap_b2DistanceJoint_SetLength_Box2D_b1d1b47c7e81f80a(C.uintptr_t(_swig_i_0), C.float(_swig_i_1))
+	C._wrap_b2DistanceJoint_SetLength_Box2D_553c0f9515edf50e(C.uintptr_t(_swig_i_0), C.float(_swig_i_1))
 }
 
 func (arg1 SwigcptrB2DistanceJoint) GetLength() (_swig_ret float32) {
 	var swig_r float32
 	_swig_i_0 := arg1
-	swig_r = (float32)(C._wrap_b2DistanceJoint_GetLength_Box2D_b1d1b47c7e81f80a(C.uintptr_t(_swig_i_0)))
+	swig_r = (float32)(C._wrap_b2DistanceJoint_GetLength_Box2D_553c0f9515edf50e(C.uintptr_t(_swig_i_0)))
 	return swig_r
 }
 
 func (arg1 SwigcptrB2DistanceJoint) SetFrequency(arg2 float32) {
 	_swig_i_0 := arg1
 	_swig_i_1 := arg2
-	C._wrap_b2DistanceJoint_SetFrequency_Box2D_b1d1b47c7e81f80a(C.uintptr_t(_swig_i_0), C.float(_swig_i_1))
+	C._wrap_b2DistanceJoint_SetFrequency_Box2D_553c0f9515edf50e(C.uintptr_t(_swig_i_0), C.float(_swig_i_1))
 }
 
 func (arg1 SwigcptrB2DistanceJoint) GetFrequency() (_swig_ret float32) {
 	var swig_r float32
 	_swig_i_0 := arg1
-	swig_r = (float32)(C._wrap_b2DistanceJoint_GetFrequency_Box2D_b1d1b47c7e81f80a(C.uintptr_t(_swig_i_0)))
+	swig_r = (float32)(C._wrap_b2DistanceJoint_GetFrequency_Box2D_553c0f9515edf50e(C.uintptr_t(_swig_i_0)))
 	return swig_r
 }
 
 func (arg1 SwigcptrB2DistanceJoint) SetDampingRatio(arg2 float32) {
 	_swig_i_0 := arg1
 	_swig_i_1 := arg2
-	C._wrap_b2DistanceJoint_SetDampingRatio_Box2D_b1d1b47c7e81f80a(C.uintptr_t(_swig_i_0), C.float(_swig_i_1))
+	C._wrap_b2DistanceJoint_SetDampingRatio_Box2D_553c0f9515edf50e(C.uintptr_t(_swig_i_0), C.float(_swig_i_1))
 }
 
 func (arg1 SwigcptrB2DistanceJoint) GetDampingRatio() (_swig_ret float32) {
 	var swig_r float32
 	_swig_i_0 := arg1
-	swig_r = (float32)(C._wrap_b2DistanceJoint_GetDampingRatio_Box2D_b1d1b47c7e81f80a(C.uintptr_t(_swig_i_0)))
+	swig_r = (float32)(C._wrap_b2DistanceJoint_GetDampingRatio_Box2D_553c0f9515edf50e(C.uintptr_t(_swig_i_0)))
 	return swig_r
 }
 
 func (arg1 SwigcptrB2DistanceJoint) Dump() {
 	_swig_i_0 := arg1
-	C._wrap_b2DistanceJoint_Dump_Box2D_b1d1b47c7e81f80a(C.uintptr_t(_swig_i_0))
+	C._wrap_b2DistanceJoint_Dump_Box2D_553c0f9515edf50e(C.uintptr_t(_swig_i_0))
 }
 
 func DeleteB2DistanceJoint(arg1 B2DistanceJoint) {
 	_swig_i_0 := arg1.Swigcptr()
-	C._wrap_delete_b2DistanceJoint_Box2D_b1d1b47c7e81f80a(C.uintptr_t(_swig_i_0))
+	C._wrap_delete_b2DistanceJoint_Box2D_553c0f9515edf50e(C.uintptr_t(_swig_i_0))
 }
 
 type B2DistanceJoint interface {
@@ -6276,7 +6420,7 @@ func (p SwigcptrB2FrictionJointDef) SwigIsB2FrictionJointDef() {
 
 func NewB2FrictionJointDef() (_swig_ret B2FrictionJointDef) {
 	var swig_r B2FrictionJointDef
-	swig_r = (B2FrictionJointDef)(SwigcptrB2FrictionJointDef(C._wrap_new_b2FrictionJointDef_Box2D_b1d1b47c7e81f80a()))
+	swig_r = (B2FrictionJointDef)(SwigcptrB2FrictionJointDef(C._wrap_new_b2FrictionJointDef_Box2D_553c0f9515edf50e()))
 	return swig_r
 }
 
@@ -6285,64 +6429,64 @@ func (arg1 SwigcptrB2FrictionJointDef) Initialize(arg2 B2Body, arg3 B2Body, arg4
 	_swig_i_1 := arg2.Swigcptr()
 	_swig_i_2 := arg3.Swigcptr()
 	_swig_i_3 := arg4.Swigcptr()
-	C._wrap_b2FrictionJointDef_Initialize_Box2D_b1d1b47c7e81f80a(C.uintptr_t(_swig_i_0), C.uintptr_t(_swig_i_1), C.uintptr_t(_swig_i_2), C.uintptr_t(_swig_i_3))
+	C._wrap_b2FrictionJointDef_Initialize_Box2D_553c0f9515edf50e(C.uintptr_t(_swig_i_0), C.uintptr_t(_swig_i_1), C.uintptr_t(_swig_i_2), C.uintptr_t(_swig_i_3))
 }
 
 func (arg1 SwigcptrB2FrictionJointDef) SetLocalAnchorA(arg2 B2Vec2) {
 	_swig_i_0 := arg1
 	_swig_i_1 := arg2.Swigcptr()
-	C._wrap_b2FrictionJointDef_localAnchorA_set_Box2D_b1d1b47c7e81f80a(C.uintptr_t(_swig_i_0), C.uintptr_t(_swig_i_1))
+	C._wrap_b2FrictionJointDef_localAnchorA_set_Box2D_553c0f9515edf50e(C.uintptr_t(_swig_i_0), C.uintptr_t(_swig_i_1))
 }
 
 func (arg1 SwigcptrB2FrictionJointDef) GetLocalAnchorA() (_swig_ret B2Vec2) {
 	var swig_r B2Vec2
 	_swig_i_0 := arg1
-	swig_r = (B2Vec2)(SwigcptrB2Vec2(C._wrap_b2FrictionJointDef_localAnchorA_get_Box2D_b1d1b47c7e81f80a(C.uintptr_t(_swig_i_0))))
+	swig_r = (B2Vec2)(SwigcptrB2Vec2(C._wrap_b2FrictionJointDef_localAnchorA_get_Box2D_553c0f9515edf50e(C.uintptr_t(_swig_i_0))))
 	return swig_r
 }
 
 func (arg1 SwigcptrB2FrictionJointDef) SetLocalAnchorB(arg2 B2Vec2) {
 	_swig_i_0 := arg1
 	_swig_i_1 := arg2.Swigcptr()
-	C._wrap_b2FrictionJointDef_localAnchorB_set_Box2D_b1d1b47c7e81f80a(C.uintptr_t(_swig_i_0), C.uintptr_t(_swig_i_1))
+	C._wrap_b2FrictionJointDef_localAnchorB_set_Box2D_553c0f9515edf50e(C.uintptr_t(_swig_i_0), C.uintptr_t(_swig_i_1))
 }
 
 func (arg1 SwigcptrB2FrictionJointDef) GetLocalAnchorB() (_swig_ret B2Vec2) {
 	var swig_r B2Vec2
 	_swig_i_0 := arg1
-	swig_r = (B2Vec2)(SwigcptrB2Vec2(C._wrap_b2FrictionJointDef_localAnchorB_get_Box2D_b1d1b47c7e81f80a(C.uintptr_t(_swig_i_0))))
+	swig_r = (B2Vec2)(SwigcptrB2Vec2(C._wrap_b2FrictionJointDef_localAnchorB_get_Box2D_553c0f9515edf50e(C.uintptr_t(_swig_i_0))))
 	return swig_r
 }
 
 func (arg1 SwigcptrB2FrictionJointDef) SetMaxForce(arg2 float32) {
 	_swig_i_0 := arg1
 	_swig_i_1 := arg2
-	C._wrap_b2FrictionJointDef_maxForce_set_Box2D_b1d1b47c7e81f80a(C.uintptr_t(_swig_i_0), C.float(_swig_i_1))
+	C._wrap_b2FrictionJointDef_maxForce_set_Box2D_553c0f9515edf50e(C.uintptr_t(_swig_i_0), C.float(_swig_i_1))
 }
 
 func (arg1 SwigcptrB2FrictionJointDef) GetMaxForce() (_swig_ret float32) {
 	var swig_r float32
 	_swig_i_0 := arg1
-	swig_r = (float32)(C._wrap_b2FrictionJointDef_maxForce_get_Box2D_b1d1b47c7e81f80a(C.uintptr_t(_swig_i_0)))
+	swig_r = (float32)(C._wrap_b2FrictionJointDef_maxForce_get_Box2D_553c0f9515edf50e(C.uintptr_t(_swig_i_0)))
 	return swig_r
 }
 
 func (arg1 SwigcptrB2FrictionJointDef) SetMaxTorque(arg2 float32) {
 	_swig_i_0 := arg1
 	_swig_i_1 := arg2
-	C._wrap_b2FrictionJointDef_maxTorque_set_Box2D_b1d1b47c7e81f80a(C.uintptr_t(_swig_i_0), C.float(_swig_i_1))
+	C._wrap_b2FrictionJointDef_maxTorque_set_Box2D_553c0f9515edf50e(C.uintptr_t(_swig_i_0), C.float(_swig_i_1))
 }
 
 func (arg1 SwigcptrB2FrictionJointDef) GetMaxTorque() (_swig_ret float32) {
 	var swig_r float32
 	_swig_i_0 := arg1
-	swig_r = (float32)(C._wrap_b2FrictionJointDef_maxTorque_get_Box2D_b1d1b47c7e81f80a(C.uintptr_t(_swig_i_0)))
+	swig_r = (float32)(C._wrap_b2FrictionJointDef_maxTorque_get_Box2D_553c0f9515edf50e(C.uintptr_t(_swig_i_0)))
 	return swig_r
 }
 
 func DeleteB2FrictionJointDef(arg1 B2FrictionJointDef) {
 	_swig_i_0 := arg1.Swigcptr()
-	C._wrap_delete_b2FrictionJointDef_Box2D_b1d1b47c7e81f80a(C.uintptr_t(_swig_i_0))
+	C._wrap_delete_b2FrictionJointDef_Box2D_553c0f9515edf50e(C.uintptr_t(_swig_i_0))
 }
 
 type B2FrictionJointDef interface {
@@ -6371,14 +6515,14 @@ func (p SwigcptrB2FrictionJoint) SwigIsB2FrictionJoint() {
 func (arg1 SwigcptrB2FrictionJoint) GetAnchorA() (_swig_ret B2Vec2) {
 	var swig_r B2Vec2
 	_swig_i_0 := arg1
-	swig_r = (B2Vec2)(SwigcptrB2Vec2(C._wrap_b2FrictionJoint_GetAnchorA_Box2D_b1d1b47c7e81f80a(C.uintptr_t(_swig_i_0))))
+	swig_r = (B2Vec2)(SwigcptrB2Vec2(C._wrap_b2FrictionJoint_GetAnchorA_Box2D_553c0f9515edf50e(C.uintptr_t(_swig_i_0))))
 	return swig_r
 }
 
 func (arg1 SwigcptrB2FrictionJoint) GetAnchorB() (_swig_ret B2Vec2) {
 	var swig_r B2Vec2
 	_swig_i_0 := arg1
-	swig_r = (B2Vec2)(SwigcptrB2Vec2(C._wrap_b2FrictionJoint_GetAnchorB_Box2D_b1d1b47c7e81f80a(C.uintptr_t(_swig_i_0))))
+	swig_r = (B2Vec2)(SwigcptrB2Vec2(C._wrap_b2FrictionJoint_GetAnchorB_Box2D_553c0f9515edf50e(C.uintptr_t(_swig_i_0))))
 	return swig_r
 }
 
@@ -6386,7 +6530,7 @@ func (arg1 SwigcptrB2FrictionJoint) GetReactionForce(arg2 float32) (_swig_ret B2
 	var swig_r B2Vec2
 	_swig_i_0 := arg1
 	_swig_i_1 := arg2
-	swig_r = (B2Vec2)(SwigcptrB2Vec2(C._wrap_b2FrictionJoint_GetReactionForce_Box2D_b1d1b47c7e81f80a(C.uintptr_t(_swig_i_0), C.float(_swig_i_1))))
+	swig_r = (B2Vec2)(SwigcptrB2Vec2(C._wrap_b2FrictionJoint_GetReactionForce_Box2D_553c0f9515edf50e(C.uintptr_t(_swig_i_0), C.float(_swig_i_1))))
 	return swig_r
 }
 
@@ -6394,58 +6538,58 @@ func (arg1 SwigcptrB2FrictionJoint) GetReactionTorque(arg2 float32) (_swig_ret f
 	var swig_r float32
 	_swig_i_0 := arg1
 	_swig_i_1 := arg2
-	swig_r = (float32)(C._wrap_b2FrictionJoint_GetReactionTorque_Box2D_b1d1b47c7e81f80a(C.uintptr_t(_swig_i_0), C.float(_swig_i_1)))
+	swig_r = (float32)(C._wrap_b2FrictionJoint_GetReactionTorque_Box2D_553c0f9515edf50e(C.uintptr_t(_swig_i_0), C.float(_swig_i_1)))
 	return swig_r
 }
 
 func (arg1 SwigcptrB2FrictionJoint) GetLocalAnchorA() (_swig_ret B2Vec2) {
 	var swig_r B2Vec2
 	_swig_i_0 := arg1
-	swig_r = (B2Vec2)(SwigcptrB2Vec2(C._wrap_b2FrictionJoint_GetLocalAnchorA_Box2D_b1d1b47c7e81f80a(C.uintptr_t(_swig_i_0))))
+	swig_r = (B2Vec2)(SwigcptrB2Vec2(C._wrap_b2FrictionJoint_GetLocalAnchorA_Box2D_553c0f9515edf50e(C.uintptr_t(_swig_i_0))))
 	return swig_r
 }
 
 func (arg1 SwigcptrB2FrictionJoint) GetLocalAnchorB() (_swig_ret B2Vec2) {
 	var swig_r B2Vec2
 	_swig_i_0 := arg1
-	swig_r = (B2Vec2)(SwigcptrB2Vec2(C._wrap_b2FrictionJoint_GetLocalAnchorB_Box2D_b1d1b47c7e81f80a(C.uintptr_t(_swig_i_0))))
+	swig_r = (B2Vec2)(SwigcptrB2Vec2(C._wrap_b2FrictionJoint_GetLocalAnchorB_Box2D_553c0f9515edf50e(C.uintptr_t(_swig_i_0))))
 	return swig_r
 }
 
 func (arg1 SwigcptrB2FrictionJoint) SetMaxForce(arg2 float32) {
 	_swig_i_0 := arg1
 	_swig_i_1 := arg2
-	C._wrap_b2FrictionJoint_SetMaxForce_Box2D_b1d1b47c7e81f80a(C.uintptr_t(_swig_i_0), C.float(_swig_i_1))
+	C._wrap_b2FrictionJoint_SetMaxForce_Box2D_553c0f9515edf50e(C.uintptr_t(_swig_i_0), C.float(_swig_i_1))
 }
 
 func (arg1 SwigcptrB2FrictionJoint) GetMaxForce() (_swig_ret float32) {
 	var swig_r float32
 	_swig_i_0 := arg1
-	swig_r = (float32)(C._wrap_b2FrictionJoint_GetMaxForce_Box2D_b1d1b47c7e81f80a(C.uintptr_t(_swig_i_0)))
+	swig_r = (float32)(C._wrap_b2FrictionJoint_GetMaxForce_Box2D_553c0f9515edf50e(C.uintptr_t(_swig_i_0)))
 	return swig_r
 }
 
 func (arg1 SwigcptrB2FrictionJoint) SetMaxTorque(arg2 float32) {
 	_swig_i_0 := arg1
 	_swig_i_1 := arg2
-	C._wrap_b2FrictionJoint_SetMaxTorque_Box2D_b1d1b47c7e81f80a(C.uintptr_t(_swig_i_0), C.float(_swig_i_1))
+	C._wrap_b2FrictionJoint_SetMaxTorque_Box2D_553c0f9515edf50e(C.uintptr_t(_swig_i_0), C.float(_swig_i_1))
 }
 
 func (arg1 SwigcptrB2FrictionJoint) GetMaxTorque() (_swig_ret float32) {
 	var swig_r float32
 	_swig_i_0 := arg1
-	swig_r = (float32)(C._wrap_b2FrictionJoint_GetMaxTorque_Box2D_b1d1b47c7e81f80a(C.uintptr_t(_swig_i_0)))
+	swig_r = (float32)(C._wrap_b2FrictionJoint_GetMaxTorque_Box2D_553c0f9515edf50e(C.uintptr_t(_swig_i_0)))
 	return swig_r
 }
 
 func (arg1 SwigcptrB2FrictionJoint) Dump() {
 	_swig_i_0 := arg1
-	C._wrap_b2FrictionJoint_Dump_Box2D_b1d1b47c7e81f80a(C.uintptr_t(_swig_i_0))
+	C._wrap_b2FrictionJoint_Dump_Box2D_553c0f9515edf50e(C.uintptr_t(_swig_i_0))
 }
 
 func DeleteB2FrictionJoint(arg1 B2FrictionJoint) {
 	_swig_i_0 := arg1.Swigcptr()
-	C._wrap_delete_b2FrictionJoint_Box2D_b1d1b47c7e81f80a(C.uintptr_t(_swig_i_0))
+	C._wrap_delete_b2FrictionJoint_Box2D_553c0f9515edf50e(C.uintptr_t(_swig_i_0))
 }
 
 type B2FrictionJoint interface {
@@ -6475,52 +6619,52 @@ func (p SwigcptrB2GearJointDef) SwigIsB2GearJointDef() {
 
 func NewB2GearJointDef() (_swig_ret B2GearJointDef) {
 	var swig_r B2GearJointDef
-	swig_r = (B2GearJointDef)(SwigcptrB2GearJointDef(C._wrap_new_b2GearJointDef_Box2D_b1d1b47c7e81f80a()))
+	swig_r = (B2GearJointDef)(SwigcptrB2GearJointDef(C._wrap_new_b2GearJointDef_Box2D_553c0f9515edf50e()))
 	return swig_r
 }
 
 func (arg1 SwigcptrB2GearJointDef) SetJoint1(arg2 B2Joint) {
 	_swig_i_0 := arg1
 	_swig_i_1 := arg2.Swigcptr()
-	C._wrap_b2GearJointDef_joint1_set_Box2D_b1d1b47c7e81f80a(C.uintptr_t(_swig_i_0), C.uintptr_t(_swig_i_1))
+	C._wrap_b2GearJointDef_joint1_set_Box2D_553c0f9515edf50e(C.uintptr_t(_swig_i_0), C.uintptr_t(_swig_i_1))
 }
 
 func (arg1 SwigcptrB2GearJointDef) GetJoint1() (_swig_ret B2Joint) {
 	var swig_r B2Joint
 	_swig_i_0 := arg1
-	swig_r = (B2Joint)(SwigcptrB2Joint(C._wrap_b2GearJointDef_joint1_get_Box2D_b1d1b47c7e81f80a(C.uintptr_t(_swig_i_0))))
+	swig_r = (B2Joint)(SwigcptrB2Joint(C._wrap_b2GearJointDef_joint1_get_Box2D_553c0f9515edf50e(C.uintptr_t(_swig_i_0))))
 	return swig_r
 }
 
 func (arg1 SwigcptrB2GearJointDef) SetJoint2(arg2 B2Joint) {
 	_swig_i_0 := arg1
 	_swig_i_1 := arg2.Swigcptr()
-	C._wrap_b2GearJointDef_joint2_set_Box2D_b1d1b47c7e81f80a(C.uintptr_t(_swig_i_0), C.uintptr_t(_swig_i_1))
+	C._wrap_b2GearJointDef_joint2_set_Box2D_553c0f9515edf50e(C.uintptr_t(_swig_i_0), C.uintptr_t(_swig_i_1))
 }
 
 func (arg1 SwigcptrB2GearJointDef) GetJoint2() (_swig_ret B2Joint) {
 	var swig_r B2Joint
 	_swig_i_0 := arg1
-	swig_r = (B2Joint)(SwigcptrB2Joint(C._wrap_b2GearJointDef_joint2_get_Box2D_b1d1b47c7e81f80a(C.uintptr_t(_swig_i_0))))
+	swig_r = (B2Joint)(SwigcptrB2Joint(C._wrap_b2GearJointDef_joint2_get_Box2D_553c0f9515edf50e(C.uintptr_t(_swig_i_0))))
 	return swig_r
 }
 
 func (arg1 SwigcptrB2GearJointDef) SetRatio(arg2 float32) {
 	_swig_i_0 := arg1
 	_swig_i_1 := arg2
-	C._wrap_b2GearJointDef_ratio_set_Box2D_b1d1b47c7e81f80a(C.uintptr_t(_swig_i_0), C.float(_swig_i_1))
+	C._wrap_b2GearJointDef_ratio_set_Box2D_553c0f9515edf50e(C.uintptr_t(_swig_i_0), C.float(_swig_i_1))
 }
 
 func (arg1 SwigcptrB2GearJointDef) GetRatio() (_swig_ret float32) {
 	var swig_r float32
 	_swig_i_0 := arg1
-	swig_r = (float32)(C._wrap_b2GearJointDef_ratio_get_Box2D_b1d1b47c7e81f80a(C.uintptr_t(_swig_i_0)))
+	swig_r = (float32)(C._wrap_b2GearJointDef_ratio_get_Box2D_553c0f9515edf50e(C.uintptr_t(_swig_i_0)))
 	return swig_r
 }
 
 func DeleteB2GearJointDef(arg1 B2GearJointDef) {
 	_swig_i_0 := arg1.Swigcptr()
-	C._wrap_delete_b2GearJointDef_Box2D_b1d1b47c7e81f80a(C.uintptr_t(_swig_i_0))
+	C._wrap_delete_b2GearJointDef_Box2D_553c0f9515edf50e(C.uintptr_t(_swig_i_0))
 }
 
 type B2GearJointDef interface {
@@ -6546,14 +6690,14 @@ func (p SwigcptrB2GearJoint) SwigIsB2GearJoint() {
 func (arg1 SwigcptrB2GearJoint) GetAnchorA() (_swig_ret B2Vec2) {
 	var swig_r B2Vec2
 	_swig_i_0 := arg1
-	swig_r = (B2Vec2)(SwigcptrB2Vec2(C._wrap_b2GearJoint_GetAnchorA_Box2D_b1d1b47c7e81f80a(C.uintptr_t(_swig_i_0))))
+	swig_r = (B2Vec2)(SwigcptrB2Vec2(C._wrap_b2GearJoint_GetAnchorA_Box2D_553c0f9515edf50e(C.uintptr_t(_swig_i_0))))
 	return swig_r
 }
 
 func (arg1 SwigcptrB2GearJoint) GetAnchorB() (_swig_ret B2Vec2) {
 	var swig_r B2Vec2
 	_swig_i_0 := arg1
-	swig_r = (B2Vec2)(SwigcptrB2Vec2(C._wrap_b2GearJoint_GetAnchorB_Box2D_b1d1b47c7e81f80a(C.uintptr_t(_swig_i_0))))
+	swig_r = (B2Vec2)(SwigcptrB2Vec2(C._wrap_b2GearJoint_GetAnchorB_Box2D_553c0f9515edf50e(C.uintptr_t(_swig_i_0))))
 	return swig_r
 }
 
@@ -6561,7 +6705,7 @@ func (arg1 SwigcptrB2GearJoint) GetReactionForce(arg2 float32) (_swig_ret B2Vec2
 	var swig_r B2Vec2
 	_swig_i_0 := arg1
 	_swig_i_1 := arg2
-	swig_r = (B2Vec2)(SwigcptrB2Vec2(C._wrap_b2GearJoint_GetReactionForce_Box2D_b1d1b47c7e81f80a(C.uintptr_t(_swig_i_0), C.float(_swig_i_1))))
+	swig_r = (B2Vec2)(SwigcptrB2Vec2(C._wrap_b2GearJoint_GetReactionForce_Box2D_553c0f9515edf50e(C.uintptr_t(_swig_i_0), C.float(_swig_i_1))))
 	return swig_r
 }
 
@@ -6569,45 +6713,45 @@ func (arg1 SwigcptrB2GearJoint) GetReactionTorque(arg2 float32) (_swig_ret float
 	var swig_r float32
 	_swig_i_0 := arg1
 	_swig_i_1 := arg2
-	swig_r = (float32)(C._wrap_b2GearJoint_GetReactionTorque_Box2D_b1d1b47c7e81f80a(C.uintptr_t(_swig_i_0), C.float(_swig_i_1)))
+	swig_r = (float32)(C._wrap_b2GearJoint_GetReactionTorque_Box2D_553c0f9515edf50e(C.uintptr_t(_swig_i_0), C.float(_swig_i_1)))
 	return swig_r
 }
 
 func (arg1 SwigcptrB2GearJoint) GetJoint1() (_swig_ret B2Joint) {
 	var swig_r B2Joint
 	_swig_i_0 := arg1
-	swig_r = (B2Joint)(SwigcptrB2Joint(C._wrap_b2GearJoint_GetJoint1_Box2D_b1d1b47c7e81f80a(C.uintptr_t(_swig_i_0))))
+	swig_r = (B2Joint)(SwigcptrB2Joint(C._wrap_b2GearJoint_GetJoint1_Box2D_553c0f9515edf50e(C.uintptr_t(_swig_i_0))))
 	return swig_r
 }
 
 func (arg1 SwigcptrB2GearJoint) GetJoint2() (_swig_ret B2Joint) {
 	var swig_r B2Joint
 	_swig_i_0 := arg1
-	swig_r = (B2Joint)(SwigcptrB2Joint(C._wrap_b2GearJoint_GetJoint2_Box2D_b1d1b47c7e81f80a(C.uintptr_t(_swig_i_0))))
+	swig_r = (B2Joint)(SwigcptrB2Joint(C._wrap_b2GearJoint_GetJoint2_Box2D_553c0f9515edf50e(C.uintptr_t(_swig_i_0))))
 	return swig_r
 }
 
 func (arg1 SwigcptrB2GearJoint) SetRatio(arg2 float32) {
 	_swig_i_0 := arg1
 	_swig_i_1 := arg2
-	C._wrap_b2GearJoint_SetRatio_Box2D_b1d1b47c7e81f80a(C.uintptr_t(_swig_i_0), C.float(_swig_i_1))
+	C._wrap_b2GearJoint_SetRatio_Box2D_553c0f9515edf50e(C.uintptr_t(_swig_i_0), C.float(_swig_i_1))
 }
 
 func (arg1 SwigcptrB2GearJoint) GetRatio() (_swig_ret float32) {
 	var swig_r float32
 	_swig_i_0 := arg1
-	swig_r = (float32)(C._wrap_b2GearJoint_GetRatio_Box2D_b1d1b47c7e81f80a(C.uintptr_t(_swig_i_0)))
+	swig_r = (float32)(C._wrap_b2GearJoint_GetRatio_Box2D_553c0f9515edf50e(C.uintptr_t(_swig_i_0)))
 	return swig_r
 }
 
 func (arg1 SwigcptrB2GearJoint) Dump() {
 	_swig_i_0 := arg1
-	C._wrap_b2GearJoint_Dump_Box2D_b1d1b47c7e81f80a(C.uintptr_t(_swig_i_0))
+	C._wrap_b2GearJoint_Dump_Box2D_553c0f9515edf50e(C.uintptr_t(_swig_i_0))
 }
 
 func DeleteB2GearJoint(arg1 B2GearJoint) {
 	_swig_i_0 := arg1.Swigcptr()
-	C._wrap_delete_b2GearJoint_Box2D_b1d1b47c7e81f80a(C.uintptr_t(_swig_i_0))
+	C._wrap_delete_b2GearJoint_Box2D_553c0f9515edf50e(C.uintptr_t(_swig_i_0))
 }
 
 type B2GearJoint interface {
@@ -6635,7 +6779,7 @@ func (p SwigcptrB2MotorJointDef) SwigIsB2MotorJointDef() {
 
 func NewB2MotorJointDef() (_swig_ret B2MotorJointDef) {
 	var swig_r B2MotorJointDef
-	swig_r = (B2MotorJointDef)(SwigcptrB2MotorJointDef(C._wrap_new_b2MotorJointDef_Box2D_b1d1b47c7e81f80a()))
+	swig_r = (B2MotorJointDef)(SwigcptrB2MotorJointDef(C._wrap_new_b2MotorJointDef_Box2D_553c0f9515edf50e()))
 	return swig_r
 }
 
@@ -6643,77 +6787,77 @@ func (arg1 SwigcptrB2MotorJointDef) Initialize(arg2 B2Body, arg3 B2Body) {
 	_swig_i_0 := arg1
 	_swig_i_1 := arg2.Swigcptr()
 	_swig_i_2 := arg3.Swigcptr()
-	C._wrap_b2MotorJointDef_Initialize_Box2D_b1d1b47c7e81f80a(C.uintptr_t(_swig_i_0), C.uintptr_t(_swig_i_1), C.uintptr_t(_swig_i_2))
+	C._wrap_b2MotorJointDef_Initialize_Box2D_553c0f9515edf50e(C.uintptr_t(_swig_i_0), C.uintptr_t(_swig_i_1), C.uintptr_t(_swig_i_2))
 }
 
 func (arg1 SwigcptrB2MotorJointDef) SetLinearOffset(arg2 B2Vec2) {
 	_swig_i_0 := arg1
 	_swig_i_1 := arg2.Swigcptr()
-	C._wrap_b2MotorJointDef_linearOffset_set_Box2D_b1d1b47c7e81f80a(C.uintptr_t(_swig_i_0), C.uintptr_t(_swig_i_1))
+	C._wrap_b2MotorJointDef_linearOffset_set_Box2D_553c0f9515edf50e(C.uintptr_t(_swig_i_0), C.uintptr_t(_swig_i_1))
 }
 
 func (arg1 SwigcptrB2MotorJointDef) GetLinearOffset() (_swig_ret B2Vec2) {
 	var swig_r B2Vec2
 	_swig_i_0 := arg1
-	swig_r = (B2Vec2)(SwigcptrB2Vec2(C._wrap_b2MotorJointDef_linearOffset_get_Box2D_b1d1b47c7e81f80a(C.uintptr_t(_swig_i_0))))
+	swig_r = (B2Vec2)(SwigcptrB2Vec2(C._wrap_b2MotorJointDef_linearOffset_get_Box2D_553c0f9515edf50e(C.uintptr_t(_swig_i_0))))
 	return swig_r
 }
 
 func (arg1 SwigcptrB2MotorJointDef) SetAngularOffset(arg2 float32) {
 	_swig_i_0 := arg1
 	_swig_i_1 := arg2
-	C._wrap_b2MotorJointDef_angularOffset_set_Box2D_b1d1b47c7e81f80a(C.uintptr_t(_swig_i_0), C.float(_swig_i_1))
+	C._wrap_b2MotorJointDef_angularOffset_set_Box2D_553c0f9515edf50e(C.uintptr_t(_swig_i_0), C.float(_swig_i_1))
 }
 
 func (arg1 SwigcptrB2MotorJointDef) GetAngularOffset() (_swig_ret float32) {
 	var swig_r float32
 	_swig_i_0 := arg1
-	swig_r = (float32)(C._wrap_b2MotorJointDef_angularOffset_get_Box2D_b1d1b47c7e81f80a(C.uintptr_t(_swig_i_0)))
+	swig_r = (float32)(C._wrap_b2MotorJointDef_angularOffset_get_Box2D_553c0f9515edf50e(C.uintptr_t(_swig_i_0)))
 	return swig_r
 }
 
 func (arg1 SwigcptrB2MotorJointDef) SetMaxForce(arg2 float32) {
 	_swig_i_0 := arg1
 	_swig_i_1 := arg2
-	C._wrap_b2MotorJointDef_maxForce_set_Box2D_b1d1b47c7e81f80a(C.uintptr_t(_swig_i_0), C.float(_swig_i_1))
+	C._wrap_b2MotorJointDef_maxForce_set_Box2D_553c0f9515edf50e(C.uintptr_t(_swig_i_0), C.float(_swig_i_1))
 }
 
 func (arg1 SwigcptrB2MotorJointDef) GetMaxForce() (_swig_ret float32) {
 	var swig_r float32
 	_swig_i_0 := arg1
-	swig_r = (float32)(C._wrap_b2MotorJointDef_maxForce_get_Box2D_b1d1b47c7e81f80a(C.uintptr_t(_swig_i_0)))
+	swig_r = (float32)(C._wrap_b2MotorJointDef_maxForce_get_Box2D_553c0f9515edf50e(C.uintptr_t(_swig_i_0)))
 	return swig_r
 }
 
 func (arg1 SwigcptrB2MotorJointDef) SetMaxTorque(arg2 float32) {
 	_swig_i_0 := arg1
 	_swig_i_1 := arg2
-	C._wrap_b2MotorJointDef_maxTorque_set_Box2D_b1d1b47c7e81f80a(C.uintptr_t(_swig_i_0), C.float(_swig_i_1))
+	C._wrap_b2MotorJointDef_maxTorque_set_Box2D_553c0f9515edf50e(C.uintptr_t(_swig_i_0), C.float(_swig_i_1))
 }
 
 func (arg1 SwigcptrB2MotorJointDef) GetMaxTorque() (_swig_ret float32) {
 	var swig_r float32
 	_swig_i_0 := arg1
-	swig_r = (float32)(C._wrap_b2MotorJointDef_maxTorque_get_Box2D_b1d1b47c7e81f80a(C.uintptr_t(_swig_i_0)))
+	swig_r = (float32)(C._wrap_b2MotorJointDef_maxTorque_get_Box2D_553c0f9515edf50e(C.uintptr_t(_swig_i_0)))
 	return swig_r
 }
 
 func (arg1 SwigcptrB2MotorJointDef) SetCorrectionFactor(arg2 float32) {
 	_swig_i_0 := arg1
 	_swig_i_1 := arg2
-	C._wrap_b2MotorJointDef_correctionFactor_set_Box2D_b1d1b47c7e81f80a(C.uintptr_t(_swig_i_0), C.float(_swig_i_1))
+	C._wrap_b2MotorJointDef_correctionFactor_set_Box2D_553c0f9515edf50e(C.uintptr_t(_swig_i_0), C.float(_swig_i_1))
 }
 
 func (arg1 SwigcptrB2MotorJointDef) GetCorrectionFactor() (_swig_ret float32) {
 	var swig_r float32
 	_swig_i_0 := arg1
-	swig_r = (float32)(C._wrap_b2MotorJointDef_correctionFactor_get_Box2D_b1d1b47c7e81f80a(C.uintptr_t(_swig_i_0)))
+	swig_r = (float32)(C._wrap_b2MotorJointDef_correctionFactor_get_Box2D_553c0f9515edf50e(C.uintptr_t(_swig_i_0)))
 	return swig_r
 }
 
 func DeleteB2MotorJointDef(arg1 B2MotorJointDef) {
 	_swig_i_0 := arg1.Swigcptr()
-	C._wrap_delete_b2MotorJointDef_Box2D_b1d1b47c7e81f80a(C.uintptr_t(_swig_i_0))
+	C._wrap_delete_b2MotorJointDef_Box2D_553c0f9515edf50e(C.uintptr_t(_swig_i_0))
 }
 
 type B2MotorJointDef interface {
@@ -6744,14 +6888,14 @@ func (p SwigcptrB2MotorJoint) SwigIsB2MotorJoint() {
 func (arg1 SwigcptrB2MotorJoint) GetAnchorA() (_swig_ret B2Vec2) {
 	var swig_r B2Vec2
 	_swig_i_0 := arg1
-	swig_r = (B2Vec2)(SwigcptrB2Vec2(C._wrap_b2MotorJoint_GetAnchorA_Box2D_b1d1b47c7e81f80a(C.uintptr_t(_swig_i_0))))
+	swig_r = (B2Vec2)(SwigcptrB2Vec2(C._wrap_b2MotorJoint_GetAnchorA_Box2D_553c0f9515edf50e(C.uintptr_t(_swig_i_0))))
 	return swig_r
 }
 
 func (arg1 SwigcptrB2MotorJoint) GetAnchorB() (_swig_ret B2Vec2) {
 	var swig_r B2Vec2
 	_swig_i_0 := arg1
-	swig_r = (B2Vec2)(SwigcptrB2Vec2(C._wrap_b2MotorJoint_GetAnchorB_Box2D_b1d1b47c7e81f80a(C.uintptr_t(_swig_i_0))))
+	swig_r = (B2Vec2)(SwigcptrB2Vec2(C._wrap_b2MotorJoint_GetAnchorB_Box2D_553c0f9515edf50e(C.uintptr_t(_swig_i_0))))
 	return swig_r
 }
 
@@ -6759,7 +6903,7 @@ func (arg1 SwigcptrB2MotorJoint) GetReactionForce(arg2 float32) (_swig_ret B2Vec
 	var swig_r B2Vec2
 	_swig_i_0 := arg1
 	_swig_i_1 := arg2
-	swig_r = (B2Vec2)(SwigcptrB2Vec2(C._wrap_b2MotorJoint_GetReactionForce_Box2D_b1d1b47c7e81f80a(C.uintptr_t(_swig_i_0), C.float(_swig_i_1))))
+	swig_r = (B2Vec2)(SwigcptrB2Vec2(C._wrap_b2MotorJoint_GetReactionForce_Box2D_553c0f9515edf50e(C.uintptr_t(_swig_i_0), C.float(_swig_i_1))))
 	return swig_r
 }
 
@@ -6767,83 +6911,83 @@ func (arg1 SwigcptrB2MotorJoint) GetReactionTorque(arg2 float32) (_swig_ret floa
 	var swig_r float32
 	_swig_i_0 := arg1
 	_swig_i_1 := arg2
-	swig_r = (float32)(C._wrap_b2MotorJoint_GetReactionTorque_Box2D_b1d1b47c7e81f80a(C.uintptr_t(_swig_i_0), C.float(_swig_i_1)))
+	swig_r = (float32)(C._wrap_b2MotorJoint_GetReactionTorque_Box2D_553c0f9515edf50e(C.uintptr_t(_swig_i_0), C.float(_swig_i_1)))
 	return swig_r
 }
 
 func (arg1 SwigcptrB2MotorJoint) SetLinearOffset(arg2 B2Vec2) {
 	_swig_i_0 := arg1
 	_swig_i_1 := arg2.Swigcptr()
-	C._wrap_b2MotorJoint_SetLinearOffset_Box2D_b1d1b47c7e81f80a(C.uintptr_t(_swig_i_0), C.uintptr_t(_swig_i_1))
+	C._wrap_b2MotorJoint_SetLinearOffset_Box2D_553c0f9515edf50e(C.uintptr_t(_swig_i_0), C.uintptr_t(_swig_i_1))
 }
 
 func (arg1 SwigcptrB2MotorJoint) GetLinearOffset() (_swig_ret B2Vec2) {
 	var swig_r B2Vec2
 	_swig_i_0 := arg1
-	swig_r = (B2Vec2)(SwigcptrB2Vec2(C._wrap_b2MotorJoint_GetLinearOffset_Box2D_b1d1b47c7e81f80a(C.uintptr_t(_swig_i_0))))
+	swig_r = (B2Vec2)(SwigcptrB2Vec2(C._wrap_b2MotorJoint_GetLinearOffset_Box2D_553c0f9515edf50e(C.uintptr_t(_swig_i_0))))
 	return swig_r
 }
 
 func (arg1 SwigcptrB2MotorJoint) SetAngularOffset(arg2 float32) {
 	_swig_i_0 := arg1
 	_swig_i_1 := arg2
-	C._wrap_b2MotorJoint_SetAngularOffset_Box2D_b1d1b47c7e81f80a(C.uintptr_t(_swig_i_0), C.float(_swig_i_1))
+	C._wrap_b2MotorJoint_SetAngularOffset_Box2D_553c0f9515edf50e(C.uintptr_t(_swig_i_0), C.float(_swig_i_1))
 }
 
 func (arg1 SwigcptrB2MotorJoint) GetAngularOffset() (_swig_ret float32) {
 	var swig_r float32
 	_swig_i_0 := arg1
-	swig_r = (float32)(C._wrap_b2MotorJoint_GetAngularOffset_Box2D_b1d1b47c7e81f80a(C.uintptr_t(_swig_i_0)))
+	swig_r = (float32)(C._wrap_b2MotorJoint_GetAngularOffset_Box2D_553c0f9515edf50e(C.uintptr_t(_swig_i_0)))
 	return swig_r
 }
 
 func (arg1 SwigcptrB2MotorJoint) SetMaxForce(arg2 float32) {
 	_swig_i_0 := arg1
 	_swig_i_1 := arg2
-	C._wrap_b2MotorJoint_SetMaxForce_Box2D_b1d1b47c7e81f80a(C.uintptr_t(_swig_i_0), C.float(_swig_i_1))
+	C._wrap_b2MotorJoint_SetMaxForce_Box2D_553c0f9515edf50e(C.uintptr_t(_swig_i_0), C.float(_swig_i_1))
 }
 
 func (arg1 SwigcptrB2MotorJoint) GetMaxForce() (_swig_ret float32) {
 	var swig_r float32
 	_swig_i_0 := arg1
-	swig_r = (float32)(C._wrap_b2MotorJoint_GetMaxForce_Box2D_b1d1b47c7e81f80a(C.uintptr_t(_swig_i_0)))
+	swig_r = (float32)(C._wrap_b2MotorJoint_GetMaxForce_Box2D_553c0f9515edf50e(C.uintptr_t(_swig_i_0)))
 	return swig_r
 }
 
 func (arg1 SwigcptrB2MotorJoint) SetMaxTorque(arg2 float32) {
 	_swig_i_0 := arg1
 	_swig_i_1 := arg2
-	C._wrap_b2MotorJoint_SetMaxTorque_Box2D_b1d1b47c7e81f80a(C.uintptr_t(_swig_i_0), C.float(_swig_i_1))
+	C._wrap_b2MotorJoint_SetMaxTorque_Box2D_553c0f9515edf50e(C.uintptr_t(_swig_i_0), C.float(_swig_i_1))
 }
 
 func (arg1 SwigcptrB2MotorJoint) GetMaxTorque() (_swig_ret float32) {
 	var swig_r float32
 	_swig_i_0 := arg1
-	swig_r = (float32)(C._wrap_b2MotorJoint_GetMaxTorque_Box2D_b1d1b47c7e81f80a(C.uintptr_t(_swig_i_0)))
+	swig_r = (float32)(C._wrap_b2MotorJoint_GetMaxTorque_Box2D_553c0f9515edf50e(C.uintptr_t(_swig_i_0)))
 	return swig_r
 }
 
 func (arg1 SwigcptrB2MotorJoint) SetCorrectionFactor(arg2 float32) {
 	_swig_i_0 := arg1
 	_swig_i_1 := arg2
-	C._wrap_b2MotorJoint_SetCorrectionFactor_Box2D_b1d1b47c7e81f80a(C.uintptr_t(_swig_i_0), C.float(_swig_i_1))
+	C._wrap_b2MotorJoint_SetCorrectionFactor_Box2D_553c0f9515edf50e(C.uintptr_t(_swig_i_0), C.float(_swig_i_1))
 }
 
 func (arg1 SwigcptrB2MotorJoint) GetCorrectionFactor() (_swig_ret float32) {
 	var swig_r float32
 	_swig_i_0 := arg1
-	swig_r = (float32)(C._wrap_b2MotorJoint_GetCorrectionFactor_Box2D_b1d1b47c7e81f80a(C.uintptr_t(_swig_i_0)))
+	swig_r = (float32)(C._wrap_b2MotorJoint_GetCorrectionFactor_Box2D_553c0f9515edf50e(C.uintptr_t(_swig_i_0)))
 	return swig_r
 }
 
 func (arg1 SwigcptrB2MotorJoint) Dump() {
 	_swig_i_0 := arg1
-	C._wrap_b2MotorJoint_Dump_Box2D_b1d1b47c7e81f80a(C.uintptr_t(_swig_i_0))
+	C._wrap_b2MotorJoint_Dump_Box2D_553c0f9515edf50e(C.uintptr_t(_swig_i_0))
 }
 
 func DeleteB2MotorJoint(arg1 B2MotorJoint) {
 	_swig_i_0 := arg1.Swigcptr()
-	C._wrap_delete_b2MotorJoint_Box2D_b1d1b47c7e81f80a(C.uintptr_t(_swig_i_0))
+	C._wrap_delete_b2MotorJoint_Box2D_553c0f9515edf50e(C.uintptr_t(_swig_i_0))
 }
 
 type B2MotorJoint interface {
@@ -6877,65 +7021,65 @@ func (p SwigcptrB2MouseJointDef) SwigIsB2MouseJointDef() {
 
 func NewB2MouseJointDef() (_swig_ret B2MouseJointDef) {
 	var swig_r B2MouseJointDef
-	swig_r = (B2MouseJointDef)(SwigcptrB2MouseJointDef(C._wrap_new_b2MouseJointDef_Box2D_b1d1b47c7e81f80a()))
+	swig_r = (B2MouseJointDef)(SwigcptrB2MouseJointDef(C._wrap_new_b2MouseJointDef_Box2D_553c0f9515edf50e()))
 	return swig_r
 }
 
 func (arg1 SwigcptrB2MouseJointDef) SetTarget(arg2 B2Vec2) {
 	_swig_i_0 := arg1
 	_swig_i_1 := arg2.Swigcptr()
-	C._wrap_b2MouseJointDef_target_set_Box2D_b1d1b47c7e81f80a(C.uintptr_t(_swig_i_0), C.uintptr_t(_swig_i_1))
+	C._wrap_b2MouseJointDef_target_set_Box2D_553c0f9515edf50e(C.uintptr_t(_swig_i_0), C.uintptr_t(_swig_i_1))
 }
 
 func (arg1 SwigcptrB2MouseJointDef) GetTarget() (_swig_ret B2Vec2) {
 	var swig_r B2Vec2
 	_swig_i_0 := arg1
-	swig_r = (B2Vec2)(SwigcptrB2Vec2(C._wrap_b2MouseJointDef_target_get_Box2D_b1d1b47c7e81f80a(C.uintptr_t(_swig_i_0))))
+	swig_r = (B2Vec2)(SwigcptrB2Vec2(C._wrap_b2MouseJointDef_target_get_Box2D_553c0f9515edf50e(C.uintptr_t(_swig_i_0))))
 	return swig_r
 }
 
 func (arg1 SwigcptrB2MouseJointDef) SetMaxForce(arg2 float32) {
 	_swig_i_0 := arg1
 	_swig_i_1 := arg2
-	C._wrap_b2MouseJointDef_maxForce_set_Box2D_b1d1b47c7e81f80a(C.uintptr_t(_swig_i_0), C.float(_swig_i_1))
+	C._wrap_b2MouseJointDef_maxForce_set_Box2D_553c0f9515edf50e(C.uintptr_t(_swig_i_0), C.float(_swig_i_1))
 }
 
 func (arg1 SwigcptrB2MouseJointDef) GetMaxForce() (_swig_ret float32) {
 	var swig_r float32
 	_swig_i_0 := arg1
-	swig_r = (float32)(C._wrap_b2MouseJointDef_maxForce_get_Box2D_b1d1b47c7e81f80a(C.uintptr_t(_swig_i_0)))
+	swig_r = (float32)(C._wrap_b2MouseJointDef_maxForce_get_Box2D_553c0f9515edf50e(C.uintptr_t(_swig_i_0)))
 	return swig_r
 }
 
 func (arg1 SwigcptrB2MouseJointDef) SetFrequencyHz(arg2 float32) {
 	_swig_i_0 := arg1
 	_swig_i_1 := arg2
-	C._wrap_b2MouseJointDef_frequencyHz_set_Box2D_b1d1b47c7e81f80a(C.uintptr_t(_swig_i_0), C.float(_swig_i_1))
+	C._wrap_b2MouseJointDef_frequencyHz_set_Box2D_553c0f9515edf50e(C.uintptr_t(_swig_i_0), C.float(_swig_i_1))
 }
 
 func (arg1 SwigcptrB2MouseJointDef) GetFrequencyHz() (_swig_ret float32) {
 	var swig_r float32
 	_swig_i_0 := arg1
-	swig_r = (float32)(C._wrap_b2MouseJointDef_frequencyHz_get_Box2D_b1d1b47c7e81f80a(C.uintptr_t(_swig_i_0)))
+	swig_r = (float32)(C._wrap_b2MouseJointDef_frequencyHz_get_Box2D_553c0f9515edf50e(C.uintptr_t(_swig_i_0)))
 	return swig_r
 }
 
 func (arg1 SwigcptrB2MouseJointDef) SetDampingRatio(arg2 float32) {
 	_swig_i_0 := arg1
 	_swig_i_1 := arg2
-	C._wrap_b2MouseJointDef_dampingRatio_set_Box2D_b1d1b47c7e81f80a(C.uintptr_t(_swig_i_0), C.float(_swig_i_1))
+	C._wrap_b2MouseJointDef_dampingRatio_set_Box2D_553c0f9515edf50e(C.uintptr_t(_swig_i_0), C.float(_swig_i_1))
 }
 
 func (arg1 SwigcptrB2MouseJointDef) GetDampingRatio() (_swig_ret float32) {
 	var swig_r float32
 	_swig_i_0 := arg1
-	swig_r = (float32)(C._wrap_b2MouseJointDef_dampingRatio_get_Box2D_b1d1b47c7e81f80a(C.uintptr_t(_swig_i_0)))
+	swig_r = (float32)(C._wrap_b2MouseJointDef_dampingRatio_get_Box2D_553c0f9515edf50e(C.uintptr_t(_swig_i_0)))
 	return swig_r
 }
 
 func DeleteB2MouseJointDef(arg1 B2MouseJointDef) {
 	_swig_i_0 := arg1.Swigcptr()
-	C._wrap_delete_b2MouseJointDef_Box2D_b1d1b47c7e81f80a(C.uintptr_t(_swig_i_0))
+	C._wrap_delete_b2MouseJointDef_Box2D_553c0f9515edf50e(C.uintptr_t(_swig_i_0))
 }
 
 type B2MouseJointDef interface {
@@ -6963,14 +7107,14 @@ func (p SwigcptrB2MouseJoint) SwigIsB2MouseJoint() {
 func (arg1 SwigcptrB2MouseJoint) GetAnchorA() (_swig_ret B2Vec2) {
 	var swig_r B2Vec2
 	_swig_i_0 := arg1
-	swig_r = (B2Vec2)(SwigcptrB2Vec2(C._wrap_b2MouseJoint_GetAnchorA_Box2D_b1d1b47c7e81f80a(C.uintptr_t(_swig_i_0))))
+	swig_r = (B2Vec2)(SwigcptrB2Vec2(C._wrap_b2MouseJoint_GetAnchorA_Box2D_553c0f9515edf50e(C.uintptr_t(_swig_i_0))))
 	return swig_r
 }
 
 func (arg1 SwigcptrB2MouseJoint) GetAnchorB() (_swig_ret B2Vec2) {
 	var swig_r B2Vec2
 	_swig_i_0 := arg1
-	swig_r = (B2Vec2)(SwigcptrB2Vec2(C._wrap_b2MouseJoint_GetAnchorB_Box2D_b1d1b47c7e81f80a(C.uintptr_t(_swig_i_0))))
+	swig_r = (B2Vec2)(SwigcptrB2Vec2(C._wrap_b2MouseJoint_GetAnchorB_Box2D_553c0f9515edf50e(C.uintptr_t(_swig_i_0))))
 	return swig_r
 }
 
@@ -6978,7 +7122,7 @@ func (arg1 SwigcptrB2MouseJoint) GetReactionForce(arg2 float32) (_swig_ret B2Vec
 	var swig_r B2Vec2
 	_swig_i_0 := arg1
 	_swig_i_1 := arg2
-	swig_r = (B2Vec2)(SwigcptrB2Vec2(C._wrap_b2MouseJoint_GetReactionForce_Box2D_b1d1b47c7e81f80a(C.uintptr_t(_swig_i_0), C.float(_swig_i_1))))
+	swig_r = (B2Vec2)(SwigcptrB2Vec2(C._wrap_b2MouseJoint_GetReactionForce_Box2D_553c0f9515edf50e(C.uintptr_t(_swig_i_0), C.float(_swig_i_1))))
 	return swig_r
 }
 
@@ -6986,76 +7130,76 @@ func (arg1 SwigcptrB2MouseJoint) GetReactionTorque(arg2 float32) (_swig_ret floa
 	var swig_r float32
 	_swig_i_0 := arg1
 	_swig_i_1 := arg2
-	swig_r = (float32)(C._wrap_b2MouseJoint_GetReactionTorque_Box2D_b1d1b47c7e81f80a(C.uintptr_t(_swig_i_0), C.float(_swig_i_1)))
+	swig_r = (float32)(C._wrap_b2MouseJoint_GetReactionTorque_Box2D_553c0f9515edf50e(C.uintptr_t(_swig_i_0), C.float(_swig_i_1)))
 	return swig_r
 }
 
 func (arg1 SwigcptrB2MouseJoint) SetTarget(arg2 B2Vec2) {
 	_swig_i_0 := arg1
 	_swig_i_1 := arg2.Swigcptr()
-	C._wrap_b2MouseJoint_SetTarget_Box2D_b1d1b47c7e81f80a(C.uintptr_t(_swig_i_0), C.uintptr_t(_swig_i_1))
+	C._wrap_b2MouseJoint_SetTarget_Box2D_553c0f9515edf50e(C.uintptr_t(_swig_i_0), C.uintptr_t(_swig_i_1))
 }
 
 func (arg1 SwigcptrB2MouseJoint) GetTarget() (_swig_ret B2Vec2) {
 	var swig_r B2Vec2
 	_swig_i_0 := arg1
-	swig_r = (B2Vec2)(SwigcptrB2Vec2(C._wrap_b2MouseJoint_GetTarget_Box2D_b1d1b47c7e81f80a(C.uintptr_t(_swig_i_0))))
+	swig_r = (B2Vec2)(SwigcptrB2Vec2(C._wrap_b2MouseJoint_GetTarget_Box2D_553c0f9515edf50e(C.uintptr_t(_swig_i_0))))
 	return swig_r
 }
 
 func (arg1 SwigcptrB2MouseJoint) SetMaxForce(arg2 float32) {
 	_swig_i_0 := arg1
 	_swig_i_1 := arg2
-	C._wrap_b2MouseJoint_SetMaxForce_Box2D_b1d1b47c7e81f80a(C.uintptr_t(_swig_i_0), C.float(_swig_i_1))
+	C._wrap_b2MouseJoint_SetMaxForce_Box2D_553c0f9515edf50e(C.uintptr_t(_swig_i_0), C.float(_swig_i_1))
 }
 
 func (arg1 SwigcptrB2MouseJoint) GetMaxForce() (_swig_ret float32) {
 	var swig_r float32
 	_swig_i_0 := arg1
-	swig_r = (float32)(C._wrap_b2MouseJoint_GetMaxForce_Box2D_b1d1b47c7e81f80a(C.uintptr_t(_swig_i_0)))
+	swig_r = (float32)(C._wrap_b2MouseJoint_GetMaxForce_Box2D_553c0f9515edf50e(C.uintptr_t(_swig_i_0)))
 	return swig_r
 }
 
 func (arg1 SwigcptrB2MouseJoint) SetFrequency(arg2 float32) {
 	_swig_i_0 := arg1
 	_swig_i_1 := arg2
-	C._wrap_b2MouseJoint_SetFrequency_Box2D_b1d1b47c7e81f80a(C.uintptr_t(_swig_i_0), C.float(_swig_i_1))
+	C._wrap_b2MouseJoint_SetFrequency_Box2D_553c0f9515edf50e(C.uintptr_t(_swig_i_0), C.float(_swig_i_1))
 }
 
 func (arg1 SwigcptrB2MouseJoint) GetFrequency() (_swig_ret float32) {
 	var swig_r float32
 	_swig_i_0 := arg1
-	swig_r = (float32)(C._wrap_b2MouseJoint_GetFrequency_Box2D_b1d1b47c7e81f80a(C.uintptr_t(_swig_i_0)))
+	swig_r = (float32)(C._wrap_b2MouseJoint_GetFrequency_Box2D_553c0f9515edf50e(C.uintptr_t(_swig_i_0)))
 	return swig_r
 }
 
 func (arg1 SwigcptrB2MouseJoint) SetDampingRatio(arg2 float32) {
 	_swig_i_0 := arg1
 	_swig_i_1 := arg2
-	C._wrap_b2MouseJoint_SetDampingRatio_Box2D_b1d1b47c7e81f80a(C.uintptr_t(_swig_i_0), C.float(_swig_i_1))
+	C._wrap_b2MouseJoint_SetDampingRatio_Box2D_553c0f9515edf50e(C.uintptr_t(_swig_i_0), C.float(_swig_i_1))
 }
 
 func (arg1 SwigcptrB2MouseJoint) GetDampingRatio() (_swig_ret float32) {
 	var swig_r float32
 	_swig_i_0 := arg1
-	swig_r = (float32)(C._wrap_b2MouseJoint_GetDampingRatio_Box2D_b1d1b47c7e81f80a(C.uintptr_t(_swig_i_0)))
+	swig_r = (float32)(C._wrap_b2MouseJoint_GetDampingRatio_Box2D_553c0f9515edf50e(C.uintptr_t(_swig_i_0)))
 	return swig_r
 }
 
 func (arg1 SwigcptrB2MouseJoint) Dump() {
 	_swig_i_0 := arg1
-	C._wrap_b2MouseJoint_Dump_Box2D_b1d1b47c7e81f80a(C.uintptr_t(_swig_i_0))
+	C._wrap_b2MouseJoint_Dump_Box2D_553c0f9515edf50e(C.uintptr_t(_swig_i_0))
 }
 
 func (arg1 SwigcptrB2MouseJoint) ShiftOrigin(arg2 B2Vec2) {
 	_swig_i_0 := arg1
 	_swig_i_1 := arg2.Swigcptr()
-	C._wrap_b2MouseJoint_ShiftOrigin_Box2D_b1d1b47c7e81f80a(C.uintptr_t(_swig_i_0), C.uintptr_t(_swig_i_1))
+	C._wrap_b2MouseJoint_ShiftOrigin_Box2D_553c0f9515edf50e(C.uintptr_t(_swig_i_0), C.uintptr_t(_swig_i_1))
 }
 
 func DeleteB2MouseJoint(arg1 B2MouseJoint) {
 	_swig_i_0 := arg1.Swigcptr()
-	C._wrap_delete_b2MouseJoint_Box2D_b1d1b47c7e81f80a(C.uintptr_t(_swig_i_0))
+	C._wrap_delete_b2MouseJoint_Box2D_553c0f9515edf50e(C.uintptr_t(_swig_i_0))
 }
 
 type B2MouseJoint interface {
@@ -7088,7 +7232,7 @@ func (p SwigcptrB2PrismaticJointDef) SwigIsB2PrismaticJointDef() {
 
 func NewB2PrismaticJointDef() (_swig_ret B2PrismaticJointDef) {
 	var swig_r B2PrismaticJointDef
-	swig_r = (B2PrismaticJointDef)(SwigcptrB2PrismaticJointDef(C._wrap_new_b2PrismaticJointDef_Box2D_b1d1b47c7e81f80a()))
+	swig_r = (B2PrismaticJointDef)(SwigcptrB2PrismaticJointDef(C._wrap_new_b2PrismaticJointDef_Box2D_553c0f9515edf50e()))
 	return swig_r
 }
 
@@ -7098,142 +7242,142 @@ func (arg1 SwigcptrB2PrismaticJointDef) Initialize(arg2 B2Body, arg3 B2Body, arg
 	_swig_i_2 := arg3.Swigcptr()
 	_swig_i_3 := arg4.Swigcptr()
 	_swig_i_4 := arg5.Swigcptr()
-	C._wrap_b2PrismaticJointDef_Initialize_Box2D_b1d1b47c7e81f80a(C.uintptr_t(_swig_i_0), C.uintptr_t(_swig_i_1), C.uintptr_t(_swig_i_2), C.uintptr_t(_swig_i_3), C.uintptr_t(_swig_i_4))
+	C._wrap_b2PrismaticJointDef_Initialize_Box2D_553c0f9515edf50e(C.uintptr_t(_swig_i_0), C.uintptr_t(_swig_i_1), C.uintptr_t(_swig_i_2), C.uintptr_t(_swig_i_3), C.uintptr_t(_swig_i_4))
 }
 
 func (arg1 SwigcptrB2PrismaticJointDef) SetLocalAnchorA(arg2 B2Vec2) {
 	_swig_i_0 := arg1
 	_swig_i_1 := arg2.Swigcptr()
-	C._wrap_b2PrismaticJointDef_localAnchorA_set_Box2D_b1d1b47c7e81f80a(C.uintptr_t(_swig_i_0), C.uintptr_t(_swig_i_1))
+	C._wrap_b2PrismaticJointDef_localAnchorA_set_Box2D_553c0f9515edf50e(C.uintptr_t(_swig_i_0), C.uintptr_t(_swig_i_1))
 }
 
 func (arg1 SwigcptrB2PrismaticJointDef) GetLocalAnchorA() (_swig_ret B2Vec2) {
 	var swig_r B2Vec2
 	_swig_i_0 := arg1
-	swig_r = (B2Vec2)(SwigcptrB2Vec2(C._wrap_b2PrismaticJointDef_localAnchorA_get_Box2D_b1d1b47c7e81f80a(C.uintptr_t(_swig_i_0))))
+	swig_r = (B2Vec2)(SwigcptrB2Vec2(C._wrap_b2PrismaticJointDef_localAnchorA_get_Box2D_553c0f9515edf50e(C.uintptr_t(_swig_i_0))))
 	return swig_r
 }
 
 func (arg1 SwigcptrB2PrismaticJointDef) SetLocalAnchorB(arg2 B2Vec2) {
 	_swig_i_0 := arg1
 	_swig_i_1 := arg2.Swigcptr()
-	C._wrap_b2PrismaticJointDef_localAnchorB_set_Box2D_b1d1b47c7e81f80a(C.uintptr_t(_swig_i_0), C.uintptr_t(_swig_i_1))
+	C._wrap_b2PrismaticJointDef_localAnchorB_set_Box2D_553c0f9515edf50e(C.uintptr_t(_swig_i_0), C.uintptr_t(_swig_i_1))
 }
 
 func (arg1 SwigcptrB2PrismaticJointDef) GetLocalAnchorB() (_swig_ret B2Vec2) {
 	var swig_r B2Vec2
 	_swig_i_0 := arg1
-	swig_r = (B2Vec2)(SwigcptrB2Vec2(C._wrap_b2PrismaticJointDef_localAnchorB_get_Box2D_b1d1b47c7e81f80a(C.uintptr_t(_swig_i_0))))
+	swig_r = (B2Vec2)(SwigcptrB2Vec2(C._wrap_b2PrismaticJointDef_localAnchorB_get_Box2D_553c0f9515edf50e(C.uintptr_t(_swig_i_0))))
 	return swig_r
 }
 
 func (arg1 SwigcptrB2PrismaticJointDef) SetLocalAxisA(arg2 B2Vec2) {
 	_swig_i_0 := arg1
 	_swig_i_1 := arg2.Swigcptr()
-	C._wrap_b2PrismaticJointDef_localAxisA_set_Box2D_b1d1b47c7e81f80a(C.uintptr_t(_swig_i_0), C.uintptr_t(_swig_i_1))
+	C._wrap_b2PrismaticJointDef_localAxisA_set_Box2D_553c0f9515edf50e(C.uintptr_t(_swig_i_0), C.uintptr_t(_swig_i_1))
 }
 
 func (arg1 SwigcptrB2PrismaticJointDef) GetLocalAxisA() (_swig_ret B2Vec2) {
 	var swig_r B2Vec2
 	_swig_i_0 := arg1
-	swig_r = (B2Vec2)(SwigcptrB2Vec2(C._wrap_b2PrismaticJointDef_localAxisA_get_Box2D_b1d1b47c7e81f80a(C.uintptr_t(_swig_i_0))))
+	swig_r = (B2Vec2)(SwigcptrB2Vec2(C._wrap_b2PrismaticJointDef_localAxisA_get_Box2D_553c0f9515edf50e(C.uintptr_t(_swig_i_0))))
 	return swig_r
 }
 
 func (arg1 SwigcptrB2PrismaticJointDef) SetReferenceAngle(arg2 float32) {
 	_swig_i_0 := arg1
 	_swig_i_1 := arg2
-	C._wrap_b2PrismaticJointDef_referenceAngle_set_Box2D_b1d1b47c7e81f80a(C.uintptr_t(_swig_i_0), C.float(_swig_i_1))
+	C._wrap_b2PrismaticJointDef_referenceAngle_set_Box2D_553c0f9515edf50e(C.uintptr_t(_swig_i_0), C.float(_swig_i_1))
 }
 
 func (arg1 SwigcptrB2PrismaticJointDef) GetReferenceAngle() (_swig_ret float32) {
 	var swig_r float32
 	_swig_i_0 := arg1
-	swig_r = (float32)(C._wrap_b2PrismaticJointDef_referenceAngle_get_Box2D_b1d1b47c7e81f80a(C.uintptr_t(_swig_i_0)))
+	swig_r = (float32)(C._wrap_b2PrismaticJointDef_referenceAngle_get_Box2D_553c0f9515edf50e(C.uintptr_t(_swig_i_0)))
 	return swig_r
 }
 
 func (arg1 SwigcptrB2PrismaticJointDef) SetEnableLimit(arg2 bool) {
 	_swig_i_0 := arg1
 	_swig_i_1 := arg2
-	C._wrap_b2PrismaticJointDef_enableLimit_set_Box2D_b1d1b47c7e81f80a(C.uintptr_t(_swig_i_0), C._Bool(_swig_i_1))
+	C._wrap_b2PrismaticJointDef_enableLimit_set_Box2D_553c0f9515edf50e(C.uintptr_t(_swig_i_0), C._Bool(_swig_i_1))
 }
 
 func (arg1 SwigcptrB2PrismaticJointDef) GetEnableLimit() (_swig_ret bool) {
 	var swig_r bool
 	_swig_i_0 := arg1
-	swig_r = (bool)(C._wrap_b2PrismaticJointDef_enableLimit_get_Box2D_b1d1b47c7e81f80a(C.uintptr_t(_swig_i_0)))
+	swig_r = (bool)(C._wrap_b2PrismaticJointDef_enableLimit_get_Box2D_553c0f9515edf50e(C.uintptr_t(_swig_i_0)))
 	return swig_r
 }
 
 func (arg1 SwigcptrB2PrismaticJointDef) SetLowerTranslation(arg2 float32) {
 	_swig_i_0 := arg1
 	_swig_i_1 := arg2
-	C._wrap_b2PrismaticJointDef_lowerTranslation_set_Box2D_b1d1b47c7e81f80a(C.uintptr_t(_swig_i_0), C.float(_swig_i_1))
+	C._wrap_b2PrismaticJointDef_lowerTranslation_set_Box2D_553c0f9515edf50e(C.uintptr_t(_swig_i_0), C.float(_swig_i_1))
 }
 
 func (arg1 SwigcptrB2PrismaticJointDef) GetLowerTranslation() (_swig_ret float32) {
 	var swig_r float32
 	_swig_i_0 := arg1
-	swig_r = (float32)(C._wrap_b2PrismaticJointDef_lowerTranslation_get_Box2D_b1d1b47c7e81f80a(C.uintptr_t(_swig_i_0)))
+	swig_r = (float32)(C._wrap_b2PrismaticJointDef_lowerTranslation_get_Box2D_553c0f9515edf50e(C.uintptr_t(_swig_i_0)))
 	return swig_r
 }
 
 func (arg1 SwigcptrB2PrismaticJointDef) SetUpperTranslation(arg2 float32) {
 	_swig_i_0 := arg1
 	_swig_i_1 := arg2
-	C._wrap_b2PrismaticJointDef_upperTranslation_set_Box2D_b1d1b47c7e81f80a(C.uintptr_t(_swig_i_0), C.float(_swig_i_1))
+	C._wrap_b2PrismaticJointDef_upperTranslation_set_Box2D_553c0f9515edf50e(C.uintptr_t(_swig_i_0), C.float(_swig_i_1))
 }
 
 func (arg1 SwigcptrB2PrismaticJointDef) GetUpperTranslation() (_swig_ret float32) {
 	var swig_r float32
 	_swig_i_0 := arg1
-	swig_r = (float32)(C._wrap_b2PrismaticJointDef_upperTranslation_get_Box2D_b1d1b47c7e81f80a(C.uintptr_t(_swig_i_0)))
+	swig_r = (float32)(C._wrap_b2PrismaticJointDef_upperTranslation_get_Box2D_553c0f9515edf50e(C.uintptr_t(_swig_i_0)))
 	return swig_r
 }
 
 func (arg1 SwigcptrB2PrismaticJointDef) SetEnableMotor(arg2 bool) {
 	_swig_i_0 := arg1
 	_swig_i_1 := arg2
-	C._wrap_b2PrismaticJointDef_enableMotor_set_Box2D_b1d1b47c7e81f80a(C.uintptr_t(_swig_i_0), C._Bool(_swig_i_1))
+	C._wrap_b2PrismaticJointDef_enableMotor_set_Box2D_553c0f9515edf50e(C.uintptr_t(_swig_i_0), C._Bool(_swig_i_1))
 }
 
 func (arg1 SwigcptrB2PrismaticJointDef) GetEnableMotor() (_swig_ret bool) {
 	var swig_r bool
 	_swig_i_0 := arg1
-	swig_r = (bool)(C._wrap_b2PrismaticJointDef_enableMotor_get_Box2D_b1d1b47c7e81f80a(C.uintptr_t(_swig_i_0)))
+	swig_r = (bool)(C._wrap_b2PrismaticJointDef_enableMotor_get_Box2D_553c0f9515edf50e(C.uintptr_t(_swig_i_0)))
 	return swig_r
 }
 
 func (arg1 SwigcptrB2PrismaticJointDef) SetMaxMotorForce(arg2 float32) {
 	_swig_i_0 := arg1
 	_swig_i_1 := arg2
-	C._wrap_b2PrismaticJointDef_maxMotorForce_set_Box2D_b1d1b47c7e81f80a(C.uintptr_t(_swig_i_0), C.float(_swig_i_1))
+	C._wrap_b2PrismaticJointDef_maxMotorForce_set_Box2D_553c0f9515edf50e(C.uintptr_t(_swig_i_0), C.float(_swig_i_1))
 }
 
 func (arg1 SwigcptrB2PrismaticJointDef) GetMaxMotorForce() (_swig_ret float32) {
 	var swig_r float32
 	_swig_i_0 := arg1
-	swig_r = (float32)(C._wrap_b2PrismaticJointDef_maxMotorForce_get_Box2D_b1d1b47c7e81f80a(C.uintptr_t(_swig_i_0)))
+	swig_r = (float32)(C._wrap_b2PrismaticJointDef_maxMotorForce_get_Box2D_553c0f9515edf50e(C.uintptr_t(_swig_i_0)))
 	return swig_r
 }
 
 func (arg1 SwigcptrB2PrismaticJointDef) SetMotorSpeed(arg2 float32) {
 	_swig_i_0 := arg1
 	_swig_i_1 := arg2
-	C._wrap_b2PrismaticJointDef_motorSpeed_set_Box2D_b1d1b47c7e81f80a(C.uintptr_t(_swig_i_0), C.float(_swig_i_1))
+	C._wrap_b2PrismaticJointDef_motorSpeed_set_Box2D_553c0f9515edf50e(C.uintptr_t(_swig_i_0), C.float(_swig_i_1))
 }
 
 func (arg1 SwigcptrB2PrismaticJointDef) GetMotorSpeed() (_swig_ret float32) {
 	var swig_r float32
 	_swig_i_0 := arg1
-	swig_r = (float32)(C._wrap_b2PrismaticJointDef_motorSpeed_get_Box2D_b1d1b47c7e81f80a(C.uintptr_t(_swig_i_0)))
+	swig_r = (float32)(C._wrap_b2PrismaticJointDef_motorSpeed_get_Box2D_553c0f9515edf50e(C.uintptr_t(_swig_i_0)))
 	return swig_r
 }
 
 func DeleteB2PrismaticJointDef(arg1 B2PrismaticJointDef) {
 	_swig_i_0 := arg1.Swigcptr()
-	C._wrap_delete_b2PrismaticJointDef_Box2D_b1d1b47c7e81f80a(C.uintptr_t(_swig_i_0))
+	C._wrap_delete_b2PrismaticJointDef_Box2D_553c0f9515edf50e(C.uintptr_t(_swig_i_0))
 }
 
 type B2PrismaticJointDef interface {
@@ -7274,14 +7418,14 @@ func (p SwigcptrB2PrismaticJoint) SwigIsB2PrismaticJoint() {
 func (arg1 SwigcptrB2PrismaticJoint) GetAnchorA() (_swig_ret B2Vec2) {
 	var swig_r B2Vec2
 	_swig_i_0 := arg1
-	swig_r = (B2Vec2)(SwigcptrB2Vec2(C._wrap_b2PrismaticJoint_GetAnchorA_Box2D_b1d1b47c7e81f80a(C.uintptr_t(_swig_i_0))))
+	swig_r = (B2Vec2)(SwigcptrB2Vec2(C._wrap_b2PrismaticJoint_GetAnchorA_Box2D_553c0f9515edf50e(C.uintptr_t(_swig_i_0))))
 	return swig_r
 }
 
 func (arg1 SwigcptrB2PrismaticJoint) GetAnchorB() (_swig_ret B2Vec2) {
 	var swig_r B2Vec2
 	_swig_i_0 := arg1
-	swig_r = (B2Vec2)(SwigcptrB2Vec2(C._wrap_b2PrismaticJoint_GetAnchorB_Box2D_b1d1b47c7e81f80a(C.uintptr_t(_swig_i_0))))
+	swig_r = (B2Vec2)(SwigcptrB2Vec2(C._wrap_b2PrismaticJoint_GetAnchorB_Box2D_553c0f9515edf50e(C.uintptr_t(_swig_i_0))))
 	return swig_r
 }
 
@@ -7289,7 +7433,7 @@ func (arg1 SwigcptrB2PrismaticJoint) GetReactionForce(arg2 float32) (_swig_ret B
 	var swig_r B2Vec2
 	_swig_i_0 := arg1
 	_swig_i_1 := arg2
-	swig_r = (B2Vec2)(SwigcptrB2Vec2(C._wrap_b2PrismaticJoint_GetReactionForce_Box2D_b1d1b47c7e81f80a(C.uintptr_t(_swig_i_0), C.float(_swig_i_1))))
+	swig_r = (B2Vec2)(SwigcptrB2Vec2(C._wrap_b2PrismaticJoint_GetReactionForce_Box2D_553c0f9515edf50e(C.uintptr_t(_swig_i_0), C.float(_swig_i_1))))
 	return swig_r
 }
 
@@ -7297,76 +7441,76 @@ func (arg1 SwigcptrB2PrismaticJoint) GetReactionTorque(arg2 float32) (_swig_ret 
 	var swig_r float32
 	_swig_i_0 := arg1
 	_swig_i_1 := arg2
-	swig_r = (float32)(C._wrap_b2PrismaticJoint_GetReactionTorque_Box2D_b1d1b47c7e81f80a(C.uintptr_t(_swig_i_0), C.float(_swig_i_1)))
+	swig_r = (float32)(C._wrap_b2PrismaticJoint_GetReactionTorque_Box2D_553c0f9515edf50e(C.uintptr_t(_swig_i_0), C.float(_swig_i_1)))
 	return swig_r
 }
 
 func (arg1 SwigcptrB2PrismaticJoint) GetLocalAnchorA() (_swig_ret B2Vec2) {
 	var swig_r B2Vec2
 	_swig_i_0 := arg1
-	swig_r = (B2Vec2)(SwigcptrB2Vec2(C._wrap_b2PrismaticJoint_GetLocalAnchorA_Box2D_b1d1b47c7e81f80a(C.uintptr_t(_swig_i_0))))
+	swig_r = (B2Vec2)(SwigcptrB2Vec2(C._wrap_b2PrismaticJoint_GetLocalAnchorA_Box2D_553c0f9515edf50e(C.uintptr_t(_swig_i_0))))
 	return swig_r
 }
 
 func (arg1 SwigcptrB2PrismaticJoint) GetLocalAnchorB() (_swig_ret B2Vec2) {
 	var swig_r B2Vec2
 	_swig_i_0 := arg1
-	swig_r = (B2Vec2)(SwigcptrB2Vec2(C._wrap_b2PrismaticJoint_GetLocalAnchorB_Box2D_b1d1b47c7e81f80a(C.uintptr_t(_swig_i_0))))
+	swig_r = (B2Vec2)(SwigcptrB2Vec2(C._wrap_b2PrismaticJoint_GetLocalAnchorB_Box2D_553c0f9515edf50e(C.uintptr_t(_swig_i_0))))
 	return swig_r
 }
 
 func (arg1 SwigcptrB2PrismaticJoint) GetLocalAxisA() (_swig_ret B2Vec2) {
 	var swig_r B2Vec2
 	_swig_i_0 := arg1
-	swig_r = (B2Vec2)(SwigcptrB2Vec2(C._wrap_b2PrismaticJoint_GetLocalAxisA_Box2D_b1d1b47c7e81f80a(C.uintptr_t(_swig_i_0))))
+	swig_r = (B2Vec2)(SwigcptrB2Vec2(C._wrap_b2PrismaticJoint_GetLocalAxisA_Box2D_553c0f9515edf50e(C.uintptr_t(_swig_i_0))))
 	return swig_r
 }
 
 func (arg1 SwigcptrB2PrismaticJoint) GetReferenceAngle() (_swig_ret float32) {
 	var swig_r float32
 	_swig_i_0 := arg1
-	swig_r = (float32)(C._wrap_b2PrismaticJoint_GetReferenceAngle_Box2D_b1d1b47c7e81f80a(C.uintptr_t(_swig_i_0)))
+	swig_r = (float32)(C._wrap_b2PrismaticJoint_GetReferenceAngle_Box2D_553c0f9515edf50e(C.uintptr_t(_swig_i_0)))
 	return swig_r
 }
 
 func (arg1 SwigcptrB2PrismaticJoint) GetJointTranslation() (_swig_ret float32) {
 	var swig_r float32
 	_swig_i_0 := arg1
-	swig_r = (float32)(C._wrap_b2PrismaticJoint_GetJointTranslation_Box2D_b1d1b47c7e81f80a(C.uintptr_t(_swig_i_0)))
+	swig_r = (float32)(C._wrap_b2PrismaticJoint_GetJointTranslation_Box2D_553c0f9515edf50e(C.uintptr_t(_swig_i_0)))
 	return swig_r
 }
 
 func (arg1 SwigcptrB2PrismaticJoint) GetJointSpeed() (_swig_ret float32) {
 	var swig_r float32
 	_swig_i_0 := arg1
-	swig_r = (float32)(C._wrap_b2PrismaticJoint_GetJointSpeed_Box2D_b1d1b47c7e81f80a(C.uintptr_t(_swig_i_0)))
+	swig_r = (float32)(C._wrap_b2PrismaticJoint_GetJointSpeed_Box2D_553c0f9515edf50e(C.uintptr_t(_swig_i_0)))
 	return swig_r
 }
 
 func (arg1 SwigcptrB2PrismaticJoint) IsLimitEnabled() (_swig_ret bool) {
 	var swig_r bool
 	_swig_i_0 := arg1
-	swig_r = (bool)(C._wrap_b2PrismaticJoint_IsLimitEnabled_Box2D_b1d1b47c7e81f80a(C.uintptr_t(_swig_i_0)))
+	swig_r = (bool)(C._wrap_b2PrismaticJoint_IsLimitEnabled_Box2D_553c0f9515edf50e(C.uintptr_t(_swig_i_0)))
 	return swig_r
 }
 
 func (arg1 SwigcptrB2PrismaticJoint) EnableLimit(arg2 bool) {
 	_swig_i_0 := arg1
 	_swig_i_1 := arg2
-	C._wrap_b2PrismaticJoint_EnableLimit_Box2D_b1d1b47c7e81f80a(C.uintptr_t(_swig_i_0), C._Bool(_swig_i_1))
+	C._wrap_b2PrismaticJoint_EnableLimit_Box2D_553c0f9515edf50e(C.uintptr_t(_swig_i_0), C._Bool(_swig_i_1))
 }
 
 func (arg1 SwigcptrB2PrismaticJoint) GetLowerLimit() (_swig_ret float32) {
 	var swig_r float32
 	_swig_i_0 := arg1
-	swig_r = (float32)(C._wrap_b2PrismaticJoint_GetLowerLimit_Box2D_b1d1b47c7e81f80a(C.uintptr_t(_swig_i_0)))
+	swig_r = (float32)(C._wrap_b2PrismaticJoint_GetLowerLimit_Box2D_553c0f9515edf50e(C.uintptr_t(_swig_i_0)))
 	return swig_r
 }
 
 func (arg1 SwigcptrB2PrismaticJoint) GetUpperLimit() (_swig_ret float32) {
 	var swig_r float32
 	_swig_i_0 := arg1
-	swig_r = (float32)(C._wrap_b2PrismaticJoint_GetUpperLimit_Box2D_b1d1b47c7e81f80a(C.uintptr_t(_swig_i_0)))
+	swig_r = (float32)(C._wrap_b2PrismaticJoint_GetUpperLimit_Box2D_553c0f9515edf50e(C.uintptr_t(_swig_i_0)))
 	return swig_r
 }
 
@@ -7374,45 +7518,45 @@ func (arg1 SwigcptrB2PrismaticJoint) SetLimits(arg2 float32, arg3 float32) {
 	_swig_i_0 := arg1
 	_swig_i_1 := arg2
 	_swig_i_2 := arg3
-	C._wrap_b2PrismaticJoint_SetLimits_Box2D_b1d1b47c7e81f80a(C.uintptr_t(_swig_i_0), C.float(_swig_i_1), C.float(_swig_i_2))
+	C._wrap_b2PrismaticJoint_SetLimits_Box2D_553c0f9515edf50e(C.uintptr_t(_swig_i_0), C.float(_swig_i_1), C.float(_swig_i_2))
 }
 
 func (arg1 SwigcptrB2PrismaticJoint) IsMotorEnabled() (_swig_ret bool) {
 	var swig_r bool
 	_swig_i_0 := arg1
-	swig_r = (bool)(C._wrap_b2PrismaticJoint_IsMotorEnabled_Box2D_b1d1b47c7e81f80a(C.uintptr_t(_swig_i_0)))
+	swig_r = (bool)(C._wrap_b2PrismaticJoint_IsMotorEnabled_Box2D_553c0f9515edf50e(C.uintptr_t(_swig_i_0)))
 	return swig_r
 }
 
 func (arg1 SwigcptrB2PrismaticJoint) EnableMotor(arg2 bool) {
 	_swig_i_0 := arg1
 	_swig_i_1 := arg2
-	C._wrap_b2PrismaticJoint_EnableMotor_Box2D_b1d1b47c7e81f80a(C.uintptr_t(_swig_i_0), C._Bool(_swig_i_1))
+	C._wrap_b2PrismaticJoint_EnableMotor_Box2D_553c0f9515edf50e(C.uintptr_t(_swig_i_0), C._Bool(_swig_i_1))
 }
 
 func (arg1 SwigcptrB2PrismaticJoint) SetMotorSpeed(arg2 float32) {
 	_swig_i_0 := arg1
 	_swig_i_1 := arg2
-	C._wrap_b2PrismaticJoint_SetMotorSpeed_Box2D_b1d1b47c7e81f80a(C.uintptr_t(_swig_i_0), C.float(_swig_i_1))
+	C._wrap_b2PrismaticJoint_SetMotorSpeed_Box2D_553c0f9515edf50e(C.uintptr_t(_swig_i_0), C.float(_swig_i_1))
 }
 
 func (arg1 SwigcptrB2PrismaticJoint) GetMotorSpeed() (_swig_ret float32) {
 	var swig_r float32
 	_swig_i_0 := arg1
-	swig_r = (float32)(C._wrap_b2PrismaticJoint_GetMotorSpeed_Box2D_b1d1b47c7e81f80a(C.uintptr_t(_swig_i_0)))
+	swig_r = (float32)(C._wrap_b2PrismaticJoint_GetMotorSpeed_Box2D_553c0f9515edf50e(C.uintptr_t(_swig_i_0)))
 	return swig_r
 }
 
 func (arg1 SwigcptrB2PrismaticJoint) SetMaxMotorForce(arg2 float32) {
 	_swig_i_0 := arg1
 	_swig_i_1 := arg2
-	C._wrap_b2PrismaticJoint_SetMaxMotorForce_Box2D_b1d1b47c7e81f80a(C.uintptr_t(_swig_i_0), C.float(_swig_i_1))
+	C._wrap_b2PrismaticJoint_SetMaxMotorForce_Box2D_553c0f9515edf50e(C.uintptr_t(_swig_i_0), C.float(_swig_i_1))
 }
 
 func (arg1 SwigcptrB2PrismaticJoint) GetMaxMotorForce() (_swig_ret float32) {
 	var swig_r float32
 	_swig_i_0 := arg1
-	swig_r = (float32)(C._wrap_b2PrismaticJoint_GetMaxMotorForce_Box2D_b1d1b47c7e81f80a(C.uintptr_t(_swig_i_0)))
+	swig_r = (float32)(C._wrap_b2PrismaticJoint_GetMaxMotorForce_Box2D_553c0f9515edf50e(C.uintptr_t(_swig_i_0)))
 	return swig_r
 }
 
@@ -7420,18 +7564,18 @@ func (arg1 SwigcptrB2PrismaticJoint) GetMotorForce(arg2 float32) (_swig_ret floa
 	var swig_r float32
 	_swig_i_0 := arg1
 	_swig_i_1 := arg2
-	swig_r = (float32)(C._wrap_b2PrismaticJoint_GetMotorForce_Box2D_b1d1b47c7e81f80a(C.uintptr_t(_swig_i_0), C.float(_swig_i_1)))
+	swig_r = (float32)(C._wrap_b2PrismaticJoint_GetMotorForce_Box2D_553c0f9515edf50e(C.uintptr_t(_swig_i_0), C.float(_swig_i_1)))
 	return swig_r
 }
 
 func (arg1 SwigcptrB2PrismaticJoint) Dump() {
 	_swig_i_0 := arg1
-	C._wrap_b2PrismaticJoint_Dump_Box2D_b1d1b47c7e81f80a(C.uintptr_t(_swig_i_0))
+	C._wrap_b2PrismaticJoint_Dump_Box2D_553c0f9515edf50e(C.uintptr_t(_swig_i_0))
 }
 
 func DeleteB2PrismaticJoint(arg1 B2PrismaticJoint) {
 	_swig_i_0 := arg1.Swigcptr()
-	C._wrap_delete_b2PrismaticJoint_Box2D_b1d1b47c7e81f80a(C.uintptr_t(_swig_i_0))
+	C._wrap_delete_b2PrismaticJoint_Box2D_553c0f9515edf50e(C.uintptr_t(_swig_i_0))
 }
 
 type B2PrismaticJoint interface {
@@ -7464,7 +7608,7 @@ type B2PrismaticJoint interface {
 
 func GetB2_minPulleyLength() (_swig_ret float32) {
 	var swig_r float32
-	swig_r = (float32)(C._wrap_b2_minPulleyLength_get_Box2D_b1d1b47c7e81f80a())
+	swig_r = (float32)(C._wrap_b2_minPulleyLength_get_Box2D_553c0f9515edf50e())
 	return swig_r
 }
 
@@ -7479,7 +7623,7 @@ func (p SwigcptrB2PulleyJointDef) SwigIsB2PulleyJointDef() {
 
 func NewB2PulleyJointDef() (_swig_ret B2PulleyJointDef) {
 	var swig_r B2PulleyJointDef
-	swig_r = (B2PulleyJointDef)(SwigcptrB2PulleyJointDef(C._wrap_new_b2PulleyJointDef_Box2D_b1d1b47c7e81f80a()))
+	swig_r = (B2PulleyJointDef)(SwigcptrB2PulleyJointDef(C._wrap_new_b2PulleyJointDef_Box2D_553c0f9515edf50e()))
 	return swig_r
 }
 
@@ -7492,103 +7636,103 @@ func (arg1 SwigcptrB2PulleyJointDef) Initialize(arg2 B2Body, arg3 B2Body, arg4 B
 	_swig_i_5 := arg6.Swigcptr()
 	_swig_i_6 := arg7.Swigcptr()
 	_swig_i_7 := arg8
-	C._wrap_b2PulleyJointDef_Initialize_Box2D_b1d1b47c7e81f80a(C.uintptr_t(_swig_i_0), C.uintptr_t(_swig_i_1), C.uintptr_t(_swig_i_2), C.uintptr_t(_swig_i_3), C.uintptr_t(_swig_i_4), C.uintptr_t(_swig_i_5), C.uintptr_t(_swig_i_6), C.float(_swig_i_7))
+	C._wrap_b2PulleyJointDef_Initialize_Box2D_553c0f9515edf50e(C.uintptr_t(_swig_i_0), C.uintptr_t(_swig_i_1), C.uintptr_t(_swig_i_2), C.uintptr_t(_swig_i_3), C.uintptr_t(_swig_i_4), C.uintptr_t(_swig_i_5), C.uintptr_t(_swig_i_6), C.float(_swig_i_7))
 }
 
 func (arg1 SwigcptrB2PulleyJointDef) SetGroundAnchorA(arg2 B2Vec2) {
 	_swig_i_0 := arg1
 	_swig_i_1 := arg2.Swigcptr()
-	C._wrap_b2PulleyJointDef_groundAnchorA_set_Box2D_b1d1b47c7e81f80a(C.uintptr_t(_swig_i_0), C.uintptr_t(_swig_i_1))
+	C._wrap_b2PulleyJointDef_groundAnchorA_set_Box2D_553c0f9515edf50e(C.uintptr_t(_swig_i_0), C.uintptr_t(_swig_i_1))
 }
 
 func (arg1 SwigcptrB2PulleyJointDef) GetGroundAnchorA() (_swig_ret B2Vec2) {
 	var swig_r B2Vec2
 	_swig_i_0 := arg1
-	swig_r = (B2Vec2)(SwigcptrB2Vec2(C._wrap_b2PulleyJointDef_groundAnchorA_get_Box2D_b1d1b47c7e81f80a(C.uintptr_t(_swig_i_0))))
+	swig_r = (B2Vec2)(SwigcptrB2Vec2(C._wrap_b2PulleyJointDef_groundAnchorA_get_Box2D_553c0f9515edf50e(C.uintptr_t(_swig_i_0))))
 	return swig_r
 }
 
 func (arg1 SwigcptrB2PulleyJointDef) SetGroundAnchorB(arg2 B2Vec2) {
 	_swig_i_0 := arg1
 	_swig_i_1 := arg2.Swigcptr()
-	C._wrap_b2PulleyJointDef_groundAnchorB_set_Box2D_b1d1b47c7e81f80a(C.uintptr_t(_swig_i_0), C.uintptr_t(_swig_i_1))
+	C._wrap_b2PulleyJointDef_groundAnchorB_set_Box2D_553c0f9515edf50e(C.uintptr_t(_swig_i_0), C.uintptr_t(_swig_i_1))
 }
 
 func (arg1 SwigcptrB2PulleyJointDef) GetGroundAnchorB() (_swig_ret B2Vec2) {
 	var swig_r B2Vec2
 	_swig_i_0 := arg1
-	swig_r = (B2Vec2)(SwigcptrB2Vec2(C._wrap_b2PulleyJointDef_groundAnchorB_get_Box2D_b1d1b47c7e81f80a(C.uintptr_t(_swig_i_0))))
+	swig_r = (B2Vec2)(SwigcptrB2Vec2(C._wrap_b2PulleyJointDef_groundAnchorB_get_Box2D_553c0f9515edf50e(C.uintptr_t(_swig_i_0))))
 	return swig_r
 }
 
 func (arg1 SwigcptrB2PulleyJointDef) SetLocalAnchorA(arg2 B2Vec2) {
 	_swig_i_0 := arg1
 	_swig_i_1 := arg2.Swigcptr()
-	C._wrap_b2PulleyJointDef_localAnchorA_set_Box2D_b1d1b47c7e81f80a(C.uintptr_t(_swig_i_0), C.uintptr_t(_swig_i_1))
+	C._wrap_b2PulleyJointDef_localAnchorA_set_Box2D_553c0f9515edf50e(C.uintptr_t(_swig_i_0), C.uintptr_t(_swig_i_1))
 }
 
 func (arg1 SwigcptrB2PulleyJointDef) GetLocalAnchorA() (_swig_ret B2Vec2) {
 	var swig_r B2Vec2
 	_swig_i_0 := arg1
-	swig_r = (B2Vec2)(SwigcptrB2Vec2(C._wrap_b2PulleyJointDef_localAnchorA_get_Box2D_b1d1b47c7e81f80a(C.uintptr_t(_swig_i_0))))
+	swig_r = (B2Vec2)(SwigcptrB2Vec2(C._wrap_b2PulleyJointDef_localAnchorA_get_Box2D_553c0f9515edf50e(C.uintptr_t(_swig_i_0))))
 	return swig_r
 }
 
 func (arg1 SwigcptrB2PulleyJointDef) SetLocalAnchorB(arg2 B2Vec2) {
 	_swig_i_0 := arg1
 	_swig_i_1 := arg2.Swigcptr()
-	C._wrap_b2PulleyJointDef_localAnchorB_set_Box2D_b1d1b47c7e81f80a(C.uintptr_t(_swig_i_0), C.uintptr_t(_swig_i_1))
+	C._wrap_b2PulleyJointDef_localAnchorB_set_Box2D_553c0f9515edf50e(C.uintptr_t(_swig_i_0), C.uintptr_t(_swig_i_1))
 }
 
 func (arg1 SwigcptrB2PulleyJointDef) GetLocalAnchorB() (_swig_ret B2Vec2) {
 	var swig_r B2Vec2
 	_swig_i_0 := arg1
-	swig_r = (B2Vec2)(SwigcptrB2Vec2(C._wrap_b2PulleyJointDef_localAnchorB_get_Box2D_b1d1b47c7e81f80a(C.uintptr_t(_swig_i_0))))
+	swig_r = (B2Vec2)(SwigcptrB2Vec2(C._wrap_b2PulleyJointDef_localAnchorB_get_Box2D_553c0f9515edf50e(C.uintptr_t(_swig_i_0))))
 	return swig_r
 }
 
 func (arg1 SwigcptrB2PulleyJointDef) SetLengthA(arg2 float32) {
 	_swig_i_0 := arg1
 	_swig_i_1 := arg2
-	C._wrap_b2PulleyJointDef_lengthA_set_Box2D_b1d1b47c7e81f80a(C.uintptr_t(_swig_i_0), C.float(_swig_i_1))
+	C._wrap_b2PulleyJointDef_lengthA_set_Box2D_553c0f9515edf50e(C.uintptr_t(_swig_i_0), C.float(_swig_i_1))
 }
 
 func (arg1 SwigcptrB2PulleyJointDef) GetLengthA() (_swig_ret float32) {
 	var swig_r float32
 	_swig_i_0 := arg1
-	swig_r = (float32)(C._wrap_b2PulleyJointDef_lengthA_get_Box2D_b1d1b47c7e81f80a(C.uintptr_t(_swig_i_0)))
+	swig_r = (float32)(C._wrap_b2PulleyJointDef_lengthA_get_Box2D_553c0f9515edf50e(C.uintptr_t(_swig_i_0)))
 	return swig_r
 }
 
 func (arg1 SwigcptrB2PulleyJointDef) SetLengthB(arg2 float32) {
 	_swig_i_0 := arg1
 	_swig_i_1 := arg2
-	C._wrap_b2PulleyJointDef_lengthB_set_Box2D_b1d1b47c7e81f80a(C.uintptr_t(_swig_i_0), C.float(_swig_i_1))
+	C._wrap_b2PulleyJointDef_lengthB_set_Box2D_553c0f9515edf50e(C.uintptr_t(_swig_i_0), C.float(_swig_i_1))
 }
 
 func (arg1 SwigcptrB2PulleyJointDef) GetLengthB() (_swig_ret float32) {
 	var swig_r float32
 	_swig_i_0 := arg1
-	swig_r = (float32)(C._wrap_b2PulleyJointDef_lengthB_get_Box2D_b1d1b47c7e81f80a(C.uintptr_t(_swig_i_0)))
+	swig_r = (float32)(C._wrap_b2PulleyJointDef_lengthB_get_Box2D_553c0f9515edf50e(C.uintptr_t(_swig_i_0)))
 	return swig_r
 }
 
 func (arg1 SwigcptrB2PulleyJointDef) SetRatio(arg2 float32) {
 	_swig_i_0 := arg1
 	_swig_i_1 := arg2
-	C._wrap_b2PulleyJointDef_ratio_set_Box2D_b1d1b47c7e81f80a(C.uintptr_t(_swig_i_0), C.float(_swig_i_1))
+	C._wrap_b2PulleyJointDef_ratio_set_Box2D_553c0f9515edf50e(C.uintptr_t(_swig_i_0), C.float(_swig_i_1))
 }
 
 func (arg1 SwigcptrB2PulleyJointDef) GetRatio() (_swig_ret float32) {
 	var swig_r float32
 	_swig_i_0 := arg1
-	swig_r = (float32)(C._wrap_b2PulleyJointDef_ratio_get_Box2D_b1d1b47c7e81f80a(C.uintptr_t(_swig_i_0)))
+	swig_r = (float32)(C._wrap_b2PulleyJointDef_ratio_get_Box2D_553c0f9515edf50e(C.uintptr_t(_swig_i_0)))
 	return swig_r
 }
 
 func DeleteB2PulleyJointDef(arg1 B2PulleyJointDef) {
 	_swig_i_0 := arg1.Swigcptr()
-	C._wrap_delete_b2PulleyJointDef_Box2D_b1d1b47c7e81f80a(C.uintptr_t(_swig_i_0))
+	C._wrap_delete_b2PulleyJointDef_Box2D_553c0f9515edf50e(C.uintptr_t(_swig_i_0))
 }
 
 type B2PulleyJointDef interface {
@@ -7623,14 +7767,14 @@ func (p SwigcptrB2PulleyJoint) SwigIsB2PulleyJoint() {
 func (arg1 SwigcptrB2PulleyJoint) GetAnchorA() (_swig_ret B2Vec2) {
 	var swig_r B2Vec2
 	_swig_i_0 := arg1
-	swig_r = (B2Vec2)(SwigcptrB2Vec2(C._wrap_b2PulleyJoint_GetAnchorA_Box2D_b1d1b47c7e81f80a(C.uintptr_t(_swig_i_0))))
+	swig_r = (B2Vec2)(SwigcptrB2Vec2(C._wrap_b2PulleyJoint_GetAnchorA_Box2D_553c0f9515edf50e(C.uintptr_t(_swig_i_0))))
 	return swig_r
 }
 
 func (arg1 SwigcptrB2PulleyJoint) GetAnchorB() (_swig_ret B2Vec2) {
 	var swig_r B2Vec2
 	_swig_i_0 := arg1
-	swig_r = (B2Vec2)(SwigcptrB2Vec2(C._wrap_b2PulleyJoint_GetAnchorB_Box2D_b1d1b47c7e81f80a(C.uintptr_t(_swig_i_0))))
+	swig_r = (B2Vec2)(SwigcptrB2Vec2(C._wrap_b2PulleyJoint_GetAnchorB_Box2D_553c0f9515edf50e(C.uintptr_t(_swig_i_0))))
 	return swig_r
 }
 
@@ -7638,7 +7782,7 @@ func (arg1 SwigcptrB2PulleyJoint) GetReactionForce(arg2 float32) (_swig_ret B2Ve
 	var swig_r B2Vec2
 	_swig_i_0 := arg1
 	_swig_i_1 := arg2
-	swig_r = (B2Vec2)(SwigcptrB2Vec2(C._wrap_b2PulleyJoint_GetReactionForce_Box2D_b1d1b47c7e81f80a(C.uintptr_t(_swig_i_0), C.float(_swig_i_1))))
+	swig_r = (B2Vec2)(SwigcptrB2Vec2(C._wrap_b2PulleyJoint_GetReactionForce_Box2D_553c0f9515edf50e(C.uintptr_t(_swig_i_0), C.float(_swig_i_1))))
 	return swig_r
 }
 
@@ -7646,73 +7790,73 @@ func (arg1 SwigcptrB2PulleyJoint) GetReactionTorque(arg2 float32) (_swig_ret flo
 	var swig_r float32
 	_swig_i_0 := arg1
 	_swig_i_1 := arg2
-	swig_r = (float32)(C._wrap_b2PulleyJoint_GetReactionTorque_Box2D_b1d1b47c7e81f80a(C.uintptr_t(_swig_i_0), C.float(_swig_i_1)))
+	swig_r = (float32)(C._wrap_b2PulleyJoint_GetReactionTorque_Box2D_553c0f9515edf50e(C.uintptr_t(_swig_i_0), C.float(_swig_i_1)))
 	return swig_r
 }
 
 func (arg1 SwigcptrB2PulleyJoint) GetGroundAnchorA() (_swig_ret B2Vec2) {
 	var swig_r B2Vec2
 	_swig_i_0 := arg1
-	swig_r = (B2Vec2)(SwigcptrB2Vec2(C._wrap_b2PulleyJoint_GetGroundAnchorA_Box2D_b1d1b47c7e81f80a(C.uintptr_t(_swig_i_0))))
+	swig_r = (B2Vec2)(SwigcptrB2Vec2(C._wrap_b2PulleyJoint_GetGroundAnchorA_Box2D_553c0f9515edf50e(C.uintptr_t(_swig_i_0))))
 	return swig_r
 }
 
 func (arg1 SwigcptrB2PulleyJoint) GetGroundAnchorB() (_swig_ret B2Vec2) {
 	var swig_r B2Vec2
 	_swig_i_0 := arg1
-	swig_r = (B2Vec2)(SwigcptrB2Vec2(C._wrap_b2PulleyJoint_GetGroundAnchorB_Box2D_b1d1b47c7e81f80a(C.uintptr_t(_swig_i_0))))
+	swig_r = (B2Vec2)(SwigcptrB2Vec2(C._wrap_b2PulleyJoint_GetGroundAnchorB_Box2D_553c0f9515edf50e(C.uintptr_t(_swig_i_0))))
 	return swig_r
 }
 
 func (arg1 SwigcptrB2PulleyJoint) GetLengthA() (_swig_ret float32) {
 	var swig_r float32
 	_swig_i_0 := arg1
-	swig_r = (float32)(C._wrap_b2PulleyJoint_GetLengthA_Box2D_b1d1b47c7e81f80a(C.uintptr_t(_swig_i_0)))
+	swig_r = (float32)(C._wrap_b2PulleyJoint_GetLengthA_Box2D_553c0f9515edf50e(C.uintptr_t(_swig_i_0)))
 	return swig_r
 }
 
 func (arg1 SwigcptrB2PulleyJoint) GetLengthB() (_swig_ret float32) {
 	var swig_r float32
 	_swig_i_0 := arg1
-	swig_r = (float32)(C._wrap_b2PulleyJoint_GetLengthB_Box2D_b1d1b47c7e81f80a(C.uintptr_t(_swig_i_0)))
+	swig_r = (float32)(C._wrap_b2PulleyJoint_GetLengthB_Box2D_553c0f9515edf50e(C.uintptr_t(_swig_i_0)))
 	return swig_r
 }
 
 func (arg1 SwigcptrB2PulleyJoint) GetRatio() (_swig_ret float32) {
 	var swig_r float32
 	_swig_i_0 := arg1
-	swig_r = (float32)(C._wrap_b2PulleyJoint_GetRatio_Box2D_b1d1b47c7e81f80a(C.uintptr_t(_swig_i_0)))
+	swig_r = (float32)(C._wrap_b2PulleyJoint_GetRatio_Box2D_553c0f9515edf50e(C.uintptr_t(_swig_i_0)))
 	return swig_r
 }
 
 func (arg1 SwigcptrB2PulleyJoint) GetCurrentLengthA() (_swig_ret float32) {
 	var swig_r float32
 	_swig_i_0 := arg1
-	swig_r = (float32)(C._wrap_b2PulleyJoint_GetCurrentLengthA_Box2D_b1d1b47c7e81f80a(C.uintptr_t(_swig_i_0)))
+	swig_r = (float32)(C._wrap_b2PulleyJoint_GetCurrentLengthA_Box2D_553c0f9515edf50e(C.uintptr_t(_swig_i_0)))
 	return swig_r
 }
 
 func (arg1 SwigcptrB2PulleyJoint) GetCurrentLengthB() (_swig_ret float32) {
 	var swig_r float32
 	_swig_i_0 := arg1
-	swig_r = (float32)(C._wrap_b2PulleyJoint_GetCurrentLengthB_Box2D_b1d1b47c7e81f80a(C.uintptr_t(_swig_i_0)))
+	swig_r = (float32)(C._wrap_b2PulleyJoint_GetCurrentLengthB_Box2D_553c0f9515edf50e(C.uintptr_t(_swig_i_0)))
 	return swig_r
 }
 
 func (arg1 SwigcptrB2PulleyJoint) Dump() {
 	_swig_i_0 := arg1
-	C._wrap_b2PulleyJoint_Dump_Box2D_b1d1b47c7e81f80a(C.uintptr_t(_swig_i_0))
+	C._wrap_b2PulleyJoint_Dump_Box2D_553c0f9515edf50e(C.uintptr_t(_swig_i_0))
 }
 
 func (arg1 SwigcptrB2PulleyJoint) ShiftOrigin(arg2 B2Vec2) {
 	_swig_i_0 := arg1
 	_swig_i_1 := arg2.Swigcptr()
-	C._wrap_b2PulleyJoint_ShiftOrigin_Box2D_b1d1b47c7e81f80a(C.uintptr_t(_swig_i_0), C.uintptr_t(_swig_i_1))
+	C._wrap_b2PulleyJoint_ShiftOrigin_Box2D_553c0f9515edf50e(C.uintptr_t(_swig_i_0), C.uintptr_t(_swig_i_1))
 }
 
 func DeleteB2PulleyJoint(arg1 B2PulleyJoint) {
 	_swig_i_0 := arg1.Swigcptr()
-	C._wrap_delete_b2PulleyJoint_Box2D_b1d1b47c7e81f80a(C.uintptr_t(_swig_i_0))
+	C._wrap_delete_b2PulleyJoint_Box2D_553c0f9515edf50e(C.uintptr_t(_swig_i_0))
 }
 
 type B2PulleyJoint interface {
@@ -7744,7 +7888,7 @@ func (p SwigcptrB2RevoluteJointDef) SwigIsB2RevoluteJointDef() {
 
 func NewB2RevoluteJointDef() (_swig_ret B2RevoluteJointDef) {
 	var swig_r B2RevoluteJointDef
-	swig_r = (B2RevoluteJointDef)(SwigcptrB2RevoluteJointDef(C._wrap_new_b2RevoluteJointDef_Box2D_b1d1b47c7e81f80a()))
+	swig_r = (B2RevoluteJointDef)(SwigcptrB2RevoluteJointDef(C._wrap_new_b2RevoluteJointDef_Box2D_553c0f9515edf50e()))
 	return swig_r
 }
 
@@ -7753,129 +7897,129 @@ func (arg1 SwigcptrB2RevoluteJointDef) Initialize(arg2 B2Body, arg3 B2Body, arg4
 	_swig_i_1 := arg2.Swigcptr()
 	_swig_i_2 := arg3.Swigcptr()
 	_swig_i_3 := arg4.Swigcptr()
-	C._wrap_b2RevoluteJointDef_Initialize_Box2D_b1d1b47c7e81f80a(C.uintptr_t(_swig_i_0), C.uintptr_t(_swig_i_1), C.uintptr_t(_swig_i_2), C.uintptr_t(_swig_i_3))
+	C._wrap_b2RevoluteJointDef_Initialize_Box2D_553c0f9515edf50e(C.uintptr_t(_swig_i_0), C.uintptr_t(_swig_i_1), C.uintptr_t(_swig_i_2), C.uintptr_t(_swig_i_3))
 }
 
 func (arg1 SwigcptrB2RevoluteJointDef) SetLocalAnchorA(arg2 B2Vec2) {
 	_swig_i_0 := arg1
 	_swig_i_1 := arg2.Swigcptr()
-	C._wrap_b2RevoluteJointDef_localAnchorA_set_Box2D_b1d1b47c7e81f80a(C.uintptr_t(_swig_i_0), C.uintptr_t(_swig_i_1))
+	C._wrap_b2RevoluteJointDef_localAnchorA_set_Box2D_553c0f9515edf50e(C.uintptr_t(_swig_i_0), C.uintptr_t(_swig_i_1))
 }
 
 func (arg1 SwigcptrB2RevoluteJointDef) GetLocalAnchorA() (_swig_ret B2Vec2) {
 	var swig_r B2Vec2
 	_swig_i_0 := arg1
-	swig_r = (B2Vec2)(SwigcptrB2Vec2(C._wrap_b2RevoluteJointDef_localAnchorA_get_Box2D_b1d1b47c7e81f80a(C.uintptr_t(_swig_i_0))))
+	swig_r = (B2Vec2)(SwigcptrB2Vec2(C._wrap_b2RevoluteJointDef_localAnchorA_get_Box2D_553c0f9515edf50e(C.uintptr_t(_swig_i_0))))
 	return swig_r
 }
 
 func (arg1 SwigcptrB2RevoluteJointDef) SetLocalAnchorB(arg2 B2Vec2) {
 	_swig_i_0 := arg1
 	_swig_i_1 := arg2.Swigcptr()
-	C._wrap_b2RevoluteJointDef_localAnchorB_set_Box2D_b1d1b47c7e81f80a(C.uintptr_t(_swig_i_0), C.uintptr_t(_swig_i_1))
+	C._wrap_b2RevoluteJointDef_localAnchorB_set_Box2D_553c0f9515edf50e(C.uintptr_t(_swig_i_0), C.uintptr_t(_swig_i_1))
 }
 
 func (arg1 SwigcptrB2RevoluteJointDef) GetLocalAnchorB() (_swig_ret B2Vec2) {
 	var swig_r B2Vec2
 	_swig_i_0 := arg1
-	swig_r = (B2Vec2)(SwigcptrB2Vec2(C._wrap_b2RevoluteJointDef_localAnchorB_get_Box2D_b1d1b47c7e81f80a(C.uintptr_t(_swig_i_0))))
+	swig_r = (B2Vec2)(SwigcptrB2Vec2(C._wrap_b2RevoluteJointDef_localAnchorB_get_Box2D_553c0f9515edf50e(C.uintptr_t(_swig_i_0))))
 	return swig_r
 }
 
 func (arg1 SwigcptrB2RevoluteJointDef) SetReferenceAngle(arg2 float32) {
 	_swig_i_0 := arg1
 	_swig_i_1 := arg2
-	C._wrap_b2RevoluteJointDef_referenceAngle_set_Box2D_b1d1b47c7e81f80a(C.uintptr_t(_swig_i_0), C.float(_swig_i_1))
+	C._wrap_b2RevoluteJointDef_referenceAngle_set_Box2D_553c0f9515edf50e(C.uintptr_t(_swig_i_0), C.float(_swig_i_1))
 }
 
 func (arg1 SwigcptrB2RevoluteJointDef) GetReferenceAngle() (_swig_ret float32) {
 	var swig_r float32
 	_swig_i_0 := arg1
-	swig_r = (float32)(C._wrap_b2RevoluteJointDef_referenceAngle_get_Box2D_b1d1b47c7e81f80a(C.uintptr_t(_swig_i_0)))
+	swig_r = (float32)(C._wrap_b2RevoluteJointDef_referenceAngle_get_Box2D_553c0f9515edf50e(C.uintptr_t(_swig_i_0)))
 	return swig_r
 }
 
 func (arg1 SwigcptrB2RevoluteJointDef) SetEnableLimit(arg2 bool) {
 	_swig_i_0 := arg1
 	_swig_i_1 := arg2
-	C._wrap_b2RevoluteJointDef_enableLimit_set_Box2D_b1d1b47c7e81f80a(C.uintptr_t(_swig_i_0), C._Bool(_swig_i_1))
+	C._wrap_b2RevoluteJointDef_enableLimit_set_Box2D_553c0f9515edf50e(C.uintptr_t(_swig_i_0), C._Bool(_swig_i_1))
 }
 
 func (arg1 SwigcptrB2RevoluteJointDef) GetEnableLimit() (_swig_ret bool) {
 	var swig_r bool
 	_swig_i_0 := arg1
-	swig_r = (bool)(C._wrap_b2RevoluteJointDef_enableLimit_get_Box2D_b1d1b47c7e81f80a(C.uintptr_t(_swig_i_0)))
+	swig_r = (bool)(C._wrap_b2RevoluteJointDef_enableLimit_get_Box2D_553c0f9515edf50e(C.uintptr_t(_swig_i_0)))
 	return swig_r
 }
 
 func (arg1 SwigcptrB2RevoluteJointDef) SetLowerAngle(arg2 float32) {
 	_swig_i_0 := arg1
 	_swig_i_1 := arg2
-	C._wrap_b2RevoluteJointDef_lowerAngle_set_Box2D_b1d1b47c7e81f80a(C.uintptr_t(_swig_i_0), C.float(_swig_i_1))
+	C._wrap_b2RevoluteJointDef_lowerAngle_set_Box2D_553c0f9515edf50e(C.uintptr_t(_swig_i_0), C.float(_swig_i_1))
 }
 
 func (arg1 SwigcptrB2RevoluteJointDef) GetLowerAngle() (_swig_ret float32) {
 	var swig_r float32
 	_swig_i_0 := arg1
-	swig_r = (float32)(C._wrap_b2RevoluteJointDef_lowerAngle_get_Box2D_b1d1b47c7e81f80a(C.uintptr_t(_swig_i_0)))
+	swig_r = (float32)(C._wrap_b2RevoluteJointDef_lowerAngle_get_Box2D_553c0f9515edf50e(C.uintptr_t(_swig_i_0)))
 	return swig_r
 }
 
 func (arg1 SwigcptrB2RevoluteJointDef) SetUpperAngle(arg2 float32) {
 	_swig_i_0 := arg1
 	_swig_i_1 := arg2
-	C._wrap_b2RevoluteJointDef_upperAngle_set_Box2D_b1d1b47c7e81f80a(C.uintptr_t(_swig_i_0), C.float(_swig_i_1))
+	C._wrap_b2RevoluteJointDef_upperAngle_set_Box2D_553c0f9515edf50e(C.uintptr_t(_swig_i_0), C.float(_swig_i_1))
 }
 
 func (arg1 SwigcptrB2RevoluteJointDef) GetUpperAngle() (_swig_ret float32) {
 	var swig_r float32
 	_swig_i_0 := arg1
-	swig_r = (float32)(C._wrap_b2RevoluteJointDef_upperAngle_get_Box2D_b1d1b47c7e81f80a(C.uintptr_t(_swig_i_0)))
+	swig_r = (float32)(C._wrap_b2RevoluteJointDef_upperAngle_get_Box2D_553c0f9515edf50e(C.uintptr_t(_swig_i_0)))
 	return swig_r
 }
 
 func (arg1 SwigcptrB2RevoluteJointDef) SetEnableMotor(arg2 bool) {
 	_swig_i_0 := arg1
 	_swig_i_1 := arg2
-	C._wrap_b2RevoluteJointDef_enableMotor_set_Box2D_b1d1b47c7e81f80a(C.uintptr_t(_swig_i_0), C._Bool(_swig_i_1))
+	C._wrap_b2RevoluteJointDef_enableMotor_set_Box2D_553c0f9515edf50e(C.uintptr_t(_swig_i_0), C._Bool(_swig_i_1))
 }
 
 func (arg1 SwigcptrB2RevoluteJointDef) GetEnableMotor() (_swig_ret bool) {
 	var swig_r bool
 	_swig_i_0 := arg1
-	swig_r = (bool)(C._wrap_b2RevoluteJointDef_enableMotor_get_Box2D_b1d1b47c7e81f80a(C.uintptr_t(_swig_i_0)))
+	swig_r = (bool)(C._wrap_b2RevoluteJointDef_enableMotor_get_Box2D_553c0f9515edf50e(C.uintptr_t(_swig_i_0)))
 	return swig_r
 }
 
 func (arg1 SwigcptrB2RevoluteJointDef) SetMotorSpeed(arg2 float32) {
 	_swig_i_0 := arg1
 	_swig_i_1 := arg2
-	C._wrap_b2RevoluteJointDef_motorSpeed_set_Box2D_b1d1b47c7e81f80a(C.uintptr_t(_swig_i_0), C.float(_swig_i_1))
+	C._wrap_b2RevoluteJointDef_motorSpeed_set_Box2D_553c0f9515edf50e(C.uintptr_t(_swig_i_0), C.float(_swig_i_1))
 }
 
 func (arg1 SwigcptrB2RevoluteJointDef) GetMotorSpeed() (_swig_ret float32) {
 	var swig_r float32
 	_swig_i_0 := arg1
-	swig_r = (float32)(C._wrap_b2RevoluteJointDef_motorSpeed_get_Box2D_b1d1b47c7e81f80a(C.uintptr_t(_swig_i_0)))
+	swig_r = (float32)(C._wrap_b2RevoluteJointDef_motorSpeed_get_Box2D_553c0f9515edf50e(C.uintptr_t(_swig_i_0)))
 	return swig_r
 }
 
 func (arg1 SwigcptrB2RevoluteJointDef) SetMaxMotorTorque(arg2 float32) {
 	_swig_i_0 := arg1
 	_swig_i_1 := arg2
-	C._wrap_b2RevoluteJointDef_maxMotorTorque_set_Box2D_b1d1b47c7e81f80a(C.uintptr_t(_swig_i_0), C.float(_swig_i_1))
+	C._wrap_b2RevoluteJointDef_maxMotorTorque_set_Box2D_553c0f9515edf50e(C.uintptr_t(_swig_i_0), C.float(_swig_i_1))
 }
 
 func (arg1 SwigcptrB2RevoluteJointDef) GetMaxMotorTorque() (_swig_ret float32) {
 	var swig_r float32
 	_swig_i_0 := arg1
-	swig_r = (float32)(C._wrap_b2RevoluteJointDef_maxMotorTorque_get_Box2D_b1d1b47c7e81f80a(C.uintptr_t(_swig_i_0)))
+	swig_r = (float32)(C._wrap_b2RevoluteJointDef_maxMotorTorque_get_Box2D_553c0f9515edf50e(C.uintptr_t(_swig_i_0)))
 	return swig_r
 }
 
 func DeleteB2RevoluteJointDef(arg1 B2RevoluteJointDef) {
 	_swig_i_0 := arg1.Swigcptr()
-	C._wrap_delete_b2RevoluteJointDef_Box2D_b1d1b47c7e81f80a(C.uintptr_t(_swig_i_0))
+	C._wrap_delete_b2RevoluteJointDef_Box2D_553c0f9515edf50e(C.uintptr_t(_swig_i_0))
 }
 
 type B2RevoluteJointDef interface {
@@ -7914,76 +8058,76 @@ func (p SwigcptrB2RevoluteJoint) SwigIsB2RevoluteJoint() {
 func (arg1 SwigcptrB2RevoluteJoint) GetAnchorA() (_swig_ret B2Vec2) {
 	var swig_r B2Vec2
 	_swig_i_0 := arg1
-	swig_r = (B2Vec2)(SwigcptrB2Vec2(C._wrap_b2RevoluteJoint_GetAnchorA_Box2D_b1d1b47c7e81f80a(C.uintptr_t(_swig_i_0))))
+	swig_r = (B2Vec2)(SwigcptrB2Vec2(C._wrap_b2RevoluteJoint_GetAnchorA_Box2D_553c0f9515edf50e(C.uintptr_t(_swig_i_0))))
 	return swig_r
 }
 
 func (arg1 SwigcptrB2RevoluteJoint) GetAnchorB() (_swig_ret B2Vec2) {
 	var swig_r B2Vec2
 	_swig_i_0 := arg1
-	swig_r = (B2Vec2)(SwigcptrB2Vec2(C._wrap_b2RevoluteJoint_GetAnchorB_Box2D_b1d1b47c7e81f80a(C.uintptr_t(_swig_i_0))))
+	swig_r = (B2Vec2)(SwigcptrB2Vec2(C._wrap_b2RevoluteJoint_GetAnchorB_Box2D_553c0f9515edf50e(C.uintptr_t(_swig_i_0))))
 	return swig_r
 }
 
 func (arg1 SwigcptrB2RevoluteJoint) GetLocalAnchorA() (_swig_ret B2Vec2) {
 	var swig_r B2Vec2
 	_swig_i_0 := arg1
-	swig_r = (B2Vec2)(SwigcptrB2Vec2(C._wrap_b2RevoluteJoint_GetLocalAnchorA_Box2D_b1d1b47c7e81f80a(C.uintptr_t(_swig_i_0))))
+	swig_r = (B2Vec2)(SwigcptrB2Vec2(C._wrap_b2RevoluteJoint_GetLocalAnchorA_Box2D_553c0f9515edf50e(C.uintptr_t(_swig_i_0))))
 	return swig_r
 }
 
 func (arg1 SwigcptrB2RevoluteJoint) GetLocalAnchorB() (_swig_ret B2Vec2) {
 	var swig_r B2Vec2
 	_swig_i_0 := arg1
-	swig_r = (B2Vec2)(SwigcptrB2Vec2(C._wrap_b2RevoluteJoint_GetLocalAnchorB_Box2D_b1d1b47c7e81f80a(C.uintptr_t(_swig_i_0))))
+	swig_r = (B2Vec2)(SwigcptrB2Vec2(C._wrap_b2RevoluteJoint_GetLocalAnchorB_Box2D_553c0f9515edf50e(C.uintptr_t(_swig_i_0))))
 	return swig_r
 }
 
 func (arg1 SwigcptrB2RevoluteJoint) GetReferenceAngle() (_swig_ret float32) {
 	var swig_r float32
 	_swig_i_0 := arg1
-	swig_r = (float32)(C._wrap_b2RevoluteJoint_GetReferenceAngle_Box2D_b1d1b47c7e81f80a(C.uintptr_t(_swig_i_0)))
+	swig_r = (float32)(C._wrap_b2RevoluteJoint_GetReferenceAngle_Box2D_553c0f9515edf50e(C.uintptr_t(_swig_i_0)))
 	return swig_r
 }
 
 func (arg1 SwigcptrB2RevoluteJoint) GetJointAngle() (_swig_ret float32) {
 	var swig_r float32
 	_swig_i_0 := arg1
-	swig_r = (float32)(C._wrap_b2RevoluteJoint_GetJointAngle_Box2D_b1d1b47c7e81f80a(C.uintptr_t(_swig_i_0)))
+	swig_r = (float32)(C._wrap_b2RevoluteJoint_GetJointAngle_Box2D_553c0f9515edf50e(C.uintptr_t(_swig_i_0)))
 	return swig_r
 }
 
 func (arg1 SwigcptrB2RevoluteJoint) GetJointSpeed() (_swig_ret float32) {
 	var swig_r float32
 	_swig_i_0 := arg1
-	swig_r = (float32)(C._wrap_b2RevoluteJoint_GetJointSpeed_Box2D_b1d1b47c7e81f80a(C.uintptr_t(_swig_i_0)))
+	swig_r = (float32)(C._wrap_b2RevoluteJoint_GetJointSpeed_Box2D_553c0f9515edf50e(C.uintptr_t(_swig_i_0)))
 	return swig_r
 }
 
 func (arg1 SwigcptrB2RevoluteJoint) IsLimitEnabled() (_swig_ret bool) {
 	var swig_r bool
 	_swig_i_0 := arg1
-	swig_r = (bool)(C._wrap_b2RevoluteJoint_IsLimitEnabled_Box2D_b1d1b47c7e81f80a(C.uintptr_t(_swig_i_0)))
+	swig_r = (bool)(C._wrap_b2RevoluteJoint_IsLimitEnabled_Box2D_553c0f9515edf50e(C.uintptr_t(_swig_i_0)))
 	return swig_r
 }
 
 func (arg1 SwigcptrB2RevoluteJoint) EnableLimit(arg2 bool) {
 	_swig_i_0 := arg1
 	_swig_i_1 := arg2
-	C._wrap_b2RevoluteJoint_EnableLimit_Box2D_b1d1b47c7e81f80a(C.uintptr_t(_swig_i_0), C._Bool(_swig_i_1))
+	C._wrap_b2RevoluteJoint_EnableLimit_Box2D_553c0f9515edf50e(C.uintptr_t(_swig_i_0), C._Bool(_swig_i_1))
 }
 
 func (arg1 SwigcptrB2RevoluteJoint) GetLowerLimit() (_swig_ret float32) {
 	var swig_r float32
 	_swig_i_0 := arg1
-	swig_r = (float32)(C._wrap_b2RevoluteJoint_GetLowerLimit_Box2D_b1d1b47c7e81f80a(C.uintptr_t(_swig_i_0)))
+	swig_r = (float32)(C._wrap_b2RevoluteJoint_GetLowerLimit_Box2D_553c0f9515edf50e(C.uintptr_t(_swig_i_0)))
 	return swig_r
 }
 
 func (arg1 SwigcptrB2RevoluteJoint) GetUpperLimit() (_swig_ret float32) {
 	var swig_r float32
 	_swig_i_0 := arg1
-	swig_r = (float32)(C._wrap_b2RevoluteJoint_GetUpperLimit_Box2D_b1d1b47c7e81f80a(C.uintptr_t(_swig_i_0)))
+	swig_r = (float32)(C._wrap_b2RevoluteJoint_GetUpperLimit_Box2D_553c0f9515edf50e(C.uintptr_t(_swig_i_0)))
 	return swig_r
 }
 
@@ -7991,45 +8135,45 @@ func (arg1 SwigcptrB2RevoluteJoint) SetLimits(arg2 float32, arg3 float32) {
 	_swig_i_0 := arg1
 	_swig_i_1 := arg2
 	_swig_i_2 := arg3
-	C._wrap_b2RevoluteJoint_SetLimits_Box2D_b1d1b47c7e81f80a(C.uintptr_t(_swig_i_0), C.float(_swig_i_1), C.float(_swig_i_2))
+	C._wrap_b2RevoluteJoint_SetLimits_Box2D_553c0f9515edf50e(C.uintptr_t(_swig_i_0), C.float(_swig_i_1), C.float(_swig_i_2))
 }
 
 func (arg1 SwigcptrB2RevoluteJoint) IsMotorEnabled() (_swig_ret bool) {
 	var swig_r bool
 	_swig_i_0 := arg1
-	swig_r = (bool)(C._wrap_b2RevoluteJoint_IsMotorEnabled_Box2D_b1d1b47c7e81f80a(C.uintptr_t(_swig_i_0)))
+	swig_r = (bool)(C._wrap_b2RevoluteJoint_IsMotorEnabled_Box2D_553c0f9515edf50e(C.uintptr_t(_swig_i_0)))
 	return swig_r
 }
 
 func (arg1 SwigcptrB2RevoluteJoint) EnableMotor(arg2 bool) {
 	_swig_i_0 := arg1
 	_swig_i_1 := arg2
-	C._wrap_b2RevoluteJoint_EnableMotor_Box2D_b1d1b47c7e81f80a(C.uintptr_t(_swig_i_0), C._Bool(_swig_i_1))
+	C._wrap_b2RevoluteJoint_EnableMotor_Box2D_553c0f9515edf50e(C.uintptr_t(_swig_i_0), C._Bool(_swig_i_1))
 }
 
 func (arg1 SwigcptrB2RevoluteJoint) SetMotorSpeed(arg2 float32) {
 	_swig_i_0 := arg1
 	_swig_i_1 := arg2
-	C._wrap_b2RevoluteJoint_SetMotorSpeed_Box2D_b1d1b47c7e81f80a(C.uintptr_t(_swig_i_0), C.float(_swig_i_1))
+	C._wrap_b2RevoluteJoint_SetMotorSpeed_Box2D_553c0f9515edf50e(C.uintptr_t(_swig_i_0), C.float(_swig_i_1))
 }
 
 func (arg1 SwigcptrB2RevoluteJoint) GetMotorSpeed() (_swig_ret float32) {
 	var swig_r float32
 	_swig_i_0 := arg1
-	swig_r = (float32)(C._wrap_b2RevoluteJoint_GetMotorSpeed_Box2D_b1d1b47c7e81f80a(C.uintptr_t(_swig_i_0)))
+	swig_r = (float32)(C._wrap_b2RevoluteJoint_GetMotorSpeed_Box2D_553c0f9515edf50e(C.uintptr_t(_swig_i_0)))
 	return swig_r
 }
 
 func (arg1 SwigcptrB2RevoluteJoint) SetMaxMotorTorque(arg2 float32) {
 	_swig_i_0 := arg1
 	_swig_i_1 := arg2
-	C._wrap_b2RevoluteJoint_SetMaxMotorTorque_Box2D_b1d1b47c7e81f80a(C.uintptr_t(_swig_i_0), C.float(_swig_i_1))
+	C._wrap_b2RevoluteJoint_SetMaxMotorTorque_Box2D_553c0f9515edf50e(C.uintptr_t(_swig_i_0), C.float(_swig_i_1))
 }
 
 func (arg1 SwigcptrB2RevoluteJoint) GetMaxMotorTorque() (_swig_ret float32) {
 	var swig_r float32
 	_swig_i_0 := arg1
-	swig_r = (float32)(C._wrap_b2RevoluteJoint_GetMaxMotorTorque_Box2D_b1d1b47c7e81f80a(C.uintptr_t(_swig_i_0)))
+	swig_r = (float32)(C._wrap_b2RevoluteJoint_GetMaxMotorTorque_Box2D_553c0f9515edf50e(C.uintptr_t(_swig_i_0)))
 	return swig_r
 }
 
@@ -8037,7 +8181,7 @@ func (arg1 SwigcptrB2RevoluteJoint) GetReactionForce(arg2 float32) (_swig_ret B2
 	var swig_r B2Vec2
 	_swig_i_0 := arg1
 	_swig_i_1 := arg2
-	swig_r = (B2Vec2)(SwigcptrB2Vec2(C._wrap_b2RevoluteJoint_GetReactionForce_Box2D_b1d1b47c7e81f80a(C.uintptr_t(_swig_i_0), C.float(_swig_i_1))))
+	swig_r = (B2Vec2)(SwigcptrB2Vec2(C._wrap_b2RevoluteJoint_GetReactionForce_Box2D_553c0f9515edf50e(C.uintptr_t(_swig_i_0), C.float(_swig_i_1))))
 	return swig_r
 }
 
@@ -8045,7 +8189,7 @@ func (arg1 SwigcptrB2RevoluteJoint) GetReactionTorque(arg2 float32) (_swig_ret f
 	var swig_r float32
 	_swig_i_0 := arg1
 	_swig_i_1 := arg2
-	swig_r = (float32)(C._wrap_b2RevoluteJoint_GetReactionTorque_Box2D_b1d1b47c7e81f80a(C.uintptr_t(_swig_i_0), C.float(_swig_i_1)))
+	swig_r = (float32)(C._wrap_b2RevoluteJoint_GetReactionTorque_Box2D_553c0f9515edf50e(C.uintptr_t(_swig_i_0), C.float(_swig_i_1)))
 	return swig_r
 }
 
@@ -8053,18 +8197,18 @@ func (arg1 SwigcptrB2RevoluteJoint) GetMotorTorque(arg2 float32) (_swig_ret floa
 	var swig_r float32
 	_swig_i_0 := arg1
 	_swig_i_1 := arg2
-	swig_r = (float32)(C._wrap_b2RevoluteJoint_GetMotorTorque_Box2D_b1d1b47c7e81f80a(C.uintptr_t(_swig_i_0), C.float(_swig_i_1)))
+	swig_r = (float32)(C._wrap_b2RevoluteJoint_GetMotorTorque_Box2D_553c0f9515edf50e(C.uintptr_t(_swig_i_0), C.float(_swig_i_1)))
 	return swig_r
 }
 
 func (arg1 SwigcptrB2RevoluteJoint) Dump() {
 	_swig_i_0 := arg1
-	C._wrap_b2RevoluteJoint_Dump_Box2D_b1d1b47c7e81f80a(C.uintptr_t(_swig_i_0))
+	C._wrap_b2RevoluteJoint_Dump_Box2D_553c0f9515edf50e(C.uintptr_t(_swig_i_0))
 }
 
 func DeleteB2RevoluteJoint(arg1 B2RevoluteJoint) {
 	_swig_i_0 := arg1.Swigcptr()
-	C._wrap_delete_b2RevoluteJoint_Box2D_b1d1b47c7e81f80a(C.uintptr_t(_swig_i_0))
+	C._wrap_delete_b2RevoluteJoint_Box2D_553c0f9515edf50e(C.uintptr_t(_swig_i_0))
 }
 
 type B2RevoluteJoint interface {
@@ -8105,52 +8249,52 @@ func (p SwigcptrB2RopeJointDef) SwigIsB2RopeJointDef() {
 
 func NewB2RopeJointDef() (_swig_ret B2RopeJointDef) {
 	var swig_r B2RopeJointDef
-	swig_r = (B2RopeJointDef)(SwigcptrB2RopeJointDef(C._wrap_new_b2RopeJointDef_Box2D_b1d1b47c7e81f80a()))
+	swig_r = (B2RopeJointDef)(SwigcptrB2RopeJointDef(C._wrap_new_b2RopeJointDef_Box2D_553c0f9515edf50e()))
 	return swig_r
 }
 
 func (arg1 SwigcptrB2RopeJointDef) SetLocalAnchorA(arg2 B2Vec2) {
 	_swig_i_0 := arg1
 	_swig_i_1 := arg2.Swigcptr()
-	C._wrap_b2RopeJointDef_localAnchorA_set_Box2D_b1d1b47c7e81f80a(C.uintptr_t(_swig_i_0), C.uintptr_t(_swig_i_1))
+	C._wrap_b2RopeJointDef_localAnchorA_set_Box2D_553c0f9515edf50e(C.uintptr_t(_swig_i_0), C.uintptr_t(_swig_i_1))
 }
 
 func (arg1 SwigcptrB2RopeJointDef) GetLocalAnchorA() (_swig_ret B2Vec2) {
 	var swig_r B2Vec2
 	_swig_i_0 := arg1
-	swig_r = (B2Vec2)(SwigcptrB2Vec2(C._wrap_b2RopeJointDef_localAnchorA_get_Box2D_b1d1b47c7e81f80a(C.uintptr_t(_swig_i_0))))
+	swig_r = (B2Vec2)(SwigcptrB2Vec2(C._wrap_b2RopeJointDef_localAnchorA_get_Box2D_553c0f9515edf50e(C.uintptr_t(_swig_i_0))))
 	return swig_r
 }
 
 func (arg1 SwigcptrB2RopeJointDef) SetLocalAnchorB(arg2 B2Vec2) {
 	_swig_i_0 := arg1
 	_swig_i_1 := arg2.Swigcptr()
-	C._wrap_b2RopeJointDef_localAnchorB_set_Box2D_b1d1b47c7e81f80a(C.uintptr_t(_swig_i_0), C.uintptr_t(_swig_i_1))
+	C._wrap_b2RopeJointDef_localAnchorB_set_Box2D_553c0f9515edf50e(C.uintptr_t(_swig_i_0), C.uintptr_t(_swig_i_1))
 }
 
 func (arg1 SwigcptrB2RopeJointDef) GetLocalAnchorB() (_swig_ret B2Vec2) {
 	var swig_r B2Vec2
 	_swig_i_0 := arg1
-	swig_r = (B2Vec2)(SwigcptrB2Vec2(C._wrap_b2RopeJointDef_localAnchorB_get_Box2D_b1d1b47c7e81f80a(C.uintptr_t(_swig_i_0))))
+	swig_r = (B2Vec2)(SwigcptrB2Vec2(C._wrap_b2RopeJointDef_localAnchorB_get_Box2D_553c0f9515edf50e(C.uintptr_t(_swig_i_0))))
 	return swig_r
 }
 
 func (arg1 SwigcptrB2RopeJointDef) SetMaxLength(arg2 float32) {
 	_swig_i_0 := arg1
 	_swig_i_1 := arg2
-	C._wrap_b2RopeJointDef_maxLength_set_Box2D_b1d1b47c7e81f80a(C.uintptr_t(_swig_i_0), C.float(_swig_i_1))
+	C._wrap_b2RopeJointDef_maxLength_set_Box2D_553c0f9515edf50e(C.uintptr_t(_swig_i_0), C.float(_swig_i_1))
 }
 
 func (arg1 SwigcptrB2RopeJointDef) GetMaxLength() (_swig_ret float32) {
 	var swig_r float32
 	_swig_i_0 := arg1
-	swig_r = (float32)(C._wrap_b2RopeJointDef_maxLength_get_Box2D_b1d1b47c7e81f80a(C.uintptr_t(_swig_i_0)))
+	swig_r = (float32)(C._wrap_b2RopeJointDef_maxLength_get_Box2D_553c0f9515edf50e(C.uintptr_t(_swig_i_0)))
 	return swig_r
 }
 
 func DeleteB2RopeJointDef(arg1 B2RopeJointDef) {
 	_swig_i_0 := arg1.Swigcptr()
-	C._wrap_delete_b2RopeJointDef_Box2D_b1d1b47c7e81f80a(C.uintptr_t(_swig_i_0))
+	C._wrap_delete_b2RopeJointDef_Box2D_553c0f9515edf50e(C.uintptr_t(_swig_i_0))
 }
 
 type B2RopeJointDef interface {
@@ -8176,14 +8320,14 @@ func (p SwigcptrB2RopeJoint) SwigIsB2RopeJoint() {
 func (arg1 SwigcptrB2RopeJoint) GetAnchorA() (_swig_ret B2Vec2) {
 	var swig_r B2Vec2
 	_swig_i_0 := arg1
-	swig_r = (B2Vec2)(SwigcptrB2Vec2(C._wrap_b2RopeJoint_GetAnchorA_Box2D_b1d1b47c7e81f80a(C.uintptr_t(_swig_i_0))))
+	swig_r = (B2Vec2)(SwigcptrB2Vec2(C._wrap_b2RopeJoint_GetAnchorA_Box2D_553c0f9515edf50e(C.uintptr_t(_swig_i_0))))
 	return swig_r
 }
 
 func (arg1 SwigcptrB2RopeJoint) GetAnchorB() (_swig_ret B2Vec2) {
 	var swig_r B2Vec2
 	_swig_i_0 := arg1
-	swig_r = (B2Vec2)(SwigcptrB2Vec2(C._wrap_b2RopeJoint_GetAnchorB_Box2D_b1d1b47c7e81f80a(C.uintptr_t(_swig_i_0))))
+	swig_r = (B2Vec2)(SwigcptrB2Vec2(C._wrap_b2RopeJoint_GetAnchorB_Box2D_553c0f9515edf50e(C.uintptr_t(_swig_i_0))))
 	return swig_r
 }
 
@@ -8191,7 +8335,7 @@ func (arg1 SwigcptrB2RopeJoint) GetReactionForce(arg2 float32) (_swig_ret B2Vec2
 	var swig_r B2Vec2
 	_swig_i_0 := arg1
 	_swig_i_1 := arg2
-	swig_r = (B2Vec2)(SwigcptrB2Vec2(C._wrap_b2RopeJoint_GetReactionForce_Box2D_b1d1b47c7e81f80a(C.uintptr_t(_swig_i_0), C.float(_swig_i_1))))
+	swig_r = (B2Vec2)(SwigcptrB2Vec2(C._wrap_b2RopeJoint_GetReactionForce_Box2D_553c0f9515edf50e(C.uintptr_t(_swig_i_0), C.float(_swig_i_1))))
 	return swig_r
 }
 
@@ -8199,52 +8343,52 @@ func (arg1 SwigcptrB2RopeJoint) GetReactionTorque(arg2 float32) (_swig_ret float
 	var swig_r float32
 	_swig_i_0 := arg1
 	_swig_i_1 := arg2
-	swig_r = (float32)(C._wrap_b2RopeJoint_GetReactionTorque_Box2D_b1d1b47c7e81f80a(C.uintptr_t(_swig_i_0), C.float(_swig_i_1)))
+	swig_r = (float32)(C._wrap_b2RopeJoint_GetReactionTorque_Box2D_553c0f9515edf50e(C.uintptr_t(_swig_i_0), C.float(_swig_i_1)))
 	return swig_r
 }
 
 func (arg1 SwigcptrB2RopeJoint) GetLocalAnchorA() (_swig_ret B2Vec2) {
 	var swig_r B2Vec2
 	_swig_i_0 := arg1
-	swig_r = (B2Vec2)(SwigcptrB2Vec2(C._wrap_b2RopeJoint_GetLocalAnchorA_Box2D_b1d1b47c7e81f80a(C.uintptr_t(_swig_i_0))))
+	swig_r = (B2Vec2)(SwigcptrB2Vec2(C._wrap_b2RopeJoint_GetLocalAnchorA_Box2D_553c0f9515edf50e(C.uintptr_t(_swig_i_0))))
 	return swig_r
 }
 
 func (arg1 SwigcptrB2RopeJoint) GetLocalAnchorB() (_swig_ret B2Vec2) {
 	var swig_r B2Vec2
 	_swig_i_0 := arg1
-	swig_r = (B2Vec2)(SwigcptrB2Vec2(C._wrap_b2RopeJoint_GetLocalAnchorB_Box2D_b1d1b47c7e81f80a(C.uintptr_t(_swig_i_0))))
+	swig_r = (B2Vec2)(SwigcptrB2Vec2(C._wrap_b2RopeJoint_GetLocalAnchorB_Box2D_553c0f9515edf50e(C.uintptr_t(_swig_i_0))))
 	return swig_r
 }
 
 func (arg1 SwigcptrB2RopeJoint) SetMaxLength(arg2 float32) {
 	_swig_i_0 := arg1
 	_swig_i_1 := arg2
-	C._wrap_b2RopeJoint_SetMaxLength_Box2D_b1d1b47c7e81f80a(C.uintptr_t(_swig_i_0), C.float(_swig_i_1))
+	C._wrap_b2RopeJoint_SetMaxLength_Box2D_553c0f9515edf50e(C.uintptr_t(_swig_i_0), C.float(_swig_i_1))
 }
 
 func (arg1 SwigcptrB2RopeJoint) GetMaxLength() (_swig_ret float32) {
 	var swig_r float32
 	_swig_i_0 := arg1
-	swig_r = (float32)(C._wrap_b2RopeJoint_GetMaxLength_Box2D_b1d1b47c7e81f80a(C.uintptr_t(_swig_i_0)))
+	swig_r = (float32)(C._wrap_b2RopeJoint_GetMaxLength_Box2D_553c0f9515edf50e(C.uintptr_t(_swig_i_0)))
 	return swig_r
 }
 
 func (arg1 SwigcptrB2RopeJoint) GetLimitState() (_swig_ret B2LimitState) {
 	var swig_r B2LimitState
 	_swig_i_0 := arg1
-	swig_r = (B2LimitState)(SwigcptrB2LimitState(C._wrap_b2RopeJoint_GetLimitState_Box2D_b1d1b47c7e81f80a(C.uintptr_t(_swig_i_0))))
+	swig_r = (B2LimitState)(SwigcptrB2LimitState(C._wrap_b2RopeJoint_GetLimitState_Box2D_553c0f9515edf50e(C.uintptr_t(_swig_i_0))))
 	return swig_r
 }
 
 func (arg1 SwigcptrB2RopeJoint) Dump() {
 	_swig_i_0 := arg1
-	C._wrap_b2RopeJoint_Dump_Box2D_b1d1b47c7e81f80a(C.uintptr_t(_swig_i_0))
+	C._wrap_b2RopeJoint_Dump_Box2D_553c0f9515edf50e(C.uintptr_t(_swig_i_0))
 }
 
 func DeleteB2RopeJoint(arg1 B2RopeJoint) {
 	_swig_i_0 := arg1.Swigcptr()
-	C._wrap_delete_b2RopeJoint_Box2D_b1d1b47c7e81f80a(C.uintptr_t(_swig_i_0))
+	C._wrap_delete_b2RopeJoint_Box2D_553c0f9515edf50e(C.uintptr_t(_swig_i_0))
 }
 
 type B2RopeJoint interface {
@@ -8273,7 +8417,7 @@ func (p SwigcptrB2WeldJointDef) SwigIsB2WeldJointDef() {
 
 func NewB2WeldJointDef() (_swig_ret B2WeldJointDef) {
 	var swig_r B2WeldJointDef
-	swig_r = (B2WeldJointDef)(SwigcptrB2WeldJointDef(C._wrap_new_b2WeldJointDef_Box2D_b1d1b47c7e81f80a()))
+	swig_r = (B2WeldJointDef)(SwigcptrB2WeldJointDef(C._wrap_new_b2WeldJointDef_Box2D_553c0f9515edf50e()))
 	return swig_r
 }
 
@@ -8282,77 +8426,77 @@ func (arg1 SwigcptrB2WeldJointDef) Initialize(arg2 B2Body, arg3 B2Body, arg4 B2V
 	_swig_i_1 := arg2.Swigcptr()
 	_swig_i_2 := arg3.Swigcptr()
 	_swig_i_3 := arg4.Swigcptr()
-	C._wrap_b2WeldJointDef_Initialize_Box2D_b1d1b47c7e81f80a(C.uintptr_t(_swig_i_0), C.uintptr_t(_swig_i_1), C.uintptr_t(_swig_i_2), C.uintptr_t(_swig_i_3))
+	C._wrap_b2WeldJointDef_Initialize_Box2D_553c0f9515edf50e(C.uintptr_t(_swig_i_0), C.uintptr_t(_swig_i_1), C.uintptr_t(_swig_i_2), C.uintptr_t(_swig_i_3))
 }
 
 func (arg1 SwigcptrB2WeldJointDef) SetLocalAnchorA(arg2 B2Vec2) {
 	_swig_i_0 := arg1
 	_swig_i_1 := arg2.Swigcptr()
-	C._wrap_b2WeldJointDef_localAnchorA_set_Box2D_b1d1b47c7e81f80a(C.uintptr_t(_swig_i_0), C.uintptr_t(_swig_i_1))
+	C._wrap_b2WeldJointDef_localAnchorA_set_Box2D_553c0f9515edf50e(C.uintptr_t(_swig_i_0), C.uintptr_t(_swig_i_1))
 }
 
 func (arg1 SwigcptrB2WeldJointDef) GetLocalAnchorA() (_swig_ret B2Vec2) {
 	var swig_r B2Vec2
 	_swig_i_0 := arg1
-	swig_r = (B2Vec2)(SwigcptrB2Vec2(C._wrap_b2WeldJointDef_localAnchorA_get_Box2D_b1d1b47c7e81f80a(C.uintptr_t(_swig_i_0))))
+	swig_r = (B2Vec2)(SwigcptrB2Vec2(C._wrap_b2WeldJointDef_localAnchorA_get_Box2D_553c0f9515edf50e(C.uintptr_t(_swig_i_0))))
 	return swig_r
 }
 
 func (arg1 SwigcptrB2WeldJointDef) SetLocalAnchorB(arg2 B2Vec2) {
 	_swig_i_0 := arg1
 	_swig_i_1 := arg2.Swigcptr()
-	C._wrap_b2WeldJointDef_localAnchorB_set_Box2D_b1d1b47c7e81f80a(C.uintptr_t(_swig_i_0), C.uintptr_t(_swig_i_1))
+	C._wrap_b2WeldJointDef_localAnchorB_set_Box2D_553c0f9515edf50e(C.uintptr_t(_swig_i_0), C.uintptr_t(_swig_i_1))
 }
 
 func (arg1 SwigcptrB2WeldJointDef) GetLocalAnchorB() (_swig_ret B2Vec2) {
 	var swig_r B2Vec2
 	_swig_i_0 := arg1
-	swig_r = (B2Vec2)(SwigcptrB2Vec2(C._wrap_b2WeldJointDef_localAnchorB_get_Box2D_b1d1b47c7e81f80a(C.uintptr_t(_swig_i_0))))
+	swig_r = (B2Vec2)(SwigcptrB2Vec2(C._wrap_b2WeldJointDef_localAnchorB_get_Box2D_553c0f9515edf50e(C.uintptr_t(_swig_i_0))))
 	return swig_r
 }
 
 func (arg1 SwigcptrB2WeldJointDef) SetReferenceAngle(arg2 float32) {
 	_swig_i_0 := arg1
 	_swig_i_1 := arg2
-	C._wrap_b2WeldJointDef_referenceAngle_set_Box2D_b1d1b47c7e81f80a(C.uintptr_t(_swig_i_0), C.float(_swig_i_1))
+	C._wrap_b2WeldJointDef_referenceAngle_set_Box2D_553c0f9515edf50e(C.uintptr_t(_swig_i_0), C.float(_swig_i_1))
 }
 
 func (arg1 SwigcptrB2WeldJointDef) GetReferenceAngle() (_swig_ret float32) {
 	var swig_r float32
 	_swig_i_0 := arg1
-	swig_r = (float32)(C._wrap_b2WeldJointDef_referenceAngle_get_Box2D_b1d1b47c7e81f80a(C.uintptr_t(_swig_i_0)))
+	swig_r = (float32)(C._wrap_b2WeldJointDef_referenceAngle_get_Box2D_553c0f9515edf50e(C.uintptr_t(_swig_i_0)))
 	return swig_r
 }
 
 func (arg1 SwigcptrB2WeldJointDef) SetFrequencyHz(arg2 float32) {
 	_swig_i_0 := arg1
 	_swig_i_1 := arg2
-	C._wrap_b2WeldJointDef_frequencyHz_set_Box2D_b1d1b47c7e81f80a(C.uintptr_t(_swig_i_0), C.float(_swig_i_1))
+	C._wrap_b2WeldJointDef_frequencyHz_set_Box2D_553c0f9515edf50e(C.uintptr_t(_swig_i_0), C.float(_swig_i_1))
 }
 
 func (arg1 SwigcptrB2WeldJointDef) GetFrequencyHz() (_swig_ret float32) {
 	var swig_r float32
 	_swig_i_0 := arg1
-	swig_r = (float32)(C._wrap_b2WeldJointDef_frequencyHz_get_Box2D_b1d1b47c7e81f80a(C.uintptr_t(_swig_i_0)))
+	swig_r = (float32)(C._wrap_b2WeldJointDef_frequencyHz_get_Box2D_553c0f9515edf50e(C.uintptr_t(_swig_i_0)))
 	return swig_r
 }
 
 func (arg1 SwigcptrB2WeldJointDef) SetDampingRatio(arg2 float32) {
 	_swig_i_0 := arg1
 	_swig_i_1 := arg2
-	C._wrap_b2WeldJointDef_dampingRatio_set_Box2D_b1d1b47c7e81f80a(C.uintptr_t(_swig_i_0), C.float(_swig_i_1))
+	C._wrap_b2WeldJointDef_dampingRatio_set_Box2D_553c0f9515edf50e(C.uintptr_t(_swig_i_0), C.float(_swig_i_1))
 }
 
 func (arg1 SwigcptrB2WeldJointDef) GetDampingRatio() (_swig_ret float32) {
 	var swig_r float32
 	_swig_i_0 := arg1
-	swig_r = (float32)(C._wrap_b2WeldJointDef_dampingRatio_get_Box2D_b1d1b47c7e81f80a(C.uintptr_t(_swig_i_0)))
+	swig_r = (float32)(C._wrap_b2WeldJointDef_dampingRatio_get_Box2D_553c0f9515edf50e(C.uintptr_t(_swig_i_0)))
 	return swig_r
 }
 
 func DeleteB2WeldJointDef(arg1 B2WeldJointDef) {
 	_swig_i_0 := arg1.Swigcptr()
-	C._wrap_delete_b2WeldJointDef_Box2D_b1d1b47c7e81f80a(C.uintptr_t(_swig_i_0))
+	C._wrap_delete_b2WeldJointDef_Box2D_553c0f9515edf50e(C.uintptr_t(_swig_i_0))
 }
 
 type B2WeldJointDef interface {
@@ -8383,14 +8527,14 @@ func (p SwigcptrB2WeldJoint) SwigIsB2WeldJoint() {
 func (arg1 SwigcptrB2WeldJoint) GetAnchorA() (_swig_ret B2Vec2) {
 	var swig_r B2Vec2
 	_swig_i_0 := arg1
-	swig_r = (B2Vec2)(SwigcptrB2Vec2(C._wrap_b2WeldJoint_GetAnchorA_Box2D_b1d1b47c7e81f80a(C.uintptr_t(_swig_i_0))))
+	swig_r = (B2Vec2)(SwigcptrB2Vec2(C._wrap_b2WeldJoint_GetAnchorA_Box2D_553c0f9515edf50e(C.uintptr_t(_swig_i_0))))
 	return swig_r
 }
 
 func (arg1 SwigcptrB2WeldJoint) GetAnchorB() (_swig_ret B2Vec2) {
 	var swig_r B2Vec2
 	_swig_i_0 := arg1
-	swig_r = (B2Vec2)(SwigcptrB2Vec2(C._wrap_b2WeldJoint_GetAnchorB_Box2D_b1d1b47c7e81f80a(C.uintptr_t(_swig_i_0))))
+	swig_r = (B2Vec2)(SwigcptrB2Vec2(C._wrap_b2WeldJoint_GetAnchorB_Box2D_553c0f9515edf50e(C.uintptr_t(_swig_i_0))))
 	return swig_r
 }
 
@@ -8398,7 +8542,7 @@ func (arg1 SwigcptrB2WeldJoint) GetReactionForce(arg2 float32) (_swig_ret B2Vec2
 	var swig_r B2Vec2
 	_swig_i_0 := arg1
 	_swig_i_1 := arg2
-	swig_r = (B2Vec2)(SwigcptrB2Vec2(C._wrap_b2WeldJoint_GetReactionForce_Box2D_b1d1b47c7e81f80a(C.uintptr_t(_swig_i_0), C.float(_swig_i_1))))
+	swig_r = (B2Vec2)(SwigcptrB2Vec2(C._wrap_b2WeldJoint_GetReactionForce_Box2D_553c0f9515edf50e(C.uintptr_t(_swig_i_0), C.float(_swig_i_1))))
 	return swig_r
 }
 
@@ -8406,65 +8550,65 @@ func (arg1 SwigcptrB2WeldJoint) GetReactionTorque(arg2 float32) (_swig_ret float
 	var swig_r float32
 	_swig_i_0 := arg1
 	_swig_i_1 := arg2
-	swig_r = (float32)(C._wrap_b2WeldJoint_GetReactionTorque_Box2D_b1d1b47c7e81f80a(C.uintptr_t(_swig_i_0), C.float(_swig_i_1)))
+	swig_r = (float32)(C._wrap_b2WeldJoint_GetReactionTorque_Box2D_553c0f9515edf50e(C.uintptr_t(_swig_i_0), C.float(_swig_i_1)))
 	return swig_r
 }
 
 func (arg1 SwigcptrB2WeldJoint) GetLocalAnchorA() (_swig_ret B2Vec2) {
 	var swig_r B2Vec2
 	_swig_i_0 := arg1
-	swig_r = (B2Vec2)(SwigcptrB2Vec2(C._wrap_b2WeldJoint_GetLocalAnchorA_Box2D_b1d1b47c7e81f80a(C.uintptr_t(_swig_i_0))))
+	swig_r = (B2Vec2)(SwigcptrB2Vec2(C._wrap_b2WeldJoint_GetLocalAnchorA_Box2D_553c0f9515edf50e(C.uintptr_t(_swig_i_0))))
 	return swig_r
 }
 
 func (arg1 SwigcptrB2WeldJoint) GetLocalAnchorB() (_swig_ret B2Vec2) {
 	var swig_r B2Vec2
 	_swig_i_0 := arg1
-	swig_r = (B2Vec2)(SwigcptrB2Vec2(C._wrap_b2WeldJoint_GetLocalAnchorB_Box2D_b1d1b47c7e81f80a(C.uintptr_t(_swig_i_0))))
+	swig_r = (B2Vec2)(SwigcptrB2Vec2(C._wrap_b2WeldJoint_GetLocalAnchorB_Box2D_553c0f9515edf50e(C.uintptr_t(_swig_i_0))))
 	return swig_r
 }
 
 func (arg1 SwigcptrB2WeldJoint) GetReferenceAngle() (_swig_ret float32) {
 	var swig_r float32
 	_swig_i_0 := arg1
-	swig_r = (float32)(C._wrap_b2WeldJoint_GetReferenceAngle_Box2D_b1d1b47c7e81f80a(C.uintptr_t(_swig_i_0)))
+	swig_r = (float32)(C._wrap_b2WeldJoint_GetReferenceAngle_Box2D_553c0f9515edf50e(C.uintptr_t(_swig_i_0)))
 	return swig_r
 }
 
 func (arg1 SwigcptrB2WeldJoint) SetFrequency(arg2 float32) {
 	_swig_i_0 := arg1
 	_swig_i_1 := arg2
-	C._wrap_b2WeldJoint_SetFrequency_Box2D_b1d1b47c7e81f80a(C.uintptr_t(_swig_i_0), C.float(_swig_i_1))
+	C._wrap_b2WeldJoint_SetFrequency_Box2D_553c0f9515edf50e(C.uintptr_t(_swig_i_0), C.float(_swig_i_1))
 }
 
 func (arg1 SwigcptrB2WeldJoint) GetFrequency() (_swig_ret float32) {
 	var swig_r float32
 	_swig_i_0 := arg1
-	swig_r = (float32)(C._wrap_b2WeldJoint_GetFrequency_Box2D_b1d1b47c7e81f80a(C.uintptr_t(_swig_i_0)))
+	swig_r = (float32)(C._wrap_b2WeldJoint_GetFrequency_Box2D_553c0f9515edf50e(C.uintptr_t(_swig_i_0)))
 	return swig_r
 }
 
 func (arg1 SwigcptrB2WeldJoint) SetDampingRatio(arg2 float32) {
 	_swig_i_0 := arg1
 	_swig_i_1 := arg2
-	C._wrap_b2WeldJoint_SetDampingRatio_Box2D_b1d1b47c7e81f80a(C.uintptr_t(_swig_i_0), C.float(_swig_i_1))
+	C._wrap_b2WeldJoint_SetDampingRatio_Box2D_553c0f9515edf50e(C.uintptr_t(_swig_i_0), C.float(_swig_i_1))
 }
 
 func (arg1 SwigcptrB2WeldJoint) GetDampingRatio() (_swig_ret float32) {
 	var swig_r float32
 	_swig_i_0 := arg1
-	swig_r = (float32)(C._wrap_b2WeldJoint_GetDampingRatio_Box2D_b1d1b47c7e81f80a(C.uintptr_t(_swig_i_0)))
+	swig_r = (float32)(C._wrap_b2WeldJoint_GetDampingRatio_Box2D_553c0f9515edf50e(C.uintptr_t(_swig_i_0)))
 	return swig_r
 }
 
 func (arg1 SwigcptrB2WeldJoint) Dump() {
 	_swig_i_0 := arg1
-	C._wrap_b2WeldJoint_Dump_Box2D_b1d1b47c7e81f80a(C.uintptr_t(_swig_i_0))
+	C._wrap_b2WeldJoint_Dump_Box2D_553c0f9515edf50e(C.uintptr_t(_swig_i_0))
 }
 
 func DeleteB2WeldJoint(arg1 B2WeldJoint) {
 	_swig_i_0 := arg1.Swigcptr()
-	C._wrap_delete_b2WeldJoint_Box2D_b1d1b47c7e81f80a(C.uintptr_t(_swig_i_0))
+	C._wrap_delete_b2WeldJoint_Box2D_553c0f9515edf50e(C.uintptr_t(_swig_i_0))
 }
 
 type B2WeldJoint interface {
@@ -8495,7 +8639,7 @@ func (p SwigcptrB2WheelJointDef) SwigIsB2WheelJointDef() {
 
 func NewB2WheelJointDef() (_swig_ret B2WheelJointDef) {
 	var swig_r B2WheelJointDef
-	swig_r = (B2WheelJointDef)(SwigcptrB2WheelJointDef(C._wrap_new_b2WheelJointDef_Box2D_b1d1b47c7e81f80a()))
+	swig_r = (B2WheelJointDef)(SwigcptrB2WheelJointDef(C._wrap_new_b2WheelJointDef_Box2D_553c0f9515edf50e()))
 	return swig_r
 }
 
@@ -8505,116 +8649,116 @@ func (arg1 SwigcptrB2WheelJointDef) Initialize(arg2 B2Body, arg3 B2Body, arg4 B2
 	_swig_i_2 := arg3.Swigcptr()
 	_swig_i_3 := arg4.Swigcptr()
 	_swig_i_4 := arg5.Swigcptr()
-	C._wrap_b2WheelJointDef_Initialize_Box2D_b1d1b47c7e81f80a(C.uintptr_t(_swig_i_0), C.uintptr_t(_swig_i_1), C.uintptr_t(_swig_i_2), C.uintptr_t(_swig_i_3), C.uintptr_t(_swig_i_4))
+	C._wrap_b2WheelJointDef_Initialize_Box2D_553c0f9515edf50e(C.uintptr_t(_swig_i_0), C.uintptr_t(_swig_i_1), C.uintptr_t(_swig_i_2), C.uintptr_t(_swig_i_3), C.uintptr_t(_swig_i_4))
 }
 
 func (arg1 SwigcptrB2WheelJointDef) SetLocalAnchorA(arg2 B2Vec2) {
 	_swig_i_0 := arg1
 	_swig_i_1 := arg2.Swigcptr()
-	C._wrap_b2WheelJointDef_localAnchorA_set_Box2D_b1d1b47c7e81f80a(C.uintptr_t(_swig_i_0), C.uintptr_t(_swig_i_1))
+	C._wrap_b2WheelJointDef_localAnchorA_set_Box2D_553c0f9515edf50e(C.uintptr_t(_swig_i_0), C.uintptr_t(_swig_i_1))
 }
 
 func (arg1 SwigcptrB2WheelJointDef) GetLocalAnchorA() (_swig_ret B2Vec2) {
 	var swig_r B2Vec2
 	_swig_i_0 := arg1
-	swig_r = (B2Vec2)(SwigcptrB2Vec2(C._wrap_b2WheelJointDef_localAnchorA_get_Box2D_b1d1b47c7e81f80a(C.uintptr_t(_swig_i_0))))
+	swig_r = (B2Vec2)(SwigcptrB2Vec2(C._wrap_b2WheelJointDef_localAnchorA_get_Box2D_553c0f9515edf50e(C.uintptr_t(_swig_i_0))))
 	return swig_r
 }
 
 func (arg1 SwigcptrB2WheelJointDef) SetLocalAnchorB(arg2 B2Vec2) {
 	_swig_i_0 := arg1
 	_swig_i_1 := arg2.Swigcptr()
-	C._wrap_b2WheelJointDef_localAnchorB_set_Box2D_b1d1b47c7e81f80a(C.uintptr_t(_swig_i_0), C.uintptr_t(_swig_i_1))
+	C._wrap_b2WheelJointDef_localAnchorB_set_Box2D_553c0f9515edf50e(C.uintptr_t(_swig_i_0), C.uintptr_t(_swig_i_1))
 }
 
 func (arg1 SwigcptrB2WheelJointDef) GetLocalAnchorB() (_swig_ret B2Vec2) {
 	var swig_r B2Vec2
 	_swig_i_0 := arg1
-	swig_r = (B2Vec2)(SwigcptrB2Vec2(C._wrap_b2WheelJointDef_localAnchorB_get_Box2D_b1d1b47c7e81f80a(C.uintptr_t(_swig_i_0))))
+	swig_r = (B2Vec2)(SwigcptrB2Vec2(C._wrap_b2WheelJointDef_localAnchorB_get_Box2D_553c0f9515edf50e(C.uintptr_t(_swig_i_0))))
 	return swig_r
 }
 
 func (arg1 SwigcptrB2WheelJointDef) SetLocalAxisA(arg2 B2Vec2) {
 	_swig_i_0 := arg1
 	_swig_i_1 := arg2.Swigcptr()
-	C._wrap_b2WheelJointDef_localAxisA_set_Box2D_b1d1b47c7e81f80a(C.uintptr_t(_swig_i_0), C.uintptr_t(_swig_i_1))
+	C._wrap_b2WheelJointDef_localAxisA_set_Box2D_553c0f9515edf50e(C.uintptr_t(_swig_i_0), C.uintptr_t(_swig_i_1))
 }
 
 func (arg1 SwigcptrB2WheelJointDef) GetLocalAxisA() (_swig_ret B2Vec2) {
 	var swig_r B2Vec2
 	_swig_i_0 := arg1
-	swig_r = (B2Vec2)(SwigcptrB2Vec2(C._wrap_b2WheelJointDef_localAxisA_get_Box2D_b1d1b47c7e81f80a(C.uintptr_t(_swig_i_0))))
+	swig_r = (B2Vec2)(SwigcptrB2Vec2(C._wrap_b2WheelJointDef_localAxisA_get_Box2D_553c0f9515edf50e(C.uintptr_t(_swig_i_0))))
 	return swig_r
 }
 
 func (arg1 SwigcptrB2WheelJointDef) SetEnableMotor(arg2 bool) {
 	_swig_i_0 := arg1
 	_swig_i_1 := arg2
-	C._wrap_b2WheelJointDef_enableMotor_set_Box2D_b1d1b47c7e81f80a(C.uintptr_t(_swig_i_0), C._Bool(_swig_i_1))
+	C._wrap_b2WheelJointDef_enableMotor_set_Box2D_553c0f9515edf50e(C.uintptr_t(_swig_i_0), C._Bool(_swig_i_1))
 }
 
 func (arg1 SwigcptrB2WheelJointDef) GetEnableMotor() (_swig_ret bool) {
 	var swig_r bool
 	_swig_i_0 := arg1
-	swig_r = (bool)(C._wrap_b2WheelJointDef_enableMotor_get_Box2D_b1d1b47c7e81f80a(C.uintptr_t(_swig_i_0)))
+	swig_r = (bool)(C._wrap_b2WheelJointDef_enableMotor_get_Box2D_553c0f9515edf50e(C.uintptr_t(_swig_i_0)))
 	return swig_r
 }
 
 func (arg1 SwigcptrB2WheelJointDef) SetMaxMotorTorque(arg2 float32) {
 	_swig_i_0 := arg1
 	_swig_i_1 := arg2
-	C._wrap_b2WheelJointDef_maxMotorTorque_set_Box2D_b1d1b47c7e81f80a(C.uintptr_t(_swig_i_0), C.float(_swig_i_1))
+	C._wrap_b2WheelJointDef_maxMotorTorque_set_Box2D_553c0f9515edf50e(C.uintptr_t(_swig_i_0), C.float(_swig_i_1))
 }
 
 func (arg1 SwigcptrB2WheelJointDef) GetMaxMotorTorque() (_swig_ret float32) {
 	var swig_r float32
 	_swig_i_0 := arg1
-	swig_r = (float32)(C._wrap_b2WheelJointDef_maxMotorTorque_get_Box2D_b1d1b47c7e81f80a(C.uintptr_t(_swig_i_0)))
+	swig_r = (float32)(C._wrap_b2WheelJointDef_maxMotorTorque_get_Box2D_553c0f9515edf50e(C.uintptr_t(_swig_i_0)))
 	return swig_r
 }
 
 func (arg1 SwigcptrB2WheelJointDef) SetMotorSpeed(arg2 float32) {
 	_swig_i_0 := arg1
 	_swig_i_1 := arg2
-	C._wrap_b2WheelJointDef_motorSpeed_set_Box2D_b1d1b47c7e81f80a(C.uintptr_t(_swig_i_0), C.float(_swig_i_1))
+	C._wrap_b2WheelJointDef_motorSpeed_set_Box2D_553c0f9515edf50e(C.uintptr_t(_swig_i_0), C.float(_swig_i_1))
 }
 
 func (arg1 SwigcptrB2WheelJointDef) GetMotorSpeed() (_swig_ret float32) {
 	var swig_r float32
 	_swig_i_0 := arg1
-	swig_r = (float32)(C._wrap_b2WheelJointDef_motorSpeed_get_Box2D_b1d1b47c7e81f80a(C.uintptr_t(_swig_i_0)))
+	swig_r = (float32)(C._wrap_b2WheelJointDef_motorSpeed_get_Box2D_553c0f9515edf50e(C.uintptr_t(_swig_i_0)))
 	return swig_r
 }
 
 func (arg1 SwigcptrB2WheelJointDef) SetFrequencyHz(arg2 float32) {
 	_swig_i_0 := arg1
 	_swig_i_1 := arg2
-	C._wrap_b2WheelJointDef_frequencyHz_set_Box2D_b1d1b47c7e81f80a(C.uintptr_t(_swig_i_0), C.float(_swig_i_1))
+	C._wrap_b2WheelJointDef_frequencyHz_set_Box2D_553c0f9515edf50e(C.uintptr_t(_swig_i_0), C.float(_swig_i_1))
 }
 
 func (arg1 SwigcptrB2WheelJointDef) GetFrequencyHz() (_swig_ret float32) {
 	var swig_r float32
 	_swig_i_0 := arg1
-	swig_r = (float32)(C._wrap_b2WheelJointDef_frequencyHz_get_Box2D_b1d1b47c7e81f80a(C.uintptr_t(_swig_i_0)))
+	swig_r = (float32)(C._wrap_b2WheelJointDef_frequencyHz_get_Box2D_553c0f9515edf50e(C.uintptr_t(_swig_i_0)))
 	return swig_r
 }
 
 func (arg1 SwigcptrB2WheelJointDef) SetDampingRatio(arg2 float32) {
 	_swig_i_0 := arg1
 	_swig_i_1 := arg2
-	C._wrap_b2WheelJointDef_dampingRatio_set_Box2D_b1d1b47c7e81f80a(C.uintptr_t(_swig_i_0), C.float(_swig_i_1))
+	C._wrap_b2WheelJointDef_dampingRatio_set_Box2D_553c0f9515edf50e(C.uintptr_t(_swig_i_0), C.float(_swig_i_1))
 }
 
 func (arg1 SwigcptrB2WheelJointDef) GetDampingRatio() (_swig_ret float32) {
 	var swig_r float32
 	_swig_i_0 := arg1
-	swig_r = (float32)(C._wrap_b2WheelJointDef_dampingRatio_get_Box2D_b1d1b47c7e81f80a(C.uintptr_t(_swig_i_0)))
+	swig_r = (float32)(C._wrap_b2WheelJointDef_dampingRatio_get_Box2D_553c0f9515edf50e(C.uintptr_t(_swig_i_0)))
 	return swig_r
 }
 
 func DeleteB2WheelJointDef(arg1 B2WheelJointDef) {
 	_swig_i_0 := arg1.Swigcptr()
-	C._wrap_delete_b2WheelJointDef_Box2D_b1d1b47c7e81f80a(C.uintptr_t(_swig_i_0))
+	C._wrap_delete_b2WheelJointDef_Box2D_553c0f9515edf50e(C.uintptr_t(_swig_i_0))
 }
 
 type B2WheelJointDef interface {
@@ -8651,14 +8795,14 @@ func (p SwigcptrB2WheelJoint) SwigIsB2WheelJoint() {
 func (arg1 SwigcptrB2WheelJoint) GetAnchorA() (_swig_ret B2Vec2) {
 	var swig_r B2Vec2
 	_swig_i_0 := arg1
-	swig_r = (B2Vec2)(SwigcptrB2Vec2(C._wrap_b2WheelJoint_GetAnchorA_Box2D_b1d1b47c7e81f80a(C.uintptr_t(_swig_i_0))))
+	swig_r = (B2Vec2)(SwigcptrB2Vec2(C._wrap_b2WheelJoint_GetAnchorA_Box2D_553c0f9515edf50e(C.uintptr_t(_swig_i_0))))
 	return swig_r
 }
 
 func (arg1 SwigcptrB2WheelJoint) GetAnchorB() (_swig_ret B2Vec2) {
 	var swig_r B2Vec2
 	_swig_i_0 := arg1
-	swig_r = (B2Vec2)(SwigcptrB2Vec2(C._wrap_b2WheelJoint_GetAnchorB_Box2D_b1d1b47c7e81f80a(C.uintptr_t(_swig_i_0))))
+	swig_r = (B2Vec2)(SwigcptrB2Vec2(C._wrap_b2WheelJoint_GetAnchorB_Box2D_553c0f9515edf50e(C.uintptr_t(_swig_i_0))))
 	return swig_r
 }
 
@@ -8666,7 +8810,7 @@ func (arg1 SwigcptrB2WheelJoint) GetReactionForce(arg2 float32) (_swig_ret B2Vec
 	var swig_r B2Vec2
 	_swig_i_0 := arg1
 	_swig_i_1 := arg2
-	swig_r = (B2Vec2)(SwigcptrB2Vec2(C._wrap_b2WheelJoint_GetReactionForce_Box2D_b1d1b47c7e81f80a(C.uintptr_t(_swig_i_0), C.float(_swig_i_1))))
+	swig_r = (B2Vec2)(SwigcptrB2Vec2(C._wrap_b2WheelJoint_GetReactionForce_Box2D_553c0f9515edf50e(C.uintptr_t(_swig_i_0), C.float(_swig_i_1))))
 	return swig_r
 }
 
@@ -8674,81 +8818,81 @@ func (arg1 SwigcptrB2WheelJoint) GetReactionTorque(arg2 float32) (_swig_ret floa
 	var swig_r float32
 	_swig_i_0 := arg1
 	_swig_i_1 := arg2
-	swig_r = (float32)(C._wrap_b2WheelJoint_GetReactionTorque_Box2D_b1d1b47c7e81f80a(C.uintptr_t(_swig_i_0), C.float(_swig_i_1)))
+	swig_r = (float32)(C._wrap_b2WheelJoint_GetReactionTorque_Box2D_553c0f9515edf50e(C.uintptr_t(_swig_i_0), C.float(_swig_i_1)))
 	return swig_r
 }
 
 func (arg1 SwigcptrB2WheelJoint) GetLocalAnchorA() (_swig_ret B2Vec2) {
 	var swig_r B2Vec2
 	_swig_i_0 := arg1
-	swig_r = (B2Vec2)(SwigcptrB2Vec2(C._wrap_b2WheelJoint_GetLocalAnchorA_Box2D_b1d1b47c7e81f80a(C.uintptr_t(_swig_i_0))))
+	swig_r = (B2Vec2)(SwigcptrB2Vec2(C._wrap_b2WheelJoint_GetLocalAnchorA_Box2D_553c0f9515edf50e(C.uintptr_t(_swig_i_0))))
 	return swig_r
 }
 
 func (arg1 SwigcptrB2WheelJoint) GetLocalAnchorB() (_swig_ret B2Vec2) {
 	var swig_r B2Vec2
 	_swig_i_0 := arg1
-	swig_r = (B2Vec2)(SwigcptrB2Vec2(C._wrap_b2WheelJoint_GetLocalAnchorB_Box2D_b1d1b47c7e81f80a(C.uintptr_t(_swig_i_0))))
+	swig_r = (B2Vec2)(SwigcptrB2Vec2(C._wrap_b2WheelJoint_GetLocalAnchorB_Box2D_553c0f9515edf50e(C.uintptr_t(_swig_i_0))))
 	return swig_r
 }
 
 func (arg1 SwigcptrB2WheelJoint) GetLocalAxisA() (_swig_ret B2Vec2) {
 	var swig_r B2Vec2
 	_swig_i_0 := arg1
-	swig_r = (B2Vec2)(SwigcptrB2Vec2(C._wrap_b2WheelJoint_GetLocalAxisA_Box2D_b1d1b47c7e81f80a(C.uintptr_t(_swig_i_0))))
+	swig_r = (B2Vec2)(SwigcptrB2Vec2(C._wrap_b2WheelJoint_GetLocalAxisA_Box2D_553c0f9515edf50e(C.uintptr_t(_swig_i_0))))
 	return swig_r
 }
 
 func (arg1 SwigcptrB2WheelJoint) GetJointTranslation() (_swig_ret float32) {
 	var swig_r float32
 	_swig_i_0 := arg1
-	swig_r = (float32)(C._wrap_b2WheelJoint_GetJointTranslation_Box2D_b1d1b47c7e81f80a(C.uintptr_t(_swig_i_0)))
+	swig_r = (float32)(C._wrap_b2WheelJoint_GetJointTranslation_Box2D_553c0f9515edf50e(C.uintptr_t(_swig_i_0)))
 	return swig_r
 }
 
 func (arg1 SwigcptrB2WheelJoint) GetJointSpeed() (_swig_ret float32) {
 	var swig_r float32
 	_swig_i_0 := arg1
-	swig_r = (float32)(C._wrap_b2WheelJoint_GetJointSpeed_Box2D_b1d1b47c7e81f80a(C.uintptr_t(_swig_i_0)))
+	swig_r = (float32)(C._wrap_b2WheelJoint_GetJointSpeed_Box2D_553c0f9515edf50e(C.uintptr_t(_swig_i_0)))
 	return swig_r
 }
 
 func (arg1 SwigcptrB2WheelJoint) IsMotorEnabled() (_swig_ret bool) {
 	var swig_r bool
 	_swig_i_0 := arg1
-	swig_r = (bool)(C._wrap_b2WheelJoint_IsMotorEnabled_Box2D_b1d1b47c7e81f80a(C.uintptr_t(_swig_i_0)))
+	swig_r = (bool)(C._wrap_b2WheelJoint_IsMotorEnabled_Box2D_553c0f9515edf50e(C.uintptr_t(_swig_i_0)))
 	return swig_r
 }
 
 func (arg1 SwigcptrB2WheelJoint) EnableMotor(arg2 bool) {
 	_swig_i_0 := arg1
 	_swig_i_1 := arg2
-	C._wrap_b2WheelJoint_EnableMotor_Box2D_b1d1b47c7e81f80a(C.uintptr_t(_swig_i_0), C._Bool(_swig_i_1))
+	C._wrap_b2WheelJoint_EnableMotor_Box2D_553c0f9515edf50e(C.uintptr_t(_swig_i_0), C._Bool(_swig_i_1))
 }
 
 func (arg1 SwigcptrB2WheelJoint) SetMotorSpeed(arg2 float32) {
 	_swig_i_0 := arg1
 	_swig_i_1 := arg2
-	C._wrap_b2WheelJoint_SetMotorSpeed_Box2D_b1d1b47c7e81f80a(C.uintptr_t(_swig_i_0), C.float(_swig_i_1))
+	C._wrap_b2WheelJoint_SetMotorSpeed_Box2D_553c0f9515edf50e(C.uintptr_t(_swig_i_0), C.float(_swig_i_1))
 }
 
 func (arg1 SwigcptrB2WheelJoint) GetMotorSpeed() (_swig_ret float32) {
 	var swig_r float32
 	_swig_i_0 := arg1
-	swig_r = (float32)(C._wrap_b2WheelJoint_GetMotorSpeed_Box2D_b1d1b47c7e81f80a(C.uintptr_t(_swig_i_0)))
+	swig_r = (float32)(C._wrap_b2WheelJoint_GetMotorSpeed_Box2D_553c0f9515edf50e(C.uintptr_t(_swig_i_0)))
 	return swig_r
 }
 
 func (arg1 SwigcptrB2WheelJoint) SetMaxMotorTorque(arg2 float32) {
 	_swig_i_0 := arg1
 	_swig_i_1 := arg2
-	C._wrap_b2WheelJoint_SetMaxMotorTorque_Box2D_b1d1b47c7e81f80a(C.uintptr_t(_swig_i_0), C.float(_swig_i_1))
+	C._wrap_b2WheelJoint_SetMaxMotorTorque_Box2D_553c0f9515edf50e(C.uintptr_t(_swig_i_0), C.float(_swig_i_1))
 }
 
 func (arg1 SwigcptrB2WheelJoint) GetMaxMotorTorque() (_swig_ret float32) {
 	var swig_r float32
 	_swig_i_0 := arg1
-	swig_r = (float32)(C._wrap_b2WheelJoint_GetMaxMotorTorque_Box2D_b1d1b47c7e81f80a(C.uintptr_t(_swig_i_0)))
+	swig_r = (float32)(C._wrap_b2WheelJoint_GetMaxMotorTorque_Box2D_553c0f9515edf50e(C.uintptr_t(_swig_i_0)))
 	return swig_r
 }
 
@@ -8756,44 +8900,44 @@ func (arg1 SwigcptrB2WheelJoint) GetMotorTorque(arg2 float32) (_swig_ret float32
 	var swig_r float32
 	_swig_i_0 := arg1
 	_swig_i_1 := arg2
-	swig_r = (float32)(C._wrap_b2WheelJoint_GetMotorTorque_Box2D_b1d1b47c7e81f80a(C.uintptr_t(_swig_i_0), C.float(_swig_i_1)))
+	swig_r = (float32)(C._wrap_b2WheelJoint_GetMotorTorque_Box2D_553c0f9515edf50e(C.uintptr_t(_swig_i_0), C.float(_swig_i_1)))
 	return swig_r
 }
 
 func (arg1 SwigcptrB2WheelJoint) SetSpringFrequencyHz(arg2 float32) {
 	_swig_i_0 := arg1
 	_swig_i_1 := arg2
-	C._wrap_b2WheelJoint_SetSpringFrequencyHz_Box2D_b1d1b47c7e81f80a(C.uintptr_t(_swig_i_0), C.float(_swig_i_1))
+	C._wrap_b2WheelJoint_SetSpringFrequencyHz_Box2D_553c0f9515edf50e(C.uintptr_t(_swig_i_0), C.float(_swig_i_1))
 }
 
 func (arg1 SwigcptrB2WheelJoint) GetSpringFrequencyHz() (_swig_ret float32) {
 	var swig_r float32
 	_swig_i_0 := arg1
-	swig_r = (float32)(C._wrap_b2WheelJoint_GetSpringFrequencyHz_Box2D_b1d1b47c7e81f80a(C.uintptr_t(_swig_i_0)))
+	swig_r = (float32)(C._wrap_b2WheelJoint_GetSpringFrequencyHz_Box2D_553c0f9515edf50e(C.uintptr_t(_swig_i_0)))
 	return swig_r
 }
 
 func (arg1 SwigcptrB2WheelJoint) SetSpringDampingRatio(arg2 float32) {
 	_swig_i_0 := arg1
 	_swig_i_1 := arg2
-	C._wrap_b2WheelJoint_SetSpringDampingRatio_Box2D_b1d1b47c7e81f80a(C.uintptr_t(_swig_i_0), C.float(_swig_i_1))
+	C._wrap_b2WheelJoint_SetSpringDampingRatio_Box2D_553c0f9515edf50e(C.uintptr_t(_swig_i_0), C.float(_swig_i_1))
 }
 
 func (arg1 SwigcptrB2WheelJoint) GetSpringDampingRatio() (_swig_ret float32) {
 	var swig_r float32
 	_swig_i_0 := arg1
-	swig_r = (float32)(C._wrap_b2WheelJoint_GetSpringDampingRatio_Box2D_b1d1b47c7e81f80a(C.uintptr_t(_swig_i_0)))
+	swig_r = (float32)(C._wrap_b2WheelJoint_GetSpringDampingRatio_Box2D_553c0f9515edf50e(C.uintptr_t(_swig_i_0)))
 	return swig_r
 }
 
 func (arg1 SwigcptrB2WheelJoint) Dump() {
 	_swig_i_0 := arg1
-	C._wrap_b2WheelJoint_Dump_Box2D_b1d1b47c7e81f80a(C.uintptr_t(_swig_i_0))
+	C._wrap_b2WheelJoint_Dump_Box2D_553c0f9515edf50e(C.uintptr_t(_swig_i_0))
 }
 
 func DeleteB2WheelJoint(arg1 B2WheelJoint) {
 	_swig_i_0 := arg1.Swigcptr()
-	C._wrap_delete_b2WheelJoint_Box2D_b1d1b47c7e81f80a(C.uintptr_t(_swig_i_0))
+	C._wrap_delete_b2WheelJoint_Box2D_553c0f9515edf50e(C.uintptr_t(_swig_i_0))
 }
 
 type B2WheelJoint interface {
@@ -8951,6 +9095,14 @@ func (p SwigcptrB2Joint) Swigcptr() uintptr {
 	return uintptr(p)
 }
 
+type SwigcptrSwigDirector_b2ContactListener uintptr
+type SwigDirector_b2ContactListener interface {
+	Swigcptr() uintptr;
+}
+func (p SwigcptrSwigDirector_b2ContactListener) Swigcptr() uintptr {
+	return uintptr(p)
+}
+
 type SwigcptrB2LimitState uintptr
 type B2LimitState interface {
 	Swigcptr() uintptr;
@@ -8958,4 +9110,48 @@ type B2LimitState interface {
 func (p SwigcptrB2LimitState) Swigcptr() uintptr {
 	return uintptr(p)
 }
+
+
+
+var swigDirectorTrack struct {
+	sync.Mutex
+	m map[int]interface{}
+	c int
+}
+
+func swigDirectorAdd(v interface{}) int {
+	swigDirectorTrack.Lock()
+	defer swigDirectorTrack.Unlock()
+	if swigDirectorTrack.m == nil {
+		swigDirectorTrack.m = make(map[int]interface{})
+	}
+	swigDirectorTrack.c++
+	ret := swigDirectorTrack.c
+	swigDirectorTrack.m[ret] = v
+	return ret
+}
+
+func swigDirectorLookup(c int) interface{} {
+	swigDirectorTrack.Lock()
+	defer swigDirectorTrack.Unlock()
+	ret := swigDirectorTrack.m[c]
+	if ret == nil {
+		panic("C++ director pointer not found (possible	use-after-free)")
+	}
+	return ret
+}
+
+func swigDirectorDelete(c int) {
+	swigDirectorTrack.Lock()
+	defer swigDirectorTrack.Unlock()
+	if swigDirectorTrack.m[c] == nil {
+		if c > swigDirectorTrack.c {
+			panic("C++ director pointer invalid (possible memory corruption")
+		} else {
+			panic("C++ director pointer not found (possible use-after-free)")
+		}
+	}
+	delete(swigDirectorTrack.m, c)
+}
+
 

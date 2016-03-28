@@ -11,6 +11,7 @@
 // source: Box2D.i
 
 #define SWIGMODULE Box2D
+#define SWIG_DIRECTORS
 
 #ifdef __cplusplus
 /* SwigValueWrapper is described in swig.swg */
@@ -168,8 +169,8 @@ template <typename T> T SwigValueInit() {
 
 
 
-typedef int intgo;
-typedef unsigned int uintgo;
+typedef long long intgo;
+typedef unsigned long long uintgo;
 
 
 # if !defined(__clang__) && (defined(__i386__) || defined(__x86_64__))
@@ -238,11 +239,129 @@ static void Swig_free(void* p) {
 
 #include "Box2D/Box2D.h"
 
+
+// C++ director class methods.
+#include "Box2D_wrap.h"
+
+
+#include <map>
+
+namespace {
+  struct GCItem {
+    virtual ~GCItem() {}
+  };
+
+  struct GCItem_var {
+    GCItem_var(GCItem *item = 0) : _item(item) {
+    }
+
+    GCItem_var& operator=(GCItem *item) {
+      GCItem *tmp = _item;
+      _item = item;
+      delete tmp;
+      return *this;
+    }
+
+    ~GCItem_var() {
+      delete _item;
+    }
+
+    GCItem* operator->() {
+      return _item;
+    }
+
+    private:
+      GCItem *_item;
+  };
+
+  template <typename Type>
+  struct GCItem_T : GCItem {
+    GCItem_T(Type *ptr) : _ptr(ptr) {
+    }
+
+    virtual ~GCItem_T() {
+      delete _ptr;
+    }
+
+  private:
+    Type *_ptr;
+  };
+}
+
+class Swig_memory {
+public:
+  template <typename Type>
+  void swig_acquire_pointer(Type* vptr) {
+    if (vptr) {
+      swig_owner[vptr] = new GCItem_T<Type>(vptr);
+    }
+  }
+private:
+  typedef std::map<void *, GCItem_var> swig_ownership_map;
+  swig_ownership_map swig_owner;
+};
+
+template <typename Type>
+static void swig_acquire_pointer(Swig_memory** pmem, Type* ptr) {
+  if (!pmem) {
+    *pmem = new Swig_memory;
+  }
+  (*pmem)->swig_acquire_pointer(ptr);
+}
+
+SwigDirector_b2ContactListener::SwigDirector_b2ContactListener(int swig_p)
+    : b2ContactListener(),
+      go_val(swig_p), swig_mem(0)
+{ }
+
+extern "C" void Swiggo_DeleteDirector_b2ContactListener_Box2D_553c0f9515edf50e(intgo);
+SwigDirector_b2ContactListener::~SwigDirector_b2ContactListener()
+{
+  Swiggo_DeleteDirector_b2ContactListener_Box2D_553c0f9515edf50e(go_val);
+  delete swig_mem;
+}
+
+extern "C" void Swig_DirectorB2ContactListener_callback_BeginContact_Box2D_553c0f9515edf50e(int, b2Contact *arg2);
+void SwigDirector_b2ContactListener::BeginContact(b2Contact *contact) {
+  b2Contact *swig_arg2;
+  
+  *(b2Contact **)&swig_arg2 = (b2Contact *)contact; 
+  Swig_DirectorB2ContactListener_callback_BeginContact_Box2D_553c0f9515edf50e(go_val, swig_arg2);
+}
+
+extern "C" void Swig_DirectorB2ContactListener_callback_EndContact_Box2D_553c0f9515edf50e(int, b2Contact *arg2);
+void SwigDirector_b2ContactListener::EndContact(b2Contact *contact) {
+  b2Contact *swig_arg2;
+  
+  *(b2Contact **)&swig_arg2 = (b2Contact *)contact; 
+  Swig_DirectorB2ContactListener_callback_EndContact_Box2D_553c0f9515edf50e(go_val, swig_arg2);
+}
+
+extern "C" void Swig_DirectorB2ContactListener_callback_PreSolve_Box2D_553c0f9515edf50e(int, b2Contact *arg2, b2Manifold *arg3);
+void SwigDirector_b2ContactListener::PreSolve(b2Contact *contact, b2Manifold const *oldManifold) {
+  b2Contact *swig_arg2;
+  b2Manifold *swig_arg3;
+  
+  *(b2Contact **)&swig_arg2 = (b2Contact *)contact; 
+  *(b2Manifold **)&swig_arg3 = (b2Manifold *)oldManifold; 
+  Swig_DirectorB2ContactListener_callback_PreSolve_Box2D_553c0f9515edf50e(go_val, swig_arg2, swig_arg3);
+}
+
+extern "C" void Swig_DirectorB2ContactListener_callback_PostSolve_Box2D_553c0f9515edf50e(int, b2Contact *arg2, b2ContactImpulse *arg3);
+void SwigDirector_b2ContactListener::PostSolve(b2Contact *contact, b2ContactImpulse const *impulse) {
+  b2Contact *swig_arg2;
+  b2ContactImpulse *swig_arg3;
+  
+  *(b2Contact **)&swig_arg2 = (b2Contact *)contact; 
+  *(b2ContactImpulse **)&swig_arg3 = (b2ContactImpulse *)impulse; 
+  Swig_DirectorB2ContactListener_callback_PostSolve_Box2D_553c0f9515edf50e(go_val, swig_arg2, swig_arg3);
+}
+
 #ifdef __cplusplus
 extern "C" {
 #endif
 
-void _wrap_Swig_free_Box2D_b1d1b47c7e81f80a(void *_swig_go_0) {
+void _wrap_Swig_free_Box2D_553c0f9515edf50e(void *_swig_go_0) {
   void *arg1 = (void *) 0 ;
   
   arg1 = *(void **)&_swig_go_0; 
@@ -252,7 +371,7 @@ void _wrap_Swig_free_Box2D_b1d1b47c7e81f80a(void *_swig_go_0) {
 }
 
 
-double _wrap_b2_angularSlop_Box2D_b1d1b47c7e81f80a() {
+double _wrap_b2_angularSlop_Box2D_553c0f9515edf50e() {
   double result;
   double _swig_go_result;
   
@@ -264,7 +383,7 @@ double _wrap_b2_angularSlop_Box2D_b1d1b47c7e81f80a() {
 }
 
 
-double _wrap_b2_polygonRadius_Box2D_b1d1b47c7e81f80a() {
+double _wrap_b2_polygonRadius_Box2D_553c0f9515edf50e() {
   double result;
   double _swig_go_result;
   
@@ -276,7 +395,7 @@ double _wrap_b2_polygonRadius_Box2D_b1d1b47c7e81f80a() {
 }
 
 
-double _wrap_b2_maxAngularCorrection_Box2D_b1d1b47c7e81f80a() {
+double _wrap_b2_maxAngularCorrection_Box2D_553c0f9515edf50e() {
   double result;
   double _swig_go_result;
   
@@ -288,7 +407,7 @@ double _wrap_b2_maxAngularCorrection_Box2D_b1d1b47c7e81f80a() {
 }
 
 
-double _wrap_b2_maxTranslationSquared_Box2D_b1d1b47c7e81f80a() {
+double _wrap_b2_maxTranslationSquared_Box2D_553c0f9515edf50e() {
   double result;
   double _swig_go_result;
   
@@ -300,7 +419,7 @@ double _wrap_b2_maxTranslationSquared_Box2D_b1d1b47c7e81f80a() {
 }
 
 
-double _wrap_b2_maxRotation_Box2D_b1d1b47c7e81f80a() {
+double _wrap_b2_maxRotation_Box2D_553c0f9515edf50e() {
   double result;
   double _swig_go_result;
   
@@ -312,7 +431,7 @@ double _wrap_b2_maxRotation_Box2D_b1d1b47c7e81f80a() {
 }
 
 
-double _wrap_b2_maxRotationSquared_Box2D_b1d1b47c7e81f80a() {
+double _wrap_b2_maxRotationSquared_Box2D_553c0f9515edf50e() {
   double result;
   double _swig_go_result;
   
@@ -324,7 +443,7 @@ double _wrap_b2_maxRotationSquared_Box2D_b1d1b47c7e81f80a() {
 }
 
 
-double _wrap_b2_angularSleepTolerance_Box2D_b1d1b47c7e81f80a() {
+double _wrap_b2_angularSleepTolerance_Box2D_553c0f9515edf50e() {
   double result;
   double _swig_go_result;
   
@@ -336,7 +455,7 @@ double _wrap_b2_angularSleepTolerance_Box2D_b1d1b47c7e81f80a() {
 }
 
 
-void *_wrap_b2Alloc_Box2D_b1d1b47c7e81f80a(intgo _swig_go_0) {
+void *_wrap_b2Alloc_Box2D_553c0f9515edf50e(intgo _swig_go_0) {
   int32 arg1 ;
   void *result = 0 ;
   void *_swig_go_result;
@@ -349,7 +468,7 @@ void *_wrap_b2Alloc_Box2D_b1d1b47c7e81f80a(intgo _swig_go_0) {
 }
 
 
-void _wrap_b2Free_Box2D_b1d1b47c7e81f80a(void *_swig_go_0) {
+void _wrap_b2Free_Box2D_553c0f9515edf50e(void *_swig_go_0) {
   void *arg1 = (void *) 0 ;
   
   arg1 = *(void **)&_swig_go_0; 
@@ -359,7 +478,7 @@ void _wrap_b2Free_Box2D_b1d1b47c7e81f80a(void *_swig_go_0) {
 }
 
 
-void _wrap_b2Log_Box2D_b1d1b47c7e81f80a(_gostring_ _swig_go_0) {
+void _wrap_b2Log_Box2D_553c0f9515edf50e(_gostring_ _swig_go_0) {
   char *arg1 = (char *) 0 ;
   void *arg2 = 0 ;
   
@@ -370,7 +489,7 @@ void _wrap_b2Log_Box2D_b1d1b47c7e81f80a(_gostring_ _swig_go_0) {
 }
 
 
-void _wrap_b2Version_major_set_Box2D_b1d1b47c7e81f80a(b2Version *_swig_go_0, intgo _swig_go_1) {
+void _wrap_b2Version_major_set_Box2D_553c0f9515edf50e(b2Version *_swig_go_0, intgo _swig_go_1) {
   b2Version *arg1 = (b2Version *) 0 ;
   int32 arg2 ;
   
@@ -382,7 +501,7 @@ void _wrap_b2Version_major_set_Box2D_b1d1b47c7e81f80a(b2Version *_swig_go_0, int
 }
 
 
-intgo _wrap_b2Version_major_get_Box2D_b1d1b47c7e81f80a(b2Version *_swig_go_0) {
+intgo _wrap_b2Version_major_get_Box2D_553c0f9515edf50e(b2Version *_swig_go_0) {
   b2Version *arg1 = (b2Version *) 0 ;
   int32 result;
   intgo _swig_go_result;
@@ -395,7 +514,7 @@ intgo _wrap_b2Version_major_get_Box2D_b1d1b47c7e81f80a(b2Version *_swig_go_0) {
 }
 
 
-void _wrap_b2Version_minor_set_Box2D_b1d1b47c7e81f80a(b2Version *_swig_go_0, intgo _swig_go_1) {
+void _wrap_b2Version_minor_set_Box2D_553c0f9515edf50e(b2Version *_swig_go_0, intgo _swig_go_1) {
   b2Version *arg1 = (b2Version *) 0 ;
   int32 arg2 ;
   
@@ -407,7 +526,7 @@ void _wrap_b2Version_minor_set_Box2D_b1d1b47c7e81f80a(b2Version *_swig_go_0, int
 }
 
 
-intgo _wrap_b2Version_minor_get_Box2D_b1d1b47c7e81f80a(b2Version *_swig_go_0) {
+intgo _wrap_b2Version_minor_get_Box2D_553c0f9515edf50e(b2Version *_swig_go_0) {
   b2Version *arg1 = (b2Version *) 0 ;
   int32 result;
   intgo _swig_go_result;
@@ -420,7 +539,7 @@ intgo _wrap_b2Version_minor_get_Box2D_b1d1b47c7e81f80a(b2Version *_swig_go_0) {
 }
 
 
-void _wrap_b2Version_revision_set_Box2D_b1d1b47c7e81f80a(b2Version *_swig_go_0, intgo _swig_go_1) {
+void _wrap_b2Version_revision_set_Box2D_553c0f9515edf50e(b2Version *_swig_go_0, intgo _swig_go_1) {
   b2Version *arg1 = (b2Version *) 0 ;
   int32 arg2 ;
   
@@ -432,7 +551,7 @@ void _wrap_b2Version_revision_set_Box2D_b1d1b47c7e81f80a(b2Version *_swig_go_0, 
 }
 
 
-intgo _wrap_b2Version_revision_get_Box2D_b1d1b47c7e81f80a(b2Version *_swig_go_0) {
+intgo _wrap_b2Version_revision_get_Box2D_553c0f9515edf50e(b2Version *_swig_go_0) {
   b2Version *arg1 = (b2Version *) 0 ;
   int32 result;
   intgo _swig_go_result;
@@ -445,7 +564,7 @@ intgo _wrap_b2Version_revision_get_Box2D_b1d1b47c7e81f80a(b2Version *_swig_go_0)
 }
 
 
-b2Version *_wrap_new_b2Version_Box2D_b1d1b47c7e81f80a() {
+b2Version *_wrap_new_b2Version_Box2D_553c0f9515edf50e() {
   b2Version *result = 0 ;
   b2Version *_swig_go_result;
   
@@ -456,7 +575,7 @@ b2Version *_wrap_new_b2Version_Box2D_b1d1b47c7e81f80a() {
 }
 
 
-void _wrap_delete_b2Version_Box2D_b1d1b47c7e81f80a(b2Version *_swig_go_0) {
+void _wrap_delete_b2Version_Box2D_553c0f9515edf50e(b2Version *_swig_go_0) {
   b2Version *arg1 = (b2Version *) 0 ;
   
   arg1 = *(b2Version **)&_swig_go_0; 
@@ -466,7 +585,7 @@ void _wrap_delete_b2Version_Box2D_b1d1b47c7e81f80a(b2Version *_swig_go_0) {
 }
 
 
-void _wrap_b2_version_set_Box2D_b1d1b47c7e81f80a(b2Version *_swig_go_0) {
+void _wrap_b2_version_set_Box2D_553c0f9515edf50e(b2Version *_swig_go_0) {
   b2Version *arg1 = (b2Version *) 0 ;
   
   arg1 = *(b2Version **)&_swig_go_0; 
@@ -476,7 +595,7 @@ void _wrap_b2_version_set_Box2D_b1d1b47c7e81f80a(b2Version *_swig_go_0) {
 }
 
 
-b2Version *_wrap_b2_version_get_Box2D_b1d1b47c7e81f80a() {
+b2Version *_wrap_b2_version_get_Box2D_553c0f9515edf50e() {
   b2Version *result = 0 ;
   b2Version *_swig_go_result;
   
@@ -487,7 +606,7 @@ b2Version *_wrap_b2_version_get_Box2D_b1d1b47c7e81f80a() {
 }
 
 
-b2Color *_wrap_new_b2Color__SWIG_0_Box2D_b1d1b47c7e81f80a() {
+b2Color *_wrap_new_b2Color__SWIG_0_Box2D_553c0f9515edf50e() {
   b2Color *result = 0 ;
   b2Color *_swig_go_result;
   
@@ -498,7 +617,7 @@ b2Color *_wrap_new_b2Color__SWIG_0_Box2D_b1d1b47c7e81f80a() {
 }
 
 
-b2Color *_wrap_new_b2Color__SWIG_1_Box2D_b1d1b47c7e81f80a(float _swig_go_0, float _swig_go_1, float _swig_go_2, float _swig_go_3) {
+b2Color *_wrap_new_b2Color__SWIG_1_Box2D_553c0f9515edf50e(float _swig_go_0, float _swig_go_1, float _swig_go_2, float _swig_go_3) {
   float32 arg1 ;
   float32 arg2 ;
   float32 arg3 ;
@@ -517,7 +636,7 @@ b2Color *_wrap_new_b2Color__SWIG_1_Box2D_b1d1b47c7e81f80a(float _swig_go_0, floa
 }
 
 
-b2Color *_wrap_new_b2Color__SWIG_2_Box2D_b1d1b47c7e81f80a(float _swig_go_0, float _swig_go_1, float _swig_go_2) {
+b2Color *_wrap_new_b2Color__SWIG_2_Box2D_553c0f9515edf50e(float _swig_go_0, float _swig_go_1, float _swig_go_2) {
   float32 arg1 ;
   float32 arg2 ;
   float32 arg3 ;
@@ -534,7 +653,7 @@ b2Color *_wrap_new_b2Color__SWIG_2_Box2D_b1d1b47c7e81f80a(float _swig_go_0, floa
 }
 
 
-void _wrap_b2Color_Set__SWIG_0_Box2D_b1d1b47c7e81f80a(b2Color *_swig_go_0, float _swig_go_1, float _swig_go_2, float _swig_go_3, float _swig_go_4) {
+void _wrap_b2Color_Set__SWIG_0_Box2D_553c0f9515edf50e(b2Color *_swig_go_0, float _swig_go_1, float _swig_go_2, float _swig_go_3, float _swig_go_4) {
   b2Color *arg1 = (b2Color *) 0 ;
   float32 arg2 ;
   float32 arg3 ;
@@ -552,7 +671,7 @@ void _wrap_b2Color_Set__SWIG_0_Box2D_b1d1b47c7e81f80a(b2Color *_swig_go_0, float
 }
 
 
-void _wrap_b2Color_Set__SWIG_1_Box2D_b1d1b47c7e81f80a(b2Color *_swig_go_0, float _swig_go_1, float _swig_go_2, float _swig_go_3) {
+void _wrap_b2Color_Set__SWIG_1_Box2D_553c0f9515edf50e(b2Color *_swig_go_0, float _swig_go_1, float _swig_go_2, float _swig_go_3) {
   b2Color *arg1 = (b2Color *) 0 ;
   float32 arg2 ;
   float32 arg3 ;
@@ -568,7 +687,7 @@ void _wrap_b2Color_Set__SWIG_1_Box2D_b1d1b47c7e81f80a(b2Color *_swig_go_0, float
 }
 
 
-void _wrap_b2Color_r_set_Box2D_b1d1b47c7e81f80a(b2Color *_swig_go_0, float _swig_go_1) {
+void _wrap_b2Color_r_set_Box2D_553c0f9515edf50e(b2Color *_swig_go_0, float _swig_go_1) {
   b2Color *arg1 = (b2Color *) 0 ;
   float32 arg2 ;
   
@@ -580,7 +699,7 @@ void _wrap_b2Color_r_set_Box2D_b1d1b47c7e81f80a(b2Color *_swig_go_0, float _swig
 }
 
 
-float _wrap_b2Color_r_get_Box2D_b1d1b47c7e81f80a(b2Color *_swig_go_0) {
+float _wrap_b2Color_r_get_Box2D_553c0f9515edf50e(b2Color *_swig_go_0) {
   b2Color *arg1 = (b2Color *) 0 ;
   float32 result;
   float _swig_go_result;
@@ -593,7 +712,7 @@ float _wrap_b2Color_r_get_Box2D_b1d1b47c7e81f80a(b2Color *_swig_go_0) {
 }
 
 
-void _wrap_b2Color_g_set_Box2D_b1d1b47c7e81f80a(b2Color *_swig_go_0, float _swig_go_1) {
+void _wrap_b2Color_g_set_Box2D_553c0f9515edf50e(b2Color *_swig_go_0, float _swig_go_1) {
   b2Color *arg1 = (b2Color *) 0 ;
   float32 arg2 ;
   
@@ -605,7 +724,7 @@ void _wrap_b2Color_g_set_Box2D_b1d1b47c7e81f80a(b2Color *_swig_go_0, float _swig
 }
 
 
-float _wrap_b2Color_g_get_Box2D_b1d1b47c7e81f80a(b2Color *_swig_go_0) {
+float _wrap_b2Color_g_get_Box2D_553c0f9515edf50e(b2Color *_swig_go_0) {
   b2Color *arg1 = (b2Color *) 0 ;
   float32 result;
   float _swig_go_result;
@@ -618,7 +737,7 @@ float _wrap_b2Color_g_get_Box2D_b1d1b47c7e81f80a(b2Color *_swig_go_0) {
 }
 
 
-void _wrap_b2Color_b_set_Box2D_b1d1b47c7e81f80a(b2Color *_swig_go_0, float _swig_go_1) {
+void _wrap_b2Color_b_set_Box2D_553c0f9515edf50e(b2Color *_swig_go_0, float _swig_go_1) {
   b2Color *arg1 = (b2Color *) 0 ;
   float32 arg2 ;
   
@@ -630,7 +749,7 @@ void _wrap_b2Color_b_set_Box2D_b1d1b47c7e81f80a(b2Color *_swig_go_0, float _swig
 }
 
 
-float _wrap_b2Color_b_get_Box2D_b1d1b47c7e81f80a(b2Color *_swig_go_0) {
+float _wrap_b2Color_b_get_Box2D_553c0f9515edf50e(b2Color *_swig_go_0) {
   b2Color *arg1 = (b2Color *) 0 ;
   float32 result;
   float _swig_go_result;
@@ -643,7 +762,7 @@ float _wrap_b2Color_b_get_Box2D_b1d1b47c7e81f80a(b2Color *_swig_go_0) {
 }
 
 
-void _wrap_b2Color_a_set_Box2D_b1d1b47c7e81f80a(b2Color *_swig_go_0, float _swig_go_1) {
+void _wrap_b2Color_a_set_Box2D_553c0f9515edf50e(b2Color *_swig_go_0, float _swig_go_1) {
   b2Color *arg1 = (b2Color *) 0 ;
   float32 arg2 ;
   
@@ -655,7 +774,7 @@ void _wrap_b2Color_a_set_Box2D_b1d1b47c7e81f80a(b2Color *_swig_go_0, float _swig
 }
 
 
-float _wrap_b2Color_a_get_Box2D_b1d1b47c7e81f80a(b2Color *_swig_go_0) {
+float _wrap_b2Color_a_get_Box2D_553c0f9515edf50e(b2Color *_swig_go_0) {
   b2Color *arg1 = (b2Color *) 0 ;
   float32 result;
   float _swig_go_result;
@@ -668,7 +787,7 @@ float _wrap_b2Color_a_get_Box2D_b1d1b47c7e81f80a(b2Color *_swig_go_0) {
 }
 
 
-void _wrap_delete_b2Color_Box2D_b1d1b47c7e81f80a(b2Color *_swig_go_0) {
+void _wrap_delete_b2Color_Box2D_553c0f9515edf50e(b2Color *_swig_go_0) {
   b2Color *arg1 = (b2Color *) 0 ;
   
   arg1 = *(b2Color **)&_swig_go_0; 
@@ -678,7 +797,7 @@ void _wrap_delete_b2Color_Box2D_b1d1b47c7e81f80a(b2Color *_swig_go_0) {
 }
 
 
-void _wrap_delete_b2Draw_Box2D_b1d1b47c7e81f80a(b2Draw *_swig_go_0) {
+void _wrap_delete_b2Draw_Box2D_553c0f9515edf50e(b2Draw *_swig_go_0) {
   b2Draw *arg1 = (b2Draw *) 0 ;
   
   arg1 = *(b2Draw **)&_swig_go_0; 
@@ -688,7 +807,7 @@ void _wrap_delete_b2Draw_Box2D_b1d1b47c7e81f80a(b2Draw *_swig_go_0) {
 }
 
 
-intgo _wrap_e_shapeBit_b2Draw_Box2D_b1d1b47c7e81f80a() {
+intgo _wrap_e_shapeBit_b2Draw_Box2D_553c0f9515edf50e() {
   int result;
   intgo _swig_go_result;
   
@@ -700,7 +819,7 @@ intgo _wrap_e_shapeBit_b2Draw_Box2D_b1d1b47c7e81f80a() {
 }
 
 
-intgo _wrap_e_jointBit_b2Draw_Box2D_b1d1b47c7e81f80a() {
+intgo _wrap_e_jointBit_b2Draw_Box2D_553c0f9515edf50e() {
   int result;
   intgo _swig_go_result;
   
@@ -712,7 +831,7 @@ intgo _wrap_e_jointBit_b2Draw_Box2D_b1d1b47c7e81f80a() {
 }
 
 
-intgo _wrap_e_aabbBit_b2Draw_Box2D_b1d1b47c7e81f80a() {
+intgo _wrap_e_aabbBit_b2Draw_Box2D_553c0f9515edf50e() {
   int result;
   intgo _swig_go_result;
   
@@ -724,7 +843,7 @@ intgo _wrap_e_aabbBit_b2Draw_Box2D_b1d1b47c7e81f80a() {
 }
 
 
-intgo _wrap_e_pairBit_b2Draw_Box2D_b1d1b47c7e81f80a() {
+intgo _wrap_e_pairBit_b2Draw_Box2D_553c0f9515edf50e() {
   int result;
   intgo _swig_go_result;
   
@@ -736,7 +855,7 @@ intgo _wrap_e_pairBit_b2Draw_Box2D_b1d1b47c7e81f80a() {
 }
 
 
-intgo _wrap_e_centerOfMassBit_b2Draw_Box2D_b1d1b47c7e81f80a() {
+intgo _wrap_e_centerOfMassBit_b2Draw_Box2D_553c0f9515edf50e() {
   int result;
   intgo _swig_go_result;
   
@@ -748,7 +867,7 @@ intgo _wrap_e_centerOfMassBit_b2Draw_Box2D_b1d1b47c7e81f80a() {
 }
 
 
-void _wrap_b2Draw_SetFlags_Box2D_b1d1b47c7e81f80a(b2Draw *_swig_go_0, intgo _swig_go_1) {
+void _wrap_b2Draw_SetFlags_Box2D_553c0f9515edf50e(b2Draw *_swig_go_0, intgo _swig_go_1) {
   b2Draw *arg1 = (b2Draw *) 0 ;
   uint32 arg2 ;
   
@@ -760,7 +879,7 @@ void _wrap_b2Draw_SetFlags_Box2D_b1d1b47c7e81f80a(b2Draw *_swig_go_0, intgo _swi
 }
 
 
-intgo _wrap_b2Draw_GetFlags_Box2D_b1d1b47c7e81f80a(b2Draw *_swig_go_0) {
+intgo _wrap_b2Draw_GetFlags_Box2D_553c0f9515edf50e(b2Draw *_swig_go_0) {
   b2Draw *arg1 = (b2Draw *) 0 ;
   uint32 result;
   intgo _swig_go_result;
@@ -773,7 +892,7 @@ intgo _wrap_b2Draw_GetFlags_Box2D_b1d1b47c7e81f80a(b2Draw *_swig_go_0) {
 }
 
 
-void _wrap_b2Draw_AppendFlags_Box2D_b1d1b47c7e81f80a(b2Draw *_swig_go_0, intgo _swig_go_1) {
+void _wrap_b2Draw_AppendFlags_Box2D_553c0f9515edf50e(b2Draw *_swig_go_0, intgo _swig_go_1) {
   b2Draw *arg1 = (b2Draw *) 0 ;
   uint32 arg2 ;
   
@@ -785,7 +904,7 @@ void _wrap_b2Draw_AppendFlags_Box2D_b1d1b47c7e81f80a(b2Draw *_swig_go_0, intgo _
 }
 
 
-void _wrap_b2Draw_ClearFlags_Box2D_b1d1b47c7e81f80a(b2Draw *_swig_go_0, intgo _swig_go_1) {
+void _wrap_b2Draw_ClearFlags_Box2D_553c0f9515edf50e(b2Draw *_swig_go_0, intgo _swig_go_1) {
   b2Draw *arg1 = (b2Draw *) 0 ;
   uint32 arg2 ;
   
@@ -797,7 +916,7 @@ void _wrap_b2Draw_ClearFlags_Box2D_b1d1b47c7e81f80a(b2Draw *_swig_go_0, intgo _s
 }
 
 
-void _wrap_b2Draw_DrawPolygon_Box2D_b1d1b47c7e81f80a(b2Draw *_swig_go_0, b2Vec2 *_swig_go_1, intgo _swig_go_2, b2Color *_swig_go_3) {
+void _wrap_b2Draw_DrawPolygon_Box2D_553c0f9515edf50e(b2Draw *_swig_go_0, b2Vec2 *_swig_go_1, intgo _swig_go_2, b2Color *_swig_go_3) {
   b2Draw *arg1 = (b2Draw *) 0 ;
   b2Vec2 *arg2 = (b2Vec2 *) 0 ;
   int32 arg3 ;
@@ -813,7 +932,7 @@ void _wrap_b2Draw_DrawPolygon_Box2D_b1d1b47c7e81f80a(b2Draw *_swig_go_0, b2Vec2 
 }
 
 
-void _wrap_b2Draw_DrawSolidPolygon_Box2D_b1d1b47c7e81f80a(b2Draw *_swig_go_0, b2Vec2 *_swig_go_1, intgo _swig_go_2, b2Color *_swig_go_3) {
+void _wrap_b2Draw_DrawSolidPolygon_Box2D_553c0f9515edf50e(b2Draw *_swig_go_0, b2Vec2 *_swig_go_1, intgo _swig_go_2, b2Color *_swig_go_3) {
   b2Draw *arg1 = (b2Draw *) 0 ;
   b2Vec2 *arg2 = (b2Vec2 *) 0 ;
   int32 arg3 ;
@@ -829,7 +948,7 @@ void _wrap_b2Draw_DrawSolidPolygon_Box2D_b1d1b47c7e81f80a(b2Draw *_swig_go_0, b2
 }
 
 
-void _wrap_b2Draw_DrawCircle_Box2D_b1d1b47c7e81f80a(b2Draw *_swig_go_0, b2Vec2 *_swig_go_1, float _swig_go_2, b2Color *_swig_go_3) {
+void _wrap_b2Draw_DrawCircle_Box2D_553c0f9515edf50e(b2Draw *_swig_go_0, b2Vec2 *_swig_go_1, float _swig_go_2, b2Color *_swig_go_3) {
   b2Draw *arg1 = (b2Draw *) 0 ;
   b2Vec2 *arg2 = 0 ;
   float32 arg3 ;
@@ -845,7 +964,7 @@ void _wrap_b2Draw_DrawCircle_Box2D_b1d1b47c7e81f80a(b2Draw *_swig_go_0, b2Vec2 *
 }
 
 
-void _wrap_b2Draw_DrawSolidCircle_Box2D_b1d1b47c7e81f80a(b2Draw *_swig_go_0, b2Vec2 *_swig_go_1, float _swig_go_2, b2Vec2 *_swig_go_3, b2Color *_swig_go_4) {
+void _wrap_b2Draw_DrawSolidCircle_Box2D_553c0f9515edf50e(b2Draw *_swig_go_0, b2Vec2 *_swig_go_1, float _swig_go_2, b2Vec2 *_swig_go_3, b2Color *_swig_go_4) {
   b2Draw *arg1 = (b2Draw *) 0 ;
   b2Vec2 *arg2 = 0 ;
   float32 arg3 ;
@@ -863,7 +982,7 @@ void _wrap_b2Draw_DrawSolidCircle_Box2D_b1d1b47c7e81f80a(b2Draw *_swig_go_0, b2V
 }
 
 
-void _wrap_b2Draw_DrawSegment_Box2D_b1d1b47c7e81f80a(b2Draw *_swig_go_0, b2Vec2 *_swig_go_1, b2Vec2 *_swig_go_2, b2Color *_swig_go_3) {
+void _wrap_b2Draw_DrawSegment_Box2D_553c0f9515edf50e(b2Draw *_swig_go_0, b2Vec2 *_swig_go_1, b2Vec2 *_swig_go_2, b2Color *_swig_go_3) {
   b2Draw *arg1 = (b2Draw *) 0 ;
   b2Vec2 *arg2 = 0 ;
   b2Vec2 *arg3 = 0 ;
@@ -879,7 +998,7 @@ void _wrap_b2Draw_DrawSegment_Box2D_b1d1b47c7e81f80a(b2Draw *_swig_go_0, b2Vec2 
 }
 
 
-void _wrap_b2Draw_DrawTransform_Box2D_b1d1b47c7e81f80a(b2Draw *_swig_go_0, b2Transform *_swig_go_1) {
+void _wrap_b2Draw_DrawTransform_Box2D_553c0f9515edf50e(b2Draw *_swig_go_0, b2Transform *_swig_go_1) {
   b2Draw *arg1 = (b2Draw *) 0 ;
   b2Transform *arg2 = 0 ;
   
@@ -891,7 +1010,7 @@ void _wrap_b2Draw_DrawTransform_Box2D_b1d1b47c7e81f80a(b2Draw *_swig_go_0, b2Tra
 }
 
 
-b2Timer *_wrap_new_b2Timer_Box2D_b1d1b47c7e81f80a() {
+b2Timer *_wrap_new_b2Timer_Box2D_553c0f9515edf50e() {
   b2Timer *result = 0 ;
   b2Timer *_swig_go_result;
   
@@ -902,7 +1021,7 @@ b2Timer *_wrap_new_b2Timer_Box2D_b1d1b47c7e81f80a() {
 }
 
 
-void _wrap_b2Timer_Reset_Box2D_b1d1b47c7e81f80a(b2Timer *_swig_go_0) {
+void _wrap_b2Timer_Reset_Box2D_553c0f9515edf50e(b2Timer *_swig_go_0) {
   b2Timer *arg1 = (b2Timer *) 0 ;
   
   arg1 = *(b2Timer **)&_swig_go_0; 
@@ -912,7 +1031,7 @@ void _wrap_b2Timer_Reset_Box2D_b1d1b47c7e81f80a(b2Timer *_swig_go_0) {
 }
 
 
-float _wrap_b2Timer_GetMilliseconds_Box2D_b1d1b47c7e81f80a(b2Timer *_swig_go_0) {
+float _wrap_b2Timer_GetMilliseconds_Box2D_553c0f9515edf50e(b2Timer *_swig_go_0) {
   b2Timer *arg1 = (b2Timer *) 0 ;
   float32 result;
   float _swig_go_result;
@@ -925,7 +1044,7 @@ float _wrap_b2Timer_GetMilliseconds_Box2D_b1d1b47c7e81f80a(b2Timer *_swig_go_0) 
 }
 
 
-void _wrap_delete_b2Timer_Box2D_b1d1b47c7e81f80a(b2Timer *_swig_go_0) {
+void _wrap_delete_b2Timer_Box2D_553c0f9515edf50e(b2Timer *_swig_go_0) {
   b2Timer *arg1 = (b2Timer *) 0 ;
   
   arg1 = *(b2Timer **)&_swig_go_0; 
@@ -935,7 +1054,7 @@ void _wrap_delete_b2Timer_Box2D_b1d1b47c7e81f80a(b2Timer *_swig_go_0) {
 }
 
 
-b2CircleShape *_wrap_new_b2CircleShape_Box2D_b1d1b47c7e81f80a() {
+b2CircleShape *_wrap_new_b2CircleShape_Box2D_553c0f9515edf50e() {
   b2CircleShape *result = 0 ;
   b2CircleShape *_swig_go_result;
   
@@ -946,7 +1065,7 @@ b2CircleShape *_wrap_new_b2CircleShape_Box2D_b1d1b47c7e81f80a() {
 }
 
 
-b2Shape *_wrap_b2CircleShape_Clone_Box2D_b1d1b47c7e81f80a(b2CircleShape *_swig_go_0, b2BlockAllocator *_swig_go_1) {
+b2Shape *_wrap_b2CircleShape_Clone_Box2D_553c0f9515edf50e(b2CircleShape *_swig_go_0, b2BlockAllocator *_swig_go_1) {
   b2CircleShape *arg1 = (b2CircleShape *) 0 ;
   b2BlockAllocator *arg2 = (b2BlockAllocator *) 0 ;
   b2Shape *result = 0 ;
@@ -961,7 +1080,7 @@ b2Shape *_wrap_b2CircleShape_Clone_Box2D_b1d1b47c7e81f80a(b2CircleShape *_swig_g
 }
 
 
-intgo _wrap_b2CircleShape_GetChildCount_Box2D_b1d1b47c7e81f80a(b2CircleShape *_swig_go_0) {
+intgo _wrap_b2CircleShape_GetChildCount_Box2D_553c0f9515edf50e(b2CircleShape *_swig_go_0) {
   b2CircleShape *arg1 = (b2CircleShape *) 0 ;
   int32 result;
   intgo _swig_go_result;
@@ -974,7 +1093,7 @@ intgo _wrap_b2CircleShape_GetChildCount_Box2D_b1d1b47c7e81f80a(b2CircleShape *_s
 }
 
 
-bool _wrap_b2CircleShape_TestPoint_Box2D_b1d1b47c7e81f80a(b2CircleShape *_swig_go_0, b2Transform *_swig_go_1, b2Vec2 *_swig_go_2) {
+bool _wrap_b2CircleShape_TestPoint_Box2D_553c0f9515edf50e(b2CircleShape *_swig_go_0, b2Transform *_swig_go_1, b2Vec2 *_swig_go_2) {
   b2CircleShape *arg1 = (b2CircleShape *) 0 ;
   b2Transform *arg2 = 0 ;
   b2Vec2 *arg3 = 0 ;
@@ -991,7 +1110,7 @@ bool _wrap_b2CircleShape_TestPoint_Box2D_b1d1b47c7e81f80a(b2CircleShape *_swig_g
 }
 
 
-bool _wrap_b2CircleShape_RayCast_Box2D_b1d1b47c7e81f80a(b2CircleShape *_swig_go_0, b2RayCastOutput *_swig_go_1, b2RayCastInput *_swig_go_2, b2Transform *_swig_go_3, intgo _swig_go_4) {
+bool _wrap_b2CircleShape_RayCast_Box2D_553c0f9515edf50e(b2CircleShape *_swig_go_0, b2RayCastOutput *_swig_go_1, b2RayCastInput *_swig_go_2, b2Transform *_swig_go_3, intgo _swig_go_4) {
   b2CircleShape *arg1 = (b2CircleShape *) 0 ;
   b2RayCastOutput *arg2 = (b2RayCastOutput *) 0 ;
   b2RayCastInput *arg3 = 0 ;
@@ -1012,7 +1131,7 @@ bool _wrap_b2CircleShape_RayCast_Box2D_b1d1b47c7e81f80a(b2CircleShape *_swig_go_
 }
 
 
-void _wrap_b2CircleShape_ComputeAABB_Box2D_b1d1b47c7e81f80a(b2CircleShape *_swig_go_0, b2AABB *_swig_go_1, b2Transform *_swig_go_2, intgo _swig_go_3) {
+void _wrap_b2CircleShape_ComputeAABB_Box2D_553c0f9515edf50e(b2CircleShape *_swig_go_0, b2AABB *_swig_go_1, b2Transform *_swig_go_2, intgo _swig_go_3) {
   b2CircleShape *arg1 = (b2CircleShape *) 0 ;
   b2AABB *arg2 = (b2AABB *) 0 ;
   b2Transform *arg3 = 0 ;
@@ -1028,7 +1147,7 @@ void _wrap_b2CircleShape_ComputeAABB_Box2D_b1d1b47c7e81f80a(b2CircleShape *_swig
 }
 
 
-void _wrap_b2CircleShape_ComputeMass_Box2D_b1d1b47c7e81f80a(b2CircleShape *_swig_go_0, b2MassData *_swig_go_1, float _swig_go_2) {
+void _wrap_b2CircleShape_ComputeMass_Box2D_553c0f9515edf50e(b2CircleShape *_swig_go_0, b2MassData *_swig_go_1, float _swig_go_2) {
   b2CircleShape *arg1 = (b2CircleShape *) 0 ;
   b2MassData *arg2 = (b2MassData *) 0 ;
   float32 arg3 ;
@@ -1042,7 +1161,7 @@ void _wrap_b2CircleShape_ComputeMass_Box2D_b1d1b47c7e81f80a(b2CircleShape *_swig
 }
 
 
-intgo _wrap_b2CircleShape_GetSupport_Box2D_b1d1b47c7e81f80a(b2CircleShape *_swig_go_0, b2Vec2 *_swig_go_1) {
+intgo _wrap_b2CircleShape_GetSupport_Box2D_553c0f9515edf50e(b2CircleShape *_swig_go_0, b2Vec2 *_swig_go_1) {
   b2CircleShape *arg1 = (b2CircleShape *) 0 ;
   b2Vec2 *arg2 = 0 ;
   int32 result;
@@ -1057,7 +1176,7 @@ intgo _wrap_b2CircleShape_GetSupport_Box2D_b1d1b47c7e81f80a(b2CircleShape *_swig
 }
 
 
-b2Vec2 *_wrap_b2CircleShape_GetSupportVertex_Box2D_b1d1b47c7e81f80a(b2CircleShape *_swig_go_0, b2Vec2 *_swig_go_1) {
+b2Vec2 *_wrap_b2CircleShape_GetSupportVertex_Box2D_553c0f9515edf50e(b2CircleShape *_swig_go_0, b2Vec2 *_swig_go_1) {
   b2CircleShape *arg1 = (b2CircleShape *) 0 ;
   b2Vec2 *arg2 = 0 ;
   b2Vec2 *result = 0 ;
@@ -1072,7 +1191,7 @@ b2Vec2 *_wrap_b2CircleShape_GetSupportVertex_Box2D_b1d1b47c7e81f80a(b2CircleShap
 }
 
 
-intgo _wrap_b2CircleShape_GetVertexCount_Box2D_b1d1b47c7e81f80a(b2CircleShape *_swig_go_0) {
+intgo _wrap_b2CircleShape_GetVertexCount_Box2D_553c0f9515edf50e(b2CircleShape *_swig_go_0) {
   b2CircleShape *arg1 = (b2CircleShape *) 0 ;
   int32 result;
   intgo _swig_go_result;
@@ -1085,7 +1204,7 @@ intgo _wrap_b2CircleShape_GetVertexCount_Box2D_b1d1b47c7e81f80a(b2CircleShape *_
 }
 
 
-b2Vec2 *_wrap_b2CircleShape_GetVertex_Box2D_b1d1b47c7e81f80a(b2CircleShape *_swig_go_0, intgo _swig_go_1) {
+b2Vec2 *_wrap_b2CircleShape_GetVertex_Box2D_553c0f9515edf50e(b2CircleShape *_swig_go_0, intgo _swig_go_1) {
   b2CircleShape *arg1 = (b2CircleShape *) 0 ;
   int32 arg2 ;
   b2Vec2 *result = 0 ;
@@ -1100,7 +1219,7 @@ b2Vec2 *_wrap_b2CircleShape_GetVertex_Box2D_b1d1b47c7e81f80a(b2CircleShape *_swi
 }
 
 
-void _wrap_b2CircleShape_m_p_set_Box2D_b1d1b47c7e81f80a(b2CircleShape *_swig_go_0, b2Vec2 *_swig_go_1) {
+void _wrap_b2CircleShape_m_p_set_Box2D_553c0f9515edf50e(b2CircleShape *_swig_go_0, b2Vec2 *_swig_go_1) {
   b2CircleShape *arg1 = (b2CircleShape *) 0 ;
   b2Vec2 *arg2 = (b2Vec2 *) 0 ;
   
@@ -1112,7 +1231,7 @@ void _wrap_b2CircleShape_m_p_set_Box2D_b1d1b47c7e81f80a(b2CircleShape *_swig_go_
 }
 
 
-b2Vec2 *_wrap_b2CircleShape_m_p_get_Box2D_b1d1b47c7e81f80a(b2CircleShape *_swig_go_0) {
+b2Vec2 *_wrap_b2CircleShape_m_p_get_Box2D_553c0f9515edf50e(b2CircleShape *_swig_go_0) {
   b2CircleShape *arg1 = (b2CircleShape *) 0 ;
   b2Vec2 *result = 0 ;
   b2Vec2 *_swig_go_result;
@@ -1125,7 +1244,7 @@ b2Vec2 *_wrap_b2CircleShape_m_p_get_Box2D_b1d1b47c7e81f80a(b2CircleShape *_swig_
 }
 
 
-void _wrap_delete_b2CircleShape_Box2D_b1d1b47c7e81f80a(b2CircleShape *_swig_go_0) {
+void _wrap_delete_b2CircleShape_Box2D_553c0f9515edf50e(b2CircleShape *_swig_go_0) {
   b2CircleShape *arg1 = (b2CircleShape *) 0 ;
   
   arg1 = *(b2CircleShape **)&_swig_go_0; 
@@ -1135,7 +1254,7 @@ void _wrap_delete_b2CircleShape_Box2D_b1d1b47c7e81f80a(b2CircleShape *_swig_go_0
 }
 
 
-b2EdgeShape *_wrap_new_b2EdgeShape_Box2D_b1d1b47c7e81f80a() {
+b2EdgeShape *_wrap_new_b2EdgeShape_Box2D_553c0f9515edf50e() {
   b2EdgeShape *result = 0 ;
   b2EdgeShape *_swig_go_result;
   
@@ -1146,7 +1265,7 @@ b2EdgeShape *_wrap_new_b2EdgeShape_Box2D_b1d1b47c7e81f80a() {
 }
 
 
-void _wrap_b2EdgeShape_Set_Box2D_b1d1b47c7e81f80a(b2EdgeShape *_swig_go_0, b2Vec2 *_swig_go_1, b2Vec2 *_swig_go_2) {
+void _wrap_b2EdgeShape_Set_Box2D_553c0f9515edf50e(b2EdgeShape *_swig_go_0, b2Vec2 *_swig_go_1, b2Vec2 *_swig_go_2) {
   b2EdgeShape *arg1 = (b2EdgeShape *) 0 ;
   b2Vec2 *arg2 = 0 ;
   b2Vec2 *arg3 = 0 ;
@@ -1160,7 +1279,7 @@ void _wrap_b2EdgeShape_Set_Box2D_b1d1b47c7e81f80a(b2EdgeShape *_swig_go_0, b2Vec
 }
 
 
-b2Shape *_wrap_b2EdgeShape_Clone_Box2D_b1d1b47c7e81f80a(b2EdgeShape *_swig_go_0, b2BlockAllocator *_swig_go_1) {
+b2Shape *_wrap_b2EdgeShape_Clone_Box2D_553c0f9515edf50e(b2EdgeShape *_swig_go_0, b2BlockAllocator *_swig_go_1) {
   b2EdgeShape *arg1 = (b2EdgeShape *) 0 ;
   b2BlockAllocator *arg2 = (b2BlockAllocator *) 0 ;
   b2Shape *result = 0 ;
@@ -1175,7 +1294,7 @@ b2Shape *_wrap_b2EdgeShape_Clone_Box2D_b1d1b47c7e81f80a(b2EdgeShape *_swig_go_0,
 }
 
 
-intgo _wrap_b2EdgeShape_GetChildCount_Box2D_b1d1b47c7e81f80a(b2EdgeShape *_swig_go_0) {
+intgo _wrap_b2EdgeShape_GetChildCount_Box2D_553c0f9515edf50e(b2EdgeShape *_swig_go_0) {
   b2EdgeShape *arg1 = (b2EdgeShape *) 0 ;
   int32 result;
   intgo _swig_go_result;
@@ -1188,7 +1307,7 @@ intgo _wrap_b2EdgeShape_GetChildCount_Box2D_b1d1b47c7e81f80a(b2EdgeShape *_swig_
 }
 
 
-bool _wrap_b2EdgeShape_TestPoint_Box2D_b1d1b47c7e81f80a(b2EdgeShape *_swig_go_0, b2Transform *_swig_go_1, b2Vec2 *_swig_go_2) {
+bool _wrap_b2EdgeShape_TestPoint_Box2D_553c0f9515edf50e(b2EdgeShape *_swig_go_0, b2Transform *_swig_go_1, b2Vec2 *_swig_go_2) {
   b2EdgeShape *arg1 = (b2EdgeShape *) 0 ;
   b2Transform *arg2 = 0 ;
   b2Vec2 *arg3 = 0 ;
@@ -1205,7 +1324,7 @@ bool _wrap_b2EdgeShape_TestPoint_Box2D_b1d1b47c7e81f80a(b2EdgeShape *_swig_go_0,
 }
 
 
-bool _wrap_b2EdgeShape_RayCast_Box2D_b1d1b47c7e81f80a(b2EdgeShape *_swig_go_0, b2RayCastOutput *_swig_go_1, b2RayCastInput *_swig_go_2, b2Transform *_swig_go_3, intgo _swig_go_4) {
+bool _wrap_b2EdgeShape_RayCast_Box2D_553c0f9515edf50e(b2EdgeShape *_swig_go_0, b2RayCastOutput *_swig_go_1, b2RayCastInput *_swig_go_2, b2Transform *_swig_go_3, intgo _swig_go_4) {
   b2EdgeShape *arg1 = (b2EdgeShape *) 0 ;
   b2RayCastOutput *arg2 = (b2RayCastOutput *) 0 ;
   b2RayCastInput *arg3 = 0 ;
@@ -1226,7 +1345,7 @@ bool _wrap_b2EdgeShape_RayCast_Box2D_b1d1b47c7e81f80a(b2EdgeShape *_swig_go_0, b
 }
 
 
-void _wrap_b2EdgeShape_ComputeAABB_Box2D_b1d1b47c7e81f80a(b2EdgeShape *_swig_go_0, b2AABB *_swig_go_1, b2Transform *_swig_go_2, intgo _swig_go_3) {
+void _wrap_b2EdgeShape_ComputeAABB_Box2D_553c0f9515edf50e(b2EdgeShape *_swig_go_0, b2AABB *_swig_go_1, b2Transform *_swig_go_2, intgo _swig_go_3) {
   b2EdgeShape *arg1 = (b2EdgeShape *) 0 ;
   b2AABB *arg2 = (b2AABB *) 0 ;
   b2Transform *arg3 = 0 ;
@@ -1242,7 +1361,7 @@ void _wrap_b2EdgeShape_ComputeAABB_Box2D_b1d1b47c7e81f80a(b2EdgeShape *_swig_go_
 }
 
 
-void _wrap_b2EdgeShape_ComputeMass_Box2D_b1d1b47c7e81f80a(b2EdgeShape *_swig_go_0, b2MassData *_swig_go_1, float _swig_go_2) {
+void _wrap_b2EdgeShape_ComputeMass_Box2D_553c0f9515edf50e(b2EdgeShape *_swig_go_0, b2MassData *_swig_go_1, float _swig_go_2) {
   b2EdgeShape *arg1 = (b2EdgeShape *) 0 ;
   b2MassData *arg2 = (b2MassData *) 0 ;
   float32 arg3 ;
@@ -1256,7 +1375,7 @@ void _wrap_b2EdgeShape_ComputeMass_Box2D_b1d1b47c7e81f80a(b2EdgeShape *_swig_go_
 }
 
 
-void _wrap_b2EdgeShape_m_vertex1_set_Box2D_b1d1b47c7e81f80a(b2EdgeShape *_swig_go_0, b2Vec2 *_swig_go_1) {
+void _wrap_b2EdgeShape_m_vertex1_set_Box2D_553c0f9515edf50e(b2EdgeShape *_swig_go_0, b2Vec2 *_swig_go_1) {
   b2EdgeShape *arg1 = (b2EdgeShape *) 0 ;
   b2Vec2 *arg2 = (b2Vec2 *) 0 ;
   
@@ -1268,7 +1387,7 @@ void _wrap_b2EdgeShape_m_vertex1_set_Box2D_b1d1b47c7e81f80a(b2EdgeShape *_swig_g
 }
 
 
-b2Vec2 *_wrap_b2EdgeShape_m_vertex1_get_Box2D_b1d1b47c7e81f80a(b2EdgeShape *_swig_go_0) {
+b2Vec2 *_wrap_b2EdgeShape_m_vertex1_get_Box2D_553c0f9515edf50e(b2EdgeShape *_swig_go_0) {
   b2EdgeShape *arg1 = (b2EdgeShape *) 0 ;
   b2Vec2 *result = 0 ;
   b2Vec2 *_swig_go_result;
@@ -1281,7 +1400,7 @@ b2Vec2 *_wrap_b2EdgeShape_m_vertex1_get_Box2D_b1d1b47c7e81f80a(b2EdgeShape *_swi
 }
 
 
-void _wrap_b2EdgeShape_m_vertex2_set_Box2D_b1d1b47c7e81f80a(b2EdgeShape *_swig_go_0, b2Vec2 *_swig_go_1) {
+void _wrap_b2EdgeShape_m_vertex2_set_Box2D_553c0f9515edf50e(b2EdgeShape *_swig_go_0, b2Vec2 *_swig_go_1) {
   b2EdgeShape *arg1 = (b2EdgeShape *) 0 ;
   b2Vec2 *arg2 = (b2Vec2 *) 0 ;
   
@@ -1293,7 +1412,7 @@ void _wrap_b2EdgeShape_m_vertex2_set_Box2D_b1d1b47c7e81f80a(b2EdgeShape *_swig_g
 }
 
 
-b2Vec2 *_wrap_b2EdgeShape_m_vertex2_get_Box2D_b1d1b47c7e81f80a(b2EdgeShape *_swig_go_0) {
+b2Vec2 *_wrap_b2EdgeShape_m_vertex2_get_Box2D_553c0f9515edf50e(b2EdgeShape *_swig_go_0) {
   b2EdgeShape *arg1 = (b2EdgeShape *) 0 ;
   b2Vec2 *result = 0 ;
   b2Vec2 *_swig_go_result;
@@ -1306,7 +1425,7 @@ b2Vec2 *_wrap_b2EdgeShape_m_vertex2_get_Box2D_b1d1b47c7e81f80a(b2EdgeShape *_swi
 }
 
 
-void _wrap_b2EdgeShape_m_vertex0_set_Box2D_b1d1b47c7e81f80a(b2EdgeShape *_swig_go_0, b2Vec2 *_swig_go_1) {
+void _wrap_b2EdgeShape_m_vertex0_set_Box2D_553c0f9515edf50e(b2EdgeShape *_swig_go_0, b2Vec2 *_swig_go_1) {
   b2EdgeShape *arg1 = (b2EdgeShape *) 0 ;
   b2Vec2 *arg2 = (b2Vec2 *) 0 ;
   
@@ -1318,7 +1437,7 @@ void _wrap_b2EdgeShape_m_vertex0_set_Box2D_b1d1b47c7e81f80a(b2EdgeShape *_swig_g
 }
 
 
-b2Vec2 *_wrap_b2EdgeShape_m_vertex0_get_Box2D_b1d1b47c7e81f80a(b2EdgeShape *_swig_go_0) {
+b2Vec2 *_wrap_b2EdgeShape_m_vertex0_get_Box2D_553c0f9515edf50e(b2EdgeShape *_swig_go_0) {
   b2EdgeShape *arg1 = (b2EdgeShape *) 0 ;
   b2Vec2 *result = 0 ;
   b2Vec2 *_swig_go_result;
@@ -1331,7 +1450,7 @@ b2Vec2 *_wrap_b2EdgeShape_m_vertex0_get_Box2D_b1d1b47c7e81f80a(b2EdgeShape *_swi
 }
 
 
-void _wrap_b2EdgeShape_m_vertex3_set_Box2D_b1d1b47c7e81f80a(b2EdgeShape *_swig_go_0, b2Vec2 *_swig_go_1) {
+void _wrap_b2EdgeShape_m_vertex3_set_Box2D_553c0f9515edf50e(b2EdgeShape *_swig_go_0, b2Vec2 *_swig_go_1) {
   b2EdgeShape *arg1 = (b2EdgeShape *) 0 ;
   b2Vec2 *arg2 = (b2Vec2 *) 0 ;
   
@@ -1343,7 +1462,7 @@ void _wrap_b2EdgeShape_m_vertex3_set_Box2D_b1d1b47c7e81f80a(b2EdgeShape *_swig_g
 }
 
 
-b2Vec2 *_wrap_b2EdgeShape_m_vertex3_get_Box2D_b1d1b47c7e81f80a(b2EdgeShape *_swig_go_0) {
+b2Vec2 *_wrap_b2EdgeShape_m_vertex3_get_Box2D_553c0f9515edf50e(b2EdgeShape *_swig_go_0) {
   b2EdgeShape *arg1 = (b2EdgeShape *) 0 ;
   b2Vec2 *result = 0 ;
   b2Vec2 *_swig_go_result;
@@ -1356,7 +1475,7 @@ b2Vec2 *_wrap_b2EdgeShape_m_vertex3_get_Box2D_b1d1b47c7e81f80a(b2EdgeShape *_swi
 }
 
 
-void _wrap_b2EdgeShape_m_hasVertex0_set_Box2D_b1d1b47c7e81f80a(b2EdgeShape *_swig_go_0, bool _swig_go_1) {
+void _wrap_b2EdgeShape_m_hasVertex0_set_Box2D_553c0f9515edf50e(b2EdgeShape *_swig_go_0, bool _swig_go_1) {
   b2EdgeShape *arg1 = (b2EdgeShape *) 0 ;
   bool arg2 ;
   
@@ -1368,7 +1487,7 @@ void _wrap_b2EdgeShape_m_hasVertex0_set_Box2D_b1d1b47c7e81f80a(b2EdgeShape *_swi
 }
 
 
-bool _wrap_b2EdgeShape_m_hasVertex0_get_Box2D_b1d1b47c7e81f80a(b2EdgeShape *_swig_go_0) {
+bool _wrap_b2EdgeShape_m_hasVertex0_get_Box2D_553c0f9515edf50e(b2EdgeShape *_swig_go_0) {
   b2EdgeShape *arg1 = (b2EdgeShape *) 0 ;
   bool result;
   bool _swig_go_result;
@@ -1381,7 +1500,7 @@ bool _wrap_b2EdgeShape_m_hasVertex0_get_Box2D_b1d1b47c7e81f80a(b2EdgeShape *_swi
 }
 
 
-void _wrap_b2EdgeShape_m_hasVertex3_set_Box2D_b1d1b47c7e81f80a(b2EdgeShape *_swig_go_0, bool _swig_go_1) {
+void _wrap_b2EdgeShape_m_hasVertex3_set_Box2D_553c0f9515edf50e(b2EdgeShape *_swig_go_0, bool _swig_go_1) {
   b2EdgeShape *arg1 = (b2EdgeShape *) 0 ;
   bool arg2 ;
   
@@ -1393,7 +1512,7 @@ void _wrap_b2EdgeShape_m_hasVertex3_set_Box2D_b1d1b47c7e81f80a(b2EdgeShape *_swi
 }
 
 
-bool _wrap_b2EdgeShape_m_hasVertex3_get_Box2D_b1d1b47c7e81f80a(b2EdgeShape *_swig_go_0) {
+bool _wrap_b2EdgeShape_m_hasVertex3_get_Box2D_553c0f9515edf50e(b2EdgeShape *_swig_go_0) {
   b2EdgeShape *arg1 = (b2EdgeShape *) 0 ;
   bool result;
   bool _swig_go_result;
@@ -1406,7 +1525,7 @@ bool _wrap_b2EdgeShape_m_hasVertex3_get_Box2D_b1d1b47c7e81f80a(b2EdgeShape *_swi
 }
 
 
-void _wrap_delete_b2EdgeShape_Box2D_b1d1b47c7e81f80a(b2EdgeShape *_swig_go_0) {
+void _wrap_delete_b2EdgeShape_Box2D_553c0f9515edf50e(b2EdgeShape *_swig_go_0) {
   b2EdgeShape *arg1 = (b2EdgeShape *) 0 ;
   
   arg1 = *(b2EdgeShape **)&_swig_go_0; 
@@ -1416,7 +1535,7 @@ void _wrap_delete_b2EdgeShape_Box2D_b1d1b47c7e81f80a(b2EdgeShape *_swig_go_0) {
 }
 
 
-b2ChainShape *_wrap_new_b2ChainShape_Box2D_b1d1b47c7e81f80a() {
+b2ChainShape *_wrap_new_b2ChainShape_Box2D_553c0f9515edf50e() {
   b2ChainShape *result = 0 ;
   b2ChainShape *_swig_go_result;
   
@@ -1427,7 +1546,7 @@ b2ChainShape *_wrap_new_b2ChainShape_Box2D_b1d1b47c7e81f80a() {
 }
 
 
-void _wrap_delete_b2ChainShape_Box2D_b1d1b47c7e81f80a(b2ChainShape *_swig_go_0) {
+void _wrap_delete_b2ChainShape_Box2D_553c0f9515edf50e(b2ChainShape *_swig_go_0) {
   b2ChainShape *arg1 = (b2ChainShape *) 0 ;
   
   arg1 = *(b2ChainShape **)&_swig_go_0; 
@@ -1437,7 +1556,7 @@ void _wrap_delete_b2ChainShape_Box2D_b1d1b47c7e81f80a(b2ChainShape *_swig_go_0) 
 }
 
 
-void _wrap_b2ChainShape_Clear_Box2D_b1d1b47c7e81f80a(b2ChainShape *_swig_go_0) {
+void _wrap_b2ChainShape_Clear_Box2D_553c0f9515edf50e(b2ChainShape *_swig_go_0) {
   b2ChainShape *arg1 = (b2ChainShape *) 0 ;
   
   arg1 = *(b2ChainShape **)&_swig_go_0; 
@@ -1447,7 +1566,7 @@ void _wrap_b2ChainShape_Clear_Box2D_b1d1b47c7e81f80a(b2ChainShape *_swig_go_0) {
 }
 
 
-void _wrap_b2ChainShape_CreateLoop_Box2D_b1d1b47c7e81f80a(b2ChainShape *_swig_go_0, b2Vec2 *_swig_go_1, intgo _swig_go_2) {
+void _wrap_b2ChainShape_CreateLoop_Box2D_553c0f9515edf50e(b2ChainShape *_swig_go_0, b2Vec2 *_swig_go_1, intgo _swig_go_2) {
   b2ChainShape *arg1 = (b2ChainShape *) 0 ;
   b2Vec2 *arg2 = (b2Vec2 *) 0 ;
   int32 arg3 ;
@@ -1461,7 +1580,7 @@ void _wrap_b2ChainShape_CreateLoop_Box2D_b1d1b47c7e81f80a(b2ChainShape *_swig_go
 }
 
 
-void _wrap_b2ChainShape_CreateChain_Box2D_b1d1b47c7e81f80a(b2ChainShape *_swig_go_0, b2Vec2 *_swig_go_1, intgo _swig_go_2) {
+void _wrap_b2ChainShape_CreateChain_Box2D_553c0f9515edf50e(b2ChainShape *_swig_go_0, b2Vec2 *_swig_go_1, intgo _swig_go_2) {
   b2ChainShape *arg1 = (b2ChainShape *) 0 ;
   b2Vec2 *arg2 = (b2Vec2 *) 0 ;
   int32 arg3 ;
@@ -1475,7 +1594,7 @@ void _wrap_b2ChainShape_CreateChain_Box2D_b1d1b47c7e81f80a(b2ChainShape *_swig_g
 }
 
 
-void _wrap_b2ChainShape_SetPrevVertex_Box2D_b1d1b47c7e81f80a(b2ChainShape *_swig_go_0, b2Vec2 *_swig_go_1) {
+void _wrap_b2ChainShape_SetPrevVertex_Box2D_553c0f9515edf50e(b2ChainShape *_swig_go_0, b2Vec2 *_swig_go_1) {
   b2ChainShape *arg1 = (b2ChainShape *) 0 ;
   b2Vec2 *arg2 = 0 ;
   
@@ -1487,7 +1606,7 @@ void _wrap_b2ChainShape_SetPrevVertex_Box2D_b1d1b47c7e81f80a(b2ChainShape *_swig
 }
 
 
-void _wrap_b2ChainShape_SetNextVertex_Box2D_b1d1b47c7e81f80a(b2ChainShape *_swig_go_0, b2Vec2 *_swig_go_1) {
+void _wrap_b2ChainShape_SetNextVertex_Box2D_553c0f9515edf50e(b2ChainShape *_swig_go_0, b2Vec2 *_swig_go_1) {
   b2ChainShape *arg1 = (b2ChainShape *) 0 ;
   b2Vec2 *arg2 = 0 ;
   
@@ -1499,7 +1618,7 @@ void _wrap_b2ChainShape_SetNextVertex_Box2D_b1d1b47c7e81f80a(b2ChainShape *_swig
 }
 
 
-b2Shape *_wrap_b2ChainShape_Clone_Box2D_b1d1b47c7e81f80a(b2ChainShape *_swig_go_0, b2BlockAllocator *_swig_go_1) {
+b2Shape *_wrap_b2ChainShape_Clone_Box2D_553c0f9515edf50e(b2ChainShape *_swig_go_0, b2BlockAllocator *_swig_go_1) {
   b2ChainShape *arg1 = (b2ChainShape *) 0 ;
   b2BlockAllocator *arg2 = (b2BlockAllocator *) 0 ;
   b2Shape *result = 0 ;
@@ -1514,7 +1633,7 @@ b2Shape *_wrap_b2ChainShape_Clone_Box2D_b1d1b47c7e81f80a(b2ChainShape *_swig_go_
 }
 
 
-intgo _wrap_b2ChainShape_GetChildCount_Box2D_b1d1b47c7e81f80a(b2ChainShape *_swig_go_0) {
+intgo _wrap_b2ChainShape_GetChildCount_Box2D_553c0f9515edf50e(b2ChainShape *_swig_go_0) {
   b2ChainShape *arg1 = (b2ChainShape *) 0 ;
   int32 result;
   intgo _swig_go_result;
@@ -1527,7 +1646,7 @@ intgo _wrap_b2ChainShape_GetChildCount_Box2D_b1d1b47c7e81f80a(b2ChainShape *_swi
 }
 
 
-void _wrap_b2ChainShape_GetChildEdge_Box2D_b1d1b47c7e81f80a(b2ChainShape *_swig_go_0, b2EdgeShape *_swig_go_1, intgo _swig_go_2) {
+void _wrap_b2ChainShape_GetChildEdge_Box2D_553c0f9515edf50e(b2ChainShape *_swig_go_0, b2EdgeShape *_swig_go_1, intgo _swig_go_2) {
   b2ChainShape *arg1 = (b2ChainShape *) 0 ;
   b2EdgeShape *arg2 = (b2EdgeShape *) 0 ;
   int32 arg3 ;
@@ -1541,7 +1660,7 @@ void _wrap_b2ChainShape_GetChildEdge_Box2D_b1d1b47c7e81f80a(b2ChainShape *_swig_
 }
 
 
-bool _wrap_b2ChainShape_TestPoint_Box2D_b1d1b47c7e81f80a(b2ChainShape *_swig_go_0, b2Transform *_swig_go_1, b2Vec2 *_swig_go_2) {
+bool _wrap_b2ChainShape_TestPoint_Box2D_553c0f9515edf50e(b2ChainShape *_swig_go_0, b2Transform *_swig_go_1, b2Vec2 *_swig_go_2) {
   b2ChainShape *arg1 = (b2ChainShape *) 0 ;
   b2Transform *arg2 = 0 ;
   b2Vec2 *arg3 = 0 ;
@@ -1558,7 +1677,7 @@ bool _wrap_b2ChainShape_TestPoint_Box2D_b1d1b47c7e81f80a(b2ChainShape *_swig_go_
 }
 
 
-bool _wrap_b2ChainShape_RayCast_Box2D_b1d1b47c7e81f80a(b2ChainShape *_swig_go_0, b2RayCastOutput *_swig_go_1, b2RayCastInput *_swig_go_2, b2Transform *_swig_go_3, intgo _swig_go_4) {
+bool _wrap_b2ChainShape_RayCast_Box2D_553c0f9515edf50e(b2ChainShape *_swig_go_0, b2RayCastOutput *_swig_go_1, b2RayCastInput *_swig_go_2, b2Transform *_swig_go_3, intgo _swig_go_4) {
   b2ChainShape *arg1 = (b2ChainShape *) 0 ;
   b2RayCastOutput *arg2 = (b2RayCastOutput *) 0 ;
   b2RayCastInput *arg3 = 0 ;
@@ -1579,7 +1698,7 @@ bool _wrap_b2ChainShape_RayCast_Box2D_b1d1b47c7e81f80a(b2ChainShape *_swig_go_0,
 }
 
 
-void _wrap_b2ChainShape_ComputeAABB_Box2D_b1d1b47c7e81f80a(b2ChainShape *_swig_go_0, b2AABB *_swig_go_1, b2Transform *_swig_go_2, intgo _swig_go_3) {
+void _wrap_b2ChainShape_ComputeAABB_Box2D_553c0f9515edf50e(b2ChainShape *_swig_go_0, b2AABB *_swig_go_1, b2Transform *_swig_go_2, intgo _swig_go_3) {
   b2ChainShape *arg1 = (b2ChainShape *) 0 ;
   b2AABB *arg2 = (b2AABB *) 0 ;
   b2Transform *arg3 = 0 ;
@@ -1595,7 +1714,7 @@ void _wrap_b2ChainShape_ComputeAABB_Box2D_b1d1b47c7e81f80a(b2ChainShape *_swig_g
 }
 
 
-void _wrap_b2ChainShape_ComputeMass_Box2D_b1d1b47c7e81f80a(b2ChainShape *_swig_go_0, b2MassData *_swig_go_1, float _swig_go_2) {
+void _wrap_b2ChainShape_ComputeMass_Box2D_553c0f9515edf50e(b2ChainShape *_swig_go_0, b2MassData *_swig_go_1, float _swig_go_2) {
   b2ChainShape *arg1 = (b2ChainShape *) 0 ;
   b2MassData *arg2 = (b2MassData *) 0 ;
   float32 arg3 ;
@@ -1609,7 +1728,7 @@ void _wrap_b2ChainShape_ComputeMass_Box2D_b1d1b47c7e81f80a(b2ChainShape *_swig_g
 }
 
 
-void _wrap_b2ChainShape_m_vertices_set_Box2D_b1d1b47c7e81f80a(b2ChainShape *_swig_go_0, b2Vec2 *_swig_go_1) {
+void _wrap_b2ChainShape_m_vertices_set_Box2D_553c0f9515edf50e(b2ChainShape *_swig_go_0, b2Vec2 *_swig_go_1) {
   b2ChainShape *arg1 = (b2ChainShape *) 0 ;
   b2Vec2 *arg2 = (b2Vec2 *) 0 ;
   
@@ -1621,7 +1740,7 @@ void _wrap_b2ChainShape_m_vertices_set_Box2D_b1d1b47c7e81f80a(b2ChainShape *_swi
 }
 
 
-b2Vec2 *_wrap_b2ChainShape_m_vertices_get_Box2D_b1d1b47c7e81f80a(b2ChainShape *_swig_go_0) {
+b2Vec2 *_wrap_b2ChainShape_m_vertices_get_Box2D_553c0f9515edf50e(b2ChainShape *_swig_go_0) {
   b2ChainShape *arg1 = (b2ChainShape *) 0 ;
   b2Vec2 *result = 0 ;
   b2Vec2 *_swig_go_result;
@@ -1634,7 +1753,7 @@ b2Vec2 *_wrap_b2ChainShape_m_vertices_get_Box2D_b1d1b47c7e81f80a(b2ChainShape *_
 }
 
 
-void _wrap_b2ChainShape_m_count_set_Box2D_b1d1b47c7e81f80a(b2ChainShape *_swig_go_0, intgo _swig_go_1) {
+void _wrap_b2ChainShape_m_count_set_Box2D_553c0f9515edf50e(b2ChainShape *_swig_go_0, intgo _swig_go_1) {
   b2ChainShape *arg1 = (b2ChainShape *) 0 ;
   int32 arg2 ;
   
@@ -1646,7 +1765,7 @@ void _wrap_b2ChainShape_m_count_set_Box2D_b1d1b47c7e81f80a(b2ChainShape *_swig_g
 }
 
 
-intgo _wrap_b2ChainShape_m_count_get_Box2D_b1d1b47c7e81f80a(b2ChainShape *_swig_go_0) {
+intgo _wrap_b2ChainShape_m_count_get_Box2D_553c0f9515edf50e(b2ChainShape *_swig_go_0) {
   b2ChainShape *arg1 = (b2ChainShape *) 0 ;
   int32 result;
   intgo _swig_go_result;
@@ -1659,7 +1778,7 @@ intgo _wrap_b2ChainShape_m_count_get_Box2D_b1d1b47c7e81f80a(b2ChainShape *_swig_
 }
 
 
-void _wrap_b2ChainShape_m_prevVertex_set_Box2D_b1d1b47c7e81f80a(b2ChainShape *_swig_go_0, b2Vec2 *_swig_go_1) {
+void _wrap_b2ChainShape_m_prevVertex_set_Box2D_553c0f9515edf50e(b2ChainShape *_swig_go_0, b2Vec2 *_swig_go_1) {
   b2ChainShape *arg1 = (b2ChainShape *) 0 ;
   b2Vec2 *arg2 = (b2Vec2 *) 0 ;
   
@@ -1671,7 +1790,7 @@ void _wrap_b2ChainShape_m_prevVertex_set_Box2D_b1d1b47c7e81f80a(b2ChainShape *_s
 }
 
 
-b2Vec2 *_wrap_b2ChainShape_m_prevVertex_get_Box2D_b1d1b47c7e81f80a(b2ChainShape *_swig_go_0) {
+b2Vec2 *_wrap_b2ChainShape_m_prevVertex_get_Box2D_553c0f9515edf50e(b2ChainShape *_swig_go_0) {
   b2ChainShape *arg1 = (b2ChainShape *) 0 ;
   b2Vec2 *result = 0 ;
   b2Vec2 *_swig_go_result;
@@ -1684,7 +1803,7 @@ b2Vec2 *_wrap_b2ChainShape_m_prevVertex_get_Box2D_b1d1b47c7e81f80a(b2ChainShape 
 }
 
 
-void _wrap_b2ChainShape_m_nextVertex_set_Box2D_b1d1b47c7e81f80a(b2ChainShape *_swig_go_0, b2Vec2 *_swig_go_1) {
+void _wrap_b2ChainShape_m_nextVertex_set_Box2D_553c0f9515edf50e(b2ChainShape *_swig_go_0, b2Vec2 *_swig_go_1) {
   b2ChainShape *arg1 = (b2ChainShape *) 0 ;
   b2Vec2 *arg2 = (b2Vec2 *) 0 ;
   
@@ -1696,7 +1815,7 @@ void _wrap_b2ChainShape_m_nextVertex_set_Box2D_b1d1b47c7e81f80a(b2ChainShape *_s
 }
 
 
-b2Vec2 *_wrap_b2ChainShape_m_nextVertex_get_Box2D_b1d1b47c7e81f80a(b2ChainShape *_swig_go_0) {
+b2Vec2 *_wrap_b2ChainShape_m_nextVertex_get_Box2D_553c0f9515edf50e(b2ChainShape *_swig_go_0) {
   b2ChainShape *arg1 = (b2ChainShape *) 0 ;
   b2Vec2 *result = 0 ;
   b2Vec2 *_swig_go_result;
@@ -1709,7 +1828,7 @@ b2Vec2 *_wrap_b2ChainShape_m_nextVertex_get_Box2D_b1d1b47c7e81f80a(b2ChainShape 
 }
 
 
-void _wrap_b2ChainShape_m_hasPrevVertex_set_Box2D_b1d1b47c7e81f80a(b2ChainShape *_swig_go_0, bool _swig_go_1) {
+void _wrap_b2ChainShape_m_hasPrevVertex_set_Box2D_553c0f9515edf50e(b2ChainShape *_swig_go_0, bool _swig_go_1) {
   b2ChainShape *arg1 = (b2ChainShape *) 0 ;
   bool arg2 ;
   
@@ -1721,7 +1840,7 @@ void _wrap_b2ChainShape_m_hasPrevVertex_set_Box2D_b1d1b47c7e81f80a(b2ChainShape 
 }
 
 
-bool _wrap_b2ChainShape_m_hasPrevVertex_get_Box2D_b1d1b47c7e81f80a(b2ChainShape *_swig_go_0) {
+bool _wrap_b2ChainShape_m_hasPrevVertex_get_Box2D_553c0f9515edf50e(b2ChainShape *_swig_go_0) {
   b2ChainShape *arg1 = (b2ChainShape *) 0 ;
   bool result;
   bool _swig_go_result;
@@ -1734,7 +1853,7 @@ bool _wrap_b2ChainShape_m_hasPrevVertex_get_Box2D_b1d1b47c7e81f80a(b2ChainShape 
 }
 
 
-void _wrap_b2ChainShape_m_hasNextVertex_set_Box2D_b1d1b47c7e81f80a(b2ChainShape *_swig_go_0, bool _swig_go_1) {
+void _wrap_b2ChainShape_m_hasNextVertex_set_Box2D_553c0f9515edf50e(b2ChainShape *_swig_go_0, bool _swig_go_1) {
   b2ChainShape *arg1 = (b2ChainShape *) 0 ;
   bool arg2 ;
   
@@ -1746,7 +1865,7 @@ void _wrap_b2ChainShape_m_hasNextVertex_set_Box2D_b1d1b47c7e81f80a(b2ChainShape 
 }
 
 
-bool _wrap_b2ChainShape_m_hasNextVertex_get_Box2D_b1d1b47c7e81f80a(b2ChainShape *_swig_go_0) {
+bool _wrap_b2ChainShape_m_hasNextVertex_get_Box2D_553c0f9515edf50e(b2ChainShape *_swig_go_0) {
   b2ChainShape *arg1 = (b2ChainShape *) 0 ;
   bool result;
   bool _swig_go_result;
@@ -1759,7 +1878,7 @@ bool _wrap_b2ChainShape_m_hasNextVertex_get_Box2D_b1d1b47c7e81f80a(b2ChainShape 
 }
 
 
-b2PolygonShape *_wrap_new_b2PolygonShape_Box2D_b1d1b47c7e81f80a() {
+b2PolygonShape *_wrap_new_b2PolygonShape_Box2D_553c0f9515edf50e() {
   b2PolygonShape *result = 0 ;
   b2PolygonShape *_swig_go_result;
   
@@ -1770,7 +1889,7 @@ b2PolygonShape *_wrap_new_b2PolygonShape_Box2D_b1d1b47c7e81f80a() {
 }
 
 
-b2Shape *_wrap_b2PolygonShape_Clone_Box2D_b1d1b47c7e81f80a(b2PolygonShape *_swig_go_0, b2BlockAllocator *_swig_go_1) {
+b2Shape *_wrap_b2PolygonShape_Clone_Box2D_553c0f9515edf50e(b2PolygonShape *_swig_go_0, b2BlockAllocator *_swig_go_1) {
   b2PolygonShape *arg1 = (b2PolygonShape *) 0 ;
   b2BlockAllocator *arg2 = (b2BlockAllocator *) 0 ;
   b2Shape *result = 0 ;
@@ -1785,7 +1904,7 @@ b2Shape *_wrap_b2PolygonShape_Clone_Box2D_b1d1b47c7e81f80a(b2PolygonShape *_swig
 }
 
 
-intgo _wrap_b2PolygonShape_GetChildCount_Box2D_b1d1b47c7e81f80a(b2PolygonShape *_swig_go_0) {
+intgo _wrap_b2PolygonShape_GetChildCount_Box2D_553c0f9515edf50e(b2PolygonShape *_swig_go_0) {
   b2PolygonShape *arg1 = (b2PolygonShape *) 0 ;
   int32 result;
   intgo _swig_go_result;
@@ -1798,7 +1917,7 @@ intgo _wrap_b2PolygonShape_GetChildCount_Box2D_b1d1b47c7e81f80a(b2PolygonShape *
 }
 
 
-void _wrap_b2PolygonShape_Set_Box2D_b1d1b47c7e81f80a(b2PolygonShape *_swig_go_0, b2Vec2 *_swig_go_1, intgo _swig_go_2) {
+void _wrap_b2PolygonShape_Set_Box2D_553c0f9515edf50e(b2PolygonShape *_swig_go_0, b2Vec2 *_swig_go_1, intgo _swig_go_2) {
   b2PolygonShape *arg1 = (b2PolygonShape *) 0 ;
   b2Vec2 *arg2 = (b2Vec2 *) 0 ;
   int32 arg3 ;
@@ -1812,7 +1931,7 @@ void _wrap_b2PolygonShape_Set_Box2D_b1d1b47c7e81f80a(b2PolygonShape *_swig_go_0,
 }
 
 
-void _wrap_b2PolygonShape_SetAsBox__SWIG_0_Box2D_b1d1b47c7e81f80a(b2PolygonShape *_swig_go_0, float _swig_go_1, float _swig_go_2) {
+void _wrap_b2PolygonShape_SetAsBox__SWIG_0_Box2D_553c0f9515edf50e(b2PolygonShape *_swig_go_0, float _swig_go_1, float _swig_go_2) {
   b2PolygonShape *arg1 = (b2PolygonShape *) 0 ;
   float32 arg2 ;
   float32 arg3 ;
@@ -1826,7 +1945,7 @@ void _wrap_b2PolygonShape_SetAsBox__SWIG_0_Box2D_b1d1b47c7e81f80a(b2PolygonShape
 }
 
 
-void _wrap_b2PolygonShape_SetAsBox__SWIG_1_Box2D_b1d1b47c7e81f80a(b2PolygonShape *_swig_go_0, float _swig_go_1, float _swig_go_2, b2Vec2 *_swig_go_3, float _swig_go_4) {
+void _wrap_b2PolygonShape_SetAsBox__SWIG_1_Box2D_553c0f9515edf50e(b2PolygonShape *_swig_go_0, float _swig_go_1, float _swig_go_2, b2Vec2 *_swig_go_3, float _swig_go_4) {
   b2PolygonShape *arg1 = (b2PolygonShape *) 0 ;
   float32 arg2 ;
   float32 arg3 ;
@@ -1844,7 +1963,7 @@ void _wrap_b2PolygonShape_SetAsBox__SWIG_1_Box2D_b1d1b47c7e81f80a(b2PolygonShape
 }
 
 
-bool _wrap_b2PolygonShape_TestPoint_Box2D_b1d1b47c7e81f80a(b2PolygonShape *_swig_go_0, b2Transform *_swig_go_1, b2Vec2 *_swig_go_2) {
+bool _wrap_b2PolygonShape_TestPoint_Box2D_553c0f9515edf50e(b2PolygonShape *_swig_go_0, b2Transform *_swig_go_1, b2Vec2 *_swig_go_2) {
   b2PolygonShape *arg1 = (b2PolygonShape *) 0 ;
   b2Transform *arg2 = 0 ;
   b2Vec2 *arg3 = 0 ;
@@ -1861,7 +1980,7 @@ bool _wrap_b2PolygonShape_TestPoint_Box2D_b1d1b47c7e81f80a(b2PolygonShape *_swig
 }
 
 
-bool _wrap_b2PolygonShape_RayCast_Box2D_b1d1b47c7e81f80a(b2PolygonShape *_swig_go_0, b2RayCastOutput *_swig_go_1, b2RayCastInput *_swig_go_2, b2Transform *_swig_go_3, intgo _swig_go_4) {
+bool _wrap_b2PolygonShape_RayCast_Box2D_553c0f9515edf50e(b2PolygonShape *_swig_go_0, b2RayCastOutput *_swig_go_1, b2RayCastInput *_swig_go_2, b2Transform *_swig_go_3, intgo _swig_go_4) {
   b2PolygonShape *arg1 = (b2PolygonShape *) 0 ;
   b2RayCastOutput *arg2 = (b2RayCastOutput *) 0 ;
   b2RayCastInput *arg3 = 0 ;
@@ -1882,7 +2001,7 @@ bool _wrap_b2PolygonShape_RayCast_Box2D_b1d1b47c7e81f80a(b2PolygonShape *_swig_g
 }
 
 
-void _wrap_b2PolygonShape_ComputeAABB_Box2D_b1d1b47c7e81f80a(b2PolygonShape *_swig_go_0, b2AABB *_swig_go_1, b2Transform *_swig_go_2, intgo _swig_go_3) {
+void _wrap_b2PolygonShape_ComputeAABB_Box2D_553c0f9515edf50e(b2PolygonShape *_swig_go_0, b2AABB *_swig_go_1, b2Transform *_swig_go_2, intgo _swig_go_3) {
   b2PolygonShape *arg1 = (b2PolygonShape *) 0 ;
   b2AABB *arg2 = (b2AABB *) 0 ;
   b2Transform *arg3 = 0 ;
@@ -1898,7 +2017,7 @@ void _wrap_b2PolygonShape_ComputeAABB_Box2D_b1d1b47c7e81f80a(b2PolygonShape *_sw
 }
 
 
-void _wrap_b2PolygonShape_ComputeMass_Box2D_b1d1b47c7e81f80a(b2PolygonShape *_swig_go_0, b2MassData *_swig_go_1, float _swig_go_2) {
+void _wrap_b2PolygonShape_ComputeMass_Box2D_553c0f9515edf50e(b2PolygonShape *_swig_go_0, b2MassData *_swig_go_1, float _swig_go_2) {
   b2PolygonShape *arg1 = (b2PolygonShape *) 0 ;
   b2MassData *arg2 = (b2MassData *) 0 ;
   float32 arg3 ;
@@ -1912,7 +2031,7 @@ void _wrap_b2PolygonShape_ComputeMass_Box2D_b1d1b47c7e81f80a(b2PolygonShape *_sw
 }
 
 
-intgo _wrap_b2PolygonShape_GetVertexCount_Box2D_b1d1b47c7e81f80a(b2PolygonShape *_swig_go_0) {
+intgo _wrap_b2PolygonShape_GetVertexCount_Box2D_553c0f9515edf50e(b2PolygonShape *_swig_go_0) {
   b2PolygonShape *arg1 = (b2PolygonShape *) 0 ;
   int32 result;
   intgo _swig_go_result;
@@ -1925,7 +2044,7 @@ intgo _wrap_b2PolygonShape_GetVertexCount_Box2D_b1d1b47c7e81f80a(b2PolygonShape 
 }
 
 
-b2Vec2 *_wrap_b2PolygonShape_GetVertex_Box2D_b1d1b47c7e81f80a(b2PolygonShape *_swig_go_0, intgo _swig_go_1) {
+b2Vec2 *_wrap_b2PolygonShape_GetVertex_Box2D_553c0f9515edf50e(b2PolygonShape *_swig_go_0, intgo _swig_go_1) {
   b2PolygonShape *arg1 = (b2PolygonShape *) 0 ;
   int32 arg2 ;
   b2Vec2 *result = 0 ;
@@ -1940,7 +2059,7 @@ b2Vec2 *_wrap_b2PolygonShape_GetVertex_Box2D_b1d1b47c7e81f80a(b2PolygonShape *_s
 }
 
 
-bool _wrap_b2PolygonShape_Validate_Box2D_b1d1b47c7e81f80a(b2PolygonShape *_swig_go_0) {
+bool _wrap_b2PolygonShape_Validate_Box2D_553c0f9515edf50e(b2PolygonShape *_swig_go_0) {
   b2PolygonShape *arg1 = (b2PolygonShape *) 0 ;
   bool result;
   bool _swig_go_result;
@@ -1953,7 +2072,7 @@ bool _wrap_b2PolygonShape_Validate_Box2D_b1d1b47c7e81f80a(b2PolygonShape *_swig_
 }
 
 
-void _wrap_b2PolygonShape_m_centroid_set_Box2D_b1d1b47c7e81f80a(b2PolygonShape *_swig_go_0, b2Vec2 *_swig_go_1) {
+void _wrap_b2PolygonShape_m_centroid_set_Box2D_553c0f9515edf50e(b2PolygonShape *_swig_go_0, b2Vec2 *_swig_go_1) {
   b2PolygonShape *arg1 = (b2PolygonShape *) 0 ;
   b2Vec2 *arg2 = (b2Vec2 *) 0 ;
   
@@ -1965,7 +2084,7 @@ void _wrap_b2PolygonShape_m_centroid_set_Box2D_b1d1b47c7e81f80a(b2PolygonShape *
 }
 
 
-b2Vec2 *_wrap_b2PolygonShape_m_centroid_get_Box2D_b1d1b47c7e81f80a(b2PolygonShape *_swig_go_0) {
+b2Vec2 *_wrap_b2PolygonShape_m_centroid_get_Box2D_553c0f9515edf50e(b2PolygonShape *_swig_go_0) {
   b2PolygonShape *arg1 = (b2PolygonShape *) 0 ;
   b2Vec2 *result = 0 ;
   b2Vec2 *_swig_go_result;
@@ -1978,7 +2097,7 @@ b2Vec2 *_wrap_b2PolygonShape_m_centroid_get_Box2D_b1d1b47c7e81f80a(b2PolygonShap
 }
 
 
-void _wrap_b2PolygonShape_m_vertices_set_Box2D_b1d1b47c7e81f80a(b2PolygonShape *_swig_go_0, b2Vec2 *_swig_go_1) {
+void _wrap_b2PolygonShape_m_vertices_set_Box2D_553c0f9515edf50e(b2PolygonShape *_swig_go_0, b2Vec2 *_swig_go_1) {
   b2PolygonShape *arg1 = (b2PolygonShape *) 0 ;
   b2Vec2 *arg2 ;
   
@@ -1994,7 +2113,7 @@ void _wrap_b2PolygonShape_m_vertices_set_Box2D_b1d1b47c7e81f80a(b2PolygonShape *
 }
 
 
-b2Vec2 (*_wrap_b2PolygonShape_m_vertices_get_Box2D_b1d1b47c7e81f80a(b2PolygonShape *_swig_go_0))[8] {
+b2Vec2 (*_wrap_b2PolygonShape_m_vertices_get_Box2D_553c0f9515edf50e(b2PolygonShape *_swig_go_0))[8] {
   b2PolygonShape *arg1 = (b2PolygonShape *) 0 ;
   b2Vec2 *result = 0 ;
   b2Vec2 (*_swig_go_result)[8];
@@ -2007,7 +2126,7 @@ b2Vec2 (*_wrap_b2PolygonShape_m_vertices_get_Box2D_b1d1b47c7e81f80a(b2PolygonSha
 }
 
 
-void _wrap_b2PolygonShape_m_normals_set_Box2D_b1d1b47c7e81f80a(b2PolygonShape *_swig_go_0, b2Vec2 *_swig_go_1) {
+void _wrap_b2PolygonShape_m_normals_set_Box2D_553c0f9515edf50e(b2PolygonShape *_swig_go_0, b2Vec2 *_swig_go_1) {
   b2PolygonShape *arg1 = (b2PolygonShape *) 0 ;
   b2Vec2 *arg2 ;
   
@@ -2023,7 +2142,7 @@ void _wrap_b2PolygonShape_m_normals_set_Box2D_b1d1b47c7e81f80a(b2PolygonShape *_
 }
 
 
-b2Vec2 (*_wrap_b2PolygonShape_m_normals_get_Box2D_b1d1b47c7e81f80a(b2PolygonShape *_swig_go_0))[8] {
+b2Vec2 (*_wrap_b2PolygonShape_m_normals_get_Box2D_553c0f9515edf50e(b2PolygonShape *_swig_go_0))[8] {
   b2PolygonShape *arg1 = (b2PolygonShape *) 0 ;
   b2Vec2 *result = 0 ;
   b2Vec2 (*_swig_go_result)[8];
@@ -2036,7 +2155,7 @@ b2Vec2 (*_wrap_b2PolygonShape_m_normals_get_Box2D_b1d1b47c7e81f80a(b2PolygonShap
 }
 
 
-void _wrap_b2PolygonShape_m_count_set_Box2D_b1d1b47c7e81f80a(b2PolygonShape *_swig_go_0, intgo _swig_go_1) {
+void _wrap_b2PolygonShape_m_count_set_Box2D_553c0f9515edf50e(b2PolygonShape *_swig_go_0, intgo _swig_go_1) {
   b2PolygonShape *arg1 = (b2PolygonShape *) 0 ;
   int32 arg2 ;
   
@@ -2048,7 +2167,7 @@ void _wrap_b2PolygonShape_m_count_set_Box2D_b1d1b47c7e81f80a(b2PolygonShape *_sw
 }
 
 
-intgo _wrap_b2PolygonShape_m_count_get_Box2D_b1d1b47c7e81f80a(b2PolygonShape *_swig_go_0) {
+intgo _wrap_b2PolygonShape_m_count_get_Box2D_553c0f9515edf50e(b2PolygonShape *_swig_go_0) {
   b2PolygonShape *arg1 = (b2PolygonShape *) 0 ;
   int32 result;
   intgo _swig_go_result;
@@ -2061,7 +2180,7 @@ intgo _wrap_b2PolygonShape_m_count_get_Box2D_b1d1b47c7e81f80a(b2PolygonShape *_s
 }
 
 
-void _wrap_delete_b2PolygonShape_Box2D_b1d1b47c7e81f80a(b2PolygonShape *_swig_go_0) {
+void _wrap_delete_b2PolygonShape_Box2D_553c0f9515edf50e(b2PolygonShape *_swig_go_0) {
   b2PolygonShape *arg1 = (b2PolygonShape *) 0 ;
   
   arg1 = *(b2PolygonShape **)&_swig_go_0; 
@@ -2071,7 +2190,7 @@ void _wrap_delete_b2PolygonShape_Box2D_b1d1b47c7e81f80a(b2PolygonShape *_swig_go
 }
 
 
-void _wrap_b2Pair_proxyIdA_set_Box2D_b1d1b47c7e81f80a(b2Pair *_swig_go_0, intgo _swig_go_1) {
+void _wrap_b2Pair_proxyIdA_set_Box2D_553c0f9515edf50e(b2Pair *_swig_go_0, intgo _swig_go_1) {
   b2Pair *arg1 = (b2Pair *) 0 ;
   int32 arg2 ;
   
@@ -2083,7 +2202,7 @@ void _wrap_b2Pair_proxyIdA_set_Box2D_b1d1b47c7e81f80a(b2Pair *_swig_go_0, intgo 
 }
 
 
-intgo _wrap_b2Pair_proxyIdA_get_Box2D_b1d1b47c7e81f80a(b2Pair *_swig_go_0) {
+intgo _wrap_b2Pair_proxyIdA_get_Box2D_553c0f9515edf50e(b2Pair *_swig_go_0) {
   b2Pair *arg1 = (b2Pair *) 0 ;
   int32 result;
   intgo _swig_go_result;
@@ -2096,7 +2215,7 @@ intgo _wrap_b2Pair_proxyIdA_get_Box2D_b1d1b47c7e81f80a(b2Pair *_swig_go_0) {
 }
 
 
-void _wrap_b2Pair_proxyIdB_set_Box2D_b1d1b47c7e81f80a(b2Pair *_swig_go_0, intgo _swig_go_1) {
+void _wrap_b2Pair_proxyIdB_set_Box2D_553c0f9515edf50e(b2Pair *_swig_go_0, intgo _swig_go_1) {
   b2Pair *arg1 = (b2Pair *) 0 ;
   int32 arg2 ;
   
@@ -2108,7 +2227,7 @@ void _wrap_b2Pair_proxyIdB_set_Box2D_b1d1b47c7e81f80a(b2Pair *_swig_go_0, intgo 
 }
 
 
-intgo _wrap_b2Pair_proxyIdB_get_Box2D_b1d1b47c7e81f80a(b2Pair *_swig_go_0) {
+intgo _wrap_b2Pair_proxyIdB_get_Box2D_553c0f9515edf50e(b2Pair *_swig_go_0) {
   b2Pair *arg1 = (b2Pair *) 0 ;
   int32 result;
   intgo _swig_go_result;
@@ -2121,7 +2240,7 @@ intgo _wrap_b2Pair_proxyIdB_get_Box2D_b1d1b47c7e81f80a(b2Pair *_swig_go_0) {
 }
 
 
-b2Pair *_wrap_new_b2Pair_Box2D_b1d1b47c7e81f80a() {
+b2Pair *_wrap_new_b2Pair_Box2D_553c0f9515edf50e() {
   b2Pair *result = 0 ;
   b2Pair *_swig_go_result;
   
@@ -2132,7 +2251,7 @@ b2Pair *_wrap_new_b2Pair_Box2D_b1d1b47c7e81f80a() {
 }
 
 
-void _wrap_delete_b2Pair_Box2D_b1d1b47c7e81f80a(b2Pair *_swig_go_0) {
+void _wrap_delete_b2Pair_Box2D_553c0f9515edf50e(b2Pair *_swig_go_0) {
   b2Pair *arg1 = (b2Pair *) 0 ;
   
   arg1 = *(b2Pair **)&_swig_go_0; 
@@ -2142,7 +2261,7 @@ void _wrap_delete_b2Pair_Box2D_b1d1b47c7e81f80a(b2Pair *_swig_go_0) {
 }
 
 
-intgo _wrap_e_nullProxy_b2BroadPhase_Box2D_b1d1b47c7e81f80a() {
+intgo _wrap_e_nullProxy_b2BroadPhase_Box2D_553c0f9515edf50e() {
   int result;
   intgo _swig_go_result;
   
@@ -2154,7 +2273,7 @@ intgo _wrap_e_nullProxy_b2BroadPhase_Box2D_b1d1b47c7e81f80a() {
 }
 
 
-b2BroadPhase *_wrap_new_b2BroadPhase_Box2D_b1d1b47c7e81f80a() {
+b2BroadPhase *_wrap_new_b2BroadPhase_Box2D_553c0f9515edf50e() {
   b2BroadPhase *result = 0 ;
   b2BroadPhase *_swig_go_result;
   
@@ -2165,7 +2284,7 @@ b2BroadPhase *_wrap_new_b2BroadPhase_Box2D_b1d1b47c7e81f80a() {
 }
 
 
-void _wrap_delete_b2BroadPhase_Box2D_b1d1b47c7e81f80a(b2BroadPhase *_swig_go_0) {
+void _wrap_delete_b2BroadPhase_Box2D_553c0f9515edf50e(b2BroadPhase *_swig_go_0) {
   b2BroadPhase *arg1 = (b2BroadPhase *) 0 ;
   
   arg1 = *(b2BroadPhase **)&_swig_go_0; 
@@ -2175,7 +2294,7 @@ void _wrap_delete_b2BroadPhase_Box2D_b1d1b47c7e81f80a(b2BroadPhase *_swig_go_0) 
 }
 
 
-intgo _wrap_b2BroadPhase_CreateProxy_Box2D_b1d1b47c7e81f80a(b2BroadPhase *_swig_go_0, b2AABB *_swig_go_1, void *_swig_go_2) {
+intgo _wrap_b2BroadPhase_CreateProxy_Box2D_553c0f9515edf50e(b2BroadPhase *_swig_go_0, b2AABB *_swig_go_1, void *_swig_go_2) {
   b2BroadPhase *arg1 = (b2BroadPhase *) 0 ;
   b2AABB *arg2 = 0 ;
   void *arg3 = (void *) 0 ;
@@ -2192,7 +2311,7 @@ intgo _wrap_b2BroadPhase_CreateProxy_Box2D_b1d1b47c7e81f80a(b2BroadPhase *_swig_
 }
 
 
-void _wrap_b2BroadPhase_DestroyProxy_Box2D_b1d1b47c7e81f80a(b2BroadPhase *_swig_go_0, intgo _swig_go_1) {
+void _wrap_b2BroadPhase_DestroyProxy_Box2D_553c0f9515edf50e(b2BroadPhase *_swig_go_0, intgo _swig_go_1) {
   b2BroadPhase *arg1 = (b2BroadPhase *) 0 ;
   int32 arg2 ;
   
@@ -2204,7 +2323,7 @@ void _wrap_b2BroadPhase_DestroyProxy_Box2D_b1d1b47c7e81f80a(b2BroadPhase *_swig_
 }
 
 
-void _wrap_b2BroadPhase_MoveProxy_Box2D_b1d1b47c7e81f80a(b2BroadPhase *_swig_go_0, intgo _swig_go_1, b2AABB *_swig_go_2, b2Vec2 *_swig_go_3) {
+void _wrap_b2BroadPhase_MoveProxy_Box2D_553c0f9515edf50e(b2BroadPhase *_swig_go_0, intgo _swig_go_1, b2AABB *_swig_go_2, b2Vec2 *_swig_go_3) {
   b2BroadPhase *arg1 = (b2BroadPhase *) 0 ;
   int32 arg2 ;
   b2AABB *arg3 = 0 ;
@@ -2220,7 +2339,7 @@ void _wrap_b2BroadPhase_MoveProxy_Box2D_b1d1b47c7e81f80a(b2BroadPhase *_swig_go_
 }
 
 
-void _wrap_b2BroadPhase_TouchProxy_Box2D_b1d1b47c7e81f80a(b2BroadPhase *_swig_go_0, intgo _swig_go_1) {
+void _wrap_b2BroadPhase_TouchProxy_Box2D_553c0f9515edf50e(b2BroadPhase *_swig_go_0, intgo _swig_go_1) {
   b2BroadPhase *arg1 = (b2BroadPhase *) 0 ;
   int32 arg2 ;
   
@@ -2232,7 +2351,7 @@ void _wrap_b2BroadPhase_TouchProxy_Box2D_b1d1b47c7e81f80a(b2BroadPhase *_swig_go
 }
 
 
-b2AABB *_wrap_b2BroadPhase_GetFatAABB_Box2D_b1d1b47c7e81f80a(b2BroadPhase *_swig_go_0, intgo _swig_go_1) {
+b2AABB *_wrap_b2BroadPhase_GetFatAABB_Box2D_553c0f9515edf50e(b2BroadPhase *_swig_go_0, intgo _swig_go_1) {
   b2BroadPhase *arg1 = (b2BroadPhase *) 0 ;
   int32 arg2 ;
   b2AABB *result = 0 ;
@@ -2247,7 +2366,7 @@ b2AABB *_wrap_b2BroadPhase_GetFatAABB_Box2D_b1d1b47c7e81f80a(b2BroadPhase *_swig
 }
 
 
-void *_wrap_b2BroadPhase_GetUserData_Box2D_b1d1b47c7e81f80a(b2BroadPhase *_swig_go_0, intgo _swig_go_1) {
+void *_wrap_b2BroadPhase_GetUserData_Box2D_553c0f9515edf50e(b2BroadPhase *_swig_go_0, intgo _swig_go_1) {
   b2BroadPhase *arg1 = (b2BroadPhase *) 0 ;
   int32 arg2 ;
   void *result = 0 ;
@@ -2262,7 +2381,7 @@ void *_wrap_b2BroadPhase_GetUserData_Box2D_b1d1b47c7e81f80a(b2BroadPhase *_swig_
 }
 
 
-bool _wrap_b2BroadPhase_TestOverlap_Box2D_b1d1b47c7e81f80a(b2BroadPhase *_swig_go_0, intgo _swig_go_1, intgo _swig_go_2) {
+bool _wrap_b2BroadPhase_TestOverlap_Box2D_553c0f9515edf50e(b2BroadPhase *_swig_go_0, intgo _swig_go_1, intgo _swig_go_2) {
   b2BroadPhase *arg1 = (b2BroadPhase *) 0 ;
   int32 arg2 ;
   int32 arg3 ;
@@ -2279,7 +2398,7 @@ bool _wrap_b2BroadPhase_TestOverlap_Box2D_b1d1b47c7e81f80a(b2BroadPhase *_swig_g
 }
 
 
-intgo _wrap_b2BroadPhase_GetProxyCount_Box2D_b1d1b47c7e81f80a(b2BroadPhase *_swig_go_0) {
+intgo _wrap_b2BroadPhase_GetProxyCount_Box2D_553c0f9515edf50e(b2BroadPhase *_swig_go_0) {
   b2BroadPhase *arg1 = (b2BroadPhase *) 0 ;
   int32 result;
   intgo _swig_go_result;
@@ -2292,7 +2411,7 @@ intgo _wrap_b2BroadPhase_GetProxyCount_Box2D_b1d1b47c7e81f80a(b2BroadPhase *_swi
 }
 
 
-intgo _wrap_b2BroadPhase_GetTreeHeight_Box2D_b1d1b47c7e81f80a(b2BroadPhase *_swig_go_0) {
+intgo _wrap_b2BroadPhase_GetTreeHeight_Box2D_553c0f9515edf50e(b2BroadPhase *_swig_go_0) {
   b2BroadPhase *arg1 = (b2BroadPhase *) 0 ;
   int32 result;
   intgo _swig_go_result;
@@ -2305,7 +2424,7 @@ intgo _wrap_b2BroadPhase_GetTreeHeight_Box2D_b1d1b47c7e81f80a(b2BroadPhase *_swi
 }
 
 
-intgo _wrap_b2BroadPhase_GetTreeBalance_Box2D_b1d1b47c7e81f80a(b2BroadPhase *_swig_go_0) {
+intgo _wrap_b2BroadPhase_GetTreeBalance_Box2D_553c0f9515edf50e(b2BroadPhase *_swig_go_0) {
   b2BroadPhase *arg1 = (b2BroadPhase *) 0 ;
   int32 result;
   intgo _swig_go_result;
@@ -2318,7 +2437,7 @@ intgo _wrap_b2BroadPhase_GetTreeBalance_Box2D_b1d1b47c7e81f80a(b2BroadPhase *_sw
 }
 
 
-float _wrap_b2BroadPhase_GetTreeQuality_Box2D_b1d1b47c7e81f80a(b2BroadPhase *_swig_go_0) {
+float _wrap_b2BroadPhase_GetTreeQuality_Box2D_553c0f9515edf50e(b2BroadPhase *_swig_go_0) {
   b2BroadPhase *arg1 = (b2BroadPhase *) 0 ;
   float32 result;
   float _swig_go_result;
@@ -2331,7 +2450,7 @@ float _wrap_b2BroadPhase_GetTreeQuality_Box2D_b1d1b47c7e81f80a(b2BroadPhase *_sw
 }
 
 
-void _wrap_b2BroadPhase_ShiftOrigin_Box2D_b1d1b47c7e81f80a(b2BroadPhase *_swig_go_0, b2Vec2 *_swig_go_1) {
+void _wrap_b2BroadPhase_ShiftOrigin_Box2D_553c0f9515edf50e(b2BroadPhase *_swig_go_0, b2Vec2 *_swig_go_1) {
   b2BroadPhase *arg1 = (b2BroadPhase *) 0 ;
   b2Vec2 *arg2 = 0 ;
   
@@ -2343,7 +2462,7 @@ void _wrap_b2BroadPhase_ShiftOrigin_Box2D_b1d1b47c7e81f80a(b2BroadPhase *_swig_g
 }
 
 
-bool _wrap_b2PairLessThan_Box2D_b1d1b47c7e81f80a(b2Pair *_swig_go_0, b2Pair *_swig_go_1) {
+bool _wrap_b2PairLessThan_Box2D_553c0f9515edf50e(b2Pair *_swig_go_0, b2Pair *_swig_go_1) {
   b2Pair *arg1 = 0 ;
   b2Pair *arg2 = 0 ;
   bool result;
@@ -2358,7 +2477,7 @@ bool _wrap_b2PairLessThan_Box2D_b1d1b47c7e81f80a(b2Pair *_swig_go_0, b2Pair *_sw
 }
 
 
-b2DistanceProxy *_wrap_new_b2DistanceProxy_Box2D_b1d1b47c7e81f80a() {
+b2DistanceProxy *_wrap_new_b2DistanceProxy_Box2D_553c0f9515edf50e() {
   b2DistanceProxy *result = 0 ;
   b2DistanceProxy *_swig_go_result;
   
@@ -2369,7 +2488,7 @@ b2DistanceProxy *_wrap_new_b2DistanceProxy_Box2D_b1d1b47c7e81f80a() {
 }
 
 
-void _wrap_b2DistanceProxy_Set_Box2D_b1d1b47c7e81f80a(b2DistanceProxy *_swig_go_0, b2Shape *_swig_go_1, intgo _swig_go_2) {
+void _wrap_b2DistanceProxy_Set_Box2D_553c0f9515edf50e(b2DistanceProxy *_swig_go_0, b2Shape *_swig_go_1, intgo _swig_go_2) {
   b2DistanceProxy *arg1 = (b2DistanceProxy *) 0 ;
   b2Shape *arg2 = (b2Shape *) 0 ;
   int32 arg3 ;
@@ -2383,7 +2502,7 @@ void _wrap_b2DistanceProxy_Set_Box2D_b1d1b47c7e81f80a(b2DistanceProxy *_swig_go_
 }
 
 
-intgo _wrap_b2DistanceProxy_GetSupport_Box2D_b1d1b47c7e81f80a(b2DistanceProxy *_swig_go_0, b2Vec2 *_swig_go_1) {
+intgo _wrap_b2DistanceProxy_GetSupport_Box2D_553c0f9515edf50e(b2DistanceProxy *_swig_go_0, b2Vec2 *_swig_go_1) {
   b2DistanceProxy *arg1 = (b2DistanceProxy *) 0 ;
   b2Vec2 *arg2 = 0 ;
   int32 result;
@@ -2398,7 +2517,7 @@ intgo _wrap_b2DistanceProxy_GetSupport_Box2D_b1d1b47c7e81f80a(b2DistanceProxy *_
 }
 
 
-b2Vec2 *_wrap_b2DistanceProxy_GetSupportVertex_Box2D_b1d1b47c7e81f80a(b2DistanceProxy *_swig_go_0, b2Vec2 *_swig_go_1) {
+b2Vec2 *_wrap_b2DistanceProxy_GetSupportVertex_Box2D_553c0f9515edf50e(b2DistanceProxy *_swig_go_0, b2Vec2 *_swig_go_1) {
   b2DistanceProxy *arg1 = (b2DistanceProxy *) 0 ;
   b2Vec2 *arg2 = 0 ;
   b2Vec2 *result = 0 ;
@@ -2413,7 +2532,7 @@ b2Vec2 *_wrap_b2DistanceProxy_GetSupportVertex_Box2D_b1d1b47c7e81f80a(b2Distance
 }
 
 
-intgo _wrap_b2DistanceProxy_GetVertexCount_Box2D_b1d1b47c7e81f80a(b2DistanceProxy *_swig_go_0) {
+intgo _wrap_b2DistanceProxy_GetVertexCount_Box2D_553c0f9515edf50e(b2DistanceProxy *_swig_go_0) {
   b2DistanceProxy *arg1 = (b2DistanceProxy *) 0 ;
   int32 result;
   intgo _swig_go_result;
@@ -2426,7 +2545,7 @@ intgo _wrap_b2DistanceProxy_GetVertexCount_Box2D_b1d1b47c7e81f80a(b2DistanceProx
 }
 
 
-b2Vec2 *_wrap_b2DistanceProxy_GetVertex_Box2D_b1d1b47c7e81f80a(b2DistanceProxy *_swig_go_0, intgo _swig_go_1) {
+b2Vec2 *_wrap_b2DistanceProxy_GetVertex_Box2D_553c0f9515edf50e(b2DistanceProxy *_swig_go_0, intgo _swig_go_1) {
   b2DistanceProxy *arg1 = (b2DistanceProxy *) 0 ;
   int32 arg2 ;
   b2Vec2 *result = 0 ;
@@ -2441,7 +2560,7 @@ b2Vec2 *_wrap_b2DistanceProxy_GetVertex_Box2D_b1d1b47c7e81f80a(b2DistanceProxy *
 }
 
 
-void _wrap_b2DistanceProxy_m_buffer_set_Box2D_b1d1b47c7e81f80a(b2DistanceProxy *_swig_go_0, b2Vec2 *_swig_go_1) {
+void _wrap_b2DistanceProxy_m_buffer_set_Box2D_553c0f9515edf50e(b2DistanceProxy *_swig_go_0, b2Vec2 *_swig_go_1) {
   b2DistanceProxy *arg1 = (b2DistanceProxy *) 0 ;
   b2Vec2 *arg2 ;
   
@@ -2457,7 +2576,7 @@ void _wrap_b2DistanceProxy_m_buffer_set_Box2D_b1d1b47c7e81f80a(b2DistanceProxy *
 }
 
 
-b2Vec2 (*_wrap_b2DistanceProxy_m_buffer_get_Box2D_b1d1b47c7e81f80a(b2DistanceProxy *_swig_go_0))[2] {
+b2Vec2 (*_wrap_b2DistanceProxy_m_buffer_get_Box2D_553c0f9515edf50e(b2DistanceProxy *_swig_go_0))[2] {
   b2DistanceProxy *arg1 = (b2DistanceProxy *) 0 ;
   b2Vec2 *result = 0 ;
   b2Vec2 (*_swig_go_result)[2];
@@ -2470,7 +2589,7 @@ b2Vec2 (*_wrap_b2DistanceProxy_m_buffer_get_Box2D_b1d1b47c7e81f80a(b2DistancePro
 }
 
 
-void _wrap_b2DistanceProxy_m_vertices_set_Box2D_b1d1b47c7e81f80a(b2DistanceProxy *_swig_go_0, b2Vec2 *_swig_go_1) {
+void _wrap_b2DistanceProxy_m_vertices_set_Box2D_553c0f9515edf50e(b2DistanceProxy *_swig_go_0, b2Vec2 *_swig_go_1) {
   b2DistanceProxy *arg1 = (b2DistanceProxy *) 0 ;
   b2Vec2 *arg2 = (b2Vec2 *) 0 ;
   
@@ -2482,7 +2601,7 @@ void _wrap_b2DistanceProxy_m_vertices_set_Box2D_b1d1b47c7e81f80a(b2DistanceProxy
 }
 
 
-b2Vec2 *_wrap_b2DistanceProxy_m_vertices_get_Box2D_b1d1b47c7e81f80a(b2DistanceProxy *_swig_go_0) {
+b2Vec2 *_wrap_b2DistanceProxy_m_vertices_get_Box2D_553c0f9515edf50e(b2DistanceProxy *_swig_go_0) {
   b2DistanceProxy *arg1 = (b2DistanceProxy *) 0 ;
   b2Vec2 *result = 0 ;
   b2Vec2 *_swig_go_result;
@@ -2495,7 +2614,7 @@ b2Vec2 *_wrap_b2DistanceProxy_m_vertices_get_Box2D_b1d1b47c7e81f80a(b2DistancePr
 }
 
 
-void _wrap_b2DistanceProxy_m_count_set_Box2D_b1d1b47c7e81f80a(b2DistanceProxy *_swig_go_0, intgo _swig_go_1) {
+void _wrap_b2DistanceProxy_m_count_set_Box2D_553c0f9515edf50e(b2DistanceProxy *_swig_go_0, intgo _swig_go_1) {
   b2DistanceProxy *arg1 = (b2DistanceProxy *) 0 ;
   int32 arg2 ;
   
@@ -2507,7 +2626,7 @@ void _wrap_b2DistanceProxy_m_count_set_Box2D_b1d1b47c7e81f80a(b2DistanceProxy *_
 }
 
 
-intgo _wrap_b2DistanceProxy_m_count_get_Box2D_b1d1b47c7e81f80a(b2DistanceProxy *_swig_go_0) {
+intgo _wrap_b2DistanceProxy_m_count_get_Box2D_553c0f9515edf50e(b2DistanceProxy *_swig_go_0) {
   b2DistanceProxy *arg1 = (b2DistanceProxy *) 0 ;
   int32 result;
   intgo _swig_go_result;
@@ -2520,7 +2639,7 @@ intgo _wrap_b2DistanceProxy_m_count_get_Box2D_b1d1b47c7e81f80a(b2DistanceProxy *
 }
 
 
-void _wrap_b2DistanceProxy_m_radius_set_Box2D_b1d1b47c7e81f80a(b2DistanceProxy *_swig_go_0, float _swig_go_1) {
+void _wrap_b2DistanceProxy_m_radius_set_Box2D_553c0f9515edf50e(b2DistanceProxy *_swig_go_0, float _swig_go_1) {
   b2DistanceProxy *arg1 = (b2DistanceProxy *) 0 ;
   float32 arg2 ;
   
@@ -2532,7 +2651,7 @@ void _wrap_b2DistanceProxy_m_radius_set_Box2D_b1d1b47c7e81f80a(b2DistanceProxy *
 }
 
 
-float _wrap_b2DistanceProxy_m_radius_get_Box2D_b1d1b47c7e81f80a(b2DistanceProxy *_swig_go_0) {
+float _wrap_b2DistanceProxy_m_radius_get_Box2D_553c0f9515edf50e(b2DistanceProxy *_swig_go_0) {
   b2DistanceProxy *arg1 = (b2DistanceProxy *) 0 ;
   float32 result;
   float _swig_go_result;
@@ -2545,7 +2664,7 @@ float _wrap_b2DistanceProxy_m_radius_get_Box2D_b1d1b47c7e81f80a(b2DistanceProxy 
 }
 
 
-void _wrap_delete_b2DistanceProxy_Box2D_b1d1b47c7e81f80a(b2DistanceProxy *_swig_go_0) {
+void _wrap_delete_b2DistanceProxy_Box2D_553c0f9515edf50e(b2DistanceProxy *_swig_go_0) {
   b2DistanceProxy *arg1 = (b2DistanceProxy *) 0 ;
   
   arg1 = *(b2DistanceProxy **)&_swig_go_0; 
@@ -2555,7 +2674,7 @@ void _wrap_delete_b2DistanceProxy_Box2D_b1d1b47c7e81f80a(b2DistanceProxy *_swig_
 }
 
 
-void _wrap_b2SimplexCache_metric_set_Box2D_b1d1b47c7e81f80a(b2SimplexCache *_swig_go_0, float _swig_go_1) {
+void _wrap_b2SimplexCache_metric_set_Box2D_553c0f9515edf50e(b2SimplexCache *_swig_go_0, float _swig_go_1) {
   b2SimplexCache *arg1 = (b2SimplexCache *) 0 ;
   float32 arg2 ;
   
@@ -2567,7 +2686,7 @@ void _wrap_b2SimplexCache_metric_set_Box2D_b1d1b47c7e81f80a(b2SimplexCache *_swi
 }
 
 
-float _wrap_b2SimplexCache_metric_get_Box2D_b1d1b47c7e81f80a(b2SimplexCache *_swig_go_0) {
+float _wrap_b2SimplexCache_metric_get_Box2D_553c0f9515edf50e(b2SimplexCache *_swig_go_0) {
   b2SimplexCache *arg1 = (b2SimplexCache *) 0 ;
   float32 result;
   float _swig_go_result;
@@ -2580,7 +2699,7 @@ float _wrap_b2SimplexCache_metric_get_Box2D_b1d1b47c7e81f80a(b2SimplexCache *_sw
 }
 
 
-void _wrap_b2SimplexCache_count_set_Box2D_b1d1b47c7e81f80a(b2SimplexCache *_swig_go_0, short _swig_go_1) {
+void _wrap_b2SimplexCache_count_set_Box2D_553c0f9515edf50e(b2SimplexCache *_swig_go_0, short _swig_go_1) {
   b2SimplexCache *arg1 = (b2SimplexCache *) 0 ;
   uint16 arg2 ;
   
@@ -2592,7 +2711,7 @@ void _wrap_b2SimplexCache_count_set_Box2D_b1d1b47c7e81f80a(b2SimplexCache *_swig
 }
 
 
-short _wrap_b2SimplexCache_count_get_Box2D_b1d1b47c7e81f80a(b2SimplexCache *_swig_go_0) {
+short _wrap_b2SimplexCache_count_get_Box2D_553c0f9515edf50e(b2SimplexCache *_swig_go_0) {
   b2SimplexCache *arg1 = (b2SimplexCache *) 0 ;
   uint16 result;
   short _swig_go_result;
@@ -2605,7 +2724,7 @@ short _wrap_b2SimplexCache_count_get_Box2D_b1d1b47c7e81f80a(b2SimplexCache *_swi
 }
 
 
-void _wrap_b2SimplexCache_indexA_set_Box2D_b1d1b47c7e81f80a(b2SimplexCache *_swig_go_0, char *_swig_go_1) {
+void _wrap_b2SimplexCache_indexA_set_Box2D_553c0f9515edf50e(b2SimplexCache *_swig_go_0, char *_swig_go_1) {
   b2SimplexCache *arg1 = (b2SimplexCache *) 0 ;
   uint8 *arg2 ;
   
@@ -2621,7 +2740,7 @@ void _wrap_b2SimplexCache_indexA_set_Box2D_b1d1b47c7e81f80a(b2SimplexCache *_swi
 }
 
 
-char *_wrap_b2SimplexCache_indexA_get_Box2D_b1d1b47c7e81f80a(b2SimplexCache *_swig_go_0) {
+char *_wrap_b2SimplexCache_indexA_get_Box2D_553c0f9515edf50e(b2SimplexCache *_swig_go_0) {
   b2SimplexCache *arg1 = (b2SimplexCache *) 0 ;
   uint8 *result = 0 ;
   char *_swig_go_result;
@@ -2634,7 +2753,7 @@ char *_wrap_b2SimplexCache_indexA_get_Box2D_b1d1b47c7e81f80a(b2SimplexCache *_sw
 }
 
 
-void _wrap_b2SimplexCache_indexB_set_Box2D_b1d1b47c7e81f80a(b2SimplexCache *_swig_go_0, char *_swig_go_1) {
+void _wrap_b2SimplexCache_indexB_set_Box2D_553c0f9515edf50e(b2SimplexCache *_swig_go_0, char *_swig_go_1) {
   b2SimplexCache *arg1 = (b2SimplexCache *) 0 ;
   uint8 *arg2 ;
   
@@ -2650,7 +2769,7 @@ void _wrap_b2SimplexCache_indexB_set_Box2D_b1d1b47c7e81f80a(b2SimplexCache *_swi
 }
 
 
-char *_wrap_b2SimplexCache_indexB_get_Box2D_b1d1b47c7e81f80a(b2SimplexCache *_swig_go_0) {
+char *_wrap_b2SimplexCache_indexB_get_Box2D_553c0f9515edf50e(b2SimplexCache *_swig_go_0) {
   b2SimplexCache *arg1 = (b2SimplexCache *) 0 ;
   uint8 *result = 0 ;
   char *_swig_go_result;
@@ -2663,7 +2782,7 @@ char *_wrap_b2SimplexCache_indexB_get_Box2D_b1d1b47c7e81f80a(b2SimplexCache *_sw
 }
 
 
-b2SimplexCache *_wrap_new_b2SimplexCache_Box2D_b1d1b47c7e81f80a() {
+b2SimplexCache *_wrap_new_b2SimplexCache_Box2D_553c0f9515edf50e() {
   b2SimplexCache *result = 0 ;
   b2SimplexCache *_swig_go_result;
   
@@ -2674,7 +2793,7 @@ b2SimplexCache *_wrap_new_b2SimplexCache_Box2D_b1d1b47c7e81f80a() {
 }
 
 
-void _wrap_delete_b2SimplexCache_Box2D_b1d1b47c7e81f80a(b2SimplexCache *_swig_go_0) {
+void _wrap_delete_b2SimplexCache_Box2D_553c0f9515edf50e(b2SimplexCache *_swig_go_0) {
   b2SimplexCache *arg1 = (b2SimplexCache *) 0 ;
   
   arg1 = *(b2SimplexCache **)&_swig_go_0; 
@@ -2684,7 +2803,7 @@ void _wrap_delete_b2SimplexCache_Box2D_b1d1b47c7e81f80a(b2SimplexCache *_swig_go
 }
 
 
-void _wrap_b2DistanceInput_proxyA_set_Box2D_b1d1b47c7e81f80a(b2DistanceInput *_swig_go_0, b2DistanceProxy *_swig_go_1) {
+void _wrap_b2DistanceInput_proxyA_set_Box2D_553c0f9515edf50e(b2DistanceInput *_swig_go_0, b2DistanceProxy *_swig_go_1) {
   b2DistanceInput *arg1 = (b2DistanceInput *) 0 ;
   b2DistanceProxy *arg2 = (b2DistanceProxy *) 0 ;
   
@@ -2696,7 +2815,7 @@ void _wrap_b2DistanceInput_proxyA_set_Box2D_b1d1b47c7e81f80a(b2DistanceInput *_s
 }
 
 
-b2DistanceProxy *_wrap_b2DistanceInput_proxyA_get_Box2D_b1d1b47c7e81f80a(b2DistanceInput *_swig_go_0) {
+b2DistanceProxy *_wrap_b2DistanceInput_proxyA_get_Box2D_553c0f9515edf50e(b2DistanceInput *_swig_go_0) {
   b2DistanceInput *arg1 = (b2DistanceInput *) 0 ;
   b2DistanceProxy *result = 0 ;
   b2DistanceProxy *_swig_go_result;
@@ -2709,7 +2828,7 @@ b2DistanceProxy *_wrap_b2DistanceInput_proxyA_get_Box2D_b1d1b47c7e81f80a(b2Dista
 }
 
 
-void _wrap_b2DistanceInput_proxyB_set_Box2D_b1d1b47c7e81f80a(b2DistanceInput *_swig_go_0, b2DistanceProxy *_swig_go_1) {
+void _wrap_b2DistanceInput_proxyB_set_Box2D_553c0f9515edf50e(b2DistanceInput *_swig_go_0, b2DistanceProxy *_swig_go_1) {
   b2DistanceInput *arg1 = (b2DistanceInput *) 0 ;
   b2DistanceProxy *arg2 = (b2DistanceProxy *) 0 ;
   
@@ -2721,7 +2840,7 @@ void _wrap_b2DistanceInput_proxyB_set_Box2D_b1d1b47c7e81f80a(b2DistanceInput *_s
 }
 
 
-b2DistanceProxy *_wrap_b2DistanceInput_proxyB_get_Box2D_b1d1b47c7e81f80a(b2DistanceInput *_swig_go_0) {
+b2DistanceProxy *_wrap_b2DistanceInput_proxyB_get_Box2D_553c0f9515edf50e(b2DistanceInput *_swig_go_0) {
   b2DistanceInput *arg1 = (b2DistanceInput *) 0 ;
   b2DistanceProxy *result = 0 ;
   b2DistanceProxy *_swig_go_result;
@@ -2734,7 +2853,7 @@ b2DistanceProxy *_wrap_b2DistanceInput_proxyB_get_Box2D_b1d1b47c7e81f80a(b2Dista
 }
 
 
-void _wrap_b2DistanceInput_transformA_set_Box2D_b1d1b47c7e81f80a(b2DistanceInput *_swig_go_0, b2Transform *_swig_go_1) {
+void _wrap_b2DistanceInput_transformA_set_Box2D_553c0f9515edf50e(b2DistanceInput *_swig_go_0, b2Transform *_swig_go_1) {
   b2DistanceInput *arg1 = (b2DistanceInput *) 0 ;
   b2Transform *arg2 = (b2Transform *) 0 ;
   
@@ -2746,7 +2865,7 @@ void _wrap_b2DistanceInput_transformA_set_Box2D_b1d1b47c7e81f80a(b2DistanceInput
 }
 
 
-b2Transform *_wrap_b2DistanceInput_transformA_get_Box2D_b1d1b47c7e81f80a(b2DistanceInput *_swig_go_0) {
+b2Transform *_wrap_b2DistanceInput_transformA_get_Box2D_553c0f9515edf50e(b2DistanceInput *_swig_go_0) {
   b2DistanceInput *arg1 = (b2DistanceInput *) 0 ;
   b2Transform *result = 0 ;
   b2Transform *_swig_go_result;
@@ -2759,7 +2878,7 @@ b2Transform *_wrap_b2DistanceInput_transformA_get_Box2D_b1d1b47c7e81f80a(b2Dista
 }
 
 
-void _wrap_b2DistanceInput_transformB_set_Box2D_b1d1b47c7e81f80a(b2DistanceInput *_swig_go_0, b2Transform *_swig_go_1) {
+void _wrap_b2DistanceInput_transformB_set_Box2D_553c0f9515edf50e(b2DistanceInput *_swig_go_0, b2Transform *_swig_go_1) {
   b2DistanceInput *arg1 = (b2DistanceInput *) 0 ;
   b2Transform *arg2 = (b2Transform *) 0 ;
   
@@ -2771,7 +2890,7 @@ void _wrap_b2DistanceInput_transformB_set_Box2D_b1d1b47c7e81f80a(b2DistanceInput
 }
 
 
-b2Transform *_wrap_b2DistanceInput_transformB_get_Box2D_b1d1b47c7e81f80a(b2DistanceInput *_swig_go_0) {
+b2Transform *_wrap_b2DistanceInput_transformB_get_Box2D_553c0f9515edf50e(b2DistanceInput *_swig_go_0) {
   b2DistanceInput *arg1 = (b2DistanceInput *) 0 ;
   b2Transform *result = 0 ;
   b2Transform *_swig_go_result;
@@ -2784,7 +2903,7 @@ b2Transform *_wrap_b2DistanceInput_transformB_get_Box2D_b1d1b47c7e81f80a(b2Dista
 }
 
 
-void _wrap_b2DistanceInput_useRadii_set_Box2D_b1d1b47c7e81f80a(b2DistanceInput *_swig_go_0, bool _swig_go_1) {
+void _wrap_b2DistanceInput_useRadii_set_Box2D_553c0f9515edf50e(b2DistanceInput *_swig_go_0, bool _swig_go_1) {
   b2DistanceInput *arg1 = (b2DistanceInput *) 0 ;
   bool arg2 ;
   
@@ -2796,7 +2915,7 @@ void _wrap_b2DistanceInput_useRadii_set_Box2D_b1d1b47c7e81f80a(b2DistanceInput *
 }
 
 
-bool _wrap_b2DistanceInput_useRadii_get_Box2D_b1d1b47c7e81f80a(b2DistanceInput *_swig_go_0) {
+bool _wrap_b2DistanceInput_useRadii_get_Box2D_553c0f9515edf50e(b2DistanceInput *_swig_go_0) {
   b2DistanceInput *arg1 = (b2DistanceInput *) 0 ;
   bool result;
   bool _swig_go_result;
@@ -2809,7 +2928,7 @@ bool _wrap_b2DistanceInput_useRadii_get_Box2D_b1d1b47c7e81f80a(b2DistanceInput *
 }
 
 
-b2DistanceInput *_wrap_new_b2DistanceInput_Box2D_b1d1b47c7e81f80a() {
+b2DistanceInput *_wrap_new_b2DistanceInput_Box2D_553c0f9515edf50e() {
   b2DistanceInput *result = 0 ;
   b2DistanceInput *_swig_go_result;
   
@@ -2820,7 +2939,7 @@ b2DistanceInput *_wrap_new_b2DistanceInput_Box2D_b1d1b47c7e81f80a() {
 }
 
 
-void _wrap_delete_b2DistanceInput_Box2D_b1d1b47c7e81f80a(b2DistanceInput *_swig_go_0) {
+void _wrap_delete_b2DistanceInput_Box2D_553c0f9515edf50e(b2DistanceInput *_swig_go_0) {
   b2DistanceInput *arg1 = (b2DistanceInput *) 0 ;
   
   arg1 = *(b2DistanceInput **)&_swig_go_0; 
@@ -2830,7 +2949,7 @@ void _wrap_delete_b2DistanceInput_Box2D_b1d1b47c7e81f80a(b2DistanceInput *_swig_
 }
 
 
-void _wrap_b2DistanceOutput_pointA_set_Box2D_b1d1b47c7e81f80a(b2DistanceOutput *_swig_go_0, b2Vec2 *_swig_go_1) {
+void _wrap_b2DistanceOutput_pointA_set_Box2D_553c0f9515edf50e(b2DistanceOutput *_swig_go_0, b2Vec2 *_swig_go_1) {
   b2DistanceOutput *arg1 = (b2DistanceOutput *) 0 ;
   b2Vec2 *arg2 = (b2Vec2 *) 0 ;
   
@@ -2842,7 +2961,7 @@ void _wrap_b2DistanceOutput_pointA_set_Box2D_b1d1b47c7e81f80a(b2DistanceOutput *
 }
 
 
-b2Vec2 *_wrap_b2DistanceOutput_pointA_get_Box2D_b1d1b47c7e81f80a(b2DistanceOutput *_swig_go_0) {
+b2Vec2 *_wrap_b2DistanceOutput_pointA_get_Box2D_553c0f9515edf50e(b2DistanceOutput *_swig_go_0) {
   b2DistanceOutput *arg1 = (b2DistanceOutput *) 0 ;
   b2Vec2 *result = 0 ;
   b2Vec2 *_swig_go_result;
@@ -2855,7 +2974,7 @@ b2Vec2 *_wrap_b2DistanceOutput_pointA_get_Box2D_b1d1b47c7e81f80a(b2DistanceOutpu
 }
 
 
-void _wrap_b2DistanceOutput_pointB_set_Box2D_b1d1b47c7e81f80a(b2DistanceOutput *_swig_go_0, b2Vec2 *_swig_go_1) {
+void _wrap_b2DistanceOutput_pointB_set_Box2D_553c0f9515edf50e(b2DistanceOutput *_swig_go_0, b2Vec2 *_swig_go_1) {
   b2DistanceOutput *arg1 = (b2DistanceOutput *) 0 ;
   b2Vec2 *arg2 = (b2Vec2 *) 0 ;
   
@@ -2867,7 +2986,7 @@ void _wrap_b2DistanceOutput_pointB_set_Box2D_b1d1b47c7e81f80a(b2DistanceOutput *
 }
 
 
-b2Vec2 *_wrap_b2DistanceOutput_pointB_get_Box2D_b1d1b47c7e81f80a(b2DistanceOutput *_swig_go_0) {
+b2Vec2 *_wrap_b2DistanceOutput_pointB_get_Box2D_553c0f9515edf50e(b2DistanceOutput *_swig_go_0) {
   b2DistanceOutput *arg1 = (b2DistanceOutput *) 0 ;
   b2Vec2 *result = 0 ;
   b2Vec2 *_swig_go_result;
@@ -2880,7 +2999,7 @@ b2Vec2 *_wrap_b2DistanceOutput_pointB_get_Box2D_b1d1b47c7e81f80a(b2DistanceOutpu
 }
 
 
-void _wrap_b2DistanceOutput_distance_set_Box2D_b1d1b47c7e81f80a(b2DistanceOutput *_swig_go_0, float _swig_go_1) {
+void _wrap_b2DistanceOutput_distance_set_Box2D_553c0f9515edf50e(b2DistanceOutput *_swig_go_0, float _swig_go_1) {
   b2DistanceOutput *arg1 = (b2DistanceOutput *) 0 ;
   float32 arg2 ;
   
@@ -2892,7 +3011,7 @@ void _wrap_b2DistanceOutput_distance_set_Box2D_b1d1b47c7e81f80a(b2DistanceOutput
 }
 
 
-float _wrap_b2DistanceOutput_distance_get_Box2D_b1d1b47c7e81f80a(b2DistanceOutput *_swig_go_0) {
+float _wrap_b2DistanceOutput_distance_get_Box2D_553c0f9515edf50e(b2DistanceOutput *_swig_go_0) {
   b2DistanceOutput *arg1 = (b2DistanceOutput *) 0 ;
   float32 result;
   float _swig_go_result;
@@ -2905,7 +3024,7 @@ float _wrap_b2DistanceOutput_distance_get_Box2D_b1d1b47c7e81f80a(b2DistanceOutpu
 }
 
 
-void _wrap_b2DistanceOutput_iterations_set_Box2D_b1d1b47c7e81f80a(b2DistanceOutput *_swig_go_0, intgo _swig_go_1) {
+void _wrap_b2DistanceOutput_iterations_set_Box2D_553c0f9515edf50e(b2DistanceOutput *_swig_go_0, intgo _swig_go_1) {
   b2DistanceOutput *arg1 = (b2DistanceOutput *) 0 ;
   int32 arg2 ;
   
@@ -2917,7 +3036,7 @@ void _wrap_b2DistanceOutput_iterations_set_Box2D_b1d1b47c7e81f80a(b2DistanceOutp
 }
 
 
-intgo _wrap_b2DistanceOutput_iterations_get_Box2D_b1d1b47c7e81f80a(b2DistanceOutput *_swig_go_0) {
+intgo _wrap_b2DistanceOutput_iterations_get_Box2D_553c0f9515edf50e(b2DistanceOutput *_swig_go_0) {
   b2DistanceOutput *arg1 = (b2DistanceOutput *) 0 ;
   int32 result;
   intgo _swig_go_result;
@@ -2930,7 +3049,7 @@ intgo _wrap_b2DistanceOutput_iterations_get_Box2D_b1d1b47c7e81f80a(b2DistanceOut
 }
 
 
-b2DistanceOutput *_wrap_new_b2DistanceOutput_Box2D_b1d1b47c7e81f80a() {
+b2DistanceOutput *_wrap_new_b2DistanceOutput_Box2D_553c0f9515edf50e() {
   b2DistanceOutput *result = 0 ;
   b2DistanceOutput *_swig_go_result;
   
@@ -2941,7 +3060,7 @@ b2DistanceOutput *_wrap_new_b2DistanceOutput_Box2D_b1d1b47c7e81f80a() {
 }
 
 
-void _wrap_delete_b2DistanceOutput_Box2D_b1d1b47c7e81f80a(b2DistanceOutput *_swig_go_0) {
+void _wrap_delete_b2DistanceOutput_Box2D_553c0f9515edf50e(b2DistanceOutput *_swig_go_0) {
   b2DistanceOutput *arg1 = (b2DistanceOutput *) 0 ;
   
   arg1 = *(b2DistanceOutput **)&_swig_go_0; 
@@ -2951,7 +3070,7 @@ void _wrap_delete_b2DistanceOutput_Box2D_b1d1b47c7e81f80a(b2DistanceOutput *_swi
 }
 
 
-void _wrap_b2Distance_Box2D_b1d1b47c7e81f80a(b2DistanceOutput *_swig_go_0, b2SimplexCache *_swig_go_1, b2DistanceInput *_swig_go_2) {
+void _wrap_b2Distance_Box2D_553c0f9515edf50e(b2DistanceOutput *_swig_go_0, b2SimplexCache *_swig_go_1, b2DistanceInput *_swig_go_2) {
   b2DistanceOutput *arg1 = (b2DistanceOutput *) 0 ;
   b2SimplexCache *arg2 = (b2SimplexCache *) 0 ;
   b2DistanceInput *arg3 = (b2DistanceInput *) 0 ;
@@ -2965,7 +3084,7 @@ void _wrap_b2Distance_Box2D_b1d1b47c7e81f80a(b2DistanceOutput *_swig_go_0, b2Sim
 }
 
 
-intgo _wrap_b2_nullNode_Box2D_b1d1b47c7e81f80a() {
+intgo _wrap_b2_nullNode_Box2D_553c0f9515edf50e() {
   int result;
   intgo _swig_go_result;
   
@@ -2977,7 +3096,7 @@ intgo _wrap_b2_nullNode_Box2D_b1d1b47c7e81f80a() {
 }
 
 
-bool _wrap_b2TreeNode_IsLeaf_Box2D_b1d1b47c7e81f80a(b2TreeNode *_swig_go_0) {
+bool _wrap_b2TreeNode_IsLeaf_Box2D_553c0f9515edf50e(b2TreeNode *_swig_go_0) {
   b2TreeNode *arg1 = (b2TreeNode *) 0 ;
   bool result;
   bool _swig_go_result;
@@ -2990,7 +3109,7 @@ bool _wrap_b2TreeNode_IsLeaf_Box2D_b1d1b47c7e81f80a(b2TreeNode *_swig_go_0) {
 }
 
 
-void _wrap_b2TreeNode_aabb_set_Box2D_b1d1b47c7e81f80a(b2TreeNode *_swig_go_0, b2AABB *_swig_go_1) {
+void _wrap_b2TreeNode_aabb_set_Box2D_553c0f9515edf50e(b2TreeNode *_swig_go_0, b2AABB *_swig_go_1) {
   b2TreeNode *arg1 = (b2TreeNode *) 0 ;
   b2AABB *arg2 = (b2AABB *) 0 ;
   
@@ -3002,7 +3121,7 @@ void _wrap_b2TreeNode_aabb_set_Box2D_b1d1b47c7e81f80a(b2TreeNode *_swig_go_0, b2
 }
 
 
-b2AABB *_wrap_b2TreeNode_aabb_get_Box2D_b1d1b47c7e81f80a(b2TreeNode *_swig_go_0) {
+b2AABB *_wrap_b2TreeNode_aabb_get_Box2D_553c0f9515edf50e(b2TreeNode *_swig_go_0) {
   b2TreeNode *arg1 = (b2TreeNode *) 0 ;
   b2AABB *result = 0 ;
   b2AABB *_swig_go_result;
@@ -3015,7 +3134,7 @@ b2AABB *_wrap_b2TreeNode_aabb_get_Box2D_b1d1b47c7e81f80a(b2TreeNode *_swig_go_0)
 }
 
 
-void _wrap_b2TreeNode_userData_set_Box2D_b1d1b47c7e81f80a(b2TreeNode *_swig_go_0, void *_swig_go_1) {
+void _wrap_b2TreeNode_userData_set_Box2D_553c0f9515edf50e(b2TreeNode *_swig_go_0, void *_swig_go_1) {
   b2TreeNode *arg1 = (b2TreeNode *) 0 ;
   void *arg2 = (void *) 0 ;
   
@@ -3027,7 +3146,7 @@ void _wrap_b2TreeNode_userData_set_Box2D_b1d1b47c7e81f80a(b2TreeNode *_swig_go_0
 }
 
 
-void *_wrap_b2TreeNode_userData_get_Box2D_b1d1b47c7e81f80a(b2TreeNode *_swig_go_0) {
+void *_wrap_b2TreeNode_userData_get_Box2D_553c0f9515edf50e(b2TreeNode *_swig_go_0) {
   b2TreeNode *arg1 = (b2TreeNode *) 0 ;
   void *result = 0 ;
   void *_swig_go_result;
@@ -3040,7 +3159,7 @@ void *_wrap_b2TreeNode_userData_get_Box2D_b1d1b47c7e81f80a(b2TreeNode *_swig_go_
 }
 
 
-void _wrap_b2TreeNode_child1_set_Box2D_b1d1b47c7e81f80a(b2TreeNode *_swig_go_0, intgo _swig_go_1) {
+void _wrap_b2TreeNode_child1_set_Box2D_553c0f9515edf50e(b2TreeNode *_swig_go_0, intgo _swig_go_1) {
   b2TreeNode *arg1 = (b2TreeNode *) 0 ;
   int32 arg2 ;
   
@@ -3052,7 +3171,7 @@ void _wrap_b2TreeNode_child1_set_Box2D_b1d1b47c7e81f80a(b2TreeNode *_swig_go_0, 
 }
 
 
-intgo _wrap_b2TreeNode_child1_get_Box2D_b1d1b47c7e81f80a(b2TreeNode *_swig_go_0) {
+intgo _wrap_b2TreeNode_child1_get_Box2D_553c0f9515edf50e(b2TreeNode *_swig_go_0) {
   b2TreeNode *arg1 = (b2TreeNode *) 0 ;
   int32 result;
   intgo _swig_go_result;
@@ -3065,7 +3184,7 @@ intgo _wrap_b2TreeNode_child1_get_Box2D_b1d1b47c7e81f80a(b2TreeNode *_swig_go_0)
 }
 
 
-void _wrap_b2TreeNode_child2_set_Box2D_b1d1b47c7e81f80a(b2TreeNode *_swig_go_0, intgo _swig_go_1) {
+void _wrap_b2TreeNode_child2_set_Box2D_553c0f9515edf50e(b2TreeNode *_swig_go_0, intgo _swig_go_1) {
   b2TreeNode *arg1 = (b2TreeNode *) 0 ;
   int32 arg2 ;
   
@@ -3077,7 +3196,7 @@ void _wrap_b2TreeNode_child2_set_Box2D_b1d1b47c7e81f80a(b2TreeNode *_swig_go_0, 
 }
 
 
-intgo _wrap_b2TreeNode_child2_get_Box2D_b1d1b47c7e81f80a(b2TreeNode *_swig_go_0) {
+intgo _wrap_b2TreeNode_child2_get_Box2D_553c0f9515edf50e(b2TreeNode *_swig_go_0) {
   b2TreeNode *arg1 = (b2TreeNode *) 0 ;
   int32 result;
   intgo _swig_go_result;
@@ -3090,7 +3209,7 @@ intgo _wrap_b2TreeNode_child2_get_Box2D_b1d1b47c7e81f80a(b2TreeNode *_swig_go_0)
 }
 
 
-void _wrap_b2TreeNode_height_set_Box2D_b1d1b47c7e81f80a(b2TreeNode *_swig_go_0, intgo _swig_go_1) {
+void _wrap_b2TreeNode_height_set_Box2D_553c0f9515edf50e(b2TreeNode *_swig_go_0, intgo _swig_go_1) {
   b2TreeNode *arg1 = (b2TreeNode *) 0 ;
   int32 arg2 ;
   
@@ -3102,7 +3221,7 @@ void _wrap_b2TreeNode_height_set_Box2D_b1d1b47c7e81f80a(b2TreeNode *_swig_go_0, 
 }
 
 
-intgo _wrap_b2TreeNode_height_get_Box2D_b1d1b47c7e81f80a(b2TreeNode *_swig_go_0) {
+intgo _wrap_b2TreeNode_height_get_Box2D_553c0f9515edf50e(b2TreeNode *_swig_go_0) {
   b2TreeNode *arg1 = (b2TreeNode *) 0 ;
   int32 result;
   intgo _swig_go_result;
@@ -3115,7 +3234,7 @@ intgo _wrap_b2TreeNode_height_get_Box2D_b1d1b47c7e81f80a(b2TreeNode *_swig_go_0)
 }
 
 
-b2TreeNode *_wrap_new_b2TreeNode_Box2D_b1d1b47c7e81f80a() {
+b2TreeNode *_wrap_new_b2TreeNode_Box2D_553c0f9515edf50e() {
   b2TreeNode *result = 0 ;
   b2TreeNode *_swig_go_result;
   
@@ -3126,7 +3245,7 @@ b2TreeNode *_wrap_new_b2TreeNode_Box2D_b1d1b47c7e81f80a() {
 }
 
 
-void _wrap_delete_b2TreeNode_Box2D_b1d1b47c7e81f80a(b2TreeNode *_swig_go_0) {
+void _wrap_delete_b2TreeNode_Box2D_553c0f9515edf50e(b2TreeNode *_swig_go_0) {
   b2TreeNode *arg1 = (b2TreeNode *) 0 ;
   
   arg1 = *(b2TreeNode **)&_swig_go_0; 
@@ -3136,7 +3255,7 @@ void _wrap_delete_b2TreeNode_Box2D_b1d1b47c7e81f80a(b2TreeNode *_swig_go_0) {
 }
 
 
-b2DynamicTree *_wrap_new_b2DynamicTree_Box2D_b1d1b47c7e81f80a() {
+b2DynamicTree *_wrap_new_b2DynamicTree_Box2D_553c0f9515edf50e() {
   b2DynamicTree *result = 0 ;
   b2DynamicTree *_swig_go_result;
   
@@ -3147,7 +3266,7 @@ b2DynamicTree *_wrap_new_b2DynamicTree_Box2D_b1d1b47c7e81f80a() {
 }
 
 
-void _wrap_delete_b2DynamicTree_Box2D_b1d1b47c7e81f80a(b2DynamicTree *_swig_go_0) {
+void _wrap_delete_b2DynamicTree_Box2D_553c0f9515edf50e(b2DynamicTree *_swig_go_0) {
   b2DynamicTree *arg1 = (b2DynamicTree *) 0 ;
   
   arg1 = *(b2DynamicTree **)&_swig_go_0; 
@@ -3157,7 +3276,7 @@ void _wrap_delete_b2DynamicTree_Box2D_b1d1b47c7e81f80a(b2DynamicTree *_swig_go_0
 }
 
 
-intgo _wrap_b2DynamicTree_CreateProxy_Box2D_b1d1b47c7e81f80a(b2DynamicTree *_swig_go_0, b2AABB *_swig_go_1, void *_swig_go_2) {
+intgo _wrap_b2DynamicTree_CreateProxy_Box2D_553c0f9515edf50e(b2DynamicTree *_swig_go_0, b2AABB *_swig_go_1, void *_swig_go_2) {
   b2DynamicTree *arg1 = (b2DynamicTree *) 0 ;
   b2AABB *arg2 = 0 ;
   void *arg3 = (void *) 0 ;
@@ -3174,7 +3293,7 @@ intgo _wrap_b2DynamicTree_CreateProxy_Box2D_b1d1b47c7e81f80a(b2DynamicTree *_swi
 }
 
 
-void _wrap_b2DynamicTree_DestroyProxy_Box2D_b1d1b47c7e81f80a(b2DynamicTree *_swig_go_0, intgo _swig_go_1) {
+void _wrap_b2DynamicTree_DestroyProxy_Box2D_553c0f9515edf50e(b2DynamicTree *_swig_go_0, intgo _swig_go_1) {
   b2DynamicTree *arg1 = (b2DynamicTree *) 0 ;
   int32 arg2 ;
   
@@ -3186,7 +3305,7 @@ void _wrap_b2DynamicTree_DestroyProxy_Box2D_b1d1b47c7e81f80a(b2DynamicTree *_swi
 }
 
 
-bool _wrap_b2DynamicTree_MoveProxy_Box2D_b1d1b47c7e81f80a(b2DynamicTree *_swig_go_0, intgo _swig_go_1, b2AABB *_swig_go_2, b2Vec2 *_swig_go_3) {
+bool _wrap_b2DynamicTree_MoveProxy_Box2D_553c0f9515edf50e(b2DynamicTree *_swig_go_0, intgo _swig_go_1, b2AABB *_swig_go_2, b2Vec2 *_swig_go_3) {
   b2DynamicTree *arg1 = (b2DynamicTree *) 0 ;
   int32 arg2 ;
   b2AABB *arg3 = 0 ;
@@ -3205,7 +3324,7 @@ bool _wrap_b2DynamicTree_MoveProxy_Box2D_b1d1b47c7e81f80a(b2DynamicTree *_swig_g
 }
 
 
-void *_wrap_b2DynamicTree_GetUserData_Box2D_b1d1b47c7e81f80a(b2DynamicTree *_swig_go_0, intgo _swig_go_1) {
+void *_wrap_b2DynamicTree_GetUserData_Box2D_553c0f9515edf50e(b2DynamicTree *_swig_go_0, intgo _swig_go_1) {
   b2DynamicTree *arg1 = (b2DynamicTree *) 0 ;
   int32 arg2 ;
   void *result = 0 ;
@@ -3220,7 +3339,7 @@ void *_wrap_b2DynamicTree_GetUserData_Box2D_b1d1b47c7e81f80a(b2DynamicTree *_swi
 }
 
 
-b2AABB *_wrap_b2DynamicTree_GetFatAABB_Box2D_b1d1b47c7e81f80a(b2DynamicTree *_swig_go_0, intgo _swig_go_1) {
+b2AABB *_wrap_b2DynamicTree_GetFatAABB_Box2D_553c0f9515edf50e(b2DynamicTree *_swig_go_0, intgo _swig_go_1) {
   b2DynamicTree *arg1 = (b2DynamicTree *) 0 ;
   int32 arg2 ;
   b2AABB *result = 0 ;
@@ -3235,7 +3354,7 @@ b2AABB *_wrap_b2DynamicTree_GetFatAABB_Box2D_b1d1b47c7e81f80a(b2DynamicTree *_sw
 }
 
 
-void _wrap_b2DynamicTree_Validate_Box2D_b1d1b47c7e81f80a(b2DynamicTree *_swig_go_0) {
+void _wrap_b2DynamicTree_Validate_Box2D_553c0f9515edf50e(b2DynamicTree *_swig_go_0) {
   b2DynamicTree *arg1 = (b2DynamicTree *) 0 ;
   
   arg1 = *(b2DynamicTree **)&_swig_go_0; 
@@ -3245,7 +3364,7 @@ void _wrap_b2DynamicTree_Validate_Box2D_b1d1b47c7e81f80a(b2DynamicTree *_swig_go
 }
 
 
-intgo _wrap_b2DynamicTree_GetHeight_Box2D_b1d1b47c7e81f80a(b2DynamicTree *_swig_go_0) {
+intgo _wrap_b2DynamicTree_GetHeight_Box2D_553c0f9515edf50e(b2DynamicTree *_swig_go_0) {
   b2DynamicTree *arg1 = (b2DynamicTree *) 0 ;
   int32 result;
   intgo _swig_go_result;
@@ -3258,7 +3377,7 @@ intgo _wrap_b2DynamicTree_GetHeight_Box2D_b1d1b47c7e81f80a(b2DynamicTree *_swig_
 }
 
 
-intgo _wrap_b2DynamicTree_GetMaxBalance_Box2D_b1d1b47c7e81f80a(b2DynamicTree *_swig_go_0) {
+intgo _wrap_b2DynamicTree_GetMaxBalance_Box2D_553c0f9515edf50e(b2DynamicTree *_swig_go_0) {
   b2DynamicTree *arg1 = (b2DynamicTree *) 0 ;
   int32 result;
   intgo _swig_go_result;
@@ -3271,7 +3390,7 @@ intgo _wrap_b2DynamicTree_GetMaxBalance_Box2D_b1d1b47c7e81f80a(b2DynamicTree *_s
 }
 
 
-float _wrap_b2DynamicTree_GetAreaRatio_Box2D_b1d1b47c7e81f80a(b2DynamicTree *_swig_go_0) {
+float _wrap_b2DynamicTree_GetAreaRatio_Box2D_553c0f9515edf50e(b2DynamicTree *_swig_go_0) {
   b2DynamicTree *arg1 = (b2DynamicTree *) 0 ;
   float32 result;
   float _swig_go_result;
@@ -3284,7 +3403,7 @@ float _wrap_b2DynamicTree_GetAreaRatio_Box2D_b1d1b47c7e81f80a(b2DynamicTree *_sw
 }
 
 
-void _wrap_b2DynamicTree_RebuildBottomUp_Box2D_b1d1b47c7e81f80a(b2DynamicTree *_swig_go_0) {
+void _wrap_b2DynamicTree_RebuildBottomUp_Box2D_553c0f9515edf50e(b2DynamicTree *_swig_go_0) {
   b2DynamicTree *arg1 = (b2DynamicTree *) 0 ;
   
   arg1 = *(b2DynamicTree **)&_swig_go_0; 
@@ -3294,7 +3413,7 @@ void _wrap_b2DynamicTree_RebuildBottomUp_Box2D_b1d1b47c7e81f80a(b2DynamicTree *_
 }
 
 
-void _wrap_b2DynamicTree_ShiftOrigin_Box2D_b1d1b47c7e81f80a(b2DynamicTree *_swig_go_0, b2Vec2 *_swig_go_1) {
+void _wrap_b2DynamicTree_ShiftOrigin_Box2D_553c0f9515edf50e(b2DynamicTree *_swig_go_0, b2Vec2 *_swig_go_1) {
   b2DynamicTree *arg1 = (b2DynamicTree *) 0 ;
   b2Vec2 *arg2 = 0 ;
   
@@ -3306,7 +3425,7 @@ void _wrap_b2DynamicTree_ShiftOrigin_Box2D_b1d1b47c7e81f80a(b2DynamicTree *_swig
 }
 
 
-void _wrap_b2TOIInput_proxyA_set_Box2D_b1d1b47c7e81f80a(b2TOIInput *_swig_go_0, b2DistanceProxy *_swig_go_1) {
+void _wrap_b2TOIInput_proxyA_set_Box2D_553c0f9515edf50e(b2TOIInput *_swig_go_0, b2DistanceProxy *_swig_go_1) {
   b2TOIInput *arg1 = (b2TOIInput *) 0 ;
   b2DistanceProxy *arg2 = (b2DistanceProxy *) 0 ;
   
@@ -3318,7 +3437,7 @@ void _wrap_b2TOIInput_proxyA_set_Box2D_b1d1b47c7e81f80a(b2TOIInput *_swig_go_0, 
 }
 
 
-b2DistanceProxy *_wrap_b2TOIInput_proxyA_get_Box2D_b1d1b47c7e81f80a(b2TOIInput *_swig_go_0) {
+b2DistanceProxy *_wrap_b2TOIInput_proxyA_get_Box2D_553c0f9515edf50e(b2TOIInput *_swig_go_0) {
   b2TOIInput *arg1 = (b2TOIInput *) 0 ;
   b2DistanceProxy *result = 0 ;
   b2DistanceProxy *_swig_go_result;
@@ -3331,7 +3450,7 @@ b2DistanceProxy *_wrap_b2TOIInput_proxyA_get_Box2D_b1d1b47c7e81f80a(b2TOIInput *
 }
 
 
-void _wrap_b2TOIInput_proxyB_set_Box2D_b1d1b47c7e81f80a(b2TOIInput *_swig_go_0, b2DistanceProxy *_swig_go_1) {
+void _wrap_b2TOIInput_proxyB_set_Box2D_553c0f9515edf50e(b2TOIInput *_swig_go_0, b2DistanceProxy *_swig_go_1) {
   b2TOIInput *arg1 = (b2TOIInput *) 0 ;
   b2DistanceProxy *arg2 = (b2DistanceProxy *) 0 ;
   
@@ -3343,7 +3462,7 @@ void _wrap_b2TOIInput_proxyB_set_Box2D_b1d1b47c7e81f80a(b2TOIInput *_swig_go_0, 
 }
 
 
-b2DistanceProxy *_wrap_b2TOIInput_proxyB_get_Box2D_b1d1b47c7e81f80a(b2TOIInput *_swig_go_0) {
+b2DistanceProxy *_wrap_b2TOIInput_proxyB_get_Box2D_553c0f9515edf50e(b2TOIInput *_swig_go_0) {
   b2TOIInput *arg1 = (b2TOIInput *) 0 ;
   b2DistanceProxy *result = 0 ;
   b2DistanceProxy *_swig_go_result;
@@ -3356,7 +3475,7 @@ b2DistanceProxy *_wrap_b2TOIInput_proxyB_get_Box2D_b1d1b47c7e81f80a(b2TOIInput *
 }
 
 
-void _wrap_b2TOIInput_sweepA_set_Box2D_b1d1b47c7e81f80a(b2TOIInput *_swig_go_0, b2Sweep *_swig_go_1) {
+void _wrap_b2TOIInput_sweepA_set_Box2D_553c0f9515edf50e(b2TOIInput *_swig_go_0, b2Sweep *_swig_go_1) {
   b2TOIInput *arg1 = (b2TOIInput *) 0 ;
   b2Sweep arg2 ;
   b2Sweep *argp2 ;
@@ -3375,7 +3494,7 @@ void _wrap_b2TOIInput_sweepA_set_Box2D_b1d1b47c7e81f80a(b2TOIInput *_swig_go_0, 
 }
 
 
-b2Sweep *_wrap_b2TOIInput_sweepA_get_Box2D_b1d1b47c7e81f80a(b2TOIInput *_swig_go_0) {
+b2Sweep *_wrap_b2TOIInput_sweepA_get_Box2D_553c0f9515edf50e(b2TOIInput *_swig_go_0) {
   b2TOIInput *arg1 = (b2TOIInput *) 0 ;
   b2Sweep result;
   b2Sweep *_swig_go_result;
@@ -3388,7 +3507,7 @@ b2Sweep *_wrap_b2TOIInput_sweepA_get_Box2D_b1d1b47c7e81f80a(b2TOIInput *_swig_go
 }
 
 
-void _wrap_b2TOIInput_sweepB_set_Box2D_b1d1b47c7e81f80a(b2TOIInput *_swig_go_0, b2Sweep *_swig_go_1) {
+void _wrap_b2TOIInput_sweepB_set_Box2D_553c0f9515edf50e(b2TOIInput *_swig_go_0, b2Sweep *_swig_go_1) {
   b2TOIInput *arg1 = (b2TOIInput *) 0 ;
   b2Sweep arg2 ;
   b2Sweep *argp2 ;
@@ -3407,7 +3526,7 @@ void _wrap_b2TOIInput_sweepB_set_Box2D_b1d1b47c7e81f80a(b2TOIInput *_swig_go_0, 
 }
 
 
-b2Sweep *_wrap_b2TOIInput_sweepB_get_Box2D_b1d1b47c7e81f80a(b2TOIInput *_swig_go_0) {
+b2Sweep *_wrap_b2TOIInput_sweepB_get_Box2D_553c0f9515edf50e(b2TOIInput *_swig_go_0) {
   b2TOIInput *arg1 = (b2TOIInput *) 0 ;
   b2Sweep result;
   b2Sweep *_swig_go_result;
@@ -3420,7 +3539,7 @@ b2Sweep *_wrap_b2TOIInput_sweepB_get_Box2D_b1d1b47c7e81f80a(b2TOIInput *_swig_go
 }
 
 
-void _wrap_b2TOIInput_tMax_set_Box2D_b1d1b47c7e81f80a(b2TOIInput *_swig_go_0, float _swig_go_1) {
+void _wrap_b2TOIInput_tMax_set_Box2D_553c0f9515edf50e(b2TOIInput *_swig_go_0, float _swig_go_1) {
   b2TOIInput *arg1 = (b2TOIInput *) 0 ;
   float32 arg2 ;
   
@@ -3432,7 +3551,7 @@ void _wrap_b2TOIInput_tMax_set_Box2D_b1d1b47c7e81f80a(b2TOIInput *_swig_go_0, fl
 }
 
 
-float _wrap_b2TOIInput_tMax_get_Box2D_b1d1b47c7e81f80a(b2TOIInput *_swig_go_0) {
+float _wrap_b2TOIInput_tMax_get_Box2D_553c0f9515edf50e(b2TOIInput *_swig_go_0) {
   b2TOIInput *arg1 = (b2TOIInput *) 0 ;
   float32 result;
   float _swig_go_result;
@@ -3445,7 +3564,7 @@ float _wrap_b2TOIInput_tMax_get_Box2D_b1d1b47c7e81f80a(b2TOIInput *_swig_go_0) {
 }
 
 
-b2TOIInput *_wrap_new_b2TOIInput_Box2D_b1d1b47c7e81f80a() {
+b2TOIInput *_wrap_new_b2TOIInput_Box2D_553c0f9515edf50e() {
   b2TOIInput *result = 0 ;
   b2TOIInput *_swig_go_result;
   
@@ -3456,7 +3575,7 @@ b2TOIInput *_wrap_new_b2TOIInput_Box2D_b1d1b47c7e81f80a() {
 }
 
 
-void _wrap_delete_b2TOIInput_Box2D_b1d1b47c7e81f80a(b2TOIInput *_swig_go_0) {
+void _wrap_delete_b2TOIInput_Box2D_553c0f9515edf50e(b2TOIInput *_swig_go_0) {
   b2TOIInput *arg1 = (b2TOIInput *) 0 ;
   
   arg1 = *(b2TOIInput **)&_swig_go_0; 
@@ -3466,7 +3585,7 @@ void _wrap_delete_b2TOIInput_Box2D_b1d1b47c7e81f80a(b2TOIInput *_swig_go_0) {
 }
 
 
-intgo _wrap_e_unknown_b2TOIOutput_Box2D_b1d1b47c7e81f80a() {
+intgo _wrap_e_unknown_b2TOIOutput_Box2D_553c0f9515edf50e() {
   b2TOIOutput::State result;
   intgo _swig_go_result;
   
@@ -3478,7 +3597,7 @@ intgo _wrap_e_unknown_b2TOIOutput_Box2D_b1d1b47c7e81f80a() {
 }
 
 
-intgo _wrap_e_failed_b2TOIOutput_Box2D_b1d1b47c7e81f80a() {
+intgo _wrap_e_failed_b2TOIOutput_Box2D_553c0f9515edf50e() {
   b2TOIOutput::State result;
   intgo _swig_go_result;
   
@@ -3490,7 +3609,7 @@ intgo _wrap_e_failed_b2TOIOutput_Box2D_b1d1b47c7e81f80a() {
 }
 
 
-intgo _wrap_e_overlapped_b2TOIOutput_Box2D_b1d1b47c7e81f80a() {
+intgo _wrap_e_overlapped_b2TOIOutput_Box2D_553c0f9515edf50e() {
   b2TOIOutput::State result;
   intgo _swig_go_result;
   
@@ -3502,7 +3621,7 @@ intgo _wrap_e_overlapped_b2TOIOutput_Box2D_b1d1b47c7e81f80a() {
 }
 
 
-intgo _wrap_e_touching_b2TOIOutput_Box2D_b1d1b47c7e81f80a() {
+intgo _wrap_e_touching_b2TOIOutput_Box2D_553c0f9515edf50e() {
   b2TOIOutput::State result;
   intgo _swig_go_result;
   
@@ -3514,7 +3633,7 @@ intgo _wrap_e_touching_b2TOIOutput_Box2D_b1d1b47c7e81f80a() {
 }
 
 
-intgo _wrap_e_separated_b2TOIOutput_Box2D_b1d1b47c7e81f80a() {
+intgo _wrap_e_separated_b2TOIOutput_Box2D_553c0f9515edf50e() {
   b2TOIOutput::State result;
   intgo _swig_go_result;
   
@@ -3526,7 +3645,7 @@ intgo _wrap_e_separated_b2TOIOutput_Box2D_b1d1b47c7e81f80a() {
 }
 
 
-void _wrap_b2TOIOutput_state_set_Box2D_b1d1b47c7e81f80a(b2TOIOutput *_swig_go_0, intgo _swig_go_1) {
+void _wrap_b2TOIOutput_state_set_Box2D_553c0f9515edf50e(b2TOIOutput *_swig_go_0, intgo _swig_go_1) {
   b2TOIOutput *arg1 = (b2TOIOutput *) 0 ;
   b2TOIOutput::State arg2 ;
   
@@ -3538,7 +3657,7 @@ void _wrap_b2TOIOutput_state_set_Box2D_b1d1b47c7e81f80a(b2TOIOutput *_swig_go_0,
 }
 
 
-intgo _wrap_b2TOIOutput_state_get_Box2D_b1d1b47c7e81f80a(b2TOIOutput *_swig_go_0) {
+intgo _wrap_b2TOIOutput_state_get_Box2D_553c0f9515edf50e(b2TOIOutput *_swig_go_0) {
   b2TOIOutput *arg1 = (b2TOIOutput *) 0 ;
   b2TOIOutput::State result;
   intgo _swig_go_result;
@@ -3551,7 +3670,7 @@ intgo _wrap_b2TOIOutput_state_get_Box2D_b1d1b47c7e81f80a(b2TOIOutput *_swig_go_0
 }
 
 
-void _wrap_b2TOIOutput_t_set_Box2D_b1d1b47c7e81f80a(b2TOIOutput *_swig_go_0, float _swig_go_1) {
+void _wrap_b2TOIOutput_t_set_Box2D_553c0f9515edf50e(b2TOIOutput *_swig_go_0, float _swig_go_1) {
   b2TOIOutput *arg1 = (b2TOIOutput *) 0 ;
   float32 arg2 ;
   
@@ -3563,7 +3682,7 @@ void _wrap_b2TOIOutput_t_set_Box2D_b1d1b47c7e81f80a(b2TOIOutput *_swig_go_0, flo
 }
 
 
-float _wrap_b2TOIOutput_t_get_Box2D_b1d1b47c7e81f80a(b2TOIOutput *_swig_go_0) {
+float _wrap_b2TOIOutput_t_get_Box2D_553c0f9515edf50e(b2TOIOutput *_swig_go_0) {
   b2TOIOutput *arg1 = (b2TOIOutput *) 0 ;
   float32 result;
   float _swig_go_result;
@@ -3576,7 +3695,7 @@ float _wrap_b2TOIOutput_t_get_Box2D_b1d1b47c7e81f80a(b2TOIOutput *_swig_go_0) {
 }
 
 
-b2TOIOutput *_wrap_new_b2TOIOutput_Box2D_b1d1b47c7e81f80a() {
+b2TOIOutput *_wrap_new_b2TOIOutput_Box2D_553c0f9515edf50e() {
   b2TOIOutput *result = 0 ;
   b2TOIOutput *_swig_go_result;
   
@@ -3587,7 +3706,7 @@ b2TOIOutput *_wrap_new_b2TOIOutput_Box2D_b1d1b47c7e81f80a() {
 }
 
 
-void _wrap_delete_b2TOIOutput_Box2D_b1d1b47c7e81f80a(b2TOIOutput *_swig_go_0) {
+void _wrap_delete_b2TOIOutput_Box2D_553c0f9515edf50e(b2TOIOutput *_swig_go_0) {
   b2TOIOutput *arg1 = (b2TOIOutput *) 0 ;
   
   arg1 = *(b2TOIOutput **)&_swig_go_0; 
@@ -3597,7 +3716,7 @@ void _wrap_delete_b2TOIOutput_Box2D_b1d1b47c7e81f80a(b2TOIOutput *_swig_go_0) {
 }
 
 
-void _wrap_b2TimeOfImpact_Box2D_b1d1b47c7e81f80a(b2TOIOutput *_swig_go_0, b2TOIInput *_swig_go_1) {
+void _wrap_b2TimeOfImpact_Box2D_553c0f9515edf50e(b2TOIOutput *_swig_go_0, b2TOIInput *_swig_go_1) {
   b2TOIOutput *arg1 = (b2TOIOutput *) 0 ;
   b2TOIInput *arg2 = (b2TOIInput *) 0 ;
   
@@ -3609,7 +3728,7 @@ void _wrap_b2TimeOfImpact_Box2D_b1d1b47c7e81f80a(b2TOIOutput *_swig_go_0, b2TOII
 }
 
 
-intgo _wrap_b2_staticBody_Box2D_b1d1b47c7e81f80a() {
+intgo _wrap_b2_staticBody_Box2D_553c0f9515edf50e() {
   b2BodyType result;
   intgo _swig_go_result;
   
@@ -3621,7 +3740,7 @@ intgo _wrap_b2_staticBody_Box2D_b1d1b47c7e81f80a() {
 }
 
 
-intgo _wrap_b2_kinematicBody_Box2D_b1d1b47c7e81f80a() {
+intgo _wrap_b2_kinematicBody_Box2D_553c0f9515edf50e() {
   b2BodyType result;
   intgo _swig_go_result;
   
@@ -3633,7 +3752,7 @@ intgo _wrap_b2_kinematicBody_Box2D_b1d1b47c7e81f80a() {
 }
 
 
-intgo _wrap_b2_dynamicBody_Box2D_b1d1b47c7e81f80a() {
+intgo _wrap_b2_dynamicBody_Box2D_553c0f9515edf50e() {
   b2BodyType result;
   intgo _swig_go_result;
   
@@ -3645,7 +3764,7 @@ intgo _wrap_b2_dynamicBody_Box2D_b1d1b47c7e81f80a() {
 }
 
 
-b2BodyDef *_wrap_new_b2BodyDef_Box2D_b1d1b47c7e81f80a() {
+b2BodyDef *_wrap_new_b2BodyDef_Box2D_553c0f9515edf50e() {
   b2BodyDef *result = 0 ;
   b2BodyDef *_swig_go_result;
   
@@ -3656,7 +3775,7 @@ b2BodyDef *_wrap_new_b2BodyDef_Box2D_b1d1b47c7e81f80a() {
 }
 
 
-void _wrap_b2BodyDef_Xtype_set_Box2D_b1d1b47c7e81f80a(b2BodyDef *_swig_go_0, intgo _swig_go_1) {
+void _wrap_b2BodyDef_Xtype_set_Box2D_553c0f9515edf50e(b2BodyDef *_swig_go_0, intgo _swig_go_1) {
   b2BodyDef *arg1 = (b2BodyDef *) 0 ;
   b2BodyType arg2 ;
   
@@ -3668,7 +3787,7 @@ void _wrap_b2BodyDef_Xtype_set_Box2D_b1d1b47c7e81f80a(b2BodyDef *_swig_go_0, int
 }
 
 
-intgo _wrap_b2BodyDef_Xtype_get_Box2D_b1d1b47c7e81f80a(b2BodyDef *_swig_go_0) {
+intgo _wrap_b2BodyDef_Xtype_get_Box2D_553c0f9515edf50e(b2BodyDef *_swig_go_0) {
   b2BodyDef *arg1 = (b2BodyDef *) 0 ;
   b2BodyType result;
   intgo _swig_go_result;
@@ -3681,7 +3800,7 @@ intgo _wrap_b2BodyDef_Xtype_get_Box2D_b1d1b47c7e81f80a(b2BodyDef *_swig_go_0) {
 }
 
 
-void _wrap_b2BodyDef_position_set_Box2D_b1d1b47c7e81f80a(b2BodyDef *_swig_go_0, b2Vec2 *_swig_go_1) {
+void _wrap_b2BodyDef_position_set_Box2D_553c0f9515edf50e(b2BodyDef *_swig_go_0, b2Vec2 *_swig_go_1) {
   b2BodyDef *arg1 = (b2BodyDef *) 0 ;
   b2Vec2 *arg2 = (b2Vec2 *) 0 ;
   
@@ -3693,7 +3812,7 @@ void _wrap_b2BodyDef_position_set_Box2D_b1d1b47c7e81f80a(b2BodyDef *_swig_go_0, 
 }
 
 
-b2Vec2 *_wrap_b2BodyDef_position_get_Box2D_b1d1b47c7e81f80a(b2BodyDef *_swig_go_0) {
+b2Vec2 *_wrap_b2BodyDef_position_get_Box2D_553c0f9515edf50e(b2BodyDef *_swig_go_0) {
   b2BodyDef *arg1 = (b2BodyDef *) 0 ;
   b2Vec2 *result = 0 ;
   b2Vec2 *_swig_go_result;
@@ -3706,7 +3825,7 @@ b2Vec2 *_wrap_b2BodyDef_position_get_Box2D_b1d1b47c7e81f80a(b2BodyDef *_swig_go_
 }
 
 
-void _wrap_b2BodyDef_angle_set_Box2D_b1d1b47c7e81f80a(b2BodyDef *_swig_go_0, float _swig_go_1) {
+void _wrap_b2BodyDef_angle_set_Box2D_553c0f9515edf50e(b2BodyDef *_swig_go_0, float _swig_go_1) {
   b2BodyDef *arg1 = (b2BodyDef *) 0 ;
   float32 arg2 ;
   
@@ -3718,7 +3837,7 @@ void _wrap_b2BodyDef_angle_set_Box2D_b1d1b47c7e81f80a(b2BodyDef *_swig_go_0, flo
 }
 
 
-float _wrap_b2BodyDef_angle_get_Box2D_b1d1b47c7e81f80a(b2BodyDef *_swig_go_0) {
+float _wrap_b2BodyDef_angle_get_Box2D_553c0f9515edf50e(b2BodyDef *_swig_go_0) {
   b2BodyDef *arg1 = (b2BodyDef *) 0 ;
   float32 result;
   float _swig_go_result;
@@ -3731,7 +3850,7 @@ float _wrap_b2BodyDef_angle_get_Box2D_b1d1b47c7e81f80a(b2BodyDef *_swig_go_0) {
 }
 
 
-void _wrap_b2BodyDef_linearVelocity_set_Box2D_b1d1b47c7e81f80a(b2BodyDef *_swig_go_0, b2Vec2 *_swig_go_1) {
+void _wrap_b2BodyDef_linearVelocity_set_Box2D_553c0f9515edf50e(b2BodyDef *_swig_go_0, b2Vec2 *_swig_go_1) {
   b2BodyDef *arg1 = (b2BodyDef *) 0 ;
   b2Vec2 *arg2 = (b2Vec2 *) 0 ;
   
@@ -3743,7 +3862,7 @@ void _wrap_b2BodyDef_linearVelocity_set_Box2D_b1d1b47c7e81f80a(b2BodyDef *_swig_
 }
 
 
-b2Vec2 *_wrap_b2BodyDef_linearVelocity_get_Box2D_b1d1b47c7e81f80a(b2BodyDef *_swig_go_0) {
+b2Vec2 *_wrap_b2BodyDef_linearVelocity_get_Box2D_553c0f9515edf50e(b2BodyDef *_swig_go_0) {
   b2BodyDef *arg1 = (b2BodyDef *) 0 ;
   b2Vec2 *result = 0 ;
   b2Vec2 *_swig_go_result;
@@ -3756,7 +3875,7 @@ b2Vec2 *_wrap_b2BodyDef_linearVelocity_get_Box2D_b1d1b47c7e81f80a(b2BodyDef *_sw
 }
 
 
-void _wrap_b2BodyDef_angularVelocity_set_Box2D_b1d1b47c7e81f80a(b2BodyDef *_swig_go_0, float _swig_go_1) {
+void _wrap_b2BodyDef_angularVelocity_set_Box2D_553c0f9515edf50e(b2BodyDef *_swig_go_0, float _swig_go_1) {
   b2BodyDef *arg1 = (b2BodyDef *) 0 ;
   float32 arg2 ;
   
@@ -3768,7 +3887,7 @@ void _wrap_b2BodyDef_angularVelocity_set_Box2D_b1d1b47c7e81f80a(b2BodyDef *_swig
 }
 
 
-float _wrap_b2BodyDef_angularVelocity_get_Box2D_b1d1b47c7e81f80a(b2BodyDef *_swig_go_0) {
+float _wrap_b2BodyDef_angularVelocity_get_Box2D_553c0f9515edf50e(b2BodyDef *_swig_go_0) {
   b2BodyDef *arg1 = (b2BodyDef *) 0 ;
   float32 result;
   float _swig_go_result;
@@ -3781,7 +3900,7 @@ float _wrap_b2BodyDef_angularVelocity_get_Box2D_b1d1b47c7e81f80a(b2BodyDef *_swi
 }
 
 
-void _wrap_b2BodyDef_linearDamping_set_Box2D_b1d1b47c7e81f80a(b2BodyDef *_swig_go_0, float _swig_go_1) {
+void _wrap_b2BodyDef_linearDamping_set_Box2D_553c0f9515edf50e(b2BodyDef *_swig_go_0, float _swig_go_1) {
   b2BodyDef *arg1 = (b2BodyDef *) 0 ;
   float32 arg2 ;
   
@@ -3793,7 +3912,7 @@ void _wrap_b2BodyDef_linearDamping_set_Box2D_b1d1b47c7e81f80a(b2BodyDef *_swig_g
 }
 
 
-float _wrap_b2BodyDef_linearDamping_get_Box2D_b1d1b47c7e81f80a(b2BodyDef *_swig_go_0) {
+float _wrap_b2BodyDef_linearDamping_get_Box2D_553c0f9515edf50e(b2BodyDef *_swig_go_0) {
   b2BodyDef *arg1 = (b2BodyDef *) 0 ;
   float32 result;
   float _swig_go_result;
@@ -3806,7 +3925,7 @@ float _wrap_b2BodyDef_linearDamping_get_Box2D_b1d1b47c7e81f80a(b2BodyDef *_swig_
 }
 
 
-void _wrap_b2BodyDef_angularDamping_set_Box2D_b1d1b47c7e81f80a(b2BodyDef *_swig_go_0, float _swig_go_1) {
+void _wrap_b2BodyDef_angularDamping_set_Box2D_553c0f9515edf50e(b2BodyDef *_swig_go_0, float _swig_go_1) {
   b2BodyDef *arg1 = (b2BodyDef *) 0 ;
   float32 arg2 ;
   
@@ -3818,7 +3937,7 @@ void _wrap_b2BodyDef_angularDamping_set_Box2D_b1d1b47c7e81f80a(b2BodyDef *_swig_
 }
 
 
-float _wrap_b2BodyDef_angularDamping_get_Box2D_b1d1b47c7e81f80a(b2BodyDef *_swig_go_0) {
+float _wrap_b2BodyDef_angularDamping_get_Box2D_553c0f9515edf50e(b2BodyDef *_swig_go_0) {
   b2BodyDef *arg1 = (b2BodyDef *) 0 ;
   float32 result;
   float _swig_go_result;
@@ -3831,7 +3950,7 @@ float _wrap_b2BodyDef_angularDamping_get_Box2D_b1d1b47c7e81f80a(b2BodyDef *_swig
 }
 
 
-void _wrap_b2BodyDef_allowSleep_set_Box2D_b1d1b47c7e81f80a(b2BodyDef *_swig_go_0, bool _swig_go_1) {
+void _wrap_b2BodyDef_allowSleep_set_Box2D_553c0f9515edf50e(b2BodyDef *_swig_go_0, bool _swig_go_1) {
   b2BodyDef *arg1 = (b2BodyDef *) 0 ;
   bool arg2 ;
   
@@ -3843,7 +3962,7 @@ void _wrap_b2BodyDef_allowSleep_set_Box2D_b1d1b47c7e81f80a(b2BodyDef *_swig_go_0
 }
 
 
-bool _wrap_b2BodyDef_allowSleep_get_Box2D_b1d1b47c7e81f80a(b2BodyDef *_swig_go_0) {
+bool _wrap_b2BodyDef_allowSleep_get_Box2D_553c0f9515edf50e(b2BodyDef *_swig_go_0) {
   b2BodyDef *arg1 = (b2BodyDef *) 0 ;
   bool result;
   bool _swig_go_result;
@@ -3856,7 +3975,7 @@ bool _wrap_b2BodyDef_allowSleep_get_Box2D_b1d1b47c7e81f80a(b2BodyDef *_swig_go_0
 }
 
 
-void _wrap_b2BodyDef_awake_set_Box2D_b1d1b47c7e81f80a(b2BodyDef *_swig_go_0, bool _swig_go_1) {
+void _wrap_b2BodyDef_awake_set_Box2D_553c0f9515edf50e(b2BodyDef *_swig_go_0, bool _swig_go_1) {
   b2BodyDef *arg1 = (b2BodyDef *) 0 ;
   bool arg2 ;
   
@@ -3868,7 +3987,7 @@ void _wrap_b2BodyDef_awake_set_Box2D_b1d1b47c7e81f80a(b2BodyDef *_swig_go_0, boo
 }
 
 
-bool _wrap_b2BodyDef_awake_get_Box2D_b1d1b47c7e81f80a(b2BodyDef *_swig_go_0) {
+bool _wrap_b2BodyDef_awake_get_Box2D_553c0f9515edf50e(b2BodyDef *_swig_go_0) {
   b2BodyDef *arg1 = (b2BodyDef *) 0 ;
   bool result;
   bool _swig_go_result;
@@ -3881,7 +4000,7 @@ bool _wrap_b2BodyDef_awake_get_Box2D_b1d1b47c7e81f80a(b2BodyDef *_swig_go_0) {
 }
 
 
-void _wrap_b2BodyDef_fixedRotation_set_Box2D_b1d1b47c7e81f80a(b2BodyDef *_swig_go_0, bool _swig_go_1) {
+void _wrap_b2BodyDef_fixedRotation_set_Box2D_553c0f9515edf50e(b2BodyDef *_swig_go_0, bool _swig_go_1) {
   b2BodyDef *arg1 = (b2BodyDef *) 0 ;
   bool arg2 ;
   
@@ -3893,7 +4012,7 @@ void _wrap_b2BodyDef_fixedRotation_set_Box2D_b1d1b47c7e81f80a(b2BodyDef *_swig_g
 }
 
 
-bool _wrap_b2BodyDef_fixedRotation_get_Box2D_b1d1b47c7e81f80a(b2BodyDef *_swig_go_0) {
+bool _wrap_b2BodyDef_fixedRotation_get_Box2D_553c0f9515edf50e(b2BodyDef *_swig_go_0) {
   b2BodyDef *arg1 = (b2BodyDef *) 0 ;
   bool result;
   bool _swig_go_result;
@@ -3906,7 +4025,7 @@ bool _wrap_b2BodyDef_fixedRotation_get_Box2D_b1d1b47c7e81f80a(b2BodyDef *_swig_g
 }
 
 
-void _wrap_b2BodyDef_bullet_set_Box2D_b1d1b47c7e81f80a(b2BodyDef *_swig_go_0, bool _swig_go_1) {
+void _wrap_b2BodyDef_bullet_set_Box2D_553c0f9515edf50e(b2BodyDef *_swig_go_0, bool _swig_go_1) {
   b2BodyDef *arg1 = (b2BodyDef *) 0 ;
   bool arg2 ;
   
@@ -3918,7 +4037,7 @@ void _wrap_b2BodyDef_bullet_set_Box2D_b1d1b47c7e81f80a(b2BodyDef *_swig_go_0, bo
 }
 
 
-bool _wrap_b2BodyDef_bullet_get_Box2D_b1d1b47c7e81f80a(b2BodyDef *_swig_go_0) {
+bool _wrap_b2BodyDef_bullet_get_Box2D_553c0f9515edf50e(b2BodyDef *_swig_go_0) {
   b2BodyDef *arg1 = (b2BodyDef *) 0 ;
   bool result;
   bool _swig_go_result;
@@ -3931,7 +4050,7 @@ bool _wrap_b2BodyDef_bullet_get_Box2D_b1d1b47c7e81f80a(b2BodyDef *_swig_go_0) {
 }
 
 
-void _wrap_b2BodyDef_active_set_Box2D_b1d1b47c7e81f80a(b2BodyDef *_swig_go_0, bool _swig_go_1) {
+void _wrap_b2BodyDef_active_set_Box2D_553c0f9515edf50e(b2BodyDef *_swig_go_0, bool _swig_go_1) {
   b2BodyDef *arg1 = (b2BodyDef *) 0 ;
   bool arg2 ;
   
@@ -3943,7 +4062,7 @@ void _wrap_b2BodyDef_active_set_Box2D_b1d1b47c7e81f80a(b2BodyDef *_swig_go_0, bo
 }
 
 
-bool _wrap_b2BodyDef_active_get_Box2D_b1d1b47c7e81f80a(b2BodyDef *_swig_go_0) {
+bool _wrap_b2BodyDef_active_get_Box2D_553c0f9515edf50e(b2BodyDef *_swig_go_0) {
   b2BodyDef *arg1 = (b2BodyDef *) 0 ;
   bool result;
   bool _swig_go_result;
@@ -3956,7 +4075,7 @@ bool _wrap_b2BodyDef_active_get_Box2D_b1d1b47c7e81f80a(b2BodyDef *_swig_go_0) {
 }
 
 
-void _wrap_b2BodyDef_userData_set_Box2D_b1d1b47c7e81f80a(b2BodyDef *_swig_go_0, void *_swig_go_1) {
+void _wrap_b2BodyDef_userData_set_Box2D_553c0f9515edf50e(b2BodyDef *_swig_go_0, void *_swig_go_1) {
   b2BodyDef *arg1 = (b2BodyDef *) 0 ;
   void *arg2 = (void *) 0 ;
   
@@ -3968,7 +4087,7 @@ void _wrap_b2BodyDef_userData_set_Box2D_b1d1b47c7e81f80a(b2BodyDef *_swig_go_0, 
 }
 
 
-void *_wrap_b2BodyDef_userData_get_Box2D_b1d1b47c7e81f80a(b2BodyDef *_swig_go_0) {
+void *_wrap_b2BodyDef_userData_get_Box2D_553c0f9515edf50e(b2BodyDef *_swig_go_0) {
   b2BodyDef *arg1 = (b2BodyDef *) 0 ;
   void *result = 0 ;
   void *_swig_go_result;
@@ -3981,7 +4100,7 @@ void *_wrap_b2BodyDef_userData_get_Box2D_b1d1b47c7e81f80a(b2BodyDef *_swig_go_0)
 }
 
 
-void _wrap_b2BodyDef_gravityScale_set_Box2D_b1d1b47c7e81f80a(b2BodyDef *_swig_go_0, float _swig_go_1) {
+void _wrap_b2BodyDef_gravityScale_set_Box2D_553c0f9515edf50e(b2BodyDef *_swig_go_0, float _swig_go_1) {
   b2BodyDef *arg1 = (b2BodyDef *) 0 ;
   float32 arg2 ;
   
@@ -3993,7 +4112,7 @@ void _wrap_b2BodyDef_gravityScale_set_Box2D_b1d1b47c7e81f80a(b2BodyDef *_swig_go
 }
 
 
-float _wrap_b2BodyDef_gravityScale_get_Box2D_b1d1b47c7e81f80a(b2BodyDef *_swig_go_0) {
+float _wrap_b2BodyDef_gravityScale_get_Box2D_553c0f9515edf50e(b2BodyDef *_swig_go_0) {
   b2BodyDef *arg1 = (b2BodyDef *) 0 ;
   float32 result;
   float _swig_go_result;
@@ -4006,7 +4125,7 @@ float _wrap_b2BodyDef_gravityScale_get_Box2D_b1d1b47c7e81f80a(b2BodyDef *_swig_g
 }
 
 
-void _wrap_delete_b2BodyDef_Box2D_b1d1b47c7e81f80a(b2BodyDef *_swig_go_0) {
+void _wrap_delete_b2BodyDef_Box2D_553c0f9515edf50e(b2BodyDef *_swig_go_0) {
   b2BodyDef *arg1 = (b2BodyDef *) 0 ;
   
   arg1 = *(b2BodyDef **)&_swig_go_0; 
@@ -4016,7 +4135,7 @@ void _wrap_delete_b2BodyDef_Box2D_b1d1b47c7e81f80a(b2BodyDef *_swig_go_0) {
 }
 
 
-b2Fixture *_wrap_b2Body_CreateFixture__SWIG_0_Box2D_b1d1b47c7e81f80a(b2Body *_swig_go_0, b2FixtureDef *_swig_go_1) {
+b2Fixture *_wrap_b2Body_CreateFixture__SWIG_0_Box2D_553c0f9515edf50e(b2Body *_swig_go_0, b2FixtureDef *_swig_go_1) {
   b2Body *arg1 = (b2Body *) 0 ;
   b2FixtureDef *arg2 = (b2FixtureDef *) 0 ;
   b2Fixture *result = 0 ;
@@ -4031,7 +4150,7 @@ b2Fixture *_wrap_b2Body_CreateFixture__SWIG_0_Box2D_b1d1b47c7e81f80a(b2Body *_sw
 }
 
 
-b2Fixture *_wrap_b2Body_CreateFixture__SWIG_1_Box2D_b1d1b47c7e81f80a(b2Body *_swig_go_0, b2Shape *_swig_go_1, float _swig_go_2) {
+b2Fixture *_wrap_b2Body_CreateFixture__SWIG_1_Box2D_553c0f9515edf50e(b2Body *_swig_go_0, b2Shape *_swig_go_1, float _swig_go_2) {
   b2Body *arg1 = (b2Body *) 0 ;
   b2Shape *arg2 = (b2Shape *) 0 ;
   float32 arg3 ;
@@ -4048,7 +4167,7 @@ b2Fixture *_wrap_b2Body_CreateFixture__SWIG_1_Box2D_b1d1b47c7e81f80a(b2Body *_sw
 }
 
 
-void _wrap_b2Body_DestroyFixture_Box2D_b1d1b47c7e81f80a(b2Body *_swig_go_0, b2Fixture *_swig_go_1) {
+void _wrap_b2Body_DestroyFixture_Box2D_553c0f9515edf50e(b2Body *_swig_go_0, b2Fixture *_swig_go_1) {
   b2Body *arg1 = (b2Body *) 0 ;
   b2Fixture *arg2 = (b2Fixture *) 0 ;
   
@@ -4060,7 +4179,7 @@ void _wrap_b2Body_DestroyFixture_Box2D_b1d1b47c7e81f80a(b2Body *_swig_go_0, b2Fi
 }
 
 
-void _wrap_b2Body_SetTransform_Box2D_b1d1b47c7e81f80a(b2Body *_swig_go_0, b2Vec2 *_swig_go_1, float _swig_go_2) {
+void _wrap_b2Body_SetTransform_Box2D_553c0f9515edf50e(b2Body *_swig_go_0, b2Vec2 *_swig_go_1, float _swig_go_2) {
   b2Body *arg1 = (b2Body *) 0 ;
   b2Vec2 *arg2 = 0 ;
   float32 arg3 ;
@@ -4074,7 +4193,7 @@ void _wrap_b2Body_SetTransform_Box2D_b1d1b47c7e81f80a(b2Body *_swig_go_0, b2Vec2
 }
 
 
-b2Transform *_wrap_b2Body_GetTransform_Box2D_b1d1b47c7e81f80a(b2Body *_swig_go_0) {
+b2Transform *_wrap_b2Body_GetTransform_Box2D_553c0f9515edf50e(b2Body *_swig_go_0) {
   b2Body *arg1 = (b2Body *) 0 ;
   b2Transform *result = 0 ;
   b2Transform *_swig_go_result;
@@ -4087,7 +4206,7 @@ b2Transform *_wrap_b2Body_GetTransform_Box2D_b1d1b47c7e81f80a(b2Body *_swig_go_0
 }
 
 
-b2Vec2 *_wrap_b2Body_GetPosition_Box2D_b1d1b47c7e81f80a(b2Body *_swig_go_0) {
+b2Vec2 *_wrap_b2Body_GetPosition_Box2D_553c0f9515edf50e(b2Body *_swig_go_0) {
   b2Body *arg1 = (b2Body *) 0 ;
   b2Vec2 *result = 0 ;
   b2Vec2 *_swig_go_result;
@@ -4100,7 +4219,7 @@ b2Vec2 *_wrap_b2Body_GetPosition_Box2D_b1d1b47c7e81f80a(b2Body *_swig_go_0) {
 }
 
 
-float _wrap_b2Body_GetAngle_Box2D_b1d1b47c7e81f80a(b2Body *_swig_go_0) {
+float _wrap_b2Body_GetAngle_Box2D_553c0f9515edf50e(b2Body *_swig_go_0) {
   b2Body *arg1 = (b2Body *) 0 ;
   float32 result;
   float _swig_go_result;
@@ -4113,7 +4232,7 @@ float _wrap_b2Body_GetAngle_Box2D_b1d1b47c7e81f80a(b2Body *_swig_go_0) {
 }
 
 
-b2Vec2 *_wrap_b2Body_GetWorldCenter_Box2D_b1d1b47c7e81f80a(b2Body *_swig_go_0) {
+b2Vec2 *_wrap_b2Body_GetWorldCenter_Box2D_553c0f9515edf50e(b2Body *_swig_go_0) {
   b2Body *arg1 = (b2Body *) 0 ;
   b2Vec2 *result = 0 ;
   b2Vec2 *_swig_go_result;
@@ -4126,7 +4245,7 @@ b2Vec2 *_wrap_b2Body_GetWorldCenter_Box2D_b1d1b47c7e81f80a(b2Body *_swig_go_0) {
 }
 
 
-b2Vec2 *_wrap_b2Body_GetLocalCenter_Box2D_b1d1b47c7e81f80a(b2Body *_swig_go_0) {
+b2Vec2 *_wrap_b2Body_GetLocalCenter_Box2D_553c0f9515edf50e(b2Body *_swig_go_0) {
   b2Body *arg1 = (b2Body *) 0 ;
   b2Vec2 *result = 0 ;
   b2Vec2 *_swig_go_result;
@@ -4139,7 +4258,7 @@ b2Vec2 *_wrap_b2Body_GetLocalCenter_Box2D_b1d1b47c7e81f80a(b2Body *_swig_go_0) {
 }
 
 
-void _wrap_b2Body_SetLinearVelocity_Box2D_b1d1b47c7e81f80a(b2Body *_swig_go_0, b2Vec2 *_swig_go_1) {
+void _wrap_b2Body_SetLinearVelocity_Box2D_553c0f9515edf50e(b2Body *_swig_go_0, b2Vec2 *_swig_go_1) {
   b2Body *arg1 = (b2Body *) 0 ;
   b2Vec2 *arg2 = 0 ;
   
@@ -4151,7 +4270,7 @@ void _wrap_b2Body_SetLinearVelocity_Box2D_b1d1b47c7e81f80a(b2Body *_swig_go_0, b
 }
 
 
-b2Vec2 *_wrap_b2Body_GetLinearVelocity_Box2D_b1d1b47c7e81f80a(b2Body *_swig_go_0) {
+b2Vec2 *_wrap_b2Body_GetLinearVelocity_Box2D_553c0f9515edf50e(b2Body *_swig_go_0) {
   b2Body *arg1 = (b2Body *) 0 ;
   b2Vec2 *result = 0 ;
   b2Vec2 *_swig_go_result;
@@ -4164,7 +4283,7 @@ b2Vec2 *_wrap_b2Body_GetLinearVelocity_Box2D_b1d1b47c7e81f80a(b2Body *_swig_go_0
 }
 
 
-void _wrap_b2Body_SetAngularVelocity_Box2D_b1d1b47c7e81f80a(b2Body *_swig_go_0, float _swig_go_1) {
+void _wrap_b2Body_SetAngularVelocity_Box2D_553c0f9515edf50e(b2Body *_swig_go_0, float _swig_go_1) {
   b2Body *arg1 = (b2Body *) 0 ;
   float32 arg2 ;
   
@@ -4176,7 +4295,7 @@ void _wrap_b2Body_SetAngularVelocity_Box2D_b1d1b47c7e81f80a(b2Body *_swig_go_0, 
 }
 
 
-float _wrap_b2Body_GetAngularVelocity_Box2D_b1d1b47c7e81f80a(b2Body *_swig_go_0) {
+float _wrap_b2Body_GetAngularVelocity_Box2D_553c0f9515edf50e(b2Body *_swig_go_0) {
   b2Body *arg1 = (b2Body *) 0 ;
   float32 result;
   float _swig_go_result;
@@ -4189,7 +4308,7 @@ float _wrap_b2Body_GetAngularVelocity_Box2D_b1d1b47c7e81f80a(b2Body *_swig_go_0)
 }
 
 
-void _wrap_b2Body_ApplyForce_Box2D_b1d1b47c7e81f80a(b2Body *_swig_go_0, b2Vec2 *_swig_go_1, b2Vec2 *_swig_go_2, bool _swig_go_3) {
+void _wrap_b2Body_ApplyForce_Box2D_553c0f9515edf50e(b2Body *_swig_go_0, b2Vec2 *_swig_go_1, b2Vec2 *_swig_go_2, bool _swig_go_3) {
   b2Body *arg1 = (b2Body *) 0 ;
   b2Vec2 *arg2 = 0 ;
   b2Vec2 *arg3 = 0 ;
@@ -4205,7 +4324,7 @@ void _wrap_b2Body_ApplyForce_Box2D_b1d1b47c7e81f80a(b2Body *_swig_go_0, b2Vec2 *
 }
 
 
-void _wrap_b2Body_ApplyForceToCenter_Box2D_b1d1b47c7e81f80a(b2Body *_swig_go_0, b2Vec2 *_swig_go_1, bool _swig_go_2) {
+void _wrap_b2Body_ApplyForceToCenter_Box2D_553c0f9515edf50e(b2Body *_swig_go_0, b2Vec2 *_swig_go_1, bool _swig_go_2) {
   b2Body *arg1 = (b2Body *) 0 ;
   b2Vec2 *arg2 = 0 ;
   bool arg3 ;
@@ -4219,7 +4338,7 @@ void _wrap_b2Body_ApplyForceToCenter_Box2D_b1d1b47c7e81f80a(b2Body *_swig_go_0, 
 }
 
 
-void _wrap_b2Body_ApplyTorque_Box2D_b1d1b47c7e81f80a(b2Body *_swig_go_0, float _swig_go_1, bool _swig_go_2) {
+void _wrap_b2Body_ApplyTorque_Box2D_553c0f9515edf50e(b2Body *_swig_go_0, float _swig_go_1, bool _swig_go_2) {
   b2Body *arg1 = (b2Body *) 0 ;
   float32 arg2 ;
   bool arg3 ;
@@ -4233,7 +4352,7 @@ void _wrap_b2Body_ApplyTorque_Box2D_b1d1b47c7e81f80a(b2Body *_swig_go_0, float _
 }
 
 
-void _wrap_b2Body_ApplyLinearImpulse_Box2D_b1d1b47c7e81f80a(b2Body *_swig_go_0, b2Vec2 *_swig_go_1, b2Vec2 *_swig_go_2, bool _swig_go_3) {
+void _wrap_b2Body_ApplyLinearImpulse_Box2D_553c0f9515edf50e(b2Body *_swig_go_0, b2Vec2 *_swig_go_1, b2Vec2 *_swig_go_2, bool _swig_go_3) {
   b2Body *arg1 = (b2Body *) 0 ;
   b2Vec2 *arg2 = 0 ;
   b2Vec2 *arg3 = 0 ;
@@ -4249,7 +4368,7 @@ void _wrap_b2Body_ApplyLinearImpulse_Box2D_b1d1b47c7e81f80a(b2Body *_swig_go_0, 
 }
 
 
-void _wrap_b2Body_ApplyAngularImpulse_Box2D_b1d1b47c7e81f80a(b2Body *_swig_go_0, float _swig_go_1, bool _swig_go_2) {
+void _wrap_b2Body_ApplyAngularImpulse_Box2D_553c0f9515edf50e(b2Body *_swig_go_0, float _swig_go_1, bool _swig_go_2) {
   b2Body *arg1 = (b2Body *) 0 ;
   float32 arg2 ;
   bool arg3 ;
@@ -4263,7 +4382,7 @@ void _wrap_b2Body_ApplyAngularImpulse_Box2D_b1d1b47c7e81f80a(b2Body *_swig_go_0,
 }
 
 
-float _wrap_b2Body_GetMass_Box2D_b1d1b47c7e81f80a(b2Body *_swig_go_0) {
+float _wrap_b2Body_GetMass_Box2D_553c0f9515edf50e(b2Body *_swig_go_0) {
   b2Body *arg1 = (b2Body *) 0 ;
   float32 result;
   float _swig_go_result;
@@ -4276,7 +4395,7 @@ float _wrap_b2Body_GetMass_Box2D_b1d1b47c7e81f80a(b2Body *_swig_go_0) {
 }
 
 
-float _wrap_b2Body_GetInertia_Box2D_b1d1b47c7e81f80a(b2Body *_swig_go_0) {
+float _wrap_b2Body_GetInertia_Box2D_553c0f9515edf50e(b2Body *_swig_go_0) {
   b2Body *arg1 = (b2Body *) 0 ;
   float32 result;
   float _swig_go_result;
@@ -4289,7 +4408,7 @@ float _wrap_b2Body_GetInertia_Box2D_b1d1b47c7e81f80a(b2Body *_swig_go_0) {
 }
 
 
-void _wrap_b2Body_GetMassData_Box2D_b1d1b47c7e81f80a(b2Body *_swig_go_0, b2MassData *_swig_go_1) {
+void _wrap_b2Body_GetMassData_Box2D_553c0f9515edf50e(b2Body *_swig_go_0, b2MassData *_swig_go_1) {
   b2Body *arg1 = (b2Body *) 0 ;
   b2MassData *arg2 = (b2MassData *) 0 ;
   
@@ -4301,7 +4420,7 @@ void _wrap_b2Body_GetMassData_Box2D_b1d1b47c7e81f80a(b2Body *_swig_go_0, b2MassD
 }
 
 
-void _wrap_b2Body_SetMassData_Box2D_b1d1b47c7e81f80a(b2Body *_swig_go_0, b2MassData *_swig_go_1) {
+void _wrap_b2Body_SetMassData_Box2D_553c0f9515edf50e(b2Body *_swig_go_0, b2MassData *_swig_go_1) {
   b2Body *arg1 = (b2Body *) 0 ;
   b2MassData *arg2 = (b2MassData *) 0 ;
   
@@ -4313,7 +4432,7 @@ void _wrap_b2Body_SetMassData_Box2D_b1d1b47c7e81f80a(b2Body *_swig_go_0, b2MassD
 }
 
 
-void _wrap_b2Body_ResetMassData_Box2D_b1d1b47c7e81f80a(b2Body *_swig_go_0) {
+void _wrap_b2Body_ResetMassData_Box2D_553c0f9515edf50e(b2Body *_swig_go_0) {
   b2Body *arg1 = (b2Body *) 0 ;
   
   arg1 = *(b2Body **)&_swig_go_0; 
@@ -4323,7 +4442,7 @@ void _wrap_b2Body_ResetMassData_Box2D_b1d1b47c7e81f80a(b2Body *_swig_go_0) {
 }
 
 
-b2Vec2 *_wrap_b2Body_GetWorldPoint_Box2D_b1d1b47c7e81f80a(b2Body *_swig_go_0, b2Vec2 *_swig_go_1) {
+b2Vec2 *_wrap_b2Body_GetWorldPoint_Box2D_553c0f9515edf50e(b2Body *_swig_go_0, b2Vec2 *_swig_go_1) {
   b2Body *arg1 = (b2Body *) 0 ;
   b2Vec2 *arg2 = 0 ;
   b2Vec2 result;
@@ -4338,7 +4457,7 @@ b2Vec2 *_wrap_b2Body_GetWorldPoint_Box2D_b1d1b47c7e81f80a(b2Body *_swig_go_0, b2
 }
 
 
-b2Vec2 *_wrap_b2Body_GetWorldVector_Box2D_b1d1b47c7e81f80a(b2Body *_swig_go_0, b2Vec2 *_swig_go_1) {
+b2Vec2 *_wrap_b2Body_GetWorldVector_Box2D_553c0f9515edf50e(b2Body *_swig_go_0, b2Vec2 *_swig_go_1) {
   b2Body *arg1 = (b2Body *) 0 ;
   b2Vec2 *arg2 = 0 ;
   b2Vec2 result;
@@ -4353,7 +4472,7 @@ b2Vec2 *_wrap_b2Body_GetWorldVector_Box2D_b1d1b47c7e81f80a(b2Body *_swig_go_0, b
 }
 
 
-b2Vec2 *_wrap_b2Body_GetLocalPoint_Box2D_b1d1b47c7e81f80a(b2Body *_swig_go_0, b2Vec2 *_swig_go_1) {
+b2Vec2 *_wrap_b2Body_GetLocalPoint_Box2D_553c0f9515edf50e(b2Body *_swig_go_0, b2Vec2 *_swig_go_1) {
   b2Body *arg1 = (b2Body *) 0 ;
   b2Vec2 *arg2 = 0 ;
   b2Vec2 result;
@@ -4368,7 +4487,7 @@ b2Vec2 *_wrap_b2Body_GetLocalPoint_Box2D_b1d1b47c7e81f80a(b2Body *_swig_go_0, b2
 }
 
 
-b2Vec2 *_wrap_b2Body_GetLocalVector_Box2D_b1d1b47c7e81f80a(b2Body *_swig_go_0, b2Vec2 *_swig_go_1) {
+b2Vec2 *_wrap_b2Body_GetLocalVector_Box2D_553c0f9515edf50e(b2Body *_swig_go_0, b2Vec2 *_swig_go_1) {
   b2Body *arg1 = (b2Body *) 0 ;
   b2Vec2 *arg2 = 0 ;
   b2Vec2 result;
@@ -4383,7 +4502,7 @@ b2Vec2 *_wrap_b2Body_GetLocalVector_Box2D_b1d1b47c7e81f80a(b2Body *_swig_go_0, b
 }
 
 
-b2Vec2 *_wrap_b2Body_GetLinearVelocityFromWorldPoint_Box2D_b1d1b47c7e81f80a(b2Body *_swig_go_0, b2Vec2 *_swig_go_1) {
+b2Vec2 *_wrap_b2Body_GetLinearVelocityFromWorldPoint_Box2D_553c0f9515edf50e(b2Body *_swig_go_0, b2Vec2 *_swig_go_1) {
   b2Body *arg1 = (b2Body *) 0 ;
   b2Vec2 *arg2 = 0 ;
   b2Vec2 result;
@@ -4398,7 +4517,7 @@ b2Vec2 *_wrap_b2Body_GetLinearVelocityFromWorldPoint_Box2D_b1d1b47c7e81f80a(b2Bo
 }
 
 
-b2Vec2 *_wrap_b2Body_GetLinearVelocityFromLocalPoint_Box2D_b1d1b47c7e81f80a(b2Body *_swig_go_0, b2Vec2 *_swig_go_1) {
+b2Vec2 *_wrap_b2Body_GetLinearVelocityFromLocalPoint_Box2D_553c0f9515edf50e(b2Body *_swig_go_0, b2Vec2 *_swig_go_1) {
   b2Body *arg1 = (b2Body *) 0 ;
   b2Vec2 *arg2 = 0 ;
   b2Vec2 result;
@@ -4413,7 +4532,7 @@ b2Vec2 *_wrap_b2Body_GetLinearVelocityFromLocalPoint_Box2D_b1d1b47c7e81f80a(b2Bo
 }
 
 
-float _wrap_b2Body_GetLinearDamping_Box2D_b1d1b47c7e81f80a(b2Body *_swig_go_0) {
+float _wrap_b2Body_GetLinearDamping_Box2D_553c0f9515edf50e(b2Body *_swig_go_0) {
   b2Body *arg1 = (b2Body *) 0 ;
   float32 result;
   float _swig_go_result;
@@ -4426,7 +4545,7 @@ float _wrap_b2Body_GetLinearDamping_Box2D_b1d1b47c7e81f80a(b2Body *_swig_go_0) {
 }
 
 
-void _wrap_b2Body_SetLinearDamping_Box2D_b1d1b47c7e81f80a(b2Body *_swig_go_0, float _swig_go_1) {
+void _wrap_b2Body_SetLinearDamping_Box2D_553c0f9515edf50e(b2Body *_swig_go_0, float _swig_go_1) {
   b2Body *arg1 = (b2Body *) 0 ;
   float32 arg2 ;
   
@@ -4438,7 +4557,7 @@ void _wrap_b2Body_SetLinearDamping_Box2D_b1d1b47c7e81f80a(b2Body *_swig_go_0, fl
 }
 
 
-float _wrap_b2Body_GetAngularDamping_Box2D_b1d1b47c7e81f80a(b2Body *_swig_go_0) {
+float _wrap_b2Body_GetAngularDamping_Box2D_553c0f9515edf50e(b2Body *_swig_go_0) {
   b2Body *arg1 = (b2Body *) 0 ;
   float32 result;
   float _swig_go_result;
@@ -4451,7 +4570,7 @@ float _wrap_b2Body_GetAngularDamping_Box2D_b1d1b47c7e81f80a(b2Body *_swig_go_0) 
 }
 
 
-void _wrap_b2Body_SetAngularDamping_Box2D_b1d1b47c7e81f80a(b2Body *_swig_go_0, float _swig_go_1) {
+void _wrap_b2Body_SetAngularDamping_Box2D_553c0f9515edf50e(b2Body *_swig_go_0, float _swig_go_1) {
   b2Body *arg1 = (b2Body *) 0 ;
   float32 arg2 ;
   
@@ -4463,7 +4582,7 @@ void _wrap_b2Body_SetAngularDamping_Box2D_b1d1b47c7e81f80a(b2Body *_swig_go_0, f
 }
 
 
-float _wrap_b2Body_GetGravityScale_Box2D_b1d1b47c7e81f80a(b2Body *_swig_go_0) {
+float _wrap_b2Body_GetGravityScale_Box2D_553c0f9515edf50e(b2Body *_swig_go_0) {
   b2Body *arg1 = (b2Body *) 0 ;
   float32 result;
   float _swig_go_result;
@@ -4476,7 +4595,7 @@ float _wrap_b2Body_GetGravityScale_Box2D_b1d1b47c7e81f80a(b2Body *_swig_go_0) {
 }
 
 
-void _wrap_b2Body_SetGravityScale_Box2D_b1d1b47c7e81f80a(b2Body *_swig_go_0, float _swig_go_1) {
+void _wrap_b2Body_SetGravityScale_Box2D_553c0f9515edf50e(b2Body *_swig_go_0, float _swig_go_1) {
   b2Body *arg1 = (b2Body *) 0 ;
   float32 arg2 ;
   
@@ -4488,7 +4607,7 @@ void _wrap_b2Body_SetGravityScale_Box2D_b1d1b47c7e81f80a(b2Body *_swig_go_0, flo
 }
 
 
-void _wrap_b2Body_SetType_Box2D_b1d1b47c7e81f80a(b2Body *_swig_go_0, intgo _swig_go_1) {
+void _wrap_b2Body_SetType_Box2D_553c0f9515edf50e(b2Body *_swig_go_0, intgo _swig_go_1) {
   b2Body *arg1 = (b2Body *) 0 ;
   b2BodyType arg2 ;
   
@@ -4500,7 +4619,7 @@ void _wrap_b2Body_SetType_Box2D_b1d1b47c7e81f80a(b2Body *_swig_go_0, intgo _swig
 }
 
 
-intgo _wrap_b2Body_GetType_Box2D_b1d1b47c7e81f80a(b2Body *_swig_go_0) {
+intgo _wrap_b2Body_GetType_Box2D_553c0f9515edf50e(b2Body *_swig_go_0) {
   b2Body *arg1 = (b2Body *) 0 ;
   b2BodyType result;
   intgo _swig_go_result;
@@ -4513,7 +4632,7 @@ intgo _wrap_b2Body_GetType_Box2D_b1d1b47c7e81f80a(b2Body *_swig_go_0) {
 }
 
 
-void _wrap_b2Body_SetBullet_Box2D_b1d1b47c7e81f80a(b2Body *_swig_go_0, bool _swig_go_1) {
+void _wrap_b2Body_SetBullet_Box2D_553c0f9515edf50e(b2Body *_swig_go_0, bool _swig_go_1) {
   b2Body *arg1 = (b2Body *) 0 ;
   bool arg2 ;
   
@@ -4525,7 +4644,7 @@ void _wrap_b2Body_SetBullet_Box2D_b1d1b47c7e81f80a(b2Body *_swig_go_0, bool _swi
 }
 
 
-bool _wrap_b2Body_IsBullet_Box2D_b1d1b47c7e81f80a(b2Body *_swig_go_0) {
+bool _wrap_b2Body_IsBullet_Box2D_553c0f9515edf50e(b2Body *_swig_go_0) {
   b2Body *arg1 = (b2Body *) 0 ;
   bool result;
   bool _swig_go_result;
@@ -4538,7 +4657,7 @@ bool _wrap_b2Body_IsBullet_Box2D_b1d1b47c7e81f80a(b2Body *_swig_go_0) {
 }
 
 
-void _wrap_b2Body_SetSleepingAllowed_Box2D_b1d1b47c7e81f80a(b2Body *_swig_go_0, bool _swig_go_1) {
+void _wrap_b2Body_SetSleepingAllowed_Box2D_553c0f9515edf50e(b2Body *_swig_go_0, bool _swig_go_1) {
   b2Body *arg1 = (b2Body *) 0 ;
   bool arg2 ;
   
@@ -4550,7 +4669,7 @@ void _wrap_b2Body_SetSleepingAllowed_Box2D_b1d1b47c7e81f80a(b2Body *_swig_go_0, 
 }
 
 
-bool _wrap_b2Body_IsSleepingAllowed_Box2D_b1d1b47c7e81f80a(b2Body *_swig_go_0) {
+bool _wrap_b2Body_IsSleepingAllowed_Box2D_553c0f9515edf50e(b2Body *_swig_go_0) {
   b2Body *arg1 = (b2Body *) 0 ;
   bool result;
   bool _swig_go_result;
@@ -4563,7 +4682,7 @@ bool _wrap_b2Body_IsSleepingAllowed_Box2D_b1d1b47c7e81f80a(b2Body *_swig_go_0) {
 }
 
 
-void _wrap_b2Body_SetAwake_Box2D_b1d1b47c7e81f80a(b2Body *_swig_go_0, bool _swig_go_1) {
+void _wrap_b2Body_SetAwake_Box2D_553c0f9515edf50e(b2Body *_swig_go_0, bool _swig_go_1) {
   b2Body *arg1 = (b2Body *) 0 ;
   bool arg2 ;
   
@@ -4575,7 +4694,7 @@ void _wrap_b2Body_SetAwake_Box2D_b1d1b47c7e81f80a(b2Body *_swig_go_0, bool _swig
 }
 
 
-bool _wrap_b2Body_IsAwake_Box2D_b1d1b47c7e81f80a(b2Body *_swig_go_0) {
+bool _wrap_b2Body_IsAwake_Box2D_553c0f9515edf50e(b2Body *_swig_go_0) {
   b2Body *arg1 = (b2Body *) 0 ;
   bool result;
   bool _swig_go_result;
@@ -4588,7 +4707,7 @@ bool _wrap_b2Body_IsAwake_Box2D_b1d1b47c7e81f80a(b2Body *_swig_go_0) {
 }
 
 
-void _wrap_b2Body_SetActive_Box2D_b1d1b47c7e81f80a(b2Body *_swig_go_0, bool _swig_go_1) {
+void _wrap_b2Body_SetActive_Box2D_553c0f9515edf50e(b2Body *_swig_go_0, bool _swig_go_1) {
   b2Body *arg1 = (b2Body *) 0 ;
   bool arg2 ;
   
@@ -4600,7 +4719,7 @@ void _wrap_b2Body_SetActive_Box2D_b1d1b47c7e81f80a(b2Body *_swig_go_0, bool _swi
 }
 
 
-bool _wrap_b2Body_IsActive_Box2D_b1d1b47c7e81f80a(b2Body *_swig_go_0) {
+bool _wrap_b2Body_IsActive_Box2D_553c0f9515edf50e(b2Body *_swig_go_0) {
   b2Body *arg1 = (b2Body *) 0 ;
   bool result;
   bool _swig_go_result;
@@ -4613,7 +4732,7 @@ bool _wrap_b2Body_IsActive_Box2D_b1d1b47c7e81f80a(b2Body *_swig_go_0) {
 }
 
 
-void _wrap_b2Body_SetFixedRotation_Box2D_b1d1b47c7e81f80a(b2Body *_swig_go_0, bool _swig_go_1) {
+void _wrap_b2Body_SetFixedRotation_Box2D_553c0f9515edf50e(b2Body *_swig_go_0, bool _swig_go_1) {
   b2Body *arg1 = (b2Body *) 0 ;
   bool arg2 ;
   
@@ -4625,7 +4744,7 @@ void _wrap_b2Body_SetFixedRotation_Box2D_b1d1b47c7e81f80a(b2Body *_swig_go_0, bo
 }
 
 
-bool _wrap_b2Body_IsFixedRotation_Box2D_b1d1b47c7e81f80a(b2Body *_swig_go_0) {
+bool _wrap_b2Body_IsFixedRotation_Box2D_553c0f9515edf50e(b2Body *_swig_go_0) {
   b2Body *arg1 = (b2Body *) 0 ;
   bool result;
   bool _swig_go_result;
@@ -4638,7 +4757,7 @@ bool _wrap_b2Body_IsFixedRotation_Box2D_b1d1b47c7e81f80a(b2Body *_swig_go_0) {
 }
 
 
-b2Fixture *_wrap_b2Body_GetFixtureList__SWIG_0_Box2D_b1d1b47c7e81f80a(b2Body *_swig_go_0) {
+b2Fixture *_wrap_b2Body_GetFixtureList__SWIG_0_Box2D_553c0f9515edf50e(b2Body *_swig_go_0) {
   b2Body *arg1 = (b2Body *) 0 ;
   b2Fixture *result = 0 ;
   b2Fixture *_swig_go_result;
@@ -4651,7 +4770,7 @@ b2Fixture *_wrap_b2Body_GetFixtureList__SWIG_0_Box2D_b1d1b47c7e81f80a(b2Body *_s
 }
 
 
-b2Fixture *_wrap_b2Body_GetFixtureList__SWIG_1_Box2D_b1d1b47c7e81f80a(b2Body *_swig_go_0) {
+b2Fixture *_wrap_b2Body_GetFixtureList__SWIG_1_Box2D_553c0f9515edf50e(b2Body *_swig_go_0) {
   b2Body *arg1 = (b2Body *) 0 ;
   b2Fixture *result = 0 ;
   b2Fixture *_swig_go_result;
@@ -4664,7 +4783,7 @@ b2Fixture *_wrap_b2Body_GetFixtureList__SWIG_1_Box2D_b1d1b47c7e81f80a(b2Body *_s
 }
 
 
-b2JointEdge *_wrap_b2Body_GetJointList__SWIG_0_Box2D_b1d1b47c7e81f80a(b2Body *_swig_go_0) {
+b2JointEdge *_wrap_b2Body_GetJointList__SWIG_0_Box2D_553c0f9515edf50e(b2Body *_swig_go_0) {
   b2Body *arg1 = (b2Body *) 0 ;
   b2JointEdge *result = 0 ;
   b2JointEdge *_swig_go_result;
@@ -4677,7 +4796,7 @@ b2JointEdge *_wrap_b2Body_GetJointList__SWIG_0_Box2D_b1d1b47c7e81f80a(b2Body *_s
 }
 
 
-b2JointEdge *_wrap_b2Body_GetJointList__SWIG_1_Box2D_b1d1b47c7e81f80a(b2Body *_swig_go_0) {
+b2JointEdge *_wrap_b2Body_GetJointList__SWIG_1_Box2D_553c0f9515edf50e(b2Body *_swig_go_0) {
   b2Body *arg1 = (b2Body *) 0 ;
   b2JointEdge *result = 0 ;
   b2JointEdge *_swig_go_result;
@@ -4690,7 +4809,7 @@ b2JointEdge *_wrap_b2Body_GetJointList__SWIG_1_Box2D_b1d1b47c7e81f80a(b2Body *_s
 }
 
 
-b2ContactEdge *_wrap_b2Body_GetContactList__SWIG_0_Box2D_b1d1b47c7e81f80a(b2Body *_swig_go_0) {
+b2ContactEdge *_wrap_b2Body_GetContactList__SWIG_0_Box2D_553c0f9515edf50e(b2Body *_swig_go_0) {
   b2Body *arg1 = (b2Body *) 0 ;
   b2ContactEdge *result = 0 ;
   b2ContactEdge *_swig_go_result;
@@ -4703,7 +4822,7 @@ b2ContactEdge *_wrap_b2Body_GetContactList__SWIG_0_Box2D_b1d1b47c7e81f80a(b2Body
 }
 
 
-b2ContactEdge *_wrap_b2Body_GetContactList__SWIG_1_Box2D_b1d1b47c7e81f80a(b2Body *_swig_go_0) {
+b2ContactEdge *_wrap_b2Body_GetContactList__SWIG_1_Box2D_553c0f9515edf50e(b2Body *_swig_go_0) {
   b2Body *arg1 = (b2Body *) 0 ;
   b2ContactEdge *result = 0 ;
   b2ContactEdge *_swig_go_result;
@@ -4716,7 +4835,7 @@ b2ContactEdge *_wrap_b2Body_GetContactList__SWIG_1_Box2D_b1d1b47c7e81f80a(b2Body
 }
 
 
-b2Body *_wrap_b2Body_GetNext__SWIG_0_Box2D_b1d1b47c7e81f80a(b2Body *_swig_go_0) {
+b2Body *_wrap_b2Body_GetNext__SWIG_0_Box2D_553c0f9515edf50e(b2Body *_swig_go_0) {
   b2Body *arg1 = (b2Body *) 0 ;
   b2Body *result = 0 ;
   b2Body *_swig_go_result;
@@ -4729,7 +4848,7 @@ b2Body *_wrap_b2Body_GetNext__SWIG_0_Box2D_b1d1b47c7e81f80a(b2Body *_swig_go_0) 
 }
 
 
-b2Body *_wrap_b2Body_GetNext__SWIG_1_Box2D_b1d1b47c7e81f80a(b2Body *_swig_go_0) {
+b2Body *_wrap_b2Body_GetNext__SWIG_1_Box2D_553c0f9515edf50e(b2Body *_swig_go_0) {
   b2Body *arg1 = (b2Body *) 0 ;
   b2Body *result = 0 ;
   b2Body *_swig_go_result;
@@ -4742,7 +4861,7 @@ b2Body *_wrap_b2Body_GetNext__SWIG_1_Box2D_b1d1b47c7e81f80a(b2Body *_swig_go_0) 
 }
 
 
-void *_wrap_b2Body_GetUserData_Box2D_b1d1b47c7e81f80a(b2Body *_swig_go_0) {
+void *_wrap_b2Body_GetUserData_Box2D_553c0f9515edf50e(b2Body *_swig_go_0) {
   b2Body *arg1 = (b2Body *) 0 ;
   void *result = 0 ;
   void *_swig_go_result;
@@ -4755,7 +4874,7 @@ void *_wrap_b2Body_GetUserData_Box2D_b1d1b47c7e81f80a(b2Body *_swig_go_0) {
 }
 
 
-void _wrap_b2Body_SetUserData_Box2D_b1d1b47c7e81f80a(b2Body *_swig_go_0, void *_swig_go_1) {
+void _wrap_b2Body_SetUserData_Box2D_553c0f9515edf50e(b2Body *_swig_go_0, void *_swig_go_1) {
   b2Body *arg1 = (b2Body *) 0 ;
   void *arg2 = (void *) 0 ;
   
@@ -4767,7 +4886,7 @@ void _wrap_b2Body_SetUserData_Box2D_b1d1b47c7e81f80a(b2Body *_swig_go_0, void *_
 }
 
 
-b2World *_wrap_b2Body_GetWorld__SWIG_0_Box2D_b1d1b47c7e81f80a(b2Body *_swig_go_0) {
+b2World *_wrap_b2Body_GetWorld__SWIG_0_Box2D_553c0f9515edf50e(b2Body *_swig_go_0) {
   b2Body *arg1 = (b2Body *) 0 ;
   b2World *result = 0 ;
   b2World *_swig_go_result;
@@ -4780,7 +4899,7 @@ b2World *_wrap_b2Body_GetWorld__SWIG_0_Box2D_b1d1b47c7e81f80a(b2Body *_swig_go_0
 }
 
 
-b2World *_wrap_b2Body_GetWorld__SWIG_1_Box2D_b1d1b47c7e81f80a(b2Body *_swig_go_0) {
+b2World *_wrap_b2Body_GetWorld__SWIG_1_Box2D_553c0f9515edf50e(b2Body *_swig_go_0) {
   b2Body *arg1 = (b2Body *) 0 ;
   b2World *result = 0 ;
   b2World *_swig_go_result;
@@ -4793,7 +4912,7 @@ b2World *_wrap_b2Body_GetWorld__SWIG_1_Box2D_b1d1b47c7e81f80a(b2Body *_swig_go_0
 }
 
 
-void _wrap_b2Body_Dump_Box2D_b1d1b47c7e81f80a(b2Body *_swig_go_0) {
+void _wrap_b2Body_Dump_Box2D_553c0f9515edf50e(b2Body *_swig_go_0) {
   b2Body *arg1 = (b2Body *) 0 ;
   
   arg1 = *(b2Body **)&_swig_go_0; 
@@ -4803,7 +4922,7 @@ void _wrap_b2Body_Dump_Box2D_b1d1b47c7e81f80a(b2Body *_swig_go_0) {
 }
 
 
-b2Filter *_wrap_new_b2Filter_Box2D_b1d1b47c7e81f80a() {
+b2Filter *_wrap_new_b2Filter_Box2D_553c0f9515edf50e() {
   b2Filter *result = 0 ;
   b2Filter *_swig_go_result;
   
@@ -4814,7 +4933,7 @@ b2Filter *_wrap_new_b2Filter_Box2D_b1d1b47c7e81f80a() {
 }
 
 
-void _wrap_b2Filter_categoryBits_set_Box2D_b1d1b47c7e81f80a(b2Filter *_swig_go_0, short _swig_go_1) {
+void _wrap_b2Filter_categoryBits_set_Box2D_553c0f9515edf50e(b2Filter *_swig_go_0, short _swig_go_1) {
   b2Filter *arg1 = (b2Filter *) 0 ;
   uint16 arg2 ;
   
@@ -4826,7 +4945,7 @@ void _wrap_b2Filter_categoryBits_set_Box2D_b1d1b47c7e81f80a(b2Filter *_swig_go_0
 }
 
 
-short _wrap_b2Filter_categoryBits_get_Box2D_b1d1b47c7e81f80a(b2Filter *_swig_go_0) {
+short _wrap_b2Filter_categoryBits_get_Box2D_553c0f9515edf50e(b2Filter *_swig_go_0) {
   b2Filter *arg1 = (b2Filter *) 0 ;
   uint16 result;
   short _swig_go_result;
@@ -4839,7 +4958,7 @@ short _wrap_b2Filter_categoryBits_get_Box2D_b1d1b47c7e81f80a(b2Filter *_swig_go_
 }
 
 
-void _wrap_b2Filter_maskBits_set_Box2D_b1d1b47c7e81f80a(b2Filter *_swig_go_0, short _swig_go_1) {
+void _wrap_b2Filter_maskBits_set_Box2D_553c0f9515edf50e(b2Filter *_swig_go_0, short _swig_go_1) {
   b2Filter *arg1 = (b2Filter *) 0 ;
   uint16 arg2 ;
   
@@ -4851,7 +4970,7 @@ void _wrap_b2Filter_maskBits_set_Box2D_b1d1b47c7e81f80a(b2Filter *_swig_go_0, sh
 }
 
 
-short _wrap_b2Filter_maskBits_get_Box2D_b1d1b47c7e81f80a(b2Filter *_swig_go_0) {
+short _wrap_b2Filter_maskBits_get_Box2D_553c0f9515edf50e(b2Filter *_swig_go_0) {
   b2Filter *arg1 = (b2Filter *) 0 ;
   uint16 result;
   short _swig_go_result;
@@ -4864,7 +4983,7 @@ short _wrap_b2Filter_maskBits_get_Box2D_b1d1b47c7e81f80a(b2Filter *_swig_go_0) {
 }
 
 
-void _wrap_b2Filter_groupIndex_set_Box2D_b1d1b47c7e81f80a(b2Filter *_swig_go_0, short _swig_go_1) {
+void _wrap_b2Filter_groupIndex_set_Box2D_553c0f9515edf50e(b2Filter *_swig_go_0, short _swig_go_1) {
   b2Filter *arg1 = (b2Filter *) 0 ;
   int16 arg2 ;
   
@@ -4876,7 +4995,7 @@ void _wrap_b2Filter_groupIndex_set_Box2D_b1d1b47c7e81f80a(b2Filter *_swig_go_0, 
 }
 
 
-short _wrap_b2Filter_groupIndex_get_Box2D_b1d1b47c7e81f80a(b2Filter *_swig_go_0) {
+short _wrap_b2Filter_groupIndex_get_Box2D_553c0f9515edf50e(b2Filter *_swig_go_0) {
   b2Filter *arg1 = (b2Filter *) 0 ;
   int16 result;
   short _swig_go_result;
@@ -4889,7 +5008,7 @@ short _wrap_b2Filter_groupIndex_get_Box2D_b1d1b47c7e81f80a(b2Filter *_swig_go_0)
 }
 
 
-void _wrap_delete_b2Filter_Box2D_b1d1b47c7e81f80a(b2Filter *_swig_go_0) {
+void _wrap_delete_b2Filter_Box2D_553c0f9515edf50e(b2Filter *_swig_go_0) {
   b2Filter *arg1 = (b2Filter *) 0 ;
   
   arg1 = *(b2Filter **)&_swig_go_0; 
@@ -4899,7 +5018,7 @@ void _wrap_delete_b2Filter_Box2D_b1d1b47c7e81f80a(b2Filter *_swig_go_0) {
 }
 
 
-b2FixtureDef *_wrap_new_b2FixtureDef_Box2D_b1d1b47c7e81f80a() {
+b2FixtureDef *_wrap_new_b2FixtureDef_Box2D_553c0f9515edf50e() {
   b2FixtureDef *result = 0 ;
   b2FixtureDef *_swig_go_result;
   
@@ -4910,7 +5029,7 @@ b2FixtureDef *_wrap_new_b2FixtureDef_Box2D_b1d1b47c7e81f80a() {
 }
 
 
-void _wrap_b2FixtureDef_shape_set_Box2D_b1d1b47c7e81f80a(b2FixtureDef *_swig_go_0, b2Shape *_swig_go_1) {
+void _wrap_b2FixtureDef_shape_set_Box2D_553c0f9515edf50e(b2FixtureDef *_swig_go_0, b2Shape *_swig_go_1) {
   b2FixtureDef *arg1 = (b2FixtureDef *) 0 ;
   b2Shape *arg2 = (b2Shape *) 0 ;
   
@@ -4922,7 +5041,7 @@ void _wrap_b2FixtureDef_shape_set_Box2D_b1d1b47c7e81f80a(b2FixtureDef *_swig_go_
 }
 
 
-b2Shape *_wrap_b2FixtureDef_shape_get_Box2D_b1d1b47c7e81f80a(b2FixtureDef *_swig_go_0) {
+b2Shape *_wrap_b2FixtureDef_shape_get_Box2D_553c0f9515edf50e(b2FixtureDef *_swig_go_0) {
   b2FixtureDef *arg1 = (b2FixtureDef *) 0 ;
   b2Shape *result = 0 ;
   b2Shape *_swig_go_result;
@@ -4935,7 +5054,7 @@ b2Shape *_wrap_b2FixtureDef_shape_get_Box2D_b1d1b47c7e81f80a(b2FixtureDef *_swig
 }
 
 
-void _wrap_b2FixtureDef_userData_set_Box2D_b1d1b47c7e81f80a(b2FixtureDef *_swig_go_0, void *_swig_go_1) {
+void _wrap_b2FixtureDef_userData_set_Box2D_553c0f9515edf50e(b2FixtureDef *_swig_go_0, void *_swig_go_1) {
   b2FixtureDef *arg1 = (b2FixtureDef *) 0 ;
   void *arg2 = (void *) 0 ;
   
@@ -4947,7 +5066,7 @@ void _wrap_b2FixtureDef_userData_set_Box2D_b1d1b47c7e81f80a(b2FixtureDef *_swig_
 }
 
 
-void *_wrap_b2FixtureDef_userData_get_Box2D_b1d1b47c7e81f80a(b2FixtureDef *_swig_go_0) {
+void *_wrap_b2FixtureDef_userData_get_Box2D_553c0f9515edf50e(b2FixtureDef *_swig_go_0) {
   b2FixtureDef *arg1 = (b2FixtureDef *) 0 ;
   void *result = 0 ;
   void *_swig_go_result;
@@ -4960,7 +5079,7 @@ void *_wrap_b2FixtureDef_userData_get_Box2D_b1d1b47c7e81f80a(b2FixtureDef *_swig
 }
 
 
-void _wrap_b2FixtureDef_friction_set_Box2D_b1d1b47c7e81f80a(b2FixtureDef *_swig_go_0, float _swig_go_1) {
+void _wrap_b2FixtureDef_friction_set_Box2D_553c0f9515edf50e(b2FixtureDef *_swig_go_0, float _swig_go_1) {
   b2FixtureDef *arg1 = (b2FixtureDef *) 0 ;
   float32 arg2 ;
   
@@ -4972,7 +5091,7 @@ void _wrap_b2FixtureDef_friction_set_Box2D_b1d1b47c7e81f80a(b2FixtureDef *_swig_
 }
 
 
-float _wrap_b2FixtureDef_friction_get_Box2D_b1d1b47c7e81f80a(b2FixtureDef *_swig_go_0) {
+float _wrap_b2FixtureDef_friction_get_Box2D_553c0f9515edf50e(b2FixtureDef *_swig_go_0) {
   b2FixtureDef *arg1 = (b2FixtureDef *) 0 ;
   float32 result;
   float _swig_go_result;
@@ -4985,7 +5104,7 @@ float _wrap_b2FixtureDef_friction_get_Box2D_b1d1b47c7e81f80a(b2FixtureDef *_swig
 }
 
 
-void _wrap_b2FixtureDef_restitution_set_Box2D_b1d1b47c7e81f80a(b2FixtureDef *_swig_go_0, float _swig_go_1) {
+void _wrap_b2FixtureDef_restitution_set_Box2D_553c0f9515edf50e(b2FixtureDef *_swig_go_0, float _swig_go_1) {
   b2FixtureDef *arg1 = (b2FixtureDef *) 0 ;
   float32 arg2 ;
   
@@ -4997,7 +5116,7 @@ void _wrap_b2FixtureDef_restitution_set_Box2D_b1d1b47c7e81f80a(b2FixtureDef *_sw
 }
 
 
-float _wrap_b2FixtureDef_restitution_get_Box2D_b1d1b47c7e81f80a(b2FixtureDef *_swig_go_0) {
+float _wrap_b2FixtureDef_restitution_get_Box2D_553c0f9515edf50e(b2FixtureDef *_swig_go_0) {
   b2FixtureDef *arg1 = (b2FixtureDef *) 0 ;
   float32 result;
   float _swig_go_result;
@@ -5010,7 +5129,7 @@ float _wrap_b2FixtureDef_restitution_get_Box2D_b1d1b47c7e81f80a(b2FixtureDef *_s
 }
 
 
-void _wrap_b2FixtureDef_density_set_Box2D_b1d1b47c7e81f80a(b2FixtureDef *_swig_go_0, float _swig_go_1) {
+void _wrap_b2FixtureDef_density_set_Box2D_553c0f9515edf50e(b2FixtureDef *_swig_go_0, float _swig_go_1) {
   b2FixtureDef *arg1 = (b2FixtureDef *) 0 ;
   float32 arg2 ;
   
@@ -5022,7 +5141,7 @@ void _wrap_b2FixtureDef_density_set_Box2D_b1d1b47c7e81f80a(b2FixtureDef *_swig_g
 }
 
 
-float _wrap_b2FixtureDef_density_get_Box2D_b1d1b47c7e81f80a(b2FixtureDef *_swig_go_0) {
+float _wrap_b2FixtureDef_density_get_Box2D_553c0f9515edf50e(b2FixtureDef *_swig_go_0) {
   b2FixtureDef *arg1 = (b2FixtureDef *) 0 ;
   float32 result;
   float _swig_go_result;
@@ -5035,7 +5154,7 @@ float _wrap_b2FixtureDef_density_get_Box2D_b1d1b47c7e81f80a(b2FixtureDef *_swig_
 }
 
 
-void _wrap_b2FixtureDef_isSensor_set_Box2D_b1d1b47c7e81f80a(b2FixtureDef *_swig_go_0, bool _swig_go_1) {
+void _wrap_b2FixtureDef_isSensor_set_Box2D_553c0f9515edf50e(b2FixtureDef *_swig_go_0, bool _swig_go_1) {
   b2FixtureDef *arg1 = (b2FixtureDef *) 0 ;
   bool arg2 ;
   
@@ -5047,7 +5166,7 @@ void _wrap_b2FixtureDef_isSensor_set_Box2D_b1d1b47c7e81f80a(b2FixtureDef *_swig_
 }
 
 
-bool _wrap_b2FixtureDef_isSensor_get_Box2D_b1d1b47c7e81f80a(b2FixtureDef *_swig_go_0) {
+bool _wrap_b2FixtureDef_isSensor_get_Box2D_553c0f9515edf50e(b2FixtureDef *_swig_go_0) {
   b2FixtureDef *arg1 = (b2FixtureDef *) 0 ;
   bool result;
   bool _swig_go_result;
@@ -5060,7 +5179,7 @@ bool _wrap_b2FixtureDef_isSensor_get_Box2D_b1d1b47c7e81f80a(b2FixtureDef *_swig_
 }
 
 
-void _wrap_b2FixtureDef_filter_set_Box2D_b1d1b47c7e81f80a(b2FixtureDef *_swig_go_0, b2Filter *_swig_go_1) {
+void _wrap_b2FixtureDef_filter_set_Box2D_553c0f9515edf50e(b2FixtureDef *_swig_go_0, b2Filter *_swig_go_1) {
   b2FixtureDef *arg1 = (b2FixtureDef *) 0 ;
   b2Filter *arg2 = (b2Filter *) 0 ;
   
@@ -5072,7 +5191,7 @@ void _wrap_b2FixtureDef_filter_set_Box2D_b1d1b47c7e81f80a(b2FixtureDef *_swig_go
 }
 
 
-b2Filter *_wrap_b2FixtureDef_filter_get_Box2D_b1d1b47c7e81f80a(b2FixtureDef *_swig_go_0) {
+b2Filter *_wrap_b2FixtureDef_filter_get_Box2D_553c0f9515edf50e(b2FixtureDef *_swig_go_0) {
   b2FixtureDef *arg1 = (b2FixtureDef *) 0 ;
   b2Filter *result = 0 ;
   b2Filter *_swig_go_result;
@@ -5085,7 +5204,7 @@ b2Filter *_wrap_b2FixtureDef_filter_get_Box2D_b1d1b47c7e81f80a(b2FixtureDef *_sw
 }
 
 
-void _wrap_delete_b2FixtureDef_Box2D_b1d1b47c7e81f80a(b2FixtureDef *_swig_go_0) {
+void _wrap_delete_b2FixtureDef_Box2D_553c0f9515edf50e(b2FixtureDef *_swig_go_0) {
   b2FixtureDef *arg1 = (b2FixtureDef *) 0 ;
   
   arg1 = *(b2FixtureDef **)&_swig_go_0; 
@@ -5095,7 +5214,7 @@ void _wrap_delete_b2FixtureDef_Box2D_b1d1b47c7e81f80a(b2FixtureDef *_swig_go_0) 
 }
 
 
-void _wrap_b2FixtureProxy_aabb_set_Box2D_b1d1b47c7e81f80a(b2FixtureProxy *_swig_go_0, b2AABB *_swig_go_1) {
+void _wrap_b2FixtureProxy_aabb_set_Box2D_553c0f9515edf50e(b2FixtureProxy *_swig_go_0, b2AABB *_swig_go_1) {
   b2FixtureProxy *arg1 = (b2FixtureProxy *) 0 ;
   b2AABB *arg2 = (b2AABB *) 0 ;
   
@@ -5107,7 +5226,7 @@ void _wrap_b2FixtureProxy_aabb_set_Box2D_b1d1b47c7e81f80a(b2FixtureProxy *_swig_
 }
 
 
-b2AABB *_wrap_b2FixtureProxy_aabb_get_Box2D_b1d1b47c7e81f80a(b2FixtureProxy *_swig_go_0) {
+b2AABB *_wrap_b2FixtureProxy_aabb_get_Box2D_553c0f9515edf50e(b2FixtureProxy *_swig_go_0) {
   b2FixtureProxy *arg1 = (b2FixtureProxy *) 0 ;
   b2AABB *result = 0 ;
   b2AABB *_swig_go_result;
@@ -5120,7 +5239,7 @@ b2AABB *_wrap_b2FixtureProxy_aabb_get_Box2D_b1d1b47c7e81f80a(b2FixtureProxy *_sw
 }
 
 
-void _wrap_b2FixtureProxy_fixture_set_Box2D_b1d1b47c7e81f80a(b2FixtureProxy *_swig_go_0, b2Fixture *_swig_go_1) {
+void _wrap_b2FixtureProxy_fixture_set_Box2D_553c0f9515edf50e(b2FixtureProxy *_swig_go_0, b2Fixture *_swig_go_1) {
   b2FixtureProxy *arg1 = (b2FixtureProxy *) 0 ;
   b2Fixture *arg2 = (b2Fixture *) 0 ;
   
@@ -5132,7 +5251,7 @@ void _wrap_b2FixtureProxy_fixture_set_Box2D_b1d1b47c7e81f80a(b2FixtureProxy *_sw
 }
 
 
-b2Fixture *_wrap_b2FixtureProxy_fixture_get_Box2D_b1d1b47c7e81f80a(b2FixtureProxy *_swig_go_0) {
+b2Fixture *_wrap_b2FixtureProxy_fixture_get_Box2D_553c0f9515edf50e(b2FixtureProxy *_swig_go_0) {
   b2FixtureProxy *arg1 = (b2FixtureProxy *) 0 ;
   b2Fixture *result = 0 ;
   b2Fixture *_swig_go_result;
@@ -5145,7 +5264,7 @@ b2Fixture *_wrap_b2FixtureProxy_fixture_get_Box2D_b1d1b47c7e81f80a(b2FixtureProx
 }
 
 
-void _wrap_b2FixtureProxy_childIndex_set_Box2D_b1d1b47c7e81f80a(b2FixtureProxy *_swig_go_0, intgo _swig_go_1) {
+void _wrap_b2FixtureProxy_childIndex_set_Box2D_553c0f9515edf50e(b2FixtureProxy *_swig_go_0, intgo _swig_go_1) {
   b2FixtureProxy *arg1 = (b2FixtureProxy *) 0 ;
   int32 arg2 ;
   
@@ -5157,7 +5276,7 @@ void _wrap_b2FixtureProxy_childIndex_set_Box2D_b1d1b47c7e81f80a(b2FixtureProxy *
 }
 
 
-intgo _wrap_b2FixtureProxy_childIndex_get_Box2D_b1d1b47c7e81f80a(b2FixtureProxy *_swig_go_0) {
+intgo _wrap_b2FixtureProxy_childIndex_get_Box2D_553c0f9515edf50e(b2FixtureProxy *_swig_go_0) {
   b2FixtureProxy *arg1 = (b2FixtureProxy *) 0 ;
   int32 result;
   intgo _swig_go_result;
@@ -5170,7 +5289,7 @@ intgo _wrap_b2FixtureProxy_childIndex_get_Box2D_b1d1b47c7e81f80a(b2FixtureProxy 
 }
 
 
-void _wrap_b2FixtureProxy_proxyId_set_Box2D_b1d1b47c7e81f80a(b2FixtureProxy *_swig_go_0, intgo _swig_go_1) {
+void _wrap_b2FixtureProxy_proxyId_set_Box2D_553c0f9515edf50e(b2FixtureProxy *_swig_go_0, intgo _swig_go_1) {
   b2FixtureProxy *arg1 = (b2FixtureProxy *) 0 ;
   int32 arg2 ;
   
@@ -5182,7 +5301,7 @@ void _wrap_b2FixtureProxy_proxyId_set_Box2D_b1d1b47c7e81f80a(b2FixtureProxy *_sw
 }
 
 
-intgo _wrap_b2FixtureProxy_proxyId_get_Box2D_b1d1b47c7e81f80a(b2FixtureProxy *_swig_go_0) {
+intgo _wrap_b2FixtureProxy_proxyId_get_Box2D_553c0f9515edf50e(b2FixtureProxy *_swig_go_0) {
   b2FixtureProxy *arg1 = (b2FixtureProxy *) 0 ;
   int32 result;
   intgo _swig_go_result;
@@ -5195,7 +5314,7 @@ intgo _wrap_b2FixtureProxy_proxyId_get_Box2D_b1d1b47c7e81f80a(b2FixtureProxy *_s
 }
 
 
-b2FixtureProxy *_wrap_new_b2FixtureProxy_Box2D_b1d1b47c7e81f80a() {
+b2FixtureProxy *_wrap_new_b2FixtureProxy_Box2D_553c0f9515edf50e() {
   b2FixtureProxy *result = 0 ;
   b2FixtureProxy *_swig_go_result;
   
@@ -5206,7 +5325,7 @@ b2FixtureProxy *_wrap_new_b2FixtureProxy_Box2D_b1d1b47c7e81f80a() {
 }
 
 
-void _wrap_delete_b2FixtureProxy_Box2D_b1d1b47c7e81f80a(b2FixtureProxy *_swig_go_0) {
+void _wrap_delete_b2FixtureProxy_Box2D_553c0f9515edf50e(b2FixtureProxy *_swig_go_0) {
   b2FixtureProxy *arg1 = (b2FixtureProxy *) 0 ;
   
   arg1 = *(b2FixtureProxy **)&_swig_go_0; 
@@ -5216,7 +5335,7 @@ void _wrap_delete_b2FixtureProxy_Box2D_b1d1b47c7e81f80a(b2FixtureProxy *_swig_go
 }
 
 
-b2Shape::Type *_wrap_b2Fixture_GetType_Box2D_b1d1b47c7e81f80a(b2Fixture *_swig_go_0) {
+b2Shape::Type *_wrap_b2Fixture_GetType_Box2D_553c0f9515edf50e(b2Fixture *_swig_go_0) {
   b2Fixture *arg1 = (b2Fixture *) 0 ;
   b2Shape::Type result;
   b2Shape::Type *_swig_go_result;
@@ -5229,7 +5348,7 @@ b2Shape::Type *_wrap_b2Fixture_GetType_Box2D_b1d1b47c7e81f80a(b2Fixture *_swig_g
 }
 
 
-b2Shape *_wrap_b2Fixture_GetShape__SWIG_0_Box2D_b1d1b47c7e81f80a(b2Fixture *_swig_go_0) {
+b2Shape *_wrap_b2Fixture_GetShape__SWIG_0_Box2D_553c0f9515edf50e(b2Fixture *_swig_go_0) {
   b2Fixture *arg1 = (b2Fixture *) 0 ;
   b2Shape *result = 0 ;
   b2Shape *_swig_go_result;
@@ -5242,7 +5361,7 @@ b2Shape *_wrap_b2Fixture_GetShape__SWIG_0_Box2D_b1d1b47c7e81f80a(b2Fixture *_swi
 }
 
 
-b2Shape *_wrap_b2Fixture_GetShape__SWIG_1_Box2D_b1d1b47c7e81f80a(b2Fixture *_swig_go_0) {
+b2Shape *_wrap_b2Fixture_GetShape__SWIG_1_Box2D_553c0f9515edf50e(b2Fixture *_swig_go_0) {
   b2Fixture *arg1 = (b2Fixture *) 0 ;
   b2Shape *result = 0 ;
   b2Shape *_swig_go_result;
@@ -5255,7 +5374,7 @@ b2Shape *_wrap_b2Fixture_GetShape__SWIG_1_Box2D_b1d1b47c7e81f80a(b2Fixture *_swi
 }
 
 
-void _wrap_b2Fixture_SetSensor_Box2D_b1d1b47c7e81f80a(b2Fixture *_swig_go_0, bool _swig_go_1) {
+void _wrap_b2Fixture_SetSensor_Box2D_553c0f9515edf50e(b2Fixture *_swig_go_0, bool _swig_go_1) {
   b2Fixture *arg1 = (b2Fixture *) 0 ;
   bool arg2 ;
   
@@ -5267,7 +5386,7 @@ void _wrap_b2Fixture_SetSensor_Box2D_b1d1b47c7e81f80a(b2Fixture *_swig_go_0, boo
 }
 
 
-bool _wrap_b2Fixture_IsSensor_Box2D_b1d1b47c7e81f80a(b2Fixture *_swig_go_0) {
+bool _wrap_b2Fixture_IsSensor_Box2D_553c0f9515edf50e(b2Fixture *_swig_go_0) {
   b2Fixture *arg1 = (b2Fixture *) 0 ;
   bool result;
   bool _swig_go_result;
@@ -5280,7 +5399,7 @@ bool _wrap_b2Fixture_IsSensor_Box2D_b1d1b47c7e81f80a(b2Fixture *_swig_go_0) {
 }
 
 
-void _wrap_b2Fixture_SetFilterData_Box2D_b1d1b47c7e81f80a(b2Fixture *_swig_go_0, b2Filter *_swig_go_1) {
+void _wrap_b2Fixture_SetFilterData_Box2D_553c0f9515edf50e(b2Fixture *_swig_go_0, b2Filter *_swig_go_1) {
   b2Fixture *arg1 = (b2Fixture *) 0 ;
   b2Filter *arg2 = 0 ;
   
@@ -5292,7 +5411,7 @@ void _wrap_b2Fixture_SetFilterData_Box2D_b1d1b47c7e81f80a(b2Fixture *_swig_go_0,
 }
 
 
-b2Filter *_wrap_b2Fixture_GetFilterData_Box2D_b1d1b47c7e81f80a(b2Fixture *_swig_go_0) {
+b2Filter *_wrap_b2Fixture_GetFilterData_Box2D_553c0f9515edf50e(b2Fixture *_swig_go_0) {
   b2Fixture *arg1 = (b2Fixture *) 0 ;
   b2Filter *result = 0 ;
   b2Filter *_swig_go_result;
@@ -5305,7 +5424,7 @@ b2Filter *_wrap_b2Fixture_GetFilterData_Box2D_b1d1b47c7e81f80a(b2Fixture *_swig_
 }
 
 
-void _wrap_b2Fixture_Refilter_Box2D_b1d1b47c7e81f80a(b2Fixture *_swig_go_0) {
+void _wrap_b2Fixture_Refilter_Box2D_553c0f9515edf50e(b2Fixture *_swig_go_0) {
   b2Fixture *arg1 = (b2Fixture *) 0 ;
   
   arg1 = *(b2Fixture **)&_swig_go_0; 
@@ -5315,7 +5434,7 @@ void _wrap_b2Fixture_Refilter_Box2D_b1d1b47c7e81f80a(b2Fixture *_swig_go_0) {
 }
 
 
-b2Body *_wrap_b2Fixture_GetBody__SWIG_0_Box2D_b1d1b47c7e81f80a(b2Fixture *_swig_go_0) {
+b2Body *_wrap_b2Fixture_GetBody__SWIG_0_Box2D_553c0f9515edf50e(b2Fixture *_swig_go_0) {
   b2Fixture *arg1 = (b2Fixture *) 0 ;
   b2Body *result = 0 ;
   b2Body *_swig_go_result;
@@ -5328,7 +5447,7 @@ b2Body *_wrap_b2Fixture_GetBody__SWIG_0_Box2D_b1d1b47c7e81f80a(b2Fixture *_swig_
 }
 
 
-b2Body *_wrap_b2Fixture_GetBody__SWIG_1_Box2D_b1d1b47c7e81f80a(b2Fixture *_swig_go_0) {
+b2Body *_wrap_b2Fixture_GetBody__SWIG_1_Box2D_553c0f9515edf50e(b2Fixture *_swig_go_0) {
   b2Fixture *arg1 = (b2Fixture *) 0 ;
   b2Body *result = 0 ;
   b2Body *_swig_go_result;
@@ -5341,7 +5460,7 @@ b2Body *_wrap_b2Fixture_GetBody__SWIG_1_Box2D_b1d1b47c7e81f80a(b2Fixture *_swig_
 }
 
 
-b2Fixture *_wrap_b2Fixture_GetNext__SWIG_0_Box2D_b1d1b47c7e81f80a(b2Fixture *_swig_go_0) {
+b2Fixture *_wrap_b2Fixture_GetNext__SWIG_0_Box2D_553c0f9515edf50e(b2Fixture *_swig_go_0) {
   b2Fixture *arg1 = (b2Fixture *) 0 ;
   b2Fixture *result = 0 ;
   b2Fixture *_swig_go_result;
@@ -5354,7 +5473,7 @@ b2Fixture *_wrap_b2Fixture_GetNext__SWIG_0_Box2D_b1d1b47c7e81f80a(b2Fixture *_sw
 }
 
 
-b2Fixture *_wrap_b2Fixture_GetNext__SWIG_1_Box2D_b1d1b47c7e81f80a(b2Fixture *_swig_go_0) {
+b2Fixture *_wrap_b2Fixture_GetNext__SWIG_1_Box2D_553c0f9515edf50e(b2Fixture *_swig_go_0) {
   b2Fixture *arg1 = (b2Fixture *) 0 ;
   b2Fixture *result = 0 ;
   b2Fixture *_swig_go_result;
@@ -5367,7 +5486,7 @@ b2Fixture *_wrap_b2Fixture_GetNext__SWIG_1_Box2D_b1d1b47c7e81f80a(b2Fixture *_sw
 }
 
 
-void *_wrap_b2Fixture_GetUserData_Box2D_b1d1b47c7e81f80a(b2Fixture *_swig_go_0) {
+void *_wrap_b2Fixture_GetUserData_Box2D_553c0f9515edf50e(b2Fixture *_swig_go_0) {
   b2Fixture *arg1 = (b2Fixture *) 0 ;
   void *result = 0 ;
   void *_swig_go_result;
@@ -5380,7 +5499,7 @@ void *_wrap_b2Fixture_GetUserData_Box2D_b1d1b47c7e81f80a(b2Fixture *_swig_go_0) 
 }
 
 
-void _wrap_b2Fixture_SetUserData_Box2D_b1d1b47c7e81f80a(b2Fixture *_swig_go_0, void *_swig_go_1) {
+void _wrap_b2Fixture_SetUserData_Box2D_553c0f9515edf50e(b2Fixture *_swig_go_0, void *_swig_go_1) {
   b2Fixture *arg1 = (b2Fixture *) 0 ;
   void *arg2 = (void *) 0 ;
   
@@ -5392,7 +5511,7 @@ void _wrap_b2Fixture_SetUserData_Box2D_b1d1b47c7e81f80a(b2Fixture *_swig_go_0, v
 }
 
 
-bool _wrap_b2Fixture_TestPoint_Box2D_b1d1b47c7e81f80a(b2Fixture *_swig_go_0, b2Vec2 *_swig_go_1) {
+bool _wrap_b2Fixture_TestPoint_Box2D_553c0f9515edf50e(b2Fixture *_swig_go_0, b2Vec2 *_swig_go_1) {
   b2Fixture *arg1 = (b2Fixture *) 0 ;
   b2Vec2 *arg2 = 0 ;
   bool result;
@@ -5407,7 +5526,7 @@ bool _wrap_b2Fixture_TestPoint_Box2D_b1d1b47c7e81f80a(b2Fixture *_swig_go_0, b2V
 }
 
 
-bool _wrap_b2Fixture_RayCast_Box2D_b1d1b47c7e81f80a(b2Fixture *_swig_go_0, b2RayCastOutput *_swig_go_1, b2RayCastInput *_swig_go_2, intgo _swig_go_3) {
+bool _wrap_b2Fixture_RayCast_Box2D_553c0f9515edf50e(b2Fixture *_swig_go_0, b2RayCastOutput *_swig_go_1, b2RayCastInput *_swig_go_2, intgo _swig_go_3) {
   b2Fixture *arg1 = (b2Fixture *) 0 ;
   b2RayCastOutput *arg2 = (b2RayCastOutput *) 0 ;
   b2RayCastInput *arg3 = 0 ;
@@ -5426,7 +5545,7 @@ bool _wrap_b2Fixture_RayCast_Box2D_b1d1b47c7e81f80a(b2Fixture *_swig_go_0, b2Ray
 }
 
 
-void _wrap_b2Fixture_GetMassData_Box2D_b1d1b47c7e81f80a(b2Fixture *_swig_go_0, b2MassData *_swig_go_1) {
+void _wrap_b2Fixture_GetMassData_Box2D_553c0f9515edf50e(b2Fixture *_swig_go_0, b2MassData *_swig_go_1) {
   b2Fixture *arg1 = (b2Fixture *) 0 ;
   b2MassData *arg2 = (b2MassData *) 0 ;
   
@@ -5438,7 +5557,7 @@ void _wrap_b2Fixture_GetMassData_Box2D_b1d1b47c7e81f80a(b2Fixture *_swig_go_0, b
 }
 
 
-void _wrap_b2Fixture_SetDensity_Box2D_b1d1b47c7e81f80a(b2Fixture *_swig_go_0, float _swig_go_1) {
+void _wrap_b2Fixture_SetDensity_Box2D_553c0f9515edf50e(b2Fixture *_swig_go_0, float _swig_go_1) {
   b2Fixture *arg1 = (b2Fixture *) 0 ;
   float32 arg2 ;
   
@@ -5450,7 +5569,7 @@ void _wrap_b2Fixture_SetDensity_Box2D_b1d1b47c7e81f80a(b2Fixture *_swig_go_0, fl
 }
 
 
-float _wrap_b2Fixture_GetDensity_Box2D_b1d1b47c7e81f80a(b2Fixture *_swig_go_0) {
+float _wrap_b2Fixture_GetDensity_Box2D_553c0f9515edf50e(b2Fixture *_swig_go_0) {
   b2Fixture *arg1 = (b2Fixture *) 0 ;
   float32 result;
   float _swig_go_result;
@@ -5463,7 +5582,7 @@ float _wrap_b2Fixture_GetDensity_Box2D_b1d1b47c7e81f80a(b2Fixture *_swig_go_0) {
 }
 
 
-float _wrap_b2Fixture_GetFriction_Box2D_b1d1b47c7e81f80a(b2Fixture *_swig_go_0) {
+float _wrap_b2Fixture_GetFriction_Box2D_553c0f9515edf50e(b2Fixture *_swig_go_0) {
   b2Fixture *arg1 = (b2Fixture *) 0 ;
   float32 result;
   float _swig_go_result;
@@ -5476,7 +5595,7 @@ float _wrap_b2Fixture_GetFriction_Box2D_b1d1b47c7e81f80a(b2Fixture *_swig_go_0) 
 }
 
 
-void _wrap_b2Fixture_SetFriction_Box2D_b1d1b47c7e81f80a(b2Fixture *_swig_go_0, float _swig_go_1) {
+void _wrap_b2Fixture_SetFriction_Box2D_553c0f9515edf50e(b2Fixture *_swig_go_0, float _swig_go_1) {
   b2Fixture *arg1 = (b2Fixture *) 0 ;
   float32 arg2 ;
   
@@ -5488,7 +5607,7 @@ void _wrap_b2Fixture_SetFriction_Box2D_b1d1b47c7e81f80a(b2Fixture *_swig_go_0, f
 }
 
 
-float _wrap_b2Fixture_GetRestitution_Box2D_b1d1b47c7e81f80a(b2Fixture *_swig_go_0) {
+float _wrap_b2Fixture_GetRestitution_Box2D_553c0f9515edf50e(b2Fixture *_swig_go_0) {
   b2Fixture *arg1 = (b2Fixture *) 0 ;
   float32 result;
   float _swig_go_result;
@@ -5501,7 +5620,7 @@ float _wrap_b2Fixture_GetRestitution_Box2D_b1d1b47c7e81f80a(b2Fixture *_swig_go_
 }
 
 
-void _wrap_b2Fixture_SetRestitution_Box2D_b1d1b47c7e81f80a(b2Fixture *_swig_go_0, float _swig_go_1) {
+void _wrap_b2Fixture_SetRestitution_Box2D_553c0f9515edf50e(b2Fixture *_swig_go_0, float _swig_go_1) {
   b2Fixture *arg1 = (b2Fixture *) 0 ;
   float32 arg2 ;
   
@@ -5513,7 +5632,7 @@ void _wrap_b2Fixture_SetRestitution_Box2D_b1d1b47c7e81f80a(b2Fixture *_swig_go_0
 }
 
 
-b2AABB *_wrap_b2Fixture_GetAABB_Box2D_b1d1b47c7e81f80a(b2Fixture *_swig_go_0, intgo _swig_go_1) {
+b2AABB *_wrap_b2Fixture_GetAABB_Box2D_553c0f9515edf50e(b2Fixture *_swig_go_0, intgo _swig_go_1) {
   b2Fixture *arg1 = (b2Fixture *) 0 ;
   int32 arg2 ;
   b2AABB *result = 0 ;
@@ -5528,7 +5647,7 @@ b2AABB *_wrap_b2Fixture_GetAABB_Box2D_b1d1b47c7e81f80a(b2Fixture *_swig_go_0, in
 }
 
 
-void _wrap_b2Fixture_Dump_Box2D_b1d1b47c7e81f80a(b2Fixture *_swig_go_0, intgo _swig_go_1) {
+void _wrap_b2Fixture_Dump_Box2D_553c0f9515edf50e(b2Fixture *_swig_go_0, intgo _swig_go_1) {
   b2Fixture *arg1 = (b2Fixture *) 0 ;
   int32 arg2 ;
   
@@ -5540,7 +5659,7 @@ void _wrap_b2Fixture_Dump_Box2D_b1d1b47c7e81f80a(b2Fixture *_swig_go_0, intgo _s
 }
 
 
-void _wrap_delete_b2Fixture_Box2D_b1d1b47c7e81f80a(b2Fixture *_swig_go_0) {
+void _wrap_delete_b2Fixture_Box2D_553c0f9515edf50e(b2Fixture *_swig_go_0) {
   b2Fixture *arg1 = (b2Fixture *) 0 ;
   
   arg1 = *(b2Fixture **)&_swig_go_0; 
@@ -5550,7 +5669,7 @@ void _wrap_delete_b2Fixture_Box2D_b1d1b47c7e81f80a(b2Fixture *_swig_go_0) {
 }
 
 
-void _wrap_delete_b2DestructionListener_Box2D_b1d1b47c7e81f80a(b2DestructionListener *_swig_go_0) {
+void _wrap_delete_b2DestructionListener_Box2D_553c0f9515edf50e(b2DestructionListener *_swig_go_0) {
   b2DestructionListener *arg1 = (b2DestructionListener *) 0 ;
   
   arg1 = *(b2DestructionListener **)&_swig_go_0; 
@@ -5560,7 +5679,7 @@ void _wrap_delete_b2DestructionListener_Box2D_b1d1b47c7e81f80a(b2DestructionList
 }
 
 
-void _wrap_b2DestructionListener_SayGoodbye__SWIG_0_Box2D_b1d1b47c7e81f80a(b2DestructionListener *_swig_go_0, b2Joint *_swig_go_1) {
+void _wrap_b2DestructionListener_SayGoodbye__SWIG_0_Box2D_553c0f9515edf50e(b2DestructionListener *_swig_go_0, b2Joint *_swig_go_1) {
   b2DestructionListener *arg1 = (b2DestructionListener *) 0 ;
   b2Joint *arg2 = (b2Joint *) 0 ;
   
@@ -5572,7 +5691,7 @@ void _wrap_b2DestructionListener_SayGoodbye__SWIG_0_Box2D_b1d1b47c7e81f80a(b2Des
 }
 
 
-void _wrap_b2DestructionListener_SayGoodbye__SWIG_1_Box2D_b1d1b47c7e81f80a(b2DestructionListener *_swig_go_0, b2Fixture *_swig_go_1) {
+void _wrap_b2DestructionListener_SayGoodbye__SWIG_1_Box2D_553c0f9515edf50e(b2DestructionListener *_swig_go_0, b2Fixture *_swig_go_1) {
   b2DestructionListener *arg1 = (b2DestructionListener *) 0 ;
   b2Fixture *arg2 = (b2Fixture *) 0 ;
   
@@ -5584,7 +5703,7 @@ void _wrap_b2DestructionListener_SayGoodbye__SWIG_1_Box2D_b1d1b47c7e81f80a(b2Des
 }
 
 
-void _wrap_delete_b2ContactFilter_Box2D_b1d1b47c7e81f80a(b2ContactFilter *_swig_go_0) {
+void _wrap_delete_b2ContactFilter_Box2D_553c0f9515edf50e(b2ContactFilter *_swig_go_0) {
   b2ContactFilter *arg1 = (b2ContactFilter *) 0 ;
   
   arg1 = *(b2ContactFilter **)&_swig_go_0; 
@@ -5594,7 +5713,7 @@ void _wrap_delete_b2ContactFilter_Box2D_b1d1b47c7e81f80a(b2ContactFilter *_swig_
 }
 
 
-bool _wrap_b2ContactFilter_ShouldCollide_Box2D_b1d1b47c7e81f80a(b2ContactFilter *_swig_go_0, b2Fixture *_swig_go_1, b2Fixture *_swig_go_2) {
+bool _wrap_b2ContactFilter_ShouldCollide_Box2D_553c0f9515edf50e(b2ContactFilter *_swig_go_0, b2Fixture *_swig_go_1, b2Fixture *_swig_go_2) {
   b2ContactFilter *arg1 = (b2ContactFilter *) 0 ;
   b2Fixture *arg2 = (b2Fixture *) 0 ;
   b2Fixture *arg3 = (b2Fixture *) 0 ;
@@ -5611,7 +5730,7 @@ bool _wrap_b2ContactFilter_ShouldCollide_Box2D_b1d1b47c7e81f80a(b2ContactFilter 
 }
 
 
-b2ContactFilter *_wrap_new_b2ContactFilter_Box2D_b1d1b47c7e81f80a() {
+b2ContactFilter *_wrap_new_b2ContactFilter_Box2D_553c0f9515edf50e() {
   b2ContactFilter *result = 0 ;
   b2ContactFilter *_swig_go_result;
   
@@ -5622,7 +5741,7 @@ b2ContactFilter *_wrap_new_b2ContactFilter_Box2D_b1d1b47c7e81f80a() {
 }
 
 
-void _wrap_b2ContactImpulse_normalImpulses_set_Box2D_b1d1b47c7e81f80a(b2ContactImpulse *_swig_go_0, float *_swig_go_1) {
+void _wrap_b2ContactImpulse_normalImpulses_set_Box2D_553c0f9515edf50e(b2ContactImpulse *_swig_go_0, float *_swig_go_1) {
   b2ContactImpulse *arg1 = (b2ContactImpulse *) 0 ;
   float32 *arg2 ;
   
@@ -5638,7 +5757,7 @@ void _wrap_b2ContactImpulse_normalImpulses_set_Box2D_b1d1b47c7e81f80a(b2ContactI
 }
 
 
-float *_wrap_b2ContactImpulse_normalImpulses_get_Box2D_b1d1b47c7e81f80a(b2ContactImpulse *_swig_go_0) {
+float *_wrap_b2ContactImpulse_normalImpulses_get_Box2D_553c0f9515edf50e(b2ContactImpulse *_swig_go_0) {
   b2ContactImpulse *arg1 = (b2ContactImpulse *) 0 ;
   float32 *result = 0 ;
   float *_swig_go_result;
@@ -5651,7 +5770,7 @@ float *_wrap_b2ContactImpulse_normalImpulses_get_Box2D_b1d1b47c7e81f80a(b2Contac
 }
 
 
-void _wrap_b2ContactImpulse_tangentImpulses_set_Box2D_b1d1b47c7e81f80a(b2ContactImpulse *_swig_go_0, float *_swig_go_1) {
+void _wrap_b2ContactImpulse_tangentImpulses_set_Box2D_553c0f9515edf50e(b2ContactImpulse *_swig_go_0, float *_swig_go_1) {
   b2ContactImpulse *arg1 = (b2ContactImpulse *) 0 ;
   float32 *arg2 ;
   
@@ -5667,7 +5786,7 @@ void _wrap_b2ContactImpulse_tangentImpulses_set_Box2D_b1d1b47c7e81f80a(b2Contact
 }
 
 
-float *_wrap_b2ContactImpulse_tangentImpulses_get_Box2D_b1d1b47c7e81f80a(b2ContactImpulse *_swig_go_0) {
+float *_wrap_b2ContactImpulse_tangentImpulses_get_Box2D_553c0f9515edf50e(b2ContactImpulse *_swig_go_0) {
   b2ContactImpulse *arg1 = (b2ContactImpulse *) 0 ;
   float32 *result = 0 ;
   float *_swig_go_result;
@@ -5680,7 +5799,7 @@ float *_wrap_b2ContactImpulse_tangentImpulses_get_Box2D_b1d1b47c7e81f80a(b2Conta
 }
 
 
-void _wrap_b2ContactImpulse_count_set_Box2D_b1d1b47c7e81f80a(b2ContactImpulse *_swig_go_0, intgo _swig_go_1) {
+void _wrap_b2ContactImpulse_count_set_Box2D_553c0f9515edf50e(b2ContactImpulse *_swig_go_0, intgo _swig_go_1) {
   b2ContactImpulse *arg1 = (b2ContactImpulse *) 0 ;
   int32 arg2 ;
   
@@ -5692,7 +5811,7 @@ void _wrap_b2ContactImpulse_count_set_Box2D_b1d1b47c7e81f80a(b2ContactImpulse *_
 }
 
 
-intgo _wrap_b2ContactImpulse_count_get_Box2D_b1d1b47c7e81f80a(b2ContactImpulse *_swig_go_0) {
+intgo _wrap_b2ContactImpulse_count_get_Box2D_553c0f9515edf50e(b2ContactImpulse *_swig_go_0) {
   b2ContactImpulse *arg1 = (b2ContactImpulse *) 0 ;
   int32 result;
   intgo _swig_go_result;
@@ -5705,7 +5824,7 @@ intgo _wrap_b2ContactImpulse_count_get_Box2D_b1d1b47c7e81f80a(b2ContactImpulse *
 }
 
 
-b2ContactImpulse *_wrap_new_b2ContactImpulse_Box2D_b1d1b47c7e81f80a() {
+b2ContactImpulse *_wrap_new_b2ContactImpulse_Box2D_553c0f9515edf50e() {
   b2ContactImpulse *result = 0 ;
   b2ContactImpulse *_swig_go_result;
   
@@ -5716,7 +5835,7 @@ b2ContactImpulse *_wrap_new_b2ContactImpulse_Box2D_b1d1b47c7e81f80a() {
 }
 
 
-void _wrap_delete_b2ContactImpulse_Box2D_b1d1b47c7e81f80a(b2ContactImpulse *_swig_go_0) {
+void _wrap_delete_b2ContactImpulse_Box2D_553c0f9515edf50e(b2ContactImpulse *_swig_go_0) {
   b2ContactImpulse *arg1 = (b2ContactImpulse *) 0 ;
   
   arg1 = *(b2ContactImpulse **)&_swig_go_0; 
@@ -5726,7 +5845,20 @@ void _wrap_delete_b2ContactImpulse_Box2D_b1d1b47c7e81f80a(b2ContactImpulse *_swi
 }
 
 
-void _wrap_delete_b2ContactListener_Box2D_b1d1b47c7e81f80a(b2ContactListener *_swig_go_0) {
+b2ContactListener *_wrap__swig_NewDirectorB2ContactListenerB2ContactListener_Box2D_553c0f9515edf50e(intgo _swig_go_0) {
+  int arg1 ;
+  b2ContactListener *result = 0 ;
+  b2ContactListener *_swig_go_result;
+  
+  arg1 = (int)_swig_go_0; 
+  
+  result = new SwigDirector_b2ContactListener(arg1);
+  *(b2ContactListener **)&_swig_go_result = (b2ContactListener *)result; 
+  return _swig_go_result;
+}
+
+
+void _wrap_DeleteDirectorB2ContactListener_Box2D_553c0f9515edf50e(b2ContactListener *_swig_go_0) {
   b2ContactListener *arg1 = (b2ContactListener *) 0 ;
   
   arg1 = *(b2ContactListener **)&_swig_go_0; 
@@ -5736,7 +5868,69 @@ void _wrap_delete_b2ContactListener_Box2D_b1d1b47c7e81f80a(b2ContactListener *_s
 }
 
 
-void _wrap_b2ContactListener_BeginContact_Box2D_b1d1b47c7e81f80a(b2ContactListener *_swig_go_0, b2Contact *_swig_go_1) {
+void _wrap__swig_DirectorB2ContactListener_upcall_BeginContact_Box2D_553c0f9515edf50e(SwigDirector_b2ContactListener *_swig_go_0, b2Contact *_swig_go_1) {
+  SwigDirector_b2ContactListener *arg1 = (SwigDirector_b2ContactListener *) 0 ;
+  b2Contact *arg2 = (b2Contact *) 0 ;
+  
+  arg1 = *(SwigDirector_b2ContactListener **)&_swig_go_0; 
+  arg2 = *(b2Contact **)&_swig_go_1; 
+  
+  arg1->_swig_upcall_BeginContact(arg2);
+  
+}
+
+
+void _wrap__swig_DirectorB2ContactListener_upcall_EndContact_Box2D_553c0f9515edf50e(SwigDirector_b2ContactListener *_swig_go_0, b2Contact *_swig_go_1) {
+  SwigDirector_b2ContactListener *arg1 = (SwigDirector_b2ContactListener *) 0 ;
+  b2Contact *arg2 = (b2Contact *) 0 ;
+  
+  arg1 = *(SwigDirector_b2ContactListener **)&_swig_go_0; 
+  arg2 = *(b2Contact **)&_swig_go_1; 
+  
+  arg1->_swig_upcall_EndContact(arg2);
+  
+}
+
+
+void _wrap__swig_DirectorB2ContactListener_upcall_PreSolve_Box2D_553c0f9515edf50e(SwigDirector_b2ContactListener *_swig_go_0, b2Contact *_swig_go_1, b2Manifold *_swig_go_2) {
+  SwigDirector_b2ContactListener *arg1 = (SwigDirector_b2ContactListener *) 0 ;
+  b2Contact *arg2 = (b2Contact *) 0 ;
+  b2Manifold *arg3 = (b2Manifold *) 0 ;
+  
+  arg1 = *(SwigDirector_b2ContactListener **)&_swig_go_0; 
+  arg2 = *(b2Contact **)&_swig_go_1; 
+  arg3 = *(b2Manifold **)&_swig_go_2; 
+  
+  arg1->_swig_upcall_PreSolve(arg2, arg3);
+  
+}
+
+
+void _wrap__swig_DirectorB2ContactListener_upcall_PostSolve_Box2D_553c0f9515edf50e(SwigDirector_b2ContactListener *_swig_go_0, b2Contact *_swig_go_1, b2ContactImpulse *_swig_go_2) {
+  SwigDirector_b2ContactListener *arg1 = (SwigDirector_b2ContactListener *) 0 ;
+  b2Contact *arg2 = (b2Contact *) 0 ;
+  b2ContactImpulse *arg3 = (b2ContactImpulse *) 0 ;
+  
+  arg1 = *(SwigDirector_b2ContactListener **)&_swig_go_0; 
+  arg2 = *(b2Contact **)&_swig_go_1; 
+  arg3 = *(b2ContactImpulse **)&_swig_go_2; 
+  
+  arg1->_swig_upcall_PostSolve(arg2, arg3);
+  
+}
+
+
+void _wrap_delete_b2ContactListener_Box2D_553c0f9515edf50e(b2ContactListener *_swig_go_0) {
+  b2ContactListener *arg1 = (b2ContactListener *) 0 ;
+  
+  arg1 = *(b2ContactListener **)&_swig_go_0; 
+  
+  delete arg1;
+  
+}
+
+
+void _wrap_b2ContactListener_BeginContact_Box2D_553c0f9515edf50e(b2ContactListener *_swig_go_0, b2Contact *_swig_go_1) {
   b2ContactListener *arg1 = (b2ContactListener *) 0 ;
   b2Contact *arg2 = (b2Contact *) 0 ;
   
@@ -5748,7 +5942,7 @@ void _wrap_b2ContactListener_BeginContact_Box2D_b1d1b47c7e81f80a(b2ContactListen
 }
 
 
-void _wrap_b2ContactListener_EndContact_Box2D_b1d1b47c7e81f80a(b2ContactListener *_swig_go_0, b2Contact *_swig_go_1) {
+void _wrap_b2ContactListener_EndContact_Box2D_553c0f9515edf50e(b2ContactListener *_swig_go_0, b2Contact *_swig_go_1) {
   b2ContactListener *arg1 = (b2ContactListener *) 0 ;
   b2Contact *arg2 = (b2Contact *) 0 ;
   
@@ -5760,7 +5954,7 @@ void _wrap_b2ContactListener_EndContact_Box2D_b1d1b47c7e81f80a(b2ContactListener
 }
 
 
-void _wrap_b2ContactListener_PreSolve_Box2D_b1d1b47c7e81f80a(b2ContactListener *_swig_go_0, b2Contact *_swig_go_1, b2Manifold *_swig_go_2) {
+void _wrap_b2ContactListener_PreSolve_Box2D_553c0f9515edf50e(b2ContactListener *_swig_go_0, b2Contact *_swig_go_1, b2Manifold *_swig_go_2) {
   b2ContactListener *arg1 = (b2ContactListener *) 0 ;
   b2Contact *arg2 = (b2Contact *) 0 ;
   b2Manifold *arg3 = (b2Manifold *) 0 ;
@@ -5774,7 +5968,7 @@ void _wrap_b2ContactListener_PreSolve_Box2D_b1d1b47c7e81f80a(b2ContactListener *
 }
 
 
-void _wrap_b2ContactListener_PostSolve_Box2D_b1d1b47c7e81f80a(b2ContactListener *_swig_go_0, b2Contact *_swig_go_1, b2ContactImpulse *_swig_go_2) {
+void _wrap_b2ContactListener_PostSolve_Box2D_553c0f9515edf50e(b2ContactListener *_swig_go_0, b2Contact *_swig_go_1, b2ContactImpulse *_swig_go_2) {
   b2ContactListener *arg1 = (b2ContactListener *) 0 ;
   b2Contact *arg2 = (b2Contact *) 0 ;
   b2ContactImpulse *arg3 = (b2ContactImpulse *) 0 ;
@@ -5788,7 +5982,7 @@ void _wrap_b2ContactListener_PostSolve_Box2D_b1d1b47c7e81f80a(b2ContactListener 
 }
 
 
-b2ContactListener *_wrap_new_b2ContactListener_Box2D_b1d1b47c7e81f80a() {
+b2ContactListener *_wrap_new_b2ContactListener_Box2D_553c0f9515edf50e() {
   b2ContactListener *result = 0 ;
   b2ContactListener *_swig_go_result;
   
@@ -5799,7 +5993,7 @@ b2ContactListener *_wrap_new_b2ContactListener_Box2D_b1d1b47c7e81f80a() {
 }
 
 
-void _wrap_delete_b2QueryCallback_Box2D_b1d1b47c7e81f80a(b2QueryCallback *_swig_go_0) {
+void _wrap_delete_b2QueryCallback_Box2D_553c0f9515edf50e(b2QueryCallback *_swig_go_0) {
   b2QueryCallback *arg1 = (b2QueryCallback *) 0 ;
   
   arg1 = *(b2QueryCallback **)&_swig_go_0; 
@@ -5809,7 +6003,7 @@ void _wrap_delete_b2QueryCallback_Box2D_b1d1b47c7e81f80a(b2QueryCallback *_swig_
 }
 
 
-bool _wrap_b2QueryCallback_ReportFixture_Box2D_b1d1b47c7e81f80a(b2QueryCallback *_swig_go_0, b2Fixture *_swig_go_1) {
+bool _wrap_b2QueryCallback_ReportFixture_Box2D_553c0f9515edf50e(b2QueryCallback *_swig_go_0, b2Fixture *_swig_go_1) {
   b2QueryCallback *arg1 = (b2QueryCallback *) 0 ;
   b2Fixture *arg2 = (b2Fixture *) 0 ;
   bool result;
@@ -5824,7 +6018,7 @@ bool _wrap_b2QueryCallback_ReportFixture_Box2D_b1d1b47c7e81f80a(b2QueryCallback 
 }
 
 
-void _wrap_delete_b2RayCastCallback_Box2D_b1d1b47c7e81f80a(b2RayCastCallback *_swig_go_0) {
+void _wrap_delete_b2RayCastCallback_Box2D_553c0f9515edf50e(b2RayCastCallback *_swig_go_0) {
   b2RayCastCallback *arg1 = (b2RayCastCallback *) 0 ;
   
   arg1 = *(b2RayCastCallback **)&_swig_go_0; 
@@ -5834,7 +6028,7 @@ void _wrap_delete_b2RayCastCallback_Box2D_b1d1b47c7e81f80a(b2RayCastCallback *_s
 }
 
 
-float _wrap_b2RayCastCallback_ReportFixture_Box2D_b1d1b47c7e81f80a(b2RayCastCallback *_swig_go_0, b2Fixture *_swig_go_1, b2Vec2 *_swig_go_2, b2Vec2 *_swig_go_3, float _swig_go_4) {
+float _wrap_b2RayCastCallback_ReportFixture_Box2D_553c0f9515edf50e(b2RayCastCallback *_swig_go_0, b2Fixture *_swig_go_1, b2Vec2 *_swig_go_2, b2Vec2 *_swig_go_3, float _swig_go_4) {
   b2RayCastCallback *arg1 = (b2RayCastCallback *) 0 ;
   b2Fixture *arg2 = (b2Fixture *) 0 ;
   b2Vec2 *arg3 = 0 ;
@@ -5855,7 +6049,7 @@ float _wrap_b2RayCastCallback_ReportFixture_Box2D_b1d1b47c7e81f80a(b2RayCastCall
 }
 
 
-void _wrap_b2Profile_step_set_Box2D_b1d1b47c7e81f80a(b2Profile *_swig_go_0, float _swig_go_1) {
+void _wrap_b2Profile_step_set_Box2D_553c0f9515edf50e(b2Profile *_swig_go_0, float _swig_go_1) {
   b2Profile *arg1 = (b2Profile *) 0 ;
   float32 arg2 ;
   
@@ -5867,7 +6061,7 @@ void _wrap_b2Profile_step_set_Box2D_b1d1b47c7e81f80a(b2Profile *_swig_go_0, floa
 }
 
 
-float _wrap_b2Profile_step_get_Box2D_b1d1b47c7e81f80a(b2Profile *_swig_go_0) {
+float _wrap_b2Profile_step_get_Box2D_553c0f9515edf50e(b2Profile *_swig_go_0) {
   b2Profile *arg1 = (b2Profile *) 0 ;
   float32 result;
   float _swig_go_result;
@@ -5880,7 +6074,7 @@ float _wrap_b2Profile_step_get_Box2D_b1d1b47c7e81f80a(b2Profile *_swig_go_0) {
 }
 
 
-void _wrap_b2Profile_collide_set_Box2D_b1d1b47c7e81f80a(b2Profile *_swig_go_0, float _swig_go_1) {
+void _wrap_b2Profile_collide_set_Box2D_553c0f9515edf50e(b2Profile *_swig_go_0, float _swig_go_1) {
   b2Profile *arg1 = (b2Profile *) 0 ;
   float32 arg2 ;
   
@@ -5892,7 +6086,7 @@ void _wrap_b2Profile_collide_set_Box2D_b1d1b47c7e81f80a(b2Profile *_swig_go_0, f
 }
 
 
-float _wrap_b2Profile_collide_get_Box2D_b1d1b47c7e81f80a(b2Profile *_swig_go_0) {
+float _wrap_b2Profile_collide_get_Box2D_553c0f9515edf50e(b2Profile *_swig_go_0) {
   b2Profile *arg1 = (b2Profile *) 0 ;
   float32 result;
   float _swig_go_result;
@@ -5905,7 +6099,7 @@ float _wrap_b2Profile_collide_get_Box2D_b1d1b47c7e81f80a(b2Profile *_swig_go_0) 
 }
 
 
-void _wrap_b2Profile_solve_set_Box2D_b1d1b47c7e81f80a(b2Profile *_swig_go_0, float _swig_go_1) {
+void _wrap_b2Profile_solve_set_Box2D_553c0f9515edf50e(b2Profile *_swig_go_0, float _swig_go_1) {
   b2Profile *arg1 = (b2Profile *) 0 ;
   float32 arg2 ;
   
@@ -5917,7 +6111,7 @@ void _wrap_b2Profile_solve_set_Box2D_b1d1b47c7e81f80a(b2Profile *_swig_go_0, flo
 }
 
 
-float _wrap_b2Profile_solve_get_Box2D_b1d1b47c7e81f80a(b2Profile *_swig_go_0) {
+float _wrap_b2Profile_solve_get_Box2D_553c0f9515edf50e(b2Profile *_swig_go_0) {
   b2Profile *arg1 = (b2Profile *) 0 ;
   float32 result;
   float _swig_go_result;
@@ -5930,7 +6124,7 @@ float _wrap_b2Profile_solve_get_Box2D_b1d1b47c7e81f80a(b2Profile *_swig_go_0) {
 }
 
 
-void _wrap_b2Profile_solveInit_set_Box2D_b1d1b47c7e81f80a(b2Profile *_swig_go_0, float _swig_go_1) {
+void _wrap_b2Profile_solveInit_set_Box2D_553c0f9515edf50e(b2Profile *_swig_go_0, float _swig_go_1) {
   b2Profile *arg1 = (b2Profile *) 0 ;
   float32 arg2 ;
   
@@ -5942,7 +6136,7 @@ void _wrap_b2Profile_solveInit_set_Box2D_b1d1b47c7e81f80a(b2Profile *_swig_go_0,
 }
 
 
-float _wrap_b2Profile_solveInit_get_Box2D_b1d1b47c7e81f80a(b2Profile *_swig_go_0) {
+float _wrap_b2Profile_solveInit_get_Box2D_553c0f9515edf50e(b2Profile *_swig_go_0) {
   b2Profile *arg1 = (b2Profile *) 0 ;
   float32 result;
   float _swig_go_result;
@@ -5955,7 +6149,7 @@ float _wrap_b2Profile_solveInit_get_Box2D_b1d1b47c7e81f80a(b2Profile *_swig_go_0
 }
 
 
-void _wrap_b2Profile_solveVelocity_set_Box2D_b1d1b47c7e81f80a(b2Profile *_swig_go_0, float _swig_go_1) {
+void _wrap_b2Profile_solveVelocity_set_Box2D_553c0f9515edf50e(b2Profile *_swig_go_0, float _swig_go_1) {
   b2Profile *arg1 = (b2Profile *) 0 ;
   float32 arg2 ;
   
@@ -5967,7 +6161,7 @@ void _wrap_b2Profile_solveVelocity_set_Box2D_b1d1b47c7e81f80a(b2Profile *_swig_g
 }
 
 
-float _wrap_b2Profile_solveVelocity_get_Box2D_b1d1b47c7e81f80a(b2Profile *_swig_go_0) {
+float _wrap_b2Profile_solveVelocity_get_Box2D_553c0f9515edf50e(b2Profile *_swig_go_0) {
   b2Profile *arg1 = (b2Profile *) 0 ;
   float32 result;
   float _swig_go_result;
@@ -5980,7 +6174,7 @@ float _wrap_b2Profile_solveVelocity_get_Box2D_b1d1b47c7e81f80a(b2Profile *_swig_
 }
 
 
-void _wrap_b2Profile_solvePosition_set_Box2D_b1d1b47c7e81f80a(b2Profile *_swig_go_0, float _swig_go_1) {
+void _wrap_b2Profile_solvePosition_set_Box2D_553c0f9515edf50e(b2Profile *_swig_go_0, float _swig_go_1) {
   b2Profile *arg1 = (b2Profile *) 0 ;
   float32 arg2 ;
   
@@ -5992,7 +6186,7 @@ void _wrap_b2Profile_solvePosition_set_Box2D_b1d1b47c7e81f80a(b2Profile *_swig_g
 }
 
 
-float _wrap_b2Profile_solvePosition_get_Box2D_b1d1b47c7e81f80a(b2Profile *_swig_go_0) {
+float _wrap_b2Profile_solvePosition_get_Box2D_553c0f9515edf50e(b2Profile *_swig_go_0) {
   b2Profile *arg1 = (b2Profile *) 0 ;
   float32 result;
   float _swig_go_result;
@@ -6005,7 +6199,7 @@ float _wrap_b2Profile_solvePosition_get_Box2D_b1d1b47c7e81f80a(b2Profile *_swig_
 }
 
 
-void _wrap_b2Profile_broadphase_set_Box2D_b1d1b47c7e81f80a(b2Profile *_swig_go_0, float _swig_go_1) {
+void _wrap_b2Profile_broadphase_set_Box2D_553c0f9515edf50e(b2Profile *_swig_go_0, float _swig_go_1) {
   b2Profile *arg1 = (b2Profile *) 0 ;
   float32 arg2 ;
   
@@ -6017,7 +6211,7 @@ void _wrap_b2Profile_broadphase_set_Box2D_b1d1b47c7e81f80a(b2Profile *_swig_go_0
 }
 
 
-float _wrap_b2Profile_broadphase_get_Box2D_b1d1b47c7e81f80a(b2Profile *_swig_go_0) {
+float _wrap_b2Profile_broadphase_get_Box2D_553c0f9515edf50e(b2Profile *_swig_go_0) {
   b2Profile *arg1 = (b2Profile *) 0 ;
   float32 result;
   float _swig_go_result;
@@ -6030,7 +6224,7 @@ float _wrap_b2Profile_broadphase_get_Box2D_b1d1b47c7e81f80a(b2Profile *_swig_go_
 }
 
 
-void _wrap_b2Profile_solveTOI_set_Box2D_b1d1b47c7e81f80a(b2Profile *_swig_go_0, float _swig_go_1) {
+void _wrap_b2Profile_solveTOI_set_Box2D_553c0f9515edf50e(b2Profile *_swig_go_0, float _swig_go_1) {
   b2Profile *arg1 = (b2Profile *) 0 ;
   float32 arg2 ;
   
@@ -6042,7 +6236,7 @@ void _wrap_b2Profile_solveTOI_set_Box2D_b1d1b47c7e81f80a(b2Profile *_swig_go_0, 
 }
 
 
-float _wrap_b2Profile_solveTOI_get_Box2D_b1d1b47c7e81f80a(b2Profile *_swig_go_0) {
+float _wrap_b2Profile_solveTOI_get_Box2D_553c0f9515edf50e(b2Profile *_swig_go_0) {
   b2Profile *arg1 = (b2Profile *) 0 ;
   float32 result;
   float _swig_go_result;
@@ -6055,7 +6249,7 @@ float _wrap_b2Profile_solveTOI_get_Box2D_b1d1b47c7e81f80a(b2Profile *_swig_go_0)
 }
 
 
-b2Profile *_wrap_new_b2Profile_Box2D_b1d1b47c7e81f80a() {
+b2Profile *_wrap_new_b2Profile_Box2D_553c0f9515edf50e() {
   b2Profile *result = 0 ;
   b2Profile *_swig_go_result;
   
@@ -6066,7 +6260,7 @@ b2Profile *_wrap_new_b2Profile_Box2D_b1d1b47c7e81f80a() {
 }
 
 
-void _wrap_delete_b2Profile_Box2D_b1d1b47c7e81f80a(b2Profile *_swig_go_0) {
+void _wrap_delete_b2Profile_Box2D_553c0f9515edf50e(b2Profile *_swig_go_0) {
   b2Profile *arg1 = (b2Profile *) 0 ;
   
   arg1 = *(b2Profile **)&_swig_go_0; 
@@ -6076,7 +6270,7 @@ void _wrap_delete_b2Profile_Box2D_b1d1b47c7e81f80a(b2Profile *_swig_go_0) {
 }
 
 
-void _wrap_b2TimeStep_dt_set_Box2D_b1d1b47c7e81f80a(b2TimeStep *_swig_go_0, float _swig_go_1) {
+void _wrap_b2TimeStep_dt_set_Box2D_553c0f9515edf50e(b2TimeStep *_swig_go_0, float _swig_go_1) {
   b2TimeStep *arg1 = (b2TimeStep *) 0 ;
   float32 arg2 ;
   
@@ -6088,7 +6282,7 @@ void _wrap_b2TimeStep_dt_set_Box2D_b1d1b47c7e81f80a(b2TimeStep *_swig_go_0, floa
 }
 
 
-float _wrap_b2TimeStep_dt_get_Box2D_b1d1b47c7e81f80a(b2TimeStep *_swig_go_0) {
+float _wrap_b2TimeStep_dt_get_Box2D_553c0f9515edf50e(b2TimeStep *_swig_go_0) {
   b2TimeStep *arg1 = (b2TimeStep *) 0 ;
   float32 result;
   float _swig_go_result;
@@ -6101,7 +6295,7 @@ float _wrap_b2TimeStep_dt_get_Box2D_b1d1b47c7e81f80a(b2TimeStep *_swig_go_0) {
 }
 
 
-void _wrap_b2TimeStep_inv_dt_set_Box2D_b1d1b47c7e81f80a(b2TimeStep *_swig_go_0, float _swig_go_1) {
+void _wrap_b2TimeStep_inv_dt_set_Box2D_553c0f9515edf50e(b2TimeStep *_swig_go_0, float _swig_go_1) {
   b2TimeStep *arg1 = (b2TimeStep *) 0 ;
   float32 arg2 ;
   
@@ -6113,7 +6307,7 @@ void _wrap_b2TimeStep_inv_dt_set_Box2D_b1d1b47c7e81f80a(b2TimeStep *_swig_go_0, 
 }
 
 
-float _wrap_b2TimeStep_inv_dt_get_Box2D_b1d1b47c7e81f80a(b2TimeStep *_swig_go_0) {
+float _wrap_b2TimeStep_inv_dt_get_Box2D_553c0f9515edf50e(b2TimeStep *_swig_go_0) {
   b2TimeStep *arg1 = (b2TimeStep *) 0 ;
   float32 result;
   float _swig_go_result;
@@ -6126,7 +6320,7 @@ float _wrap_b2TimeStep_inv_dt_get_Box2D_b1d1b47c7e81f80a(b2TimeStep *_swig_go_0)
 }
 
 
-void _wrap_b2TimeStep_dtRatio_set_Box2D_b1d1b47c7e81f80a(b2TimeStep *_swig_go_0, float _swig_go_1) {
+void _wrap_b2TimeStep_dtRatio_set_Box2D_553c0f9515edf50e(b2TimeStep *_swig_go_0, float _swig_go_1) {
   b2TimeStep *arg1 = (b2TimeStep *) 0 ;
   float32 arg2 ;
   
@@ -6138,7 +6332,7 @@ void _wrap_b2TimeStep_dtRatio_set_Box2D_b1d1b47c7e81f80a(b2TimeStep *_swig_go_0,
 }
 
 
-float _wrap_b2TimeStep_dtRatio_get_Box2D_b1d1b47c7e81f80a(b2TimeStep *_swig_go_0) {
+float _wrap_b2TimeStep_dtRatio_get_Box2D_553c0f9515edf50e(b2TimeStep *_swig_go_0) {
   b2TimeStep *arg1 = (b2TimeStep *) 0 ;
   float32 result;
   float _swig_go_result;
@@ -6151,7 +6345,7 @@ float _wrap_b2TimeStep_dtRatio_get_Box2D_b1d1b47c7e81f80a(b2TimeStep *_swig_go_0
 }
 
 
-void _wrap_b2TimeStep_velocityIterations_set_Box2D_b1d1b47c7e81f80a(b2TimeStep *_swig_go_0, intgo _swig_go_1) {
+void _wrap_b2TimeStep_velocityIterations_set_Box2D_553c0f9515edf50e(b2TimeStep *_swig_go_0, intgo _swig_go_1) {
   b2TimeStep *arg1 = (b2TimeStep *) 0 ;
   int32 arg2 ;
   
@@ -6163,7 +6357,7 @@ void _wrap_b2TimeStep_velocityIterations_set_Box2D_b1d1b47c7e81f80a(b2TimeStep *
 }
 
 
-intgo _wrap_b2TimeStep_velocityIterations_get_Box2D_b1d1b47c7e81f80a(b2TimeStep *_swig_go_0) {
+intgo _wrap_b2TimeStep_velocityIterations_get_Box2D_553c0f9515edf50e(b2TimeStep *_swig_go_0) {
   b2TimeStep *arg1 = (b2TimeStep *) 0 ;
   int32 result;
   intgo _swig_go_result;
@@ -6176,7 +6370,7 @@ intgo _wrap_b2TimeStep_velocityIterations_get_Box2D_b1d1b47c7e81f80a(b2TimeStep 
 }
 
 
-void _wrap_b2TimeStep_positionIterations_set_Box2D_b1d1b47c7e81f80a(b2TimeStep *_swig_go_0, intgo _swig_go_1) {
+void _wrap_b2TimeStep_positionIterations_set_Box2D_553c0f9515edf50e(b2TimeStep *_swig_go_0, intgo _swig_go_1) {
   b2TimeStep *arg1 = (b2TimeStep *) 0 ;
   int32 arg2 ;
   
@@ -6188,7 +6382,7 @@ void _wrap_b2TimeStep_positionIterations_set_Box2D_b1d1b47c7e81f80a(b2TimeStep *
 }
 
 
-intgo _wrap_b2TimeStep_positionIterations_get_Box2D_b1d1b47c7e81f80a(b2TimeStep *_swig_go_0) {
+intgo _wrap_b2TimeStep_positionIterations_get_Box2D_553c0f9515edf50e(b2TimeStep *_swig_go_0) {
   b2TimeStep *arg1 = (b2TimeStep *) 0 ;
   int32 result;
   intgo _swig_go_result;
@@ -6201,7 +6395,7 @@ intgo _wrap_b2TimeStep_positionIterations_get_Box2D_b1d1b47c7e81f80a(b2TimeStep 
 }
 
 
-void _wrap_b2TimeStep_warmStarting_set_Box2D_b1d1b47c7e81f80a(b2TimeStep *_swig_go_0, bool _swig_go_1) {
+void _wrap_b2TimeStep_warmStarting_set_Box2D_553c0f9515edf50e(b2TimeStep *_swig_go_0, bool _swig_go_1) {
   b2TimeStep *arg1 = (b2TimeStep *) 0 ;
   bool arg2 ;
   
@@ -6213,7 +6407,7 @@ void _wrap_b2TimeStep_warmStarting_set_Box2D_b1d1b47c7e81f80a(b2TimeStep *_swig_
 }
 
 
-bool _wrap_b2TimeStep_warmStarting_get_Box2D_b1d1b47c7e81f80a(b2TimeStep *_swig_go_0) {
+bool _wrap_b2TimeStep_warmStarting_get_Box2D_553c0f9515edf50e(b2TimeStep *_swig_go_0) {
   b2TimeStep *arg1 = (b2TimeStep *) 0 ;
   bool result;
   bool _swig_go_result;
@@ -6226,7 +6420,7 @@ bool _wrap_b2TimeStep_warmStarting_get_Box2D_b1d1b47c7e81f80a(b2TimeStep *_swig_
 }
 
 
-b2TimeStep *_wrap_new_b2TimeStep_Box2D_b1d1b47c7e81f80a() {
+b2TimeStep *_wrap_new_b2TimeStep_Box2D_553c0f9515edf50e() {
   b2TimeStep *result = 0 ;
   b2TimeStep *_swig_go_result;
   
@@ -6237,7 +6431,7 @@ b2TimeStep *_wrap_new_b2TimeStep_Box2D_b1d1b47c7e81f80a() {
 }
 
 
-void _wrap_delete_b2TimeStep_Box2D_b1d1b47c7e81f80a(b2TimeStep *_swig_go_0) {
+void _wrap_delete_b2TimeStep_Box2D_553c0f9515edf50e(b2TimeStep *_swig_go_0) {
   b2TimeStep *arg1 = (b2TimeStep *) 0 ;
   
   arg1 = *(b2TimeStep **)&_swig_go_0; 
@@ -6247,7 +6441,7 @@ void _wrap_delete_b2TimeStep_Box2D_b1d1b47c7e81f80a(b2TimeStep *_swig_go_0) {
 }
 
 
-void _wrap_b2Position_c_set_Box2D_b1d1b47c7e81f80a(b2Position *_swig_go_0, b2Vec2 *_swig_go_1) {
+void _wrap_b2Position_c_set_Box2D_553c0f9515edf50e(b2Position *_swig_go_0, b2Vec2 *_swig_go_1) {
   b2Position *arg1 = (b2Position *) 0 ;
   b2Vec2 *arg2 = (b2Vec2 *) 0 ;
   
@@ -6259,7 +6453,7 @@ void _wrap_b2Position_c_set_Box2D_b1d1b47c7e81f80a(b2Position *_swig_go_0, b2Vec
 }
 
 
-b2Vec2 *_wrap_b2Position_c_get_Box2D_b1d1b47c7e81f80a(b2Position *_swig_go_0) {
+b2Vec2 *_wrap_b2Position_c_get_Box2D_553c0f9515edf50e(b2Position *_swig_go_0) {
   b2Position *arg1 = (b2Position *) 0 ;
   b2Vec2 *result = 0 ;
   b2Vec2 *_swig_go_result;
@@ -6272,7 +6466,7 @@ b2Vec2 *_wrap_b2Position_c_get_Box2D_b1d1b47c7e81f80a(b2Position *_swig_go_0) {
 }
 
 
-void _wrap_b2Position_a_set_Box2D_b1d1b47c7e81f80a(b2Position *_swig_go_0, float _swig_go_1) {
+void _wrap_b2Position_a_set_Box2D_553c0f9515edf50e(b2Position *_swig_go_0, float _swig_go_1) {
   b2Position *arg1 = (b2Position *) 0 ;
   float32 arg2 ;
   
@@ -6284,7 +6478,7 @@ void _wrap_b2Position_a_set_Box2D_b1d1b47c7e81f80a(b2Position *_swig_go_0, float
 }
 
 
-float _wrap_b2Position_a_get_Box2D_b1d1b47c7e81f80a(b2Position *_swig_go_0) {
+float _wrap_b2Position_a_get_Box2D_553c0f9515edf50e(b2Position *_swig_go_0) {
   b2Position *arg1 = (b2Position *) 0 ;
   float32 result;
   float _swig_go_result;
@@ -6297,7 +6491,7 @@ float _wrap_b2Position_a_get_Box2D_b1d1b47c7e81f80a(b2Position *_swig_go_0) {
 }
 
 
-b2Position *_wrap_new_b2Position_Box2D_b1d1b47c7e81f80a() {
+b2Position *_wrap_new_b2Position_Box2D_553c0f9515edf50e() {
   b2Position *result = 0 ;
   b2Position *_swig_go_result;
   
@@ -6308,7 +6502,7 @@ b2Position *_wrap_new_b2Position_Box2D_b1d1b47c7e81f80a() {
 }
 
 
-void _wrap_delete_b2Position_Box2D_b1d1b47c7e81f80a(b2Position *_swig_go_0) {
+void _wrap_delete_b2Position_Box2D_553c0f9515edf50e(b2Position *_swig_go_0) {
   b2Position *arg1 = (b2Position *) 0 ;
   
   arg1 = *(b2Position **)&_swig_go_0; 
@@ -6318,7 +6512,7 @@ void _wrap_delete_b2Position_Box2D_b1d1b47c7e81f80a(b2Position *_swig_go_0) {
 }
 
 
-void _wrap_b2Velocity_v_set_Box2D_b1d1b47c7e81f80a(b2Velocity *_swig_go_0, b2Vec2 *_swig_go_1) {
+void _wrap_b2Velocity_v_set_Box2D_553c0f9515edf50e(b2Velocity *_swig_go_0, b2Vec2 *_swig_go_1) {
   b2Velocity *arg1 = (b2Velocity *) 0 ;
   b2Vec2 *arg2 = (b2Vec2 *) 0 ;
   
@@ -6330,7 +6524,7 @@ void _wrap_b2Velocity_v_set_Box2D_b1d1b47c7e81f80a(b2Velocity *_swig_go_0, b2Vec
 }
 
 
-b2Vec2 *_wrap_b2Velocity_v_get_Box2D_b1d1b47c7e81f80a(b2Velocity *_swig_go_0) {
+b2Vec2 *_wrap_b2Velocity_v_get_Box2D_553c0f9515edf50e(b2Velocity *_swig_go_0) {
   b2Velocity *arg1 = (b2Velocity *) 0 ;
   b2Vec2 *result = 0 ;
   b2Vec2 *_swig_go_result;
@@ -6343,7 +6537,7 @@ b2Vec2 *_wrap_b2Velocity_v_get_Box2D_b1d1b47c7e81f80a(b2Velocity *_swig_go_0) {
 }
 
 
-void _wrap_b2Velocity_w_set_Box2D_b1d1b47c7e81f80a(b2Velocity *_swig_go_0, float _swig_go_1) {
+void _wrap_b2Velocity_w_set_Box2D_553c0f9515edf50e(b2Velocity *_swig_go_0, float _swig_go_1) {
   b2Velocity *arg1 = (b2Velocity *) 0 ;
   float32 arg2 ;
   
@@ -6355,7 +6549,7 @@ void _wrap_b2Velocity_w_set_Box2D_b1d1b47c7e81f80a(b2Velocity *_swig_go_0, float
 }
 
 
-float _wrap_b2Velocity_w_get_Box2D_b1d1b47c7e81f80a(b2Velocity *_swig_go_0) {
+float _wrap_b2Velocity_w_get_Box2D_553c0f9515edf50e(b2Velocity *_swig_go_0) {
   b2Velocity *arg1 = (b2Velocity *) 0 ;
   float32 result;
   float _swig_go_result;
@@ -6368,7 +6562,7 @@ float _wrap_b2Velocity_w_get_Box2D_b1d1b47c7e81f80a(b2Velocity *_swig_go_0) {
 }
 
 
-b2Velocity *_wrap_new_b2Velocity_Box2D_b1d1b47c7e81f80a() {
+b2Velocity *_wrap_new_b2Velocity_Box2D_553c0f9515edf50e() {
   b2Velocity *result = 0 ;
   b2Velocity *_swig_go_result;
   
@@ -6379,7 +6573,7 @@ b2Velocity *_wrap_new_b2Velocity_Box2D_b1d1b47c7e81f80a() {
 }
 
 
-void _wrap_delete_b2Velocity_Box2D_b1d1b47c7e81f80a(b2Velocity *_swig_go_0) {
+void _wrap_delete_b2Velocity_Box2D_553c0f9515edf50e(b2Velocity *_swig_go_0) {
   b2Velocity *arg1 = (b2Velocity *) 0 ;
   
   arg1 = *(b2Velocity **)&_swig_go_0; 
@@ -6389,7 +6583,7 @@ void _wrap_delete_b2Velocity_Box2D_b1d1b47c7e81f80a(b2Velocity *_swig_go_0) {
 }
 
 
-void _wrap_b2SolverData_step_set_Box2D_b1d1b47c7e81f80a(b2SolverData *_swig_go_0, b2TimeStep *_swig_go_1) {
+void _wrap_b2SolverData_step_set_Box2D_553c0f9515edf50e(b2SolverData *_swig_go_0, b2TimeStep *_swig_go_1) {
   b2SolverData *arg1 = (b2SolverData *) 0 ;
   b2TimeStep *arg2 = (b2TimeStep *) 0 ;
   
@@ -6401,7 +6595,7 @@ void _wrap_b2SolverData_step_set_Box2D_b1d1b47c7e81f80a(b2SolverData *_swig_go_0
 }
 
 
-b2TimeStep *_wrap_b2SolverData_step_get_Box2D_b1d1b47c7e81f80a(b2SolverData *_swig_go_0) {
+b2TimeStep *_wrap_b2SolverData_step_get_Box2D_553c0f9515edf50e(b2SolverData *_swig_go_0) {
   b2SolverData *arg1 = (b2SolverData *) 0 ;
   b2TimeStep *result = 0 ;
   b2TimeStep *_swig_go_result;
@@ -6414,7 +6608,7 @@ b2TimeStep *_wrap_b2SolverData_step_get_Box2D_b1d1b47c7e81f80a(b2SolverData *_sw
 }
 
 
-void _wrap_b2SolverData_positions_set_Box2D_b1d1b47c7e81f80a(b2SolverData *_swig_go_0, b2Position *_swig_go_1) {
+void _wrap_b2SolverData_positions_set_Box2D_553c0f9515edf50e(b2SolverData *_swig_go_0, b2Position *_swig_go_1) {
   b2SolverData *arg1 = (b2SolverData *) 0 ;
   b2Position *arg2 = (b2Position *) 0 ;
   
@@ -6426,7 +6620,7 @@ void _wrap_b2SolverData_positions_set_Box2D_b1d1b47c7e81f80a(b2SolverData *_swig
 }
 
 
-b2Position *_wrap_b2SolverData_positions_get_Box2D_b1d1b47c7e81f80a(b2SolverData *_swig_go_0) {
+b2Position *_wrap_b2SolverData_positions_get_Box2D_553c0f9515edf50e(b2SolverData *_swig_go_0) {
   b2SolverData *arg1 = (b2SolverData *) 0 ;
   b2Position *result = 0 ;
   b2Position *_swig_go_result;
@@ -6439,7 +6633,7 @@ b2Position *_wrap_b2SolverData_positions_get_Box2D_b1d1b47c7e81f80a(b2SolverData
 }
 
 
-void _wrap_b2SolverData_velocities_set_Box2D_b1d1b47c7e81f80a(b2SolverData *_swig_go_0, b2Velocity *_swig_go_1) {
+void _wrap_b2SolverData_velocities_set_Box2D_553c0f9515edf50e(b2SolverData *_swig_go_0, b2Velocity *_swig_go_1) {
   b2SolverData *arg1 = (b2SolverData *) 0 ;
   b2Velocity *arg2 = (b2Velocity *) 0 ;
   
@@ -6451,7 +6645,7 @@ void _wrap_b2SolverData_velocities_set_Box2D_b1d1b47c7e81f80a(b2SolverData *_swi
 }
 
 
-b2Velocity *_wrap_b2SolverData_velocities_get_Box2D_b1d1b47c7e81f80a(b2SolverData *_swig_go_0) {
+b2Velocity *_wrap_b2SolverData_velocities_get_Box2D_553c0f9515edf50e(b2SolverData *_swig_go_0) {
   b2SolverData *arg1 = (b2SolverData *) 0 ;
   b2Velocity *result = 0 ;
   b2Velocity *_swig_go_result;
@@ -6464,7 +6658,7 @@ b2Velocity *_wrap_b2SolverData_velocities_get_Box2D_b1d1b47c7e81f80a(b2SolverDat
 }
 
 
-b2SolverData *_wrap_new_b2SolverData_Box2D_b1d1b47c7e81f80a() {
+b2SolverData *_wrap_new_b2SolverData_Box2D_553c0f9515edf50e() {
   b2SolverData *result = 0 ;
   b2SolverData *_swig_go_result;
   
@@ -6475,7 +6669,7 @@ b2SolverData *_wrap_new_b2SolverData_Box2D_b1d1b47c7e81f80a() {
 }
 
 
-void _wrap_delete_b2SolverData_Box2D_b1d1b47c7e81f80a(b2SolverData *_swig_go_0) {
+void _wrap_delete_b2SolverData_Box2D_553c0f9515edf50e(b2SolverData *_swig_go_0) {
   b2SolverData *arg1 = (b2SolverData *) 0 ;
   
   arg1 = *(b2SolverData **)&_swig_go_0; 
@@ -6485,7 +6679,7 @@ void _wrap_delete_b2SolverData_Box2D_b1d1b47c7e81f80a(b2SolverData *_swig_go_0) 
 }
 
 
-b2World *_wrap_new_b2World_Box2D_b1d1b47c7e81f80a(b2Vec2 *_swig_go_0) {
+b2World *_wrap_new_b2World_Box2D_553c0f9515edf50e(b2Vec2 *_swig_go_0) {
   b2Vec2 *arg1 = 0 ;
   b2World *result = 0 ;
   b2World *_swig_go_result;
@@ -6498,7 +6692,7 @@ b2World *_wrap_new_b2World_Box2D_b1d1b47c7e81f80a(b2Vec2 *_swig_go_0) {
 }
 
 
-void _wrap_delete_b2World_Box2D_b1d1b47c7e81f80a(b2World *_swig_go_0) {
+void _wrap_delete_b2World_Box2D_553c0f9515edf50e(b2World *_swig_go_0) {
   b2World *arg1 = (b2World *) 0 ;
   
   arg1 = *(b2World **)&_swig_go_0; 
@@ -6508,7 +6702,7 @@ void _wrap_delete_b2World_Box2D_b1d1b47c7e81f80a(b2World *_swig_go_0) {
 }
 
 
-void _wrap_b2World_SetDestructionListener_Box2D_b1d1b47c7e81f80a(b2World *_swig_go_0, b2DestructionListener *_swig_go_1) {
+void _wrap_b2World_SetDestructionListener_Box2D_553c0f9515edf50e(b2World *_swig_go_0, b2DestructionListener *_swig_go_1) {
   b2World *arg1 = (b2World *) 0 ;
   b2DestructionListener *arg2 = (b2DestructionListener *) 0 ;
   
@@ -6520,7 +6714,7 @@ void _wrap_b2World_SetDestructionListener_Box2D_b1d1b47c7e81f80a(b2World *_swig_
 }
 
 
-void _wrap_b2World_SetContactFilter_Box2D_b1d1b47c7e81f80a(b2World *_swig_go_0, b2ContactFilter *_swig_go_1) {
+void _wrap_b2World_SetContactFilter_Box2D_553c0f9515edf50e(b2World *_swig_go_0, b2ContactFilter *_swig_go_1) {
   b2World *arg1 = (b2World *) 0 ;
   b2ContactFilter *arg2 = (b2ContactFilter *) 0 ;
   
@@ -6532,7 +6726,7 @@ void _wrap_b2World_SetContactFilter_Box2D_b1d1b47c7e81f80a(b2World *_swig_go_0, 
 }
 
 
-void _wrap_b2World_SetContactListener_Box2D_b1d1b47c7e81f80a(b2World *_swig_go_0, b2ContactListener *_swig_go_1) {
+void _wrap_b2World_SetContactListener_Box2D_553c0f9515edf50e(b2World *_swig_go_0, b2ContactListener *_swig_go_1) {
   b2World *arg1 = (b2World *) 0 ;
   b2ContactListener *arg2 = (b2ContactListener *) 0 ;
   
@@ -6544,7 +6738,7 @@ void _wrap_b2World_SetContactListener_Box2D_b1d1b47c7e81f80a(b2World *_swig_go_0
 }
 
 
-void _wrap_b2World_SetDebugDraw_Box2D_b1d1b47c7e81f80a(b2World *_swig_go_0, b2Draw *_swig_go_1) {
+void _wrap_b2World_SetDebugDraw_Box2D_553c0f9515edf50e(b2World *_swig_go_0, b2Draw *_swig_go_1) {
   b2World *arg1 = (b2World *) 0 ;
   b2Draw *arg2 = (b2Draw *) 0 ;
   
@@ -6556,7 +6750,7 @@ void _wrap_b2World_SetDebugDraw_Box2D_b1d1b47c7e81f80a(b2World *_swig_go_0, b2Dr
 }
 
 
-b2Body *_wrap_b2World_CreateBody_Box2D_b1d1b47c7e81f80a(b2World *_swig_go_0, b2BodyDef *_swig_go_1) {
+b2Body *_wrap_b2World_CreateBody_Box2D_553c0f9515edf50e(b2World *_swig_go_0, b2BodyDef *_swig_go_1) {
   b2World *arg1 = (b2World *) 0 ;
   b2BodyDef *arg2 = (b2BodyDef *) 0 ;
   b2Body *result = 0 ;
@@ -6571,7 +6765,7 @@ b2Body *_wrap_b2World_CreateBody_Box2D_b1d1b47c7e81f80a(b2World *_swig_go_0, b2B
 }
 
 
-void _wrap_b2World_DestroyBody_Box2D_b1d1b47c7e81f80a(b2World *_swig_go_0, b2Body *_swig_go_1) {
+void _wrap_b2World_DestroyBody_Box2D_553c0f9515edf50e(b2World *_swig_go_0, b2Body *_swig_go_1) {
   b2World *arg1 = (b2World *) 0 ;
   b2Body *arg2 = (b2Body *) 0 ;
   
@@ -6583,7 +6777,7 @@ void _wrap_b2World_DestroyBody_Box2D_b1d1b47c7e81f80a(b2World *_swig_go_0, b2Bod
 }
 
 
-b2Joint *_wrap_b2World_CreateJoint_Box2D_b1d1b47c7e81f80a(b2World *_swig_go_0, b2JointDef *_swig_go_1) {
+b2Joint *_wrap_b2World_CreateJoint_Box2D_553c0f9515edf50e(b2World *_swig_go_0, b2JointDef *_swig_go_1) {
   b2World *arg1 = (b2World *) 0 ;
   b2JointDef *arg2 = (b2JointDef *) 0 ;
   b2Joint *result = 0 ;
@@ -6598,7 +6792,7 @@ b2Joint *_wrap_b2World_CreateJoint_Box2D_b1d1b47c7e81f80a(b2World *_swig_go_0, b
 }
 
 
-void _wrap_b2World_DestroyJoint_Box2D_b1d1b47c7e81f80a(b2World *_swig_go_0, b2Joint *_swig_go_1) {
+void _wrap_b2World_DestroyJoint_Box2D_553c0f9515edf50e(b2World *_swig_go_0, b2Joint *_swig_go_1) {
   b2World *arg1 = (b2World *) 0 ;
   b2Joint *arg2 = (b2Joint *) 0 ;
   
@@ -6610,7 +6804,7 @@ void _wrap_b2World_DestroyJoint_Box2D_b1d1b47c7e81f80a(b2World *_swig_go_0, b2Jo
 }
 
 
-void _wrap_b2World_Step_Box2D_b1d1b47c7e81f80a(b2World *_swig_go_0, float _swig_go_1, intgo _swig_go_2, intgo _swig_go_3) {
+void _wrap_b2World_Step_Box2D_553c0f9515edf50e(b2World *_swig_go_0, float _swig_go_1, intgo _swig_go_2, intgo _swig_go_3) {
   b2World *arg1 = (b2World *) 0 ;
   float32 arg2 ;
   int32 arg3 ;
@@ -6626,7 +6820,7 @@ void _wrap_b2World_Step_Box2D_b1d1b47c7e81f80a(b2World *_swig_go_0, float _swig_
 }
 
 
-void _wrap_b2World_ClearForces_Box2D_b1d1b47c7e81f80a(b2World *_swig_go_0) {
+void _wrap_b2World_ClearForces_Box2D_553c0f9515edf50e(b2World *_swig_go_0) {
   b2World *arg1 = (b2World *) 0 ;
   
   arg1 = *(b2World **)&_swig_go_0; 
@@ -6636,7 +6830,7 @@ void _wrap_b2World_ClearForces_Box2D_b1d1b47c7e81f80a(b2World *_swig_go_0) {
 }
 
 
-void _wrap_b2World_DrawDebugData_Box2D_b1d1b47c7e81f80a(b2World *_swig_go_0) {
+void _wrap_b2World_DrawDebugData_Box2D_553c0f9515edf50e(b2World *_swig_go_0) {
   b2World *arg1 = (b2World *) 0 ;
   
   arg1 = *(b2World **)&_swig_go_0; 
@@ -6646,7 +6840,7 @@ void _wrap_b2World_DrawDebugData_Box2D_b1d1b47c7e81f80a(b2World *_swig_go_0) {
 }
 
 
-void _wrap_b2World_QueryAABB_Box2D_b1d1b47c7e81f80a(b2World *_swig_go_0, b2QueryCallback *_swig_go_1, b2AABB *_swig_go_2) {
+void _wrap_b2World_QueryAABB_Box2D_553c0f9515edf50e(b2World *_swig_go_0, b2QueryCallback *_swig_go_1, b2AABB *_swig_go_2) {
   b2World *arg1 = (b2World *) 0 ;
   b2QueryCallback *arg2 = (b2QueryCallback *) 0 ;
   b2AABB *arg3 = 0 ;
@@ -6660,7 +6854,7 @@ void _wrap_b2World_QueryAABB_Box2D_b1d1b47c7e81f80a(b2World *_swig_go_0, b2Query
 }
 
 
-void _wrap_b2World_RayCast_Box2D_b1d1b47c7e81f80a(b2World *_swig_go_0, b2RayCastCallback *_swig_go_1, b2Vec2 *_swig_go_2, b2Vec2 *_swig_go_3) {
+void _wrap_b2World_RayCast_Box2D_553c0f9515edf50e(b2World *_swig_go_0, b2RayCastCallback *_swig_go_1, b2Vec2 *_swig_go_2, b2Vec2 *_swig_go_3) {
   b2World *arg1 = (b2World *) 0 ;
   b2RayCastCallback *arg2 = (b2RayCastCallback *) 0 ;
   b2Vec2 *arg3 = 0 ;
@@ -6676,7 +6870,7 @@ void _wrap_b2World_RayCast_Box2D_b1d1b47c7e81f80a(b2World *_swig_go_0, b2RayCast
 }
 
 
-b2Body *_wrap_b2World_GetBodyList__SWIG_0_Box2D_b1d1b47c7e81f80a(b2World *_swig_go_0) {
+b2Body *_wrap_b2World_GetBodyList__SWIG_0_Box2D_553c0f9515edf50e(b2World *_swig_go_0) {
   b2World *arg1 = (b2World *) 0 ;
   b2Body *result = 0 ;
   b2Body *_swig_go_result;
@@ -6689,7 +6883,7 @@ b2Body *_wrap_b2World_GetBodyList__SWIG_0_Box2D_b1d1b47c7e81f80a(b2World *_swig_
 }
 
 
-b2Body *_wrap_b2World_GetBodyList__SWIG_1_Box2D_b1d1b47c7e81f80a(b2World *_swig_go_0) {
+b2Body *_wrap_b2World_GetBodyList__SWIG_1_Box2D_553c0f9515edf50e(b2World *_swig_go_0) {
   b2World *arg1 = (b2World *) 0 ;
   b2Body *result = 0 ;
   b2Body *_swig_go_result;
@@ -6702,7 +6896,7 @@ b2Body *_wrap_b2World_GetBodyList__SWIG_1_Box2D_b1d1b47c7e81f80a(b2World *_swig_
 }
 
 
-b2Joint *_wrap_b2World_GetJointList__SWIG_0_Box2D_b1d1b47c7e81f80a(b2World *_swig_go_0) {
+b2Joint *_wrap_b2World_GetJointList__SWIG_0_Box2D_553c0f9515edf50e(b2World *_swig_go_0) {
   b2World *arg1 = (b2World *) 0 ;
   b2Joint *result = 0 ;
   b2Joint *_swig_go_result;
@@ -6715,7 +6909,7 @@ b2Joint *_wrap_b2World_GetJointList__SWIG_0_Box2D_b1d1b47c7e81f80a(b2World *_swi
 }
 
 
-b2Joint *_wrap_b2World_GetJointList__SWIG_1_Box2D_b1d1b47c7e81f80a(b2World *_swig_go_0) {
+b2Joint *_wrap_b2World_GetJointList__SWIG_1_Box2D_553c0f9515edf50e(b2World *_swig_go_0) {
   b2World *arg1 = (b2World *) 0 ;
   b2Joint *result = 0 ;
   b2Joint *_swig_go_result;
@@ -6728,7 +6922,7 @@ b2Joint *_wrap_b2World_GetJointList__SWIG_1_Box2D_b1d1b47c7e81f80a(b2World *_swi
 }
 
 
-b2Contact *_wrap_b2World_GetContactList__SWIG_0_Box2D_b1d1b47c7e81f80a(b2World *_swig_go_0) {
+b2Contact *_wrap_b2World_GetContactList__SWIG_0_Box2D_553c0f9515edf50e(b2World *_swig_go_0) {
   b2World *arg1 = (b2World *) 0 ;
   b2Contact *result = 0 ;
   b2Contact *_swig_go_result;
@@ -6741,7 +6935,7 @@ b2Contact *_wrap_b2World_GetContactList__SWIG_0_Box2D_b1d1b47c7e81f80a(b2World *
 }
 
 
-b2Contact *_wrap_b2World_GetContactList__SWIG_1_Box2D_b1d1b47c7e81f80a(b2World *_swig_go_0) {
+b2Contact *_wrap_b2World_GetContactList__SWIG_1_Box2D_553c0f9515edf50e(b2World *_swig_go_0) {
   b2World *arg1 = (b2World *) 0 ;
   b2Contact *result = 0 ;
   b2Contact *_swig_go_result;
@@ -6754,7 +6948,7 @@ b2Contact *_wrap_b2World_GetContactList__SWIG_1_Box2D_b1d1b47c7e81f80a(b2World *
 }
 
 
-void _wrap_b2World_SetAllowSleeping_Box2D_b1d1b47c7e81f80a(b2World *_swig_go_0, bool _swig_go_1) {
+void _wrap_b2World_SetAllowSleeping_Box2D_553c0f9515edf50e(b2World *_swig_go_0, bool _swig_go_1) {
   b2World *arg1 = (b2World *) 0 ;
   bool arg2 ;
   
@@ -6766,7 +6960,7 @@ void _wrap_b2World_SetAllowSleeping_Box2D_b1d1b47c7e81f80a(b2World *_swig_go_0, 
 }
 
 
-bool _wrap_b2World_GetAllowSleeping_Box2D_b1d1b47c7e81f80a(b2World *_swig_go_0) {
+bool _wrap_b2World_GetAllowSleeping_Box2D_553c0f9515edf50e(b2World *_swig_go_0) {
   b2World *arg1 = (b2World *) 0 ;
   bool result;
   bool _swig_go_result;
@@ -6779,7 +6973,7 @@ bool _wrap_b2World_GetAllowSleeping_Box2D_b1d1b47c7e81f80a(b2World *_swig_go_0) 
 }
 
 
-void _wrap_b2World_SetWarmStarting_Box2D_b1d1b47c7e81f80a(b2World *_swig_go_0, bool _swig_go_1) {
+void _wrap_b2World_SetWarmStarting_Box2D_553c0f9515edf50e(b2World *_swig_go_0, bool _swig_go_1) {
   b2World *arg1 = (b2World *) 0 ;
   bool arg2 ;
   
@@ -6791,7 +6985,7 @@ void _wrap_b2World_SetWarmStarting_Box2D_b1d1b47c7e81f80a(b2World *_swig_go_0, b
 }
 
 
-bool _wrap_b2World_GetWarmStarting_Box2D_b1d1b47c7e81f80a(b2World *_swig_go_0) {
+bool _wrap_b2World_GetWarmStarting_Box2D_553c0f9515edf50e(b2World *_swig_go_0) {
   b2World *arg1 = (b2World *) 0 ;
   bool result;
   bool _swig_go_result;
@@ -6804,7 +6998,7 @@ bool _wrap_b2World_GetWarmStarting_Box2D_b1d1b47c7e81f80a(b2World *_swig_go_0) {
 }
 
 
-void _wrap_b2World_SetContinuousPhysics_Box2D_b1d1b47c7e81f80a(b2World *_swig_go_0, bool _swig_go_1) {
+void _wrap_b2World_SetContinuousPhysics_Box2D_553c0f9515edf50e(b2World *_swig_go_0, bool _swig_go_1) {
   b2World *arg1 = (b2World *) 0 ;
   bool arg2 ;
   
@@ -6816,7 +7010,7 @@ void _wrap_b2World_SetContinuousPhysics_Box2D_b1d1b47c7e81f80a(b2World *_swig_go
 }
 
 
-bool _wrap_b2World_GetContinuousPhysics_Box2D_b1d1b47c7e81f80a(b2World *_swig_go_0) {
+bool _wrap_b2World_GetContinuousPhysics_Box2D_553c0f9515edf50e(b2World *_swig_go_0) {
   b2World *arg1 = (b2World *) 0 ;
   bool result;
   bool _swig_go_result;
@@ -6829,7 +7023,7 @@ bool _wrap_b2World_GetContinuousPhysics_Box2D_b1d1b47c7e81f80a(b2World *_swig_go
 }
 
 
-void _wrap_b2World_SetSubStepping_Box2D_b1d1b47c7e81f80a(b2World *_swig_go_0, bool _swig_go_1) {
+void _wrap_b2World_SetSubStepping_Box2D_553c0f9515edf50e(b2World *_swig_go_0, bool _swig_go_1) {
   b2World *arg1 = (b2World *) 0 ;
   bool arg2 ;
   
@@ -6841,7 +7035,7 @@ void _wrap_b2World_SetSubStepping_Box2D_b1d1b47c7e81f80a(b2World *_swig_go_0, bo
 }
 
 
-bool _wrap_b2World_GetSubStepping_Box2D_b1d1b47c7e81f80a(b2World *_swig_go_0) {
+bool _wrap_b2World_GetSubStepping_Box2D_553c0f9515edf50e(b2World *_swig_go_0) {
   b2World *arg1 = (b2World *) 0 ;
   bool result;
   bool _swig_go_result;
@@ -6854,7 +7048,7 @@ bool _wrap_b2World_GetSubStepping_Box2D_b1d1b47c7e81f80a(b2World *_swig_go_0) {
 }
 
 
-intgo _wrap_b2World_GetProxyCount_Box2D_b1d1b47c7e81f80a(b2World *_swig_go_0) {
+intgo _wrap_b2World_GetProxyCount_Box2D_553c0f9515edf50e(b2World *_swig_go_0) {
   b2World *arg1 = (b2World *) 0 ;
   int32 result;
   intgo _swig_go_result;
@@ -6867,7 +7061,7 @@ intgo _wrap_b2World_GetProxyCount_Box2D_b1d1b47c7e81f80a(b2World *_swig_go_0) {
 }
 
 
-intgo _wrap_b2World_GetBodyCount_Box2D_b1d1b47c7e81f80a(b2World *_swig_go_0) {
+intgo _wrap_b2World_GetBodyCount_Box2D_553c0f9515edf50e(b2World *_swig_go_0) {
   b2World *arg1 = (b2World *) 0 ;
   int32 result;
   intgo _swig_go_result;
@@ -6880,7 +7074,7 @@ intgo _wrap_b2World_GetBodyCount_Box2D_b1d1b47c7e81f80a(b2World *_swig_go_0) {
 }
 
 
-intgo _wrap_b2World_GetJointCount_Box2D_b1d1b47c7e81f80a(b2World *_swig_go_0) {
+intgo _wrap_b2World_GetJointCount_Box2D_553c0f9515edf50e(b2World *_swig_go_0) {
   b2World *arg1 = (b2World *) 0 ;
   int32 result;
   intgo _swig_go_result;
@@ -6893,7 +7087,7 @@ intgo _wrap_b2World_GetJointCount_Box2D_b1d1b47c7e81f80a(b2World *_swig_go_0) {
 }
 
 
-intgo _wrap_b2World_GetContactCount_Box2D_b1d1b47c7e81f80a(b2World *_swig_go_0) {
+intgo _wrap_b2World_GetContactCount_Box2D_553c0f9515edf50e(b2World *_swig_go_0) {
   b2World *arg1 = (b2World *) 0 ;
   int32 result;
   intgo _swig_go_result;
@@ -6906,7 +7100,7 @@ intgo _wrap_b2World_GetContactCount_Box2D_b1d1b47c7e81f80a(b2World *_swig_go_0) 
 }
 
 
-intgo _wrap_b2World_GetTreeHeight_Box2D_b1d1b47c7e81f80a(b2World *_swig_go_0) {
+intgo _wrap_b2World_GetTreeHeight_Box2D_553c0f9515edf50e(b2World *_swig_go_0) {
   b2World *arg1 = (b2World *) 0 ;
   int32 result;
   intgo _swig_go_result;
@@ -6919,7 +7113,7 @@ intgo _wrap_b2World_GetTreeHeight_Box2D_b1d1b47c7e81f80a(b2World *_swig_go_0) {
 }
 
 
-intgo _wrap_b2World_GetTreeBalance_Box2D_b1d1b47c7e81f80a(b2World *_swig_go_0) {
+intgo _wrap_b2World_GetTreeBalance_Box2D_553c0f9515edf50e(b2World *_swig_go_0) {
   b2World *arg1 = (b2World *) 0 ;
   int32 result;
   intgo _swig_go_result;
@@ -6932,7 +7126,7 @@ intgo _wrap_b2World_GetTreeBalance_Box2D_b1d1b47c7e81f80a(b2World *_swig_go_0) {
 }
 
 
-float _wrap_b2World_GetTreeQuality_Box2D_b1d1b47c7e81f80a(b2World *_swig_go_0) {
+float _wrap_b2World_GetTreeQuality_Box2D_553c0f9515edf50e(b2World *_swig_go_0) {
   b2World *arg1 = (b2World *) 0 ;
   float32 result;
   float _swig_go_result;
@@ -6945,7 +7139,7 @@ float _wrap_b2World_GetTreeQuality_Box2D_b1d1b47c7e81f80a(b2World *_swig_go_0) {
 }
 
 
-void _wrap_b2World_SetGravity_Box2D_b1d1b47c7e81f80a(b2World *_swig_go_0, b2Vec2 *_swig_go_1) {
+void _wrap_b2World_SetGravity_Box2D_553c0f9515edf50e(b2World *_swig_go_0, b2Vec2 *_swig_go_1) {
   b2World *arg1 = (b2World *) 0 ;
   b2Vec2 *arg2 = 0 ;
   
@@ -6957,7 +7151,7 @@ void _wrap_b2World_SetGravity_Box2D_b1d1b47c7e81f80a(b2World *_swig_go_0, b2Vec2
 }
 
 
-b2Vec2 *_wrap_b2World_GetGravity_Box2D_b1d1b47c7e81f80a(b2World *_swig_go_0) {
+b2Vec2 *_wrap_b2World_GetGravity_Box2D_553c0f9515edf50e(b2World *_swig_go_0) {
   b2World *arg1 = (b2World *) 0 ;
   b2Vec2 result;
   b2Vec2 *_swig_go_result;
@@ -6970,7 +7164,7 @@ b2Vec2 *_wrap_b2World_GetGravity_Box2D_b1d1b47c7e81f80a(b2World *_swig_go_0) {
 }
 
 
-bool _wrap_b2World_IsLocked_Box2D_b1d1b47c7e81f80a(b2World *_swig_go_0) {
+bool _wrap_b2World_IsLocked_Box2D_553c0f9515edf50e(b2World *_swig_go_0) {
   b2World *arg1 = (b2World *) 0 ;
   bool result;
   bool _swig_go_result;
@@ -6983,7 +7177,7 @@ bool _wrap_b2World_IsLocked_Box2D_b1d1b47c7e81f80a(b2World *_swig_go_0) {
 }
 
 
-void _wrap_b2World_SetAutoClearForces_Box2D_b1d1b47c7e81f80a(b2World *_swig_go_0, bool _swig_go_1) {
+void _wrap_b2World_SetAutoClearForces_Box2D_553c0f9515edf50e(b2World *_swig_go_0, bool _swig_go_1) {
   b2World *arg1 = (b2World *) 0 ;
   bool arg2 ;
   
@@ -6995,7 +7189,7 @@ void _wrap_b2World_SetAutoClearForces_Box2D_b1d1b47c7e81f80a(b2World *_swig_go_0
 }
 
 
-bool _wrap_b2World_GetAutoClearForces_Box2D_b1d1b47c7e81f80a(b2World *_swig_go_0) {
+bool _wrap_b2World_GetAutoClearForces_Box2D_553c0f9515edf50e(b2World *_swig_go_0) {
   b2World *arg1 = (b2World *) 0 ;
   bool result;
   bool _swig_go_result;
@@ -7008,7 +7202,7 @@ bool _wrap_b2World_GetAutoClearForces_Box2D_b1d1b47c7e81f80a(b2World *_swig_go_0
 }
 
 
-void _wrap_b2World_ShiftOrigin_Box2D_b1d1b47c7e81f80a(b2World *_swig_go_0, b2Vec2 *_swig_go_1) {
+void _wrap_b2World_ShiftOrigin_Box2D_553c0f9515edf50e(b2World *_swig_go_0, b2Vec2 *_swig_go_1) {
   b2World *arg1 = (b2World *) 0 ;
   b2Vec2 *arg2 = 0 ;
   
@@ -7020,7 +7214,7 @@ void _wrap_b2World_ShiftOrigin_Box2D_b1d1b47c7e81f80a(b2World *_swig_go_0, b2Vec
 }
 
 
-b2ContactManager *_wrap_b2World_GetContactManager_Box2D_b1d1b47c7e81f80a(b2World *_swig_go_0) {
+b2ContactManager *_wrap_b2World_GetContactManager_Box2D_553c0f9515edf50e(b2World *_swig_go_0) {
   b2World *arg1 = (b2World *) 0 ;
   b2ContactManager *result = 0 ;
   b2ContactManager *_swig_go_result;
@@ -7033,7 +7227,7 @@ b2ContactManager *_wrap_b2World_GetContactManager_Box2D_b1d1b47c7e81f80a(b2World
 }
 
 
-b2Profile *_wrap_b2World_GetProfile_Box2D_b1d1b47c7e81f80a(b2World *_swig_go_0) {
+b2Profile *_wrap_b2World_GetProfile_Box2D_553c0f9515edf50e(b2World *_swig_go_0) {
   b2World *arg1 = (b2World *) 0 ;
   b2Profile *result = 0 ;
   b2Profile *_swig_go_result;
@@ -7046,7 +7240,7 @@ b2Profile *_wrap_b2World_GetProfile_Box2D_b1d1b47c7e81f80a(b2World *_swig_go_0) 
 }
 
 
-void _wrap_b2World_Dump_Box2D_b1d1b47c7e81f80a(b2World *_swig_go_0) {
+void _wrap_b2World_Dump_Box2D_553c0f9515edf50e(b2World *_swig_go_0) {
   b2World *arg1 = (b2World *) 0 ;
   
   arg1 = *(b2World **)&_swig_go_0; 
@@ -7056,7 +7250,7 @@ void _wrap_b2World_Dump_Box2D_b1d1b47c7e81f80a(b2World *_swig_go_0) {
 }
 
 
-float _wrap_b2MixFriction_Box2D_b1d1b47c7e81f80a(float _swig_go_0, float _swig_go_1) {
+float _wrap_b2MixFriction_Box2D_553c0f9515edf50e(float _swig_go_0, float _swig_go_1) {
   float32 arg1 ;
   float32 arg2 ;
   float32 result;
@@ -7071,7 +7265,7 @@ float _wrap_b2MixFriction_Box2D_b1d1b47c7e81f80a(float _swig_go_0, float _swig_g
 }
 
 
-float _wrap_b2MixRestitution_Box2D_b1d1b47c7e81f80a(float _swig_go_0, float _swig_go_1) {
+float _wrap_b2MixRestitution_Box2D_553c0f9515edf50e(float _swig_go_0, float _swig_go_1) {
   float32 arg1 ;
   float32 arg2 ;
   float32 result;
@@ -7086,7 +7280,7 @@ float _wrap_b2MixRestitution_Box2D_b1d1b47c7e81f80a(float _swig_go_0, float _swi
 }
 
 
-void _wrap_b2ContactRegister_createFcn_set_Box2D_b1d1b47c7e81f80a(b2ContactRegister *_swig_go_0, void** _swig_go_1) {
+void _wrap_b2ContactRegister_createFcn_set_Box2D_553c0f9515edf50e(b2ContactRegister *_swig_go_0, void** _swig_go_1) {
   b2ContactRegister *arg1 = (b2ContactRegister *) 0 ;
   b2ContactCreateFcn *arg2 = (b2ContactCreateFcn *) 0 ;
   
@@ -7098,7 +7292,7 @@ void _wrap_b2ContactRegister_createFcn_set_Box2D_b1d1b47c7e81f80a(b2ContactRegis
 }
 
 
-void** _wrap_b2ContactRegister_createFcn_get_Box2D_b1d1b47c7e81f80a(b2ContactRegister *_swig_go_0) {
+void** _wrap_b2ContactRegister_createFcn_get_Box2D_553c0f9515edf50e(b2ContactRegister *_swig_go_0) {
   b2ContactRegister *arg1 = (b2ContactRegister *) 0 ;
   b2ContactCreateFcn *result = 0 ;
   void** _swig_go_result;
@@ -7111,7 +7305,7 @@ void** _wrap_b2ContactRegister_createFcn_get_Box2D_b1d1b47c7e81f80a(b2ContactReg
 }
 
 
-void _wrap_b2ContactRegister_destroyFcn_set_Box2D_b1d1b47c7e81f80a(b2ContactRegister *_swig_go_0, void** _swig_go_1) {
+void _wrap_b2ContactRegister_destroyFcn_set_Box2D_553c0f9515edf50e(b2ContactRegister *_swig_go_0, void** _swig_go_1) {
   b2ContactRegister *arg1 = (b2ContactRegister *) 0 ;
   b2ContactDestroyFcn *arg2 = (b2ContactDestroyFcn *) 0 ;
   
@@ -7123,7 +7317,7 @@ void _wrap_b2ContactRegister_destroyFcn_set_Box2D_b1d1b47c7e81f80a(b2ContactRegi
 }
 
 
-void** _wrap_b2ContactRegister_destroyFcn_get_Box2D_b1d1b47c7e81f80a(b2ContactRegister *_swig_go_0) {
+void** _wrap_b2ContactRegister_destroyFcn_get_Box2D_553c0f9515edf50e(b2ContactRegister *_swig_go_0) {
   b2ContactRegister *arg1 = (b2ContactRegister *) 0 ;
   b2ContactDestroyFcn *result = 0 ;
   void** _swig_go_result;
@@ -7136,7 +7330,7 @@ void** _wrap_b2ContactRegister_destroyFcn_get_Box2D_b1d1b47c7e81f80a(b2ContactRe
 }
 
 
-void _wrap_b2ContactRegister_primary_set_Box2D_b1d1b47c7e81f80a(b2ContactRegister *_swig_go_0, bool _swig_go_1) {
+void _wrap_b2ContactRegister_primary_set_Box2D_553c0f9515edf50e(b2ContactRegister *_swig_go_0, bool _swig_go_1) {
   b2ContactRegister *arg1 = (b2ContactRegister *) 0 ;
   bool arg2 ;
   
@@ -7148,7 +7342,7 @@ void _wrap_b2ContactRegister_primary_set_Box2D_b1d1b47c7e81f80a(b2ContactRegiste
 }
 
 
-bool _wrap_b2ContactRegister_primary_get_Box2D_b1d1b47c7e81f80a(b2ContactRegister *_swig_go_0) {
+bool _wrap_b2ContactRegister_primary_get_Box2D_553c0f9515edf50e(b2ContactRegister *_swig_go_0) {
   b2ContactRegister *arg1 = (b2ContactRegister *) 0 ;
   bool result;
   bool _swig_go_result;
@@ -7161,7 +7355,7 @@ bool _wrap_b2ContactRegister_primary_get_Box2D_b1d1b47c7e81f80a(b2ContactRegiste
 }
 
 
-b2ContactRegister *_wrap_new_b2ContactRegister_Box2D_b1d1b47c7e81f80a() {
+b2ContactRegister *_wrap_new_b2ContactRegister_Box2D_553c0f9515edf50e() {
   b2ContactRegister *result = 0 ;
   b2ContactRegister *_swig_go_result;
   
@@ -7172,7 +7366,7 @@ b2ContactRegister *_wrap_new_b2ContactRegister_Box2D_b1d1b47c7e81f80a() {
 }
 
 
-void _wrap_delete_b2ContactRegister_Box2D_b1d1b47c7e81f80a(b2ContactRegister *_swig_go_0) {
+void _wrap_delete_b2ContactRegister_Box2D_553c0f9515edf50e(b2ContactRegister *_swig_go_0) {
   b2ContactRegister *arg1 = (b2ContactRegister *) 0 ;
   
   arg1 = *(b2ContactRegister **)&_swig_go_0; 
@@ -7182,7 +7376,7 @@ void _wrap_delete_b2ContactRegister_Box2D_b1d1b47c7e81f80a(b2ContactRegister *_s
 }
 
 
-void _wrap_b2ContactEdge_other_set_Box2D_b1d1b47c7e81f80a(b2ContactEdge *_swig_go_0, b2Body *_swig_go_1) {
+void _wrap_b2ContactEdge_other_set_Box2D_553c0f9515edf50e(b2ContactEdge *_swig_go_0, b2Body *_swig_go_1) {
   b2ContactEdge *arg1 = (b2ContactEdge *) 0 ;
   b2Body *arg2 = (b2Body *) 0 ;
   
@@ -7194,7 +7388,7 @@ void _wrap_b2ContactEdge_other_set_Box2D_b1d1b47c7e81f80a(b2ContactEdge *_swig_g
 }
 
 
-b2Body *_wrap_b2ContactEdge_other_get_Box2D_b1d1b47c7e81f80a(b2ContactEdge *_swig_go_0) {
+b2Body *_wrap_b2ContactEdge_other_get_Box2D_553c0f9515edf50e(b2ContactEdge *_swig_go_0) {
   b2ContactEdge *arg1 = (b2ContactEdge *) 0 ;
   b2Body *result = 0 ;
   b2Body *_swig_go_result;
@@ -7207,7 +7401,7 @@ b2Body *_wrap_b2ContactEdge_other_get_Box2D_b1d1b47c7e81f80a(b2ContactEdge *_swi
 }
 
 
-void _wrap_b2ContactEdge_contact_set_Box2D_b1d1b47c7e81f80a(b2ContactEdge *_swig_go_0, b2Contact *_swig_go_1) {
+void _wrap_b2ContactEdge_contact_set_Box2D_553c0f9515edf50e(b2ContactEdge *_swig_go_0, b2Contact *_swig_go_1) {
   b2ContactEdge *arg1 = (b2ContactEdge *) 0 ;
   b2Contact *arg2 = (b2Contact *) 0 ;
   
@@ -7219,7 +7413,7 @@ void _wrap_b2ContactEdge_contact_set_Box2D_b1d1b47c7e81f80a(b2ContactEdge *_swig
 }
 
 
-b2Contact *_wrap_b2ContactEdge_contact_get_Box2D_b1d1b47c7e81f80a(b2ContactEdge *_swig_go_0) {
+b2Contact *_wrap_b2ContactEdge_contact_get_Box2D_553c0f9515edf50e(b2ContactEdge *_swig_go_0) {
   b2ContactEdge *arg1 = (b2ContactEdge *) 0 ;
   b2Contact *result = 0 ;
   b2Contact *_swig_go_result;
@@ -7232,7 +7426,7 @@ b2Contact *_wrap_b2ContactEdge_contact_get_Box2D_b1d1b47c7e81f80a(b2ContactEdge 
 }
 
 
-void _wrap_b2ContactEdge_prev_set_Box2D_b1d1b47c7e81f80a(b2ContactEdge *_swig_go_0, b2ContactEdge *_swig_go_1) {
+void _wrap_b2ContactEdge_prev_set_Box2D_553c0f9515edf50e(b2ContactEdge *_swig_go_0, b2ContactEdge *_swig_go_1) {
   b2ContactEdge *arg1 = (b2ContactEdge *) 0 ;
   b2ContactEdge *arg2 = (b2ContactEdge *) 0 ;
   
@@ -7244,7 +7438,7 @@ void _wrap_b2ContactEdge_prev_set_Box2D_b1d1b47c7e81f80a(b2ContactEdge *_swig_go
 }
 
 
-b2ContactEdge *_wrap_b2ContactEdge_prev_get_Box2D_b1d1b47c7e81f80a(b2ContactEdge *_swig_go_0) {
+b2ContactEdge *_wrap_b2ContactEdge_prev_get_Box2D_553c0f9515edf50e(b2ContactEdge *_swig_go_0) {
   b2ContactEdge *arg1 = (b2ContactEdge *) 0 ;
   b2ContactEdge *result = 0 ;
   b2ContactEdge *_swig_go_result;
@@ -7257,7 +7451,7 @@ b2ContactEdge *_wrap_b2ContactEdge_prev_get_Box2D_b1d1b47c7e81f80a(b2ContactEdge
 }
 
 
-void _wrap_b2ContactEdge_next_set_Box2D_b1d1b47c7e81f80a(b2ContactEdge *_swig_go_0, b2ContactEdge *_swig_go_1) {
+void _wrap_b2ContactEdge_next_set_Box2D_553c0f9515edf50e(b2ContactEdge *_swig_go_0, b2ContactEdge *_swig_go_1) {
   b2ContactEdge *arg1 = (b2ContactEdge *) 0 ;
   b2ContactEdge *arg2 = (b2ContactEdge *) 0 ;
   
@@ -7269,7 +7463,7 @@ void _wrap_b2ContactEdge_next_set_Box2D_b1d1b47c7e81f80a(b2ContactEdge *_swig_go
 }
 
 
-b2ContactEdge *_wrap_b2ContactEdge_next_get_Box2D_b1d1b47c7e81f80a(b2ContactEdge *_swig_go_0) {
+b2ContactEdge *_wrap_b2ContactEdge_next_get_Box2D_553c0f9515edf50e(b2ContactEdge *_swig_go_0) {
   b2ContactEdge *arg1 = (b2ContactEdge *) 0 ;
   b2ContactEdge *result = 0 ;
   b2ContactEdge *_swig_go_result;
@@ -7282,7 +7476,7 @@ b2ContactEdge *_wrap_b2ContactEdge_next_get_Box2D_b1d1b47c7e81f80a(b2ContactEdge
 }
 
 
-b2ContactEdge *_wrap_new_b2ContactEdge_Box2D_b1d1b47c7e81f80a() {
+b2ContactEdge *_wrap_new_b2ContactEdge_Box2D_553c0f9515edf50e() {
   b2ContactEdge *result = 0 ;
   b2ContactEdge *_swig_go_result;
   
@@ -7293,7 +7487,7 @@ b2ContactEdge *_wrap_new_b2ContactEdge_Box2D_b1d1b47c7e81f80a() {
 }
 
 
-void _wrap_delete_b2ContactEdge_Box2D_b1d1b47c7e81f80a(b2ContactEdge *_swig_go_0) {
+void _wrap_delete_b2ContactEdge_Box2D_553c0f9515edf50e(b2ContactEdge *_swig_go_0) {
   b2ContactEdge *arg1 = (b2ContactEdge *) 0 ;
   
   arg1 = *(b2ContactEdge **)&_swig_go_0; 
@@ -7303,7 +7497,7 @@ void _wrap_delete_b2ContactEdge_Box2D_b1d1b47c7e81f80a(b2ContactEdge *_swig_go_0
 }
 
 
-b2Manifold *_wrap_b2Contact_GetManifold__SWIG_0_Box2D_b1d1b47c7e81f80a(b2Contact *_swig_go_0) {
+b2Manifold *_wrap_b2Contact_GetManifold__SWIG_0_Box2D_553c0f9515edf50e(b2Contact *_swig_go_0) {
   b2Contact *arg1 = (b2Contact *) 0 ;
   b2Manifold *result = 0 ;
   b2Manifold *_swig_go_result;
@@ -7316,7 +7510,7 @@ b2Manifold *_wrap_b2Contact_GetManifold__SWIG_0_Box2D_b1d1b47c7e81f80a(b2Contact
 }
 
 
-b2Manifold *_wrap_b2Contact_GetManifold__SWIG_1_Box2D_b1d1b47c7e81f80a(b2Contact *_swig_go_0) {
+b2Manifold *_wrap_b2Contact_GetManifold__SWIG_1_Box2D_553c0f9515edf50e(b2Contact *_swig_go_0) {
   b2Contact *arg1 = (b2Contact *) 0 ;
   b2Manifold *result = 0 ;
   b2Manifold *_swig_go_result;
@@ -7329,7 +7523,7 @@ b2Manifold *_wrap_b2Contact_GetManifold__SWIG_1_Box2D_b1d1b47c7e81f80a(b2Contact
 }
 
 
-void _wrap_b2Contact_GetWorldManifold_Box2D_b1d1b47c7e81f80a(b2Contact *_swig_go_0, b2WorldManifold *_swig_go_1) {
+void _wrap_b2Contact_GetWorldManifold_Box2D_553c0f9515edf50e(b2Contact *_swig_go_0, b2WorldManifold *_swig_go_1) {
   b2Contact *arg1 = (b2Contact *) 0 ;
   b2WorldManifold *arg2 = (b2WorldManifold *) 0 ;
   
@@ -7341,7 +7535,7 @@ void _wrap_b2Contact_GetWorldManifold_Box2D_b1d1b47c7e81f80a(b2Contact *_swig_go
 }
 
 
-bool _wrap_b2Contact_IsTouching_Box2D_b1d1b47c7e81f80a(b2Contact *_swig_go_0) {
+bool _wrap_b2Contact_IsTouching_Box2D_553c0f9515edf50e(b2Contact *_swig_go_0) {
   b2Contact *arg1 = (b2Contact *) 0 ;
   bool result;
   bool _swig_go_result;
@@ -7354,7 +7548,7 @@ bool _wrap_b2Contact_IsTouching_Box2D_b1d1b47c7e81f80a(b2Contact *_swig_go_0) {
 }
 
 
-void _wrap_b2Contact_SetEnabled_Box2D_b1d1b47c7e81f80a(b2Contact *_swig_go_0, bool _swig_go_1) {
+void _wrap_b2Contact_SetEnabled_Box2D_553c0f9515edf50e(b2Contact *_swig_go_0, bool _swig_go_1) {
   b2Contact *arg1 = (b2Contact *) 0 ;
   bool arg2 ;
   
@@ -7366,7 +7560,7 @@ void _wrap_b2Contact_SetEnabled_Box2D_b1d1b47c7e81f80a(b2Contact *_swig_go_0, bo
 }
 
 
-bool _wrap_b2Contact_IsEnabled_Box2D_b1d1b47c7e81f80a(b2Contact *_swig_go_0) {
+bool _wrap_b2Contact_IsEnabled_Box2D_553c0f9515edf50e(b2Contact *_swig_go_0) {
   b2Contact *arg1 = (b2Contact *) 0 ;
   bool result;
   bool _swig_go_result;
@@ -7379,7 +7573,7 @@ bool _wrap_b2Contact_IsEnabled_Box2D_b1d1b47c7e81f80a(b2Contact *_swig_go_0) {
 }
 
 
-b2Contact *_wrap_b2Contact_GetNext__SWIG_0_Box2D_b1d1b47c7e81f80a(b2Contact *_swig_go_0) {
+b2Contact *_wrap_b2Contact_GetNext__SWIG_0_Box2D_553c0f9515edf50e(b2Contact *_swig_go_0) {
   b2Contact *arg1 = (b2Contact *) 0 ;
   b2Contact *result = 0 ;
   b2Contact *_swig_go_result;
@@ -7392,7 +7586,7 @@ b2Contact *_wrap_b2Contact_GetNext__SWIG_0_Box2D_b1d1b47c7e81f80a(b2Contact *_sw
 }
 
 
-b2Contact *_wrap_b2Contact_GetNext__SWIG_1_Box2D_b1d1b47c7e81f80a(b2Contact *_swig_go_0) {
+b2Contact *_wrap_b2Contact_GetNext__SWIG_1_Box2D_553c0f9515edf50e(b2Contact *_swig_go_0) {
   b2Contact *arg1 = (b2Contact *) 0 ;
   b2Contact *result = 0 ;
   b2Contact *_swig_go_result;
@@ -7405,7 +7599,7 @@ b2Contact *_wrap_b2Contact_GetNext__SWIG_1_Box2D_b1d1b47c7e81f80a(b2Contact *_sw
 }
 
 
-b2Fixture *_wrap_b2Contact_GetFixtureA__SWIG_0_Box2D_b1d1b47c7e81f80a(b2Contact *_swig_go_0) {
+b2Fixture *_wrap_b2Contact_GetFixtureA__SWIG_0_Box2D_553c0f9515edf50e(b2Contact *_swig_go_0) {
   b2Contact *arg1 = (b2Contact *) 0 ;
   b2Fixture *result = 0 ;
   b2Fixture *_swig_go_result;
@@ -7418,7 +7612,7 @@ b2Fixture *_wrap_b2Contact_GetFixtureA__SWIG_0_Box2D_b1d1b47c7e81f80a(b2Contact 
 }
 
 
-b2Fixture *_wrap_b2Contact_GetFixtureA__SWIG_1_Box2D_b1d1b47c7e81f80a(b2Contact *_swig_go_0) {
+b2Fixture *_wrap_b2Contact_GetFixtureA__SWIG_1_Box2D_553c0f9515edf50e(b2Contact *_swig_go_0) {
   b2Contact *arg1 = (b2Contact *) 0 ;
   b2Fixture *result = 0 ;
   b2Fixture *_swig_go_result;
@@ -7431,7 +7625,7 @@ b2Fixture *_wrap_b2Contact_GetFixtureA__SWIG_1_Box2D_b1d1b47c7e81f80a(b2Contact 
 }
 
 
-intgo _wrap_b2Contact_GetChildIndexA_Box2D_b1d1b47c7e81f80a(b2Contact *_swig_go_0) {
+intgo _wrap_b2Contact_GetChildIndexA_Box2D_553c0f9515edf50e(b2Contact *_swig_go_0) {
   b2Contact *arg1 = (b2Contact *) 0 ;
   int32 result;
   intgo _swig_go_result;
@@ -7444,7 +7638,7 @@ intgo _wrap_b2Contact_GetChildIndexA_Box2D_b1d1b47c7e81f80a(b2Contact *_swig_go_
 }
 
 
-b2Fixture *_wrap_b2Contact_GetFixtureB__SWIG_0_Box2D_b1d1b47c7e81f80a(b2Contact *_swig_go_0) {
+b2Fixture *_wrap_b2Contact_GetFixtureB__SWIG_0_Box2D_553c0f9515edf50e(b2Contact *_swig_go_0) {
   b2Contact *arg1 = (b2Contact *) 0 ;
   b2Fixture *result = 0 ;
   b2Fixture *_swig_go_result;
@@ -7457,7 +7651,7 @@ b2Fixture *_wrap_b2Contact_GetFixtureB__SWIG_0_Box2D_b1d1b47c7e81f80a(b2Contact 
 }
 
 
-b2Fixture *_wrap_b2Contact_GetFixtureB__SWIG_1_Box2D_b1d1b47c7e81f80a(b2Contact *_swig_go_0) {
+b2Fixture *_wrap_b2Contact_GetFixtureB__SWIG_1_Box2D_553c0f9515edf50e(b2Contact *_swig_go_0) {
   b2Contact *arg1 = (b2Contact *) 0 ;
   b2Fixture *result = 0 ;
   b2Fixture *_swig_go_result;
@@ -7470,7 +7664,7 @@ b2Fixture *_wrap_b2Contact_GetFixtureB__SWIG_1_Box2D_b1d1b47c7e81f80a(b2Contact 
 }
 
 
-intgo _wrap_b2Contact_GetChildIndexB_Box2D_b1d1b47c7e81f80a(b2Contact *_swig_go_0) {
+intgo _wrap_b2Contact_GetChildIndexB_Box2D_553c0f9515edf50e(b2Contact *_swig_go_0) {
   b2Contact *arg1 = (b2Contact *) 0 ;
   int32 result;
   intgo _swig_go_result;
@@ -7483,7 +7677,7 @@ intgo _wrap_b2Contact_GetChildIndexB_Box2D_b1d1b47c7e81f80a(b2Contact *_swig_go_
 }
 
 
-void _wrap_b2Contact_SetFriction_Box2D_b1d1b47c7e81f80a(b2Contact *_swig_go_0, float _swig_go_1) {
+void _wrap_b2Contact_SetFriction_Box2D_553c0f9515edf50e(b2Contact *_swig_go_0, float _swig_go_1) {
   b2Contact *arg1 = (b2Contact *) 0 ;
   float32 arg2 ;
   
@@ -7495,7 +7689,7 @@ void _wrap_b2Contact_SetFriction_Box2D_b1d1b47c7e81f80a(b2Contact *_swig_go_0, f
 }
 
 
-float _wrap_b2Contact_GetFriction_Box2D_b1d1b47c7e81f80a(b2Contact *_swig_go_0) {
+float _wrap_b2Contact_GetFriction_Box2D_553c0f9515edf50e(b2Contact *_swig_go_0) {
   b2Contact *arg1 = (b2Contact *) 0 ;
   float32 result;
   float _swig_go_result;
@@ -7508,7 +7702,7 @@ float _wrap_b2Contact_GetFriction_Box2D_b1d1b47c7e81f80a(b2Contact *_swig_go_0) 
 }
 
 
-void _wrap_b2Contact_ResetFriction_Box2D_b1d1b47c7e81f80a(b2Contact *_swig_go_0) {
+void _wrap_b2Contact_ResetFriction_Box2D_553c0f9515edf50e(b2Contact *_swig_go_0) {
   b2Contact *arg1 = (b2Contact *) 0 ;
   
   arg1 = *(b2Contact **)&_swig_go_0; 
@@ -7518,7 +7712,7 @@ void _wrap_b2Contact_ResetFriction_Box2D_b1d1b47c7e81f80a(b2Contact *_swig_go_0)
 }
 
 
-void _wrap_b2Contact_SetRestitution_Box2D_b1d1b47c7e81f80a(b2Contact *_swig_go_0, float _swig_go_1) {
+void _wrap_b2Contact_SetRestitution_Box2D_553c0f9515edf50e(b2Contact *_swig_go_0, float _swig_go_1) {
   b2Contact *arg1 = (b2Contact *) 0 ;
   float32 arg2 ;
   
@@ -7530,7 +7724,7 @@ void _wrap_b2Contact_SetRestitution_Box2D_b1d1b47c7e81f80a(b2Contact *_swig_go_0
 }
 
 
-float _wrap_b2Contact_GetRestitution_Box2D_b1d1b47c7e81f80a(b2Contact *_swig_go_0) {
+float _wrap_b2Contact_GetRestitution_Box2D_553c0f9515edf50e(b2Contact *_swig_go_0) {
   b2Contact *arg1 = (b2Contact *) 0 ;
   float32 result;
   float _swig_go_result;
@@ -7543,7 +7737,7 @@ float _wrap_b2Contact_GetRestitution_Box2D_b1d1b47c7e81f80a(b2Contact *_swig_go_
 }
 
 
-void _wrap_b2Contact_ResetRestitution_Box2D_b1d1b47c7e81f80a(b2Contact *_swig_go_0) {
+void _wrap_b2Contact_ResetRestitution_Box2D_553c0f9515edf50e(b2Contact *_swig_go_0) {
   b2Contact *arg1 = (b2Contact *) 0 ;
   
   arg1 = *(b2Contact **)&_swig_go_0; 
@@ -7553,7 +7747,7 @@ void _wrap_b2Contact_ResetRestitution_Box2D_b1d1b47c7e81f80a(b2Contact *_swig_go
 }
 
 
-void _wrap_b2Contact_SetTangentSpeed_Box2D_b1d1b47c7e81f80a(b2Contact *_swig_go_0, float _swig_go_1) {
+void _wrap_b2Contact_SetTangentSpeed_Box2D_553c0f9515edf50e(b2Contact *_swig_go_0, float _swig_go_1) {
   b2Contact *arg1 = (b2Contact *) 0 ;
   float32 arg2 ;
   
@@ -7565,7 +7759,7 @@ void _wrap_b2Contact_SetTangentSpeed_Box2D_b1d1b47c7e81f80a(b2Contact *_swig_go_
 }
 
 
-float _wrap_b2Contact_GetTangentSpeed_Box2D_b1d1b47c7e81f80a(b2Contact *_swig_go_0) {
+float _wrap_b2Contact_GetTangentSpeed_Box2D_553c0f9515edf50e(b2Contact *_swig_go_0) {
   b2Contact *arg1 = (b2Contact *) 0 ;
   float32 result;
   float _swig_go_result;
@@ -7578,7 +7772,7 @@ float _wrap_b2Contact_GetTangentSpeed_Box2D_b1d1b47c7e81f80a(b2Contact *_swig_go
 }
 
 
-void _wrap_b2Contact_Evaluate_Box2D_b1d1b47c7e81f80a(b2Contact *_swig_go_0, b2Manifold *_swig_go_1, b2Transform *_swig_go_2, b2Transform *_swig_go_3) {
+void _wrap_b2Contact_Evaluate_Box2D_553c0f9515edf50e(b2Contact *_swig_go_0, b2Manifold *_swig_go_1, b2Transform *_swig_go_2, b2Transform *_swig_go_3) {
   b2Contact *arg1 = (b2Contact *) 0 ;
   b2Manifold *arg2 = (b2Manifold *) 0 ;
   b2Transform *arg3 = 0 ;
@@ -7594,7 +7788,7 @@ void _wrap_b2Contact_Evaluate_Box2D_b1d1b47c7e81f80a(b2Contact *_swig_go_0, b2Ma
 }
 
 
-b2DistanceJointDef *_wrap_new_b2DistanceJointDef_Box2D_b1d1b47c7e81f80a() {
+b2DistanceJointDef *_wrap_new_b2DistanceJointDef_Box2D_553c0f9515edf50e() {
   b2DistanceJointDef *result = 0 ;
   b2DistanceJointDef *_swig_go_result;
   
@@ -7605,7 +7799,7 @@ b2DistanceJointDef *_wrap_new_b2DistanceJointDef_Box2D_b1d1b47c7e81f80a() {
 }
 
 
-void _wrap_b2DistanceJointDef_Initialize_Box2D_b1d1b47c7e81f80a(b2DistanceJointDef *_swig_go_0, b2Body *_swig_go_1, b2Body *_swig_go_2, b2Vec2 *_swig_go_3, b2Vec2 *_swig_go_4) {
+void _wrap_b2DistanceJointDef_Initialize_Box2D_553c0f9515edf50e(b2DistanceJointDef *_swig_go_0, b2Body *_swig_go_1, b2Body *_swig_go_2, b2Vec2 *_swig_go_3, b2Vec2 *_swig_go_4) {
   b2DistanceJointDef *arg1 = (b2DistanceJointDef *) 0 ;
   b2Body *arg2 = (b2Body *) 0 ;
   b2Body *arg3 = (b2Body *) 0 ;
@@ -7623,7 +7817,7 @@ void _wrap_b2DistanceJointDef_Initialize_Box2D_b1d1b47c7e81f80a(b2DistanceJointD
 }
 
 
-void _wrap_b2DistanceJointDef_localAnchorA_set_Box2D_b1d1b47c7e81f80a(b2DistanceJointDef *_swig_go_0, b2Vec2 *_swig_go_1) {
+void _wrap_b2DistanceJointDef_localAnchorA_set_Box2D_553c0f9515edf50e(b2DistanceJointDef *_swig_go_0, b2Vec2 *_swig_go_1) {
   b2DistanceJointDef *arg1 = (b2DistanceJointDef *) 0 ;
   b2Vec2 *arg2 = (b2Vec2 *) 0 ;
   
@@ -7635,7 +7829,7 @@ void _wrap_b2DistanceJointDef_localAnchorA_set_Box2D_b1d1b47c7e81f80a(b2Distance
 }
 
 
-b2Vec2 *_wrap_b2DistanceJointDef_localAnchorA_get_Box2D_b1d1b47c7e81f80a(b2DistanceJointDef *_swig_go_0) {
+b2Vec2 *_wrap_b2DistanceJointDef_localAnchorA_get_Box2D_553c0f9515edf50e(b2DistanceJointDef *_swig_go_0) {
   b2DistanceJointDef *arg1 = (b2DistanceJointDef *) 0 ;
   b2Vec2 *result = 0 ;
   b2Vec2 *_swig_go_result;
@@ -7648,7 +7842,7 @@ b2Vec2 *_wrap_b2DistanceJointDef_localAnchorA_get_Box2D_b1d1b47c7e81f80a(b2Dista
 }
 
 
-void _wrap_b2DistanceJointDef_localAnchorB_set_Box2D_b1d1b47c7e81f80a(b2DistanceJointDef *_swig_go_0, b2Vec2 *_swig_go_1) {
+void _wrap_b2DistanceJointDef_localAnchorB_set_Box2D_553c0f9515edf50e(b2DistanceJointDef *_swig_go_0, b2Vec2 *_swig_go_1) {
   b2DistanceJointDef *arg1 = (b2DistanceJointDef *) 0 ;
   b2Vec2 *arg2 = (b2Vec2 *) 0 ;
   
@@ -7660,7 +7854,7 @@ void _wrap_b2DistanceJointDef_localAnchorB_set_Box2D_b1d1b47c7e81f80a(b2Distance
 }
 
 
-b2Vec2 *_wrap_b2DistanceJointDef_localAnchorB_get_Box2D_b1d1b47c7e81f80a(b2DistanceJointDef *_swig_go_0) {
+b2Vec2 *_wrap_b2DistanceJointDef_localAnchorB_get_Box2D_553c0f9515edf50e(b2DistanceJointDef *_swig_go_0) {
   b2DistanceJointDef *arg1 = (b2DistanceJointDef *) 0 ;
   b2Vec2 *result = 0 ;
   b2Vec2 *_swig_go_result;
@@ -7673,7 +7867,7 @@ b2Vec2 *_wrap_b2DistanceJointDef_localAnchorB_get_Box2D_b1d1b47c7e81f80a(b2Dista
 }
 
 
-void _wrap_b2DistanceJointDef_length_set_Box2D_b1d1b47c7e81f80a(b2DistanceJointDef *_swig_go_0, float _swig_go_1) {
+void _wrap_b2DistanceJointDef_length_set_Box2D_553c0f9515edf50e(b2DistanceJointDef *_swig_go_0, float _swig_go_1) {
   b2DistanceJointDef *arg1 = (b2DistanceJointDef *) 0 ;
   float32 arg2 ;
   
@@ -7685,7 +7879,7 @@ void _wrap_b2DistanceJointDef_length_set_Box2D_b1d1b47c7e81f80a(b2DistanceJointD
 }
 
 
-float _wrap_b2DistanceJointDef_length_get_Box2D_b1d1b47c7e81f80a(b2DistanceJointDef *_swig_go_0) {
+float _wrap_b2DistanceJointDef_length_get_Box2D_553c0f9515edf50e(b2DistanceJointDef *_swig_go_0) {
   b2DistanceJointDef *arg1 = (b2DistanceJointDef *) 0 ;
   float32 result;
   float _swig_go_result;
@@ -7698,7 +7892,7 @@ float _wrap_b2DistanceJointDef_length_get_Box2D_b1d1b47c7e81f80a(b2DistanceJoint
 }
 
 
-void _wrap_b2DistanceJointDef_frequencyHz_set_Box2D_b1d1b47c7e81f80a(b2DistanceJointDef *_swig_go_0, float _swig_go_1) {
+void _wrap_b2DistanceJointDef_frequencyHz_set_Box2D_553c0f9515edf50e(b2DistanceJointDef *_swig_go_0, float _swig_go_1) {
   b2DistanceJointDef *arg1 = (b2DistanceJointDef *) 0 ;
   float32 arg2 ;
   
@@ -7710,7 +7904,7 @@ void _wrap_b2DistanceJointDef_frequencyHz_set_Box2D_b1d1b47c7e81f80a(b2DistanceJ
 }
 
 
-float _wrap_b2DistanceJointDef_frequencyHz_get_Box2D_b1d1b47c7e81f80a(b2DistanceJointDef *_swig_go_0) {
+float _wrap_b2DistanceJointDef_frequencyHz_get_Box2D_553c0f9515edf50e(b2DistanceJointDef *_swig_go_0) {
   b2DistanceJointDef *arg1 = (b2DistanceJointDef *) 0 ;
   float32 result;
   float _swig_go_result;
@@ -7723,7 +7917,7 @@ float _wrap_b2DistanceJointDef_frequencyHz_get_Box2D_b1d1b47c7e81f80a(b2Distance
 }
 
 
-void _wrap_b2DistanceJointDef_dampingRatio_set_Box2D_b1d1b47c7e81f80a(b2DistanceJointDef *_swig_go_0, float _swig_go_1) {
+void _wrap_b2DistanceJointDef_dampingRatio_set_Box2D_553c0f9515edf50e(b2DistanceJointDef *_swig_go_0, float _swig_go_1) {
   b2DistanceJointDef *arg1 = (b2DistanceJointDef *) 0 ;
   float32 arg2 ;
   
@@ -7735,7 +7929,7 @@ void _wrap_b2DistanceJointDef_dampingRatio_set_Box2D_b1d1b47c7e81f80a(b2Distance
 }
 
 
-float _wrap_b2DistanceJointDef_dampingRatio_get_Box2D_b1d1b47c7e81f80a(b2DistanceJointDef *_swig_go_0) {
+float _wrap_b2DistanceJointDef_dampingRatio_get_Box2D_553c0f9515edf50e(b2DistanceJointDef *_swig_go_0) {
   b2DistanceJointDef *arg1 = (b2DistanceJointDef *) 0 ;
   float32 result;
   float _swig_go_result;
@@ -7748,7 +7942,7 @@ float _wrap_b2DistanceJointDef_dampingRatio_get_Box2D_b1d1b47c7e81f80a(b2Distanc
 }
 
 
-void _wrap_delete_b2DistanceJointDef_Box2D_b1d1b47c7e81f80a(b2DistanceJointDef *_swig_go_0) {
+void _wrap_delete_b2DistanceJointDef_Box2D_553c0f9515edf50e(b2DistanceJointDef *_swig_go_0) {
   b2DistanceJointDef *arg1 = (b2DistanceJointDef *) 0 ;
   
   arg1 = *(b2DistanceJointDef **)&_swig_go_0; 
@@ -7758,7 +7952,7 @@ void _wrap_delete_b2DistanceJointDef_Box2D_b1d1b47c7e81f80a(b2DistanceJointDef *
 }
 
 
-b2Vec2 *_wrap_b2DistanceJoint_GetAnchorA_Box2D_b1d1b47c7e81f80a(b2DistanceJoint *_swig_go_0) {
+b2Vec2 *_wrap_b2DistanceJoint_GetAnchorA_Box2D_553c0f9515edf50e(b2DistanceJoint *_swig_go_0) {
   b2DistanceJoint *arg1 = (b2DistanceJoint *) 0 ;
   b2Vec2 result;
   b2Vec2 *_swig_go_result;
@@ -7771,7 +7965,7 @@ b2Vec2 *_wrap_b2DistanceJoint_GetAnchorA_Box2D_b1d1b47c7e81f80a(b2DistanceJoint 
 }
 
 
-b2Vec2 *_wrap_b2DistanceJoint_GetAnchorB_Box2D_b1d1b47c7e81f80a(b2DistanceJoint *_swig_go_0) {
+b2Vec2 *_wrap_b2DistanceJoint_GetAnchorB_Box2D_553c0f9515edf50e(b2DistanceJoint *_swig_go_0) {
   b2DistanceJoint *arg1 = (b2DistanceJoint *) 0 ;
   b2Vec2 result;
   b2Vec2 *_swig_go_result;
@@ -7784,7 +7978,7 @@ b2Vec2 *_wrap_b2DistanceJoint_GetAnchorB_Box2D_b1d1b47c7e81f80a(b2DistanceJoint 
 }
 
 
-b2Vec2 *_wrap_b2DistanceJoint_GetReactionForce_Box2D_b1d1b47c7e81f80a(b2DistanceJoint *_swig_go_0, float _swig_go_1) {
+b2Vec2 *_wrap_b2DistanceJoint_GetReactionForce_Box2D_553c0f9515edf50e(b2DistanceJoint *_swig_go_0, float _swig_go_1) {
   b2DistanceJoint *arg1 = (b2DistanceJoint *) 0 ;
   float32 arg2 ;
   b2Vec2 result;
@@ -7799,7 +7993,7 @@ b2Vec2 *_wrap_b2DistanceJoint_GetReactionForce_Box2D_b1d1b47c7e81f80a(b2Distance
 }
 
 
-float _wrap_b2DistanceJoint_GetReactionTorque_Box2D_b1d1b47c7e81f80a(b2DistanceJoint *_swig_go_0, float _swig_go_1) {
+float _wrap_b2DistanceJoint_GetReactionTorque_Box2D_553c0f9515edf50e(b2DistanceJoint *_swig_go_0, float _swig_go_1) {
   b2DistanceJoint *arg1 = (b2DistanceJoint *) 0 ;
   float32 arg2 ;
   float32 result;
@@ -7814,7 +8008,7 @@ float _wrap_b2DistanceJoint_GetReactionTorque_Box2D_b1d1b47c7e81f80a(b2DistanceJ
 }
 
 
-b2Vec2 *_wrap_b2DistanceJoint_GetLocalAnchorA_Box2D_b1d1b47c7e81f80a(b2DistanceJoint *_swig_go_0) {
+b2Vec2 *_wrap_b2DistanceJoint_GetLocalAnchorA_Box2D_553c0f9515edf50e(b2DistanceJoint *_swig_go_0) {
   b2DistanceJoint *arg1 = (b2DistanceJoint *) 0 ;
   b2Vec2 *result = 0 ;
   b2Vec2 *_swig_go_result;
@@ -7827,7 +8021,7 @@ b2Vec2 *_wrap_b2DistanceJoint_GetLocalAnchorA_Box2D_b1d1b47c7e81f80a(b2DistanceJ
 }
 
 
-b2Vec2 *_wrap_b2DistanceJoint_GetLocalAnchorB_Box2D_b1d1b47c7e81f80a(b2DistanceJoint *_swig_go_0) {
+b2Vec2 *_wrap_b2DistanceJoint_GetLocalAnchorB_Box2D_553c0f9515edf50e(b2DistanceJoint *_swig_go_0) {
   b2DistanceJoint *arg1 = (b2DistanceJoint *) 0 ;
   b2Vec2 *result = 0 ;
   b2Vec2 *_swig_go_result;
@@ -7840,7 +8034,7 @@ b2Vec2 *_wrap_b2DistanceJoint_GetLocalAnchorB_Box2D_b1d1b47c7e81f80a(b2DistanceJ
 }
 
 
-void _wrap_b2DistanceJoint_SetLength_Box2D_b1d1b47c7e81f80a(b2DistanceJoint *_swig_go_0, float _swig_go_1) {
+void _wrap_b2DistanceJoint_SetLength_Box2D_553c0f9515edf50e(b2DistanceJoint *_swig_go_0, float _swig_go_1) {
   b2DistanceJoint *arg1 = (b2DistanceJoint *) 0 ;
   float32 arg2 ;
   
@@ -7852,7 +8046,7 @@ void _wrap_b2DistanceJoint_SetLength_Box2D_b1d1b47c7e81f80a(b2DistanceJoint *_sw
 }
 
 
-float _wrap_b2DistanceJoint_GetLength_Box2D_b1d1b47c7e81f80a(b2DistanceJoint *_swig_go_0) {
+float _wrap_b2DistanceJoint_GetLength_Box2D_553c0f9515edf50e(b2DistanceJoint *_swig_go_0) {
   b2DistanceJoint *arg1 = (b2DistanceJoint *) 0 ;
   float32 result;
   float _swig_go_result;
@@ -7865,7 +8059,7 @@ float _wrap_b2DistanceJoint_GetLength_Box2D_b1d1b47c7e81f80a(b2DistanceJoint *_s
 }
 
 
-void _wrap_b2DistanceJoint_SetFrequency_Box2D_b1d1b47c7e81f80a(b2DistanceJoint *_swig_go_0, float _swig_go_1) {
+void _wrap_b2DistanceJoint_SetFrequency_Box2D_553c0f9515edf50e(b2DistanceJoint *_swig_go_0, float _swig_go_1) {
   b2DistanceJoint *arg1 = (b2DistanceJoint *) 0 ;
   float32 arg2 ;
   
@@ -7877,7 +8071,7 @@ void _wrap_b2DistanceJoint_SetFrequency_Box2D_b1d1b47c7e81f80a(b2DistanceJoint *
 }
 
 
-float _wrap_b2DistanceJoint_GetFrequency_Box2D_b1d1b47c7e81f80a(b2DistanceJoint *_swig_go_0) {
+float _wrap_b2DistanceJoint_GetFrequency_Box2D_553c0f9515edf50e(b2DistanceJoint *_swig_go_0) {
   b2DistanceJoint *arg1 = (b2DistanceJoint *) 0 ;
   float32 result;
   float _swig_go_result;
@@ -7890,7 +8084,7 @@ float _wrap_b2DistanceJoint_GetFrequency_Box2D_b1d1b47c7e81f80a(b2DistanceJoint 
 }
 
 
-void _wrap_b2DistanceJoint_SetDampingRatio_Box2D_b1d1b47c7e81f80a(b2DistanceJoint *_swig_go_0, float _swig_go_1) {
+void _wrap_b2DistanceJoint_SetDampingRatio_Box2D_553c0f9515edf50e(b2DistanceJoint *_swig_go_0, float _swig_go_1) {
   b2DistanceJoint *arg1 = (b2DistanceJoint *) 0 ;
   float32 arg2 ;
   
@@ -7902,7 +8096,7 @@ void _wrap_b2DistanceJoint_SetDampingRatio_Box2D_b1d1b47c7e81f80a(b2DistanceJoin
 }
 
 
-float _wrap_b2DistanceJoint_GetDampingRatio_Box2D_b1d1b47c7e81f80a(b2DistanceJoint *_swig_go_0) {
+float _wrap_b2DistanceJoint_GetDampingRatio_Box2D_553c0f9515edf50e(b2DistanceJoint *_swig_go_0) {
   b2DistanceJoint *arg1 = (b2DistanceJoint *) 0 ;
   float32 result;
   float _swig_go_result;
@@ -7915,7 +8109,7 @@ float _wrap_b2DistanceJoint_GetDampingRatio_Box2D_b1d1b47c7e81f80a(b2DistanceJoi
 }
 
 
-void _wrap_b2DistanceJoint_Dump_Box2D_b1d1b47c7e81f80a(b2DistanceJoint *_swig_go_0) {
+void _wrap_b2DistanceJoint_Dump_Box2D_553c0f9515edf50e(b2DistanceJoint *_swig_go_0) {
   b2DistanceJoint *arg1 = (b2DistanceJoint *) 0 ;
   
   arg1 = *(b2DistanceJoint **)&_swig_go_0; 
@@ -7925,7 +8119,7 @@ void _wrap_b2DistanceJoint_Dump_Box2D_b1d1b47c7e81f80a(b2DistanceJoint *_swig_go
 }
 
 
-void _wrap_delete_b2DistanceJoint_Box2D_b1d1b47c7e81f80a(b2DistanceJoint *_swig_go_0) {
+void _wrap_delete_b2DistanceJoint_Box2D_553c0f9515edf50e(b2DistanceJoint *_swig_go_0) {
   b2DistanceJoint *arg1 = (b2DistanceJoint *) 0 ;
   
   arg1 = *(b2DistanceJoint **)&_swig_go_0; 
@@ -7935,7 +8129,7 @@ void _wrap_delete_b2DistanceJoint_Box2D_b1d1b47c7e81f80a(b2DistanceJoint *_swig_
 }
 
 
-b2FrictionJointDef *_wrap_new_b2FrictionJointDef_Box2D_b1d1b47c7e81f80a() {
+b2FrictionJointDef *_wrap_new_b2FrictionJointDef_Box2D_553c0f9515edf50e() {
   b2FrictionJointDef *result = 0 ;
   b2FrictionJointDef *_swig_go_result;
   
@@ -7946,7 +8140,7 @@ b2FrictionJointDef *_wrap_new_b2FrictionJointDef_Box2D_b1d1b47c7e81f80a() {
 }
 
 
-void _wrap_b2FrictionJointDef_Initialize_Box2D_b1d1b47c7e81f80a(b2FrictionJointDef *_swig_go_0, b2Body *_swig_go_1, b2Body *_swig_go_2, b2Vec2 *_swig_go_3) {
+void _wrap_b2FrictionJointDef_Initialize_Box2D_553c0f9515edf50e(b2FrictionJointDef *_swig_go_0, b2Body *_swig_go_1, b2Body *_swig_go_2, b2Vec2 *_swig_go_3) {
   b2FrictionJointDef *arg1 = (b2FrictionJointDef *) 0 ;
   b2Body *arg2 = (b2Body *) 0 ;
   b2Body *arg3 = (b2Body *) 0 ;
@@ -7962,7 +8156,7 @@ void _wrap_b2FrictionJointDef_Initialize_Box2D_b1d1b47c7e81f80a(b2FrictionJointD
 }
 
 
-void _wrap_b2FrictionJointDef_localAnchorA_set_Box2D_b1d1b47c7e81f80a(b2FrictionJointDef *_swig_go_0, b2Vec2 *_swig_go_1) {
+void _wrap_b2FrictionJointDef_localAnchorA_set_Box2D_553c0f9515edf50e(b2FrictionJointDef *_swig_go_0, b2Vec2 *_swig_go_1) {
   b2FrictionJointDef *arg1 = (b2FrictionJointDef *) 0 ;
   b2Vec2 *arg2 = (b2Vec2 *) 0 ;
   
@@ -7974,7 +8168,7 @@ void _wrap_b2FrictionJointDef_localAnchorA_set_Box2D_b1d1b47c7e81f80a(b2Friction
 }
 
 
-b2Vec2 *_wrap_b2FrictionJointDef_localAnchorA_get_Box2D_b1d1b47c7e81f80a(b2FrictionJointDef *_swig_go_0) {
+b2Vec2 *_wrap_b2FrictionJointDef_localAnchorA_get_Box2D_553c0f9515edf50e(b2FrictionJointDef *_swig_go_0) {
   b2FrictionJointDef *arg1 = (b2FrictionJointDef *) 0 ;
   b2Vec2 *result = 0 ;
   b2Vec2 *_swig_go_result;
@@ -7987,7 +8181,7 @@ b2Vec2 *_wrap_b2FrictionJointDef_localAnchorA_get_Box2D_b1d1b47c7e81f80a(b2Frict
 }
 
 
-void _wrap_b2FrictionJointDef_localAnchorB_set_Box2D_b1d1b47c7e81f80a(b2FrictionJointDef *_swig_go_0, b2Vec2 *_swig_go_1) {
+void _wrap_b2FrictionJointDef_localAnchorB_set_Box2D_553c0f9515edf50e(b2FrictionJointDef *_swig_go_0, b2Vec2 *_swig_go_1) {
   b2FrictionJointDef *arg1 = (b2FrictionJointDef *) 0 ;
   b2Vec2 *arg2 = (b2Vec2 *) 0 ;
   
@@ -7999,7 +8193,7 @@ void _wrap_b2FrictionJointDef_localAnchorB_set_Box2D_b1d1b47c7e81f80a(b2Friction
 }
 
 
-b2Vec2 *_wrap_b2FrictionJointDef_localAnchorB_get_Box2D_b1d1b47c7e81f80a(b2FrictionJointDef *_swig_go_0) {
+b2Vec2 *_wrap_b2FrictionJointDef_localAnchorB_get_Box2D_553c0f9515edf50e(b2FrictionJointDef *_swig_go_0) {
   b2FrictionJointDef *arg1 = (b2FrictionJointDef *) 0 ;
   b2Vec2 *result = 0 ;
   b2Vec2 *_swig_go_result;
@@ -8012,7 +8206,7 @@ b2Vec2 *_wrap_b2FrictionJointDef_localAnchorB_get_Box2D_b1d1b47c7e81f80a(b2Frict
 }
 
 
-void _wrap_b2FrictionJointDef_maxForce_set_Box2D_b1d1b47c7e81f80a(b2FrictionJointDef *_swig_go_0, float _swig_go_1) {
+void _wrap_b2FrictionJointDef_maxForce_set_Box2D_553c0f9515edf50e(b2FrictionJointDef *_swig_go_0, float _swig_go_1) {
   b2FrictionJointDef *arg1 = (b2FrictionJointDef *) 0 ;
   float32 arg2 ;
   
@@ -8024,7 +8218,7 @@ void _wrap_b2FrictionJointDef_maxForce_set_Box2D_b1d1b47c7e81f80a(b2FrictionJoin
 }
 
 
-float _wrap_b2FrictionJointDef_maxForce_get_Box2D_b1d1b47c7e81f80a(b2FrictionJointDef *_swig_go_0) {
+float _wrap_b2FrictionJointDef_maxForce_get_Box2D_553c0f9515edf50e(b2FrictionJointDef *_swig_go_0) {
   b2FrictionJointDef *arg1 = (b2FrictionJointDef *) 0 ;
   float32 result;
   float _swig_go_result;
@@ -8037,7 +8231,7 @@ float _wrap_b2FrictionJointDef_maxForce_get_Box2D_b1d1b47c7e81f80a(b2FrictionJoi
 }
 
 
-void _wrap_b2FrictionJointDef_maxTorque_set_Box2D_b1d1b47c7e81f80a(b2FrictionJointDef *_swig_go_0, float _swig_go_1) {
+void _wrap_b2FrictionJointDef_maxTorque_set_Box2D_553c0f9515edf50e(b2FrictionJointDef *_swig_go_0, float _swig_go_1) {
   b2FrictionJointDef *arg1 = (b2FrictionJointDef *) 0 ;
   float32 arg2 ;
   
@@ -8049,7 +8243,7 @@ void _wrap_b2FrictionJointDef_maxTorque_set_Box2D_b1d1b47c7e81f80a(b2FrictionJoi
 }
 
 
-float _wrap_b2FrictionJointDef_maxTorque_get_Box2D_b1d1b47c7e81f80a(b2FrictionJointDef *_swig_go_0) {
+float _wrap_b2FrictionJointDef_maxTorque_get_Box2D_553c0f9515edf50e(b2FrictionJointDef *_swig_go_0) {
   b2FrictionJointDef *arg1 = (b2FrictionJointDef *) 0 ;
   float32 result;
   float _swig_go_result;
@@ -8062,7 +8256,7 @@ float _wrap_b2FrictionJointDef_maxTorque_get_Box2D_b1d1b47c7e81f80a(b2FrictionJo
 }
 
 
-void _wrap_delete_b2FrictionJointDef_Box2D_b1d1b47c7e81f80a(b2FrictionJointDef *_swig_go_0) {
+void _wrap_delete_b2FrictionJointDef_Box2D_553c0f9515edf50e(b2FrictionJointDef *_swig_go_0) {
   b2FrictionJointDef *arg1 = (b2FrictionJointDef *) 0 ;
   
   arg1 = *(b2FrictionJointDef **)&_swig_go_0; 
@@ -8072,7 +8266,7 @@ void _wrap_delete_b2FrictionJointDef_Box2D_b1d1b47c7e81f80a(b2FrictionJointDef *
 }
 
 
-b2Vec2 *_wrap_b2FrictionJoint_GetAnchorA_Box2D_b1d1b47c7e81f80a(b2FrictionJoint *_swig_go_0) {
+b2Vec2 *_wrap_b2FrictionJoint_GetAnchorA_Box2D_553c0f9515edf50e(b2FrictionJoint *_swig_go_0) {
   b2FrictionJoint *arg1 = (b2FrictionJoint *) 0 ;
   b2Vec2 result;
   b2Vec2 *_swig_go_result;
@@ -8085,7 +8279,7 @@ b2Vec2 *_wrap_b2FrictionJoint_GetAnchorA_Box2D_b1d1b47c7e81f80a(b2FrictionJoint 
 }
 
 
-b2Vec2 *_wrap_b2FrictionJoint_GetAnchorB_Box2D_b1d1b47c7e81f80a(b2FrictionJoint *_swig_go_0) {
+b2Vec2 *_wrap_b2FrictionJoint_GetAnchorB_Box2D_553c0f9515edf50e(b2FrictionJoint *_swig_go_0) {
   b2FrictionJoint *arg1 = (b2FrictionJoint *) 0 ;
   b2Vec2 result;
   b2Vec2 *_swig_go_result;
@@ -8098,7 +8292,7 @@ b2Vec2 *_wrap_b2FrictionJoint_GetAnchorB_Box2D_b1d1b47c7e81f80a(b2FrictionJoint 
 }
 
 
-b2Vec2 *_wrap_b2FrictionJoint_GetReactionForce_Box2D_b1d1b47c7e81f80a(b2FrictionJoint *_swig_go_0, float _swig_go_1) {
+b2Vec2 *_wrap_b2FrictionJoint_GetReactionForce_Box2D_553c0f9515edf50e(b2FrictionJoint *_swig_go_0, float _swig_go_1) {
   b2FrictionJoint *arg1 = (b2FrictionJoint *) 0 ;
   float32 arg2 ;
   b2Vec2 result;
@@ -8113,7 +8307,7 @@ b2Vec2 *_wrap_b2FrictionJoint_GetReactionForce_Box2D_b1d1b47c7e81f80a(b2Friction
 }
 
 
-float _wrap_b2FrictionJoint_GetReactionTorque_Box2D_b1d1b47c7e81f80a(b2FrictionJoint *_swig_go_0, float _swig_go_1) {
+float _wrap_b2FrictionJoint_GetReactionTorque_Box2D_553c0f9515edf50e(b2FrictionJoint *_swig_go_0, float _swig_go_1) {
   b2FrictionJoint *arg1 = (b2FrictionJoint *) 0 ;
   float32 arg2 ;
   float32 result;
@@ -8128,7 +8322,7 @@ float _wrap_b2FrictionJoint_GetReactionTorque_Box2D_b1d1b47c7e81f80a(b2FrictionJ
 }
 
 
-b2Vec2 *_wrap_b2FrictionJoint_GetLocalAnchorA_Box2D_b1d1b47c7e81f80a(b2FrictionJoint *_swig_go_0) {
+b2Vec2 *_wrap_b2FrictionJoint_GetLocalAnchorA_Box2D_553c0f9515edf50e(b2FrictionJoint *_swig_go_0) {
   b2FrictionJoint *arg1 = (b2FrictionJoint *) 0 ;
   b2Vec2 *result = 0 ;
   b2Vec2 *_swig_go_result;
@@ -8141,7 +8335,7 @@ b2Vec2 *_wrap_b2FrictionJoint_GetLocalAnchorA_Box2D_b1d1b47c7e81f80a(b2FrictionJ
 }
 
 
-b2Vec2 *_wrap_b2FrictionJoint_GetLocalAnchorB_Box2D_b1d1b47c7e81f80a(b2FrictionJoint *_swig_go_0) {
+b2Vec2 *_wrap_b2FrictionJoint_GetLocalAnchorB_Box2D_553c0f9515edf50e(b2FrictionJoint *_swig_go_0) {
   b2FrictionJoint *arg1 = (b2FrictionJoint *) 0 ;
   b2Vec2 *result = 0 ;
   b2Vec2 *_swig_go_result;
@@ -8154,7 +8348,7 @@ b2Vec2 *_wrap_b2FrictionJoint_GetLocalAnchorB_Box2D_b1d1b47c7e81f80a(b2FrictionJ
 }
 
 
-void _wrap_b2FrictionJoint_SetMaxForce_Box2D_b1d1b47c7e81f80a(b2FrictionJoint *_swig_go_0, float _swig_go_1) {
+void _wrap_b2FrictionJoint_SetMaxForce_Box2D_553c0f9515edf50e(b2FrictionJoint *_swig_go_0, float _swig_go_1) {
   b2FrictionJoint *arg1 = (b2FrictionJoint *) 0 ;
   float32 arg2 ;
   
@@ -8166,7 +8360,7 @@ void _wrap_b2FrictionJoint_SetMaxForce_Box2D_b1d1b47c7e81f80a(b2FrictionJoint *_
 }
 
 
-float _wrap_b2FrictionJoint_GetMaxForce_Box2D_b1d1b47c7e81f80a(b2FrictionJoint *_swig_go_0) {
+float _wrap_b2FrictionJoint_GetMaxForce_Box2D_553c0f9515edf50e(b2FrictionJoint *_swig_go_0) {
   b2FrictionJoint *arg1 = (b2FrictionJoint *) 0 ;
   float32 result;
   float _swig_go_result;
@@ -8179,7 +8373,7 @@ float _wrap_b2FrictionJoint_GetMaxForce_Box2D_b1d1b47c7e81f80a(b2FrictionJoint *
 }
 
 
-void _wrap_b2FrictionJoint_SetMaxTorque_Box2D_b1d1b47c7e81f80a(b2FrictionJoint *_swig_go_0, float _swig_go_1) {
+void _wrap_b2FrictionJoint_SetMaxTorque_Box2D_553c0f9515edf50e(b2FrictionJoint *_swig_go_0, float _swig_go_1) {
   b2FrictionJoint *arg1 = (b2FrictionJoint *) 0 ;
   float32 arg2 ;
   
@@ -8191,7 +8385,7 @@ void _wrap_b2FrictionJoint_SetMaxTorque_Box2D_b1d1b47c7e81f80a(b2FrictionJoint *
 }
 
 
-float _wrap_b2FrictionJoint_GetMaxTorque_Box2D_b1d1b47c7e81f80a(b2FrictionJoint *_swig_go_0) {
+float _wrap_b2FrictionJoint_GetMaxTorque_Box2D_553c0f9515edf50e(b2FrictionJoint *_swig_go_0) {
   b2FrictionJoint *arg1 = (b2FrictionJoint *) 0 ;
   float32 result;
   float _swig_go_result;
@@ -8204,7 +8398,7 @@ float _wrap_b2FrictionJoint_GetMaxTorque_Box2D_b1d1b47c7e81f80a(b2FrictionJoint 
 }
 
 
-void _wrap_b2FrictionJoint_Dump_Box2D_b1d1b47c7e81f80a(b2FrictionJoint *_swig_go_0) {
+void _wrap_b2FrictionJoint_Dump_Box2D_553c0f9515edf50e(b2FrictionJoint *_swig_go_0) {
   b2FrictionJoint *arg1 = (b2FrictionJoint *) 0 ;
   
   arg1 = *(b2FrictionJoint **)&_swig_go_0; 
@@ -8214,7 +8408,7 @@ void _wrap_b2FrictionJoint_Dump_Box2D_b1d1b47c7e81f80a(b2FrictionJoint *_swig_go
 }
 
 
-void _wrap_delete_b2FrictionJoint_Box2D_b1d1b47c7e81f80a(b2FrictionJoint *_swig_go_0) {
+void _wrap_delete_b2FrictionJoint_Box2D_553c0f9515edf50e(b2FrictionJoint *_swig_go_0) {
   b2FrictionJoint *arg1 = (b2FrictionJoint *) 0 ;
   
   arg1 = *(b2FrictionJoint **)&_swig_go_0; 
@@ -8224,7 +8418,7 @@ void _wrap_delete_b2FrictionJoint_Box2D_b1d1b47c7e81f80a(b2FrictionJoint *_swig_
 }
 
 
-b2GearJointDef *_wrap_new_b2GearJointDef_Box2D_b1d1b47c7e81f80a() {
+b2GearJointDef *_wrap_new_b2GearJointDef_Box2D_553c0f9515edf50e() {
   b2GearJointDef *result = 0 ;
   b2GearJointDef *_swig_go_result;
   
@@ -8235,7 +8429,7 @@ b2GearJointDef *_wrap_new_b2GearJointDef_Box2D_b1d1b47c7e81f80a() {
 }
 
 
-void _wrap_b2GearJointDef_joint1_set_Box2D_b1d1b47c7e81f80a(b2GearJointDef *_swig_go_0, b2Joint *_swig_go_1) {
+void _wrap_b2GearJointDef_joint1_set_Box2D_553c0f9515edf50e(b2GearJointDef *_swig_go_0, b2Joint *_swig_go_1) {
   b2GearJointDef *arg1 = (b2GearJointDef *) 0 ;
   b2Joint *arg2 = (b2Joint *) 0 ;
   
@@ -8247,7 +8441,7 @@ void _wrap_b2GearJointDef_joint1_set_Box2D_b1d1b47c7e81f80a(b2GearJointDef *_swi
 }
 
 
-b2Joint *_wrap_b2GearJointDef_joint1_get_Box2D_b1d1b47c7e81f80a(b2GearJointDef *_swig_go_0) {
+b2Joint *_wrap_b2GearJointDef_joint1_get_Box2D_553c0f9515edf50e(b2GearJointDef *_swig_go_0) {
   b2GearJointDef *arg1 = (b2GearJointDef *) 0 ;
   b2Joint *result = 0 ;
   b2Joint *_swig_go_result;
@@ -8260,7 +8454,7 @@ b2Joint *_wrap_b2GearJointDef_joint1_get_Box2D_b1d1b47c7e81f80a(b2GearJointDef *
 }
 
 
-void _wrap_b2GearJointDef_joint2_set_Box2D_b1d1b47c7e81f80a(b2GearJointDef *_swig_go_0, b2Joint *_swig_go_1) {
+void _wrap_b2GearJointDef_joint2_set_Box2D_553c0f9515edf50e(b2GearJointDef *_swig_go_0, b2Joint *_swig_go_1) {
   b2GearJointDef *arg1 = (b2GearJointDef *) 0 ;
   b2Joint *arg2 = (b2Joint *) 0 ;
   
@@ -8272,7 +8466,7 @@ void _wrap_b2GearJointDef_joint2_set_Box2D_b1d1b47c7e81f80a(b2GearJointDef *_swi
 }
 
 
-b2Joint *_wrap_b2GearJointDef_joint2_get_Box2D_b1d1b47c7e81f80a(b2GearJointDef *_swig_go_0) {
+b2Joint *_wrap_b2GearJointDef_joint2_get_Box2D_553c0f9515edf50e(b2GearJointDef *_swig_go_0) {
   b2GearJointDef *arg1 = (b2GearJointDef *) 0 ;
   b2Joint *result = 0 ;
   b2Joint *_swig_go_result;
@@ -8285,7 +8479,7 @@ b2Joint *_wrap_b2GearJointDef_joint2_get_Box2D_b1d1b47c7e81f80a(b2GearJointDef *
 }
 
 
-void _wrap_b2GearJointDef_ratio_set_Box2D_b1d1b47c7e81f80a(b2GearJointDef *_swig_go_0, float _swig_go_1) {
+void _wrap_b2GearJointDef_ratio_set_Box2D_553c0f9515edf50e(b2GearJointDef *_swig_go_0, float _swig_go_1) {
   b2GearJointDef *arg1 = (b2GearJointDef *) 0 ;
   float32 arg2 ;
   
@@ -8297,7 +8491,7 @@ void _wrap_b2GearJointDef_ratio_set_Box2D_b1d1b47c7e81f80a(b2GearJointDef *_swig
 }
 
 
-float _wrap_b2GearJointDef_ratio_get_Box2D_b1d1b47c7e81f80a(b2GearJointDef *_swig_go_0) {
+float _wrap_b2GearJointDef_ratio_get_Box2D_553c0f9515edf50e(b2GearJointDef *_swig_go_0) {
   b2GearJointDef *arg1 = (b2GearJointDef *) 0 ;
   float32 result;
   float _swig_go_result;
@@ -8310,7 +8504,7 @@ float _wrap_b2GearJointDef_ratio_get_Box2D_b1d1b47c7e81f80a(b2GearJointDef *_swi
 }
 
 
-void _wrap_delete_b2GearJointDef_Box2D_b1d1b47c7e81f80a(b2GearJointDef *_swig_go_0) {
+void _wrap_delete_b2GearJointDef_Box2D_553c0f9515edf50e(b2GearJointDef *_swig_go_0) {
   b2GearJointDef *arg1 = (b2GearJointDef *) 0 ;
   
   arg1 = *(b2GearJointDef **)&_swig_go_0; 
@@ -8320,7 +8514,7 @@ void _wrap_delete_b2GearJointDef_Box2D_b1d1b47c7e81f80a(b2GearJointDef *_swig_go
 }
 
 
-b2Vec2 *_wrap_b2GearJoint_GetAnchorA_Box2D_b1d1b47c7e81f80a(b2GearJoint *_swig_go_0) {
+b2Vec2 *_wrap_b2GearJoint_GetAnchorA_Box2D_553c0f9515edf50e(b2GearJoint *_swig_go_0) {
   b2GearJoint *arg1 = (b2GearJoint *) 0 ;
   b2Vec2 result;
   b2Vec2 *_swig_go_result;
@@ -8333,7 +8527,7 @@ b2Vec2 *_wrap_b2GearJoint_GetAnchorA_Box2D_b1d1b47c7e81f80a(b2GearJoint *_swig_g
 }
 
 
-b2Vec2 *_wrap_b2GearJoint_GetAnchorB_Box2D_b1d1b47c7e81f80a(b2GearJoint *_swig_go_0) {
+b2Vec2 *_wrap_b2GearJoint_GetAnchorB_Box2D_553c0f9515edf50e(b2GearJoint *_swig_go_0) {
   b2GearJoint *arg1 = (b2GearJoint *) 0 ;
   b2Vec2 result;
   b2Vec2 *_swig_go_result;
@@ -8346,7 +8540,7 @@ b2Vec2 *_wrap_b2GearJoint_GetAnchorB_Box2D_b1d1b47c7e81f80a(b2GearJoint *_swig_g
 }
 
 
-b2Vec2 *_wrap_b2GearJoint_GetReactionForce_Box2D_b1d1b47c7e81f80a(b2GearJoint *_swig_go_0, float _swig_go_1) {
+b2Vec2 *_wrap_b2GearJoint_GetReactionForce_Box2D_553c0f9515edf50e(b2GearJoint *_swig_go_0, float _swig_go_1) {
   b2GearJoint *arg1 = (b2GearJoint *) 0 ;
   float32 arg2 ;
   b2Vec2 result;
@@ -8361,7 +8555,7 @@ b2Vec2 *_wrap_b2GearJoint_GetReactionForce_Box2D_b1d1b47c7e81f80a(b2GearJoint *_
 }
 
 
-float _wrap_b2GearJoint_GetReactionTorque_Box2D_b1d1b47c7e81f80a(b2GearJoint *_swig_go_0, float _swig_go_1) {
+float _wrap_b2GearJoint_GetReactionTorque_Box2D_553c0f9515edf50e(b2GearJoint *_swig_go_0, float _swig_go_1) {
   b2GearJoint *arg1 = (b2GearJoint *) 0 ;
   float32 arg2 ;
   float32 result;
@@ -8376,7 +8570,7 @@ float _wrap_b2GearJoint_GetReactionTorque_Box2D_b1d1b47c7e81f80a(b2GearJoint *_s
 }
 
 
-b2Joint *_wrap_b2GearJoint_GetJoint1_Box2D_b1d1b47c7e81f80a(b2GearJoint *_swig_go_0) {
+b2Joint *_wrap_b2GearJoint_GetJoint1_Box2D_553c0f9515edf50e(b2GearJoint *_swig_go_0) {
   b2GearJoint *arg1 = (b2GearJoint *) 0 ;
   b2Joint *result = 0 ;
   b2Joint *_swig_go_result;
@@ -8389,7 +8583,7 @@ b2Joint *_wrap_b2GearJoint_GetJoint1_Box2D_b1d1b47c7e81f80a(b2GearJoint *_swig_g
 }
 
 
-b2Joint *_wrap_b2GearJoint_GetJoint2_Box2D_b1d1b47c7e81f80a(b2GearJoint *_swig_go_0) {
+b2Joint *_wrap_b2GearJoint_GetJoint2_Box2D_553c0f9515edf50e(b2GearJoint *_swig_go_0) {
   b2GearJoint *arg1 = (b2GearJoint *) 0 ;
   b2Joint *result = 0 ;
   b2Joint *_swig_go_result;
@@ -8402,7 +8596,7 @@ b2Joint *_wrap_b2GearJoint_GetJoint2_Box2D_b1d1b47c7e81f80a(b2GearJoint *_swig_g
 }
 
 
-void _wrap_b2GearJoint_SetRatio_Box2D_b1d1b47c7e81f80a(b2GearJoint *_swig_go_0, float _swig_go_1) {
+void _wrap_b2GearJoint_SetRatio_Box2D_553c0f9515edf50e(b2GearJoint *_swig_go_0, float _swig_go_1) {
   b2GearJoint *arg1 = (b2GearJoint *) 0 ;
   float32 arg2 ;
   
@@ -8414,7 +8608,7 @@ void _wrap_b2GearJoint_SetRatio_Box2D_b1d1b47c7e81f80a(b2GearJoint *_swig_go_0, 
 }
 
 
-float _wrap_b2GearJoint_GetRatio_Box2D_b1d1b47c7e81f80a(b2GearJoint *_swig_go_0) {
+float _wrap_b2GearJoint_GetRatio_Box2D_553c0f9515edf50e(b2GearJoint *_swig_go_0) {
   b2GearJoint *arg1 = (b2GearJoint *) 0 ;
   float32 result;
   float _swig_go_result;
@@ -8427,7 +8621,7 @@ float _wrap_b2GearJoint_GetRatio_Box2D_b1d1b47c7e81f80a(b2GearJoint *_swig_go_0)
 }
 
 
-void _wrap_b2GearJoint_Dump_Box2D_b1d1b47c7e81f80a(b2GearJoint *_swig_go_0) {
+void _wrap_b2GearJoint_Dump_Box2D_553c0f9515edf50e(b2GearJoint *_swig_go_0) {
   b2GearJoint *arg1 = (b2GearJoint *) 0 ;
   
   arg1 = *(b2GearJoint **)&_swig_go_0; 
@@ -8437,7 +8631,7 @@ void _wrap_b2GearJoint_Dump_Box2D_b1d1b47c7e81f80a(b2GearJoint *_swig_go_0) {
 }
 
 
-void _wrap_delete_b2GearJoint_Box2D_b1d1b47c7e81f80a(b2GearJoint *_swig_go_0) {
+void _wrap_delete_b2GearJoint_Box2D_553c0f9515edf50e(b2GearJoint *_swig_go_0) {
   b2GearJoint *arg1 = (b2GearJoint *) 0 ;
   
   arg1 = *(b2GearJoint **)&_swig_go_0; 
@@ -8447,7 +8641,7 @@ void _wrap_delete_b2GearJoint_Box2D_b1d1b47c7e81f80a(b2GearJoint *_swig_go_0) {
 }
 
 
-b2MotorJointDef *_wrap_new_b2MotorJointDef_Box2D_b1d1b47c7e81f80a() {
+b2MotorJointDef *_wrap_new_b2MotorJointDef_Box2D_553c0f9515edf50e() {
   b2MotorJointDef *result = 0 ;
   b2MotorJointDef *_swig_go_result;
   
@@ -8458,7 +8652,7 @@ b2MotorJointDef *_wrap_new_b2MotorJointDef_Box2D_b1d1b47c7e81f80a() {
 }
 
 
-void _wrap_b2MotorJointDef_Initialize_Box2D_b1d1b47c7e81f80a(b2MotorJointDef *_swig_go_0, b2Body *_swig_go_1, b2Body *_swig_go_2) {
+void _wrap_b2MotorJointDef_Initialize_Box2D_553c0f9515edf50e(b2MotorJointDef *_swig_go_0, b2Body *_swig_go_1, b2Body *_swig_go_2) {
   b2MotorJointDef *arg1 = (b2MotorJointDef *) 0 ;
   b2Body *arg2 = (b2Body *) 0 ;
   b2Body *arg3 = (b2Body *) 0 ;
@@ -8472,7 +8666,7 @@ void _wrap_b2MotorJointDef_Initialize_Box2D_b1d1b47c7e81f80a(b2MotorJointDef *_s
 }
 
 
-void _wrap_b2MotorJointDef_linearOffset_set_Box2D_b1d1b47c7e81f80a(b2MotorJointDef *_swig_go_0, b2Vec2 *_swig_go_1) {
+void _wrap_b2MotorJointDef_linearOffset_set_Box2D_553c0f9515edf50e(b2MotorJointDef *_swig_go_0, b2Vec2 *_swig_go_1) {
   b2MotorJointDef *arg1 = (b2MotorJointDef *) 0 ;
   b2Vec2 *arg2 = (b2Vec2 *) 0 ;
   
@@ -8484,7 +8678,7 @@ void _wrap_b2MotorJointDef_linearOffset_set_Box2D_b1d1b47c7e81f80a(b2MotorJointD
 }
 
 
-b2Vec2 *_wrap_b2MotorJointDef_linearOffset_get_Box2D_b1d1b47c7e81f80a(b2MotorJointDef *_swig_go_0) {
+b2Vec2 *_wrap_b2MotorJointDef_linearOffset_get_Box2D_553c0f9515edf50e(b2MotorJointDef *_swig_go_0) {
   b2MotorJointDef *arg1 = (b2MotorJointDef *) 0 ;
   b2Vec2 *result = 0 ;
   b2Vec2 *_swig_go_result;
@@ -8497,7 +8691,7 @@ b2Vec2 *_wrap_b2MotorJointDef_linearOffset_get_Box2D_b1d1b47c7e81f80a(b2MotorJoi
 }
 
 
-void _wrap_b2MotorJointDef_angularOffset_set_Box2D_b1d1b47c7e81f80a(b2MotorJointDef *_swig_go_0, float _swig_go_1) {
+void _wrap_b2MotorJointDef_angularOffset_set_Box2D_553c0f9515edf50e(b2MotorJointDef *_swig_go_0, float _swig_go_1) {
   b2MotorJointDef *arg1 = (b2MotorJointDef *) 0 ;
   float32 arg2 ;
   
@@ -8509,7 +8703,7 @@ void _wrap_b2MotorJointDef_angularOffset_set_Box2D_b1d1b47c7e81f80a(b2MotorJoint
 }
 
 
-float _wrap_b2MotorJointDef_angularOffset_get_Box2D_b1d1b47c7e81f80a(b2MotorJointDef *_swig_go_0) {
+float _wrap_b2MotorJointDef_angularOffset_get_Box2D_553c0f9515edf50e(b2MotorJointDef *_swig_go_0) {
   b2MotorJointDef *arg1 = (b2MotorJointDef *) 0 ;
   float32 result;
   float _swig_go_result;
@@ -8522,7 +8716,7 @@ float _wrap_b2MotorJointDef_angularOffset_get_Box2D_b1d1b47c7e81f80a(b2MotorJoin
 }
 
 
-void _wrap_b2MotorJointDef_maxForce_set_Box2D_b1d1b47c7e81f80a(b2MotorJointDef *_swig_go_0, float _swig_go_1) {
+void _wrap_b2MotorJointDef_maxForce_set_Box2D_553c0f9515edf50e(b2MotorJointDef *_swig_go_0, float _swig_go_1) {
   b2MotorJointDef *arg1 = (b2MotorJointDef *) 0 ;
   float32 arg2 ;
   
@@ -8534,7 +8728,7 @@ void _wrap_b2MotorJointDef_maxForce_set_Box2D_b1d1b47c7e81f80a(b2MotorJointDef *
 }
 
 
-float _wrap_b2MotorJointDef_maxForce_get_Box2D_b1d1b47c7e81f80a(b2MotorJointDef *_swig_go_0) {
+float _wrap_b2MotorJointDef_maxForce_get_Box2D_553c0f9515edf50e(b2MotorJointDef *_swig_go_0) {
   b2MotorJointDef *arg1 = (b2MotorJointDef *) 0 ;
   float32 result;
   float _swig_go_result;
@@ -8547,7 +8741,7 @@ float _wrap_b2MotorJointDef_maxForce_get_Box2D_b1d1b47c7e81f80a(b2MotorJointDef 
 }
 
 
-void _wrap_b2MotorJointDef_maxTorque_set_Box2D_b1d1b47c7e81f80a(b2MotorJointDef *_swig_go_0, float _swig_go_1) {
+void _wrap_b2MotorJointDef_maxTorque_set_Box2D_553c0f9515edf50e(b2MotorJointDef *_swig_go_0, float _swig_go_1) {
   b2MotorJointDef *arg1 = (b2MotorJointDef *) 0 ;
   float32 arg2 ;
   
@@ -8559,7 +8753,7 @@ void _wrap_b2MotorJointDef_maxTorque_set_Box2D_b1d1b47c7e81f80a(b2MotorJointDef 
 }
 
 
-float _wrap_b2MotorJointDef_maxTorque_get_Box2D_b1d1b47c7e81f80a(b2MotorJointDef *_swig_go_0) {
+float _wrap_b2MotorJointDef_maxTorque_get_Box2D_553c0f9515edf50e(b2MotorJointDef *_swig_go_0) {
   b2MotorJointDef *arg1 = (b2MotorJointDef *) 0 ;
   float32 result;
   float _swig_go_result;
@@ -8572,7 +8766,7 @@ float _wrap_b2MotorJointDef_maxTorque_get_Box2D_b1d1b47c7e81f80a(b2MotorJointDef
 }
 
 
-void _wrap_b2MotorJointDef_correctionFactor_set_Box2D_b1d1b47c7e81f80a(b2MotorJointDef *_swig_go_0, float _swig_go_1) {
+void _wrap_b2MotorJointDef_correctionFactor_set_Box2D_553c0f9515edf50e(b2MotorJointDef *_swig_go_0, float _swig_go_1) {
   b2MotorJointDef *arg1 = (b2MotorJointDef *) 0 ;
   float32 arg2 ;
   
@@ -8584,7 +8778,7 @@ void _wrap_b2MotorJointDef_correctionFactor_set_Box2D_b1d1b47c7e81f80a(b2MotorJo
 }
 
 
-float _wrap_b2MotorJointDef_correctionFactor_get_Box2D_b1d1b47c7e81f80a(b2MotorJointDef *_swig_go_0) {
+float _wrap_b2MotorJointDef_correctionFactor_get_Box2D_553c0f9515edf50e(b2MotorJointDef *_swig_go_0) {
   b2MotorJointDef *arg1 = (b2MotorJointDef *) 0 ;
   float32 result;
   float _swig_go_result;
@@ -8597,7 +8791,7 @@ float _wrap_b2MotorJointDef_correctionFactor_get_Box2D_b1d1b47c7e81f80a(b2MotorJ
 }
 
 
-void _wrap_delete_b2MotorJointDef_Box2D_b1d1b47c7e81f80a(b2MotorJointDef *_swig_go_0) {
+void _wrap_delete_b2MotorJointDef_Box2D_553c0f9515edf50e(b2MotorJointDef *_swig_go_0) {
   b2MotorJointDef *arg1 = (b2MotorJointDef *) 0 ;
   
   arg1 = *(b2MotorJointDef **)&_swig_go_0; 
@@ -8607,7 +8801,7 @@ void _wrap_delete_b2MotorJointDef_Box2D_b1d1b47c7e81f80a(b2MotorJointDef *_swig_
 }
 
 
-b2Vec2 *_wrap_b2MotorJoint_GetAnchorA_Box2D_b1d1b47c7e81f80a(b2MotorJoint *_swig_go_0) {
+b2Vec2 *_wrap_b2MotorJoint_GetAnchorA_Box2D_553c0f9515edf50e(b2MotorJoint *_swig_go_0) {
   b2MotorJoint *arg1 = (b2MotorJoint *) 0 ;
   b2Vec2 result;
   b2Vec2 *_swig_go_result;
@@ -8620,7 +8814,7 @@ b2Vec2 *_wrap_b2MotorJoint_GetAnchorA_Box2D_b1d1b47c7e81f80a(b2MotorJoint *_swig
 }
 
 
-b2Vec2 *_wrap_b2MotorJoint_GetAnchorB_Box2D_b1d1b47c7e81f80a(b2MotorJoint *_swig_go_0) {
+b2Vec2 *_wrap_b2MotorJoint_GetAnchorB_Box2D_553c0f9515edf50e(b2MotorJoint *_swig_go_0) {
   b2MotorJoint *arg1 = (b2MotorJoint *) 0 ;
   b2Vec2 result;
   b2Vec2 *_swig_go_result;
@@ -8633,7 +8827,7 @@ b2Vec2 *_wrap_b2MotorJoint_GetAnchorB_Box2D_b1d1b47c7e81f80a(b2MotorJoint *_swig
 }
 
 
-b2Vec2 *_wrap_b2MotorJoint_GetReactionForce_Box2D_b1d1b47c7e81f80a(b2MotorJoint *_swig_go_0, float _swig_go_1) {
+b2Vec2 *_wrap_b2MotorJoint_GetReactionForce_Box2D_553c0f9515edf50e(b2MotorJoint *_swig_go_0, float _swig_go_1) {
   b2MotorJoint *arg1 = (b2MotorJoint *) 0 ;
   float32 arg2 ;
   b2Vec2 result;
@@ -8648,7 +8842,7 @@ b2Vec2 *_wrap_b2MotorJoint_GetReactionForce_Box2D_b1d1b47c7e81f80a(b2MotorJoint 
 }
 
 
-float _wrap_b2MotorJoint_GetReactionTorque_Box2D_b1d1b47c7e81f80a(b2MotorJoint *_swig_go_0, float _swig_go_1) {
+float _wrap_b2MotorJoint_GetReactionTorque_Box2D_553c0f9515edf50e(b2MotorJoint *_swig_go_0, float _swig_go_1) {
   b2MotorJoint *arg1 = (b2MotorJoint *) 0 ;
   float32 arg2 ;
   float32 result;
@@ -8663,7 +8857,7 @@ float _wrap_b2MotorJoint_GetReactionTorque_Box2D_b1d1b47c7e81f80a(b2MotorJoint *
 }
 
 
-void _wrap_b2MotorJoint_SetLinearOffset_Box2D_b1d1b47c7e81f80a(b2MotorJoint *_swig_go_0, b2Vec2 *_swig_go_1) {
+void _wrap_b2MotorJoint_SetLinearOffset_Box2D_553c0f9515edf50e(b2MotorJoint *_swig_go_0, b2Vec2 *_swig_go_1) {
   b2MotorJoint *arg1 = (b2MotorJoint *) 0 ;
   b2Vec2 *arg2 = 0 ;
   
@@ -8675,7 +8869,7 @@ void _wrap_b2MotorJoint_SetLinearOffset_Box2D_b1d1b47c7e81f80a(b2MotorJoint *_sw
 }
 
 
-b2Vec2 *_wrap_b2MotorJoint_GetLinearOffset_Box2D_b1d1b47c7e81f80a(b2MotorJoint *_swig_go_0) {
+b2Vec2 *_wrap_b2MotorJoint_GetLinearOffset_Box2D_553c0f9515edf50e(b2MotorJoint *_swig_go_0) {
   b2MotorJoint *arg1 = (b2MotorJoint *) 0 ;
   b2Vec2 *result = 0 ;
   b2Vec2 *_swig_go_result;
@@ -8688,7 +8882,7 @@ b2Vec2 *_wrap_b2MotorJoint_GetLinearOffset_Box2D_b1d1b47c7e81f80a(b2MotorJoint *
 }
 
 
-void _wrap_b2MotorJoint_SetAngularOffset_Box2D_b1d1b47c7e81f80a(b2MotorJoint *_swig_go_0, float _swig_go_1) {
+void _wrap_b2MotorJoint_SetAngularOffset_Box2D_553c0f9515edf50e(b2MotorJoint *_swig_go_0, float _swig_go_1) {
   b2MotorJoint *arg1 = (b2MotorJoint *) 0 ;
   float32 arg2 ;
   
@@ -8700,7 +8894,7 @@ void _wrap_b2MotorJoint_SetAngularOffset_Box2D_b1d1b47c7e81f80a(b2MotorJoint *_s
 }
 
 
-float _wrap_b2MotorJoint_GetAngularOffset_Box2D_b1d1b47c7e81f80a(b2MotorJoint *_swig_go_0) {
+float _wrap_b2MotorJoint_GetAngularOffset_Box2D_553c0f9515edf50e(b2MotorJoint *_swig_go_0) {
   b2MotorJoint *arg1 = (b2MotorJoint *) 0 ;
   float32 result;
   float _swig_go_result;
@@ -8713,7 +8907,7 @@ float _wrap_b2MotorJoint_GetAngularOffset_Box2D_b1d1b47c7e81f80a(b2MotorJoint *_
 }
 
 
-void _wrap_b2MotorJoint_SetMaxForce_Box2D_b1d1b47c7e81f80a(b2MotorJoint *_swig_go_0, float _swig_go_1) {
+void _wrap_b2MotorJoint_SetMaxForce_Box2D_553c0f9515edf50e(b2MotorJoint *_swig_go_0, float _swig_go_1) {
   b2MotorJoint *arg1 = (b2MotorJoint *) 0 ;
   float32 arg2 ;
   
@@ -8725,7 +8919,7 @@ void _wrap_b2MotorJoint_SetMaxForce_Box2D_b1d1b47c7e81f80a(b2MotorJoint *_swig_g
 }
 
 
-float _wrap_b2MotorJoint_GetMaxForce_Box2D_b1d1b47c7e81f80a(b2MotorJoint *_swig_go_0) {
+float _wrap_b2MotorJoint_GetMaxForce_Box2D_553c0f9515edf50e(b2MotorJoint *_swig_go_0) {
   b2MotorJoint *arg1 = (b2MotorJoint *) 0 ;
   float32 result;
   float _swig_go_result;
@@ -8738,7 +8932,7 @@ float _wrap_b2MotorJoint_GetMaxForce_Box2D_b1d1b47c7e81f80a(b2MotorJoint *_swig_
 }
 
 
-void _wrap_b2MotorJoint_SetMaxTorque_Box2D_b1d1b47c7e81f80a(b2MotorJoint *_swig_go_0, float _swig_go_1) {
+void _wrap_b2MotorJoint_SetMaxTorque_Box2D_553c0f9515edf50e(b2MotorJoint *_swig_go_0, float _swig_go_1) {
   b2MotorJoint *arg1 = (b2MotorJoint *) 0 ;
   float32 arg2 ;
   
@@ -8750,7 +8944,7 @@ void _wrap_b2MotorJoint_SetMaxTorque_Box2D_b1d1b47c7e81f80a(b2MotorJoint *_swig_
 }
 
 
-float _wrap_b2MotorJoint_GetMaxTorque_Box2D_b1d1b47c7e81f80a(b2MotorJoint *_swig_go_0) {
+float _wrap_b2MotorJoint_GetMaxTorque_Box2D_553c0f9515edf50e(b2MotorJoint *_swig_go_0) {
   b2MotorJoint *arg1 = (b2MotorJoint *) 0 ;
   float32 result;
   float _swig_go_result;
@@ -8763,7 +8957,7 @@ float _wrap_b2MotorJoint_GetMaxTorque_Box2D_b1d1b47c7e81f80a(b2MotorJoint *_swig
 }
 
 
-void _wrap_b2MotorJoint_SetCorrectionFactor_Box2D_b1d1b47c7e81f80a(b2MotorJoint *_swig_go_0, float _swig_go_1) {
+void _wrap_b2MotorJoint_SetCorrectionFactor_Box2D_553c0f9515edf50e(b2MotorJoint *_swig_go_0, float _swig_go_1) {
   b2MotorJoint *arg1 = (b2MotorJoint *) 0 ;
   float32 arg2 ;
   
@@ -8775,7 +8969,7 @@ void _wrap_b2MotorJoint_SetCorrectionFactor_Box2D_b1d1b47c7e81f80a(b2MotorJoint 
 }
 
 
-float _wrap_b2MotorJoint_GetCorrectionFactor_Box2D_b1d1b47c7e81f80a(b2MotorJoint *_swig_go_0) {
+float _wrap_b2MotorJoint_GetCorrectionFactor_Box2D_553c0f9515edf50e(b2MotorJoint *_swig_go_0) {
   b2MotorJoint *arg1 = (b2MotorJoint *) 0 ;
   float32 result;
   float _swig_go_result;
@@ -8788,7 +8982,7 @@ float _wrap_b2MotorJoint_GetCorrectionFactor_Box2D_b1d1b47c7e81f80a(b2MotorJoint
 }
 
 
-void _wrap_b2MotorJoint_Dump_Box2D_b1d1b47c7e81f80a(b2MotorJoint *_swig_go_0) {
+void _wrap_b2MotorJoint_Dump_Box2D_553c0f9515edf50e(b2MotorJoint *_swig_go_0) {
   b2MotorJoint *arg1 = (b2MotorJoint *) 0 ;
   
   arg1 = *(b2MotorJoint **)&_swig_go_0; 
@@ -8798,7 +8992,7 @@ void _wrap_b2MotorJoint_Dump_Box2D_b1d1b47c7e81f80a(b2MotorJoint *_swig_go_0) {
 }
 
 
-void _wrap_delete_b2MotorJoint_Box2D_b1d1b47c7e81f80a(b2MotorJoint *_swig_go_0) {
+void _wrap_delete_b2MotorJoint_Box2D_553c0f9515edf50e(b2MotorJoint *_swig_go_0) {
   b2MotorJoint *arg1 = (b2MotorJoint *) 0 ;
   
   arg1 = *(b2MotorJoint **)&_swig_go_0; 
@@ -8808,7 +9002,7 @@ void _wrap_delete_b2MotorJoint_Box2D_b1d1b47c7e81f80a(b2MotorJoint *_swig_go_0) 
 }
 
 
-b2MouseJointDef *_wrap_new_b2MouseJointDef_Box2D_b1d1b47c7e81f80a() {
+b2MouseJointDef *_wrap_new_b2MouseJointDef_Box2D_553c0f9515edf50e() {
   b2MouseJointDef *result = 0 ;
   b2MouseJointDef *_swig_go_result;
   
@@ -8819,7 +9013,7 @@ b2MouseJointDef *_wrap_new_b2MouseJointDef_Box2D_b1d1b47c7e81f80a() {
 }
 
 
-void _wrap_b2MouseJointDef_target_set_Box2D_b1d1b47c7e81f80a(b2MouseJointDef *_swig_go_0, b2Vec2 *_swig_go_1) {
+void _wrap_b2MouseJointDef_target_set_Box2D_553c0f9515edf50e(b2MouseJointDef *_swig_go_0, b2Vec2 *_swig_go_1) {
   b2MouseJointDef *arg1 = (b2MouseJointDef *) 0 ;
   b2Vec2 *arg2 = (b2Vec2 *) 0 ;
   
@@ -8831,7 +9025,7 @@ void _wrap_b2MouseJointDef_target_set_Box2D_b1d1b47c7e81f80a(b2MouseJointDef *_s
 }
 
 
-b2Vec2 *_wrap_b2MouseJointDef_target_get_Box2D_b1d1b47c7e81f80a(b2MouseJointDef *_swig_go_0) {
+b2Vec2 *_wrap_b2MouseJointDef_target_get_Box2D_553c0f9515edf50e(b2MouseJointDef *_swig_go_0) {
   b2MouseJointDef *arg1 = (b2MouseJointDef *) 0 ;
   b2Vec2 *result = 0 ;
   b2Vec2 *_swig_go_result;
@@ -8844,7 +9038,7 @@ b2Vec2 *_wrap_b2MouseJointDef_target_get_Box2D_b1d1b47c7e81f80a(b2MouseJointDef 
 }
 
 
-void _wrap_b2MouseJointDef_maxForce_set_Box2D_b1d1b47c7e81f80a(b2MouseJointDef *_swig_go_0, float _swig_go_1) {
+void _wrap_b2MouseJointDef_maxForce_set_Box2D_553c0f9515edf50e(b2MouseJointDef *_swig_go_0, float _swig_go_1) {
   b2MouseJointDef *arg1 = (b2MouseJointDef *) 0 ;
   float32 arg2 ;
   
@@ -8856,7 +9050,7 @@ void _wrap_b2MouseJointDef_maxForce_set_Box2D_b1d1b47c7e81f80a(b2MouseJointDef *
 }
 
 
-float _wrap_b2MouseJointDef_maxForce_get_Box2D_b1d1b47c7e81f80a(b2MouseJointDef *_swig_go_0) {
+float _wrap_b2MouseJointDef_maxForce_get_Box2D_553c0f9515edf50e(b2MouseJointDef *_swig_go_0) {
   b2MouseJointDef *arg1 = (b2MouseJointDef *) 0 ;
   float32 result;
   float _swig_go_result;
@@ -8869,7 +9063,7 @@ float _wrap_b2MouseJointDef_maxForce_get_Box2D_b1d1b47c7e81f80a(b2MouseJointDef 
 }
 
 
-void _wrap_b2MouseJointDef_frequencyHz_set_Box2D_b1d1b47c7e81f80a(b2MouseJointDef *_swig_go_0, float _swig_go_1) {
+void _wrap_b2MouseJointDef_frequencyHz_set_Box2D_553c0f9515edf50e(b2MouseJointDef *_swig_go_0, float _swig_go_1) {
   b2MouseJointDef *arg1 = (b2MouseJointDef *) 0 ;
   float32 arg2 ;
   
@@ -8881,7 +9075,7 @@ void _wrap_b2MouseJointDef_frequencyHz_set_Box2D_b1d1b47c7e81f80a(b2MouseJointDe
 }
 
 
-float _wrap_b2MouseJointDef_frequencyHz_get_Box2D_b1d1b47c7e81f80a(b2MouseJointDef *_swig_go_0) {
+float _wrap_b2MouseJointDef_frequencyHz_get_Box2D_553c0f9515edf50e(b2MouseJointDef *_swig_go_0) {
   b2MouseJointDef *arg1 = (b2MouseJointDef *) 0 ;
   float32 result;
   float _swig_go_result;
@@ -8894,7 +9088,7 @@ float _wrap_b2MouseJointDef_frequencyHz_get_Box2D_b1d1b47c7e81f80a(b2MouseJointD
 }
 
 
-void _wrap_b2MouseJointDef_dampingRatio_set_Box2D_b1d1b47c7e81f80a(b2MouseJointDef *_swig_go_0, float _swig_go_1) {
+void _wrap_b2MouseJointDef_dampingRatio_set_Box2D_553c0f9515edf50e(b2MouseJointDef *_swig_go_0, float _swig_go_1) {
   b2MouseJointDef *arg1 = (b2MouseJointDef *) 0 ;
   float32 arg2 ;
   
@@ -8906,7 +9100,7 @@ void _wrap_b2MouseJointDef_dampingRatio_set_Box2D_b1d1b47c7e81f80a(b2MouseJointD
 }
 
 
-float _wrap_b2MouseJointDef_dampingRatio_get_Box2D_b1d1b47c7e81f80a(b2MouseJointDef *_swig_go_0) {
+float _wrap_b2MouseJointDef_dampingRatio_get_Box2D_553c0f9515edf50e(b2MouseJointDef *_swig_go_0) {
   b2MouseJointDef *arg1 = (b2MouseJointDef *) 0 ;
   float32 result;
   float _swig_go_result;
@@ -8919,7 +9113,7 @@ float _wrap_b2MouseJointDef_dampingRatio_get_Box2D_b1d1b47c7e81f80a(b2MouseJoint
 }
 
 
-void _wrap_delete_b2MouseJointDef_Box2D_b1d1b47c7e81f80a(b2MouseJointDef *_swig_go_0) {
+void _wrap_delete_b2MouseJointDef_Box2D_553c0f9515edf50e(b2MouseJointDef *_swig_go_0) {
   b2MouseJointDef *arg1 = (b2MouseJointDef *) 0 ;
   
   arg1 = *(b2MouseJointDef **)&_swig_go_0; 
@@ -8929,7 +9123,7 @@ void _wrap_delete_b2MouseJointDef_Box2D_b1d1b47c7e81f80a(b2MouseJointDef *_swig_
 }
 
 
-b2Vec2 *_wrap_b2MouseJoint_GetAnchorA_Box2D_b1d1b47c7e81f80a(b2MouseJoint *_swig_go_0) {
+b2Vec2 *_wrap_b2MouseJoint_GetAnchorA_Box2D_553c0f9515edf50e(b2MouseJoint *_swig_go_0) {
   b2MouseJoint *arg1 = (b2MouseJoint *) 0 ;
   b2Vec2 result;
   b2Vec2 *_swig_go_result;
@@ -8942,7 +9136,7 @@ b2Vec2 *_wrap_b2MouseJoint_GetAnchorA_Box2D_b1d1b47c7e81f80a(b2MouseJoint *_swig
 }
 
 
-b2Vec2 *_wrap_b2MouseJoint_GetAnchorB_Box2D_b1d1b47c7e81f80a(b2MouseJoint *_swig_go_0) {
+b2Vec2 *_wrap_b2MouseJoint_GetAnchorB_Box2D_553c0f9515edf50e(b2MouseJoint *_swig_go_0) {
   b2MouseJoint *arg1 = (b2MouseJoint *) 0 ;
   b2Vec2 result;
   b2Vec2 *_swig_go_result;
@@ -8955,7 +9149,7 @@ b2Vec2 *_wrap_b2MouseJoint_GetAnchorB_Box2D_b1d1b47c7e81f80a(b2MouseJoint *_swig
 }
 
 
-b2Vec2 *_wrap_b2MouseJoint_GetReactionForce_Box2D_b1d1b47c7e81f80a(b2MouseJoint *_swig_go_0, float _swig_go_1) {
+b2Vec2 *_wrap_b2MouseJoint_GetReactionForce_Box2D_553c0f9515edf50e(b2MouseJoint *_swig_go_0, float _swig_go_1) {
   b2MouseJoint *arg1 = (b2MouseJoint *) 0 ;
   float32 arg2 ;
   b2Vec2 result;
@@ -8970,7 +9164,7 @@ b2Vec2 *_wrap_b2MouseJoint_GetReactionForce_Box2D_b1d1b47c7e81f80a(b2MouseJoint 
 }
 
 
-float _wrap_b2MouseJoint_GetReactionTorque_Box2D_b1d1b47c7e81f80a(b2MouseJoint *_swig_go_0, float _swig_go_1) {
+float _wrap_b2MouseJoint_GetReactionTorque_Box2D_553c0f9515edf50e(b2MouseJoint *_swig_go_0, float _swig_go_1) {
   b2MouseJoint *arg1 = (b2MouseJoint *) 0 ;
   float32 arg2 ;
   float32 result;
@@ -8985,7 +9179,7 @@ float _wrap_b2MouseJoint_GetReactionTorque_Box2D_b1d1b47c7e81f80a(b2MouseJoint *
 }
 
 
-void _wrap_b2MouseJoint_SetTarget_Box2D_b1d1b47c7e81f80a(b2MouseJoint *_swig_go_0, b2Vec2 *_swig_go_1) {
+void _wrap_b2MouseJoint_SetTarget_Box2D_553c0f9515edf50e(b2MouseJoint *_swig_go_0, b2Vec2 *_swig_go_1) {
   b2MouseJoint *arg1 = (b2MouseJoint *) 0 ;
   b2Vec2 *arg2 = 0 ;
   
@@ -8997,7 +9191,7 @@ void _wrap_b2MouseJoint_SetTarget_Box2D_b1d1b47c7e81f80a(b2MouseJoint *_swig_go_
 }
 
 
-b2Vec2 *_wrap_b2MouseJoint_GetTarget_Box2D_b1d1b47c7e81f80a(b2MouseJoint *_swig_go_0) {
+b2Vec2 *_wrap_b2MouseJoint_GetTarget_Box2D_553c0f9515edf50e(b2MouseJoint *_swig_go_0) {
   b2MouseJoint *arg1 = (b2MouseJoint *) 0 ;
   b2Vec2 *result = 0 ;
   b2Vec2 *_swig_go_result;
@@ -9010,7 +9204,7 @@ b2Vec2 *_wrap_b2MouseJoint_GetTarget_Box2D_b1d1b47c7e81f80a(b2MouseJoint *_swig_
 }
 
 
-void _wrap_b2MouseJoint_SetMaxForce_Box2D_b1d1b47c7e81f80a(b2MouseJoint *_swig_go_0, float _swig_go_1) {
+void _wrap_b2MouseJoint_SetMaxForce_Box2D_553c0f9515edf50e(b2MouseJoint *_swig_go_0, float _swig_go_1) {
   b2MouseJoint *arg1 = (b2MouseJoint *) 0 ;
   float32 arg2 ;
   
@@ -9022,7 +9216,7 @@ void _wrap_b2MouseJoint_SetMaxForce_Box2D_b1d1b47c7e81f80a(b2MouseJoint *_swig_g
 }
 
 
-float _wrap_b2MouseJoint_GetMaxForce_Box2D_b1d1b47c7e81f80a(b2MouseJoint *_swig_go_0) {
+float _wrap_b2MouseJoint_GetMaxForce_Box2D_553c0f9515edf50e(b2MouseJoint *_swig_go_0) {
   b2MouseJoint *arg1 = (b2MouseJoint *) 0 ;
   float32 result;
   float _swig_go_result;
@@ -9035,7 +9229,7 @@ float _wrap_b2MouseJoint_GetMaxForce_Box2D_b1d1b47c7e81f80a(b2MouseJoint *_swig_
 }
 
 
-void _wrap_b2MouseJoint_SetFrequency_Box2D_b1d1b47c7e81f80a(b2MouseJoint *_swig_go_0, float _swig_go_1) {
+void _wrap_b2MouseJoint_SetFrequency_Box2D_553c0f9515edf50e(b2MouseJoint *_swig_go_0, float _swig_go_1) {
   b2MouseJoint *arg1 = (b2MouseJoint *) 0 ;
   float32 arg2 ;
   
@@ -9047,7 +9241,7 @@ void _wrap_b2MouseJoint_SetFrequency_Box2D_b1d1b47c7e81f80a(b2MouseJoint *_swig_
 }
 
 
-float _wrap_b2MouseJoint_GetFrequency_Box2D_b1d1b47c7e81f80a(b2MouseJoint *_swig_go_0) {
+float _wrap_b2MouseJoint_GetFrequency_Box2D_553c0f9515edf50e(b2MouseJoint *_swig_go_0) {
   b2MouseJoint *arg1 = (b2MouseJoint *) 0 ;
   float32 result;
   float _swig_go_result;
@@ -9060,7 +9254,7 @@ float _wrap_b2MouseJoint_GetFrequency_Box2D_b1d1b47c7e81f80a(b2MouseJoint *_swig
 }
 
 
-void _wrap_b2MouseJoint_SetDampingRatio_Box2D_b1d1b47c7e81f80a(b2MouseJoint *_swig_go_0, float _swig_go_1) {
+void _wrap_b2MouseJoint_SetDampingRatio_Box2D_553c0f9515edf50e(b2MouseJoint *_swig_go_0, float _swig_go_1) {
   b2MouseJoint *arg1 = (b2MouseJoint *) 0 ;
   float32 arg2 ;
   
@@ -9072,7 +9266,7 @@ void _wrap_b2MouseJoint_SetDampingRatio_Box2D_b1d1b47c7e81f80a(b2MouseJoint *_sw
 }
 
 
-float _wrap_b2MouseJoint_GetDampingRatio_Box2D_b1d1b47c7e81f80a(b2MouseJoint *_swig_go_0) {
+float _wrap_b2MouseJoint_GetDampingRatio_Box2D_553c0f9515edf50e(b2MouseJoint *_swig_go_0) {
   b2MouseJoint *arg1 = (b2MouseJoint *) 0 ;
   float32 result;
   float _swig_go_result;
@@ -9085,7 +9279,7 @@ float _wrap_b2MouseJoint_GetDampingRatio_Box2D_b1d1b47c7e81f80a(b2MouseJoint *_s
 }
 
 
-void _wrap_b2MouseJoint_Dump_Box2D_b1d1b47c7e81f80a(b2MouseJoint *_swig_go_0) {
+void _wrap_b2MouseJoint_Dump_Box2D_553c0f9515edf50e(b2MouseJoint *_swig_go_0) {
   b2MouseJoint *arg1 = (b2MouseJoint *) 0 ;
   
   arg1 = *(b2MouseJoint **)&_swig_go_0; 
@@ -9095,7 +9289,7 @@ void _wrap_b2MouseJoint_Dump_Box2D_b1d1b47c7e81f80a(b2MouseJoint *_swig_go_0) {
 }
 
 
-void _wrap_b2MouseJoint_ShiftOrigin_Box2D_b1d1b47c7e81f80a(b2MouseJoint *_swig_go_0, b2Vec2 *_swig_go_1) {
+void _wrap_b2MouseJoint_ShiftOrigin_Box2D_553c0f9515edf50e(b2MouseJoint *_swig_go_0, b2Vec2 *_swig_go_1) {
   b2MouseJoint *arg1 = (b2MouseJoint *) 0 ;
   b2Vec2 *arg2 = 0 ;
   
@@ -9107,7 +9301,7 @@ void _wrap_b2MouseJoint_ShiftOrigin_Box2D_b1d1b47c7e81f80a(b2MouseJoint *_swig_g
 }
 
 
-void _wrap_delete_b2MouseJoint_Box2D_b1d1b47c7e81f80a(b2MouseJoint *_swig_go_0) {
+void _wrap_delete_b2MouseJoint_Box2D_553c0f9515edf50e(b2MouseJoint *_swig_go_0) {
   b2MouseJoint *arg1 = (b2MouseJoint *) 0 ;
   
   arg1 = *(b2MouseJoint **)&_swig_go_0; 
@@ -9117,7 +9311,7 @@ void _wrap_delete_b2MouseJoint_Box2D_b1d1b47c7e81f80a(b2MouseJoint *_swig_go_0) 
 }
 
 
-b2PrismaticJointDef *_wrap_new_b2PrismaticJointDef_Box2D_b1d1b47c7e81f80a() {
+b2PrismaticJointDef *_wrap_new_b2PrismaticJointDef_Box2D_553c0f9515edf50e() {
   b2PrismaticJointDef *result = 0 ;
   b2PrismaticJointDef *_swig_go_result;
   
@@ -9128,7 +9322,7 @@ b2PrismaticJointDef *_wrap_new_b2PrismaticJointDef_Box2D_b1d1b47c7e81f80a() {
 }
 
 
-void _wrap_b2PrismaticJointDef_Initialize_Box2D_b1d1b47c7e81f80a(b2PrismaticJointDef *_swig_go_0, b2Body *_swig_go_1, b2Body *_swig_go_2, b2Vec2 *_swig_go_3, b2Vec2 *_swig_go_4) {
+void _wrap_b2PrismaticJointDef_Initialize_Box2D_553c0f9515edf50e(b2PrismaticJointDef *_swig_go_0, b2Body *_swig_go_1, b2Body *_swig_go_2, b2Vec2 *_swig_go_3, b2Vec2 *_swig_go_4) {
   b2PrismaticJointDef *arg1 = (b2PrismaticJointDef *) 0 ;
   b2Body *arg2 = (b2Body *) 0 ;
   b2Body *arg3 = (b2Body *) 0 ;
@@ -9146,7 +9340,7 @@ void _wrap_b2PrismaticJointDef_Initialize_Box2D_b1d1b47c7e81f80a(b2PrismaticJoin
 }
 
 
-void _wrap_b2PrismaticJointDef_localAnchorA_set_Box2D_b1d1b47c7e81f80a(b2PrismaticJointDef *_swig_go_0, b2Vec2 *_swig_go_1) {
+void _wrap_b2PrismaticJointDef_localAnchorA_set_Box2D_553c0f9515edf50e(b2PrismaticJointDef *_swig_go_0, b2Vec2 *_swig_go_1) {
   b2PrismaticJointDef *arg1 = (b2PrismaticJointDef *) 0 ;
   b2Vec2 *arg2 = (b2Vec2 *) 0 ;
   
@@ -9158,7 +9352,7 @@ void _wrap_b2PrismaticJointDef_localAnchorA_set_Box2D_b1d1b47c7e81f80a(b2Prismat
 }
 
 
-b2Vec2 *_wrap_b2PrismaticJointDef_localAnchorA_get_Box2D_b1d1b47c7e81f80a(b2PrismaticJointDef *_swig_go_0) {
+b2Vec2 *_wrap_b2PrismaticJointDef_localAnchorA_get_Box2D_553c0f9515edf50e(b2PrismaticJointDef *_swig_go_0) {
   b2PrismaticJointDef *arg1 = (b2PrismaticJointDef *) 0 ;
   b2Vec2 *result = 0 ;
   b2Vec2 *_swig_go_result;
@@ -9171,7 +9365,7 @@ b2Vec2 *_wrap_b2PrismaticJointDef_localAnchorA_get_Box2D_b1d1b47c7e81f80a(b2Pris
 }
 
 
-void _wrap_b2PrismaticJointDef_localAnchorB_set_Box2D_b1d1b47c7e81f80a(b2PrismaticJointDef *_swig_go_0, b2Vec2 *_swig_go_1) {
+void _wrap_b2PrismaticJointDef_localAnchorB_set_Box2D_553c0f9515edf50e(b2PrismaticJointDef *_swig_go_0, b2Vec2 *_swig_go_1) {
   b2PrismaticJointDef *arg1 = (b2PrismaticJointDef *) 0 ;
   b2Vec2 *arg2 = (b2Vec2 *) 0 ;
   
@@ -9183,7 +9377,7 @@ void _wrap_b2PrismaticJointDef_localAnchorB_set_Box2D_b1d1b47c7e81f80a(b2Prismat
 }
 
 
-b2Vec2 *_wrap_b2PrismaticJointDef_localAnchorB_get_Box2D_b1d1b47c7e81f80a(b2PrismaticJointDef *_swig_go_0) {
+b2Vec2 *_wrap_b2PrismaticJointDef_localAnchorB_get_Box2D_553c0f9515edf50e(b2PrismaticJointDef *_swig_go_0) {
   b2PrismaticJointDef *arg1 = (b2PrismaticJointDef *) 0 ;
   b2Vec2 *result = 0 ;
   b2Vec2 *_swig_go_result;
@@ -9196,7 +9390,7 @@ b2Vec2 *_wrap_b2PrismaticJointDef_localAnchorB_get_Box2D_b1d1b47c7e81f80a(b2Pris
 }
 
 
-void _wrap_b2PrismaticJointDef_localAxisA_set_Box2D_b1d1b47c7e81f80a(b2PrismaticJointDef *_swig_go_0, b2Vec2 *_swig_go_1) {
+void _wrap_b2PrismaticJointDef_localAxisA_set_Box2D_553c0f9515edf50e(b2PrismaticJointDef *_swig_go_0, b2Vec2 *_swig_go_1) {
   b2PrismaticJointDef *arg1 = (b2PrismaticJointDef *) 0 ;
   b2Vec2 *arg2 = (b2Vec2 *) 0 ;
   
@@ -9208,7 +9402,7 @@ void _wrap_b2PrismaticJointDef_localAxisA_set_Box2D_b1d1b47c7e81f80a(b2Prismatic
 }
 
 
-b2Vec2 *_wrap_b2PrismaticJointDef_localAxisA_get_Box2D_b1d1b47c7e81f80a(b2PrismaticJointDef *_swig_go_0) {
+b2Vec2 *_wrap_b2PrismaticJointDef_localAxisA_get_Box2D_553c0f9515edf50e(b2PrismaticJointDef *_swig_go_0) {
   b2PrismaticJointDef *arg1 = (b2PrismaticJointDef *) 0 ;
   b2Vec2 *result = 0 ;
   b2Vec2 *_swig_go_result;
@@ -9221,7 +9415,7 @@ b2Vec2 *_wrap_b2PrismaticJointDef_localAxisA_get_Box2D_b1d1b47c7e81f80a(b2Prisma
 }
 
 
-void _wrap_b2PrismaticJointDef_referenceAngle_set_Box2D_b1d1b47c7e81f80a(b2PrismaticJointDef *_swig_go_0, float _swig_go_1) {
+void _wrap_b2PrismaticJointDef_referenceAngle_set_Box2D_553c0f9515edf50e(b2PrismaticJointDef *_swig_go_0, float _swig_go_1) {
   b2PrismaticJointDef *arg1 = (b2PrismaticJointDef *) 0 ;
   float32 arg2 ;
   
@@ -9233,7 +9427,7 @@ void _wrap_b2PrismaticJointDef_referenceAngle_set_Box2D_b1d1b47c7e81f80a(b2Prism
 }
 
 
-float _wrap_b2PrismaticJointDef_referenceAngle_get_Box2D_b1d1b47c7e81f80a(b2PrismaticJointDef *_swig_go_0) {
+float _wrap_b2PrismaticJointDef_referenceAngle_get_Box2D_553c0f9515edf50e(b2PrismaticJointDef *_swig_go_0) {
   b2PrismaticJointDef *arg1 = (b2PrismaticJointDef *) 0 ;
   float32 result;
   float _swig_go_result;
@@ -9246,7 +9440,7 @@ float _wrap_b2PrismaticJointDef_referenceAngle_get_Box2D_b1d1b47c7e81f80a(b2Pris
 }
 
 
-void _wrap_b2PrismaticJointDef_enableLimit_set_Box2D_b1d1b47c7e81f80a(b2PrismaticJointDef *_swig_go_0, bool _swig_go_1) {
+void _wrap_b2PrismaticJointDef_enableLimit_set_Box2D_553c0f9515edf50e(b2PrismaticJointDef *_swig_go_0, bool _swig_go_1) {
   b2PrismaticJointDef *arg1 = (b2PrismaticJointDef *) 0 ;
   bool arg2 ;
   
@@ -9258,7 +9452,7 @@ void _wrap_b2PrismaticJointDef_enableLimit_set_Box2D_b1d1b47c7e81f80a(b2Prismati
 }
 
 
-bool _wrap_b2PrismaticJointDef_enableLimit_get_Box2D_b1d1b47c7e81f80a(b2PrismaticJointDef *_swig_go_0) {
+bool _wrap_b2PrismaticJointDef_enableLimit_get_Box2D_553c0f9515edf50e(b2PrismaticJointDef *_swig_go_0) {
   b2PrismaticJointDef *arg1 = (b2PrismaticJointDef *) 0 ;
   bool result;
   bool _swig_go_result;
@@ -9271,7 +9465,7 @@ bool _wrap_b2PrismaticJointDef_enableLimit_get_Box2D_b1d1b47c7e81f80a(b2Prismati
 }
 
 
-void _wrap_b2PrismaticJointDef_lowerTranslation_set_Box2D_b1d1b47c7e81f80a(b2PrismaticJointDef *_swig_go_0, float _swig_go_1) {
+void _wrap_b2PrismaticJointDef_lowerTranslation_set_Box2D_553c0f9515edf50e(b2PrismaticJointDef *_swig_go_0, float _swig_go_1) {
   b2PrismaticJointDef *arg1 = (b2PrismaticJointDef *) 0 ;
   float32 arg2 ;
   
@@ -9283,7 +9477,7 @@ void _wrap_b2PrismaticJointDef_lowerTranslation_set_Box2D_b1d1b47c7e81f80a(b2Pri
 }
 
 
-float _wrap_b2PrismaticJointDef_lowerTranslation_get_Box2D_b1d1b47c7e81f80a(b2PrismaticJointDef *_swig_go_0) {
+float _wrap_b2PrismaticJointDef_lowerTranslation_get_Box2D_553c0f9515edf50e(b2PrismaticJointDef *_swig_go_0) {
   b2PrismaticJointDef *arg1 = (b2PrismaticJointDef *) 0 ;
   float32 result;
   float _swig_go_result;
@@ -9296,7 +9490,7 @@ float _wrap_b2PrismaticJointDef_lowerTranslation_get_Box2D_b1d1b47c7e81f80a(b2Pr
 }
 
 
-void _wrap_b2PrismaticJointDef_upperTranslation_set_Box2D_b1d1b47c7e81f80a(b2PrismaticJointDef *_swig_go_0, float _swig_go_1) {
+void _wrap_b2PrismaticJointDef_upperTranslation_set_Box2D_553c0f9515edf50e(b2PrismaticJointDef *_swig_go_0, float _swig_go_1) {
   b2PrismaticJointDef *arg1 = (b2PrismaticJointDef *) 0 ;
   float32 arg2 ;
   
@@ -9308,7 +9502,7 @@ void _wrap_b2PrismaticJointDef_upperTranslation_set_Box2D_b1d1b47c7e81f80a(b2Pri
 }
 
 
-float _wrap_b2PrismaticJointDef_upperTranslation_get_Box2D_b1d1b47c7e81f80a(b2PrismaticJointDef *_swig_go_0) {
+float _wrap_b2PrismaticJointDef_upperTranslation_get_Box2D_553c0f9515edf50e(b2PrismaticJointDef *_swig_go_0) {
   b2PrismaticJointDef *arg1 = (b2PrismaticJointDef *) 0 ;
   float32 result;
   float _swig_go_result;
@@ -9321,7 +9515,7 @@ float _wrap_b2PrismaticJointDef_upperTranslation_get_Box2D_b1d1b47c7e81f80a(b2Pr
 }
 
 
-void _wrap_b2PrismaticJointDef_enableMotor_set_Box2D_b1d1b47c7e81f80a(b2PrismaticJointDef *_swig_go_0, bool _swig_go_1) {
+void _wrap_b2PrismaticJointDef_enableMotor_set_Box2D_553c0f9515edf50e(b2PrismaticJointDef *_swig_go_0, bool _swig_go_1) {
   b2PrismaticJointDef *arg1 = (b2PrismaticJointDef *) 0 ;
   bool arg2 ;
   
@@ -9333,7 +9527,7 @@ void _wrap_b2PrismaticJointDef_enableMotor_set_Box2D_b1d1b47c7e81f80a(b2Prismati
 }
 
 
-bool _wrap_b2PrismaticJointDef_enableMotor_get_Box2D_b1d1b47c7e81f80a(b2PrismaticJointDef *_swig_go_0) {
+bool _wrap_b2PrismaticJointDef_enableMotor_get_Box2D_553c0f9515edf50e(b2PrismaticJointDef *_swig_go_0) {
   b2PrismaticJointDef *arg1 = (b2PrismaticJointDef *) 0 ;
   bool result;
   bool _swig_go_result;
@@ -9346,7 +9540,7 @@ bool _wrap_b2PrismaticJointDef_enableMotor_get_Box2D_b1d1b47c7e81f80a(b2Prismati
 }
 
 
-void _wrap_b2PrismaticJointDef_maxMotorForce_set_Box2D_b1d1b47c7e81f80a(b2PrismaticJointDef *_swig_go_0, float _swig_go_1) {
+void _wrap_b2PrismaticJointDef_maxMotorForce_set_Box2D_553c0f9515edf50e(b2PrismaticJointDef *_swig_go_0, float _swig_go_1) {
   b2PrismaticJointDef *arg1 = (b2PrismaticJointDef *) 0 ;
   float32 arg2 ;
   
@@ -9358,7 +9552,7 @@ void _wrap_b2PrismaticJointDef_maxMotorForce_set_Box2D_b1d1b47c7e81f80a(b2Prisma
 }
 
 
-float _wrap_b2PrismaticJointDef_maxMotorForce_get_Box2D_b1d1b47c7e81f80a(b2PrismaticJointDef *_swig_go_0) {
+float _wrap_b2PrismaticJointDef_maxMotorForce_get_Box2D_553c0f9515edf50e(b2PrismaticJointDef *_swig_go_0) {
   b2PrismaticJointDef *arg1 = (b2PrismaticJointDef *) 0 ;
   float32 result;
   float _swig_go_result;
@@ -9371,7 +9565,7 @@ float _wrap_b2PrismaticJointDef_maxMotorForce_get_Box2D_b1d1b47c7e81f80a(b2Prism
 }
 
 
-void _wrap_b2PrismaticJointDef_motorSpeed_set_Box2D_b1d1b47c7e81f80a(b2PrismaticJointDef *_swig_go_0, float _swig_go_1) {
+void _wrap_b2PrismaticJointDef_motorSpeed_set_Box2D_553c0f9515edf50e(b2PrismaticJointDef *_swig_go_0, float _swig_go_1) {
   b2PrismaticJointDef *arg1 = (b2PrismaticJointDef *) 0 ;
   float32 arg2 ;
   
@@ -9383,7 +9577,7 @@ void _wrap_b2PrismaticJointDef_motorSpeed_set_Box2D_b1d1b47c7e81f80a(b2Prismatic
 }
 
 
-float _wrap_b2PrismaticJointDef_motorSpeed_get_Box2D_b1d1b47c7e81f80a(b2PrismaticJointDef *_swig_go_0) {
+float _wrap_b2PrismaticJointDef_motorSpeed_get_Box2D_553c0f9515edf50e(b2PrismaticJointDef *_swig_go_0) {
   b2PrismaticJointDef *arg1 = (b2PrismaticJointDef *) 0 ;
   float32 result;
   float _swig_go_result;
@@ -9396,7 +9590,7 @@ float _wrap_b2PrismaticJointDef_motorSpeed_get_Box2D_b1d1b47c7e81f80a(b2Prismati
 }
 
 
-void _wrap_delete_b2PrismaticJointDef_Box2D_b1d1b47c7e81f80a(b2PrismaticJointDef *_swig_go_0) {
+void _wrap_delete_b2PrismaticJointDef_Box2D_553c0f9515edf50e(b2PrismaticJointDef *_swig_go_0) {
   b2PrismaticJointDef *arg1 = (b2PrismaticJointDef *) 0 ;
   
   arg1 = *(b2PrismaticJointDef **)&_swig_go_0; 
@@ -9406,7 +9600,7 @@ void _wrap_delete_b2PrismaticJointDef_Box2D_b1d1b47c7e81f80a(b2PrismaticJointDef
 }
 
 
-b2Vec2 *_wrap_b2PrismaticJoint_GetAnchorA_Box2D_b1d1b47c7e81f80a(b2PrismaticJoint *_swig_go_0) {
+b2Vec2 *_wrap_b2PrismaticJoint_GetAnchorA_Box2D_553c0f9515edf50e(b2PrismaticJoint *_swig_go_0) {
   b2PrismaticJoint *arg1 = (b2PrismaticJoint *) 0 ;
   b2Vec2 result;
   b2Vec2 *_swig_go_result;
@@ -9419,7 +9613,7 @@ b2Vec2 *_wrap_b2PrismaticJoint_GetAnchorA_Box2D_b1d1b47c7e81f80a(b2PrismaticJoin
 }
 
 
-b2Vec2 *_wrap_b2PrismaticJoint_GetAnchorB_Box2D_b1d1b47c7e81f80a(b2PrismaticJoint *_swig_go_0) {
+b2Vec2 *_wrap_b2PrismaticJoint_GetAnchorB_Box2D_553c0f9515edf50e(b2PrismaticJoint *_swig_go_0) {
   b2PrismaticJoint *arg1 = (b2PrismaticJoint *) 0 ;
   b2Vec2 result;
   b2Vec2 *_swig_go_result;
@@ -9432,7 +9626,7 @@ b2Vec2 *_wrap_b2PrismaticJoint_GetAnchorB_Box2D_b1d1b47c7e81f80a(b2PrismaticJoin
 }
 
 
-b2Vec2 *_wrap_b2PrismaticJoint_GetReactionForce_Box2D_b1d1b47c7e81f80a(b2PrismaticJoint *_swig_go_0, float _swig_go_1) {
+b2Vec2 *_wrap_b2PrismaticJoint_GetReactionForce_Box2D_553c0f9515edf50e(b2PrismaticJoint *_swig_go_0, float _swig_go_1) {
   b2PrismaticJoint *arg1 = (b2PrismaticJoint *) 0 ;
   float32 arg2 ;
   b2Vec2 result;
@@ -9447,7 +9641,7 @@ b2Vec2 *_wrap_b2PrismaticJoint_GetReactionForce_Box2D_b1d1b47c7e81f80a(b2Prismat
 }
 
 
-float _wrap_b2PrismaticJoint_GetReactionTorque_Box2D_b1d1b47c7e81f80a(b2PrismaticJoint *_swig_go_0, float _swig_go_1) {
+float _wrap_b2PrismaticJoint_GetReactionTorque_Box2D_553c0f9515edf50e(b2PrismaticJoint *_swig_go_0, float _swig_go_1) {
   b2PrismaticJoint *arg1 = (b2PrismaticJoint *) 0 ;
   float32 arg2 ;
   float32 result;
@@ -9462,7 +9656,7 @@ float _wrap_b2PrismaticJoint_GetReactionTorque_Box2D_b1d1b47c7e81f80a(b2Prismati
 }
 
 
-b2Vec2 *_wrap_b2PrismaticJoint_GetLocalAnchorA_Box2D_b1d1b47c7e81f80a(b2PrismaticJoint *_swig_go_0) {
+b2Vec2 *_wrap_b2PrismaticJoint_GetLocalAnchorA_Box2D_553c0f9515edf50e(b2PrismaticJoint *_swig_go_0) {
   b2PrismaticJoint *arg1 = (b2PrismaticJoint *) 0 ;
   b2Vec2 *result = 0 ;
   b2Vec2 *_swig_go_result;
@@ -9475,7 +9669,7 @@ b2Vec2 *_wrap_b2PrismaticJoint_GetLocalAnchorA_Box2D_b1d1b47c7e81f80a(b2Prismati
 }
 
 
-b2Vec2 *_wrap_b2PrismaticJoint_GetLocalAnchorB_Box2D_b1d1b47c7e81f80a(b2PrismaticJoint *_swig_go_0) {
+b2Vec2 *_wrap_b2PrismaticJoint_GetLocalAnchorB_Box2D_553c0f9515edf50e(b2PrismaticJoint *_swig_go_0) {
   b2PrismaticJoint *arg1 = (b2PrismaticJoint *) 0 ;
   b2Vec2 *result = 0 ;
   b2Vec2 *_swig_go_result;
@@ -9488,7 +9682,7 @@ b2Vec2 *_wrap_b2PrismaticJoint_GetLocalAnchorB_Box2D_b1d1b47c7e81f80a(b2Prismati
 }
 
 
-b2Vec2 *_wrap_b2PrismaticJoint_GetLocalAxisA_Box2D_b1d1b47c7e81f80a(b2PrismaticJoint *_swig_go_0) {
+b2Vec2 *_wrap_b2PrismaticJoint_GetLocalAxisA_Box2D_553c0f9515edf50e(b2PrismaticJoint *_swig_go_0) {
   b2PrismaticJoint *arg1 = (b2PrismaticJoint *) 0 ;
   b2Vec2 *result = 0 ;
   b2Vec2 *_swig_go_result;
@@ -9501,7 +9695,7 @@ b2Vec2 *_wrap_b2PrismaticJoint_GetLocalAxisA_Box2D_b1d1b47c7e81f80a(b2PrismaticJ
 }
 
 
-float _wrap_b2PrismaticJoint_GetReferenceAngle_Box2D_b1d1b47c7e81f80a(b2PrismaticJoint *_swig_go_0) {
+float _wrap_b2PrismaticJoint_GetReferenceAngle_Box2D_553c0f9515edf50e(b2PrismaticJoint *_swig_go_0) {
   b2PrismaticJoint *arg1 = (b2PrismaticJoint *) 0 ;
   float32 result;
   float _swig_go_result;
@@ -9514,7 +9708,7 @@ float _wrap_b2PrismaticJoint_GetReferenceAngle_Box2D_b1d1b47c7e81f80a(b2Prismati
 }
 
 
-float _wrap_b2PrismaticJoint_GetJointTranslation_Box2D_b1d1b47c7e81f80a(b2PrismaticJoint *_swig_go_0) {
+float _wrap_b2PrismaticJoint_GetJointTranslation_Box2D_553c0f9515edf50e(b2PrismaticJoint *_swig_go_0) {
   b2PrismaticJoint *arg1 = (b2PrismaticJoint *) 0 ;
   float32 result;
   float _swig_go_result;
@@ -9527,7 +9721,7 @@ float _wrap_b2PrismaticJoint_GetJointTranslation_Box2D_b1d1b47c7e81f80a(b2Prisma
 }
 
 
-float _wrap_b2PrismaticJoint_GetJointSpeed_Box2D_b1d1b47c7e81f80a(b2PrismaticJoint *_swig_go_0) {
+float _wrap_b2PrismaticJoint_GetJointSpeed_Box2D_553c0f9515edf50e(b2PrismaticJoint *_swig_go_0) {
   b2PrismaticJoint *arg1 = (b2PrismaticJoint *) 0 ;
   float32 result;
   float _swig_go_result;
@@ -9540,7 +9734,7 @@ float _wrap_b2PrismaticJoint_GetJointSpeed_Box2D_b1d1b47c7e81f80a(b2PrismaticJoi
 }
 
 
-bool _wrap_b2PrismaticJoint_IsLimitEnabled_Box2D_b1d1b47c7e81f80a(b2PrismaticJoint *_swig_go_0) {
+bool _wrap_b2PrismaticJoint_IsLimitEnabled_Box2D_553c0f9515edf50e(b2PrismaticJoint *_swig_go_0) {
   b2PrismaticJoint *arg1 = (b2PrismaticJoint *) 0 ;
   bool result;
   bool _swig_go_result;
@@ -9553,7 +9747,7 @@ bool _wrap_b2PrismaticJoint_IsLimitEnabled_Box2D_b1d1b47c7e81f80a(b2PrismaticJoi
 }
 
 
-void _wrap_b2PrismaticJoint_EnableLimit_Box2D_b1d1b47c7e81f80a(b2PrismaticJoint *_swig_go_0, bool _swig_go_1) {
+void _wrap_b2PrismaticJoint_EnableLimit_Box2D_553c0f9515edf50e(b2PrismaticJoint *_swig_go_0, bool _swig_go_1) {
   b2PrismaticJoint *arg1 = (b2PrismaticJoint *) 0 ;
   bool arg2 ;
   
@@ -9565,7 +9759,7 @@ void _wrap_b2PrismaticJoint_EnableLimit_Box2D_b1d1b47c7e81f80a(b2PrismaticJoint 
 }
 
 
-float _wrap_b2PrismaticJoint_GetLowerLimit_Box2D_b1d1b47c7e81f80a(b2PrismaticJoint *_swig_go_0) {
+float _wrap_b2PrismaticJoint_GetLowerLimit_Box2D_553c0f9515edf50e(b2PrismaticJoint *_swig_go_0) {
   b2PrismaticJoint *arg1 = (b2PrismaticJoint *) 0 ;
   float32 result;
   float _swig_go_result;
@@ -9578,7 +9772,7 @@ float _wrap_b2PrismaticJoint_GetLowerLimit_Box2D_b1d1b47c7e81f80a(b2PrismaticJoi
 }
 
 
-float _wrap_b2PrismaticJoint_GetUpperLimit_Box2D_b1d1b47c7e81f80a(b2PrismaticJoint *_swig_go_0) {
+float _wrap_b2PrismaticJoint_GetUpperLimit_Box2D_553c0f9515edf50e(b2PrismaticJoint *_swig_go_0) {
   b2PrismaticJoint *arg1 = (b2PrismaticJoint *) 0 ;
   float32 result;
   float _swig_go_result;
@@ -9591,7 +9785,7 @@ float _wrap_b2PrismaticJoint_GetUpperLimit_Box2D_b1d1b47c7e81f80a(b2PrismaticJoi
 }
 
 
-void _wrap_b2PrismaticJoint_SetLimits_Box2D_b1d1b47c7e81f80a(b2PrismaticJoint *_swig_go_0, float _swig_go_1, float _swig_go_2) {
+void _wrap_b2PrismaticJoint_SetLimits_Box2D_553c0f9515edf50e(b2PrismaticJoint *_swig_go_0, float _swig_go_1, float _swig_go_2) {
   b2PrismaticJoint *arg1 = (b2PrismaticJoint *) 0 ;
   float32 arg2 ;
   float32 arg3 ;
@@ -9605,7 +9799,7 @@ void _wrap_b2PrismaticJoint_SetLimits_Box2D_b1d1b47c7e81f80a(b2PrismaticJoint *_
 }
 
 
-bool _wrap_b2PrismaticJoint_IsMotorEnabled_Box2D_b1d1b47c7e81f80a(b2PrismaticJoint *_swig_go_0) {
+bool _wrap_b2PrismaticJoint_IsMotorEnabled_Box2D_553c0f9515edf50e(b2PrismaticJoint *_swig_go_0) {
   b2PrismaticJoint *arg1 = (b2PrismaticJoint *) 0 ;
   bool result;
   bool _swig_go_result;
@@ -9618,7 +9812,7 @@ bool _wrap_b2PrismaticJoint_IsMotorEnabled_Box2D_b1d1b47c7e81f80a(b2PrismaticJoi
 }
 
 
-void _wrap_b2PrismaticJoint_EnableMotor_Box2D_b1d1b47c7e81f80a(b2PrismaticJoint *_swig_go_0, bool _swig_go_1) {
+void _wrap_b2PrismaticJoint_EnableMotor_Box2D_553c0f9515edf50e(b2PrismaticJoint *_swig_go_0, bool _swig_go_1) {
   b2PrismaticJoint *arg1 = (b2PrismaticJoint *) 0 ;
   bool arg2 ;
   
@@ -9630,7 +9824,7 @@ void _wrap_b2PrismaticJoint_EnableMotor_Box2D_b1d1b47c7e81f80a(b2PrismaticJoint 
 }
 
 
-void _wrap_b2PrismaticJoint_SetMotorSpeed_Box2D_b1d1b47c7e81f80a(b2PrismaticJoint *_swig_go_0, float _swig_go_1) {
+void _wrap_b2PrismaticJoint_SetMotorSpeed_Box2D_553c0f9515edf50e(b2PrismaticJoint *_swig_go_0, float _swig_go_1) {
   b2PrismaticJoint *arg1 = (b2PrismaticJoint *) 0 ;
   float32 arg2 ;
   
@@ -9642,7 +9836,7 @@ void _wrap_b2PrismaticJoint_SetMotorSpeed_Box2D_b1d1b47c7e81f80a(b2PrismaticJoin
 }
 
 
-float _wrap_b2PrismaticJoint_GetMotorSpeed_Box2D_b1d1b47c7e81f80a(b2PrismaticJoint *_swig_go_0) {
+float _wrap_b2PrismaticJoint_GetMotorSpeed_Box2D_553c0f9515edf50e(b2PrismaticJoint *_swig_go_0) {
   b2PrismaticJoint *arg1 = (b2PrismaticJoint *) 0 ;
   float32 result;
   float _swig_go_result;
@@ -9655,7 +9849,7 @@ float _wrap_b2PrismaticJoint_GetMotorSpeed_Box2D_b1d1b47c7e81f80a(b2PrismaticJoi
 }
 
 
-void _wrap_b2PrismaticJoint_SetMaxMotorForce_Box2D_b1d1b47c7e81f80a(b2PrismaticJoint *_swig_go_0, float _swig_go_1) {
+void _wrap_b2PrismaticJoint_SetMaxMotorForce_Box2D_553c0f9515edf50e(b2PrismaticJoint *_swig_go_0, float _swig_go_1) {
   b2PrismaticJoint *arg1 = (b2PrismaticJoint *) 0 ;
   float32 arg2 ;
   
@@ -9667,7 +9861,7 @@ void _wrap_b2PrismaticJoint_SetMaxMotorForce_Box2D_b1d1b47c7e81f80a(b2PrismaticJ
 }
 
 
-float _wrap_b2PrismaticJoint_GetMaxMotorForce_Box2D_b1d1b47c7e81f80a(b2PrismaticJoint *_swig_go_0) {
+float _wrap_b2PrismaticJoint_GetMaxMotorForce_Box2D_553c0f9515edf50e(b2PrismaticJoint *_swig_go_0) {
   b2PrismaticJoint *arg1 = (b2PrismaticJoint *) 0 ;
   float32 result;
   float _swig_go_result;
@@ -9680,7 +9874,7 @@ float _wrap_b2PrismaticJoint_GetMaxMotorForce_Box2D_b1d1b47c7e81f80a(b2Prismatic
 }
 
 
-float _wrap_b2PrismaticJoint_GetMotorForce_Box2D_b1d1b47c7e81f80a(b2PrismaticJoint *_swig_go_0, float _swig_go_1) {
+float _wrap_b2PrismaticJoint_GetMotorForce_Box2D_553c0f9515edf50e(b2PrismaticJoint *_swig_go_0, float _swig_go_1) {
   b2PrismaticJoint *arg1 = (b2PrismaticJoint *) 0 ;
   float32 arg2 ;
   float32 result;
@@ -9695,7 +9889,7 @@ float _wrap_b2PrismaticJoint_GetMotorForce_Box2D_b1d1b47c7e81f80a(b2PrismaticJoi
 }
 
 
-void _wrap_b2PrismaticJoint_Dump_Box2D_b1d1b47c7e81f80a(b2PrismaticJoint *_swig_go_0) {
+void _wrap_b2PrismaticJoint_Dump_Box2D_553c0f9515edf50e(b2PrismaticJoint *_swig_go_0) {
   b2PrismaticJoint *arg1 = (b2PrismaticJoint *) 0 ;
   
   arg1 = *(b2PrismaticJoint **)&_swig_go_0; 
@@ -9705,7 +9899,7 @@ void _wrap_b2PrismaticJoint_Dump_Box2D_b1d1b47c7e81f80a(b2PrismaticJoint *_swig_
 }
 
 
-void _wrap_delete_b2PrismaticJoint_Box2D_b1d1b47c7e81f80a(b2PrismaticJoint *_swig_go_0) {
+void _wrap_delete_b2PrismaticJoint_Box2D_553c0f9515edf50e(b2PrismaticJoint *_swig_go_0) {
   b2PrismaticJoint *arg1 = (b2PrismaticJoint *) 0 ;
   
   arg1 = *(b2PrismaticJoint **)&_swig_go_0; 
@@ -9715,7 +9909,7 @@ void _wrap_delete_b2PrismaticJoint_Box2D_b1d1b47c7e81f80a(b2PrismaticJoint *_swi
 }
 
 
-float _wrap_b2_minPulleyLength_get_Box2D_b1d1b47c7e81f80a() {
+float _wrap_b2_minPulleyLength_get_Box2D_553c0f9515edf50e() {
   float32 result;
   float _swig_go_result;
   
@@ -9726,7 +9920,7 @@ float _wrap_b2_minPulleyLength_get_Box2D_b1d1b47c7e81f80a() {
 }
 
 
-b2PulleyJointDef *_wrap_new_b2PulleyJointDef_Box2D_b1d1b47c7e81f80a() {
+b2PulleyJointDef *_wrap_new_b2PulleyJointDef_Box2D_553c0f9515edf50e() {
   b2PulleyJointDef *result = 0 ;
   b2PulleyJointDef *_swig_go_result;
   
@@ -9737,7 +9931,7 @@ b2PulleyJointDef *_wrap_new_b2PulleyJointDef_Box2D_b1d1b47c7e81f80a() {
 }
 
 
-void _wrap_b2PulleyJointDef_Initialize_Box2D_b1d1b47c7e81f80a(b2PulleyJointDef *_swig_go_0, b2Body *_swig_go_1, b2Body *_swig_go_2, b2Vec2 *_swig_go_3, b2Vec2 *_swig_go_4, b2Vec2 *_swig_go_5, b2Vec2 *_swig_go_6, float _swig_go_7) {
+void _wrap_b2PulleyJointDef_Initialize_Box2D_553c0f9515edf50e(b2PulleyJointDef *_swig_go_0, b2Body *_swig_go_1, b2Body *_swig_go_2, b2Vec2 *_swig_go_3, b2Vec2 *_swig_go_4, b2Vec2 *_swig_go_5, b2Vec2 *_swig_go_6, float _swig_go_7) {
   b2PulleyJointDef *arg1 = (b2PulleyJointDef *) 0 ;
   b2Body *arg2 = (b2Body *) 0 ;
   b2Body *arg3 = (b2Body *) 0 ;
@@ -9761,7 +9955,7 @@ void _wrap_b2PulleyJointDef_Initialize_Box2D_b1d1b47c7e81f80a(b2PulleyJointDef *
 }
 
 
-void _wrap_b2PulleyJointDef_groundAnchorA_set_Box2D_b1d1b47c7e81f80a(b2PulleyJointDef *_swig_go_0, b2Vec2 *_swig_go_1) {
+void _wrap_b2PulleyJointDef_groundAnchorA_set_Box2D_553c0f9515edf50e(b2PulleyJointDef *_swig_go_0, b2Vec2 *_swig_go_1) {
   b2PulleyJointDef *arg1 = (b2PulleyJointDef *) 0 ;
   b2Vec2 *arg2 = (b2Vec2 *) 0 ;
   
@@ -9773,7 +9967,7 @@ void _wrap_b2PulleyJointDef_groundAnchorA_set_Box2D_b1d1b47c7e81f80a(b2PulleyJoi
 }
 
 
-b2Vec2 *_wrap_b2PulleyJointDef_groundAnchorA_get_Box2D_b1d1b47c7e81f80a(b2PulleyJointDef *_swig_go_0) {
+b2Vec2 *_wrap_b2PulleyJointDef_groundAnchorA_get_Box2D_553c0f9515edf50e(b2PulleyJointDef *_swig_go_0) {
   b2PulleyJointDef *arg1 = (b2PulleyJointDef *) 0 ;
   b2Vec2 *result = 0 ;
   b2Vec2 *_swig_go_result;
@@ -9786,7 +9980,7 @@ b2Vec2 *_wrap_b2PulleyJointDef_groundAnchorA_get_Box2D_b1d1b47c7e81f80a(b2Pulley
 }
 
 
-void _wrap_b2PulleyJointDef_groundAnchorB_set_Box2D_b1d1b47c7e81f80a(b2PulleyJointDef *_swig_go_0, b2Vec2 *_swig_go_1) {
+void _wrap_b2PulleyJointDef_groundAnchorB_set_Box2D_553c0f9515edf50e(b2PulleyJointDef *_swig_go_0, b2Vec2 *_swig_go_1) {
   b2PulleyJointDef *arg1 = (b2PulleyJointDef *) 0 ;
   b2Vec2 *arg2 = (b2Vec2 *) 0 ;
   
@@ -9798,7 +9992,7 @@ void _wrap_b2PulleyJointDef_groundAnchorB_set_Box2D_b1d1b47c7e81f80a(b2PulleyJoi
 }
 
 
-b2Vec2 *_wrap_b2PulleyJointDef_groundAnchorB_get_Box2D_b1d1b47c7e81f80a(b2PulleyJointDef *_swig_go_0) {
+b2Vec2 *_wrap_b2PulleyJointDef_groundAnchorB_get_Box2D_553c0f9515edf50e(b2PulleyJointDef *_swig_go_0) {
   b2PulleyJointDef *arg1 = (b2PulleyJointDef *) 0 ;
   b2Vec2 *result = 0 ;
   b2Vec2 *_swig_go_result;
@@ -9811,7 +10005,7 @@ b2Vec2 *_wrap_b2PulleyJointDef_groundAnchorB_get_Box2D_b1d1b47c7e81f80a(b2Pulley
 }
 
 
-void _wrap_b2PulleyJointDef_localAnchorA_set_Box2D_b1d1b47c7e81f80a(b2PulleyJointDef *_swig_go_0, b2Vec2 *_swig_go_1) {
+void _wrap_b2PulleyJointDef_localAnchorA_set_Box2D_553c0f9515edf50e(b2PulleyJointDef *_swig_go_0, b2Vec2 *_swig_go_1) {
   b2PulleyJointDef *arg1 = (b2PulleyJointDef *) 0 ;
   b2Vec2 *arg2 = (b2Vec2 *) 0 ;
   
@@ -9823,7 +10017,7 @@ void _wrap_b2PulleyJointDef_localAnchorA_set_Box2D_b1d1b47c7e81f80a(b2PulleyJoin
 }
 
 
-b2Vec2 *_wrap_b2PulleyJointDef_localAnchorA_get_Box2D_b1d1b47c7e81f80a(b2PulleyJointDef *_swig_go_0) {
+b2Vec2 *_wrap_b2PulleyJointDef_localAnchorA_get_Box2D_553c0f9515edf50e(b2PulleyJointDef *_swig_go_0) {
   b2PulleyJointDef *arg1 = (b2PulleyJointDef *) 0 ;
   b2Vec2 *result = 0 ;
   b2Vec2 *_swig_go_result;
@@ -9836,7 +10030,7 @@ b2Vec2 *_wrap_b2PulleyJointDef_localAnchorA_get_Box2D_b1d1b47c7e81f80a(b2PulleyJ
 }
 
 
-void _wrap_b2PulleyJointDef_localAnchorB_set_Box2D_b1d1b47c7e81f80a(b2PulleyJointDef *_swig_go_0, b2Vec2 *_swig_go_1) {
+void _wrap_b2PulleyJointDef_localAnchorB_set_Box2D_553c0f9515edf50e(b2PulleyJointDef *_swig_go_0, b2Vec2 *_swig_go_1) {
   b2PulleyJointDef *arg1 = (b2PulleyJointDef *) 0 ;
   b2Vec2 *arg2 = (b2Vec2 *) 0 ;
   
@@ -9848,7 +10042,7 @@ void _wrap_b2PulleyJointDef_localAnchorB_set_Box2D_b1d1b47c7e81f80a(b2PulleyJoin
 }
 
 
-b2Vec2 *_wrap_b2PulleyJointDef_localAnchorB_get_Box2D_b1d1b47c7e81f80a(b2PulleyJointDef *_swig_go_0) {
+b2Vec2 *_wrap_b2PulleyJointDef_localAnchorB_get_Box2D_553c0f9515edf50e(b2PulleyJointDef *_swig_go_0) {
   b2PulleyJointDef *arg1 = (b2PulleyJointDef *) 0 ;
   b2Vec2 *result = 0 ;
   b2Vec2 *_swig_go_result;
@@ -9861,7 +10055,7 @@ b2Vec2 *_wrap_b2PulleyJointDef_localAnchorB_get_Box2D_b1d1b47c7e81f80a(b2PulleyJ
 }
 
 
-void _wrap_b2PulleyJointDef_lengthA_set_Box2D_b1d1b47c7e81f80a(b2PulleyJointDef *_swig_go_0, float _swig_go_1) {
+void _wrap_b2PulleyJointDef_lengthA_set_Box2D_553c0f9515edf50e(b2PulleyJointDef *_swig_go_0, float _swig_go_1) {
   b2PulleyJointDef *arg1 = (b2PulleyJointDef *) 0 ;
   float32 arg2 ;
   
@@ -9873,7 +10067,7 @@ void _wrap_b2PulleyJointDef_lengthA_set_Box2D_b1d1b47c7e81f80a(b2PulleyJointDef 
 }
 
 
-float _wrap_b2PulleyJointDef_lengthA_get_Box2D_b1d1b47c7e81f80a(b2PulleyJointDef *_swig_go_0) {
+float _wrap_b2PulleyJointDef_lengthA_get_Box2D_553c0f9515edf50e(b2PulleyJointDef *_swig_go_0) {
   b2PulleyJointDef *arg1 = (b2PulleyJointDef *) 0 ;
   float32 result;
   float _swig_go_result;
@@ -9886,7 +10080,7 @@ float _wrap_b2PulleyJointDef_lengthA_get_Box2D_b1d1b47c7e81f80a(b2PulleyJointDef
 }
 
 
-void _wrap_b2PulleyJointDef_lengthB_set_Box2D_b1d1b47c7e81f80a(b2PulleyJointDef *_swig_go_0, float _swig_go_1) {
+void _wrap_b2PulleyJointDef_lengthB_set_Box2D_553c0f9515edf50e(b2PulleyJointDef *_swig_go_0, float _swig_go_1) {
   b2PulleyJointDef *arg1 = (b2PulleyJointDef *) 0 ;
   float32 arg2 ;
   
@@ -9898,7 +10092,7 @@ void _wrap_b2PulleyJointDef_lengthB_set_Box2D_b1d1b47c7e81f80a(b2PulleyJointDef 
 }
 
 
-float _wrap_b2PulleyJointDef_lengthB_get_Box2D_b1d1b47c7e81f80a(b2PulleyJointDef *_swig_go_0) {
+float _wrap_b2PulleyJointDef_lengthB_get_Box2D_553c0f9515edf50e(b2PulleyJointDef *_swig_go_0) {
   b2PulleyJointDef *arg1 = (b2PulleyJointDef *) 0 ;
   float32 result;
   float _swig_go_result;
@@ -9911,7 +10105,7 @@ float _wrap_b2PulleyJointDef_lengthB_get_Box2D_b1d1b47c7e81f80a(b2PulleyJointDef
 }
 
 
-void _wrap_b2PulleyJointDef_ratio_set_Box2D_b1d1b47c7e81f80a(b2PulleyJointDef *_swig_go_0, float _swig_go_1) {
+void _wrap_b2PulleyJointDef_ratio_set_Box2D_553c0f9515edf50e(b2PulleyJointDef *_swig_go_0, float _swig_go_1) {
   b2PulleyJointDef *arg1 = (b2PulleyJointDef *) 0 ;
   float32 arg2 ;
   
@@ -9923,7 +10117,7 @@ void _wrap_b2PulleyJointDef_ratio_set_Box2D_b1d1b47c7e81f80a(b2PulleyJointDef *_
 }
 
 
-float _wrap_b2PulleyJointDef_ratio_get_Box2D_b1d1b47c7e81f80a(b2PulleyJointDef *_swig_go_0) {
+float _wrap_b2PulleyJointDef_ratio_get_Box2D_553c0f9515edf50e(b2PulleyJointDef *_swig_go_0) {
   b2PulleyJointDef *arg1 = (b2PulleyJointDef *) 0 ;
   float32 result;
   float _swig_go_result;
@@ -9936,7 +10130,7 @@ float _wrap_b2PulleyJointDef_ratio_get_Box2D_b1d1b47c7e81f80a(b2PulleyJointDef *
 }
 
 
-void _wrap_delete_b2PulleyJointDef_Box2D_b1d1b47c7e81f80a(b2PulleyJointDef *_swig_go_0) {
+void _wrap_delete_b2PulleyJointDef_Box2D_553c0f9515edf50e(b2PulleyJointDef *_swig_go_0) {
   b2PulleyJointDef *arg1 = (b2PulleyJointDef *) 0 ;
   
   arg1 = *(b2PulleyJointDef **)&_swig_go_0; 
@@ -9946,7 +10140,7 @@ void _wrap_delete_b2PulleyJointDef_Box2D_b1d1b47c7e81f80a(b2PulleyJointDef *_swi
 }
 
 
-b2Vec2 *_wrap_b2PulleyJoint_GetAnchorA_Box2D_b1d1b47c7e81f80a(b2PulleyJoint *_swig_go_0) {
+b2Vec2 *_wrap_b2PulleyJoint_GetAnchorA_Box2D_553c0f9515edf50e(b2PulleyJoint *_swig_go_0) {
   b2PulleyJoint *arg1 = (b2PulleyJoint *) 0 ;
   b2Vec2 result;
   b2Vec2 *_swig_go_result;
@@ -9959,7 +10153,7 @@ b2Vec2 *_wrap_b2PulleyJoint_GetAnchorA_Box2D_b1d1b47c7e81f80a(b2PulleyJoint *_sw
 }
 
 
-b2Vec2 *_wrap_b2PulleyJoint_GetAnchorB_Box2D_b1d1b47c7e81f80a(b2PulleyJoint *_swig_go_0) {
+b2Vec2 *_wrap_b2PulleyJoint_GetAnchorB_Box2D_553c0f9515edf50e(b2PulleyJoint *_swig_go_0) {
   b2PulleyJoint *arg1 = (b2PulleyJoint *) 0 ;
   b2Vec2 result;
   b2Vec2 *_swig_go_result;
@@ -9972,7 +10166,7 @@ b2Vec2 *_wrap_b2PulleyJoint_GetAnchorB_Box2D_b1d1b47c7e81f80a(b2PulleyJoint *_sw
 }
 
 
-b2Vec2 *_wrap_b2PulleyJoint_GetReactionForce_Box2D_b1d1b47c7e81f80a(b2PulleyJoint *_swig_go_0, float _swig_go_1) {
+b2Vec2 *_wrap_b2PulleyJoint_GetReactionForce_Box2D_553c0f9515edf50e(b2PulleyJoint *_swig_go_0, float _swig_go_1) {
   b2PulleyJoint *arg1 = (b2PulleyJoint *) 0 ;
   float32 arg2 ;
   b2Vec2 result;
@@ -9987,7 +10181,7 @@ b2Vec2 *_wrap_b2PulleyJoint_GetReactionForce_Box2D_b1d1b47c7e81f80a(b2PulleyJoin
 }
 
 
-float _wrap_b2PulleyJoint_GetReactionTorque_Box2D_b1d1b47c7e81f80a(b2PulleyJoint *_swig_go_0, float _swig_go_1) {
+float _wrap_b2PulleyJoint_GetReactionTorque_Box2D_553c0f9515edf50e(b2PulleyJoint *_swig_go_0, float _swig_go_1) {
   b2PulleyJoint *arg1 = (b2PulleyJoint *) 0 ;
   float32 arg2 ;
   float32 result;
@@ -10002,7 +10196,7 @@ float _wrap_b2PulleyJoint_GetReactionTorque_Box2D_b1d1b47c7e81f80a(b2PulleyJoint
 }
 
 
-b2Vec2 *_wrap_b2PulleyJoint_GetGroundAnchorA_Box2D_b1d1b47c7e81f80a(b2PulleyJoint *_swig_go_0) {
+b2Vec2 *_wrap_b2PulleyJoint_GetGroundAnchorA_Box2D_553c0f9515edf50e(b2PulleyJoint *_swig_go_0) {
   b2PulleyJoint *arg1 = (b2PulleyJoint *) 0 ;
   b2Vec2 result;
   b2Vec2 *_swig_go_result;
@@ -10015,7 +10209,7 @@ b2Vec2 *_wrap_b2PulleyJoint_GetGroundAnchorA_Box2D_b1d1b47c7e81f80a(b2PulleyJoin
 }
 
 
-b2Vec2 *_wrap_b2PulleyJoint_GetGroundAnchorB_Box2D_b1d1b47c7e81f80a(b2PulleyJoint *_swig_go_0) {
+b2Vec2 *_wrap_b2PulleyJoint_GetGroundAnchorB_Box2D_553c0f9515edf50e(b2PulleyJoint *_swig_go_0) {
   b2PulleyJoint *arg1 = (b2PulleyJoint *) 0 ;
   b2Vec2 result;
   b2Vec2 *_swig_go_result;
@@ -10028,7 +10222,7 @@ b2Vec2 *_wrap_b2PulleyJoint_GetGroundAnchorB_Box2D_b1d1b47c7e81f80a(b2PulleyJoin
 }
 
 
-float _wrap_b2PulleyJoint_GetLengthA_Box2D_b1d1b47c7e81f80a(b2PulleyJoint *_swig_go_0) {
+float _wrap_b2PulleyJoint_GetLengthA_Box2D_553c0f9515edf50e(b2PulleyJoint *_swig_go_0) {
   b2PulleyJoint *arg1 = (b2PulleyJoint *) 0 ;
   float32 result;
   float _swig_go_result;
@@ -10041,7 +10235,7 @@ float _wrap_b2PulleyJoint_GetLengthA_Box2D_b1d1b47c7e81f80a(b2PulleyJoint *_swig
 }
 
 
-float _wrap_b2PulleyJoint_GetLengthB_Box2D_b1d1b47c7e81f80a(b2PulleyJoint *_swig_go_0) {
+float _wrap_b2PulleyJoint_GetLengthB_Box2D_553c0f9515edf50e(b2PulleyJoint *_swig_go_0) {
   b2PulleyJoint *arg1 = (b2PulleyJoint *) 0 ;
   float32 result;
   float _swig_go_result;
@@ -10054,7 +10248,7 @@ float _wrap_b2PulleyJoint_GetLengthB_Box2D_b1d1b47c7e81f80a(b2PulleyJoint *_swig
 }
 
 
-float _wrap_b2PulleyJoint_GetRatio_Box2D_b1d1b47c7e81f80a(b2PulleyJoint *_swig_go_0) {
+float _wrap_b2PulleyJoint_GetRatio_Box2D_553c0f9515edf50e(b2PulleyJoint *_swig_go_0) {
   b2PulleyJoint *arg1 = (b2PulleyJoint *) 0 ;
   float32 result;
   float _swig_go_result;
@@ -10067,7 +10261,7 @@ float _wrap_b2PulleyJoint_GetRatio_Box2D_b1d1b47c7e81f80a(b2PulleyJoint *_swig_g
 }
 
 
-float _wrap_b2PulleyJoint_GetCurrentLengthA_Box2D_b1d1b47c7e81f80a(b2PulleyJoint *_swig_go_0) {
+float _wrap_b2PulleyJoint_GetCurrentLengthA_Box2D_553c0f9515edf50e(b2PulleyJoint *_swig_go_0) {
   b2PulleyJoint *arg1 = (b2PulleyJoint *) 0 ;
   float32 result;
   float _swig_go_result;
@@ -10080,7 +10274,7 @@ float _wrap_b2PulleyJoint_GetCurrentLengthA_Box2D_b1d1b47c7e81f80a(b2PulleyJoint
 }
 
 
-float _wrap_b2PulleyJoint_GetCurrentLengthB_Box2D_b1d1b47c7e81f80a(b2PulleyJoint *_swig_go_0) {
+float _wrap_b2PulleyJoint_GetCurrentLengthB_Box2D_553c0f9515edf50e(b2PulleyJoint *_swig_go_0) {
   b2PulleyJoint *arg1 = (b2PulleyJoint *) 0 ;
   float32 result;
   float _swig_go_result;
@@ -10093,7 +10287,7 @@ float _wrap_b2PulleyJoint_GetCurrentLengthB_Box2D_b1d1b47c7e81f80a(b2PulleyJoint
 }
 
 
-void _wrap_b2PulleyJoint_Dump_Box2D_b1d1b47c7e81f80a(b2PulleyJoint *_swig_go_0) {
+void _wrap_b2PulleyJoint_Dump_Box2D_553c0f9515edf50e(b2PulleyJoint *_swig_go_0) {
   b2PulleyJoint *arg1 = (b2PulleyJoint *) 0 ;
   
   arg1 = *(b2PulleyJoint **)&_swig_go_0; 
@@ -10103,7 +10297,7 @@ void _wrap_b2PulleyJoint_Dump_Box2D_b1d1b47c7e81f80a(b2PulleyJoint *_swig_go_0) 
 }
 
 
-void _wrap_b2PulleyJoint_ShiftOrigin_Box2D_b1d1b47c7e81f80a(b2PulleyJoint *_swig_go_0, b2Vec2 *_swig_go_1) {
+void _wrap_b2PulleyJoint_ShiftOrigin_Box2D_553c0f9515edf50e(b2PulleyJoint *_swig_go_0, b2Vec2 *_swig_go_1) {
   b2PulleyJoint *arg1 = (b2PulleyJoint *) 0 ;
   b2Vec2 *arg2 = 0 ;
   
@@ -10115,7 +10309,7 @@ void _wrap_b2PulleyJoint_ShiftOrigin_Box2D_b1d1b47c7e81f80a(b2PulleyJoint *_swig
 }
 
 
-void _wrap_delete_b2PulleyJoint_Box2D_b1d1b47c7e81f80a(b2PulleyJoint *_swig_go_0) {
+void _wrap_delete_b2PulleyJoint_Box2D_553c0f9515edf50e(b2PulleyJoint *_swig_go_0) {
   b2PulleyJoint *arg1 = (b2PulleyJoint *) 0 ;
   
   arg1 = *(b2PulleyJoint **)&_swig_go_0; 
@@ -10125,7 +10319,7 @@ void _wrap_delete_b2PulleyJoint_Box2D_b1d1b47c7e81f80a(b2PulleyJoint *_swig_go_0
 }
 
 
-b2RevoluteJointDef *_wrap_new_b2RevoluteJointDef_Box2D_b1d1b47c7e81f80a() {
+b2RevoluteJointDef *_wrap_new_b2RevoluteJointDef_Box2D_553c0f9515edf50e() {
   b2RevoluteJointDef *result = 0 ;
   b2RevoluteJointDef *_swig_go_result;
   
@@ -10136,7 +10330,7 @@ b2RevoluteJointDef *_wrap_new_b2RevoluteJointDef_Box2D_b1d1b47c7e81f80a() {
 }
 
 
-void _wrap_b2RevoluteJointDef_Initialize_Box2D_b1d1b47c7e81f80a(b2RevoluteJointDef *_swig_go_0, b2Body *_swig_go_1, b2Body *_swig_go_2, b2Vec2 *_swig_go_3) {
+void _wrap_b2RevoluteJointDef_Initialize_Box2D_553c0f9515edf50e(b2RevoluteJointDef *_swig_go_0, b2Body *_swig_go_1, b2Body *_swig_go_2, b2Vec2 *_swig_go_3) {
   b2RevoluteJointDef *arg1 = (b2RevoluteJointDef *) 0 ;
   b2Body *arg2 = (b2Body *) 0 ;
   b2Body *arg3 = (b2Body *) 0 ;
@@ -10152,7 +10346,7 @@ void _wrap_b2RevoluteJointDef_Initialize_Box2D_b1d1b47c7e81f80a(b2RevoluteJointD
 }
 
 
-void _wrap_b2RevoluteJointDef_localAnchorA_set_Box2D_b1d1b47c7e81f80a(b2RevoluteJointDef *_swig_go_0, b2Vec2 *_swig_go_1) {
+void _wrap_b2RevoluteJointDef_localAnchorA_set_Box2D_553c0f9515edf50e(b2RevoluteJointDef *_swig_go_0, b2Vec2 *_swig_go_1) {
   b2RevoluteJointDef *arg1 = (b2RevoluteJointDef *) 0 ;
   b2Vec2 *arg2 = (b2Vec2 *) 0 ;
   
@@ -10164,7 +10358,7 @@ void _wrap_b2RevoluteJointDef_localAnchorA_set_Box2D_b1d1b47c7e81f80a(b2Revolute
 }
 
 
-b2Vec2 *_wrap_b2RevoluteJointDef_localAnchorA_get_Box2D_b1d1b47c7e81f80a(b2RevoluteJointDef *_swig_go_0) {
+b2Vec2 *_wrap_b2RevoluteJointDef_localAnchorA_get_Box2D_553c0f9515edf50e(b2RevoluteJointDef *_swig_go_0) {
   b2RevoluteJointDef *arg1 = (b2RevoluteJointDef *) 0 ;
   b2Vec2 *result = 0 ;
   b2Vec2 *_swig_go_result;
@@ -10177,7 +10371,7 @@ b2Vec2 *_wrap_b2RevoluteJointDef_localAnchorA_get_Box2D_b1d1b47c7e81f80a(b2Revol
 }
 
 
-void _wrap_b2RevoluteJointDef_localAnchorB_set_Box2D_b1d1b47c7e81f80a(b2RevoluteJointDef *_swig_go_0, b2Vec2 *_swig_go_1) {
+void _wrap_b2RevoluteJointDef_localAnchorB_set_Box2D_553c0f9515edf50e(b2RevoluteJointDef *_swig_go_0, b2Vec2 *_swig_go_1) {
   b2RevoluteJointDef *arg1 = (b2RevoluteJointDef *) 0 ;
   b2Vec2 *arg2 = (b2Vec2 *) 0 ;
   
@@ -10189,7 +10383,7 @@ void _wrap_b2RevoluteJointDef_localAnchorB_set_Box2D_b1d1b47c7e81f80a(b2Revolute
 }
 
 
-b2Vec2 *_wrap_b2RevoluteJointDef_localAnchorB_get_Box2D_b1d1b47c7e81f80a(b2RevoluteJointDef *_swig_go_0) {
+b2Vec2 *_wrap_b2RevoluteJointDef_localAnchorB_get_Box2D_553c0f9515edf50e(b2RevoluteJointDef *_swig_go_0) {
   b2RevoluteJointDef *arg1 = (b2RevoluteJointDef *) 0 ;
   b2Vec2 *result = 0 ;
   b2Vec2 *_swig_go_result;
@@ -10202,7 +10396,7 @@ b2Vec2 *_wrap_b2RevoluteJointDef_localAnchorB_get_Box2D_b1d1b47c7e81f80a(b2Revol
 }
 
 
-void _wrap_b2RevoluteJointDef_referenceAngle_set_Box2D_b1d1b47c7e81f80a(b2RevoluteJointDef *_swig_go_0, float _swig_go_1) {
+void _wrap_b2RevoluteJointDef_referenceAngle_set_Box2D_553c0f9515edf50e(b2RevoluteJointDef *_swig_go_0, float _swig_go_1) {
   b2RevoluteJointDef *arg1 = (b2RevoluteJointDef *) 0 ;
   float32 arg2 ;
   
@@ -10214,7 +10408,7 @@ void _wrap_b2RevoluteJointDef_referenceAngle_set_Box2D_b1d1b47c7e81f80a(b2Revolu
 }
 
 
-float _wrap_b2RevoluteJointDef_referenceAngle_get_Box2D_b1d1b47c7e81f80a(b2RevoluteJointDef *_swig_go_0) {
+float _wrap_b2RevoluteJointDef_referenceAngle_get_Box2D_553c0f9515edf50e(b2RevoluteJointDef *_swig_go_0) {
   b2RevoluteJointDef *arg1 = (b2RevoluteJointDef *) 0 ;
   float32 result;
   float _swig_go_result;
@@ -10227,7 +10421,7 @@ float _wrap_b2RevoluteJointDef_referenceAngle_get_Box2D_b1d1b47c7e81f80a(b2Revol
 }
 
 
-void _wrap_b2RevoluteJointDef_enableLimit_set_Box2D_b1d1b47c7e81f80a(b2RevoluteJointDef *_swig_go_0, bool _swig_go_1) {
+void _wrap_b2RevoluteJointDef_enableLimit_set_Box2D_553c0f9515edf50e(b2RevoluteJointDef *_swig_go_0, bool _swig_go_1) {
   b2RevoluteJointDef *arg1 = (b2RevoluteJointDef *) 0 ;
   bool arg2 ;
   
@@ -10239,7 +10433,7 @@ void _wrap_b2RevoluteJointDef_enableLimit_set_Box2D_b1d1b47c7e81f80a(b2RevoluteJ
 }
 
 
-bool _wrap_b2RevoluteJointDef_enableLimit_get_Box2D_b1d1b47c7e81f80a(b2RevoluteJointDef *_swig_go_0) {
+bool _wrap_b2RevoluteJointDef_enableLimit_get_Box2D_553c0f9515edf50e(b2RevoluteJointDef *_swig_go_0) {
   b2RevoluteJointDef *arg1 = (b2RevoluteJointDef *) 0 ;
   bool result;
   bool _swig_go_result;
@@ -10252,7 +10446,7 @@ bool _wrap_b2RevoluteJointDef_enableLimit_get_Box2D_b1d1b47c7e81f80a(b2RevoluteJ
 }
 
 
-void _wrap_b2RevoluteJointDef_lowerAngle_set_Box2D_b1d1b47c7e81f80a(b2RevoluteJointDef *_swig_go_0, float _swig_go_1) {
+void _wrap_b2RevoluteJointDef_lowerAngle_set_Box2D_553c0f9515edf50e(b2RevoluteJointDef *_swig_go_0, float _swig_go_1) {
   b2RevoluteJointDef *arg1 = (b2RevoluteJointDef *) 0 ;
   float32 arg2 ;
   
@@ -10264,7 +10458,7 @@ void _wrap_b2RevoluteJointDef_lowerAngle_set_Box2D_b1d1b47c7e81f80a(b2RevoluteJo
 }
 
 
-float _wrap_b2RevoluteJointDef_lowerAngle_get_Box2D_b1d1b47c7e81f80a(b2RevoluteJointDef *_swig_go_0) {
+float _wrap_b2RevoluteJointDef_lowerAngle_get_Box2D_553c0f9515edf50e(b2RevoluteJointDef *_swig_go_0) {
   b2RevoluteJointDef *arg1 = (b2RevoluteJointDef *) 0 ;
   float32 result;
   float _swig_go_result;
@@ -10277,7 +10471,7 @@ float _wrap_b2RevoluteJointDef_lowerAngle_get_Box2D_b1d1b47c7e81f80a(b2RevoluteJ
 }
 
 
-void _wrap_b2RevoluteJointDef_upperAngle_set_Box2D_b1d1b47c7e81f80a(b2RevoluteJointDef *_swig_go_0, float _swig_go_1) {
+void _wrap_b2RevoluteJointDef_upperAngle_set_Box2D_553c0f9515edf50e(b2RevoluteJointDef *_swig_go_0, float _swig_go_1) {
   b2RevoluteJointDef *arg1 = (b2RevoluteJointDef *) 0 ;
   float32 arg2 ;
   
@@ -10289,7 +10483,7 @@ void _wrap_b2RevoluteJointDef_upperAngle_set_Box2D_b1d1b47c7e81f80a(b2RevoluteJo
 }
 
 
-float _wrap_b2RevoluteJointDef_upperAngle_get_Box2D_b1d1b47c7e81f80a(b2RevoluteJointDef *_swig_go_0) {
+float _wrap_b2RevoluteJointDef_upperAngle_get_Box2D_553c0f9515edf50e(b2RevoluteJointDef *_swig_go_0) {
   b2RevoluteJointDef *arg1 = (b2RevoluteJointDef *) 0 ;
   float32 result;
   float _swig_go_result;
@@ -10302,7 +10496,7 @@ float _wrap_b2RevoluteJointDef_upperAngle_get_Box2D_b1d1b47c7e81f80a(b2RevoluteJ
 }
 
 
-void _wrap_b2RevoluteJointDef_enableMotor_set_Box2D_b1d1b47c7e81f80a(b2RevoluteJointDef *_swig_go_0, bool _swig_go_1) {
+void _wrap_b2RevoluteJointDef_enableMotor_set_Box2D_553c0f9515edf50e(b2RevoluteJointDef *_swig_go_0, bool _swig_go_1) {
   b2RevoluteJointDef *arg1 = (b2RevoluteJointDef *) 0 ;
   bool arg2 ;
   
@@ -10314,7 +10508,7 @@ void _wrap_b2RevoluteJointDef_enableMotor_set_Box2D_b1d1b47c7e81f80a(b2RevoluteJ
 }
 
 
-bool _wrap_b2RevoluteJointDef_enableMotor_get_Box2D_b1d1b47c7e81f80a(b2RevoluteJointDef *_swig_go_0) {
+bool _wrap_b2RevoluteJointDef_enableMotor_get_Box2D_553c0f9515edf50e(b2RevoluteJointDef *_swig_go_0) {
   b2RevoluteJointDef *arg1 = (b2RevoluteJointDef *) 0 ;
   bool result;
   bool _swig_go_result;
@@ -10327,7 +10521,7 @@ bool _wrap_b2RevoluteJointDef_enableMotor_get_Box2D_b1d1b47c7e81f80a(b2RevoluteJ
 }
 
 
-void _wrap_b2RevoluteJointDef_motorSpeed_set_Box2D_b1d1b47c7e81f80a(b2RevoluteJointDef *_swig_go_0, float _swig_go_1) {
+void _wrap_b2RevoluteJointDef_motorSpeed_set_Box2D_553c0f9515edf50e(b2RevoluteJointDef *_swig_go_0, float _swig_go_1) {
   b2RevoluteJointDef *arg1 = (b2RevoluteJointDef *) 0 ;
   float32 arg2 ;
   
@@ -10339,7 +10533,7 @@ void _wrap_b2RevoluteJointDef_motorSpeed_set_Box2D_b1d1b47c7e81f80a(b2RevoluteJo
 }
 
 
-float _wrap_b2RevoluteJointDef_motorSpeed_get_Box2D_b1d1b47c7e81f80a(b2RevoluteJointDef *_swig_go_0) {
+float _wrap_b2RevoluteJointDef_motorSpeed_get_Box2D_553c0f9515edf50e(b2RevoluteJointDef *_swig_go_0) {
   b2RevoluteJointDef *arg1 = (b2RevoluteJointDef *) 0 ;
   float32 result;
   float _swig_go_result;
@@ -10352,7 +10546,7 @@ float _wrap_b2RevoluteJointDef_motorSpeed_get_Box2D_b1d1b47c7e81f80a(b2RevoluteJ
 }
 
 
-void _wrap_b2RevoluteJointDef_maxMotorTorque_set_Box2D_b1d1b47c7e81f80a(b2RevoluteJointDef *_swig_go_0, float _swig_go_1) {
+void _wrap_b2RevoluteJointDef_maxMotorTorque_set_Box2D_553c0f9515edf50e(b2RevoluteJointDef *_swig_go_0, float _swig_go_1) {
   b2RevoluteJointDef *arg1 = (b2RevoluteJointDef *) 0 ;
   float32 arg2 ;
   
@@ -10364,7 +10558,7 @@ void _wrap_b2RevoluteJointDef_maxMotorTorque_set_Box2D_b1d1b47c7e81f80a(b2Revolu
 }
 
 
-float _wrap_b2RevoluteJointDef_maxMotorTorque_get_Box2D_b1d1b47c7e81f80a(b2RevoluteJointDef *_swig_go_0) {
+float _wrap_b2RevoluteJointDef_maxMotorTorque_get_Box2D_553c0f9515edf50e(b2RevoluteJointDef *_swig_go_0) {
   b2RevoluteJointDef *arg1 = (b2RevoluteJointDef *) 0 ;
   float32 result;
   float _swig_go_result;
@@ -10377,7 +10571,7 @@ float _wrap_b2RevoluteJointDef_maxMotorTorque_get_Box2D_b1d1b47c7e81f80a(b2Revol
 }
 
 
-void _wrap_delete_b2RevoluteJointDef_Box2D_b1d1b47c7e81f80a(b2RevoluteJointDef *_swig_go_0) {
+void _wrap_delete_b2RevoluteJointDef_Box2D_553c0f9515edf50e(b2RevoluteJointDef *_swig_go_0) {
   b2RevoluteJointDef *arg1 = (b2RevoluteJointDef *) 0 ;
   
   arg1 = *(b2RevoluteJointDef **)&_swig_go_0; 
@@ -10387,7 +10581,7 @@ void _wrap_delete_b2RevoluteJointDef_Box2D_b1d1b47c7e81f80a(b2RevoluteJointDef *
 }
 
 
-b2Vec2 *_wrap_b2RevoluteJoint_GetAnchorA_Box2D_b1d1b47c7e81f80a(b2RevoluteJoint *_swig_go_0) {
+b2Vec2 *_wrap_b2RevoluteJoint_GetAnchorA_Box2D_553c0f9515edf50e(b2RevoluteJoint *_swig_go_0) {
   b2RevoluteJoint *arg1 = (b2RevoluteJoint *) 0 ;
   b2Vec2 result;
   b2Vec2 *_swig_go_result;
@@ -10400,7 +10594,7 @@ b2Vec2 *_wrap_b2RevoluteJoint_GetAnchorA_Box2D_b1d1b47c7e81f80a(b2RevoluteJoint 
 }
 
 
-b2Vec2 *_wrap_b2RevoluteJoint_GetAnchorB_Box2D_b1d1b47c7e81f80a(b2RevoluteJoint *_swig_go_0) {
+b2Vec2 *_wrap_b2RevoluteJoint_GetAnchorB_Box2D_553c0f9515edf50e(b2RevoluteJoint *_swig_go_0) {
   b2RevoluteJoint *arg1 = (b2RevoluteJoint *) 0 ;
   b2Vec2 result;
   b2Vec2 *_swig_go_result;
@@ -10413,7 +10607,7 @@ b2Vec2 *_wrap_b2RevoluteJoint_GetAnchorB_Box2D_b1d1b47c7e81f80a(b2RevoluteJoint 
 }
 
 
-b2Vec2 *_wrap_b2RevoluteJoint_GetLocalAnchorA_Box2D_b1d1b47c7e81f80a(b2RevoluteJoint *_swig_go_0) {
+b2Vec2 *_wrap_b2RevoluteJoint_GetLocalAnchorA_Box2D_553c0f9515edf50e(b2RevoluteJoint *_swig_go_0) {
   b2RevoluteJoint *arg1 = (b2RevoluteJoint *) 0 ;
   b2Vec2 *result = 0 ;
   b2Vec2 *_swig_go_result;
@@ -10426,7 +10620,7 @@ b2Vec2 *_wrap_b2RevoluteJoint_GetLocalAnchorA_Box2D_b1d1b47c7e81f80a(b2RevoluteJ
 }
 
 
-b2Vec2 *_wrap_b2RevoluteJoint_GetLocalAnchorB_Box2D_b1d1b47c7e81f80a(b2RevoluteJoint *_swig_go_0) {
+b2Vec2 *_wrap_b2RevoluteJoint_GetLocalAnchorB_Box2D_553c0f9515edf50e(b2RevoluteJoint *_swig_go_0) {
   b2RevoluteJoint *arg1 = (b2RevoluteJoint *) 0 ;
   b2Vec2 *result = 0 ;
   b2Vec2 *_swig_go_result;
@@ -10439,7 +10633,7 @@ b2Vec2 *_wrap_b2RevoluteJoint_GetLocalAnchorB_Box2D_b1d1b47c7e81f80a(b2RevoluteJ
 }
 
 
-float _wrap_b2RevoluteJoint_GetReferenceAngle_Box2D_b1d1b47c7e81f80a(b2RevoluteJoint *_swig_go_0) {
+float _wrap_b2RevoluteJoint_GetReferenceAngle_Box2D_553c0f9515edf50e(b2RevoluteJoint *_swig_go_0) {
   b2RevoluteJoint *arg1 = (b2RevoluteJoint *) 0 ;
   float32 result;
   float _swig_go_result;
@@ -10452,7 +10646,7 @@ float _wrap_b2RevoluteJoint_GetReferenceAngle_Box2D_b1d1b47c7e81f80a(b2RevoluteJ
 }
 
 
-float _wrap_b2RevoluteJoint_GetJointAngle_Box2D_b1d1b47c7e81f80a(b2RevoluteJoint *_swig_go_0) {
+float _wrap_b2RevoluteJoint_GetJointAngle_Box2D_553c0f9515edf50e(b2RevoluteJoint *_swig_go_0) {
   b2RevoluteJoint *arg1 = (b2RevoluteJoint *) 0 ;
   float32 result;
   float _swig_go_result;
@@ -10465,7 +10659,7 @@ float _wrap_b2RevoluteJoint_GetJointAngle_Box2D_b1d1b47c7e81f80a(b2RevoluteJoint
 }
 
 
-float _wrap_b2RevoluteJoint_GetJointSpeed_Box2D_b1d1b47c7e81f80a(b2RevoluteJoint *_swig_go_0) {
+float _wrap_b2RevoluteJoint_GetJointSpeed_Box2D_553c0f9515edf50e(b2RevoluteJoint *_swig_go_0) {
   b2RevoluteJoint *arg1 = (b2RevoluteJoint *) 0 ;
   float32 result;
   float _swig_go_result;
@@ -10478,7 +10672,7 @@ float _wrap_b2RevoluteJoint_GetJointSpeed_Box2D_b1d1b47c7e81f80a(b2RevoluteJoint
 }
 
 
-bool _wrap_b2RevoluteJoint_IsLimitEnabled_Box2D_b1d1b47c7e81f80a(b2RevoluteJoint *_swig_go_0) {
+bool _wrap_b2RevoluteJoint_IsLimitEnabled_Box2D_553c0f9515edf50e(b2RevoluteJoint *_swig_go_0) {
   b2RevoluteJoint *arg1 = (b2RevoluteJoint *) 0 ;
   bool result;
   bool _swig_go_result;
@@ -10491,7 +10685,7 @@ bool _wrap_b2RevoluteJoint_IsLimitEnabled_Box2D_b1d1b47c7e81f80a(b2RevoluteJoint
 }
 
 
-void _wrap_b2RevoluteJoint_EnableLimit_Box2D_b1d1b47c7e81f80a(b2RevoluteJoint *_swig_go_0, bool _swig_go_1) {
+void _wrap_b2RevoluteJoint_EnableLimit_Box2D_553c0f9515edf50e(b2RevoluteJoint *_swig_go_0, bool _swig_go_1) {
   b2RevoluteJoint *arg1 = (b2RevoluteJoint *) 0 ;
   bool arg2 ;
   
@@ -10503,7 +10697,7 @@ void _wrap_b2RevoluteJoint_EnableLimit_Box2D_b1d1b47c7e81f80a(b2RevoluteJoint *_
 }
 
 
-float _wrap_b2RevoluteJoint_GetLowerLimit_Box2D_b1d1b47c7e81f80a(b2RevoluteJoint *_swig_go_0) {
+float _wrap_b2RevoluteJoint_GetLowerLimit_Box2D_553c0f9515edf50e(b2RevoluteJoint *_swig_go_0) {
   b2RevoluteJoint *arg1 = (b2RevoluteJoint *) 0 ;
   float32 result;
   float _swig_go_result;
@@ -10516,7 +10710,7 @@ float _wrap_b2RevoluteJoint_GetLowerLimit_Box2D_b1d1b47c7e81f80a(b2RevoluteJoint
 }
 
 
-float _wrap_b2RevoluteJoint_GetUpperLimit_Box2D_b1d1b47c7e81f80a(b2RevoluteJoint *_swig_go_0) {
+float _wrap_b2RevoluteJoint_GetUpperLimit_Box2D_553c0f9515edf50e(b2RevoluteJoint *_swig_go_0) {
   b2RevoluteJoint *arg1 = (b2RevoluteJoint *) 0 ;
   float32 result;
   float _swig_go_result;
@@ -10529,7 +10723,7 @@ float _wrap_b2RevoluteJoint_GetUpperLimit_Box2D_b1d1b47c7e81f80a(b2RevoluteJoint
 }
 
 
-void _wrap_b2RevoluteJoint_SetLimits_Box2D_b1d1b47c7e81f80a(b2RevoluteJoint *_swig_go_0, float _swig_go_1, float _swig_go_2) {
+void _wrap_b2RevoluteJoint_SetLimits_Box2D_553c0f9515edf50e(b2RevoluteJoint *_swig_go_0, float _swig_go_1, float _swig_go_2) {
   b2RevoluteJoint *arg1 = (b2RevoluteJoint *) 0 ;
   float32 arg2 ;
   float32 arg3 ;
@@ -10543,7 +10737,7 @@ void _wrap_b2RevoluteJoint_SetLimits_Box2D_b1d1b47c7e81f80a(b2RevoluteJoint *_sw
 }
 
 
-bool _wrap_b2RevoluteJoint_IsMotorEnabled_Box2D_b1d1b47c7e81f80a(b2RevoluteJoint *_swig_go_0) {
+bool _wrap_b2RevoluteJoint_IsMotorEnabled_Box2D_553c0f9515edf50e(b2RevoluteJoint *_swig_go_0) {
   b2RevoluteJoint *arg1 = (b2RevoluteJoint *) 0 ;
   bool result;
   bool _swig_go_result;
@@ -10556,7 +10750,7 @@ bool _wrap_b2RevoluteJoint_IsMotorEnabled_Box2D_b1d1b47c7e81f80a(b2RevoluteJoint
 }
 
 
-void _wrap_b2RevoluteJoint_EnableMotor_Box2D_b1d1b47c7e81f80a(b2RevoluteJoint *_swig_go_0, bool _swig_go_1) {
+void _wrap_b2RevoluteJoint_EnableMotor_Box2D_553c0f9515edf50e(b2RevoluteJoint *_swig_go_0, bool _swig_go_1) {
   b2RevoluteJoint *arg1 = (b2RevoluteJoint *) 0 ;
   bool arg2 ;
   
@@ -10568,7 +10762,7 @@ void _wrap_b2RevoluteJoint_EnableMotor_Box2D_b1d1b47c7e81f80a(b2RevoluteJoint *_
 }
 
 
-void _wrap_b2RevoluteJoint_SetMotorSpeed_Box2D_b1d1b47c7e81f80a(b2RevoluteJoint *_swig_go_0, float _swig_go_1) {
+void _wrap_b2RevoluteJoint_SetMotorSpeed_Box2D_553c0f9515edf50e(b2RevoluteJoint *_swig_go_0, float _swig_go_1) {
   b2RevoluteJoint *arg1 = (b2RevoluteJoint *) 0 ;
   float32 arg2 ;
   
@@ -10580,7 +10774,7 @@ void _wrap_b2RevoluteJoint_SetMotorSpeed_Box2D_b1d1b47c7e81f80a(b2RevoluteJoint 
 }
 
 
-float _wrap_b2RevoluteJoint_GetMotorSpeed_Box2D_b1d1b47c7e81f80a(b2RevoluteJoint *_swig_go_0) {
+float _wrap_b2RevoluteJoint_GetMotorSpeed_Box2D_553c0f9515edf50e(b2RevoluteJoint *_swig_go_0) {
   b2RevoluteJoint *arg1 = (b2RevoluteJoint *) 0 ;
   float32 result;
   float _swig_go_result;
@@ -10593,7 +10787,7 @@ float _wrap_b2RevoluteJoint_GetMotorSpeed_Box2D_b1d1b47c7e81f80a(b2RevoluteJoint
 }
 
 
-void _wrap_b2RevoluteJoint_SetMaxMotorTorque_Box2D_b1d1b47c7e81f80a(b2RevoluteJoint *_swig_go_0, float _swig_go_1) {
+void _wrap_b2RevoluteJoint_SetMaxMotorTorque_Box2D_553c0f9515edf50e(b2RevoluteJoint *_swig_go_0, float _swig_go_1) {
   b2RevoluteJoint *arg1 = (b2RevoluteJoint *) 0 ;
   float32 arg2 ;
   
@@ -10605,7 +10799,7 @@ void _wrap_b2RevoluteJoint_SetMaxMotorTorque_Box2D_b1d1b47c7e81f80a(b2RevoluteJo
 }
 
 
-float _wrap_b2RevoluteJoint_GetMaxMotorTorque_Box2D_b1d1b47c7e81f80a(b2RevoluteJoint *_swig_go_0) {
+float _wrap_b2RevoluteJoint_GetMaxMotorTorque_Box2D_553c0f9515edf50e(b2RevoluteJoint *_swig_go_0) {
   b2RevoluteJoint *arg1 = (b2RevoluteJoint *) 0 ;
   float32 result;
   float _swig_go_result;
@@ -10618,7 +10812,7 @@ float _wrap_b2RevoluteJoint_GetMaxMotorTorque_Box2D_b1d1b47c7e81f80a(b2RevoluteJ
 }
 
 
-b2Vec2 *_wrap_b2RevoluteJoint_GetReactionForce_Box2D_b1d1b47c7e81f80a(b2RevoluteJoint *_swig_go_0, float _swig_go_1) {
+b2Vec2 *_wrap_b2RevoluteJoint_GetReactionForce_Box2D_553c0f9515edf50e(b2RevoluteJoint *_swig_go_0, float _swig_go_1) {
   b2RevoluteJoint *arg1 = (b2RevoluteJoint *) 0 ;
   float32 arg2 ;
   b2Vec2 result;
@@ -10633,7 +10827,7 @@ b2Vec2 *_wrap_b2RevoluteJoint_GetReactionForce_Box2D_b1d1b47c7e81f80a(b2Revolute
 }
 
 
-float _wrap_b2RevoluteJoint_GetReactionTorque_Box2D_b1d1b47c7e81f80a(b2RevoluteJoint *_swig_go_0, float _swig_go_1) {
+float _wrap_b2RevoluteJoint_GetReactionTorque_Box2D_553c0f9515edf50e(b2RevoluteJoint *_swig_go_0, float _swig_go_1) {
   b2RevoluteJoint *arg1 = (b2RevoluteJoint *) 0 ;
   float32 arg2 ;
   float32 result;
@@ -10648,7 +10842,7 @@ float _wrap_b2RevoluteJoint_GetReactionTorque_Box2D_b1d1b47c7e81f80a(b2RevoluteJ
 }
 
 
-float _wrap_b2RevoluteJoint_GetMotorTorque_Box2D_b1d1b47c7e81f80a(b2RevoluteJoint *_swig_go_0, float _swig_go_1) {
+float _wrap_b2RevoluteJoint_GetMotorTorque_Box2D_553c0f9515edf50e(b2RevoluteJoint *_swig_go_0, float _swig_go_1) {
   b2RevoluteJoint *arg1 = (b2RevoluteJoint *) 0 ;
   float32 arg2 ;
   float32 result;
@@ -10663,7 +10857,7 @@ float _wrap_b2RevoluteJoint_GetMotorTorque_Box2D_b1d1b47c7e81f80a(b2RevoluteJoin
 }
 
 
-void _wrap_b2RevoluteJoint_Dump_Box2D_b1d1b47c7e81f80a(b2RevoluteJoint *_swig_go_0) {
+void _wrap_b2RevoluteJoint_Dump_Box2D_553c0f9515edf50e(b2RevoluteJoint *_swig_go_0) {
   b2RevoluteJoint *arg1 = (b2RevoluteJoint *) 0 ;
   
   arg1 = *(b2RevoluteJoint **)&_swig_go_0; 
@@ -10673,7 +10867,7 @@ void _wrap_b2RevoluteJoint_Dump_Box2D_b1d1b47c7e81f80a(b2RevoluteJoint *_swig_go
 }
 
 
-void _wrap_delete_b2RevoluteJoint_Box2D_b1d1b47c7e81f80a(b2RevoluteJoint *_swig_go_0) {
+void _wrap_delete_b2RevoluteJoint_Box2D_553c0f9515edf50e(b2RevoluteJoint *_swig_go_0) {
   b2RevoluteJoint *arg1 = (b2RevoluteJoint *) 0 ;
   
   arg1 = *(b2RevoluteJoint **)&_swig_go_0; 
@@ -10683,7 +10877,7 @@ void _wrap_delete_b2RevoluteJoint_Box2D_b1d1b47c7e81f80a(b2RevoluteJoint *_swig_
 }
 
 
-b2RopeJointDef *_wrap_new_b2RopeJointDef_Box2D_b1d1b47c7e81f80a() {
+b2RopeJointDef *_wrap_new_b2RopeJointDef_Box2D_553c0f9515edf50e() {
   b2RopeJointDef *result = 0 ;
   b2RopeJointDef *_swig_go_result;
   
@@ -10694,7 +10888,7 @@ b2RopeJointDef *_wrap_new_b2RopeJointDef_Box2D_b1d1b47c7e81f80a() {
 }
 
 
-void _wrap_b2RopeJointDef_localAnchorA_set_Box2D_b1d1b47c7e81f80a(b2RopeJointDef *_swig_go_0, b2Vec2 *_swig_go_1) {
+void _wrap_b2RopeJointDef_localAnchorA_set_Box2D_553c0f9515edf50e(b2RopeJointDef *_swig_go_0, b2Vec2 *_swig_go_1) {
   b2RopeJointDef *arg1 = (b2RopeJointDef *) 0 ;
   b2Vec2 *arg2 = (b2Vec2 *) 0 ;
   
@@ -10706,7 +10900,7 @@ void _wrap_b2RopeJointDef_localAnchorA_set_Box2D_b1d1b47c7e81f80a(b2RopeJointDef
 }
 
 
-b2Vec2 *_wrap_b2RopeJointDef_localAnchorA_get_Box2D_b1d1b47c7e81f80a(b2RopeJointDef *_swig_go_0) {
+b2Vec2 *_wrap_b2RopeJointDef_localAnchorA_get_Box2D_553c0f9515edf50e(b2RopeJointDef *_swig_go_0) {
   b2RopeJointDef *arg1 = (b2RopeJointDef *) 0 ;
   b2Vec2 *result = 0 ;
   b2Vec2 *_swig_go_result;
@@ -10719,7 +10913,7 @@ b2Vec2 *_wrap_b2RopeJointDef_localAnchorA_get_Box2D_b1d1b47c7e81f80a(b2RopeJoint
 }
 
 
-void _wrap_b2RopeJointDef_localAnchorB_set_Box2D_b1d1b47c7e81f80a(b2RopeJointDef *_swig_go_0, b2Vec2 *_swig_go_1) {
+void _wrap_b2RopeJointDef_localAnchorB_set_Box2D_553c0f9515edf50e(b2RopeJointDef *_swig_go_0, b2Vec2 *_swig_go_1) {
   b2RopeJointDef *arg1 = (b2RopeJointDef *) 0 ;
   b2Vec2 *arg2 = (b2Vec2 *) 0 ;
   
@@ -10731,7 +10925,7 @@ void _wrap_b2RopeJointDef_localAnchorB_set_Box2D_b1d1b47c7e81f80a(b2RopeJointDef
 }
 
 
-b2Vec2 *_wrap_b2RopeJointDef_localAnchorB_get_Box2D_b1d1b47c7e81f80a(b2RopeJointDef *_swig_go_0) {
+b2Vec2 *_wrap_b2RopeJointDef_localAnchorB_get_Box2D_553c0f9515edf50e(b2RopeJointDef *_swig_go_0) {
   b2RopeJointDef *arg1 = (b2RopeJointDef *) 0 ;
   b2Vec2 *result = 0 ;
   b2Vec2 *_swig_go_result;
@@ -10744,7 +10938,7 @@ b2Vec2 *_wrap_b2RopeJointDef_localAnchorB_get_Box2D_b1d1b47c7e81f80a(b2RopeJoint
 }
 
 
-void _wrap_b2RopeJointDef_maxLength_set_Box2D_b1d1b47c7e81f80a(b2RopeJointDef *_swig_go_0, float _swig_go_1) {
+void _wrap_b2RopeJointDef_maxLength_set_Box2D_553c0f9515edf50e(b2RopeJointDef *_swig_go_0, float _swig_go_1) {
   b2RopeJointDef *arg1 = (b2RopeJointDef *) 0 ;
   float32 arg2 ;
   
@@ -10756,7 +10950,7 @@ void _wrap_b2RopeJointDef_maxLength_set_Box2D_b1d1b47c7e81f80a(b2RopeJointDef *_
 }
 
 
-float _wrap_b2RopeJointDef_maxLength_get_Box2D_b1d1b47c7e81f80a(b2RopeJointDef *_swig_go_0) {
+float _wrap_b2RopeJointDef_maxLength_get_Box2D_553c0f9515edf50e(b2RopeJointDef *_swig_go_0) {
   b2RopeJointDef *arg1 = (b2RopeJointDef *) 0 ;
   float32 result;
   float _swig_go_result;
@@ -10769,7 +10963,7 @@ float _wrap_b2RopeJointDef_maxLength_get_Box2D_b1d1b47c7e81f80a(b2RopeJointDef *
 }
 
 
-void _wrap_delete_b2RopeJointDef_Box2D_b1d1b47c7e81f80a(b2RopeJointDef *_swig_go_0) {
+void _wrap_delete_b2RopeJointDef_Box2D_553c0f9515edf50e(b2RopeJointDef *_swig_go_0) {
   b2RopeJointDef *arg1 = (b2RopeJointDef *) 0 ;
   
   arg1 = *(b2RopeJointDef **)&_swig_go_0; 
@@ -10779,7 +10973,7 @@ void _wrap_delete_b2RopeJointDef_Box2D_b1d1b47c7e81f80a(b2RopeJointDef *_swig_go
 }
 
 
-b2Vec2 *_wrap_b2RopeJoint_GetAnchorA_Box2D_b1d1b47c7e81f80a(b2RopeJoint *_swig_go_0) {
+b2Vec2 *_wrap_b2RopeJoint_GetAnchorA_Box2D_553c0f9515edf50e(b2RopeJoint *_swig_go_0) {
   b2RopeJoint *arg1 = (b2RopeJoint *) 0 ;
   b2Vec2 result;
   b2Vec2 *_swig_go_result;
@@ -10792,7 +10986,7 @@ b2Vec2 *_wrap_b2RopeJoint_GetAnchorA_Box2D_b1d1b47c7e81f80a(b2RopeJoint *_swig_g
 }
 
 
-b2Vec2 *_wrap_b2RopeJoint_GetAnchorB_Box2D_b1d1b47c7e81f80a(b2RopeJoint *_swig_go_0) {
+b2Vec2 *_wrap_b2RopeJoint_GetAnchorB_Box2D_553c0f9515edf50e(b2RopeJoint *_swig_go_0) {
   b2RopeJoint *arg1 = (b2RopeJoint *) 0 ;
   b2Vec2 result;
   b2Vec2 *_swig_go_result;
@@ -10805,7 +10999,7 @@ b2Vec2 *_wrap_b2RopeJoint_GetAnchorB_Box2D_b1d1b47c7e81f80a(b2RopeJoint *_swig_g
 }
 
 
-b2Vec2 *_wrap_b2RopeJoint_GetReactionForce_Box2D_b1d1b47c7e81f80a(b2RopeJoint *_swig_go_0, float _swig_go_1) {
+b2Vec2 *_wrap_b2RopeJoint_GetReactionForce_Box2D_553c0f9515edf50e(b2RopeJoint *_swig_go_0, float _swig_go_1) {
   b2RopeJoint *arg1 = (b2RopeJoint *) 0 ;
   float32 arg2 ;
   b2Vec2 result;
@@ -10820,7 +11014,7 @@ b2Vec2 *_wrap_b2RopeJoint_GetReactionForce_Box2D_b1d1b47c7e81f80a(b2RopeJoint *_
 }
 
 
-float _wrap_b2RopeJoint_GetReactionTorque_Box2D_b1d1b47c7e81f80a(b2RopeJoint *_swig_go_0, float _swig_go_1) {
+float _wrap_b2RopeJoint_GetReactionTorque_Box2D_553c0f9515edf50e(b2RopeJoint *_swig_go_0, float _swig_go_1) {
   b2RopeJoint *arg1 = (b2RopeJoint *) 0 ;
   float32 arg2 ;
   float32 result;
@@ -10835,7 +11029,7 @@ float _wrap_b2RopeJoint_GetReactionTorque_Box2D_b1d1b47c7e81f80a(b2RopeJoint *_s
 }
 
 
-b2Vec2 *_wrap_b2RopeJoint_GetLocalAnchorA_Box2D_b1d1b47c7e81f80a(b2RopeJoint *_swig_go_0) {
+b2Vec2 *_wrap_b2RopeJoint_GetLocalAnchorA_Box2D_553c0f9515edf50e(b2RopeJoint *_swig_go_0) {
   b2RopeJoint *arg1 = (b2RopeJoint *) 0 ;
   b2Vec2 *result = 0 ;
   b2Vec2 *_swig_go_result;
@@ -10848,7 +11042,7 @@ b2Vec2 *_wrap_b2RopeJoint_GetLocalAnchorA_Box2D_b1d1b47c7e81f80a(b2RopeJoint *_s
 }
 
 
-b2Vec2 *_wrap_b2RopeJoint_GetLocalAnchorB_Box2D_b1d1b47c7e81f80a(b2RopeJoint *_swig_go_0) {
+b2Vec2 *_wrap_b2RopeJoint_GetLocalAnchorB_Box2D_553c0f9515edf50e(b2RopeJoint *_swig_go_0) {
   b2RopeJoint *arg1 = (b2RopeJoint *) 0 ;
   b2Vec2 *result = 0 ;
   b2Vec2 *_swig_go_result;
@@ -10861,7 +11055,7 @@ b2Vec2 *_wrap_b2RopeJoint_GetLocalAnchorB_Box2D_b1d1b47c7e81f80a(b2RopeJoint *_s
 }
 
 
-void _wrap_b2RopeJoint_SetMaxLength_Box2D_b1d1b47c7e81f80a(b2RopeJoint *_swig_go_0, float _swig_go_1) {
+void _wrap_b2RopeJoint_SetMaxLength_Box2D_553c0f9515edf50e(b2RopeJoint *_swig_go_0, float _swig_go_1) {
   b2RopeJoint *arg1 = (b2RopeJoint *) 0 ;
   float32 arg2 ;
   
@@ -10873,7 +11067,7 @@ void _wrap_b2RopeJoint_SetMaxLength_Box2D_b1d1b47c7e81f80a(b2RopeJoint *_swig_go
 }
 
 
-float _wrap_b2RopeJoint_GetMaxLength_Box2D_b1d1b47c7e81f80a(b2RopeJoint *_swig_go_0) {
+float _wrap_b2RopeJoint_GetMaxLength_Box2D_553c0f9515edf50e(b2RopeJoint *_swig_go_0) {
   b2RopeJoint *arg1 = (b2RopeJoint *) 0 ;
   float32 result;
   float _swig_go_result;
@@ -10886,7 +11080,7 @@ float _wrap_b2RopeJoint_GetMaxLength_Box2D_b1d1b47c7e81f80a(b2RopeJoint *_swig_g
 }
 
 
-b2LimitState *_wrap_b2RopeJoint_GetLimitState_Box2D_b1d1b47c7e81f80a(b2RopeJoint *_swig_go_0) {
+b2LimitState *_wrap_b2RopeJoint_GetLimitState_Box2D_553c0f9515edf50e(b2RopeJoint *_swig_go_0) {
   b2RopeJoint *arg1 = (b2RopeJoint *) 0 ;
   b2LimitState result;
   b2LimitState *_swig_go_result;
@@ -10899,7 +11093,7 @@ b2LimitState *_wrap_b2RopeJoint_GetLimitState_Box2D_b1d1b47c7e81f80a(b2RopeJoint
 }
 
 
-void _wrap_b2RopeJoint_Dump_Box2D_b1d1b47c7e81f80a(b2RopeJoint *_swig_go_0) {
+void _wrap_b2RopeJoint_Dump_Box2D_553c0f9515edf50e(b2RopeJoint *_swig_go_0) {
   b2RopeJoint *arg1 = (b2RopeJoint *) 0 ;
   
   arg1 = *(b2RopeJoint **)&_swig_go_0; 
@@ -10909,7 +11103,7 @@ void _wrap_b2RopeJoint_Dump_Box2D_b1d1b47c7e81f80a(b2RopeJoint *_swig_go_0) {
 }
 
 
-void _wrap_delete_b2RopeJoint_Box2D_b1d1b47c7e81f80a(b2RopeJoint *_swig_go_0) {
+void _wrap_delete_b2RopeJoint_Box2D_553c0f9515edf50e(b2RopeJoint *_swig_go_0) {
   b2RopeJoint *arg1 = (b2RopeJoint *) 0 ;
   
   arg1 = *(b2RopeJoint **)&_swig_go_0; 
@@ -10919,7 +11113,7 @@ void _wrap_delete_b2RopeJoint_Box2D_b1d1b47c7e81f80a(b2RopeJoint *_swig_go_0) {
 }
 
 
-b2WeldJointDef *_wrap_new_b2WeldJointDef_Box2D_b1d1b47c7e81f80a() {
+b2WeldJointDef *_wrap_new_b2WeldJointDef_Box2D_553c0f9515edf50e() {
   b2WeldJointDef *result = 0 ;
   b2WeldJointDef *_swig_go_result;
   
@@ -10930,7 +11124,7 @@ b2WeldJointDef *_wrap_new_b2WeldJointDef_Box2D_b1d1b47c7e81f80a() {
 }
 
 
-void _wrap_b2WeldJointDef_Initialize_Box2D_b1d1b47c7e81f80a(b2WeldJointDef *_swig_go_0, b2Body *_swig_go_1, b2Body *_swig_go_2, b2Vec2 *_swig_go_3) {
+void _wrap_b2WeldJointDef_Initialize_Box2D_553c0f9515edf50e(b2WeldJointDef *_swig_go_0, b2Body *_swig_go_1, b2Body *_swig_go_2, b2Vec2 *_swig_go_3) {
   b2WeldJointDef *arg1 = (b2WeldJointDef *) 0 ;
   b2Body *arg2 = (b2Body *) 0 ;
   b2Body *arg3 = (b2Body *) 0 ;
@@ -10946,7 +11140,7 @@ void _wrap_b2WeldJointDef_Initialize_Box2D_b1d1b47c7e81f80a(b2WeldJointDef *_swi
 }
 
 
-void _wrap_b2WeldJointDef_localAnchorA_set_Box2D_b1d1b47c7e81f80a(b2WeldJointDef *_swig_go_0, b2Vec2 *_swig_go_1) {
+void _wrap_b2WeldJointDef_localAnchorA_set_Box2D_553c0f9515edf50e(b2WeldJointDef *_swig_go_0, b2Vec2 *_swig_go_1) {
   b2WeldJointDef *arg1 = (b2WeldJointDef *) 0 ;
   b2Vec2 *arg2 = (b2Vec2 *) 0 ;
   
@@ -10958,7 +11152,7 @@ void _wrap_b2WeldJointDef_localAnchorA_set_Box2D_b1d1b47c7e81f80a(b2WeldJointDef
 }
 
 
-b2Vec2 *_wrap_b2WeldJointDef_localAnchorA_get_Box2D_b1d1b47c7e81f80a(b2WeldJointDef *_swig_go_0) {
+b2Vec2 *_wrap_b2WeldJointDef_localAnchorA_get_Box2D_553c0f9515edf50e(b2WeldJointDef *_swig_go_0) {
   b2WeldJointDef *arg1 = (b2WeldJointDef *) 0 ;
   b2Vec2 *result = 0 ;
   b2Vec2 *_swig_go_result;
@@ -10971,7 +11165,7 @@ b2Vec2 *_wrap_b2WeldJointDef_localAnchorA_get_Box2D_b1d1b47c7e81f80a(b2WeldJoint
 }
 
 
-void _wrap_b2WeldJointDef_localAnchorB_set_Box2D_b1d1b47c7e81f80a(b2WeldJointDef *_swig_go_0, b2Vec2 *_swig_go_1) {
+void _wrap_b2WeldJointDef_localAnchorB_set_Box2D_553c0f9515edf50e(b2WeldJointDef *_swig_go_0, b2Vec2 *_swig_go_1) {
   b2WeldJointDef *arg1 = (b2WeldJointDef *) 0 ;
   b2Vec2 *arg2 = (b2Vec2 *) 0 ;
   
@@ -10983,7 +11177,7 @@ void _wrap_b2WeldJointDef_localAnchorB_set_Box2D_b1d1b47c7e81f80a(b2WeldJointDef
 }
 
 
-b2Vec2 *_wrap_b2WeldJointDef_localAnchorB_get_Box2D_b1d1b47c7e81f80a(b2WeldJointDef *_swig_go_0) {
+b2Vec2 *_wrap_b2WeldJointDef_localAnchorB_get_Box2D_553c0f9515edf50e(b2WeldJointDef *_swig_go_0) {
   b2WeldJointDef *arg1 = (b2WeldJointDef *) 0 ;
   b2Vec2 *result = 0 ;
   b2Vec2 *_swig_go_result;
@@ -10996,7 +11190,7 @@ b2Vec2 *_wrap_b2WeldJointDef_localAnchorB_get_Box2D_b1d1b47c7e81f80a(b2WeldJoint
 }
 
 
-void _wrap_b2WeldJointDef_referenceAngle_set_Box2D_b1d1b47c7e81f80a(b2WeldJointDef *_swig_go_0, float _swig_go_1) {
+void _wrap_b2WeldJointDef_referenceAngle_set_Box2D_553c0f9515edf50e(b2WeldJointDef *_swig_go_0, float _swig_go_1) {
   b2WeldJointDef *arg1 = (b2WeldJointDef *) 0 ;
   float32 arg2 ;
   
@@ -11008,7 +11202,7 @@ void _wrap_b2WeldJointDef_referenceAngle_set_Box2D_b1d1b47c7e81f80a(b2WeldJointD
 }
 
 
-float _wrap_b2WeldJointDef_referenceAngle_get_Box2D_b1d1b47c7e81f80a(b2WeldJointDef *_swig_go_0) {
+float _wrap_b2WeldJointDef_referenceAngle_get_Box2D_553c0f9515edf50e(b2WeldJointDef *_swig_go_0) {
   b2WeldJointDef *arg1 = (b2WeldJointDef *) 0 ;
   float32 result;
   float _swig_go_result;
@@ -11021,7 +11215,7 @@ float _wrap_b2WeldJointDef_referenceAngle_get_Box2D_b1d1b47c7e81f80a(b2WeldJoint
 }
 
 
-void _wrap_b2WeldJointDef_frequencyHz_set_Box2D_b1d1b47c7e81f80a(b2WeldJointDef *_swig_go_0, float _swig_go_1) {
+void _wrap_b2WeldJointDef_frequencyHz_set_Box2D_553c0f9515edf50e(b2WeldJointDef *_swig_go_0, float _swig_go_1) {
   b2WeldJointDef *arg1 = (b2WeldJointDef *) 0 ;
   float32 arg2 ;
   
@@ -11033,7 +11227,7 @@ void _wrap_b2WeldJointDef_frequencyHz_set_Box2D_b1d1b47c7e81f80a(b2WeldJointDef 
 }
 
 
-float _wrap_b2WeldJointDef_frequencyHz_get_Box2D_b1d1b47c7e81f80a(b2WeldJointDef *_swig_go_0) {
+float _wrap_b2WeldJointDef_frequencyHz_get_Box2D_553c0f9515edf50e(b2WeldJointDef *_swig_go_0) {
   b2WeldJointDef *arg1 = (b2WeldJointDef *) 0 ;
   float32 result;
   float _swig_go_result;
@@ -11046,7 +11240,7 @@ float _wrap_b2WeldJointDef_frequencyHz_get_Box2D_b1d1b47c7e81f80a(b2WeldJointDef
 }
 
 
-void _wrap_b2WeldJointDef_dampingRatio_set_Box2D_b1d1b47c7e81f80a(b2WeldJointDef *_swig_go_0, float _swig_go_1) {
+void _wrap_b2WeldJointDef_dampingRatio_set_Box2D_553c0f9515edf50e(b2WeldJointDef *_swig_go_0, float _swig_go_1) {
   b2WeldJointDef *arg1 = (b2WeldJointDef *) 0 ;
   float32 arg2 ;
   
@@ -11058,7 +11252,7 @@ void _wrap_b2WeldJointDef_dampingRatio_set_Box2D_b1d1b47c7e81f80a(b2WeldJointDef
 }
 
 
-float _wrap_b2WeldJointDef_dampingRatio_get_Box2D_b1d1b47c7e81f80a(b2WeldJointDef *_swig_go_0) {
+float _wrap_b2WeldJointDef_dampingRatio_get_Box2D_553c0f9515edf50e(b2WeldJointDef *_swig_go_0) {
   b2WeldJointDef *arg1 = (b2WeldJointDef *) 0 ;
   float32 result;
   float _swig_go_result;
@@ -11071,7 +11265,7 @@ float _wrap_b2WeldJointDef_dampingRatio_get_Box2D_b1d1b47c7e81f80a(b2WeldJointDe
 }
 
 
-void _wrap_delete_b2WeldJointDef_Box2D_b1d1b47c7e81f80a(b2WeldJointDef *_swig_go_0) {
+void _wrap_delete_b2WeldJointDef_Box2D_553c0f9515edf50e(b2WeldJointDef *_swig_go_0) {
   b2WeldJointDef *arg1 = (b2WeldJointDef *) 0 ;
   
   arg1 = *(b2WeldJointDef **)&_swig_go_0; 
@@ -11081,7 +11275,7 @@ void _wrap_delete_b2WeldJointDef_Box2D_b1d1b47c7e81f80a(b2WeldJointDef *_swig_go
 }
 
 
-b2Vec2 *_wrap_b2WeldJoint_GetAnchorA_Box2D_b1d1b47c7e81f80a(b2WeldJoint *_swig_go_0) {
+b2Vec2 *_wrap_b2WeldJoint_GetAnchorA_Box2D_553c0f9515edf50e(b2WeldJoint *_swig_go_0) {
   b2WeldJoint *arg1 = (b2WeldJoint *) 0 ;
   b2Vec2 result;
   b2Vec2 *_swig_go_result;
@@ -11094,7 +11288,7 @@ b2Vec2 *_wrap_b2WeldJoint_GetAnchorA_Box2D_b1d1b47c7e81f80a(b2WeldJoint *_swig_g
 }
 
 
-b2Vec2 *_wrap_b2WeldJoint_GetAnchorB_Box2D_b1d1b47c7e81f80a(b2WeldJoint *_swig_go_0) {
+b2Vec2 *_wrap_b2WeldJoint_GetAnchorB_Box2D_553c0f9515edf50e(b2WeldJoint *_swig_go_0) {
   b2WeldJoint *arg1 = (b2WeldJoint *) 0 ;
   b2Vec2 result;
   b2Vec2 *_swig_go_result;
@@ -11107,7 +11301,7 @@ b2Vec2 *_wrap_b2WeldJoint_GetAnchorB_Box2D_b1d1b47c7e81f80a(b2WeldJoint *_swig_g
 }
 
 
-b2Vec2 *_wrap_b2WeldJoint_GetReactionForce_Box2D_b1d1b47c7e81f80a(b2WeldJoint *_swig_go_0, float _swig_go_1) {
+b2Vec2 *_wrap_b2WeldJoint_GetReactionForce_Box2D_553c0f9515edf50e(b2WeldJoint *_swig_go_0, float _swig_go_1) {
   b2WeldJoint *arg1 = (b2WeldJoint *) 0 ;
   float32 arg2 ;
   b2Vec2 result;
@@ -11122,7 +11316,7 @@ b2Vec2 *_wrap_b2WeldJoint_GetReactionForce_Box2D_b1d1b47c7e81f80a(b2WeldJoint *_
 }
 
 
-float _wrap_b2WeldJoint_GetReactionTorque_Box2D_b1d1b47c7e81f80a(b2WeldJoint *_swig_go_0, float _swig_go_1) {
+float _wrap_b2WeldJoint_GetReactionTorque_Box2D_553c0f9515edf50e(b2WeldJoint *_swig_go_0, float _swig_go_1) {
   b2WeldJoint *arg1 = (b2WeldJoint *) 0 ;
   float32 arg2 ;
   float32 result;
@@ -11137,7 +11331,7 @@ float _wrap_b2WeldJoint_GetReactionTorque_Box2D_b1d1b47c7e81f80a(b2WeldJoint *_s
 }
 
 
-b2Vec2 *_wrap_b2WeldJoint_GetLocalAnchorA_Box2D_b1d1b47c7e81f80a(b2WeldJoint *_swig_go_0) {
+b2Vec2 *_wrap_b2WeldJoint_GetLocalAnchorA_Box2D_553c0f9515edf50e(b2WeldJoint *_swig_go_0) {
   b2WeldJoint *arg1 = (b2WeldJoint *) 0 ;
   b2Vec2 *result = 0 ;
   b2Vec2 *_swig_go_result;
@@ -11150,7 +11344,7 @@ b2Vec2 *_wrap_b2WeldJoint_GetLocalAnchorA_Box2D_b1d1b47c7e81f80a(b2WeldJoint *_s
 }
 
 
-b2Vec2 *_wrap_b2WeldJoint_GetLocalAnchorB_Box2D_b1d1b47c7e81f80a(b2WeldJoint *_swig_go_0) {
+b2Vec2 *_wrap_b2WeldJoint_GetLocalAnchorB_Box2D_553c0f9515edf50e(b2WeldJoint *_swig_go_0) {
   b2WeldJoint *arg1 = (b2WeldJoint *) 0 ;
   b2Vec2 *result = 0 ;
   b2Vec2 *_swig_go_result;
@@ -11163,7 +11357,7 @@ b2Vec2 *_wrap_b2WeldJoint_GetLocalAnchorB_Box2D_b1d1b47c7e81f80a(b2WeldJoint *_s
 }
 
 
-float _wrap_b2WeldJoint_GetReferenceAngle_Box2D_b1d1b47c7e81f80a(b2WeldJoint *_swig_go_0) {
+float _wrap_b2WeldJoint_GetReferenceAngle_Box2D_553c0f9515edf50e(b2WeldJoint *_swig_go_0) {
   b2WeldJoint *arg1 = (b2WeldJoint *) 0 ;
   float32 result;
   float _swig_go_result;
@@ -11176,7 +11370,7 @@ float _wrap_b2WeldJoint_GetReferenceAngle_Box2D_b1d1b47c7e81f80a(b2WeldJoint *_s
 }
 
 
-void _wrap_b2WeldJoint_SetFrequency_Box2D_b1d1b47c7e81f80a(b2WeldJoint *_swig_go_0, float _swig_go_1) {
+void _wrap_b2WeldJoint_SetFrequency_Box2D_553c0f9515edf50e(b2WeldJoint *_swig_go_0, float _swig_go_1) {
   b2WeldJoint *arg1 = (b2WeldJoint *) 0 ;
   float32 arg2 ;
   
@@ -11188,7 +11382,7 @@ void _wrap_b2WeldJoint_SetFrequency_Box2D_b1d1b47c7e81f80a(b2WeldJoint *_swig_go
 }
 
 
-float _wrap_b2WeldJoint_GetFrequency_Box2D_b1d1b47c7e81f80a(b2WeldJoint *_swig_go_0) {
+float _wrap_b2WeldJoint_GetFrequency_Box2D_553c0f9515edf50e(b2WeldJoint *_swig_go_0) {
   b2WeldJoint *arg1 = (b2WeldJoint *) 0 ;
   float32 result;
   float _swig_go_result;
@@ -11201,7 +11395,7 @@ float _wrap_b2WeldJoint_GetFrequency_Box2D_b1d1b47c7e81f80a(b2WeldJoint *_swig_g
 }
 
 
-void _wrap_b2WeldJoint_SetDampingRatio_Box2D_b1d1b47c7e81f80a(b2WeldJoint *_swig_go_0, float _swig_go_1) {
+void _wrap_b2WeldJoint_SetDampingRatio_Box2D_553c0f9515edf50e(b2WeldJoint *_swig_go_0, float _swig_go_1) {
   b2WeldJoint *arg1 = (b2WeldJoint *) 0 ;
   float32 arg2 ;
   
@@ -11213,7 +11407,7 @@ void _wrap_b2WeldJoint_SetDampingRatio_Box2D_b1d1b47c7e81f80a(b2WeldJoint *_swig
 }
 
 
-float _wrap_b2WeldJoint_GetDampingRatio_Box2D_b1d1b47c7e81f80a(b2WeldJoint *_swig_go_0) {
+float _wrap_b2WeldJoint_GetDampingRatio_Box2D_553c0f9515edf50e(b2WeldJoint *_swig_go_0) {
   b2WeldJoint *arg1 = (b2WeldJoint *) 0 ;
   float32 result;
   float _swig_go_result;
@@ -11226,7 +11420,7 @@ float _wrap_b2WeldJoint_GetDampingRatio_Box2D_b1d1b47c7e81f80a(b2WeldJoint *_swi
 }
 
 
-void _wrap_b2WeldJoint_Dump_Box2D_b1d1b47c7e81f80a(b2WeldJoint *_swig_go_0) {
+void _wrap_b2WeldJoint_Dump_Box2D_553c0f9515edf50e(b2WeldJoint *_swig_go_0) {
   b2WeldJoint *arg1 = (b2WeldJoint *) 0 ;
   
   arg1 = *(b2WeldJoint **)&_swig_go_0; 
@@ -11236,7 +11430,7 @@ void _wrap_b2WeldJoint_Dump_Box2D_b1d1b47c7e81f80a(b2WeldJoint *_swig_go_0) {
 }
 
 
-void _wrap_delete_b2WeldJoint_Box2D_b1d1b47c7e81f80a(b2WeldJoint *_swig_go_0) {
+void _wrap_delete_b2WeldJoint_Box2D_553c0f9515edf50e(b2WeldJoint *_swig_go_0) {
   b2WeldJoint *arg1 = (b2WeldJoint *) 0 ;
   
   arg1 = *(b2WeldJoint **)&_swig_go_0; 
@@ -11246,7 +11440,7 @@ void _wrap_delete_b2WeldJoint_Box2D_b1d1b47c7e81f80a(b2WeldJoint *_swig_go_0) {
 }
 
 
-b2WheelJointDef *_wrap_new_b2WheelJointDef_Box2D_b1d1b47c7e81f80a() {
+b2WheelJointDef *_wrap_new_b2WheelJointDef_Box2D_553c0f9515edf50e() {
   b2WheelJointDef *result = 0 ;
   b2WheelJointDef *_swig_go_result;
   
@@ -11257,7 +11451,7 @@ b2WheelJointDef *_wrap_new_b2WheelJointDef_Box2D_b1d1b47c7e81f80a() {
 }
 
 
-void _wrap_b2WheelJointDef_Initialize_Box2D_b1d1b47c7e81f80a(b2WheelJointDef *_swig_go_0, b2Body *_swig_go_1, b2Body *_swig_go_2, b2Vec2 *_swig_go_3, b2Vec2 *_swig_go_4) {
+void _wrap_b2WheelJointDef_Initialize_Box2D_553c0f9515edf50e(b2WheelJointDef *_swig_go_0, b2Body *_swig_go_1, b2Body *_swig_go_2, b2Vec2 *_swig_go_3, b2Vec2 *_swig_go_4) {
   b2WheelJointDef *arg1 = (b2WheelJointDef *) 0 ;
   b2Body *arg2 = (b2Body *) 0 ;
   b2Body *arg3 = (b2Body *) 0 ;
@@ -11275,7 +11469,7 @@ void _wrap_b2WheelJointDef_Initialize_Box2D_b1d1b47c7e81f80a(b2WheelJointDef *_s
 }
 
 
-void _wrap_b2WheelJointDef_localAnchorA_set_Box2D_b1d1b47c7e81f80a(b2WheelJointDef *_swig_go_0, b2Vec2 *_swig_go_1) {
+void _wrap_b2WheelJointDef_localAnchorA_set_Box2D_553c0f9515edf50e(b2WheelJointDef *_swig_go_0, b2Vec2 *_swig_go_1) {
   b2WheelJointDef *arg1 = (b2WheelJointDef *) 0 ;
   b2Vec2 *arg2 = (b2Vec2 *) 0 ;
   
@@ -11287,7 +11481,7 @@ void _wrap_b2WheelJointDef_localAnchorA_set_Box2D_b1d1b47c7e81f80a(b2WheelJointD
 }
 
 
-b2Vec2 *_wrap_b2WheelJointDef_localAnchorA_get_Box2D_b1d1b47c7e81f80a(b2WheelJointDef *_swig_go_0) {
+b2Vec2 *_wrap_b2WheelJointDef_localAnchorA_get_Box2D_553c0f9515edf50e(b2WheelJointDef *_swig_go_0) {
   b2WheelJointDef *arg1 = (b2WheelJointDef *) 0 ;
   b2Vec2 *result = 0 ;
   b2Vec2 *_swig_go_result;
@@ -11300,7 +11494,7 @@ b2Vec2 *_wrap_b2WheelJointDef_localAnchorA_get_Box2D_b1d1b47c7e81f80a(b2WheelJoi
 }
 
 
-void _wrap_b2WheelJointDef_localAnchorB_set_Box2D_b1d1b47c7e81f80a(b2WheelJointDef *_swig_go_0, b2Vec2 *_swig_go_1) {
+void _wrap_b2WheelJointDef_localAnchorB_set_Box2D_553c0f9515edf50e(b2WheelJointDef *_swig_go_0, b2Vec2 *_swig_go_1) {
   b2WheelJointDef *arg1 = (b2WheelJointDef *) 0 ;
   b2Vec2 *arg2 = (b2Vec2 *) 0 ;
   
@@ -11312,7 +11506,7 @@ void _wrap_b2WheelJointDef_localAnchorB_set_Box2D_b1d1b47c7e81f80a(b2WheelJointD
 }
 
 
-b2Vec2 *_wrap_b2WheelJointDef_localAnchorB_get_Box2D_b1d1b47c7e81f80a(b2WheelJointDef *_swig_go_0) {
+b2Vec2 *_wrap_b2WheelJointDef_localAnchorB_get_Box2D_553c0f9515edf50e(b2WheelJointDef *_swig_go_0) {
   b2WheelJointDef *arg1 = (b2WheelJointDef *) 0 ;
   b2Vec2 *result = 0 ;
   b2Vec2 *_swig_go_result;
@@ -11325,7 +11519,7 @@ b2Vec2 *_wrap_b2WheelJointDef_localAnchorB_get_Box2D_b1d1b47c7e81f80a(b2WheelJoi
 }
 
 
-void _wrap_b2WheelJointDef_localAxisA_set_Box2D_b1d1b47c7e81f80a(b2WheelJointDef *_swig_go_0, b2Vec2 *_swig_go_1) {
+void _wrap_b2WheelJointDef_localAxisA_set_Box2D_553c0f9515edf50e(b2WheelJointDef *_swig_go_0, b2Vec2 *_swig_go_1) {
   b2WheelJointDef *arg1 = (b2WheelJointDef *) 0 ;
   b2Vec2 *arg2 = (b2Vec2 *) 0 ;
   
@@ -11337,7 +11531,7 @@ void _wrap_b2WheelJointDef_localAxisA_set_Box2D_b1d1b47c7e81f80a(b2WheelJointDef
 }
 
 
-b2Vec2 *_wrap_b2WheelJointDef_localAxisA_get_Box2D_b1d1b47c7e81f80a(b2WheelJointDef *_swig_go_0) {
+b2Vec2 *_wrap_b2WheelJointDef_localAxisA_get_Box2D_553c0f9515edf50e(b2WheelJointDef *_swig_go_0) {
   b2WheelJointDef *arg1 = (b2WheelJointDef *) 0 ;
   b2Vec2 *result = 0 ;
   b2Vec2 *_swig_go_result;
@@ -11350,7 +11544,7 @@ b2Vec2 *_wrap_b2WheelJointDef_localAxisA_get_Box2D_b1d1b47c7e81f80a(b2WheelJoint
 }
 
 
-void _wrap_b2WheelJointDef_enableMotor_set_Box2D_b1d1b47c7e81f80a(b2WheelJointDef *_swig_go_0, bool _swig_go_1) {
+void _wrap_b2WheelJointDef_enableMotor_set_Box2D_553c0f9515edf50e(b2WheelJointDef *_swig_go_0, bool _swig_go_1) {
   b2WheelJointDef *arg1 = (b2WheelJointDef *) 0 ;
   bool arg2 ;
   
@@ -11362,7 +11556,7 @@ void _wrap_b2WheelJointDef_enableMotor_set_Box2D_b1d1b47c7e81f80a(b2WheelJointDe
 }
 
 
-bool _wrap_b2WheelJointDef_enableMotor_get_Box2D_b1d1b47c7e81f80a(b2WheelJointDef *_swig_go_0) {
+bool _wrap_b2WheelJointDef_enableMotor_get_Box2D_553c0f9515edf50e(b2WheelJointDef *_swig_go_0) {
   b2WheelJointDef *arg1 = (b2WheelJointDef *) 0 ;
   bool result;
   bool _swig_go_result;
@@ -11375,7 +11569,7 @@ bool _wrap_b2WheelJointDef_enableMotor_get_Box2D_b1d1b47c7e81f80a(b2WheelJointDe
 }
 
 
-void _wrap_b2WheelJointDef_maxMotorTorque_set_Box2D_b1d1b47c7e81f80a(b2WheelJointDef *_swig_go_0, float _swig_go_1) {
+void _wrap_b2WheelJointDef_maxMotorTorque_set_Box2D_553c0f9515edf50e(b2WheelJointDef *_swig_go_0, float _swig_go_1) {
   b2WheelJointDef *arg1 = (b2WheelJointDef *) 0 ;
   float32 arg2 ;
   
@@ -11387,7 +11581,7 @@ void _wrap_b2WheelJointDef_maxMotorTorque_set_Box2D_b1d1b47c7e81f80a(b2WheelJoin
 }
 
 
-float _wrap_b2WheelJointDef_maxMotorTorque_get_Box2D_b1d1b47c7e81f80a(b2WheelJointDef *_swig_go_0) {
+float _wrap_b2WheelJointDef_maxMotorTorque_get_Box2D_553c0f9515edf50e(b2WheelJointDef *_swig_go_0) {
   b2WheelJointDef *arg1 = (b2WheelJointDef *) 0 ;
   float32 result;
   float _swig_go_result;
@@ -11400,7 +11594,7 @@ float _wrap_b2WheelJointDef_maxMotorTorque_get_Box2D_b1d1b47c7e81f80a(b2WheelJoi
 }
 
 
-void _wrap_b2WheelJointDef_motorSpeed_set_Box2D_b1d1b47c7e81f80a(b2WheelJointDef *_swig_go_0, float _swig_go_1) {
+void _wrap_b2WheelJointDef_motorSpeed_set_Box2D_553c0f9515edf50e(b2WheelJointDef *_swig_go_0, float _swig_go_1) {
   b2WheelJointDef *arg1 = (b2WheelJointDef *) 0 ;
   float32 arg2 ;
   
@@ -11412,7 +11606,7 @@ void _wrap_b2WheelJointDef_motorSpeed_set_Box2D_b1d1b47c7e81f80a(b2WheelJointDef
 }
 
 
-float _wrap_b2WheelJointDef_motorSpeed_get_Box2D_b1d1b47c7e81f80a(b2WheelJointDef *_swig_go_0) {
+float _wrap_b2WheelJointDef_motorSpeed_get_Box2D_553c0f9515edf50e(b2WheelJointDef *_swig_go_0) {
   b2WheelJointDef *arg1 = (b2WheelJointDef *) 0 ;
   float32 result;
   float _swig_go_result;
@@ -11425,7 +11619,7 @@ float _wrap_b2WheelJointDef_motorSpeed_get_Box2D_b1d1b47c7e81f80a(b2WheelJointDe
 }
 
 
-void _wrap_b2WheelJointDef_frequencyHz_set_Box2D_b1d1b47c7e81f80a(b2WheelJointDef *_swig_go_0, float _swig_go_1) {
+void _wrap_b2WheelJointDef_frequencyHz_set_Box2D_553c0f9515edf50e(b2WheelJointDef *_swig_go_0, float _swig_go_1) {
   b2WheelJointDef *arg1 = (b2WheelJointDef *) 0 ;
   float32 arg2 ;
   
@@ -11437,7 +11631,7 @@ void _wrap_b2WheelJointDef_frequencyHz_set_Box2D_b1d1b47c7e81f80a(b2WheelJointDe
 }
 
 
-float _wrap_b2WheelJointDef_frequencyHz_get_Box2D_b1d1b47c7e81f80a(b2WheelJointDef *_swig_go_0) {
+float _wrap_b2WheelJointDef_frequencyHz_get_Box2D_553c0f9515edf50e(b2WheelJointDef *_swig_go_0) {
   b2WheelJointDef *arg1 = (b2WheelJointDef *) 0 ;
   float32 result;
   float _swig_go_result;
@@ -11450,7 +11644,7 @@ float _wrap_b2WheelJointDef_frequencyHz_get_Box2D_b1d1b47c7e81f80a(b2WheelJointD
 }
 
 
-void _wrap_b2WheelJointDef_dampingRatio_set_Box2D_b1d1b47c7e81f80a(b2WheelJointDef *_swig_go_0, float _swig_go_1) {
+void _wrap_b2WheelJointDef_dampingRatio_set_Box2D_553c0f9515edf50e(b2WheelJointDef *_swig_go_0, float _swig_go_1) {
   b2WheelJointDef *arg1 = (b2WheelJointDef *) 0 ;
   float32 arg2 ;
   
@@ -11462,7 +11656,7 @@ void _wrap_b2WheelJointDef_dampingRatio_set_Box2D_b1d1b47c7e81f80a(b2WheelJointD
 }
 
 
-float _wrap_b2WheelJointDef_dampingRatio_get_Box2D_b1d1b47c7e81f80a(b2WheelJointDef *_swig_go_0) {
+float _wrap_b2WheelJointDef_dampingRatio_get_Box2D_553c0f9515edf50e(b2WheelJointDef *_swig_go_0) {
   b2WheelJointDef *arg1 = (b2WheelJointDef *) 0 ;
   float32 result;
   float _swig_go_result;
@@ -11475,7 +11669,7 @@ float _wrap_b2WheelJointDef_dampingRatio_get_Box2D_b1d1b47c7e81f80a(b2WheelJoint
 }
 
 
-void _wrap_delete_b2WheelJointDef_Box2D_b1d1b47c7e81f80a(b2WheelJointDef *_swig_go_0) {
+void _wrap_delete_b2WheelJointDef_Box2D_553c0f9515edf50e(b2WheelJointDef *_swig_go_0) {
   b2WheelJointDef *arg1 = (b2WheelJointDef *) 0 ;
   
   arg1 = *(b2WheelJointDef **)&_swig_go_0; 
@@ -11485,7 +11679,7 @@ void _wrap_delete_b2WheelJointDef_Box2D_b1d1b47c7e81f80a(b2WheelJointDef *_swig_
 }
 
 
-b2Vec2 *_wrap_b2WheelJoint_GetAnchorA_Box2D_b1d1b47c7e81f80a(b2WheelJoint *_swig_go_0) {
+b2Vec2 *_wrap_b2WheelJoint_GetAnchorA_Box2D_553c0f9515edf50e(b2WheelJoint *_swig_go_0) {
   b2WheelJoint *arg1 = (b2WheelJoint *) 0 ;
   b2Vec2 result;
   b2Vec2 *_swig_go_result;
@@ -11498,7 +11692,7 @@ b2Vec2 *_wrap_b2WheelJoint_GetAnchorA_Box2D_b1d1b47c7e81f80a(b2WheelJoint *_swig
 }
 
 
-b2Vec2 *_wrap_b2WheelJoint_GetAnchorB_Box2D_b1d1b47c7e81f80a(b2WheelJoint *_swig_go_0) {
+b2Vec2 *_wrap_b2WheelJoint_GetAnchorB_Box2D_553c0f9515edf50e(b2WheelJoint *_swig_go_0) {
   b2WheelJoint *arg1 = (b2WheelJoint *) 0 ;
   b2Vec2 result;
   b2Vec2 *_swig_go_result;
@@ -11511,7 +11705,7 @@ b2Vec2 *_wrap_b2WheelJoint_GetAnchorB_Box2D_b1d1b47c7e81f80a(b2WheelJoint *_swig
 }
 
 
-b2Vec2 *_wrap_b2WheelJoint_GetReactionForce_Box2D_b1d1b47c7e81f80a(b2WheelJoint *_swig_go_0, float _swig_go_1) {
+b2Vec2 *_wrap_b2WheelJoint_GetReactionForce_Box2D_553c0f9515edf50e(b2WheelJoint *_swig_go_0, float _swig_go_1) {
   b2WheelJoint *arg1 = (b2WheelJoint *) 0 ;
   float32 arg2 ;
   b2Vec2 result;
@@ -11526,7 +11720,7 @@ b2Vec2 *_wrap_b2WheelJoint_GetReactionForce_Box2D_b1d1b47c7e81f80a(b2WheelJoint 
 }
 
 
-float _wrap_b2WheelJoint_GetReactionTorque_Box2D_b1d1b47c7e81f80a(b2WheelJoint *_swig_go_0, float _swig_go_1) {
+float _wrap_b2WheelJoint_GetReactionTorque_Box2D_553c0f9515edf50e(b2WheelJoint *_swig_go_0, float _swig_go_1) {
   b2WheelJoint *arg1 = (b2WheelJoint *) 0 ;
   float32 arg2 ;
   float32 result;
@@ -11541,7 +11735,7 @@ float _wrap_b2WheelJoint_GetReactionTorque_Box2D_b1d1b47c7e81f80a(b2WheelJoint *
 }
 
 
-b2Vec2 *_wrap_b2WheelJoint_GetLocalAnchorA_Box2D_b1d1b47c7e81f80a(b2WheelJoint *_swig_go_0) {
+b2Vec2 *_wrap_b2WheelJoint_GetLocalAnchorA_Box2D_553c0f9515edf50e(b2WheelJoint *_swig_go_0) {
   b2WheelJoint *arg1 = (b2WheelJoint *) 0 ;
   b2Vec2 *result = 0 ;
   b2Vec2 *_swig_go_result;
@@ -11554,7 +11748,7 @@ b2Vec2 *_wrap_b2WheelJoint_GetLocalAnchorA_Box2D_b1d1b47c7e81f80a(b2WheelJoint *
 }
 
 
-b2Vec2 *_wrap_b2WheelJoint_GetLocalAnchorB_Box2D_b1d1b47c7e81f80a(b2WheelJoint *_swig_go_0) {
+b2Vec2 *_wrap_b2WheelJoint_GetLocalAnchorB_Box2D_553c0f9515edf50e(b2WheelJoint *_swig_go_0) {
   b2WheelJoint *arg1 = (b2WheelJoint *) 0 ;
   b2Vec2 *result = 0 ;
   b2Vec2 *_swig_go_result;
@@ -11567,7 +11761,7 @@ b2Vec2 *_wrap_b2WheelJoint_GetLocalAnchorB_Box2D_b1d1b47c7e81f80a(b2WheelJoint *
 }
 
 
-b2Vec2 *_wrap_b2WheelJoint_GetLocalAxisA_Box2D_b1d1b47c7e81f80a(b2WheelJoint *_swig_go_0) {
+b2Vec2 *_wrap_b2WheelJoint_GetLocalAxisA_Box2D_553c0f9515edf50e(b2WheelJoint *_swig_go_0) {
   b2WheelJoint *arg1 = (b2WheelJoint *) 0 ;
   b2Vec2 *result = 0 ;
   b2Vec2 *_swig_go_result;
@@ -11580,7 +11774,7 @@ b2Vec2 *_wrap_b2WheelJoint_GetLocalAxisA_Box2D_b1d1b47c7e81f80a(b2WheelJoint *_s
 }
 
 
-float _wrap_b2WheelJoint_GetJointTranslation_Box2D_b1d1b47c7e81f80a(b2WheelJoint *_swig_go_0) {
+float _wrap_b2WheelJoint_GetJointTranslation_Box2D_553c0f9515edf50e(b2WheelJoint *_swig_go_0) {
   b2WheelJoint *arg1 = (b2WheelJoint *) 0 ;
   float32 result;
   float _swig_go_result;
@@ -11593,7 +11787,7 @@ float _wrap_b2WheelJoint_GetJointTranslation_Box2D_b1d1b47c7e81f80a(b2WheelJoint
 }
 
 
-float _wrap_b2WheelJoint_GetJointSpeed_Box2D_b1d1b47c7e81f80a(b2WheelJoint *_swig_go_0) {
+float _wrap_b2WheelJoint_GetJointSpeed_Box2D_553c0f9515edf50e(b2WheelJoint *_swig_go_0) {
   b2WheelJoint *arg1 = (b2WheelJoint *) 0 ;
   float32 result;
   float _swig_go_result;
@@ -11606,7 +11800,7 @@ float _wrap_b2WheelJoint_GetJointSpeed_Box2D_b1d1b47c7e81f80a(b2WheelJoint *_swi
 }
 
 
-bool _wrap_b2WheelJoint_IsMotorEnabled_Box2D_b1d1b47c7e81f80a(b2WheelJoint *_swig_go_0) {
+bool _wrap_b2WheelJoint_IsMotorEnabled_Box2D_553c0f9515edf50e(b2WheelJoint *_swig_go_0) {
   b2WheelJoint *arg1 = (b2WheelJoint *) 0 ;
   bool result;
   bool _swig_go_result;
@@ -11619,7 +11813,7 @@ bool _wrap_b2WheelJoint_IsMotorEnabled_Box2D_b1d1b47c7e81f80a(b2WheelJoint *_swi
 }
 
 
-void _wrap_b2WheelJoint_EnableMotor_Box2D_b1d1b47c7e81f80a(b2WheelJoint *_swig_go_0, bool _swig_go_1) {
+void _wrap_b2WheelJoint_EnableMotor_Box2D_553c0f9515edf50e(b2WheelJoint *_swig_go_0, bool _swig_go_1) {
   b2WheelJoint *arg1 = (b2WheelJoint *) 0 ;
   bool arg2 ;
   
@@ -11631,7 +11825,7 @@ void _wrap_b2WheelJoint_EnableMotor_Box2D_b1d1b47c7e81f80a(b2WheelJoint *_swig_g
 }
 
 
-void _wrap_b2WheelJoint_SetMotorSpeed_Box2D_b1d1b47c7e81f80a(b2WheelJoint *_swig_go_0, float _swig_go_1) {
+void _wrap_b2WheelJoint_SetMotorSpeed_Box2D_553c0f9515edf50e(b2WheelJoint *_swig_go_0, float _swig_go_1) {
   b2WheelJoint *arg1 = (b2WheelJoint *) 0 ;
   float32 arg2 ;
   
@@ -11643,7 +11837,7 @@ void _wrap_b2WheelJoint_SetMotorSpeed_Box2D_b1d1b47c7e81f80a(b2WheelJoint *_swig
 }
 
 
-float _wrap_b2WheelJoint_GetMotorSpeed_Box2D_b1d1b47c7e81f80a(b2WheelJoint *_swig_go_0) {
+float _wrap_b2WheelJoint_GetMotorSpeed_Box2D_553c0f9515edf50e(b2WheelJoint *_swig_go_0) {
   b2WheelJoint *arg1 = (b2WheelJoint *) 0 ;
   float32 result;
   float _swig_go_result;
@@ -11656,7 +11850,7 @@ float _wrap_b2WheelJoint_GetMotorSpeed_Box2D_b1d1b47c7e81f80a(b2WheelJoint *_swi
 }
 
 
-void _wrap_b2WheelJoint_SetMaxMotorTorque_Box2D_b1d1b47c7e81f80a(b2WheelJoint *_swig_go_0, float _swig_go_1) {
+void _wrap_b2WheelJoint_SetMaxMotorTorque_Box2D_553c0f9515edf50e(b2WheelJoint *_swig_go_0, float _swig_go_1) {
   b2WheelJoint *arg1 = (b2WheelJoint *) 0 ;
   float32 arg2 ;
   
@@ -11668,7 +11862,7 @@ void _wrap_b2WheelJoint_SetMaxMotorTorque_Box2D_b1d1b47c7e81f80a(b2WheelJoint *_
 }
 
 
-float _wrap_b2WheelJoint_GetMaxMotorTorque_Box2D_b1d1b47c7e81f80a(b2WheelJoint *_swig_go_0) {
+float _wrap_b2WheelJoint_GetMaxMotorTorque_Box2D_553c0f9515edf50e(b2WheelJoint *_swig_go_0) {
   b2WheelJoint *arg1 = (b2WheelJoint *) 0 ;
   float32 result;
   float _swig_go_result;
@@ -11681,7 +11875,7 @@ float _wrap_b2WheelJoint_GetMaxMotorTorque_Box2D_b1d1b47c7e81f80a(b2WheelJoint *
 }
 
 
-float _wrap_b2WheelJoint_GetMotorTorque_Box2D_b1d1b47c7e81f80a(b2WheelJoint *_swig_go_0, float _swig_go_1) {
+float _wrap_b2WheelJoint_GetMotorTorque_Box2D_553c0f9515edf50e(b2WheelJoint *_swig_go_0, float _swig_go_1) {
   b2WheelJoint *arg1 = (b2WheelJoint *) 0 ;
   float32 arg2 ;
   float32 result;
@@ -11696,7 +11890,7 @@ float _wrap_b2WheelJoint_GetMotorTorque_Box2D_b1d1b47c7e81f80a(b2WheelJoint *_sw
 }
 
 
-void _wrap_b2WheelJoint_SetSpringFrequencyHz_Box2D_b1d1b47c7e81f80a(b2WheelJoint *_swig_go_0, float _swig_go_1) {
+void _wrap_b2WheelJoint_SetSpringFrequencyHz_Box2D_553c0f9515edf50e(b2WheelJoint *_swig_go_0, float _swig_go_1) {
   b2WheelJoint *arg1 = (b2WheelJoint *) 0 ;
   float32 arg2 ;
   
@@ -11708,7 +11902,7 @@ void _wrap_b2WheelJoint_SetSpringFrequencyHz_Box2D_b1d1b47c7e81f80a(b2WheelJoint
 }
 
 
-float _wrap_b2WheelJoint_GetSpringFrequencyHz_Box2D_b1d1b47c7e81f80a(b2WheelJoint *_swig_go_0) {
+float _wrap_b2WheelJoint_GetSpringFrequencyHz_Box2D_553c0f9515edf50e(b2WheelJoint *_swig_go_0) {
   b2WheelJoint *arg1 = (b2WheelJoint *) 0 ;
   float32 result;
   float _swig_go_result;
@@ -11721,7 +11915,7 @@ float _wrap_b2WheelJoint_GetSpringFrequencyHz_Box2D_b1d1b47c7e81f80a(b2WheelJoin
 }
 
 
-void _wrap_b2WheelJoint_SetSpringDampingRatio_Box2D_b1d1b47c7e81f80a(b2WheelJoint *_swig_go_0, float _swig_go_1) {
+void _wrap_b2WheelJoint_SetSpringDampingRatio_Box2D_553c0f9515edf50e(b2WheelJoint *_swig_go_0, float _swig_go_1) {
   b2WheelJoint *arg1 = (b2WheelJoint *) 0 ;
   float32 arg2 ;
   
@@ -11733,7 +11927,7 @@ void _wrap_b2WheelJoint_SetSpringDampingRatio_Box2D_b1d1b47c7e81f80a(b2WheelJoin
 }
 
 
-float _wrap_b2WheelJoint_GetSpringDampingRatio_Box2D_b1d1b47c7e81f80a(b2WheelJoint *_swig_go_0) {
+float _wrap_b2WheelJoint_GetSpringDampingRatio_Box2D_553c0f9515edf50e(b2WheelJoint *_swig_go_0) {
   b2WheelJoint *arg1 = (b2WheelJoint *) 0 ;
   float32 result;
   float _swig_go_result;
@@ -11746,7 +11940,7 @@ float _wrap_b2WheelJoint_GetSpringDampingRatio_Box2D_b1d1b47c7e81f80a(b2WheelJoi
 }
 
 
-void _wrap_b2WheelJoint_Dump_Box2D_b1d1b47c7e81f80a(b2WheelJoint *_swig_go_0) {
+void _wrap_b2WheelJoint_Dump_Box2D_553c0f9515edf50e(b2WheelJoint *_swig_go_0) {
   b2WheelJoint *arg1 = (b2WheelJoint *) 0 ;
   
   arg1 = *(b2WheelJoint **)&_swig_go_0; 
@@ -11756,7 +11950,7 @@ void _wrap_b2WheelJoint_Dump_Box2D_b1d1b47c7e81f80a(b2WheelJoint *_swig_go_0) {
 }
 
 
-void _wrap_delete_b2WheelJoint_Box2D_b1d1b47c7e81f80a(b2WheelJoint *_swig_go_0) {
+void _wrap_delete_b2WheelJoint_Box2D_553c0f9515edf50e(b2WheelJoint *_swig_go_0) {
   b2WheelJoint *arg1 = (b2WheelJoint *) 0 ;
   
   arg1 = *(b2WheelJoint **)&_swig_go_0; 

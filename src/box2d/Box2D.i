@@ -1,7 +1,9 @@
 %module Box2D
+%module(directors="1") Box2D
 %{
 #include "Box2D/Box2D.h"
 %}
+%feature("director") b2ContactListener;
 
 %include "Box2D/Common/b2Settings.h"
 %include "Box2D/Common/b2Draw.h"

@@ -12,23 +12,24 @@ import (
 	"fmt"
 	"../navmesh"
 	math1  "../utility/math"
-	"../box2d"
+	b2d "../box2d"
 	"../physis/b2Math"
+	"../physis"
 )
 
 
 type GameWorld struct{
 	DBO             *data_access.DBOperatorObj
 	rand            *rand.Rand
-	idIndexMap	map[string]int32
+	idIndexMap      map[string]int32
 	indexPlayerMap  map[int32]*PlayerState
 	actionDict      map[string]func (int32, []byte)
 	lastUpdateTime  int64
 	nextPlayerIndex int32
-	scheduler scheduler.Scheduler
-	pathFinder 	*navmesh.PathFinder
-	phxWorld	Box2D.B2World
-	body		Box2D.B2Body
+	scheduler       scheduler.Scheduler
+	pathFinder      *navmesh.PathFinder
+	phxWorld        b2d.B2World
+	body            b2d.B2Body
 }
 
 
@@ -58,18 +59,36 @@ func CreateWorld(dbCmdChan chan data_access.DBCommand) *GameWorld{
 }
 
 func (world *GameWorld) InitPhysisWorld() {
-	world.phxWorld = Box2D.NewB2World(b2Math.Vec2{X:0, Y:-9})
-	bodyDef := Box2D.NewB2BodyDef()
+	world.phxWorld = b2d.NewB2World(b2Math.Vec2{X:0, Y:-9})
+	bodyDef := b2d.NewB2BodyDef()
 	bodyDef.SetPosition(b2Math.Vec2{X:0, Y:100})
 	body := world.phxWorld.CreateBody(bodyDef)
-	body.SetType(Box2D.B2_dynamicBody)
-	fixtDEf := Box2D.NewB2FixtureDef()
-	shape := Box2D.NewB2PolygonShape()
+	body.SetType(b2d.B2_dynamicBody)
+	fixtDEf := b2d.NewB2FixtureDef()
+	shape := b2d.NewB2PolygonShape()
 	shape.SetAsBox(float32(10), float32(10))
 	fixtDEf.SetShape(shape)
 	fixtDEf.SetDensity(1)
 	fixtDEf.SetFriction(0.3)
 	body.CreateFixture(fixtDEf)
+	groundDef := b2d.NewB2BodyDef()
+	groundDef.SetPosition(b2Math.Vec2{X:0, Y:0})
+	ground := world.phxWorld.CreateBody(groundDef)
+	ground.SetType(b2d.B2_staticBody)
+	groundFixtDef := b2d.NewB2FixtureDef()
+	groundShape := b2d.NewB2PolygonShape()
+	groundShape.SetAsBox(float32(100), float32(1))
+	groundFixtDef.SetShape(groundShape)
+	groundFixtDef.SetFriction(0.5)
+	ground.CreateFixture(groundFixtDef)
+	ctlsn := physis.NewGenContactListener(
+		func(contact b2d.B2Contact) {
+			log.Println("begin contact")
+		},
+		func(contact b2d.B2Contact){
+			log.Println("end contact")
+		})
+	world.phxWorld.SetContactListener(ctlsn)
 	world.body = body
 }
 
@@ -181,8 +200,8 @@ func (world *GameWorld) Update(now int64)  {
 	world.scheduler.TrySchedule()
 	world.lastUpdateTime = now
 	world.phxWorld.Step(0.03, 6, 2)
-	pos := b2Math.GetVec2FromSwigcptr(world.body.GetPosition().(Box2D.SwigcptrB2Vec2))
-	log.Println(" gravity: ", b2Math.GetVec2FromSwigcptr(world.phxWorld.GetGravity().(Box2D.SwigcptrB2Vec2))," bodypos: ", pos)
+	pos := b2Math.GetVec2FromSwigcptr(world.body.GetPosition().(b2d.SwigcptrB2Vec2))
+	log.Println(" gravity: ", b2Math.GetVec2FromSwigcptr(world.phxWorld.GetGravity().(b2d.SwigcptrB2Vec2))," bodypos: ", pos)
 }
 
 func (world *GameWorld) OnPlayerQuit(index int32)  {
