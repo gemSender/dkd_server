@@ -5,6 +5,7 @@
 %}
 %feature("director") b2ContactListener;
 
+%rename(radius) b2CircleShape::m_radius;
 %include "Box2D/Common/b2Settings.h"
 %include "Box2D/Common/b2Draw.h"
 %include "Box2D/Common/b2Timer.h"

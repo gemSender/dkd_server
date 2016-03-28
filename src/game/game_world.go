@@ -32,6 +32,7 @@ type GameWorld struct{
 	body            b2d.B2Body
 }
 
+var world_instance *GameWorld
 
 func GetTimeStampMs() int64 {
 	return time.Now().UnixNano() / 1e6
@@ -43,6 +44,7 @@ func CreateWorld(dbCmdChan chan data_access.DBCommand) *GameWorld{
 		indexPlayerMap:make(map[int32]*PlayerState),
 		actionDict:make(map[string]func(int32, []byte)),
 	}
+	world_instance = world
 	nm, err := navmesh.GetNavMeshFromFile("navmesh/navmesh.bytes")
 	if err != nil{
 		log.Panic(err)

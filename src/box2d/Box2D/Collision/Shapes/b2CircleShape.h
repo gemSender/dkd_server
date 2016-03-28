@@ -57,6 +57,10 @@ public:
 
 	/// Get a vertex by index. Used by b2Distance.
 	const b2Vec2& GetVertex(int32 index) const;
+	
+	/// Addition function set radius
+	
+	void SetRadius(float32 radius);
 
 	/// Position
 	b2Vec2 m_p;
